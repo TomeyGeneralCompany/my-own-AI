@@ -63,6 +63,34 @@ def validate_published_manifest(repository_root, manifest_path):
         if expected is not None and expected != aggregate:
             raise ValueError("Combined published work hash mismatch")
         relative = paths[0]
+        # For one supplied DOCX, the generic page extraction omitted Word
+        # OMML objects. A separately SHA-pinned, source-anchored transcription
+        # restores those formulas directly beside the corresponding argument.
+        overlay = row.get("math_overlay")
+        if overlay is not None:
+            overlay_path = overlay.get("path")
+            if (not isinstance(overlay_path, str) or
+                    not overlay_path.startswith("published_books/library/") or
+                    not overlay_path.endswith(".json")):
+                raise ValueError("Invalid mathematical overlay path")
+            resolved = (root / overlay_path).resolve()
+            if not resolved.is_relative_to(root / "published_books"):
+                raise ValueError("Mathematical overlay escapes approved source directory")
+            if _digest(resolved) != overlay.get("sha256"):
+                raise ValueError("Mathematical overlay source hash differs")
+            math_source = json.loads(resolved.read_text(encoding="utf-8"))
+            if (math_source.get("format") != "omml_text_overlay_v1" or
+                    math_source.get("work_id") != ident):
+                raise ValueError("Mathematical overlay belongs to another publication")
+            for item in math_source["insertions"]:
+                anchor, math = item["after"], item["text"]
+                expression = r"\\s+".join(re.escape(part) for part in anchor.split())
+                matches = list(re.finditer(expression, txt))
+                if len(matches) != 1 or not math.strip():
+                    raise ValueError("Mathematical insertion anchor is missing or ambiguous")
+                idx = matches[0].end()
+                txt = txt[:idx] + "\n\n[Linearized source equation]\n" + math + "\n\n" + txt[idx:]
+            aggregate = sha256(txt.encode("utf-8")).hexdigest()
         if len(txt.split()) < 1000:
             raise ValueError("Insufficient usable text in approved work")
         if any(near_duplicate(txt, other) for other in texts):
