@@ -450,3 +450,21 @@ real old tasks—requires local private training and a passing independent
 `gate-learning` run, not merely a green PR.
 
 The gate also rejects a held-out question or counterfactual family found in the supplied training or validation examples. The evaluated training and validation file digests are recorded in the release report.
+
+
+Completed neural Research investigations can be archived automatically **pending**
+author review without teaching the model its own unverified assertions:
+
+```sh
+my-own-ai infer-neural --checkpoint data/checkpoints/candidate.pt \
+  --judge data/checkpoints/judge.pt --index data/manuscripts.sqlite \
+  --question "How does this new condition alter the relation?" \
+  --ledger data/intellectual-ledger.json \
+  --archive-dir data/reasoning-archive
+```
+
+This stores the model's candidate, exact citation locators and controller status,
+registers the file under a digest, and leaves approval pending. To reuse an
+approved record as training, an author must convert the approved reasoning into
+an independently reviewed worked-example dataset; raw archived JSON isn't
+implicitly a valid supervised example. No archived argument auto-edits weights.
