@@ -67,7 +67,8 @@ def _score(cases, checkpoint, threads, tokens):
     return evaluate_relational(cases, load_proposer(checkpoint, threads, tokens))
 
 
-def compare_models(baseline, candidate, old_cases, new_cases, *, threads=4, tokens=512):
+def compare_models(baseline, candidate, old_cases, new_cases, *, training_examples,
+                   validation_examples, threads=4, tokens=512):
     """Test baseline and candidate on identical untouched cases; no answer keys in model input."""
     old, new = load_relational_cases(old_cases), load_relational_cases(new_cases)
     old_ids = {row["id"] for row in old}
@@ -76,6 +77,15 @@ def compare_models(baseline, candidate, old_cases, new_cases, *, threads=4, toke
     new_groups = {row["group"] for row in new}
     if old_ids & new_ids or old_groups & new_groups:
         raise ValueError("Old and new evaluation sets must be independent")
+    training = load_examples(training_examples)
+    validation = load_examples(validation_examples)
+    verify_splits(training, validation, [])
+    seen_groups = {row["group"] for row in training + validation}
+    seen_questions = {" ".join(row["question"].casefold().split()) for row in training + validation}
+    eval_groups = old_groups | new_groups
+    eval_questions = {" ".join(row["question"].casefold().split()) for row in old + new}
+    if eval_groups & seen_groups or eval_questions & seen_questions:
+        raise ValueError("Evaluation questions and groups must be absent from training and validation")
     old_domains = {row["domain"] for row in old}
     new_domains = {row["domain"] for row in new}
     if old_domains & new_domains:
@@ -123,14 +133,20 @@ def compare_models(baseline, candidate, old_cases, new_cases, *, threads=4, toke
 
 
 def gate_and_promote(baseline, candidate, old_cases, new_cases, report,
-                     *, destination=None, threads=4, tokens=512):
+                     *, training_examples, validation_examples,
+                     destination=None, threads=4, tokens=512):
     """Keep current release untouched unless candidate improves and retains all prior wins."""
-    paths = [Path(p).resolve() for p in (baseline, candidate, old_cases, new_cases, report)]
+    paths = [Path(p).resolve() for p in (baseline, candidate, old_cases, new_cases, report,
+                                         training_examples, validation_examples)]
     if len(set(paths)) != len(paths):
         raise ValueError("Model, rubric and report files must not overlap")
     if destination is not None and Path(destination).resolve() in paths:
         raise ValueError("Promotion must use a separate release path")
-    result = compare_models(baseline, candidate, old_cases, new_cases, threads=threads, tokens=tokens)
+    result = compare_models(baseline, candidate, old_cases, new_cases,
+                            training_examples=training_examples, validation_examples=validation_examples,
+                            threads=threads, tokens=tokens)
+    result["training_sha256"] = _digest_file(training_examples)
+    result["validation_sha256"] = _digest_file(validation_examples)
     result["promoted"] = False
     if destination is not None and result["promotable"]:
         target = Path(destination)
