@@ -6,7 +6,7 @@ import pytest
 import torch
 
 from my_own_ai.corpus import collect_documents
-from my_own_ai.progressive_reading import overlapping_windows, train_progressive
+from my_own_ai.progressive_reading import overlapping_windows, train_progressive, _reading_documents
 from my_own_ai.tokenizer import ByteBPETokenizer
 from my_own_ai.language_training import load_language, train_language
 
@@ -111,3 +111,34 @@ def test_resume_rejects_changed_reading_settings_or_training_corpus(tmp_path):
     )
     with pytest.raises(ValueError, match="matching corpus"):
         train_progressive(**opts, output=output, passes=2, resume=True)
+
+
+
+def test_approved_book_sections_are_joined_only_within_each_split(tmp_path):
+    root = tmp_path / "prepared"
+    for split in ("train", "validation", "test"):
+        (root / split).mkdir(parents=True)
+    (root / "manifest.json").write_text(json.dumps({
+        "format": "approved_books_v1",
+        "sources": [{"id": "commerce_book"}],
+    }))
+    (root / "train" / "commerce_book_00000.txt").write_text(
+        "Section zero ends with the word communication.", encoding="utf-8")
+    (root / "train" / "commerce_book_00001.txt").write_text(
+        "Section one resumes the argument about authority.", encoding="utf-8")
+    (root / "validation" / "commerce_book_00002.txt").write_text(
+        "This paragraph is exclusively validation material.", encoding="utf-8")
+    (root / "test" / "commerce_book_00003.txt").write_text(
+        "The held-out section must never reach training.", encoding="utf-8")
+    train = _reading_documents(root / "train")
+    val = _reading_documents(root / "validation")
+    assert len(train) == len(val) == 1
+    assert "Section zero" in train[0]["text"]
+    assert train[0]["text"].index("Section zero") < train[0]["text"].index("Section one")
+    assert "exclusively validation" not in train[0]["text"]
+    assert "held-out section" not in train[0]["text"]
+    assert "exclusively validation" in val[0]["text"]
+    tokenizer = ByteBPETokenizer()
+    windows = overlapping_windows(train, tokenizer, context=32, overlap=8)
+    rebuilt = [257] + tokenizer.encode(train[0]["text"]) + [258]
+    assert [p for w in windows for p in w[3]] == list(range(1, len(rebuilt)))
