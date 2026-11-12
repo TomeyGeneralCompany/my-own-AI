@@ -72,7 +72,11 @@
       "approved_for_training": true,
       "chunking": "structured_units",
       "path": "published_books/library/patristic-cybernetic-sola-fide.txt",
-      "sha256": "88c8892749d28e5ea51977467bcc39c0fc34b5d4e78c267b150d135dd3d8d6f7"
+      "sha256": "88c8892749d28e5ea51977467bcc39c0fc34b5d4e78c267b150d135dd3d8d6f7",
+      "math_overlay": {
+        "path": "published_books/library/patristic-sola-fide-omml-equations.json",
+        "sha256": "d87f4cf7a283af164b1dc8e4aa1e81d9b722475c768864c4dd1a93f7c787ca3a"
+      }
     },
     {
       "id": "ten-commandments-exposition",
