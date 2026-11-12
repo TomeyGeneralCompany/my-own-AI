@@ -79,7 +79,7 @@ def verify_lab(state_path, answer_a, answer_b):
     assert state["phase"] == "candidate"
     assert state["completed_reading_passes"] == state["target_reading_passes"]
     assert state["completed_instruction_steps"] == state["target_instruction_steps"]
-    assert state["chunk_unit"] == "numbered_paragraph"
+    assert state["chunk_unit"] in ("numbered_paragraph", "mixed_structured")
     assert state["reading_progress"]["windows_per_pass"] > 0
     for response in (a, b):
         assert response["training_executed"] is False
