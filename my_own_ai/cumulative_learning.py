@@ -6,7 +6,7 @@ from pathlib import Path
 import shutil
 from tempfile import NamedTemporaryFile
 
-from .intellectual_ledger import approved_sources
+from .intellectual_ledger import approved_sources, register
 from .module_memory import encode_json
 from .proposal_training import load_examples, verify_splits
 from .relational_curriculum import load_relational_cases, evaluate_relational, _normalized
@@ -164,3 +164,27 @@ def gate_and_promote(baseline, candidate, old_cases, new_cases, report,
         result["release_path"] = str(target)
     _write_json(report, result)
     return result
+
+
+def capture_successful_reasoning(ledger, archive, result):
+    """Archive a controller-verified neural inference as pending human review."""
+    if (not isinstance(result, dict) or result.get("status") != "completed"
+            or not isinstance(result.get("inference"), str) or not result["inference"].strip()
+            or not isinstance(result.get("citations"), list) or not result["citations"]):
+        raise ValueError("Only completed, source-cited reasoning can be archived")
+    citations = result["citations"]
+    if any(not isinstance(hit, dict) or not isinstance(hit.get("source"), str)
+           or not isinstance(hit.get("locator"), str) or not hit["source"] or not hit["locator"]
+           for hit in citations):
+        raise ValueError("Invalid archived reasoning citations")
+    identifier = "reasoning_" + sha256(encode_json(result)).hexdigest()[:24]
+    path = Path(archive).resolve() / (identifier + ".json")
+    if path.exists():
+        raise ValueError("This reasoning record has already been archived")
+    if path == Path(ledger).resolve():
+        raise ValueError("Reasoning archive cannot overwrite ledger")
+    _write_json(path, result)
+    record = register(ledger, identifier, "reasoning", path,
+                      origin="neural_inference_pending_author_review",
+                      evidence=[f"{hit['source']}:{hit['locator']}" for hit in citations])
+    return {"id": identifier, "record": str(path), "approval": record["status"]}
