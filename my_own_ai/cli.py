@@ -13,6 +13,7 @@ from .retrieval import CorpusIndex, build_index
 from .proposal_training import train_proposals
 from .grounding import SPAN_FORMAT
 from . import neural_judge
+from .autonomous_inference import infer
 from .rulebook import Rulebook, RulebookProposer
 from .reasoning import SUPERVISED_FORMAT
 
@@ -93,6 +94,18 @@ def main(argv=None):
     judge_evaluation.add_argument("--cases", type=Path, required=True)
     judge_evaluation.add_argument("--threads", type=int, default=4)
     judge_evaluation.add_argument("--include-scores", action="store_true")
+    inference = sub.add_parser("infer-neural", help="Generate neural hypotheses without supplied conclusions")
+    inference.add_argument("--checkpoint", type=Path, required=True, help="Trained proposal Transformer")
+    inference.add_argument("--judge", type=Path, required=True, help="Trained neural evidence ranker")
+    inference.add_argument("--index", type=Path, required=True)
+    inference.add_argument("--question", required=True)
+    inference.add_argument("--limit", type=int, default=5)
+    inference.add_argument("--attempts", type=int, default=4)
+    inference.add_argument("--tokens", type=int, default=160)
+    inference.add_argument("--temperature", type=float, default=.85)
+    inference.add_argument("--seed", type=int, default=42)
+    inference.add_argument("--threads", type=int, default=4)
+    inference.add_argument("--max-corrections", type=int, default=2)
     draft = sub.add_parser("draft-neural-outline", help="Prepare an offline outline around a supported thesis")
     draft.add_argument("--checkpoint", type=Path, required=True)
     draft.add_argument("--index", type=Path, required=True)
@@ -136,6 +149,14 @@ def main(argv=None):
                                             include_scores=a.include_scores)
         print(json.dumps(report, indent=2))
         return int(report["passed"] != report["total"])
+    elif a.command == "infer-neural":
+        model = load_proposer(a.checkpoint, a.threads, a.tokens).model
+        judge = neural_judge.NeuralJudge.load(a.judge, a.threads)
+        result = infer(a.index, model, judge, a.question, limit=a.limit, attempts=a.attempts,
+                       tokens=a.tokens, temperature=a.temperature, seed=a.seed,
+                       max_corrections=a.max_corrections)
+        print(json.dumps(result, indent=2))
+        return int(result["status"] != "completed")
     elif a.command == "draft-neural-outline":
         with a.brief.open(encoding="utf-8") as stream:
             brief = json.load(stream)
