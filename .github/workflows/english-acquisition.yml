@@ -36,7 +36,7 @@ jobs:
       MKL_NUM_THREADS: '2'
       CUDA_VISIBLE_DEVICES: ''
       CORE_QUESTION: ${{ github.event_name == 'push' && 'Why might a centralized approval system slow down a company?' || inputs.question || '' }}
-      ENGLISH_GAUNTLET_LIMIT: ${{ github.event_name == 'push' && '14' || inputs.full_gauntlet && '200' || '14' }}
+      ENGLISH_GAUNTLET_LIMIT: ${{ github.event_name == 'push' && '200' || inputs.full_gauntlet && '200' || '14' }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
