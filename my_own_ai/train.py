@@ -88,8 +88,12 @@ def train(corpus_dir, output, cfg, steps=20, batch_size=4, learning_rate=0.001,
         previous_loss = None
     model.train()
     begin = time.perf_counter()
-    # Constant learning rate keeps resume bitwise-consistent even when target steps is extended.
-    # Scheduling can later use an explicit immutable total-step budget.
+    # This horizon is immutable across resumed runs.
+    def scheduled_rate(step):
+        if warmup_steps and step <= warmup_steps:
+            return learning_rate * step / warmup_steps
+        progress = min(1.0, (step - warmup_steps) / (schedule_steps - warmup_steps))
+        return learning_rate * (0.1 + 0.45 * (1.0 + math.cos(math.pi * progress)))
     def save(step, loss):
         validation = evaluate(model, validation_docs, cfg.context_size,
                               min(batch_size, 4), validation_batches)

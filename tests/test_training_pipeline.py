@@ -73,3 +73,26 @@ def test_single_document_fallback(tmp_path):
     (folder / "book.txt").write_text("A long chapter for training and validation. " * 15)
     training, validation, policy = split_documents(collect_documents(folder), 8)
     assert training and validation and policy == "single-document-byte-split"
+
+def test_scheduler_warmup_and_fixed_horizon_resume(tmp_path):
+    folder = corpus(tmp_path)
+    continuous = tmp_path / "continuous.pt"
+    resumed = tmp_path / "resumed.pt"
+    options = dict(batch_size=2, checkpoint_every=1, schedule_steps=6, warmup_steps=2)
+    first = train(folder, continuous, CFG, steps=4, **options)
+    assert 0 < first["learning_rate"] < .001
+    train(folder, resumed, CFG, steps=2, **options)
+    second = train(folder, resumed, CFG, steps=4, resume=True, **options)
+    assert second["steps_completed_this_run"] == 2
+    for a, b in zip(load_model(continuous).parameters(), load_model(resumed).parameters()):
+        assert torch.equal(a, b)
+    with pytest.raises(ValueError, match="Training settings"):
+        train(folder, resumed, CFG, steps=5, resume=True,
+              batch_size=2, checkpoint_every=1, schedule_steps=7, warmup_steps=2)
+
+def test_scheduler_reaches_decay_floor(tmp_path):
+    folder = corpus(tmp_path)
+    ck = tmp_path / "end.pt"
+    stats = train(folder, ck, CFG, steps=4, batch_size=2,
+                  schedule_steps=4, warmup_steps=1)
+    assert stats["learning_rate"] == pytest.approx(.0001)
