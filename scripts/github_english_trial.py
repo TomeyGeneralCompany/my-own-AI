@@ -45,7 +45,7 @@ def run():
     instruction = train_language(
         **common, phase="instruction", training=ROOT / "dialogue/train.json",
         validation=ROOT / "dialogue/validation.json", output=taught_path,
-        init_checkpoint=pretrain_path, steps=instruction_steps,
+        init_checkpoint=Path(pretrain["best_checkpoint"]), steps=instruction_steps,
         checkpoint_every=40, lr=.001
     )
 
@@ -54,10 +54,11 @@ def run():
         user_question = "Why does a broken communication channel delay a company's decisions?"
     baseline = answer_question(pretrain_path, tokenizer_path, user_question,
                                max_tokens=80, threads=2)
-    response = answer_question(taught_path, tokenizer_path, user_question,
+    preferred = Path(instruction["best_checkpoint"])
+    response = answer_question(preferred, tokenizer_path, user_question,
                                max_tokens=80, threads=2)
     known = load_dialogues(ROOT / "dialogue/train.json")[0]
-    known_response = answer_question(taught_path, tokenizer_path, known["question"],
+    known_response = answer_question(preferred, tokenizer_path, known["question"],
                                      max_tokens=80, threads=2)
     question_record = {
         "before_instruction_training": baseline, "trained_response": response,
@@ -70,7 +71,7 @@ def run():
 
     cases = load_gauntlet(ROOT / "gauntlet.json")
     limit = int(os.environ.get("ENGLISH_GAUNTLET_LIMIT", "200"))
-    report = evaluate_english(taught_path, tokenizer_path, cases,
+    report = evaluate_english(preferred, tokenizer_path, cases,
                               limit=limit, max_tokens=40, threads=2)
     (OUT / "gauntlet-results.json").write_text(json.dumps(report, indent=2),
                                                 encoding="utf-8")
@@ -80,6 +81,7 @@ def run():
         "tokenizer_sha256": tokenizer.fingerprint(),
         "pretraining": pretrain, "instruction": instruction,
         "instruction_steps": instruction_steps,
+        "best_validation_checkpoint": str(preferred),
         "known_training_target_exact": (
             known_response["answer"].strip() == known["answer"].strip()),
         "evaluation_cases": report["total"],
@@ -102,6 +104,7 @@ def run():
         f"**Tokenizer:** {tokenizer.vocab_size} learned/byte-fallback tokens.",
         f"**Pretraining validation loss:** {pretrain['validation_loss']:.4f}",
         f"**Instruction validation loss:** {instruction['validation_loss']:.4f}",
+        f"**Best instruction validation loss:** {instruction['best_validation_loss']:.4f} at step {instruction['best_step']}.",
         f"**Instruction updates:** {instruction_steps}.",
         f"**Known training example copied exactly:** {comparison['known_training_target_exact']}.",
         f"**Frozen gauntlet:** {report['total']} items; {report['exact_correct']}/{report['automatically_scored']} strict automatic matches.",
