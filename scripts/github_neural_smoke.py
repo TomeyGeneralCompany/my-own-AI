@@ -10,7 +10,7 @@ from my_own_ai.proposal_training import train_proposals
 from my_own_ai.relational_curriculum import (
     load_relational_cases, check_relational_splits, prepare_curriculum, evaluate_relational,
 )
-from my_own_ai.reasoning import LocalProposer, SUPERVISED_FORMAT
+from my_own_ai.reasoning import LocalProposer, ProposalRequest, Stage, SUPERVISED_FORMAT
 
 ROOT = Path("examples/relational")
 OUTPUT = Path("data/hosted-neural-experiment")
@@ -36,6 +36,70 @@ class RecordingProposer:
 def evaluate_checkpoint(path, cases):
     engine = RecordingProposer(load_model(path))
     return evaluate_relational(cases, engine), engine.records
+
+
+def ask_core(checkpoint, question, evidence):
+    """Return actual locally generated words, without supplied reference answers."""
+    if not isinstance(question, str) or not 1 <= len(question.strip()) <= 1000:
+        raise ValueError("A nonempty question (up to 1000 characters) is required")
+    if not isinstance(evidence, str) or len(evidence) > 1200:
+        raise ValueError("Evidence is limited to 1200 characters")
+    model = load_model(checkpoint)
+    model.proposal_format = SUPERVISED_FORMAT
+    engine = LocalProposer(model, tokens=320)
+    sources = evidence.strip() or "No supporting source was supplied for this question."
+    context = {"evidence": [{"text": sources}]}
+    formulated = engine.propose(ProposalRequest(
+        "research", "grounded_analysis", Stage.FORMULATE,
+        "Identify relevant relationships, changed conditions and a testable inference.",
+        question, context, "", "", "",
+    ))
+    response = engine.propose(ProposalRequest(
+        "research", "grounded_analysis", Stage.CONSTRUCT,
+        "Form a conclusion from cited source evidence without inventing facts.",
+        question, context, formulated, "", "",
+    ))
+    result = {
+        "question": question,
+        "user_supplied_evidence": evidence.strip() or None,
+        "generated_plan": formulated,
+        "model_response": response,
+        "source": "original-weight CPU neural model; no external inference",
+        "evaluated_for_truth": False,
+    }
+    (OUTPUT / "question-response.json").write_text(json.dumps(result, indent=2))
+    summary = [
+        "## Your question for the Core",
+        "",
+        "The neural model is still experimental and may produce malformed or nonsensical text.",
+        "The response below is its actual generation, not ChatGPT answering for it.",
+        "",
+        "**Question:**",
+        "",
+        chr(96) * 3 + "text",
+        question,
+        chr(96) * 3,
+        "",
+        "**Model's response (raw):**",
+        "",
+        chr(96) * 3 + "text",
+        response,
+        chr(96) * 3,
+        "",
+        "**Model's reasoning plan (raw):**",
+        "",
+        chr(96) * 3 + "text",
+        formulated,
+        chr(96) * 3,
+        "",
+        "Answers are not independently verified. See question-response.json in the artifact.",
+    ]
+    output = "\n".join(summary) + "\n"
+    print(output, flush=True)
+    if os.environ.get("GITHUB_STEP_SUMMARY"):
+        with open(os.environ["GITHUB_STEP_SUMMARY"], "a", encoding="utf-8") as stream:
+            stream.write(output)
+    return result
 
 
 def main():
@@ -115,6 +179,9 @@ def main():
     ]
     text = "\n".join(summary) + "\n"
     (OUTPUT / "SUMMARY.md").write_text(text)
+    question = os.environ.get("CORE_QUESTION", "").strip()
+    if question:
+        ask_core(trained_path, question, os.environ.get("CORE_EVIDENCE", ""))
     print(text, flush=True)
     if os.environ.get("GITHUB_STEP_SUMMARY"):
         with open(os.environ["GITHUB_STEP_SUMMARY"], "a", encoding="utf-8") as stream:
