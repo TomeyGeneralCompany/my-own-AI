@@ -203,7 +203,8 @@ def train(args):
                 context=args.context, batch_size=args.batch, threads=args.threads,
                 seed=args.seed, lr=args.instruction_lr,
                 checkpoint_every=min(25, args.max_instruction_updates or 25),
-                time_budget_seconds=available_seconds())
+                time_budget_seconds=available_seconds(),
+                english_drill_fraction=0.5 if curriculum == "english_grounded" else 0.0)
             saved["best_instruction_loss"] = result["best_validation_loss"]
             saved["instruction_stop_reason"] = result["stop_reason"]
             target = result["completed_steps"]
