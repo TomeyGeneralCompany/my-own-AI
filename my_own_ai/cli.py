@@ -9,7 +9,7 @@ from .language_training import train_language
 from .language_inference import answer_question
 from .language_evaluation import load_gauntlet, evaluate_english
 from .language_corpus import prepare_english_corpus
-from .language_regression import promote_english
+from .language_regression import promote_english, make_review_worksheet
 from .language_relational import prepare_language_relational, evaluate_language_relational
 from .train import train, load_model, benchmark
 from .corpus import build_manifest
@@ -203,6 +203,10 @@ def main(argv=None):
     prepare_language.add_argument("--source", type=Path, required=True)
     prepare_language.add_argument("--output", type=Path, required=True)
     prepare_language.add_argument("--seed", type=int, default=42)
+    worksheet = sub.add_parser("prepare-english-review", help="Create blank human evaluation sheets for every open task")
+    worksheet.add_argument("--comparison", type=Path, required=True)
+    worksheet.add_argument("--template", type=Path, required=True)
+    worksheet.add_argument("--worksheet", type=Path, required=True)
     english_gate = sub.add_parser("gate-english", help="Reject regressions and require manual evaluation before promotion")
     english_gate.add_argument("--previous", type=Path, required=True)
     english_gate.add_argument("--candidate", type=Path, required=True)
@@ -265,6 +269,8 @@ def main(argv=None):
         return int(result["exact_conclusions"] != result["total"])
     elif a.command == "prepare-english-corpus":
         print(json.dumps(prepare_english_corpus(a.source, a.output, seed=a.seed), indent=2))
+    elif a.command == "prepare-english-review":
+        print(json.dumps(make_review_worksheet(a.comparison, a.template, a.worksheet), indent=2))
     elif a.command == "gate-english":
         result = promote_english(a.previous, a.candidate, a.tokenizer, a.cases, a.report,
                                  destination=a.promote_to, review_path=a.review,
