@@ -6,7 +6,7 @@ from pathlib import Path
 import pytest
 import torch
 
-from my_own_ai.cumulative_learning import prepare_replay, gate_and_promote
+from my_own_ai.cumulative_learning import prepare_replay, gate_and_promote, capture_successful_reasoning
 from my_own_ai.intellectual_ledger import approved_sources, decide, register, stage_approved_corpus
 from my_own_ai.model import LocalTransformer, ModelConfig
 from my_own_ai.proposal_training import train_proposals
@@ -162,3 +162,22 @@ def test_only_approved_manuscripts_enter_staged_corpus(tmp_path):
     with pytest.raises(ValueError, match="new directory"):
         stage_approved_corpus(ledger, target)
     assert (target / "source-manifest.json").is_file()
+
+
+def test_verified_neural_reasoning_is_archived_pending_review(tmp_path):
+    result = {"status": "completed", "candidate": "Premises with a cited inference",
+              "inference": "The new channel changes the resulting action.",
+              "citations": [{"source": "private_work", "locator": "paragraph 4"}]}
+    ledger = tmp_path / "ledger.json"
+    archive = tmp_path / "archive"
+    record = capture_successful_reasoning(ledger, archive, result)
+    assert record["approval"] == "pending"
+    assert approved_sources(ledger) == []
+    saved = json.loads(Path(record["record"]).read_text(encoding="utf-8"))
+    assert saved == result
+    with pytest.raises(ValueError, match="already been archived"):
+        capture_successful_reasoning(ledger, archive, result)
+    with pytest.raises(ValueError, match="Only completed"):
+        capture_successful_reasoning(ledger, archive, {**result, "status": "unsuccessful"})
+    decide(ledger, record["id"], "approved")
+    assert approved_sources(ledger, kind="reasoning")[0]["id"] == record["id"]
