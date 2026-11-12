@@ -57,7 +57,7 @@ def test_approved_replay_preserves_old_examples_and_rejects_unapproved(tmp_path)
     report = prepare_replay(ledger, retained, valid, output, accepted_ids=["new_work"])
     assert report["retained"] == 1 and report["added"] == 1
     assert [r["id"] for r in json.loads(output.read_text())] == ["old", "new"]
-    with pytest.raises(ValueError, match="Duplicate worked"):
+    with pytest.raises(ValueError, match="distinct approved"):
         prepare_replay(ledger, retained, valid, output, accepted_ids=["new_work", "new_work"])
 
 
