@@ -7,7 +7,7 @@ import pytest
 import torch
 
 from my_own_ai.cumulative_learning import prepare_replay, gate_and_promote
-from my_own_ai.intellectual_ledger import approved_sources, decide, register
+from my_own_ai.intellectual_ledger import approved_sources, decide, register, stage_approved_corpus
 from my_own_ai.model import LocalTransformer, ModelConfig
 from my_own_ai.proposal_training import train_proposals
 from my_own_ai.train import load_model
@@ -143,3 +143,22 @@ def test_gate_blocks_training_answer_leakage(monkeypatch, tmp_path):
     with pytest.raises(ValueError, match="absent from training"):
         gate_and_promote(baseline, candidate, old, new, tmp_path / "report.json",
                          training_examples=training, validation_examples=validation)
+
+
+def test_only_approved_manuscripts_enter_staged_corpus(tmp_path):
+    ledger = tmp_path / "ledger.json"
+    approved = tmp_path / "original.md"
+    approved.write_text("Original authored philosophical text.", encoding="utf-8")
+    pending = tmp_path / "draft.txt"
+    pending.write_text("Unapproved neural draft.", encoding="utf-8")
+    register(ledger, "authored", "authored_work", approved, origin="author manuscript")
+    register(ledger, "unreviewed", "derived_work", pending, origin="AI draft pending review")
+    decide(ledger, "authored", "approved")
+    target = tmp_path / "training-corpus"
+    report = stage_approved_corpus(ledger, target)
+    assert report["documents"] == 1
+    assert (target / "authored.md").read_text() == approved.read_text()
+    assert not (target / "unreviewed.txt").exists()
+    with pytest.raises(ValueError, match="new directory"):
+        stage_approved_corpus(ledger, target)
+    assert (target / "source-manifest.json").is_file()
