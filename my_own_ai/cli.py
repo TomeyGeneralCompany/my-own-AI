@@ -1,11 +1,13 @@
 """Local model training, ingestion, benchmarking and module-switch commands."""
 import argparse
 import json
+import sys
 from pathlib import Path
 from .model import ModelConfig
 from .train import train, load_model, benchmark
 from .corpus import build_manifest
 from .modules import CheckpointStore, ModuleController, default_modules
+from .session import configure_session, demo, session
 
 def main(argv=None):
     parser = argparse.ArgumentParser(prog="my-own-ai")
@@ -39,6 +41,8 @@ def main(argv=None):
     s = sub.add_parser("switch")
     s.add_argument("--mode", choices=["conversation", "writing", "coding", "research"], required=True)
     s.add_argument("--memory", type=Path, default=Path("data/module-memory"))
+    configure_session(sub.add_parser("session", help="Run a local JSON-lines controller session"))
+    sub.add_parser("demo", help="Demonstrate local reasoning, switching and checkpoint restoration")
     a = parser.parse_args(argv)
     if a.command == "ingest":
         m = build_manifest(a.corpus, a.manifest)
@@ -52,11 +56,14 @@ def main(argv=None):
         print(json.dumps(benchmark(a.checkpoint, a.iterations, generation_tokens=a.tokens), indent=2))
     elif a.command == "generate":
         print(load_model(a.checkpoint).generate(a.prompt.encode(), a.tokens).decode("utf-8", errors="replace"))
+    elif a.command == "session":
+        session(a, sys.stdin, sys.stdout)
+    elif a.command == "demo":
+        print(json.dumps(demo(), indent=2))
     else:
-        controller = ModuleController(CheckpointStore(a.memory), default_modules())
-        controller.switch(a.mode)
-        print("Active module:", controller.active.name)
-        controller.close()
+        with ModuleController(CheckpointStore(a.memory), default_modules()) as controller:
+            controller.switch(a.mode)
+            print("Active module:", controller.active.name)
 
 if __name__ == "__main__":
     main()
