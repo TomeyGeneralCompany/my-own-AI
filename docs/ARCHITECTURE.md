@@ -216,3 +216,46 @@ command retrieves corpus passages and returns the selected thesis with its
 exact source and locator, or an unresolved result. It does not generate the
 candidate prose. The original local proposal engine and verified Research
 remain available through their respective commands.
+
+
+## Experimental autonomous neural inference
+
+`my-own-ai infer-neural` uses a **locally trained grounded-supervised proposal
+Transformer** and a separately trained evidence judge. The user supplies only a
+question, not candidate conclusions. The proposal model formulates a plan,
+samples multiple possible source-grounded conclusions, and the judge ranks the
+model's own valid alternatives. The existing Research controller checks source
+quotes, handles correction feedback, and records completion.
+
+```sh
+my-own-ai infer-neural --checkpoint data/checkpoints/proposals.pt \
+  --judge data/checkpoints/judge.pt --index data/books.sqlite \
+  --question "How does the change in condition affect an institution?" \
+  --attempts 4 --tokens 160
+```
+
+This path is **experimental**: when the model fails to generate valid proposals,
+the controller reports failure rather than inventing a proof. The judge compares
+alternatives; it does not establish logical entailment. A completed controller
+run verifies quotation/format requirements, **not** the substantive truth of
+the inference. The output explicitly reports `semantic_entailment_verified: false`.
+Private manuscripts and neural checkpoints are not added to GitHub.
+
+Train the proposal model with `train-proposals --format grounded_supervised_v1`
+and the ranker with `train-neural-judge`. Measure generalization on untouched
+cases, particularly paired premise changes. Increasing sample count does not
+by itself establish the model learned the user's ontology.
+
+Run the same held-out manuscript evaluation used for earlier grounded Research
+trials, without giving the generator the expected sources or inference terms:
+
+```sh
+my-own-ai evaluate-neural-inference \
+  --checkpoint data/checkpoints/proposals.pt \
+  --judge data/checkpoints/judge.pt \
+  --index data/books.sqlite --cases private/held-out.json
+```
+
+The independent evaluation rubric remains outside the model's input.
+A full-pass requires retrieved and cited expected sources, substantive target
+terms and controller completion; the rubric is still not an entailment proof.
