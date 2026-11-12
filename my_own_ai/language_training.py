@@ -87,11 +87,22 @@ def _loss(model, batch):
 
 @torch.no_grad()
 def _validation(model, samples):
+    """Compute loss weighted by actual supervised tokens, not row count."""
     was_training = model.training
     model.eval()
-    values = [float(_loss(model, _batch(samples, [i]))) for i in range(len(samples))]
+    total_loss = 0.
+    total_tokens = 0
+    for index in range(len(samples)):
+        x, y = _batch(samples, [index])
+        logits, _ = model(x)
+        loss = F.cross_entropy(logits.reshape(-1, logits.shape[-1]), y.reshape(-1),
+                               ignore_index=-100, reduction="sum")
+        total_loss += float(loss)
+        total_tokens += int((y != -100).sum())
     model.train(was_training)
-    return sum(values) / len(values)
+    if total_tokens == 0:
+        raise ValueError("No supervised validation targets")
+    return total_loss / total_tokens
 
 
 def train_language(*, tokenizer_path, training, validation, output,
