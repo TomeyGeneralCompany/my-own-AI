@@ -96,7 +96,8 @@ def train(corpus_dir, output, cfg, steps=20, batch_size=4, learning_rate=0.001,
         _atomic_save({"format_version": 2, "model_config": asdict(cfg),
                       "state_dict": model.state_dict(), "optimizer": optimizer.state_dict(),
                       "sampler_rng": generator.get_state(), "steps": step, "split_seed": seed,
-                      "batch_size": batch_size, "learning_rate": learning_rate,\n                      "schedule_steps": schedule_steps, "warmup_steps": warmup_steps,
+                      "batch_size": batch_size, "learning_rate": learning_rate,
+                      "schedule_steps": schedule_steps, "warmup_steps": warmup_steps,
                       "corpus_fingerprint": fingerprint, "split_strategy": split_strategy,
                       "initial_loss": first_loss, "final_loss": loss,
                       "validation_loss": validation}, output)
@@ -104,7 +105,9 @@ def train(corpus_dir, output, cfg, steps=20, batch_size=4, learning_rate=0.001,
     validation = None
     for step in range(start_step + 1, steps + 1):
         x, y = _choose_batch(training_docs, cfg.context_size, batch_size, generator)
-        for group in optimizer.param_groups:\n            group["lr"] = scheduled_rate(step)\n        optimizer.zero_grad(set_to_none=True)
+        for group in optimizer.param_groups:
+            group["lr"] = scheduled_rate(step)
+        optimizer.zero_grad(set_to_none=True)
         _, loss = model(x, y)
         loss.backward()
         torch.nn.utils.clip_grad_norm_(model.parameters(), 1.)
@@ -117,7 +120,8 @@ def train(corpus_dir, output, cfg, steps=20, batch_size=4, learning_rate=0.001,
     if steps == start_step:
         validation = state.get("validation_loss")
     elapsed = time.perf_counter() - begin
-    return {"steps": steps, "steps_completed_this_run": steps - start_step,\n            "learning_rate": scheduled_rate(steps), "schedule_steps": schedule_steps,
+    return {"steps": steps, "steps_completed_this_run": steps - start_step,
+            "learning_rate": scheduled_rate(steps), "schedule_steps": schedule_steps,
             "initial_loss": first_loss, "final_loss": previous_loss,
             "validation_loss": validation,
             "validation_perplexity": math.exp(min(validation, 80)) if validation is not None else None,

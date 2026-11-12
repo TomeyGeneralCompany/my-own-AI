@@ -25,7 +25,9 @@ def main(argv=None):
     t.add_argument("--lr", type=float, default=.001)
     t.add_argument("--seed", type=int, default=42)
     t.add_argument("--checkpoint-every", type=int, default=10)
-    t.add_argument("--resume", action="store_true")\n    t.add_argument("--schedule-steps", type=int, default=1000)\n    t.add_argument("--warmup-steps", type=int, default=10)
+    t.add_argument("--resume", action="store_true")
+    t.add_argument("--schedule-steps", type=int, default=1000)
+    t.add_argument("--warmup-steps", type=int, default=10)
     b = sub.add_parser("benchmark")
     b.add_argument("--checkpoint", type=Path, required=True)
     b.add_argument("--iterations", type=int, default=10)
@@ -44,7 +46,8 @@ def main(argv=None):
     elif a.command == "train":
         cfg = ModelConfig(context_size=a.context, embed_dim=a.embed, heads=a.heads, layers=a.layers)
         print(json.dumps(train(a.corpus, a.output, cfg, a.steps, a.batch, a.lr, a.seed,
-                               a.resume, a.checkpoint_every, schedule_steps=a.schedule_steps,\n                               warmup_steps=a.warmup_steps), indent=2))
+                               a.resume, a.checkpoint_every, schedule_steps=a.schedule_steps,
+                               warmup_steps=a.warmup_steps), indent=2))
     elif a.command == "benchmark":
         print(json.dumps(benchmark(a.checkpoint, a.iterations, generation_tokens=a.tokens), indent=2))
     elif a.command == "generate":
