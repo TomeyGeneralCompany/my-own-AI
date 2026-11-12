@@ -44,7 +44,7 @@ def collect_documents(folder):
                      "title": path.stem, "format": path.suffix.lower(),
                      "characters": len(text), "text": text})
     if not docs:
-        raise ValueError("No nonempty supported corpus documents")
+        raise ValueError("Corpus has no .txt or other nonempty supported documents")
     return docs
 
 def corpus_fingerprint(documents):
