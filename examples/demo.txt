@@ -1,0 +1,3 @@
+This is synthetic demonstration text. The model is born with random weights.
+It learns byte patterns through repeated training on local text, not from downloaded neural weights.
+The eventual goal is an original local brain with interchangeable functional modules.
