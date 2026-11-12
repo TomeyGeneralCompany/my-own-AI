@@ -1,47 +1,113 @@
-"""English checkpoint regression gate with immutable previous release.
-
-A checkpoint is never promoted based on validation loss alone. Previously
-demonstrated exact successes must remain successes and independent human
-review must be recorded for all open-ended dimensions before promotion.
-"""
+"""English checkpoint promotion only after measured automatic and human gates."""
 from hashlib import sha256
 import json
 import os
 from pathlib import Path
-from tempfile import NamedTemporaryFile
 import shutil
-from .language_evaluation import load_gauntlet, evaluate_english
+from tempfile import NamedTemporaryFile
+
+from .language_evaluation import load_gauntlet, evaluate_english, MANUAL
+
+
+def _sha(path):
+    return sha256(Path(path).read_bytes()).hexdigest()
+
+
+def _human_review(path, *, prior_digest, candidate_digest, gauntlet_digest, cases):
+    if path is None:
+        return {"passed": False, "reason": "Independent reviewer assessment missing"}
+    review = json.loads(Path(path).read_text(encoding="utf-8"))
+    if not isinstance(review, dict) or set(review) != {
+        "reviewer_approved", "previous_sha256", "candidate_sha256",
+        "gauntlet_sha256", "previous", "candidate",
+    } or review["reviewer_approved"] is not True:
+        raise ValueError("Human review must contain explicit approval and complete scores")
+    if (review["previous_sha256"] != prior_digest or
+            review["candidate_sha256"] != candidate_digest or
+            review["gauntlet_sha256"] != gauntlet_digest):
+        raise ValueError("Human review binds a different model or evaluation set")
+    required = {row["id"]: row["category"] for row in cases
+                if row["category"] in MANUAL}
+    if (not isinstance(review["previous"], dict) or
+            not isinstance(review["candidate"], dict) or
+            set(review["previous"]) != set(required) or
+            set(review["candidate"]) != set(required)):
+        raise ValueError("All 70 open-response cases must have independent review scores")
+
+    def ratings(which):
+        values = {}
+        for identifier, grades in review[which].items():
+            if not isinstance(grades, dict) or set(grades) != {
+                "grammar", "coherence", "relevance",
+            } or any(type(score) is not int or not 1 <= score <= 5
+                     for score in grades.values()):
+                raise ValueError(f"Invalid human review grades for {identifier}")
+            values[identifier] = grades
+        return values
+
+    before, after = ratings("previous"), ratings("candidate")
+    lost = sorted(item for item in required if
+                  all(before[item][metric] >= 4 for metric in
+                      ("grammar", "coherence", "relevance"))
+                  and any(after[item][metric] < 4 for metric in
+                          ("grammar", "coherence", "relevance")))
+    metrics = {
+        metric: sum(grades[metric] for grades in after.values()) / len(after)
+        for metric in ("grammar", "coherence", "relevance")
+    }
+    category_rates = {}
+    for category in sorted(MANUAL):
+        items = [item for item in required if required[item] == category]
+        category_rates[category] = sum(all(after[item][metric] >= 4 for metric in metrics)
+                                       for item in items) / len(items)
+    passed = (not lost and all(average >= 4 for average in metrics.values())
+              and all(rate >= .70 for rate in category_rates.values()))
+    return {"passed": passed, "lost_prior_manual_cases": lost,
+            "averages": metrics, "category_success": category_rates,
+            "reviewed": len(after)}
 
 
 def compare_english(previous, candidate, tokenizer, gauntlet, *,
-                    old_report=None, review_path=None, tokens=80, threads=2):
+                    review_path=None, tokens=80, threads=2):
     if Path(previous).resolve() == Path(candidate).resolve():
         raise ValueError("Compare different immutable checkpoints")
     cases = load_gauntlet(gauntlet)
     baseline = evaluate_english(previous, tokenizer, cases, max_tokens=tokens, threads=threads)
     trial = evaluate_english(candidate, tokenizer, cases, max_tokens=tokens, threads=threads)
     old_by_id = {row["id"]: row for row in baseline["cases"]}
-    new_by_id = {row["id"]: row for row in trial["cases"]}
+    next_by_id = {row["id"]: row for row in trial["cases"]}
+    if old_by_id.keys() != next_by_id.keys():
+        raise ValueError("Baseline and candidate must be evaluated on identical cases")
     lost = sorted(case for case in old_by_id if old_by_id[case]["exact_match"] is True
-                  and new_by_id[case]["exact_match"] is not True)
-    growth = trial["exact_correct"] > baseline["exact_correct"]
-    review_passed = False
-    if review_path is not None:
-        review = json.loads(Path(review_path).read_text(encoding="utf-8"))
-        review_passed = (isinstance(review, dict) and review.get("reviewer_approved") is True
-                         and review.get("candidate_sha256") == sha256(Path(candidate).read_bytes()).hexdigest()
-                         and review.get("gauntlet_sha256") == sha256(Path(gauntlet).read_bytes()).hexdigest()
-                         and review.get("manual_cases_reviewed") == 70
-                         and review.get("grammar_average", 0) >= 4
-                         and review.get("coherence_average", 0) >= 4)
-    permitted = not lost and growth and review_passed
+                  and next_by_id[case]["exact_match"] is not True)
+    automatic_improvement = trial["exact_correct"] > baseline["exact_correct"]
+    auto_accuracy = (trial["exact_correct"] / trial["automatically_scored"]
+                     if trial["automatically_scored"] else 0)
+    category_rates = {
+        name: part["exact"] / part["auto_scored"]
+        for name, part in trial["categories"].items() if part["auto_scored"]
+    }
+    sufficient_auto = (
+        auto_accuracy >= .80 and all(rate >= .70 for rate in category_rates.values())
+        and trial["conditional_pairs_passed"] >= 7
+    )
+    human = _human_review(
+        review_path, prior_digest=_sha(previous), candidate_digest=_sha(candidate),
+        gauntlet_digest=_sha(gauntlet), cases=cases
+    )
+    accepted = not lost and automatic_improvement and sufficient_auto and human["passed"]
     return {
-        "promotable": permitted, "lost_previously_correct": lost,
-        "previous_exact": baseline["exact_correct"], "candidate_exact": trial["exact_correct"],
-        "automatic_improvement": growth, "manual_review_passed": review_passed,
-        "candidate_sha256": sha256(Path(candidate).read_bytes()).hexdigest(),
-        "previous_sha256": sha256(Path(previous).read_bytes()).hexdigest(),
-        "gauntlet_sha256": sha256(Path(gauntlet).read_bytes()).hexdigest(),
+        "promotable": accepted, "lost_previously_correct": lost,
+        "previous_exact": baseline["exact_correct"],
+        "candidate_exact": trial["exact_correct"],
+        "auto_accuracy": auto_accuracy,
+        "category_auto_accuracy": category_rates,
+        "automatic_improvement": automatic_improvement,
+        "automatic_threshold_passed": sufficient_auto,
+        "manual_review": human,
+        "candidate_sha256": _sha(candidate),
+        "previous_sha256": _sha(previous),
+        "gauntlet_sha256": _sha(gauntlet),
         "baseline": baseline, "candidate": trial,
     }
 
@@ -49,6 +115,8 @@ def compare_english(previous, candidate, tokenizer, gauntlet, *,
 def promote_english(previous, candidate, tokenizer, gauntlet, report_path, *,
                     destination=None, review_path=None, tokens=80, threads=2):
     paths = [Path(p).resolve() for p in (previous, candidate, tokenizer, gauntlet, report_path)]
+    if len(set(paths)) != len(paths):
+        raise ValueError("Review report cannot replace any input")
     if destination is not None and Path(destination).resolve() in paths:
         raise ValueError("Release destination must not overwrite source checkpoints")
     report = compare_english(previous, candidate, tokenizer, gauntlet,
@@ -61,7 +129,7 @@ def promote_english(previous, candidate, tokenizer, gauntlet, report_path, *,
             temporary = Path(stream.name)
         try:
             shutil.copyfile(candidate, temporary)
-            if sha256(temporary.read_bytes()).hexdigest() != report["candidate_sha256"]:
+            if _sha(temporary) != report["candidate_sha256"]:
                 raise ValueError("Candidate changed during release")
             os.replace(temporary, target)
         finally:
