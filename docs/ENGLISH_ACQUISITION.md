@@ -212,3 +212,29 @@ capacity benchmarks, and an independently reviewed gauntlet result.
 **Privacy:** GitHub Actions workflow inputs, summaries, logs and artifacts in
 a public repository may be publicly accessible. Do not enter private company
 information or unpublished manuscript text into the browser question field.
+
+
+## PR #23 — English drills without ideological replacement
+
+The `english_grounded` curriculum combines the owner's source-grounded lessons
+from all seven approved works with deterministic English grammar, syntax, reading
+and conversation exercises. It teaches the mechanics of English; it does not
+inject an external philosophical framework or teacher-generated theological
+claims. The owner's authored works remain the only source of philosophical
+reasoning supervision.
+
+At each neural instruction update, the persisted seeded sampler chooses either
+an English drill or an authored-source reasoning lesson with equal probability.
+The training and validation English prompts use disjoint lexical families;
+resume validates the training SHA and sampling policy to prevent changing the
+learning objective midway through the generation. The unchanged 200-question
+English gauntlet and cross-book tests remain independent evaluations.
+
+After merging PR #22 and then PR #23, run `ancestor-train.yml` with generation
+`g0002`, parent `g0001`, curriculum `english_grounded`, desired reading
+passes and a substantive instruction target (e.g. 6000), `auto_continue=true`.
+Each bounded Actions run packages its checkpoint and queues its successor.
+Never change the target steps or curriculum during a resumable generation.
+After completion, evaluate the immutable candidate and conduct human review
+before the owner elects activation. Low exact-match performance is a signal
+for further training and curriculum expansion, not proof of language mastery.
