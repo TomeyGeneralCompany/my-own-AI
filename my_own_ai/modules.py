@@ -190,6 +190,9 @@ class BasicModule:
     def procedure(self, operation, stage):
         return self.procedures[stage]
 
+    def render_grounded(self, proposal, context):
+        raise ValueError("This module does not accept evidence-span proposals")
+
     def evaluate(self, run, tools):
         raise NotImplementedError
 

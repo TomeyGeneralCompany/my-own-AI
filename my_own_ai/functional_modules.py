@@ -7,6 +7,7 @@ import re
 from .corpus import SUPPORTED, extract_text
 from .modules import BasicModule, Manifest, Tool
 from .reasoning import Evaluation, Stage
+from .grounding import evidence_terms
 from .retrieval import CorpusIndex, PASSAGE_LIMIT, digest
 
 
@@ -273,8 +274,26 @@ class Research(LocalFiles):
                     or hashlib.sha256(source["text"].encode("utf-8")).hexdigest() != source["sha256"]):
                 raise ValueError("Invalid acquired source in research checkpoint")
 
+    def render_grounded(self, proposal, context):
+        evidence = context.get("evidence", [])
+        index = proposal.passage
+        if not (1 <= index <= len(evidence) and len(proposal.quote) >= 8
+                and proposal.quote in evidence[index - 1]["text"]):
+            return "No verified evidence span was selected."
+        inference = proposal.inference.strip()
+        if (not proposal.finished or not inference.endswith((".", "?", "!"))
+                or "\n" in inference or any(not character.isprintable() for character in inference)):
+            return f"Unfinished inference: {inference}"
+        if not evidence_terms(inference) & evidence_terms(proposal.quote):
+            return f"Inference lacks a term from the selected evidence: {inference}"
+        return f"Premises:\n- [{index}] {proposal.quote}\nInference: {inference}"
+
     def evaluate(self, run, tools):
         if run["operation"] == "grounded_analysis":
+            if run["candidate"].startswith("Inference lacks a term from the selected evidence:"):
+                return Evaluation(False, "Relate the inference to a specific term in the selected evidence")
+            if run["candidate"].startswith("Unfinished inference:"):
+                return Evaluation(False, "Finish the inference with a complete sentence")
             verified, _, error = grounded_evidence(run["candidate"], run["context"]["evidence"])
             return Evaluation(not error, error or f"Verified {len(verified)} quoted premises and an inference section")
         sources = run["context"]["sources"]

@@ -13,6 +13,7 @@ from torch.nn import functional as F
 
 from .corpus_eval import load_cases
 from .functional_modules import Research, grounded_evidence
+from .grounding import SPAN_FORMAT, span_prompt
 from .module_memory import IDENTIFIER, encode_json
 from .modules import hardware_metrics
 from .reasoning import END_PROPOSAL, SUPERVISED_FORMAT, ProposalRequest, Stage, supervised_prefix
@@ -80,11 +81,13 @@ def verify_splits(train, validation, held_out):
         raise ValueError("Training, validation and held-out questions must be disjoint")
 
 
-def encode_example(row, capacity):
+def encode_example(row, capacity, format_name=SUPERVISED_FORMAT):
     stage = Stage(row["stage"])
     request = ProposalRequest("research", "grounded_analysis", stage, Research.grounded_procedures[stage],
                               row["question"], {"evidence": [{"text": text} for text in row["passages"]]},
                               row["plan"], row["candidate"], row["feedback"])
+    if format_name == SPAN_FORMAT:
+        return _encode_span(row, request, capacity)
     prefix = supervised_prefix(request, capacity)
     answer = list(row["answer"].encode("utf-8"))
     if len(prefix) + len(answer) > capacity:
@@ -102,6 +105,23 @@ def encode_example(row, capacity):
             if match is None or match[2].strip().encode() not in displayed.get(int(match[1]), b""):
                 raise ValueError(f"Example {row['id']} quotes evidence outside the model prompt")
     return torch.tensor(prefix + answer), torch.tensor([-100] * (len(prefix) - 1) + answer + [END_PROPOSAL])
+
+
+def _encode_span(row, request, capacity):
+    prefix, displayed = span_prompt(request, capacity)
+    answer = row["answer"]
+    if request.stage != Stage.FORMULATE:
+        numbers, inference, error = grounded_evidence(answer, request.context["evidence"])
+        if error or len(numbers) != 1 or not inference.endswith((".", "?", "!")) or "\n" in inference:
+            raise ValueError(f"Example {row['id']} requires one verified premise and a complete inference")
+        number, = numbers
+        if number not in displayed:
+            raise ValueError(f"Example {row['id']} selects a passage outside the model prompt")
+        answer = f"{number} {inference}"
+    tokens = list(answer.encode("utf-8"))
+    if len(prefix) + len(tokens) > capacity:
+        raise ValueError(f"Example {row['id']} exceeds checkpoint context; shorten its target")
+    return torch.tensor(prefix + tokens), torch.tensor([-100] * (len(prefix) - 1) + tokens + [END_PROPOSAL])
 
 
 def _batch(samples):
@@ -124,10 +144,12 @@ def _measure(model, rows):
 
 
 def train_proposals(checkpoint, examples, validation, output, *, held_out=None, steps=200,
-                    batch_size=4, learning_rate=.001, seed=42, threads=4):
+                    batch_size=4, learning_rate=.001, seed=42, threads=4, format_name=SUPERVISED_FORMAT):
     sources = [checkpoint, examples, validation] + ([held_out] if held_out else [])
     if Path(output).resolve() in {Path(source).resolve() for source in sources}:
         raise ValueError("Proposal training requires a separate output checkpoint")
+    if format_name not in (SUPERVISED_FORMAT, SPAN_FORMAT):
+        raise ValueError("Unsupported proposal format")
     if min(steps, batch_size, threads) < 1 or not math.isfinite(learning_rate) or learning_rate <= 0:
         raise ValueError("Invalid proposal training settings")
     train_rows, validation_rows = load_examples(examples), load_examples(validation)
@@ -135,10 +157,11 @@ def train_proposals(checkpoint, examples, validation, output, *, held_out=None, 
     torch.set_num_threads(min(threads, hardware_metrics()["available_cpus"]))
     torch.manual_seed(seed)
     model = load_model(checkpoint)
-    if model.config.context_size < 256:
-        raise ValueError("Proposal training requires a model context of at least 256 bytes")
-    train = [encode_example(row, model.config.context_size) for row in train_rows]
-    valid = [encode_example(row, model.config.context_size) for row in validation_rows]
+    minimum_context = 512 if format_name == SPAN_FORMAT else 256
+    if model.config.context_size < minimum_context:
+        raise ValueError(f"Proposal training requires a model context of at least {minimum_context} bytes")
+    train = [encode_example(row, model.config.context_size, format_name) for row in train_rows]
+    valid = [encode_example(row, model.config.context_size, format_name) for row in validation_rows]
     sampler = torch.Generator().manual_seed(seed)
     optimizer = torch.optim.AdamW(model.parameters(), lr=learning_rate)
     started = perf_counter()
@@ -158,7 +181,7 @@ def train_proposals(checkpoint, examples, validation, output, *, held_out=None, 
               "initial_validation_loss": initial, "validation_loss": final,
               "seconds": perf_counter() - started, "hardware": hardware_metrics()}
     _atomic_save({"format_version": 1, "model_config": asdict(model.config), "state_dict": model.state_dict(),
-                  "proposal_format": SUPERVISED_FORMAT,
+                  "proposal_format": format_name,
                   "examples_sha256": hashlib.sha256(encode_json(train_rows)).hexdigest(),
                   "training_report": report}, output)
     return report

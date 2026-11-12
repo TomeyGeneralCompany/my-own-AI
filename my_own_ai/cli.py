@@ -11,6 +11,8 @@ from .session import configure_session, demo, load_proposer, session
 from .corpus_eval import evaluate_cases, load_cases
 from .retrieval import CorpusIndex, build_index
 from .proposal_training import train_proposals
+from .grounding import SPAN_FORMAT
+from .reasoning import SUPERVISED_FORMAT
 
 def main(argv=None):
     parser = argparse.ArgumentParser(prog="my-own-ai")
@@ -61,6 +63,8 @@ def main(argv=None):
     evaluate.add_argument("--tokens", type=int, default=256)
     evaluate.add_argument("--limit", type=int, default=5)
     evaluate.add_argument("--max-corrections", type=int, default=2)
+    evaluate.add_argument("--include-answers", action="store_true",
+                          help="Include private answer text and source locators for review")
     proposals = sub.add_parser("train-proposals", help="Train on worked reasoning proposals")
     proposals.add_argument("--checkpoint", type=Path, required=True)
     proposals.add_argument("--examples", type=Path, required=True)
@@ -72,6 +76,7 @@ def main(argv=None):
     proposals.add_argument("--lr", type=float, default=.001)
     proposals.add_argument("--seed", type=int, default=42)
     proposals.add_argument("--threads", type=int, default=4)
+    proposals.add_argument("--format", choices=(SUPERVISED_FORMAT, SPAN_FORMAT), default=SUPERVISED_FORMAT)
     a = parser.parse_args(argv)
     if a.command == "ingest":
         m = build_manifest(a.corpus, a.manifest)
@@ -97,12 +102,13 @@ def main(argv=None):
     elif a.command == "train-proposals":
         report = train_proposals(a.checkpoint, a.examples, a.validation, a.output, held_out=a.held_out,
                                  steps=a.steps, batch_size=a.batch, learning_rate=a.lr, seed=a.seed,
-                                 threads=a.threads)
+                                 threads=a.threads, format_name=a.format)
         print(json.dumps(report, indent=2))
     elif a.command == "evaluate-corpus":
         cases = load_cases(a.cases)
         engine = load_proposer(a.checkpoint, a.threads, a.tokens)
-        report = evaluate_cases(a.index, cases, engine, limit=a.limit, max_corrections=a.max_corrections)
+        report = evaluate_cases(a.index, cases, engine, limit=a.limit,
+                                max_corrections=a.max_corrections, include_answers=a.include_answers)
         print(json.dumps(report, indent=2))
         return int(report["passed"] != report["total"])
     else:
