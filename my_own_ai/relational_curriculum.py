@@ -23,7 +23,7 @@ MAX_CASES = 2000
 
 
 def _normalized(value):
-    return " ".join(re.findall(r"[^\\W_]+", unicodedata.normalize("NFKC", value).casefold()))
+    return " ".join(re.findall(r"[^\W_]+", unicodedata.normalize("NFKC", value).casefold()))
 
 
 def load_relational_cases(path):
@@ -45,15 +45,15 @@ def load_relational_cases(path):
             raise ValueError("Invalid relational question")
         if (not isinstance(row["evidence"], list) or not 1 <= len(row["evidence"]) <= 6
                 or any(not isinstance(value, str) or not 8 <= len(value.strip()) <= 1400
-                       or "\\0" in value for value in row["evidence"])):
+                       or "\0" in value for value in row["evidence"])):
             raise ValueError("Invalid relational evidence")
         if (not isinstance(row["analysis"], dict) or set(row["analysis"]) != set(FACETS)
                 or any(not isinstance(row["analysis"][facet], str)
                        or not 8 <= len(row["analysis"][facet].strip()) <= 700
-                       or "\\0" in row["analysis"][facet] for facet in FACETS)):
+                       or "\0" in row["analysis"][facet] for facet in FACETS)):
             raise ValueError("Every relational operation requires a worked analysis")
         if (not isinstance(row["conclusion"], str) or not 16 <= len(row["conclusion"].strip()) <= 650
-                or "\\0" in row["conclusion"]):
+                or "\0" in row["conclusion"]):
             raise ValueError("Invalid derived consequence")
         cases.append(row)
     return cases
@@ -94,9 +94,9 @@ def _training_rows(cases):
     for row in cases:
         # The inputs to both model stages contain the question and evidence ONLY.
         # Facet-specific worked analysis and conclusion live in target tokens.
-        plan = "\\n".join(f"{facet}: {row['analysis'][facet]}" for facet in FACETS)
+        plan = "\n".join(f"{facet}: {row['analysis'][facet]}" for facet in FACETS)
         quote = row["evidence"][0].strip()
-        answer = f"Premises:\\n- [1] {quote}\\nInference: {row['conclusion'].strip()}"
+        answer = f"Premises:\n- [1] {quote}\nInference: {row['conclusion'].strip()}"
         common = {"group": row["group"], "question": row["question"],
                   "passages": row["evidence"], "candidate": "", "feedback": ""}
         rows.append({**common, "id": row["id"] + "_formulate", "stage": "formulate",
