@@ -7,7 +7,9 @@ from .model import ModelConfig
 from .train import train, load_model, benchmark
 from .corpus import build_manifest
 from .modules import CheckpointStore, ModuleController, default_modules
-from .session import configure_session, demo, session
+from .session import configure_session, demo, load_proposer, session
+from .corpus_eval import evaluate_cases, load_cases
+from .retrieval import CorpusIndex, build_index
 
 def main(argv=None):
     parser = argparse.ArgumentParser(prog="my-own-ai")
@@ -43,6 +45,21 @@ def main(argv=None):
     s.add_argument("--memory", type=Path, default=Path("data/module-memory"))
     configure_session(sub.add_parser("session", help="Run a local JSON-lines controller session"))
     sub.add_parser("demo", help="Demonstrate local reasoning, switching and checkpoint restoration")
+    index = sub.add_parser("index-corpus", help="Build an offline passage index")
+    index.add_argument("--corpus", type=Path, required=True)
+    index.add_argument("--index", type=Path, required=True)
+    search = sub.add_parser("search-corpus", help="Search the local passage index")
+    search.add_argument("--index", type=Path, required=True)
+    search.add_argument("--query", required=True)
+    search.add_argument("--limit", type=int, default=5)
+    evaluate = sub.add_parser("evaluate-corpus", help="Measure grounded reasoning on held-out cases")
+    evaluate.add_argument("--index", type=Path, required=True)
+    evaluate.add_argument("--cases", type=Path, required=True)
+    evaluate.add_argument("--checkpoint", type=Path, required=True)
+    evaluate.add_argument("--threads", type=int, default=4)
+    evaluate.add_argument("--tokens", type=int, default=256)
+    evaluate.add_argument("--limit", type=int, default=5)
+    evaluate.add_argument("--max-corrections", type=int, default=2)
     a = parser.parse_args(argv)
     if a.command == "ingest":
         m = build_manifest(a.corpus, a.manifest)
@@ -60,10 +77,21 @@ def main(argv=None):
         session(a, sys.stdin, sys.stdout)
     elif a.command == "demo":
         print(json.dumps(demo(), indent=2))
+    elif a.command == "index-corpus":
+        print(json.dumps(build_index(a.corpus, a.index), indent=2))
+    elif a.command == "search-corpus":
+        with CorpusIndex(a.index) as corpus:
+            print(json.dumps(corpus.search(a.query, a.limit), indent=2))
+    elif a.command == "evaluate-corpus":
+        cases = load_cases(a.cases)
+        engine = load_proposer(a.checkpoint, a.threads, a.tokens)
+        report = evaluate_cases(a.index, cases, engine, limit=a.limit, max_corrections=a.max_corrections)
+        print(json.dumps(report, indent=2))
+        return int(report["passed"] != report["total"])
     else:
         with ModuleController(CheckpointStore(a.memory), default_modules()) as controller:
             controller.switch(a.mode)
             print("Active module:", controller.active.name)
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())

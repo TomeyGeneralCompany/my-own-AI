@@ -187,6 +187,9 @@ class BasicModule:
     def prepare(self, run, tools, prior):
         return {"shared": tools.shared(), "prior": prior}
 
+    def procedure(self, operation, stage):
+        return self.procedures[stage]
+
     def evaluate(self, run, tools):
         raise NotImplementedError
 
@@ -541,8 +544,8 @@ class ModuleController:
             handle.write(run["candidate"])
 
 
-def default_modules(workspace=None):
+def default_modules(workspace=None, *, corpus_index=None):
     from .functional_modules import Coding, Conversation, Research, Writing
 
     workspace = Path(workspace or Path.cwd()).resolve()
-    return [Conversation(), Writing(workspace), Coding(workspace), Research(workspace)]
+    return [Conversation(), Writing(workspace), Coding(workspace), Research(workspace, corpus_index)]

@@ -7,6 +7,7 @@ import re
 from .corpus import SUPPORTED, extract_text
 from .modules import BasicModule, Manifest, Tool
 from .reasoning import Evaluation, Stage
+from .retrieval import CorpusIndex, PASSAGE_LIMIT, digest
 
 
 def _procedures(formulate, construct, evaluate, correct):
@@ -190,20 +191,53 @@ class Coding(LocalFiles):
 
 
 class Research(LocalFiles):
-    manifest = Manifest("research", memory_mib=16, tools=(Tool("acquire_source", (Stage.FORMULATE,)),),
-                        operations=("evidence_notes",))
+    manifest = Manifest("research", memory_mib=16,
+                        tools=(Tool("acquire_source", (Stage.FORMULATE,)),
+                               Tool("search_corpus", (Stage.FORMULATE,))),
+                        operations=("evidence_notes", "grounded_analysis"))
     procedures = _procedures("Plan a source analysis using the acquired document excerpts",
                              "Write evidence notes including an exact quote on a line '- [n] quote' for each source",
                              "Verify each evidence quote against the acquired source text",
                              "Correct missing or inaccurate quotes using the evaluation feedback")
 
-    def __init__(self, workspace):
+    grounded_procedures = _procedures("Plan an inference using the numbered passages",
+                                     "Use Premises: then - [n] exact quote, then Inference: and your reasoning",
+                                     "Verify quoted premises and check inference structure",
+                                     "Fix citation or inference defects. Use Premises: and Inference:")
+
+    def __init__(self, workspace, corpus_index=None):
         super().__init__("research", workspace)
+        self.index_path = corpus_index
+        self.index = None
+
+    def procedure(self, operation, stage):
+        if operation == "grounded_analysis":
+            return self.grounded_procedures[stage]
+        return super().procedure(operation, stage)
+
+    def load(self, resources):
+        if self.index_path is not None:
+            self.index = resources.enter(CorpusIndex(self.index_path))
+
+    def deactivate(self):
+        self.index = None
+        super().deactivate()
+
+    def search(self, query, limit):
+        if self.index is None:
+            raise ValueError("Configure a local corpus index with --corpus-index")
+        return self.index.search(query, limit)
 
     def tool_handlers(self):
-        return {"acquire_source": self.read_document}
+        return {"acquire_source": self.read_document, "search_corpus": self.search}
 
     def validate_inputs(self, operation, inputs):
+        if operation == "grounded_analysis":
+            _options(inputs, {"limit"})
+            limit = inputs.get("limit", 5)
+            if type(limit) is not int or not 1 <= limit <= 12:
+                raise ValueError("Search limit must be between 1 and 12")
+            return
         _options(inputs, {"sources"})
         _text_options(inputs, lists=("sources",))
         if not inputs.get("sources"):
@@ -211,10 +245,24 @@ class Research(LocalFiles):
 
     def prepare(self, run, tools, prior):
         context = super().prepare(run, tools, prior)
-        context["sources"] = [tools.call("acquire_source", name=name) for name in run["inputs"]["sources"]]
+        if run["operation"] == "grounded_analysis":
+            context["evidence"] = tools.call("search_corpus", query=run["objective"],
+                                             limit=run["inputs"].get("limit", 5))
+        else:
+            context["sources"] = [tools.call("acquire_source", name=name) for name in run["inputs"]["sources"]]
         return context
 
     def validate_context(self, operation, inputs, context):
+        if operation == "grounded_analysis":
+            evidence = context.get("evidence")
+            if not isinstance(evidence, list) or len(evidence) > inputs.get("limit", 5):
+                raise ValueError("Invalid retrieved evidence")
+            for source in evidence:
+                if (not isinstance(source, dict) or set(source) != {"source", "locator", "text", "sha256"}
+                        or not all(isinstance(value, str) and value for value in source.values())
+                        or len(source["text"]) > PASSAGE_LIMIT or digest(source["text"]) != source["sha256"]):
+                    raise ValueError("Invalid corpus passage checkpoint")
+            return
         sources = context.get("sources")
         if not isinstance(sources, list) or len(sources) != len(inputs["sources"]):
             raise ValueError("Research checkpoint is missing acquired sources")
@@ -226,6 +274,9 @@ class Research(LocalFiles):
                 raise ValueError("Invalid acquired source in research checkpoint")
 
     def evaluate(self, run, tools):
+        if run["operation"] == "grounded_analysis":
+            verified, _, error = grounded_evidence(run["candidate"], run["context"]["evidence"])
+            return Evaluation(not error, error or f"Verified {len(verified)} quoted premises and an inference section")
         sources = run["context"]["sources"]
         verified = set()
         for line in run["candidate"].splitlines():
@@ -241,3 +292,30 @@ class Research(LocalFiles):
         if missing:
             return Evaluation(False, f"Missing exact quotes for sources {missing}")
         return Evaluation(True, f"Verified exact evidence quotes for {len(verified)} local sources")
+
+
+def grounded_evidence(candidate, sources):
+    """Return verified citation numbers, inference text and a deterministic format error."""
+    if not sources:
+        return set(), "", "No matching passages in the local corpus"
+    heading = re.fullmatch(r"\s*Premises:[ \t]*\n(.+?)\nInference:[ \t]*(.+)\s*", candidate, re.DOTALL)
+    if not heading or len(heading[2].strip()) < 16:
+        return set(), "", "Use Premises: with exact quote bullets followed by a substantive Inference: section"
+    verified = set()
+    for line in heading[1].splitlines():
+        if not line.strip():
+            continue
+        match = re.fullmatch(r"- \[([1-9][0-9]?)\] (.+)", line)
+        if not match:
+            return set(), "", "Premise bullets must use '- [n] exact quote'"
+        number, quote = int(match[1]), match[2].strip()
+        if number > len(sources) or len(quote) < 8 or quote not in sources[number - 1]["text"]:
+            return set(), "", f"Unverified premise quote for passage {number}"
+        verified.add(number)
+    if not verified:
+        return set(), "", "Include at least one verified premise"
+    inference = heading[2].strip()
+    references = set(re.findall(r"\[([0-9]+)\]", inference))
+    if references - {str(number) for number in verified}:
+        return set(), "", "Inference refers to a passage without a verified premise quote"
+    return verified, inference, ""

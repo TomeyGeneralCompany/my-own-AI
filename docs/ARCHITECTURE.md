@@ -76,3 +76,25 @@ Extensions run as trusted code in the owner process. The capability boundary iso
 `metrics` reports CPU affinity, Linux available RAM, resident and peak RSS, and accumulated process CPU time. `switch` reports wall time, process CPU time and resident memory before unload, after unload and after the replacement loads. `--memory-budget-mib` can cap manifest admission below the reported host RAM. Admission uses declared estimates. Resource cleanup frees ownership and closes handles, while Python and PyTorch allocators may retain process RSS. The demo also reports measured formulation time and supplies a repeatable starting point for measuring the Latitude.
 
 The byte-level model still needs training for useful proposals. Small context windows sharply limit how much project context the proposer can use. The checks verify the stated local criteria. They do not assess writing quality, execute generated code or establish the truth of research claims beyond matching the quoted text. The runtime has no web acquisition, OCR, semantic retrieval, manuscript layout engine or generated-code execution. Bundled modules use the shared model directly. Optional neural adapters are resources extensions can manage, and the repository ships no adapters.
+
+## Search and evaluate a local corpus
+
+The Research module can use an optional SQLite FTS5 passage index. Install the existing book parsers with `python -m pip install -e '.[books]'`. Linux's Python build needs SQLite with FTS5. The index stores extracted text and belongs alongside the private books. Keep indexes, checkpoints, personal evaluation files, and session memory under ignored `data/` or outside the checkout.
+
+```sh
+my-own-ai index-corpus --corpus corpus/private --index data/corpus.sqlite
+my-own-ai search-corpus --index data/corpus.sqlite --query 'your search terms'
+my-own-ai session --checkpoint data/checkpoints/brain.pt --corpus-index data/corpus.sqlite --tokens 256
+```
+
+In the session, switch to Research and start `grounded_analysis` with an objective that states the question. The optional input `limit` selects up to 12 passages. Formulate searches the index and checkpoints the ranked passages with relative filenames, locators, and text digests. The controller closes the index on unload. After formulation the operation can resume from the checkpointed passages, including in a session without the index configured. Construct and Correct receive numbered excerpts within the model's context budget. Evaluate verifies exact quotes in a `Premises:` section and checks that references in `Inference:` point to verified premises. Quotes use normalized extracted text. PDF locators are one-based file pages, and DOCX locators are one-based body paragraphs.
+
+For a reproducible evaluation with the public sample cases:
+
+```sh
+my-own-ai index-corpus --corpus examples/grounded_corpus --index data/demo-corpus.sqlite
+my-own-ai evaluate-corpus --index data/demo-corpus.sqlite \
+  --cases examples/grounded_cases.json --checkpoint data/checkpoints/brain.pt
+```
+
+Each held-out case has an ID, a question, expected source paths relative to the indexed corpus, and required inference terms. The CLI uses the real local checkpoint for proposals and exits with status 1 when any case misses its rubric. The report distinguishes expected-source retrieval, verified citation coverage, inference term coverage, and operation outcome. The expected sources and terms stay outside the model prompt. Keep case files outside the training corpus. Assess substantive reasoning separately because exact quotes and required terms can be verified mechanically, while the soundness of an inference requires reviewing the argument. A tiny continuation-trained checkpoint may retrieve the right passages through the index while still producing unusable proposals.

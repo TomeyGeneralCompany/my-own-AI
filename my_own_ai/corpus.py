@@ -5,34 +5,48 @@ from pathlib import Path
 
 SUPPORTED = {".txt", ".md", ".pdf", ".docx"}
 
-def extract_text(path):
+def source_sections(path):
+    """Yield stable document locators and extracted text in source order."""
     suffix = path.suffix.lower()
     if suffix in (".txt", ".md"):
-        return path.read_text(encoding="utf-8-sig")
-    if suffix == ".pdf":
+        for number, line in enumerate(path.read_text(encoding="utf-8-sig").splitlines(), 1):
+            yield f"line {number}", line
+    elif suffix == ".pdf":
         try:
             from pypdf import PdfReader
         except ImportError as exc:
             raise RuntimeError("PDF ingestion requires pip install -e '.[books]'") from exc
-        return "\n".join((page.extract_text() or "") for page in PdfReader(str(path)).pages)
-    if suffix == ".docx":
+        for number, page in enumerate(PdfReader(str(path)).pages, 1):
+            yield f"PDF page {number}", page.extract_text() or ""
+    elif suffix == ".docx":
         try:
             from docx import Document
         except ImportError as exc:
             raise RuntimeError("DOCX ingestion requires pip install -e '.[books]'") from exc
-        return "\n".join(p.text for p in Document(str(path)).paragraphs)
-    raise ValueError(f"Unsupported format: {suffix}")
+        for number, paragraph in enumerate(Document(str(path)).paragraphs, 1):
+            yield f"paragraph {number}", paragraph.text
+    else:
+        raise ValueError(f"Unsupported format: {suffix}")
 
-def collect_documents(folder):
+
+def extract_text(path):
+    if path.suffix.lower() in (".txt", ".md"):
+        return path.read_text(encoding="utf-8-sig")
+    return "\n".join(text for _, text in source_sections(path))
+
+
+def corpus_files(folder):
     folder = Path(folder)
     if not folder.is_dir():
         raise ValueError("Missing corpus directory")
+    return [path for path in sorted(folder.rglob("*"))
+            if not path.is_symlink() and path.is_file() and path.suffix.lower() in SUPPORTED]
+
+
+def collect_documents(folder):
+    folder = Path(folder)
     docs, hashes = [], set()
-    for path in sorted(folder.rglob("*")):
-        if not path.is_file() or path.suffix.lower() not in SUPPORTED:
-            continue
-        if path.is_symlink():
-            continue
+    for path in corpus_files(folder):
         text = extract_text(path).replace("\r\n", "\n").replace("\r", "\n").strip()
         if not text:
             continue

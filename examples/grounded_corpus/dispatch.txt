@@ -1,0 +1,2 @@
+A local dispatcher can reroute a ferry while the central harbor office is closed.
+The dispatcher must record the reason before the next shift begins.
