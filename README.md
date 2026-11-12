@@ -36,3 +36,7 @@ my-own-ai demo
 TXT, Markdown, DOCX and text-based PDF are accepted for corpus ingestion. A few iterations on sample text produce meaningless output: the current neural network is a mathematical research foundation, not a useful assistant. Book data should remain in ignored `corpus/private/`, **never committed to this public repo**.
 
 See the [training guide](docs/TRAINING.md) and the [Linux session and module extension guide](docs/ARCHITECTURE.md). A session keeps one CPU model loaded and switches between Conversation, Writing, Coding and Research. The controller saves project progress, restricts tools to the active module and checks proposals against module-specific criteria. Only the user merges pull requests.
+
+## Train on approved private books
+
+For local original-weight English learning from your approved DOCX, PDF, TXT or Markdown manuscripts, see [Private book training](docs/BOOK_LANGUAGE_TRAINING.md). The book preparation splits source material into held-out passages, trains the tokenizer only on training text, then supports English prose pretraining followed by source-faithful continuation and optional owner-reviewed Q&A supervision. Private manuscripts are **not** committed to GitHub or shipped in public Actions artifacts; public CI uses synthetic books only. Book-based training is a learning experiment, not yet a demonstrated solution to unseen-question generalization.
