@@ -1,0 +1,36 @@
+name: Automatically train the author's original neural Core
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'published_books/**'
+      - 'my_own_ai/english_drills.py'
+      - 'my_own_ai/reasoning_curriculum.py'
+      - 'scripts/ancestor_auto_acquire.py'
+      - '.github/workflows/ancestor-auto-acquire.yml'
+  schedule:
+    - cron: '17 8 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: write
+
+concurrency:
+  group: automatic-ancestor-acquisition
+  cancel-in-progress: false
+
+jobs:
+  schedule-training:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Select latest inherited model and automatically continue training
+        run: python scripts/ancestor_auto_acquire.py
