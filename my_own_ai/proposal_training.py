@@ -143,8 +143,29 @@ def _measure(model, rows):
     return sum(losses) / len(losses)
 
 
+def counterfactual_batches(rows):
+    """Return complete evidence-switch families for supervised paired sampling."""
+    groups = {}
+    for index, row in enumerate(rows):
+        groups.setdefault(row["group"], []).append((index, row))
+    batches = []
+    for group, members in groups.items():
+        distinct = {tuple(row["passages"]) for _, row in members}
+        if len(distinct) < 2:
+            raise ValueError(f"Counterfactual group {group} needs two distinct evidence states")
+        stages = {}
+        for _, row in members:
+            stages.setdefault(tuple(row["passages"]), set()).add(row["stage"])
+        if any(types != {Stage.FORMULATE, Stage.CONSTRUCT} for types in stages.values()):
+            raise ValueError(f"Counterfactual group {group} needs Formulate and Construct for every premise state")
+        if len({row["answer"] for _, row in members if row["stage"] == Stage.CONSTRUCT}) < 2:
+            raise ValueError(f"Counterfactual group {group} needs distinct consequences")
+        batches.append(tuple(index for index, _ in members))
+    return batches
+
+
 def train_proposals(checkpoint, examples, validation, output, *, held_out=None, steps=200,
-                    batch_size=4, learning_rate=.001, seed=42, threads=4, format_name=SUPERVISED_FORMAT):
+                    batch_size=4, learning_rate=.001, seed=42, threads=4, format_name=SUPERVISED_FORMAT, pair_batches=False):
     sources = [checkpoint, examples, validation] + ([held_out] if held_out else [])
     if Path(output).resolve() in {Path(source).resolve() for source in sources}:
         raise ValueError("Proposal training requires a separate output checkpoint")
@@ -163,12 +184,21 @@ def train_proposals(checkpoint, examples, validation, output, *, held_out=None, 
     train = [encode_example(row, model.config.context_size, format_name) for row in train_rows]
     valid = [encode_example(row, model.config.context_size, format_name) for row in validation_rows]
     sampler = torch.Generator().manual_seed(seed)
+    families = counterfactual_batches(train_rows) if pair_batches else None
     optimizer = torch.optim.AdamW(model.parameters(), lr=learning_rate)
     started = perf_counter()
     initial = _measure(model, valid)
     model.train()
     for _ in range(steps):
-        indices = torch.randint(len(train), (batch_size,), generator=sampler)
+        if families is None:
+            indices = torch.randint(len(train), (batch_size,), generator=sampler).tolist()
+        else:
+            # Keep both sides and stages of each evidence switch in the same update.
+            # The requested batch size is a soft target; a whole family is never split.
+            indices = []
+            while len(indices) < batch_size:
+                family = int(torch.randint(len(families), (1,), generator=sampler))
+                indices.extend(families[family])
         loss = _loss(model, _batch([train[i] for i in indices]))
         optimizer.zero_grad(set_to_none=True)
         loss.backward()
@@ -178,6 +208,7 @@ def train_proposals(checkpoint, examples, validation, output, *, held_out=None, 
     if not math.isfinite(final):
         raise ValueError("Proposal training produced non-finite validation loss")
     report = {"train_examples": len(train), "validation_examples": len(valid), "steps": steps,
+              "counterfactual_paired_batches": bool(pair_batches),
               "initial_validation_loss": initial, "validation_loss": final,
               "seconds": perf_counter() - started, "hardware": hardware_metrics()}
     _atomic_save({"format_version": 1, "model_config": asdict(model.config), "state_dict": model.state_dict(),
