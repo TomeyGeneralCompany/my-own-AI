@@ -13,7 +13,7 @@ import re
 from .corpus import collect_documents
 
 NUMBERED = re.compile(r"^\s*\[(\d+)\]\s+", re.S)
-DEFINITION = re.compile(r"\b(?:means|is defined as|is therefore|is consequently|names|denotes|refers to)\b", re.I)
+DEFINITION = re.compile(r"\b(?:means|is defined as|is therefore|is consequently|is a|is an|is the|names|denotes|refers to)\b", re.I)
 CONSEQUENCE = re.compile(r"\b(?:therefore|consequently|hence|thus|it follows|means that)\b", re.I)
 MATH = re.compile(r"[∂∑∈≠≤≥=Φτ]|(?<![A-Za-z])(?:Xi,t|X\(i,t\))")
 WORDS = re.compile(r"\S+")
@@ -37,7 +37,8 @@ def extract_lessons(text, *, source_id, max_answer_chars=190):
     result = []
     def add(kind, prompt, answer):
         answer = answer.strip()
-        if not 15 <= len(answer) <= max_answer_chars:
+        minimum = 5 if kind == "mathematical" else 15
+        if not minimum <= len(answer) <= max_answer_chars:
             return
         # Every target must be an exact extract from the actual source text,
         # modulo PDF wrap whitespace. No invented logical consequences.
@@ -63,7 +64,7 @@ def extract_lessons(text, *, source_id, max_answer_chars=190):
             break
     for line in text.splitlines():
         piece = line.strip()
-        if 12 <= len(piece) <= max_answer_chars and MATH.search(piece):
+        if 5 <= len(piece) <= max_answer_chars and MATH.search(piece):
             add("mathematical", f"Reproduce one mathematical expression from paragraph [{number}].",piece)
             break
     # Explicit reading/comprehension instruction, not an unsupported semantic
