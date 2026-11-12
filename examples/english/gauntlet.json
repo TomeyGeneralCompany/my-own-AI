@@ -1,0 +1,1402 @@
+[
+  {
+    "id": "english_syntax_01",
+    "category": "syntax",
+    "question": "Complete the English sentence with a grammatical ending: The mechanic carried the report into the workshop because",
+    "expected_answer": "the report was needed there.",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_syntax_02",
+    "category": "syntax",
+    "question": "Complete the English sentence with a grammatical ending: The supervisor carried the schedule into the garden because",
+    "expected_answer": "the schedule was needed there.",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_syntax_03",
+    "category": "syntax",
+    "question": "Complete the English sentence with a grammatical ending: The researcher carried the sample into the station because",
+    "expected_answer": "the sample was needed there.",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_syntax_04",
+    "category": "syntax",
+    "question": "Complete the English sentence with a grammatical ending: The gardener carried the valve into the school because",
+    "expected_answer": "the valve was needed there.",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_syntax_05",
+    "category": "syntax",
+    "question": "Complete the English sentence with a grammatical ending: The librarian carried the manual into the laboratory because",
+    "expected_answer": "the manual was needed there.",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_syntax_06",
+    "category": "syntax",
+    "question": "Complete the English sentence with a grammatical ending: The inspector carried the drawing into the factory because",
+    "expected_answer": "the drawing was needed there.",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_syntax_07",
+    "category": "syntax",
+    "question": "Complete the English sentence with a grammatical ending: The clerk carried the record into the market because",
+    "expected_answer": "the record was needed there.",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_syntax_08",
+    "category": "syntax",
+    "question": "Complete the English sentence with a grammatical ending: The teacher carried the signal into the warehouse because",
+    "expected_answer": "the signal was needed there.",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_syntax_09",
+    "category": "syntax",
+    "question": "Complete the English sentence with a grammatical ending: The operator carried the letter into the library because",
+    "expected_answer": "the letter was needed there.",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_syntax_10",
+    "category": "syntax",
+    "question": "Complete the English sentence with a grammatical ending: The courier carried the package into the museum because",
+    "expected_answer": "the package was needed there.",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_syntax_11",
+    "category": "syntax",
+    "question": "Complete the English sentence with a grammatical ending: The mechanic carried the report into the workshop because",
+    "expected_answer": "the report was needed there.",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_syntax_12",
+    "category": "syntax",
+    "question": "Complete the English sentence with a grammatical ending: The supervisor carried the schedule into the garden because",
+    "expected_answer": "the schedule was needed there.",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_syntax_13",
+    "category": "syntax",
+    "question": "Complete the English sentence with a grammatical ending: The researcher carried the sample into the station because",
+    "expected_answer": "the sample was needed there.",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_syntax_14",
+    "category": "syntax",
+    "question": "Complete the English sentence with a grammatical ending: The gardener carried the valve into the school because",
+    "expected_answer": "the valve was needed there.",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_syntax_15",
+    "category": "syntax",
+    "question": "Complete the English sentence with a grammatical ending: The librarian carried the manual into the laboratory because",
+    "expected_answer": "the manual was needed there.",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_syntax_16",
+    "category": "syntax",
+    "question": "Complete the English sentence with a grammatical ending: The inspector carried the drawing into the factory because",
+    "expected_answer": "the drawing was needed there.",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_syntax_17",
+    "category": "syntax",
+    "question": "Complete the English sentence with a grammatical ending: The clerk carried the record into the market because",
+    "expected_answer": "the record was needed there.",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_syntax_18",
+    "category": "syntax",
+    "question": "Complete the English sentence with a grammatical ending: The teacher carried the signal into the warehouse because",
+    "expected_answer": "the signal was needed there.",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_syntax_19",
+    "category": "syntax",
+    "question": "Complete the English sentence with a grammatical ending: The operator carried the letter into the library because",
+    "expected_answer": "the letter was needed there.",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_syntax_20",
+    "category": "syntax",
+    "question": "Complete the English sentence with a grammatical ending: The courier carried the package into the museum because",
+    "expected_answer": "the package was needed there.",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_syntax_21",
+    "category": "syntax",
+    "question": "Complete the English sentence with a grammatical ending: The mechanic carried the report into the workshop because",
+    "expected_answer": "the report was needed there.",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_syntax_22",
+    "category": "syntax",
+    "question": "Complete the English sentence with a grammatical ending: The supervisor carried the schedule into the garden because",
+    "expected_answer": "the schedule was needed there.",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_syntax_23",
+    "category": "syntax",
+    "question": "Complete the English sentence with a grammatical ending: The researcher carried the sample into the station because",
+    "expected_answer": "the sample was needed there.",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_syntax_24",
+    "category": "syntax",
+    "question": "Complete the English sentence with a grammatical ending: The gardener carried the valve into the school because",
+    "expected_answer": "the valve was needed there.",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_syntax_25",
+    "category": "syntax",
+    "question": "Complete the English sentence with a grammatical ending: The librarian carried the manual into the laboratory because",
+    "expected_answer": "the manual was needed there.",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_syntax_26",
+    "category": "syntax",
+    "question": "Complete the English sentence with a grammatical ending: The inspector carried the drawing into the factory because",
+    "expected_answer": "the drawing was needed there.",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_syntax_27",
+    "category": "syntax",
+    "question": "Complete the English sentence with a grammatical ending: The clerk carried the record into the market because",
+    "expected_answer": "the record was needed there.",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_syntax_28",
+    "category": "syntax",
+    "question": "Complete the English sentence with a grammatical ending: The teacher carried the signal into the warehouse because",
+    "expected_answer": "the signal was needed there.",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_syntax_29",
+    "category": "syntax",
+    "question": "Complete the English sentence with a grammatical ending: The operator carried the letter into the library because",
+    "expected_answer": "the letter was needed there.",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_syntax_30",
+    "category": "syntax",
+    "question": "Complete the English sentence with a grammatical ending: The courier carried the package into the museum because",
+    "expected_answer": "the package was needed there.",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_syntax_31",
+    "category": "syntax",
+    "question": "Complete the English sentence with a grammatical ending: The mechanic carried the report into the workshop because",
+    "expected_answer": "the report was needed there.",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_syntax_32",
+    "category": "syntax",
+    "question": "Complete the English sentence with a grammatical ending: The supervisor carried the schedule into the garden because",
+    "expected_answer": "the schedule was needed there.",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_syntax_33",
+    "category": "syntax",
+    "question": "Complete the English sentence with a grammatical ending: The researcher carried the sample into the station because",
+    "expected_answer": "the sample was needed there.",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_syntax_34",
+    "category": "syntax",
+    "question": "Complete the English sentence with a grammatical ending: The gardener carried the valve into the school because",
+    "expected_answer": "the valve was needed there.",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_syntax_35",
+    "category": "syntax",
+    "question": "Complete the English sentence with a grammatical ending: The librarian carried the manual into the laboratory because",
+    "expected_answer": "the manual was needed there.",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_syntax_36",
+    "category": "syntax",
+    "question": "Complete the English sentence with a grammatical ending: The inspector carried the drawing into the factory because",
+    "expected_answer": "the drawing was needed there.",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_syntax_37",
+    "category": "syntax",
+    "question": "Complete the English sentence with a grammatical ending: The clerk carried the record into the market because",
+    "expected_answer": "the record was needed there.",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_syntax_38",
+    "category": "syntax",
+    "question": "Complete the English sentence with a grammatical ending: The teacher carried the signal into the warehouse because",
+    "expected_answer": "the signal was needed there.",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_syntax_39",
+    "category": "syntax",
+    "question": "Complete the English sentence with a grammatical ending: The operator carried the letter into the library because",
+    "expected_answer": "the letter was needed there.",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_syntax_40",
+    "category": "syntax",
+    "question": "Complete the English sentence with a grammatical ending: The courier carried the package into the museum because",
+    "expected_answer": "the package was needed there.",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_reading_01",
+    "category": "reading",
+    "question": "Read this passage and answer with the object only: In the warehouse, the supervisor inspected the valve before leaving. What did the supervisor inspect?",
+    "expected_answer": "valve",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_reading_02",
+    "category": "reading",
+    "question": "Read this passage and answer with the object only: In the library, the researcher inspected the manual before leaving. What did the researcher inspect?",
+    "expected_answer": "manual",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_reading_03",
+    "category": "reading",
+    "question": "Read this passage and answer with the object only: In the museum, the gardener inspected the drawing before leaving. What did the gardener inspect?",
+    "expected_answer": "drawing",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_reading_04",
+    "category": "reading",
+    "question": "Read this passage and answer with the object only: In the workshop, the librarian inspected the record before leaving. What did the librarian inspect?",
+    "expected_answer": "record",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_reading_05",
+    "category": "reading",
+    "question": "Read this passage and answer with the object only: In the garden, the inspector inspected the signal before leaving. What did the inspector inspect?",
+    "expected_answer": "signal",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_reading_06",
+    "category": "reading",
+    "question": "Read this passage and answer with the object only: In the station, the clerk inspected the letter before leaving. What did the clerk inspect?",
+    "expected_answer": "letter",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_reading_07",
+    "category": "reading",
+    "question": "Read this passage and answer with the object only: In the school, the teacher inspected the package before leaving. What did the teacher inspect?",
+    "expected_answer": "package",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_reading_08",
+    "category": "reading",
+    "question": "Read this passage and answer with the object only: In the laboratory, the operator inspected the report before leaving. What did the operator inspect?",
+    "expected_answer": "report",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_reading_09",
+    "category": "reading",
+    "question": "Read this passage and answer with the object only: In the factory, the courier inspected the schedule before leaving. What did the courier inspect?",
+    "expected_answer": "schedule",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_reading_10",
+    "category": "reading",
+    "question": "Read this passage and answer with the object only: In the market, the mechanic inspected the sample before leaving. What did the mechanic inspect?",
+    "expected_answer": "sample",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_reading_11",
+    "category": "reading",
+    "question": "Read this passage and answer with the object only: In the warehouse, the supervisor inspected the valve before leaving. What did the supervisor inspect?",
+    "expected_answer": "valve",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_reading_12",
+    "category": "reading",
+    "question": "Read this passage and answer with the object only: In the library, the researcher inspected the manual before leaving. What did the researcher inspect?",
+    "expected_answer": "manual",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_reading_13",
+    "category": "reading",
+    "question": "Read this passage and answer with the object only: In the museum, the gardener inspected the drawing before leaving. What did the gardener inspect?",
+    "expected_answer": "drawing",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_reading_14",
+    "category": "reading",
+    "question": "Read this passage and answer with the object only: In the workshop, the librarian inspected the record before leaving. What did the librarian inspect?",
+    "expected_answer": "record",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_reading_15",
+    "category": "reading",
+    "question": "Read this passage and answer with the object only: In the garden, the inspector inspected the signal before leaving. What did the inspector inspect?",
+    "expected_answer": "signal",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_reading_16",
+    "category": "reading",
+    "question": "Read this passage and answer with the object only: In the station, the clerk inspected the letter before leaving. What did the clerk inspect?",
+    "expected_answer": "letter",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_reading_17",
+    "category": "reading",
+    "question": "Read this passage and answer with the object only: In the school, the teacher inspected the package before leaving. What did the teacher inspect?",
+    "expected_answer": "package",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_reading_18",
+    "category": "reading",
+    "question": "Read this passage and answer with the object only: In the laboratory, the operator inspected the report before leaving. What did the operator inspect?",
+    "expected_answer": "report",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_reading_19",
+    "category": "reading",
+    "question": "Read this passage and answer with the object only: In the factory, the courier inspected the schedule before leaving. What did the courier inspect?",
+    "expected_answer": "schedule",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_reading_20",
+    "category": "reading",
+    "question": "Read this passage and answer with the object only: In the market, the mechanic inspected the sample before leaving. What did the mechanic inspect?",
+    "expected_answer": "sample",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_reading_21",
+    "category": "reading",
+    "question": "Read this passage and answer with the object only: In the warehouse, the supervisor inspected the valve before leaving. What did the supervisor inspect?",
+    "expected_answer": "valve",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_reading_22",
+    "category": "reading",
+    "question": "Read this passage and answer with the object only: In the library, the researcher inspected the manual before leaving. What did the researcher inspect?",
+    "expected_answer": "manual",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_reading_23",
+    "category": "reading",
+    "question": "Read this passage and answer with the object only: In the museum, the gardener inspected the drawing before leaving. What did the gardener inspect?",
+    "expected_answer": "drawing",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_reading_24",
+    "category": "reading",
+    "question": "Read this passage and answer with the object only: In the workshop, the librarian inspected the record before leaving. What did the librarian inspect?",
+    "expected_answer": "record",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_reading_25",
+    "category": "reading",
+    "question": "Read this passage and answer with the object only: In the garden, the inspector inspected the signal before leaving. What did the inspector inspect?",
+    "expected_answer": "signal",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_reading_26",
+    "category": "reading",
+    "question": "Read this passage and answer with the object only: In the station, the clerk inspected the letter before leaving. What did the clerk inspect?",
+    "expected_answer": "letter",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_reading_27",
+    "category": "reading",
+    "question": "Read this passage and answer with the object only: In the school, the teacher inspected the package before leaving. What did the teacher inspect?",
+    "expected_answer": "package",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_reading_28",
+    "category": "reading",
+    "question": "Read this passage and answer with the object only: In the laboratory, the operator inspected the report before leaving. What did the operator inspect?",
+    "expected_answer": "report",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_reading_29",
+    "category": "reading",
+    "question": "Read this passage and answer with the object only: In the factory, the courier inspected the schedule before leaving. What did the courier inspect?",
+    "expected_answer": "schedule",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_reading_30",
+    "category": "reading",
+    "question": "Read this passage and answer with the object only: In the market, the mechanic inspected the sample before leaving. What did the mechanic inspect?",
+    "expected_answer": "sample",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_reading_31",
+    "category": "reading",
+    "question": "Read this passage and answer with the object only: In the warehouse, the supervisor inspected the valve before leaving. What did the supervisor inspect?",
+    "expected_answer": "valve",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_reading_32",
+    "category": "reading",
+    "question": "Read this passage and answer with the object only: In the library, the researcher inspected the manual before leaving. What did the researcher inspect?",
+    "expected_answer": "manual",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_reading_33",
+    "category": "reading",
+    "question": "Read this passage and answer with the object only: In the museum, the gardener inspected the drawing before leaving. What did the gardener inspect?",
+    "expected_answer": "drawing",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_reading_34",
+    "category": "reading",
+    "question": "Read this passage and answer with the object only: In the workshop, the librarian inspected the record before leaving. What did the librarian inspect?",
+    "expected_answer": "record",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_reading_35",
+    "category": "reading",
+    "question": "Read this passage and answer with the object only: In the garden, the inspector inspected the signal before leaving. What did the inspector inspect?",
+    "expected_answer": "signal",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_reading_36",
+    "category": "reading",
+    "question": "Read this passage and answer with the object only: In the station, the clerk inspected the letter before leaving. What did the clerk inspect?",
+    "expected_answer": "letter",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_reading_37",
+    "category": "reading",
+    "question": "Read this passage and answer with the object only: In the school, the teacher inspected the package before leaving. What did the teacher inspect?",
+    "expected_answer": "package",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_reading_38",
+    "category": "reading",
+    "question": "Read this passage and answer with the object only: In the laboratory, the operator inspected the report before leaving. What did the operator inspect?",
+    "expected_answer": "report",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_reading_39",
+    "category": "reading",
+    "question": "Read this passage and answer with the object only: In the factory, the courier inspected the schedule before leaving. What did the courier inspect?",
+    "expected_answer": "schedule",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_reading_40",
+    "category": "reading",
+    "question": "Read this passage and answer with the object only: In the market, the mechanic inspected the sample before leaving. What did the mechanic inspect?",
+    "expected_answer": "sample",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_paraphrase_01",
+    "category": "paraphrase",
+    "question": "Paraphrase this statement in ordinary English without changing its meaning: The researcher returned to the laboratory after receiving the record.",
+    "expected_answer": null,
+    "requires_manual_review": true
+  },
+  {
+    "id": "english_paraphrase_02",
+    "category": "paraphrase",
+    "question": "Paraphrase this statement in ordinary English without changing its meaning: The gardener returned to the factory after receiving the signal.",
+    "expected_answer": null,
+    "requires_manual_review": true
+  },
+  {
+    "id": "english_paraphrase_03",
+    "category": "paraphrase",
+    "question": "Paraphrase this statement in ordinary English without changing its meaning: The librarian returned to the market after receiving the letter.",
+    "expected_answer": null,
+    "requires_manual_review": true
+  },
+  {
+    "id": "english_paraphrase_04",
+    "category": "paraphrase",
+    "question": "Paraphrase this statement in ordinary English without changing its meaning: The inspector returned to the warehouse after receiving the package.",
+    "expected_answer": null,
+    "requires_manual_review": true
+  },
+  {
+    "id": "english_paraphrase_05",
+    "category": "paraphrase",
+    "question": "Paraphrase this statement in ordinary English without changing its meaning: The clerk returned to the library after receiving the report.",
+    "expected_answer": null,
+    "requires_manual_review": true
+  },
+  {
+    "id": "english_paraphrase_06",
+    "category": "paraphrase",
+    "question": "Paraphrase this statement in ordinary English without changing its meaning: The teacher returned to the museum after receiving the schedule.",
+    "expected_answer": null,
+    "requires_manual_review": true
+  },
+  {
+    "id": "english_paraphrase_07",
+    "category": "paraphrase",
+    "question": "Paraphrase this statement in ordinary English without changing its meaning: The operator returned to the workshop after receiving the sample.",
+    "expected_answer": null,
+    "requires_manual_review": true
+  },
+  {
+    "id": "english_paraphrase_08",
+    "category": "paraphrase",
+    "question": "Paraphrase this statement in ordinary English without changing its meaning: The courier returned to the garden after receiving the valve.",
+    "expected_answer": null,
+    "requires_manual_review": true
+  },
+  {
+    "id": "english_paraphrase_09",
+    "category": "paraphrase",
+    "question": "Paraphrase this statement in ordinary English without changing its meaning: The mechanic returned to the station after receiving the manual.",
+    "expected_answer": null,
+    "requires_manual_review": true
+  },
+  {
+    "id": "english_paraphrase_10",
+    "category": "paraphrase",
+    "question": "Paraphrase this statement in ordinary English without changing its meaning: The supervisor returned to the school after receiving the drawing.",
+    "expected_answer": null,
+    "requires_manual_review": true
+  },
+  {
+    "id": "english_paraphrase_11",
+    "category": "paraphrase",
+    "question": "Paraphrase this statement in ordinary English without changing its meaning: The researcher returned to the laboratory after receiving the record.",
+    "expected_answer": null,
+    "requires_manual_review": true
+  },
+  {
+    "id": "english_paraphrase_12",
+    "category": "paraphrase",
+    "question": "Paraphrase this statement in ordinary English without changing its meaning: The gardener returned to the factory after receiving the signal.",
+    "expected_answer": null,
+    "requires_manual_review": true
+  },
+  {
+    "id": "english_paraphrase_13",
+    "category": "paraphrase",
+    "question": "Paraphrase this statement in ordinary English without changing its meaning: The librarian returned to the market after receiving the letter.",
+    "expected_answer": null,
+    "requires_manual_review": true
+  },
+  {
+    "id": "english_paraphrase_14",
+    "category": "paraphrase",
+    "question": "Paraphrase this statement in ordinary English without changing its meaning: The inspector returned to the warehouse after receiving the package.",
+    "expected_answer": null,
+    "requires_manual_review": true
+  },
+  {
+    "id": "english_paraphrase_15",
+    "category": "paraphrase",
+    "question": "Paraphrase this statement in ordinary English without changing its meaning: The clerk returned to the library after receiving the report.",
+    "expected_answer": null,
+    "requires_manual_review": true
+  },
+  {
+    "id": "english_paraphrase_16",
+    "category": "paraphrase",
+    "question": "Paraphrase this statement in ordinary English without changing its meaning: The teacher returned to the museum after receiving the schedule.",
+    "expected_answer": null,
+    "requires_manual_review": true
+  },
+  {
+    "id": "english_paraphrase_17",
+    "category": "paraphrase",
+    "question": "Paraphrase this statement in ordinary English without changing its meaning: The operator returned to the workshop after receiving the sample.",
+    "expected_answer": null,
+    "requires_manual_review": true
+  },
+  {
+    "id": "english_paraphrase_18",
+    "category": "paraphrase",
+    "question": "Paraphrase this statement in ordinary English without changing its meaning: The courier returned to the garden after receiving the valve.",
+    "expected_answer": null,
+    "requires_manual_review": true
+  },
+  {
+    "id": "english_paraphrase_19",
+    "category": "paraphrase",
+    "question": "Paraphrase this statement in ordinary English without changing its meaning: The mechanic returned to the station after receiving the manual.",
+    "expected_answer": null,
+    "requires_manual_review": true
+  },
+  {
+    "id": "english_paraphrase_20",
+    "category": "paraphrase",
+    "question": "Paraphrase this statement in ordinary English without changing its meaning: The supervisor returned to the school after receiving the drawing.",
+    "expected_answer": null,
+    "requires_manual_review": true
+  },
+  {
+    "id": "english_paraphrase_21",
+    "category": "paraphrase",
+    "question": "Paraphrase this statement in ordinary English without changing its meaning: The researcher returned to the laboratory after receiving the record.",
+    "expected_answer": null,
+    "requires_manual_review": true
+  },
+  {
+    "id": "english_paraphrase_22",
+    "category": "paraphrase",
+    "question": "Paraphrase this statement in ordinary English without changing its meaning: The gardener returned to the factory after receiving the signal.",
+    "expected_answer": null,
+    "requires_manual_review": true
+  },
+  {
+    "id": "english_paraphrase_23",
+    "category": "paraphrase",
+    "question": "Paraphrase this statement in ordinary English without changing its meaning: The librarian returned to the market after receiving the letter.",
+    "expected_answer": null,
+    "requires_manual_review": true
+  },
+  {
+    "id": "english_paraphrase_24",
+    "category": "paraphrase",
+    "question": "Paraphrase this statement in ordinary English without changing its meaning: The inspector returned to the warehouse after receiving the package.",
+    "expected_answer": null,
+    "requires_manual_review": true
+  },
+  {
+    "id": "english_paraphrase_25",
+    "category": "paraphrase",
+    "question": "Paraphrase this statement in ordinary English without changing its meaning: The clerk returned to the library after receiving the report.",
+    "expected_answer": null,
+    "requires_manual_review": true
+  },
+  {
+    "id": "english_paraphrase_26",
+    "category": "paraphrase",
+    "question": "Paraphrase this statement in ordinary English without changing its meaning: The teacher returned to the museum after receiving the schedule.",
+    "expected_answer": null,
+    "requires_manual_review": true
+  },
+  {
+    "id": "english_paraphrase_27",
+    "category": "paraphrase",
+    "question": "Paraphrase this statement in ordinary English without changing its meaning: The operator returned to the workshop after receiving the sample.",
+    "expected_answer": null,
+    "requires_manual_review": true
+  },
+  {
+    "id": "english_paraphrase_28",
+    "category": "paraphrase",
+    "question": "Paraphrase this statement in ordinary English without changing its meaning: The courier returned to the garden after receiving the valve.",
+    "expected_answer": null,
+    "requires_manual_review": true
+  },
+  {
+    "id": "english_paraphrase_29",
+    "category": "paraphrase",
+    "question": "Paraphrase this statement in ordinary English without changing its meaning: The mechanic returned to the station after receiving the manual.",
+    "expected_answer": null,
+    "requires_manual_review": true
+  },
+  {
+    "id": "english_paraphrase_30",
+    "category": "paraphrase",
+    "question": "Paraphrase this statement in ordinary English without changing its meaning: The supervisor returned to the school after receiving the drawing.",
+    "expected_answer": null,
+    "requires_manual_review": true
+  },
+  {
+    "id": "english_qa_01",
+    "category": "qa",
+    "question": "Answer directly: What is the location in this statement? The gardener entered the garden to find a missing package.",
+    "expected_answer": "garden",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_qa_02",
+    "category": "qa",
+    "question": "Answer directly: What is the location in this statement? The librarian entered the station to find a missing report.",
+    "expected_answer": "station",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_qa_03",
+    "category": "qa",
+    "question": "Answer directly: What is the location in this statement? The inspector entered the school to find a missing schedule.",
+    "expected_answer": "school",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_qa_04",
+    "category": "qa",
+    "question": "Answer directly: What is the location in this statement? The clerk entered the laboratory to find a missing sample.",
+    "expected_answer": "laboratory",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_qa_05",
+    "category": "qa",
+    "question": "Answer directly: What is the location in this statement? The teacher entered the factory to find a missing valve.",
+    "expected_answer": "factory",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_qa_06",
+    "category": "qa",
+    "question": "Answer directly: What is the location in this statement? The operator entered the market to find a missing manual.",
+    "expected_answer": "market",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_qa_07",
+    "category": "qa",
+    "question": "Answer directly: What is the location in this statement? The courier entered the warehouse to find a missing drawing.",
+    "expected_answer": "warehouse",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_qa_08",
+    "category": "qa",
+    "question": "Answer directly: What is the location in this statement? The mechanic entered the library to find a missing record.",
+    "expected_answer": "library",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_qa_09",
+    "category": "qa",
+    "question": "Answer directly: What is the location in this statement? The supervisor entered the museum to find a missing signal.",
+    "expected_answer": "museum",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_qa_10",
+    "category": "qa",
+    "question": "Answer directly: What is the location in this statement? The researcher entered the workshop to find a missing letter.",
+    "expected_answer": "workshop",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_qa_11",
+    "category": "qa",
+    "question": "Answer directly: What is the location in this statement? The gardener entered the garden to find a missing package.",
+    "expected_answer": "garden",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_qa_12",
+    "category": "qa",
+    "question": "Answer directly: What is the location in this statement? The librarian entered the station to find a missing report.",
+    "expected_answer": "station",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_qa_13",
+    "category": "qa",
+    "question": "Answer directly: What is the location in this statement? The inspector entered the school to find a missing schedule.",
+    "expected_answer": "school",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_qa_14",
+    "category": "qa",
+    "question": "Answer directly: What is the location in this statement? The clerk entered the laboratory to find a missing sample.",
+    "expected_answer": "laboratory",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_qa_15",
+    "category": "qa",
+    "question": "Answer directly: What is the location in this statement? The teacher entered the factory to find a missing valve.",
+    "expected_answer": "factory",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_qa_16",
+    "category": "qa",
+    "question": "Answer directly: What is the location in this statement? The operator entered the market to find a missing manual.",
+    "expected_answer": "market",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_qa_17",
+    "category": "qa",
+    "question": "Answer directly: What is the location in this statement? The courier entered the warehouse to find a missing drawing.",
+    "expected_answer": "warehouse",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_qa_18",
+    "category": "qa",
+    "question": "Answer directly: What is the location in this statement? The mechanic entered the library to find a missing record.",
+    "expected_answer": "library",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_qa_19",
+    "category": "qa",
+    "question": "Answer directly: What is the location in this statement? The supervisor entered the museum to find a missing signal.",
+    "expected_answer": "museum",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_qa_20",
+    "category": "qa",
+    "question": "Answer directly: What is the location in this statement? The researcher entered the workshop to find a missing letter.",
+    "expected_answer": "workshop",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_qa_21",
+    "category": "qa",
+    "question": "Answer directly: What is the location in this statement? The gardener entered the garden to find a missing package.",
+    "expected_answer": "garden",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_qa_22",
+    "category": "qa",
+    "question": "Answer directly: What is the location in this statement? The librarian entered the station to find a missing report.",
+    "expected_answer": "station",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_qa_23",
+    "category": "qa",
+    "question": "Answer directly: What is the location in this statement? The inspector entered the school to find a missing schedule.",
+    "expected_answer": "school",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_qa_24",
+    "category": "qa",
+    "question": "Answer directly: What is the location in this statement? The clerk entered the laboratory to find a missing sample.",
+    "expected_answer": "laboratory",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_qa_25",
+    "category": "qa",
+    "question": "Answer directly: What is the location in this statement? The teacher entered the factory to find a missing valve.",
+    "expected_answer": "factory",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_qa_26",
+    "category": "qa",
+    "question": "Answer directly: What is the location in this statement? The operator entered the market to find a missing manual.",
+    "expected_answer": "market",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_qa_27",
+    "category": "qa",
+    "question": "Answer directly: What is the location in this statement? The courier entered the warehouse to find a missing drawing.",
+    "expected_answer": "warehouse",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_qa_28",
+    "category": "qa",
+    "question": "Answer directly: What is the location in this statement? The mechanic entered the library to find a missing record.",
+    "expected_answer": "library",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_qa_29",
+    "category": "qa",
+    "question": "Answer directly: What is the location in this statement? The supervisor entered the museum to find a missing signal.",
+    "expected_answer": "museum",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_qa_30",
+    "category": "qa",
+    "question": "Answer directly: What is the location in this statement? The researcher entered the workshop to find a missing letter.",
+    "expected_answer": "workshop",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_coherence_01",
+    "category": "coherence",
+    "question": "Write three coherent sentences about a librarian discovering that a sample has gone missing in the library.",
+    "expected_answer": null,
+    "requires_manual_review": true
+  },
+  {
+    "id": "english_coherence_02",
+    "category": "coherence",
+    "question": "Write three coherent sentences about a inspector discovering that a valve has gone missing in the museum.",
+    "expected_answer": null,
+    "requires_manual_review": true
+  },
+  {
+    "id": "english_coherence_03",
+    "category": "coherence",
+    "question": "Write three coherent sentences about a clerk discovering that a manual has gone missing in the workshop.",
+    "expected_answer": null,
+    "requires_manual_review": true
+  },
+  {
+    "id": "english_coherence_04",
+    "category": "coherence",
+    "question": "Write three coherent sentences about a teacher discovering that a drawing has gone missing in the garden.",
+    "expected_answer": null,
+    "requires_manual_review": true
+  },
+  {
+    "id": "english_coherence_05",
+    "category": "coherence",
+    "question": "Write three coherent sentences about a operator discovering that a record has gone missing in the station.",
+    "expected_answer": null,
+    "requires_manual_review": true
+  },
+  {
+    "id": "english_coherence_06",
+    "category": "coherence",
+    "question": "Write three coherent sentences about a courier discovering that a signal has gone missing in the school.",
+    "expected_answer": null,
+    "requires_manual_review": true
+  },
+  {
+    "id": "english_coherence_07",
+    "category": "coherence",
+    "question": "Write three coherent sentences about a mechanic discovering that a letter has gone missing in the laboratory.",
+    "expected_answer": null,
+    "requires_manual_review": true
+  },
+  {
+    "id": "english_coherence_08",
+    "category": "coherence",
+    "question": "Write three coherent sentences about a supervisor discovering that a package has gone missing in the factory.",
+    "expected_answer": null,
+    "requires_manual_review": true
+  },
+  {
+    "id": "english_coherence_09",
+    "category": "coherence",
+    "question": "Write three coherent sentences about a researcher discovering that a report has gone missing in the market.",
+    "expected_answer": null,
+    "requires_manual_review": true
+  },
+  {
+    "id": "english_coherence_10",
+    "category": "coherence",
+    "question": "Write three coherent sentences about a gardener discovering that a schedule has gone missing in the warehouse.",
+    "expected_answer": null,
+    "requires_manual_review": true
+  },
+  {
+    "id": "english_coherence_11",
+    "category": "coherence",
+    "question": "Write three coherent sentences about a librarian discovering that a sample has gone missing in the library.",
+    "expected_answer": null,
+    "requires_manual_review": true
+  },
+  {
+    "id": "english_coherence_12",
+    "category": "coherence",
+    "question": "Write three coherent sentences about a inspector discovering that a valve has gone missing in the museum.",
+    "expected_answer": null,
+    "requires_manual_review": true
+  },
+  {
+    "id": "english_coherence_13",
+    "category": "coherence",
+    "question": "Write three coherent sentences about a clerk discovering that a manual has gone missing in the workshop.",
+    "expected_answer": null,
+    "requires_manual_review": true
+  },
+  {
+    "id": "english_coherence_14",
+    "category": "coherence",
+    "question": "Write three coherent sentences about a teacher discovering that a drawing has gone missing in the garden.",
+    "expected_answer": null,
+    "requires_manual_review": true
+  },
+  {
+    "id": "english_coherence_15",
+    "category": "coherence",
+    "question": "Write three coherent sentences about a operator discovering that a record has gone missing in the station.",
+    "expected_answer": null,
+    "requires_manual_review": true
+  },
+  {
+    "id": "english_coherence_16",
+    "category": "coherence",
+    "question": "Write three coherent sentences about a courier discovering that a signal has gone missing in the school.",
+    "expected_answer": null,
+    "requires_manual_review": true
+  },
+  {
+    "id": "english_coherence_17",
+    "category": "coherence",
+    "question": "Write three coherent sentences about a mechanic discovering that a letter has gone missing in the laboratory.",
+    "expected_answer": null,
+    "requires_manual_review": true
+  },
+  {
+    "id": "english_coherence_18",
+    "category": "coherence",
+    "question": "Write three coherent sentences about a supervisor discovering that a package has gone missing in the factory.",
+    "expected_answer": null,
+    "requires_manual_review": true
+  },
+  {
+    "id": "english_coherence_19",
+    "category": "coherence",
+    "question": "Write three coherent sentences about a researcher discovering that a report has gone missing in the market.",
+    "expected_answer": null,
+    "requires_manual_review": true
+  },
+  {
+    "id": "english_coherence_20",
+    "category": "coherence",
+    "question": "Write three coherent sentences about a gardener discovering that a schedule has gone missing in the warehouse.",
+    "expected_answer": null,
+    "requires_manual_review": true
+  },
+  {
+    "id": "english_conditional_01",
+    "category": "conditional",
+    "question": "Given: The inspector can complete the task only if the drawing arrives. The drawing has NOT arrived. Can the inspector complete the task under this rule? Answer yes or no.",
+    "expected_answer": "no",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_conditional_02",
+    "category": "conditional",
+    "question": "Given: The clerk can complete the task only if the record arrives. The record has NOT arrived. Can the clerk complete the task under this rule? Answer yes or no.",
+    "expected_answer": "no",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_conditional_03",
+    "category": "conditional",
+    "question": "Given: The teacher can complete the task only if the signal arrives. The signal has NOT arrived. Can the teacher complete the task under this rule? Answer yes or no.",
+    "expected_answer": "no",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_conditional_04",
+    "category": "conditional",
+    "question": "Given: The operator can complete the task only if the letter arrives. The letter has NOT arrived. Can the operator complete the task under this rule? Answer yes or no.",
+    "expected_answer": "no",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_conditional_05",
+    "category": "conditional",
+    "question": "Given: The courier can complete the task only if the package arrives. The package has NOT arrived. Can the courier complete the task under this rule? Answer yes or no.",
+    "expected_answer": "no",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_conditional_06",
+    "category": "conditional",
+    "question": "Given: The mechanic can complete the task only if the report arrives. The report has NOT arrived. Can the mechanic complete the task under this rule? Answer yes or no.",
+    "expected_answer": "no",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_conditional_07",
+    "category": "conditional",
+    "question": "Given: The supervisor can complete the task only if the schedule arrives. The schedule has NOT arrived. Can the supervisor complete the task under this rule? Answer yes or no.",
+    "expected_answer": "no",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_conditional_08",
+    "category": "conditional",
+    "question": "Given: The researcher can complete the task only if the sample arrives. The sample has NOT arrived. Can the researcher complete the task under this rule? Answer yes or no.",
+    "expected_answer": "no",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_conditional_09",
+    "category": "conditional",
+    "question": "Given: The gardener can complete the task only if the valve arrives. The valve has NOT arrived. Can the gardener complete the task under this rule? Answer yes or no.",
+    "expected_answer": "no",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_conditional_10",
+    "category": "conditional",
+    "question": "Given: The librarian can complete the task only if the manual arrives. The manual has NOT arrived. Can the librarian complete the task under this rule? Answer yes or no.",
+    "expected_answer": "no",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_conditional_11",
+    "category": "conditional",
+    "question": "Given: The inspector can complete the task only if the drawing arrives. The drawing has NOT arrived. Can the inspector complete the task under this rule? Answer yes or no.",
+    "expected_answer": "no",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_conditional_12",
+    "category": "conditional",
+    "question": "Given: The clerk can complete the task only if the record arrives. The record has NOT arrived. Can the clerk complete the task under this rule? Answer yes or no.",
+    "expected_answer": "no",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_conditional_13",
+    "category": "conditional",
+    "question": "Given: The teacher can complete the task only if the signal arrives. The signal has NOT arrived. Can the teacher complete the task under this rule? Answer yes or no.",
+    "expected_answer": "no",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_conditional_14",
+    "category": "conditional",
+    "question": "Given: The operator can complete the task only if the letter arrives. The letter has NOT arrived. Can the operator complete the task under this rule? Answer yes or no.",
+    "expected_answer": "no",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_conditional_15",
+    "category": "conditional",
+    "question": "Given: The courier can complete the task only if the package arrives. The package has NOT arrived. Can the courier complete the task under this rule? Answer yes or no.",
+    "expected_answer": "no",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_conditional_16",
+    "category": "conditional",
+    "question": "Given: The mechanic can complete the task only if the report arrives. The report has NOT arrived. Can the mechanic complete the task under this rule? Answer yes or no.",
+    "expected_answer": "no",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_conditional_17",
+    "category": "conditional",
+    "question": "Given: The supervisor can complete the task only if the schedule arrives. The schedule has NOT arrived. Can the supervisor complete the task under this rule? Answer yes or no.",
+    "expected_answer": "no",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_conditional_18",
+    "category": "conditional",
+    "question": "Given: The researcher can complete the task only if the sample arrives. The sample has NOT arrived. Can the researcher complete the task under this rule? Answer yes or no.",
+    "expected_answer": "no",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_conditional_19",
+    "category": "conditional",
+    "question": "Given: The gardener can complete the task only if the valve arrives. The valve has NOT arrived. Can the gardener complete the task under this rule? Answer yes or no.",
+    "expected_answer": "no",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_conditional_20",
+    "category": "conditional",
+    "question": "Given: The librarian can complete the task only if the manual arrives. The manual has NOT arrived. Can the librarian complete the task under this rule? Answer yes or no.",
+    "expected_answer": "no",
+    "requires_manual_review": false
+  },
+  {
+    "id": "english_followup_01",
+    "category": "followup",
+    "question": "Conversation: User: The clerk lost a letter in the station. Assistant: The clerk should search the station. User: Why should that place be searched first? Assistant:",
+    "expected_answer": null,
+    "requires_manual_review": true
+  },
+  {
+    "id": "english_followup_02",
+    "category": "followup",
+    "question": "Conversation: User: The teacher lost a package in the school. Assistant: The teacher should search the school. User: Why should that place be searched first? Assistant:",
+    "expected_answer": null,
+    "requires_manual_review": true
+  },
+  {
+    "id": "english_followup_03",
+    "category": "followup",
+    "question": "Conversation: User: The operator lost a report in the laboratory. Assistant: The operator should search the laboratory. User: Why should that place be searched first? Assistant:",
+    "expected_answer": null,
+    "requires_manual_review": true
+  },
+  {
+    "id": "english_followup_04",
+    "category": "followup",
+    "question": "Conversation: User: The courier lost a schedule in the factory. Assistant: The courier should search the factory. User: Why should that place be searched first? Assistant:",
+    "expected_answer": null,
+    "requires_manual_review": true
+  },
+  {
+    "id": "english_followup_05",
+    "category": "followup",
+    "question": "Conversation: User: The mechanic lost a sample in the market. Assistant: The mechanic should search the market. User: Why should that place be searched first? Assistant:",
+    "expected_answer": null,
+    "requires_manual_review": true
+  },
+  {
+    "id": "english_followup_06",
+    "category": "followup",
+    "question": "Conversation: User: The supervisor lost a valve in the warehouse. Assistant: The supervisor should search the warehouse. User: Why should that place be searched first? Assistant:",
+    "expected_answer": null,
+    "requires_manual_review": true
+  },
+  {
+    "id": "english_followup_07",
+    "category": "followup",
+    "question": "Conversation: User: The researcher lost a manual in the library. Assistant: The researcher should search the library. User: Why should that place be searched first? Assistant:",
+    "expected_answer": null,
+    "requires_manual_review": true
+  },
+  {
+    "id": "english_followup_08",
+    "category": "followup",
+    "question": "Conversation: User: The gardener lost a drawing in the museum. Assistant: The gardener should search the museum. User: Why should that place be searched first? Assistant:",
+    "expected_answer": null,
+    "requires_manual_review": true
+  },
+  {
+    "id": "english_followup_09",
+    "category": "followup",
+    "question": "Conversation: User: The librarian lost a record in the workshop. Assistant: The librarian should search the workshop. User: Why should that place be searched first? Assistant:",
+    "expected_answer": null,
+    "requires_manual_review": true
+  },
+  {
+    "id": "english_followup_10",
+    "category": "followup",
+    "question": "Conversation: User: The inspector lost a signal in the garden. Assistant: The inspector should search the garden. User: Why should that place be searched first? Assistant:",
+    "expected_answer": null,
+    "requires_manual_review": true
+  },
+  {
+    "id": "english_followup_11",
+    "category": "followup",
+    "question": "Conversation: User: The clerk lost a letter in the station. Assistant: The clerk should search the station. User: Why should that place be searched first? Assistant:",
+    "expected_answer": null,
+    "requires_manual_review": true
+  },
+  {
+    "id": "english_followup_12",
+    "category": "followup",
+    "question": "Conversation: User: The teacher lost a package in the school. Assistant: The teacher should search the school. User: Why should that place be searched first? Assistant:",
+    "expected_answer": null,
+    "requires_manual_review": true
+  },
+  {
+    "id": "english_followup_13",
+    "category": "followup",
+    "question": "Conversation: User: The operator lost a report in the laboratory. Assistant: The operator should search the laboratory. User: Why should that place be searched first? Assistant:",
+    "expected_answer": null,
+    "requires_manual_review": true
+  },
+  {
+    "id": "english_followup_14",
+    "category": "followup",
+    "question": "Conversation: User: The courier lost a schedule in the factory. Assistant: The courier should search the factory. User: Why should that place be searched first? Assistant:",
+    "expected_answer": null,
+    "requires_manual_review": true
+  },
+  {
+    "id": "english_followup_15",
+    "category": "followup",
+    "question": "Conversation: User: The mechanic lost a sample in the market. Assistant: The mechanic should search the market. User: Why should that place be searched first? Assistant:",
+    "expected_answer": null,
+    "requires_manual_review": true
+  },
+  {
+    "id": "english_followup_16",
+    "category": "followup",
+    "question": "Conversation: User: The supervisor lost a valve in the warehouse. Assistant: The supervisor should search the warehouse. User: Why should that place be searched first? Assistant:",
+    "expected_answer": null,
+    "requires_manual_review": true
+  },
+  {
+    "id": "english_followup_17",
+    "category": "followup",
+    "question": "Conversation: User: The researcher lost a manual in the library. Assistant: The researcher should search the library. User: Why should that place be searched first? Assistant:",
+    "expected_answer": null,
+    "requires_manual_review": true
+  },
+  {
+    "id": "english_followup_18",
+    "category": "followup",
+    "question": "Conversation: User: The gardener lost a drawing in the museum. Assistant: The gardener should search the museum. User: Why should that place be searched first? Assistant:",
+    "expected_answer": null,
+    "requires_manual_review": true
+  },
+  {
+    "id": "english_followup_19",
+    "category": "followup",
+    "question": "Conversation: User: The librarian lost a record in the workshop. Assistant: The librarian should search the workshop. User: Why should that place be searched first? Assistant:",
+    "expected_answer": null,
+    "requires_manual_review": true
+  },
+  {
+    "id": "english_followup_20",
+    "category": "followup",
+    "question": "Conversation: User: The inspector lost a signal in the garden. Assistant: The inspector should search the garden. User: Why should that place be searched first? Assistant:",
+    "expected_answer": null,
+    "requires_manual_review": true
+  }
+]
