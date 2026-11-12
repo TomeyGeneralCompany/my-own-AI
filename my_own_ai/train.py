@@ -110,6 +110,8 @@ def train(corpus_dir, output, cfg, steps=20, batch_size=4, learning_rate=0.001,
                          else str(Path(init_checkpoint)) if init_checkpoint else None)
     source_digest = (state.get("initialized_from_sha256") if resume
                      else _sha256_file(init_checkpoint) if init_checkpoint else None)
+    inherited_format = (state.get("proposal_format") if resume
+                        else previous.get("proposal_format") if init_checkpoint else None)
     model.train()
     begin = time.perf_counter()
     # This horizon is immutable across resumed runs.
@@ -129,6 +131,7 @@ def train(corpus_dir, output, cfg, steps=20, batch_size=4, learning_rate=0.001,
                       "corpus_fingerprint": fingerprint, "split_strategy": split_strategy,
                       "initialized_from": source_generation,
                       "initialized_from_sha256": source_digest,
+                      "proposal_format": inherited_format,
                       "initial_loss": first_loss, "final_loss": loss,
                       "validation_loss": validation}, output)
         return validation
