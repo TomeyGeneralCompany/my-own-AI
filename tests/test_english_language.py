@@ -139,38 +139,58 @@ def test_english_corpus_uses_document_disjoint_splits_and_deduplicates(tmp_path)
 
 
 def test_english_release_gate_rejects_forgetting_and_requires_human_review(monkeypatch, tmp_path):
-    old, candidate = tmp_path / "old.pt", tmp_path / "candidate.pt"
-    old.write_bytes(b"old-model")
-    candidate.write_bytes(b"new-model")
+    previous, candidate = tmp_path / "previous.pt", tmp_path / "candidate.pt"
+    previous.write_bytes(b"previous-model")
+    candidate.write_bytes(b"candidate-model")
     tokenizer = tmp_path / "tokenizer.json"
     tokenizer.write_text("{}")
     gauntlet = ROOT / "gauntlet.json"
-    original = [{"id": "a", "exact_match": True}, {"id": "b", "exact_match": False}]
+    all_cases = load_gauntlet(gauntlet)
+    old = [{"id": "a", "exact_match": True}, {"id": "b", "exact_match": False}]
     improved = [{"id": "a", "exact_match": True}, {"id": "b", "exact_match": True}]
-    def fake(*args, **kwargs):
-        return {"exact_correct": sum(x["exact_match"] for x in
-                (original if Path(args[0]) == old else improved)),
-                "cases": original if Path(args[0]) == old else improved}
+    category = {
+        "syntax": {"auto_scored": 40, "exact": 35},
+        "reading": {"auto_scored": 40, "exact": 35},
+        "qa": {"auto_scored": 30, "exact": 27},
+        "conditional": {"auto_scored": 20, "exact": 16},
+    }
+    def fake(checkpoint, *args, **kwargs):
+        return {"exact_correct": 105 if Path(checkpoint) == previous else 113,
+                "automatically_scored": 130, "conditional_pairs_passed": 8,
+                "categories": category,
+                "cases": old if Path(checkpoint) == previous else improved}
     monkeypatch.setattr(language_regression, "evaluate_english", fake)
-    report = language_regression.compare_english(old, candidate, tokenizer, gauntlet)
+    report = language_regression.compare_english(previous, candidate, tokenizer, gauntlet)
     assert report["automatic_improvement"] and not report["promotable"]
-    review = tmp_path / "review.json"
+    assert not report["manual_review"]["passed"]
+
     from hashlib import sha256
+    expected = [item["id"] for item in all_cases if item["requires_manual_review"]]
+    grades = {identifier: {"grammar": 5, "coherence": 5, "relevance": 5}
+              for identifier in expected}
+    review = tmp_path / "review.json"
     review.write_text(json.dumps({
         "reviewer_approved": True,
+        "previous_sha256": sha256(previous.read_bytes()).hexdigest(),
         "candidate_sha256": sha256(candidate.read_bytes()).hexdigest(),
         "gauntlet_sha256": sha256(gauntlet.read_bytes()).hexdigest(),
-        "manual_cases_reviewed": 70, "grammar_average": 4.5,
-        "coherence_average": 4.2}))
+        "previous": grades, "candidate": grades,
+    }))
     accepted = language_regression.promote_english(
-        old, candidate, tokenizer, gauntlet, tmp_path / "report.json",
+        previous, candidate, tokenizer, gauntlet, tmp_path / "report.json",
         destination=tmp_path / "released.pt", review_path=review)
     assert accepted["promoted"]
     assert (tmp_path / "released.pt").read_bytes() == candidate.read_bytes()
-    def regress(*args, **kwargs):
-        return {"exact_correct": 1, "cases": original if Path(args[0]) == old else
-                [{"id": "a", "exact_match": False}, {"id": "b", "exact_match": True}]}
+
+    def regress(checkpoint, *args, **kwargs):
+        result = fake(checkpoint, *args, **kwargs)
+        if Path(checkpoint) == candidate:
+            result["cases"] = [
+                {"id": "a", "exact_match": False},
+                {"id": "b", "exact_match": True}
+            ]
+        return result
     monkeypatch.setattr(language_regression, "evaluate_english", regress)
     denied = language_regression.compare_english(
-        old, candidate, tokenizer, gauntlet, review_path=review)
+        previous, candidate, tokenizer, gauntlet, review_path=review)
     assert denied["lost_previously_correct"] == ["a"] and not denied["promotable"]
