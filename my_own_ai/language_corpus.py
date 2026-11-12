@@ -31,8 +31,8 @@ def prepare_english_corpus(source, destination, *, seed=42,
     src, out = Path(source).resolve(), Path(destination).resolve()
     if out.exists():
         raise ValueError("Prepared corpus destination must not exist")
-    if out == src or out in src.parents:
-        raise ValueError("Output cannot be a source directory")
+    if out == src or out in src.parents or src in out.parents:
+        raise ValueError("Output cannot be inside or contain the source directory")
     if not (0 < validation_ratio < .5 and 0 < test_ratio < .5
             and validation_ratio + test_ratio < .5):
         raise ValueError("Invalid corpus holdout ratios")
