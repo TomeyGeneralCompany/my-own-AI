@@ -1,6 +1,7 @@
 """Resumable original-weight CPU training with held-out evaluation and checkpoints."""
 from dataclasses import asdict
 import math
+import hashlib
 import os
 from pathlib import Path
 import tempfile
@@ -8,6 +9,14 @@ import time
 import torch
 from .model import ModelConfig, LocalTransformer
 from .corpus import collect_documents, corpus_fingerprint, split_documents
+
+def _sha256_file(path):
+    digest = hashlib.sha256()
+    with Path(path).open("rb") as handle:
+        for block in iter(lambda: handle.read(65536), b""):
+            digest.update(block)
+    return digest.hexdigest()
+
 
 def collect_corpus(folder):
     return b"\n".join(d["text"].encode("utf-8") for d in collect_documents(folder))
@@ -50,8 +59,14 @@ def evaluate(model, documents, context_size, batch_size=4, batches=3, seed=8128)
     return loss_total / batches
 
 def train(corpus_dir, output, cfg, steps=20, batch_size=4, learning_rate=0.001,
-          seed=42, resume=False, checkpoint_every=10, validation_batches=2, schedule_steps=1000, warmup_steps=10):
+          seed=42, resume=False, checkpoint_every=10, validation_batches=2,
+          schedule_steps=1000, warmup_steps=10, init_checkpoint=None):
     cfg.validate()
+    if init_checkpoint is not None:
+        if resume:
+            raise ValueError("Cannot resume the same run while initializing a new corpus generation")
+        if Path(init_checkpoint).resolve() == Path(output).resolve():
+            raise ValueError("New generation must preserve its original source checkpoint")
     if steps < 1 or batch_size < 1 or learning_rate <= 0 or checkpoint_every < 1 or validation_batches < 1 or schedule_steps < 1 or warmup_steps < 0 or warmup_steps >= schedule_steps:
         raise ValueError("Invalid training settings")
     torch.set_num_threads(max(1, min(4, os.cpu_count() or 1)))
@@ -82,10 +97,21 @@ def train(corpus_dir, output, cfg, steps=20, batch_size=4, learning_rate=0.001,
     else:
         torch.manual_seed(seed)
         model = LocalTransformer(cfg)
+        if init_checkpoint is not None:
+            previous = torch.load(init_checkpoint, map_location="cpu", weights_only=True)
+            if previous.get("model_config") != asdict(cfg):
+                raise ValueError("Previous generation model configuration differs")
+            model.load_state_dict(previous["state_dict"])
         optimizer = torch.optim.AdamW(model.parameters(), lr=learning_rate)
         start_step = 0
         first_loss = None
         previous_loss = None
+    source_generation = (state.get("initialized_from") if resume
+                         else str(Path(init_checkpoint)) if init_checkpoint else None)
+    source_digest = (state.get("initialized_from_sha256") if resume
+                     else _sha256_file(init_checkpoint) if init_checkpoint else None)
+    inherited_format = (state.get("proposal_format") if resume
+                        else previous.get("proposal_format") if init_checkpoint else None)
     model.train()
     begin = time.perf_counter()
     # This horizon is immutable across resumed runs.
@@ -103,6 +129,9 @@ def train(corpus_dir, output, cfg, steps=20, batch_size=4, learning_rate=0.001,
                       "batch_size": batch_size, "learning_rate": learning_rate,
                       "schedule_steps": schedule_steps, "warmup_steps": warmup_steps,
                       "corpus_fingerprint": fingerprint, "split_strategy": split_strategy,
+                      "initialized_from": source_generation,
+                      "initialized_from_sha256": source_digest,
+                      "proposal_format": inherited_format,
                       "initial_loss": first_loss, "final_loss": loss,
                       "validation_loss": validation}, output)
         return validation
@@ -125,6 +154,8 @@ def train(corpus_dir, output, cfg, steps=20, batch_size=4, learning_rate=0.001,
         validation = state.get("validation_loss")
     elapsed = time.perf_counter() - begin
     return {"steps": steps, "steps_completed_this_run": steps - start_step,
+            "initialized_from": source_generation,
+            "initialized_from_sha256": source_digest,
             "learning_rate": scheduled_rate(steps), "schedule_steps": schedule_steps,
             "initial_loss": first_loss, "final_loss": previous_loss,
             "validation_loss": validation,

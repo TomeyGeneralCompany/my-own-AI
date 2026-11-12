@@ -347,3 +347,127 @@ conclusion metric is conservative; paraphrases may fail it, and even an exact
 match is not a proof of semantic entailment. More importantly, **a green
 software test suite is not evidence that the neural model has learned the
 ontology**. Novel-discipline success requires measured held-out outputs.
+
+
+## Cumulative intellectual development: owner-approved inheritance (PR #11)
+
+This system deliberately separates *preserving an intellectual record* from
+*training on it as accepted truth*. Every record has a local immutable file
+digest, a declared origin (`authored_work`, `derived_work` or `reasoning`),
+optional evidence locators, and an explicit `pending / approved / rejected`
+decision. A Research operation's format validation does **not** authorize its
+claim as training data. The owner decides; neither model nor controller
+automatically approves its own inventions.
+
+```sh
+my-own-ai register-work --ledger data/intellectual-ledger.json \
+  --id book_2030 --kind authored_work --source corpus/private/book.txt \
+  --origin "author: original manuscript"
+my-own-ai decide-work --ledger data/intellectual-ledger.json \
+  --id book_2030 --decision approved
+my-own-ai approved-works --ledger data/intellectual-ledger.json
+```
+
+Approved manuscripts can be staged in a fresh **private** local training directory
+and fed into the existing corpus trainer. Registration alone never silently
+changes the model's weights:
+
+```sh
+my-own-ai stage-approved-corpus --ledger data/intellectual-ledger.json \
+  --output corpus/approved-generation-1
+my-own-ai train --corpus corpus/approved-generation-1 \
+  --init-checkpoint data/checkpoints/previous-corpus-brain.pt \
+  --output data/checkpoints/new-corpus-brain.pt --context 512 --steps 200
+```
+
+Every staged source is copied only after its SHA-256 matches the approved record;
+pending or rejected works never enter that corpus. Its manifest preserves
+the origin and approval lineage. A new generation uses a fresh output directory;
+existing corpora are not overwritten automatically. To train on an
+approved *worked reasoning file*, register it as `reasoning`, manually approve
+it, and build a rehearsal dataset containing both the previously learned
+examples and new approved material:
+
+```sh
+my-own-ai prepare-replay \
+  --ledger data/intellectual-ledger.json \
+  --retained data/previous-worked.json \
+  --validation data/stable-validation.json \
+  --work-id approved_reasoning_1 \
+  --output data/rehearsal.json
+```
+
+No previous accepted training example is silently dropped. The old examples
+and approved additions are checked for duplicated IDs, groups and validation
+questions. The output stays local and private.
+
+`train-proposals` can resume interrupted runs from the same output checkpoint,
+preserving **optimizer state, PyTorch RNG, data sampler RNG, cumulative step count,
+data fingerprints and training settings**:
+
+```sh
+my-own-ai train-proposals --checkpoint data/checkpoints/brain.pt \
+  --examples data/rehearsal.json --validation data/stable-validation.json \
+  --output data/checkpoints/candidate.pt --format grounded_supervised_v1 \
+  --steps 100 --checkpoint-every 25
+my-own-ai train-proposals --checkpoint data/checkpoints/candidate.pt \
+  --examples data/rehearsal.json --validation data/stable-validation.json \
+  --output data/checkpoints/candidate.pt --format grounded_supervised_v1 \
+  --steps 200 --checkpoint-every 25 --resume
+```
+
+`--steps` on resume means the **total target step count**, not steps to add.
+Changing the training/validation examples requires a *new training run from the
+previous checkpoint weights*, with a new output file and optimizer; it is not
+permitted to pretend the prior optimizer trajectory is still identical.
+
+Before adopting a candidate, compare it with the previous checkpoint on
+identical old held-out cases and new held-out cases from genuinely unseen
+disciplines. Neither set's answer labels enter the neural model prompt.
+Promotion requires: no loss of **any individually correct old case**, retention
+of previously correct counterfactual families, and strictly improved new-case
+accuracy without reducing new counterfactual-pair results.
+
+```sh
+my-own-ai gate-learning --baseline data/checkpoints/previous.pt \
+  --candidate data/checkpoints/candidate.pt \
+  --old-cases corpus/private/old-heldout.json \
+  --new-cases corpus/private/new-heldout.json \
+  --training-examples data/rehearsal.json \
+  --validation-examples data/stable-validation.json \
+  --report data/learning-comparison.json \
+  --promote-to data/checkpoints/active-approved.pt
+```
+
+The report records immutable input SHA-256 identities and per-suite scores.
+On failure, the previous released checkpoint is left untouched. On pass, the
+candidate is copied into the release destination via a same-directory atomic
+replacement. Success is based on conservative exact-consequence and paired
+metrics, not proof of philosophical correctness.
+
+**Important:** passing software CI demonstrates that the mechanism works.
+The requested success criterion—measured new learning *and* non-regression on
+real old tasks—requires local private training and a passing independent
+`gate-learning` run, not merely a green PR.
+
+The gate also rejects a held-out question or counterfactual family found in the supplied training or validation examples. The evaluated training and validation file digests are recorded in the release report.
+
+
+Completed neural Research investigations can be archived automatically **pending**
+author review without teaching the model its own unverified assertions:
+
+```sh
+my-own-ai infer-neural --checkpoint data/checkpoints/candidate.pt \
+  --judge data/checkpoints/judge.pt --index data/manuscripts.sqlite \
+  --question "How does this new condition alter the relation?" \
+  --ledger data/intellectual-ledger.json \
+  --archive-dir data/reasoning-archive
+```
+
+This stores the model's candidate, exact citation locators and controller status,
+registers the file under a digest, and leaves approval pending. To reuse an
+approved record as training, an author must convert the approved reasoning into
+an independently reviewed worked-example dataset; raw archived JSON isn't
+implicitly a valid supervised example. No archived argument auto-edits weights.
+
+For raw-text generational continuity, `train --init-checkpoint` retains the prior model weights but resets the optimizer and sampling schedule for the changed, approved corpus. It preserves the previous checkpoint and records its SHA-256 in the new checkpoint. Ordinary `--resume` remains restricted to an **unchanged** corpus and a matching training configuration; using `--resume` with `--init-checkpoint` is rejected.

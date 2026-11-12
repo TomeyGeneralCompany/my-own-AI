@@ -11,6 +11,8 @@ from .session import configure_session, demo, load_proposer, session
 from .corpus_eval import evaluate_cases, load_cases
 from .retrieval import CorpusIndex, build_index
 from .proposal_training import train_proposals
+from .intellectual_ledger import register, decide, approved_sources, stage_approved_corpus
+from .cumulative_learning import prepare_replay, gate_and_promote, capture_successful_reasoning
 from .relational_curriculum import prepare_curriculum, evaluate_relational, load_relational_cases, check_relational_splits
 from .grounding import SPAN_FORMAT
 from . import neural_judge
@@ -37,6 +39,7 @@ def main(argv=None):
     t.add_argument("--seed", type=int, default=42)
     t.add_argument("--checkpoint-every", type=int, default=10)
     t.add_argument("--resume", action="store_true")
+    t.add_argument("--init-checkpoint", type=Path, help="Start new corpus generation from previous model weights")
     t.add_argument("--schedule-steps", type=int, default=1000)
     t.add_argument("--warmup-steps", type=int, default=10)
     b = sub.add_parser("benchmark")
@@ -84,6 +87,41 @@ def main(argv=None):
     proposals.add_argument("--threads", type=int, default=4)
     proposals.add_argument("--format", choices=(SUPERVISED_FORMAT, SPAN_FORMAT), default=SUPERVISED_FORMAT)
     proposals.add_argument("--pair-batches", action="store_true", help="Keep both counterfactual variants together in updates")
+    proposals.add_argument("--resume", action="store_true", help="Resume identical data/settings from saved output optimizer state")
+    proposals.add_argument("--checkpoint-every", type=int, default=25)
+    works = sub.add_parser("register-work", help="Register a source in the local intellectual ledger")
+    works.add_argument("--ledger", type=Path, required=True)
+    works.add_argument("--id", required=True)
+    works.add_argument("--kind", choices=["authored_work", "derived_work", "reasoning"], required=True)
+    works.add_argument("--source", type=Path, required=True)
+    works.add_argument("--origin", required=True)
+    works.add_argument("--evidence", action="append", default=[])
+    approval = sub.add_parser("decide-work", help="Owner approves or rejects one pending work")
+    approval.add_argument("--ledger", type=Path, required=True)
+    approval.add_argument("--id", required=True)
+    approval.add_argument("--decision", choices=["approved", "rejected"], required=True)
+    inventory = sub.add_parser("approved-works", help="Verify approved source digests")
+    inventory.add_argument("--ledger", type=Path, required=True)
+    approved_corpus = sub.add_parser("stage-approved-corpus", help="Stage digest-verified approved manuscripts for training")
+    approved_corpus.add_argument("--ledger", type=Path, required=True)
+    approved_corpus.add_argument("--output", type=Path, required=True)
+    replay = sub.add_parser("prepare-replay", help="Keep old worked examples with approved new training")
+    replay.add_argument("--ledger", type=Path, required=True)
+    replay.add_argument("--retained", type=Path, required=True)
+    replay.add_argument("--validation", type=Path, required=True)
+    replay.add_argument("--work-id", action="append", required=True)
+    replay.add_argument("--output", type=Path, required=True)
+    promotion = sub.add_parser("gate-learning", help="Regress both old and unseen domains before promoting")
+    promotion.add_argument("--baseline", type=Path, required=True)
+    promotion.add_argument("--candidate", type=Path, required=True)
+    promotion.add_argument("--old-cases", type=Path, required=True)
+    promotion.add_argument("--new-cases", type=Path, required=True)
+    promotion.add_argument("--training-examples", type=Path, required=True)
+    promotion.add_argument("--validation-examples", type=Path, required=True)
+    promotion.add_argument("--report", type=Path, required=True)
+    promotion.add_argument("--promote-to", type=Path)
+    promotion.add_argument("--threads", type=int, default=4)
+    promotion.add_argument("--tokens", type=int, default=512)
     relational = sub.add_parser("prepare-relational", help="Prepare author-supervised relational training from private cases")
     relational.add_argument("--training", type=Path, required=True)
     relational.add_argument("--validation", type=Path, required=True)
@@ -121,6 +159,8 @@ def main(argv=None):
     inference.add_argument("--seed", type=int, default=42)
     inference.add_argument("--threads", type=int, default=4)
     inference.add_argument("--max-corrections", type=int, default=2)
+    inference.add_argument("--ledger", type=Path)
+    inference.add_argument("--archive-dir", type=Path)
     neural_eval = sub.add_parser("evaluate-neural-inference", help="Evaluate generated conclusions on held-out questions")
     neural_eval.add_argument("--checkpoint", type=Path, required=True)
     neural_eval.add_argument("--judge", type=Path, required=True)
@@ -148,7 +188,7 @@ def main(argv=None):
         cfg = ModelConfig(context_size=a.context, embed_dim=a.embed, heads=a.heads, layers=a.layers)
         print(json.dumps(train(a.corpus, a.output, cfg, a.steps, a.batch, a.lr, a.seed,
                                a.resume, a.checkpoint_every, schedule_steps=a.schedule_steps,
-                               warmup_steps=a.warmup_steps), indent=2))
+                               warmup_steps=a.warmup_steps, init_checkpoint=a.init_checkpoint), indent=2))
     elif a.command == "benchmark":
         print(json.dumps(benchmark(a.checkpoint, a.iterations, generation_tokens=a.tokens), indent=2))
     elif a.command == "generate":
@@ -165,8 +205,28 @@ def main(argv=None):
     elif a.command == "train-proposals":
         report = train_proposals(a.checkpoint, a.examples, a.validation, a.output, held_out=a.held_out,
                                  steps=a.steps, batch_size=a.batch, learning_rate=a.lr, seed=a.seed,
-                                 threads=a.threads, format_name=a.format, pair_batches=a.pair_batches)
+                                 threads=a.threads, format_name=a.format, pair_batches=a.pair_batches,
+                                 resume=a.resume, checkpoint_every=a.checkpoint_every)
         print(json.dumps(report, indent=2))
+    elif a.command == "register-work":
+        print(json.dumps(register(a.ledger, a.id, a.kind, a.source, origin=a.origin,
+                                  evidence=a.evidence), indent=2))
+    elif a.command == "decide-work":
+        print(json.dumps(decide(a.ledger, a.id, a.decision), indent=2))
+    elif a.command == "approved-works":
+        print(json.dumps(approved_sources(a.ledger), indent=2))
+    elif a.command == "stage-approved-corpus":
+        print(json.dumps(stage_approved_corpus(a.ledger, a.output), indent=2))
+    elif a.command == "prepare-replay":
+        print(json.dumps(prepare_replay(a.ledger, a.retained, a.validation, a.output,
+                                        accepted_ids=a.work_id), indent=2))
+    elif a.command == "gate-learning":
+        result = gate_and_promote(a.baseline, a.candidate, a.old_cases, a.new_cases,
+                                  a.report, training_examples=a.training_examples,
+                                  validation_examples=a.validation_examples,
+                                  destination=a.promote_to, threads=a.threads, tokens=a.tokens)
+        print(json.dumps(result, indent=2))
+        return int(not result["promotable"])
     elif a.command == "prepare-relational":
         result = prepare_curriculum(a.training, a.validation, a.held_out, a.output)
         print(json.dumps(result, indent=2))
@@ -196,9 +256,13 @@ def main(argv=None):
     elif a.command == "infer-neural":
         model = load_proposer(a.checkpoint, a.threads, a.tokens).model
         judge = neural_judge.NeuralJudge.load(a.judge, a.threads)
+        if (a.ledger is None) != (a.archive_dir is None):
+            raise ValueError("Provide both --ledger and --archive-dir to archive reasoning")
         result = infer(a.index, model, judge, a.question, limit=a.limit, attempts=a.attempts,
                        tokens=a.tokens, temperature=a.temperature, seed=a.seed,
                        max_corrections=a.max_corrections)
+        if a.ledger is not None and result["status"] == "completed":
+            result["intellectual_record"] = capture_successful_reasoning(a.ledger, a.archive_dir, result)
         print(json.dumps(result, indent=2))
         return int(result["status"] != "completed")
     elif a.command == "evaluate-neural-inference":

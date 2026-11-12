@@ -96,3 +96,31 @@ def test_scheduler_reaches_decay_floor(tmp_path):
     stats = train(folder, ck, CFG, steps=4, batch_size=2,
                   schedule_steps=4, warmup_steps=1)
     assert stats["learning_rate"] == pytest.approx(.0001)
+
+
+def test_new_approved_generation_reuses_previous_weights_and_lineage(tmp_path):
+    first_corpus = corpus(tmp_path)
+    old_checkpoint = tmp_path / "generation1.pt"
+    train(first_corpus, old_checkpoint, CFG, steps=2, batch_size=2, checkpoint_every=1)
+    original_bytes = old_checkpoint.read_bytes()
+    next_corpus = tmp_path / "next"
+    next_corpus.mkdir()
+    for old in first_corpus.glob("*.txt"):
+        (next_corpus / old.name).write_text(old.read_text(encoding="utf-8"), encoding="utf-8")
+    (next_corpus / "new_approved.txt").write_text("A newly approved scientific discovery. " * 20)
+    next_checkpoint = tmp_path / "generation2.pt"
+    report = train(next_corpus, next_checkpoint, CFG, steps=2, batch_size=2,
+                   init_checkpoint=old_checkpoint, checkpoint_every=1)
+    assert report["initialized_from"] == str(old_checkpoint)
+    assert len(report["initialized_from_sha256"]) == 64
+    assert old_checkpoint.read_bytes() == original_bytes
+    restored = train(next_corpus, next_checkpoint, CFG, steps=3, batch_size=2,
+                     resume=True, checkpoint_every=1)
+    assert restored["initialized_from_sha256"] == report["initialized_from_sha256"]
+    with pytest.raises(ValueError, match="preserve its original"):
+        train(next_corpus, old_checkpoint, CFG, steps=1, init_checkpoint=old_checkpoint)
+    with pytest.raises(ValueError, match="Cannot resume"):
+        train(next_corpus, next_checkpoint, CFG, steps=4, resume=True, init_checkpoint=old_checkpoint)
+    other = ModelConfig(context_size=8, embed_dim=32, heads=4, layers=1)
+    with pytest.raises(ValueError, match="configuration differs"):
+        train(next_corpus, tmp_path / "bad.pt", other, steps=1, init_checkpoint=old_checkpoint)

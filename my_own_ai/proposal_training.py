@@ -165,8 +165,15 @@ def counterfactual_batches(rows):
 
 
 def train_proposals(checkpoint, examples, validation, output, *, held_out=None, steps=200,
-                    batch_size=4, learning_rate=.001, seed=42, threads=4, format_name=SUPERVISED_FORMAT, pair_batches=False):
-    sources = [checkpoint, examples, validation] + ([held_out] if held_out else [])
+                    batch_size=4, learning_rate=.001, seed=42, threads=4, format_name=SUPERVISED_FORMAT,
+                    pair_batches=False, resume=False, checkpoint_every=25):
+    sources = [examples, validation] + ([held_out] if held_out else [])
+    if not resume:
+        sources.append(checkpoint)
+    if resume and Path(checkpoint).resolve() != Path(output).resolve():
+        raise ValueError("Resuming proposal training requires the output checkpoint as the input checkpoint")
+    if type(checkpoint_every) is not int or checkpoint_every < 1:
+        raise ValueError("Checkpoint interval must be positive")
     if Path(output).resolve() in {Path(source).resolve() for source in sources}:
         raise ValueError("Proposal training requires a separate output checkpoint")
     if format_name not in (SUPERVISED_FORMAT, SPAN_FORMAT):
@@ -186,10 +193,44 @@ def train_proposals(checkpoint, examples, validation, output, *, held_out=None, 
     sampler = torch.Generator().manual_seed(seed)
     families = counterfactual_batches(train_rows) if pair_batches else None
     optimizer = torch.optim.AdamW(model.parameters(), lr=learning_rate)
+    train_hash = hashlib.sha256(encode_json(train_rows)).hexdigest()
+    valid_hash = hashlib.sha256(encode_json(validation_rows)).hexdigest()
+    start_step = 0
+    if resume:
+        payload = torch.load(checkpoint, map_location="cpu", weights_only=True)
+        if (payload.get("examples_sha256") != train_hash or
+                payload.get("validation_sha256") != valid_hash or
+                payload.get("proposal_format") != format_name or
+                payload.get("batch_size") != batch_size or
+                payload.get("learning_rate") != learning_rate or
+                payload.get("seed") != seed or payload.get("pair_batches") != pair_batches or
+                "optimizer" not in payload or "sampler_rng" not in payload or
+                "torch_rng" not in payload or "completed_steps" not in payload):
+            raise ValueError("Resume requires matching training and validation data, settings and optimizer state")
+        optimizer.load_state_dict(payload["optimizer"])
+        sampler.set_state(payload["sampler_rng"])
+        torch.set_rng_state(payload["torch_rng"])
+        start_step = int(payload["completed_steps"])
+        if steps < start_step:
+            raise ValueError("Target steps precede saved training progress")
     started = perf_counter()
     initial = _measure(model, valid)
     model.train()
-    for _ in range(steps):
+    def save(step, loss):
+        report = {"train_examples": len(train), "validation_examples": len(valid), "steps": step,
+                  "counterfactual_paired_batches": bool(pair_batches),
+                  "initial_validation_loss": initial, "validation_loss": loss,
+                  "seconds": perf_counter() - started, "hardware": hardware_metrics()}
+        _atomic_save({"format_version": 2, "model_config": asdict(model.config),
+                      "state_dict": model.state_dict(), "optimizer": optimizer.state_dict(),
+                      "sampler_rng": sampler.get_state(), "torch_rng": torch.get_rng_state(),
+                      "completed_steps": step, "proposal_format": format_name,
+                      "examples_sha256": train_hash, "validation_sha256": valid_hash,
+                      "batch_size": batch_size, "learning_rate": learning_rate,
+                      "seed": seed, "pair_batches": pair_batches,
+                      "training_report": report}, output)
+        return report
+    for step in range(start_step + 1, steps + 1):
         if families is None:
             indices = torch.randint(len(train), (batch_size,), generator=sampler).tolist()
         else:
@@ -204,15 +245,13 @@ def train_proposals(checkpoint, examples, validation, output, *, held_out=None, 
         loss.backward()
         torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0)
         optimizer.step()
+        if step % checkpoint_every == 0:
+            final = _measure(model, valid)
+            if not math.isfinite(final):
+                raise ValueError("Proposal training produced non-finite validation loss")
+            save(step, final)
+            model.train()
     final = _measure(model, valid)
     if not math.isfinite(final):
         raise ValueError("Proposal training produced non-finite validation loss")
-    report = {"train_examples": len(train), "validation_examples": len(valid), "steps": steps,
-              "counterfactual_paired_batches": bool(pair_batches),
-              "initial_validation_loss": initial, "validation_loss": final,
-              "seconds": perf_counter() - started, "hardware": hardware_metrics()}
-    _atomic_save({"format_version": 1, "model_config": asdict(model.config), "state_dict": model.state_dict(),
-                  "proposal_format": format_name,
-                  "examples_sha256": hashlib.sha256(encode_json(train_rows)).hexdigest(),
-                  "training_report": report}, output)
-    return report
+    return save(steps, final)
