@@ -110,7 +110,7 @@ def test_counterfactual_metric_requires_identical_task_and_changed_evidence():
 
     changed_candidates = [dict(base[0]), dict(base[1])]
     changed_candidates[1]["candidates"] = list(reversed(base[1]["candidates"]))
-    changed_candidates[1]["accepted"] = 0
+    changed_candidates[1]["accepted"] = 1
     assert evaluate_judge(parse_cases(changed_candidates), StubJudge())["counterfactual_total"] == 0
 
     same_evidence = [dict(base[0]), dict(base[1])]
