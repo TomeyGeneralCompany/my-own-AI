@@ -1,0 +1,1251 @@
+ Sola Fide in the Apostolic Fathers
+A Cybernetic Analysis of Source, Reception, and the Causal Order of
+                           Justification
+
+                            August 2026
+                                     SOLA FIDE IN THE APOSTOLIC FATHERS
+
+
+
+Abstract
+The doctrine of sola fide is often treated either as a sixteenth-century slogan or as one item
+within a larger catalogue of Protestant distinctives. This paper argues that it is more
+fundamentally a claim about the causal and operational order of justification. The righteousness
+by which the sinner stands before God originates wholly outside the sinner, is grounded in Jesus
+Christ, and is received through faith; good works arise within the justified person as fruits and
+manifestations of that prior gift, but never enter into its ground. The Apostolic Fathers do not
+supply the full vocabulary of later Reformed dogmatics, yet Clement of Rome, Polycarp of
+Smyrna, the Epistle to Diognetus, the Epistle of Barnabas, and Ignatius of Antioch repeatedly
+preserve this underlying asymmetry between divine source and human reception. Cybernetic
+analysis identifies that asymmetry as an invariant causal architecture. Because cybernetics
+analyzes relations of source, communication, control, reception, feedback, and output across
+materially distinct systems, it can reconstruct the organization of the theological claims without
+reducing their substance to mechanics. A system may receive perturbations, process
+communications, generate responses, and manifest transformed behavior, but it cannot convert
+its own downstream operations into the external source from which its governing condition
+arose. The resulting formal distinction among source, instrument, governing condition, and
+output exposes the precise disagreement between the Reformed doctrine of justification and the
+Tridentine account of cooperation, inherent righteousness, and merit. The argument is formalized
+by distinguishing the ground of justification, the instrument of reception, the renewed state of the
+recipient, and the works produced within that state. The question is not whether grace precedes
+works, nor whether saving faith bears fruit, but whether anything produced within the justified
+person becomes co-causal in the divine judgment by which that person is accepted as righteous.
+Keywords: sola fide; justification; Apostolic Fathers; cybernetics; systems theory; Clement of Rome; Niklas
+Luhmann; Council of Trent
+
+
+
+
+                                                                                                         2
+                                       SOLA FIDE IN THE APOSTOLIC FATHERS
+
+
+
+I. Introduction
+The Christian confession that salvation is accomplished by grace through faith rests upon a
+determinate order: God acts, Christ accomplishes, the gospel announces, faith receives, and the
+justified person thereafter lives and works from a standing that he did not create. Scripture places
+the righteousness of justification outside the sinner, in Jesus Christ, and presents faith not as a
+meritorious achievement but as the means by which Christ and his benefits are received. 1 The
+Reformed confessions therefore describe faith as the “alone instrument” of justification while
+insisting, with equal force, that such faith never remains barren in the person justified. 2 This
+double assertion is not an unstable compromise between grace and moral seriousness. It
+distinguishes two orders that must never be confused: the ground upon which God justifies and
+the life that proceeds from the justified state.
+     That distinction is the subject of this paper. The central claim is that sola fide identifies the
+causal grammar of justification. The ground of the sinner’s acceptance before God is wholly
+external to the sinner, for it consists in the obedience and satisfaction of Christ; faith is receptive
+and instrumental, for it lays hold of a righteousness it does not manufacture; and works are
+consequent, for they arise from the renewed life that justification neither confuses with itself nor
+leaves fruitless. If works, dispositions, infused qualities, or movements of the will are admitted
+into the ground of justification, even as subordinate co-causes enabled by grace, the governing
+asymmetry is altered. The receiver becomes in part the producer of the standing he receives.
+     This claim will be developed by reading the Apostolic Fathers cybernetically, not by placing
+a historical argument beside a separate systems-theoretical argument. Clement of Rome,
+Polycarp of Smyrna, the Epistle to Diognetus, the Epistle of Barnabas, and Ignatius of Antioch
+do not merely provide historical data to which a foreign model is later attached. Their own
+distinctions among divine will, Christ, faith, salvation, obedience, and good works already
+present relations of source and reception, communication and response, condition and output.
+Cybernetics reconstructs and tests those relations as a single causal architecture, preventing them
+from being flattened into an undifferentiated appeal to grace.
+    The analysis therefore moves through the Apostolic-Father texts themselves. When Clement
+excludes deeds performed in holiness of heart from justification while commanding good works,
+the question is how a received condition becomes operative without becoming internally
+grounded. When Polycarp moves from divine grace to rooted faith and consequent obedience,
+the question is how an initiating communication generates continued operations. When
+Diognetus locates the righteousness of the many in the righteous one, the question is how
+
+1
+  See John 3:16-18; Romans 3:21-28; 4:1-8; 5:17-19; 10:9-10; 2 Corinthians 5:21; Galatians 2:16; Ephesians 2:8-10;
+and Philippians 3:8-9.
+2
+  Westminster Confession of Faith 11.1-2; Belgic Confession, arts. 22-24.
+
+
+                                                                                                                3
+                                      SOLA FIDE IN THE APOSTOLIC FATHERS
+
+
+
+participation differs from origination. Barnabas and Ignatius raise the related questions of
+reception and rejection, inclusion and exclusion, regulated conduct and reward. Terms drawn
+from cybernetics and systems theory, particularly from Niklas Luhmann, are woven into each
+reading because they disclose the common causal architecture of the passages.
+     The resulting argument is at once historical and formal. Historically, these early Christian
+texts preserve a pattern consonant with the essential structure later confessed as justification by
+faith alone. Formally, any doctrine that makes an operation produced within the human subject
+contribute to the ground of divine acceptance turns reception into partial production. The
+Tridentine system avoids crude Pelagianism by affirming prevenient grace, yet it still assigns to
+internal renewal, cooperation, and meritorious works a causal role in the acquisition,
+preservation, increase, and final attainment of justifying righteousness. The disagreement
+therefore cannot be settled by observing that both traditions affirm grace, faith, love, and works.
+It concerns the operational relation among them.
+
+II. Scripture, Formal Causality, and Apostolic-Father Exegesis
+Two methodological clarifications are necessary. First, a case from the Apostolic Fathers for sola
+fide need not depend upon the implausible claim that every early Christian author possessed a
+complete Protestant doctrine of justification, expressed it with later precision, or maintained it
+consistently in every passage. Historical theology asks what conceptual distinctions a text makes,
+what causal order its rhetoric presupposes, and how apparently competing statements function
+within the author’s argument. Clement provides the clearest and most sustained witness; the
+other authors show that the same asymmetrical pattern was neither isolated nor unintelligible
+within early Christian discourse.
+     Second, cybernetics is not introduced as a second argument laid beside the Apostolic
+Fathers, nor as a metaphorical substitution for theology. It is the formal mode of analysis by
+which their distinctions are reconstructed and tested. Cybernetics studies organization across
+materially different systems; therefore, identity of causal relation does not require identity of
+substance. A human person need not be a thermostat, compiler, or communications network for
+the same formal distinctions among external source, internal operation, governing condition,
+feedback, and output to remain valid. Luhmann’s distinction between psychic and social systems
+reinforces rather than restricts this method, because it shows that cybernetic analysis types
+systems and operations without confusing their material bearers. 3 The governing relations are
+exact: an operation generated within a system is not identical with an operation originating
+
+
+
+3
+ Niklas Luhmann, Social Systems, trans. John Bednarz Jr. with Dirk Baecker (Stanford, CA: Stanford University
+Press, 1995), 137-139, 255-277.
+
+
+                                                                                                           4
+                                      SOLA FIDE IN THE APOSTOLIC FATHERS
+
+
+
+beyond it; reception is not production; a response to a reference condition does not create that
+condition; and downstream output does not become the source from which it follows.
+
+A. The Scriptural Causal Sequence
+The governing order is first supplied by Scripture, for the Apostolic Fathers are witnesses to the
+reception and continuation of an apostolic gospel rather than independent sources of revelation.
+Romans 3:21-28 places the righteousness of God in relation to Jesus Christ, his blood, and the
+divine act of justifying. Faith receives this righteousness, while boasting is excluded and works
+of the law are denied any place in the sinner’s justification. Romans 4 then makes the causal
+distinction still more severe. The worker receives wages as debt; the one who does not work but
+believes in the God who justifies the ungodly receives righteousness by imputation. David’s
+blessed person is the one to whom God counts righteousness apart from works. 4 The opposition
+is not merely between ceremonial and moral works, nor between graceless works and works
+assisted by grace. Paul opposes a wage relation grounded in the subject’s performance to a gift
+relation grounded in God’s justifying act.
+     Philippians 3:8-9 identifies the content of the contrast. Paul refuses a righteousness of his
+own derived from the law and seeks instead the righteousness that comes through faith in Christ,
+the righteousness from God on the basis of faith. Second Corinthians 5:21 locates that
+righteousness in union with the sinless Christ who was made sin for his people, so that in him
+they become the righteousness of God.5 These texts establish both source and content. The
+righteousness is not an improved moral state offered upward by the renewed subject. It comes
+from God, is found in Christ, and becomes the believer’s standing through a receptive relation to
+him.
+    Ephesians 2:8-10 supplies the temporal and operational sequence in its most compact form.
+Salvation is by grace through faith, not from the recipients and not from works, because it is
+God’s gift. The same recipients are then described as God’s workmanship, created in Christ
+Jesus for good works prepared beforehand for them to walk in. The text excludes works from the
+acquisition of salvation and includes them in the purpose of the new creation. It therefore
+establishes an ordered transition:
+
+
+
+The arrow cannot be reversed without contradicting Paul’s own negation. Works are not absent
+from the system. They are the divinely intended output of the renewed system. What Paul
+
+4
+  Romans 3:21-28; 4:1-8. See especially Romans 4:4-6, where wage, debt, faith, and imputed righteousness are
+placed in direct contrast.
+5
+  Philippians 3:8-9; 2 Corinthians 5:21. See also Romans 5:17-19 for the obedience of the one as the basis upon
+which the many are constituted righteous.
+
+
+                                                                                                             5
+                                         SOLA FIDE IN THE APOSTOLIC FATHERS
+
+
+
+excludes is their migration backward into the source or ground of the salvation from which they
+proceed.
+    James 2 does not overturn this order. James attacks a claimed faith that produces no
+operative allegiance, using Abraham’s offering of Isaac to show that living faith becomes visible
+and reaches maturity through action. Paul asks what grounds the ungodly sinner’s righteous
+standing before God; James asks what vindicates a profession as living rather than dead. The
+same distinction reappears in 1 Clement 30.3 and 32.4. A work may disclose, complete, or
+publicly vindicate the operation of faith without becoming the righteousness on account of which
+God accepts the sinner.6
+
+B. Causal Offices and the Governing Constraint
+Four terms will recur within the Apostolic-Father readings. The source is that from which
+justifying righteousness originates. The ground is that on account of which God declares the
+sinner righteous. The instrument is the means by which the sinner receives and rests upon that
+righteousness. The output is the renewed obedience that follows from the received relation. In
+Reformed theology, God is the source, Christ’s obedience and satisfaction are the ground, faith is
+the instrument, and good works are the output. The Westminster Confession accordingly
+excludes not only works but “faith itself, the act of believing” from the righteousness imputed to
+the sinner.7 These cybernetic terms formally map the relations among grace, imputation, union
+with Christ, sanctification, and perseverance. They make the causal office of each doctrine
+explicit and prevent one office from being verbally transferred into another.
+     The decisive point is that causal offices are typed rather than interchangeable. Faith is
+necessary as instrument without becoming any part of the ground. Works are necessary as
+consequent operations without becoming either ground or instrument. Sanctification is necessary
+as the Spirit’s renewal of those united to Christ without becoming the formal content of the
+justifying verdict. To say that each element is necessary in some respect does not place all of
+them within one undifferentiated causal function. A steering wheel, fuel, engine, destination, and
+driver may all be necessary to a journey, but they are not therefore causes in the same sense.
+     The governing constraint can now be stated precisely. Let denote the obedience and
+satisfaction of Christ, faith as exercised by the subject at time , the subject’s justified standing,
+the subject’s sanctified condition, and the works generated within the renewed life. Let denote
+the ground function of justification and its receptive instrument. The Reformed claim is:
+
+
+
+6
+  James 2:14-26. The distinction concerns causal office rather than the denial that works “complete” faith in James’s
+stated sense.
+7
+  Westminster Confession of Faith 11.1.
+
+
+                                                                                                                   6
+                                      SOLA FIDE IN THE APOSTOLIC FATHERS
+
+
+
+
+and therefore:
+
+
+
+The final derivative does not mean that faith is unnecessary. It means that variation in the
+strength, dignity, or moral quality of the act of believing does not add anything to Christ as the
+ground received. Faith is located in , not in . Weak faith and strong faith receive the same Christ.
+Their subjective stability and fruits may differ, but the righteousness received does not become
+greater or smaller with the vigor of the receiver.
+     Sanctification and works form a genuine recursive order downstream from the verdict:
+
+
+
+
+Works can strengthen habits, serve neighbors, discipline desire, repair scandal, confirm
+profession, and occasion gracious reward. They therefore exercise real causality within the
+Christian life. The constraint is not that works cause nothing. It is that no path runs from or
+back into . This gives the historical inquiry a determinate test: when an Apostolic-Father text
+names faith, grace, works, obedience, reward, or judgment, the question is not whether the term
+is important but which causal office the term occupies.
+
+C. Operational Closure, Communication, and Feedback
+Luhmann’s account of operational closure supplies the first governing relation. A system exists
+by reproducing its own operations and by maintaining the difference between itself and its
+environment. In social systems, communications reproduce communications. 8 Closure, however,
+does not mean isolation. External events can affect a system, but they become operative only as
+the system processes them according to its own structures. 9 This is precisely why an externally
+grounded condition may become internally active without becoming internally produced. The
+point will not be established in abstraction and then applied to Clement. It will appear within
+Clement’s own movement from God’s will, to faith, to righteous activity.
+     Communication and structural coupling supply the second relation. Luhmann treats
+communication as a synthesis of information, utterance, and understanding, with acceptance or
+rejection following as a connected selection. 10 He likewise uses structural coupling to describe
+
+
+
+8
+  Luhmann, Social Systems, 137-139.
+9
+  Ibid., 176-182, 444-447.
+10
+   Ibid., 140-148.
+
+
+                                                                                                  7
+                                   SOLA FIDE IN THE APOSTOLIC FATHERS
+
+
+
+durable dependence without the transfer of one system’s operations into another. 11 These
+relations directly formalize the theological order. God’s verdict possesses its reality
+independently of human understanding, and Christ’s righteousness remains the personal
+righteousness of Christ rather than information manufactured by the recipient. The gospel is
+nevertheless announced, Christ is received through faith, and the received relation becomes
+operative in the believer. Faith is therefore real as an internal act while remaining receptive in
+office and extroverted in object. It embraces Christ with all his merits rather than manufacturing
+a righteousness of its own.12
+     Feedback and reference conditions supply the third relation. A regulator may compare its
+state with a reference, correct deviation, and generate new operations, but the loop does not
+create the reference merely by responding to it. 13 In the same way, obedience, discipline,
+perseverance, and love may regulate and manifest Christian life without becoming the judicial
+ground from which that life proceeds. Works are not inert signs, and they are not optional. They
+are effective operations within the order proper to sanctification, vocation, evidence, and reward.
+The constraint is narrower and more exact: nothing belonging to those outputs may be fed
+backward into the ground of justification.
+    Every Apostolic-Father passage will therefore be read through the same integrated question.
+Where is the source located? What is communicated or bestowed? By what mode is it received?
+What operations follow within the believer or the church? Do those operations manifest and
+continue the given relation, or are they transferred backward into the condition of acceptance?
+This is not a cybernetic chapter followed by an historical chapter. It is a cybernetic reading of the
+causal order asserted by the Apostolic Fathers themselves.
+
+III. Clement of Rome: Source, Reception, and Visible Output
+A. The Corinthian Crisis as a Problem of Causal Order
+The strongest Apostolic-Father evidence for this architecture appears in 1 Clement. The letter
+addresses a concrete ecclesial crisis in Corinth, where rivalry and pride had led to the unjust
+removal of presbyters. Clement’s response is intensely moral. He commands humility, peace,
+obedience, hospitality, discipline, and good works. Any interpretation that turns the epistle into
+an antinomian tract would fail before reaching its central chapters. Yet the very density of
+
+
+
+11
+   Ibid., 210-254.
+12
+   Belgic Confession, art. 22; Westminster Confession of Faith 11.1-2.
+13
+    Norbert Wiener, Cybernetics: Or Control and Communication in the Animal and the Machine, 2nd
+ed. (Cambridge, MA: MIT Press, 1961); W. Ross Ashby, An Introduction to Cybernetics (London: Chapman &
+Hall, 1956).
+
+
+                                                                                                    8
+                                       SOLA FIDE IN THE APOSTOLIC FATHERS
+
+
+
+Clement’s exhortation makes his distinction in chapters 31 through 33 more significant, not less.
+He can demand works without allowing works to become the ground of justification.
+     The Corinthian crisis is already cybernetic in form because it concerns disordered operations
+within an ecclesial communication system. Envy, faction, boasting, and the deposition of
+presbyters are not abstract errors. They are reproduced patterns of communication and action that
+threaten the church’s order. Clement does not correct that disorder by teaching the Corinthians to
+generate a new ground from their own moral resources. He recalls them to a divine source, a
+received calling, and an order they did not institute. His exhortations seek to regulate the
+church’s operations according to that prior reference. The need for such regulation does not
+make the regulated response the source of the church’s standing.
+     Clement begins by asking why Abraham was blessed and answers that he “wrought
+righteousness and truth through faith.”14 He then surveys the gifts and honors given to the
+patriarchs before declaring that they “were glorified and magnified, not through themselves or
+their deeds or righteous actions which they accomplished, but through his will.” 15 The exclusion
+is followed by the most decisive statement: Christians are “not justified through ourselves, or
+through our wisdom or understanding or piety or deeds which we accomplished in holiness of
+heart, but through the faith by which all those since the beginning the Almighty God has
+justified.”16
+     The structure is difficult to evade. Clement excludes the self as source, intellectual
+attainment as source, piety as source, and even deeds performed “in holiness of heart” as source.
+His antithesis is not between wicked works and sufficiently holy works, nor between works done
+without grace and works elevated by grace. The works he excludes are already described in their
+strongest religious form. The positive source is God’s will, and the stated mode is faith.
+Whatever further precision later theology must supply, Clement has drawn a boundary around
+the justificatory ground and placed the subject’s noblest internal operations outside it.
+     Operational closure clarifies the force of the exclusion from within Clement’s own
+sequence. The Corinthians can produce speeches, decisions, factions, acts of humility, acts of
+repentance, and deeds performed in holiness of heart. Those are genuinely their operations. They
+cannot, by reproducing any of them, produce the divine will by which the saints are glorified or
+the righteousness on account of which God justifies. Clement does not deny that righteousness
+becomes operative within the believer. Abraham “wrought righteousness and truth through
+faith,” and the Corinthian church is summoned to the works appropriate to its calling. He denies
+
+14
+   1 Clem. 31.2. Apostolic-Father citations follow Michael W. Holmes, ed. and trans., The Apostolic Fathers: Greek
+Texts and English Translations, 3rd ed. (Grand Rapids, MI: Baker Academic, 2007).
+15
+   1 Clem. 32.3.
+16
+   1 Clem. 32.4.
+
+
+                                                                                                                9
+                                        SOLA FIDE IN THE APOSTOLIC FATHERS
+
+
+
+that those operations produce the standing for which the saints are glorified, magnified, and
+justified. Divine will is source; faith receives; righteous action follows.
+
+B. The Grammar of 1 Clement 32.4
+The Greek syntax of 1 Clement 32.4 makes the cumulative nature of the exclusion unmistakable.
+The sentence begins with a participial clause: dia thelematos autou en Christo Iesou klethentes,
+“having been called through his will in Christ Jesus.” Before Clement names either faith or
+works, he locates the calling in God’s will and in Christ. He then establishes an antithesis by
+means of ou … oude … alla: not through ourselves, nor through our wisdom, understanding,
+piety, or works, but through faith. The preposition dia with the genitive is repeated across both
+sides of the contrast, so Clement is not merely listing bad attitudes and recommending a better
+one. He is distinguishing incompatible channels within a single account of justification.17
+     The sequence is cumulative. Ou di’ heauton excludes the self. Oude dia tes hemeteras
+sophias e syneseos e eusebeias excludes intellectual and religious qualities belonging to the
+subject. E ergon hon kateirgasametha en hosioteti kardias then excludes works actually
+performed “in holiness of heart.” Finally, alla dia tes pisteos supplies the positive term. The
+relative clause does not qualify the excluded works as hypocritical, merely external, or
+performed in open rebellion against grace. Clement chooses language that gives those works
+their strongest conceivable moral description and nevertheless places them on the negative side
+of the antithesis.
+     Two verbal features deepen the contrast. The present passive dikaioumetha, “we are
+justified,” makes the recipients the objects rather than the producers of the justifying act. The
+closing relative clause then names God as the active agent who “justified” all from the
+beginning, using edikaiosen. The grammar therefore moves from divine will, to the calling in
+Christ, to the exclusion of the recipient’s internal resources, to faith, and finally to Almighty God
+as the one who justifies. Clement does not present faith as a rival achievement that succeeds
+where piety and holy works failed. Faith is the receptive means ordered toward the divine agent
+and the Christic location already named.
+     The claim should not be inflated beyond what the syntax bears. The repeated dia does not,
+by itself, furnish a complete scholastic taxonomy of efficient, formal, meritorious, and
+instrumental causes. Nor does Clement explicitly define imputation in the vocabulary of the later
+Reformed confessions. It does, however, establish a severe negative boundary. Whatever
+theological account is built from this sentence must explain why the called Christian’s own
+
+
+17
+  1 Clem. 32.4: dia thelematos autou en Christo Iesou klethentes, ou di’ heauton dikaioumetha, oude dia tes
+hemeteras sophias e syneseos e eusebeias e ergon hon kateirgasametha en hosioteti kardias, alla dia tes pisteos. The
+analysis follows the Greek text printed by Holmes, Apostolic Fathers.
+
+
+                                                                                                                 10
+                                  SOLA FIDE IN THE APOSTOLIC FATHERS
+
+
+
+wisdom, understanding, piety, and deeds performed in holiness of heart stand together on the
+excluded side, while faith alone occupies the positive side of the justificatory contrast.
+     The strongest Roman Catholic counterreading is that Clement excludes only self-originating
+works, perhaps works performed before grace or apart from Christ, while leaving room for works
+produced by infused grace to enter subsequent justification. The participial opening and the
+relative clause resist that limitation. Clement speaks as one of those already “called through his
+will in Christ Jesus,” uses the first-person plural “we,” and describes the works as performed in
+holiness of heart. Nothing in the sentence restricts the exclusion to pagan morality, pre-
+conversion effort, or unaided nature. A later interpreter may introduce a distinction between
+initial and increased justification, but Clement does not. His own distinction is between God’s
+will and faith on one side, and the called subject’s piety and holy deeds on the other.
+     The preceding verse confirms that the contrast is not created by isolating a single slogan. In
+32.3 the patriarchs were glorified and magnified not through themselves, their works, or the
+righteous conduct they performed, but through God’s will. Verse 32.4 applies that same
+architecture to “us.” The movement from the patriarchs to the Christian community establishes
+continuity across the economy of salvation. The divine will is not merely an initial stimulus from
+which a different causal order later emerges. It remains the source across the entire line of those
+whom God has justified from the beginning.
+
+C. Faith as Reception Within Clement’s Order
+Clement’s repeated phrase “through faith” identifies the point at which the external source
+becomes operative within the human subject without becoming a human production. The gospel
+announces what God has done in Christ, and the Spirit-wrought act of faith understands, accepts,
+and relies upon that announcement. In Luhmann’s terms, communication becomes operative
+through understanding, after which acceptance or rejection can occur. This supplies the formal
+structure of reception required by Clement’s grammar. Human understanding does not create the
+divine verdict; it receives or rejects a communication whose source and content remain external
+to the recipient. Faith is therefore the event of reception, not a supplement added to the
+communicated righteousness.
+     Structural coupling sharpens the same relation. A system may remain dependent upon an
+external condition while producing its own internal response to that condition. Network
+authentication instantiates this formal structure with particular clarity: a device presents
+credentials issued by an authority beyond itself. Its act of presentation is real and necessary for
+participation, but it does not issue the credential, define the authority, or validate itself. The
+material difference between a device and a believer does not alter the organizational invariant.
+Clement excludes precisely those forms of self-authorization that religious man is most likely to
+
+
+
+                                                                                                11
+                                   SOLA FIDE IN THE APOSTOLIC FATHERS
+
+
+
+trust: wisdom, understanding, piety, and holy deeds. Faith does not replace those credentials with
+one more internally manufactured credential. It receives the standing God grants.
+     The distinction between sensor and actuator makes the point at the level of causal office. A
+sensor registers a condition, while an actuator effects a change within a system. This distinction
+types operations; it does not identify the human person with a mechanism. Faith is personal trust
+created by the Holy Spirit, and its justificatory office is receptive rather than productive. Works,
+by contrast, are active operations within the renewed life. Clement can therefore attribute
+righteousness and truth to faith, command moral action, and still deny that either faith as an
+internal act or works as internal outputs constitute the righteousness by which God justifies.
+
+D. “Justified by Works, Not by Words”
+The obvious objection comes from 1 Clement 30.3, where believers are urged to join those to
+whom grace is given, “being justified by works and not by words.” 18 A paper that ignored this
+statement would not offer an Apostolic-Father argument but a collection of selected quotations.
+The phrase must be read within both its immediate exhortative setting and Clement’s own later
+exclusion of works from justification.
+    In chapter 30 Clement rebukes boasting, impurity, backbiting, and empty speech. The
+contrast is between verbal profession and visible conduct within the community. Works justify in
+the sense that they demonstrate, vindicate, or display the reality of the believer’s confession
+before others. In chapter 32, by contrast, Clement asks how the saints are glorified and how
+human beings are justified in relation to God. There he excludes works, including holy works,
+from the ground. The difference is not an artificial Protestant rescue. It is demanded by
+Clement’s use of the same vocabulary in distinct rhetorical settings. One passage concerns the
+observable integrity of profession; the other concerns the source of the sinner’s righteous
+standing.
+     Cybernetically, the two uses concern different causal locations. Works in chapter 30 are
+observable outputs within the ecclesial system. They permit the community to distinguish a
+living confession from empty speech because an accepted communication normally continues
+through congruent operations. Justification in chapter 32 concerns the source and ground of the
+relation itself. The output can disclose whether the relation is operative, but it cannot travel
+backward in the causal order and become the source that established the relation. Clement’s
+vocabulary remains consistent once source and manifestation are not collapsed into one category.
+    Modern scholarship has rightly emphasized that 1 Clement 32.4 must be read together with
+33.1-8, where Clement immediately rejects idleness and appeals to God’s own work in creation
+
+
+18
+     1 Clem. 30.3.
+
+
+                                                                                                 12
+                                       SOLA FIDE IN THE APOSTOLIC FATHERS
+
+
+
+as the pattern for human good works.19 That sequence does not weaken the distinction. It
+confirms it. Clement first denies that works justify before God and then asks whether believers
+should therefore abandon good works. His emphatic answer is no. The order is Pauline in form:
+exclusion of works from justification, followed by the necessity of works as the fitting activity of
+those called by God. The good tree bears fruit because it is alive; the fruit does not plant, create,
+or justify the tree.
+    The transition into chapter 33 is logically important. Clement asks whether believers should
+become idle or cease from doing good because justification is through faith rather than holy
+deeds. His answer, me genoito, rejects the inference with the same kind of emphatic denial Paul
+employs in Romans 6. The denial presupposes the distinction it guards. If chapter 32 had merely
+excluded works done before grace while admitting later works into justification, chapter 33
+would not need to answer the charge of idleness in this form. The objection arises precisely
+because Clement has made the exclusion appear absolute. His response is not to qualify the
+exclusion, but to locate good works in the calling and pleasure of God.20
+     Clement’s appeal to creation further strengthens the causal sequence. God rejoices in his
+works; the ordered creation displays his will; human beings, made by him, are therefore to set
+themselves zealously to every good work. Creation does not earn the Creator’s identity, nor does
+the creature’s imitation establish the divine command to which it responds. In the same way,
+Christian works belong to the fitting activity of those created and called by God. Chapter 33
+assigns them necessity, beauty, and purpose while leaving the source of justification where
+chapter 32 placed it.
+
+E. Feedback, Continuation, and Holy Works
+The relation between chapters 30, 32, and 33 can therefore be stated as a relation among source,
+continuation, feedback, and output. God’s will calls and justifies. Faith receives. The believer’s
+life continues through operations consonant with the call, and those operations become visible
+within the ecclesial system as humility, obedience, charity, and peace. Those visible operations
+also feed back into the life of the church by correcting scandal, strengthening communion, and
+displaying the credibility of its confession. Empty speech without such output is exposed as false
+because a claimed relation that never becomes operative is not credible. Yet the diagnostic and
+regulatory value of the output does not convert it into the source.
+
+
+
+19
+   David J. Downs, “Justification, Good Works, and Creation in Clement of Rome’s Appropriation of Romans 5-6,”
+New Testament Studies 59, no. 3 (2013): 415-432; Brian J. Arnold, Justification in the Second Century (Waco, TX:
+Baylor University Press, 2017), 18-35.
+20
+   1 Clem. 33.1-8. Clement’s me genoito in 33.1 answers the inference that justification by faith renders work
+unnecessary; compare Romans 6:1-2.
+
+
+                                                                                                             13
+                                   SOLA FIDE IN THE APOSTOLIC FATHERS
+
+
+
+    The distinction resembles the relation between a reference condition and a feedback loop. A
+controller may compare an actual state with a reference, correct deviation, and stabilize future
+behavior. Its corrective operations are real causes within the regulated process, but they do not
+create the reference merely by responding to it. Clement’s moral exhortation serves that
+regulatory function. It identifies deviation, calls the Corinthians back to the divine order, and
+demands operations consistent with their calling. The exhortation would lose its force if
+Christian conduct were irrelevant. It would lose its gospel if the corrective operations became the
+ground of divine acceptance.
+     Clement’s argument is especially damaging to any account that attempts to preserve an
+exclusive divine ground merely by placing grace before cooperation in time. He does not say that
+works performed before grace fail while works performed after grace enter the ground. He
+excludes deeds accomplished in holiness of heart. In computational terms, the runtime may
+display the structure under which it operates, but runtime activity does not compile the condition
+of its own possibility. This is the same organizational constraint Clement states theologically.
+Holy works execute within the justified life; they do not generate the justification from which
+that life proceeds. The issue is not chronological priority but causal category.
+     Clement’s language of reward in chapters 34 and 35 does not alter that category. The
+faithful are summoned to ordered service, promised the good things prepared for those who wait
+upon God, and warned that disobedience incurs judgment. These declarations make conduct
+eschatologically serious. They do not identify conduct as the righteousness through which God
+justifies. Within the cybernetic analysis, promises and threats operate as governing signals within
+a relation already constituted by divine calling. They direct, correct, and stabilize conduct toward
+the end God appoints. A reward can be genuinely consequent upon an operation without that
+operation becoming the source of the status under which the reward is bestowed.
+
+IV. Convergence and Counterevidence in the Apostolic Fathers
+A. Polycarp: Grace, Divine Will, and Consequent Obedience
+Polycarp of Smyrna reproduces the same order with striking concision. Addressing the
+Philippians, he speaks of the faith that has taken root among them and bears fruit unto Christ,
+then reminds them that “by grace you have been saved, not by works, but the will of God
+through Jesus Christ.”21 The sentence is saturated with external causality. Salvation is by grace,
+not works; it proceeds from God’s will; it comes through Jesus Christ. Faith is already present as
+the rooted relation that bears fruit.
+
+
+
+21
+     Pol. Phil. 1.3.
+
+
+                                                                                                 14
+                                   SOLA FIDE IN THE APOSTOLIC FATHERS
+
+
+
+    Polycarp proceeds immediately to exhortation. Believers must serve God, keep his
+commandments, pursue righteousness, and avoid error. As in Clement, the movement from grace
+to works is neither embarrassment nor contradiction. It is the expected continuation of an
+externally initiated relation. The rooted faith bears fruit because it lives from Christ; the fruit is
+not substituted for the root. Polycarp’s sequence therefore conforms to the same causal
+architecture: grace establishes, faith participates, and obedience follows.
+     This sequence is best understood as initiation followed by recursive continuation. The divine
+will through Christ supplies the originating condition that the believer does not produce. Faith
+marks the living relation to that source. Once established, the relation reproduces conduct
+appropriate to itself through repeated acts of obedience, repentance, endurance, and love. Those
+acts can strengthen habits, correct failures, and shape future action, so they are causal within the
+Christian life. They remain downstream of salvation’s source. The feedback by which fruit
+encourages further fruit does not cause the root from which the whole process lives.
+
+B. The Epistle to Diognetus: Alien Righteousness and the Sweet Exchange
+The Epistle to Diognetus supplies the clearest early statement of the external content of
+justification. Its ninth chapter describes God giving his Son as ransom, “the Holy for the lawless,
+the innocent for the guilty, the righteous for the unrighteous.” 22 The author then asks what could
+cover sin except Christ’s righteousness, and in whom the lawless could be justified except the
+Son of God alone. The culmination is the famous exchange in which the righteousness of the one
+justifies the many lawless.
+     Here the distinction concerns not only the source of salvation but the righteousness by which
+sinners are justified. The many do not generate a collective righteousness and offer it upward.
+Their lawlessness is covered by the righteousness of another. The justifying content is therefore
+exogenous to the sinner and complete in the Son. Faith and trust arise as the fitting response to
+the revelation of God’s kindness, but the response does not produce the exchange. God gives the
+Son; the righteous one supplies the righteousness; the lawless receive the benefit.
+     Cybernetically, the passage establishes an invariant distinction between participation and
+origination. The righteousness of the one becomes determinative for the standing of the many
+without becoming an achievement produced by the many. A one-to-many relation is established
+from the righteous source toward the lawless recipients. Each recipient may thereafter produce
+new operations, confessing, worshiping, obeying, and loving, but none of those operations
+travels backward to become the righteousness of the one.
+    Luhmann’s insistence that systems cannot simply import one another’s operations formally
+prevents a crude account of this exchange. Christ’s historical obedience is not inserted into the
+22
+     Diogn. 9.2-5.
+
+
+                                                                                                   15
+                                       SOLA FIDE IN THE APOSTOLIC FATHERS
+
+
+
+believer as though one sequence of creaturely acts had been physically copied into another
+subject. God unites the believer to Christ and accounts Christ’s righteousness as the ground of
+the verdict. The recipient’s internal transformation is consequently real, but it is not the
+production of the righteousness on account of which he is accepted. Diognetus therefore presents
+an exogenous ground that becomes determinative for the recipient without becoming endogenous
+in origin.
+
+C. Barnabas: Belief, Hope, and Immediate Reception
+The Epistle of Barnabas repeatedly places life and salvation in trust directed toward Christ.
+Those who hear and believe live forever; those who do not set their hope upon him cannot be
+saved.23 In the author’s interpretation of the bronze serpent, the wounded person comes, believes
+that what appears dead can give life, and is saved immediately. 24 The typology is not a systematic
+treatise on justification, but its operational order is plain. Life resides in the divinely appointed
+object; belief does not create that life but receives it.
+    The immediacy of the sequence matters. No accumulation of internal merit is inserted
+between belief and deliverance. The decisive distinction is between hope placed in the given
+means of life and refusal of that means. In cybernetic terms, the difference is not the quantity of
+output generated by the receiver but the presence or absence of a living relation to the source.
+The healed person will thereafter live and act, but the act of healing proceeds from what God has
+appointed, not from the patient’s production of curative power.
+     Barnabas thus makes acceptance and rejection, rather than greater and lesser internal
+production, the operative distinction. A communication can be understood and either received or
+refused. Belief does not create the life offered in Christ any more than rejection destroys Christ
+as its source. The selection determines participation. Once life is received, it produces
+consequences within the recipient, but those consequences remain effects of the accepted
+relation. The immediacy of salvation in the bronze-serpent typology excludes any feedback
+interval in which subsequent conduct could become a co-cause of the initial deliverance.
+
+D. Ignatius: Life in Christ and the Reward of Works
+Ignatius of Antioch also locates life and resurrection in Christ as received by belief. He warns
+that judgment belongs to those who do not believe in the blood of Christ, and he declares that the
+Father will raise those who believe in Christ Jesus, apart from whom there is no true life. 25 Christ
+is the locus of life; belief identifies participation in him. This language again places the decisive
+condition outside the human subject.
+
+23
+   Barn. 8.5; 12.2-4.
+24
+   Barn. 12.7.
+25
+   Ign. Smyrn. 6.1; Ign. Trall. 9.2.
+
+
+                                                                                                  16
+                                           SOLA FIDE IN THE APOSTOLIC FATHERS
+
+
+
+    Ignatius also uses vigorous language concerning obedience, endurance, and reward. To
+Polycarp he compares Christian works to deposits from which a soldier will receive what is due. 26
+Such passages must be allowed their full weight. The early Christian writers did not hesitate to
+describe eschatological reward, the necessity of endurance, or the seriousness of obedience. Yet
+reward does not by itself establish that works constitute the ground of justification. Reformed
+theology likewise confesses that God rewards the good works of believers while denying that
+those works merit justification or eternal life by their intrinsic worth.27
+     The distinction once more concerns orders. Works may be causes with respect to temporal
+consequences, ecclesial effects, growth in holiness, or gracious reward. They may be necessary
+as the appointed path in which the justified walk. They do not therefore become the
+righteousness of Christ, the source of divine favor, or a supplement to the ground of acceptance.
+Ignatius’s military metaphor concerns fidelity within a service already constituted by baptism,
+faith, love, and allegiance to Christ. It does not show the soldier issuing his own commission or
+creating the sovereign whose army he serves.
+     Ignatius therefore adds inclusion and regulated endurance to the integrated analysis. Christ is
+the domain of true life, and faith identifies participation in him. Within that relation, promises of
+reward and warnings of judgment operate as feedback that directs conduct toward the reference
+supplied by Christ’s command. They can change behavior, intensify perseverance, and establish
+real consequences. Yet a feedback mechanism presupposes the order within which its signals
+have meaning. The soldier’s deposits matter because he already serves a sovereign whose
+authority, commission, and promised reward he did not create. Reward belongs to the
+governance of the relation, not to the generation of its source.
+
+E. A Convergent Rather Than Merely Verbal Case
+The force of these witnesses is cumulative because they approach the same structure from
+different directions. Clement supplies the direct exclusion: not through ourselves, piety, or holy
+deeds, but through faith. Polycarp supplies the initiating source: grace and the will of God
+through Jesus Christ, not works. Diognetus supplies the alien content: the righteousness of the
+one justifies the many lawless. Barnabas supplies the receptive event: the wounded person
+believes in the divinely appointed source of life and is immediately saved. Ignatius supplies the
+domain of participation: true life exists in Christ, and those who believe in him are raised.
+     No single sentence must bear the whole dogmatic conclusion. The relations reinforce one
+another. If Clement alone supplied the exclusion, an opponent might ask where the positive
+righteousness is located. Diognetus answers in the righteous one. If Diognetus alone supplied the
+
+26
+     Ign. Pol. 6.2.
+27
+     Belgic Confession, art. 24; Westminster Confession of Faith 16.5-6.
+
+
+                                                                                                  17
+                                   SOLA FIDE IN THE APOSTOLIC FATHERS
+
+
+
+exchange, an opponent might ask how the recipient participates. Clement, Polycarp, Barnabas,
+and Ignatius answer with faith, belief, and hope directed toward Christ. If the texts spoke only of
+faith, an opponent might argue that obedience was absent from their Christianity. Their relentless
+commands, warnings, and promises of reward remove that possibility. The very presence of
+vigorous moral exhortation makes the maintained exclusion of works from the justifying source
+more, rather than less, significant.
+    Formally, the convergent pattern can be stated as follows. Across the positive witnesses, the
+source variable is divine, the justifying content is Christic, the receptive relation is faith, and
+moral operations occur within the recipient after or within that established relation:
+
+
+
+The texts vary in vocabulary and emphasis, but none of the passages examined places the
+recipient’s obedient output into the gift that faith receives. That shared omission would prove
+little if the authors never discussed works. They discuss works constantly. What matters is that,
+when they identify the source of salvation or justification, they distinguish it from those works.
+
+F. Difficult Apostolic-Father Countertexts
+A serious argument from the Apostolic Fathers must also acknowledge passages that resist easy
+assimilation to sola fide. The collection is not a single treatise, its authors do not share a later
+technical vocabulary, and its paraenetic texts sometimes assign striking remedial or
+eschatological force to human action. The Didache commands the believer who possesses goods
+to give through his hands “a ransom” for sins, and it warns that the whole time of one’s faith will
+not profit unless one is perfected at the end. 28 Second Clement declares almsgiving good as
+repentance from sin, says that almsgiving lifts the burden of sin, and describes the returning
+Christ as rendering to each person according to his works.29 These are not trivial phrases, and
+suppressing them would produce an apologetic catalogue rather than an historical argument.
+     The Didache nevertheless does not offer a causal definition of justification parallel to 1
+Clement 32.4. Its ransom language occurs inside the Two Ways catechesis as an urgent
+command to generosity, while its eucharistic prayers thank God for faith, immortality, and
+eternal life freely made known and given through Jesus. Its final warning concerns perseverance
+under eschatological deception. The text therefore establishes that faith which does not endure is
+unprofitable and that almsgiving has real penitential significance. It does not identify almsgiving
+as the righteousness on account of which God justifies the ungodly. Cybernetically, the warning
+tests whether the received relation continues under pressure; it does not specify that the
+operations produced under pressure constitute the external source of the relation.
+
+28
+     Did. 4.6; 10.2-3; 16.2.
+29
+     2 Clem. 16.4; 17.4.
+
+
+                                                                                                 18
+                                      SOLA FIDE IN THE APOSTOLIC FATHERS
+
+
+
+     Second Clement presents the harder case. Its almsgiving language may denote more than
+evidence, for the sermon gives merciful action a genuinely penitential and burden-lifting
+function. The most responsible conclusion is not to pretend that the sentence speaks Reformed
+dogmatics. It is to delimit what follows from it. Repentance, temporal discipline, ecclesial
+restoration, final vindication, and the ground of justification are not identical causal offices
+merely because a text connects all of them with salvation. The sermon does not analyze those
+offices with Clement’s precision. Its language therefore prevents a claim of uniform
+terminological consensus across the entire collection, but it cannot erase the explicit exclusions
+found in 1 Clement or the external righteousness found in Diognetus.30
+     This counterevidence narrows and hardens the thesis. The argument is not that every work
+gathered under the modern title Apostolic Fathers teaches a complete and verbally uniform
+doctrine of sola fide. The argument is that the causal architecture essential to sola fide is
+demonstrably present in several of the earliest post-apostolic witnesses, most explicitly in
+Clement, and that it can coexist with strenuous commands, penitential discipline, perseverance,
+final judgment, and reward. Roman claims that the Reformation invented the architecture must
+therefore answer the positive texts rather than merely pointing to the moral earnestness of the
+collection as though moral earnestness itself settled the causal question.
+
+V. Trent and Causal Reentry
+A. The Strongest Roman Catholic Form of the Argument
+The Roman Catholic doctrine defined at Trent should not be caricatured as the crude proposition
+that unaided human works purchase salvation from an otherwise unwilling God. Trent condemns
+the claim that fallen man can be justified by works without grace, affirms the necessity of
+prevenient divine action, and teaches that even meritorious works are performed in Christ
+through the assistance of the Holy Spirit. 31 The modern Catechism of the Catholic Church
+similarly declares that divine initiative precedes, prepares, and elicits the human response, and
+that all human merit is itself due to God. 32 These qualifications are real. They establish that the
+disagreement is not between grace and the total absence of grace.
+     The disagreement begins when the response elicited by grace is assigned a causal role within
+justification itself. Trent anathematizes the denial that the will, moved by God, cooperates in
+preparing and disposing itself for justification. It rejects justification by faith alone when that
+
+
+30
+   David J. Downs, “Almsgiving and Competing Soteriologies in Second-Century Christianity,” Religions 9, no. 7
+(2018): article 201, https://doi.org/10.3390/rel9070201.
+31
+   Council of Trent, Session 6, canons 1-4.
+32
+   Catechism of the Catholic Church, 2nd ed. (Vatican City: Libreria Editrice Vaticana, 1997), nos. 2008-2011,
+2022-2027.
+
+
+                                                                                                           19
+                                         SOLA FIDE IN THE APOSTOLIC FATHERS
+
+
+
+phrase excludes such cooperation. It rejects the sole imputation of Christ’s righteousness apart
+from inherent grace and charity. It further declares that good works preserve and increase
+received justification and that the justified person, through works performed in grace, truly
+merits increase of grace and eternal life.33
+     The Catechism states the same architecture in contemporary language. No one merits the
+initial grace of conversion, but the person moved by the Holy Spirit and charity may thereafter
+merit graces needed for sanctification, the increase of grace and charity, and the attainment of
+eternal life.34 Grace receives temporal and causal priority, yet internal operations subsequently
+enter the structure by which the person’s righteous condition is increased and eternal life
+attained.
+     Trent’s own causal taxonomy makes the point more exact than the general word
+“cooperation” can. Session 6, chapter 7 assigns justification a final cause, an efficient cause, a
+meritorious cause, an instrumental cause, and a formal cause. God’s glory and eternal life are the
+final cause; the merciful God is the efficient cause; Christ’s passion is the meritorious cause;
+baptism is the instrumental cause; and the “sole formal cause” is the justice by which God makes
+the recipient inherently just, received according to each person’s disposition and cooperation. 35
+The Reformed objection therefore does not need to deny Trent’s explicit assignment of
+meritorious causality to Christ. It asks whether Christ’s merit remains the entire righteousness of
+the verdict when the formal constitution of the justified person is identified with an inherent state
+distributed according to personal disposition and cooperation.
+     This distinction prevents an equivocation over the word “ground.” Roman Catholic theology
+may reserve “meritorious cause” for Christ and therefore reject the charge that human works
+merit initial justification. The cybernetic objection is broader and more exact. If the subject’s
+internal righteous state is the formal cause of justification, if works increase that state, and if
+those works truly merit the attainment of eternal life, then internal state and output enter the total
+causal architecture of acceptance even though Christ remains its antecedent meritorious cause.
+Exclusive Christic merit at one causal location does not establish exclusive externality across the
+whole function.
+     Read cybernetically, the issue is not whether the first impulse comes from outside the human
+subject. Trent clearly says that it does. The issue is whether operations produced within the
+renewed subject later reenter the justificatory relation as conditions of its preservation, increase,
+or final success. A system can be externally initiated and still become co-productive if its outputs
+
+
+33
+   Council of Trent, Session 6, canons 4, 9, 11, 24, and 32.
+34
+   Catechism of the Catholic Church, nos. 2010, 2025-2027.
+35
+   Council of Trent, Session 6, chaps. 7 and 10; canons 11, 24, and 32.
+
+
+                                                                                                   20
+                                   SOLA FIDE IN THE APOSTOLIC FATHERS
+
+
+
+are fed back into the condition that determines acceptance. Prevenient grace establishes temporal
+priority. It does not by itself establish exclusive grounding.
+
+B. Prevenient Grace and the Reentry of Output
+From the standpoint of the governing constraint, the appeal to prevenient grace does not resolve
+the dispute. An externally supplied initial condition can enable a system to generate operations
+that later feed back into the maintenance or alteration of that condition. If those operations
+become co-causes of the standing itself, the system is no longer merely receiving and
+manifesting what was given. It participates in producing the condition under which it will finally
+be accepted.
+     This is the precise point at which the Tridentine and Reformed architectures diverge. In the
+Reformed order, sanctification and works necessarily follow justification and may affect
+countless relations within the Christian life, but the forensic ground remains fixed in Christ. In
+the Tridentine order, inherent righteousness and works performed in grace belong to the increase
+and final possession of justifying righteousness. The believer’s internal state becomes materially
+relevant to the verdict. The output is fed backward into the ground.
+      To call such operations “grace-enabled” does not restore the lost distinction. A cause does
+not cease to be causal because a prior cause enabled it. If God enables the will to cooperate and
+then treats that cooperation as a constituent factor in justification, the human operation remains a
+co-cause, however subordinate and derivative. The controversy is not over whether God is the
+first cause of salvation in some general sense. It is whether Christ remains the entire meritorious
+ground of the specific judgment called justification.
+     The two structures can be compared without reducing either theology to one undifferentiated
+variable. Let denote inherent righteousness, works performed in grace, and the attainment of
+eternal life. Trent’s chapters 7 and 10 and canons 24 and 32 yield the following relations:
+
+
+
+
+where is the meritorious cause, the formally constitutive righteous state, and the divine grace
+enabling the renewed operation. Christ remains the meritorious cause, but the inherent condition
+changes through works, and those works truly merit the attainment of eternal life. The system is
+therefore not represented fairly by the crude formula “man saves himself.” It is represented by a
+grace-initiated order in which the internally renewed subject becomes causally active in the
+increase and final attainment of the justified state.
+
+
+
+                                                                                                 21
+                                           SOLA FIDE IN THE APOSTOLIC FATHERS
+
+
+
+     The decisive test is counterfactual. Hold Christ’s merit and the antecedent gift of grace
+constant, then vary the subject’s subsequent works. Under canon 24, the degree of received
+justice differs because works preserve and increase it. Under canon 32, the attainment of eternal
+life differs because grace-enabled works truly merit it, provided the person dies in grace. Thus:
+
+
+
+In the Reformed architecture, the same variation can alter sanctification, assurance, ecclesial
+credibility, temporal consequence, and reward, but it cannot alter the justifying ground:
+
+
+
+This comparison states the dispute without hiding behind shared vocabulary. Both systems speak
+of grace, Christ, faith, renewal, works, and eternal life. They assign those terms to different
+causal offices. Clement’s exclusion of deeds performed in holiness of heart aligns with the
+second equation, because variation in holy output cannot enter the ground. Trent’s canons
+require the first inequality, because variation in grace-enabled output changes the increase and
+final attainment of the justified state.
+
+C. Merit as Feedback into the Ground
+The contrast becomes sharpest in Trent’s canons 24 and 32. Canon 24 denies that good works are
+merely fruits and signs of justification and insists that they preserve and increase it. Canon 32
+teaches that the justified truly merit eternal life through works performed by grace in Christ. 36
+Those propositions cross the boundary maintained by Clement’s exclusion of deeds performed in
+holiness of heart. Clement’s holy deeds remain outside the ground of justification; Trent’s grace-
+enabled works enter into the increase and final attainment of the justified state.
+     The Reformed response does not deny that works are more than inert signs. They are real
+acts of obedience produced by the Holy Spirit, and they genuinely serve God and neighbor. Nor
+does it deny reward. It denies that the value and causality of works extend into the ground of
+justification or establish a meritorious title to eternal life. The Belgic Confession captures the
+distinction by affirming that God rewards good works because grace crowns his own gifts, while
+insisting that believers do not found their salvation upon them.37
+     Cybernetic language exposes why the difference cannot be dissolved by a verbal agreement
+that “everything is grace.” If the same term includes both the external act by which God accepts
+the ungodly and an internal quality by which the renewed person becomes worthy of further
+grace and final life, then the decisive question remains unanswered. What operation grounds the
+verdict? Where is that operation produced? Does the receiver’s output modify the condition of
+
+36
+     Council of Trent, Session 6, canons 24 and 32.
+37
+     Belgic Confession, art. 24.
+
+
+                                                                                               22
+                                   SOLA FIDE IN THE APOSTOLIC FATHERS
+
+
+
+acceptance? Sola fide answers by refusing every transfer of internal output into the external
+ground.
+
+VI. Objections and Replies
+A. Does Cybernetic Analysis Reduce Persons to Machines?
+The first objection is that the systems-theoretical analysis reduces salvation to engineering and
+the human person to a machine. The objection commits a category error by confusing
+organizational identity with material identity. Cybernetics does not require two systems to
+possess the same substance before their causal relations can be formally compared. Logic applies
+to stones, angels, contracts, and propositions without declaring them materially identical;
+likewise, cybernetics can identify the same relation between source and receiver, or between
+governing condition and regulated response, wherever that relation occurs. Personal agency,
+divine freedom, and spiritual communion determine the nature of the operations involved. They
+do not abolish their causal order.
+    The theological realities specify the concrete operations being analyzed. God freely creates
+and sustains both person and relation; Christ’s righteousness is personally and covenantally his;
+the Spirit regenerates a responsible human being. Cybernetics then determines how those
+operations are organized: which operation originates beyond the recipient, which is received,
+which is internally produced, which functions as feedback, and which supplies the governing
+condition. Its formal authority is precisely the capacity to expose a transfer of causal office,
+especially when an effect is moved into the place of its cause or an internally generated output is
+made constitutive of the external ground.
+
+B. If Faith Is an Internal Operation, Why Is It Not a Work?
+The second objection argues that faith, since it occurs within the believer, must itself violate the
+governing constraint. The answer requires the established distinction between instrument and
+ground. Faith is internal as an act of the renewed person, but external in its object and non-
+meritorious in its office. It does not constitute the righteousness imputed, and it does not
+persuade God to regard an otherwise incomplete Christ as sufficient. It receives and rests upon
+Christ precisely by renouncing every claim grounded in itself.
+     Moreover, Reformed theology does not treat faith as an autonomous operation produced
+from the resources of fallen nature. Faith is the gift of God, wrought by the Holy Spirit through
+the Word. The cybernetic account therefore includes divine agency at the level of the receiver
+itself. God not only provides the external ground but creates the receptive capacity. Monergism
+does not eliminate the believer’s act of faith; it explains why that act can be real without
+becoming self-originating merit.
+
+
+                                                                                                 23
+                                   SOLA FIDE IN THE APOSTOLIC FATHERS
+
+
+
+     The distinction can be tested by substitution. If the act of believing were the righteousness
+upon which God justified, then stronger faith would supply a stronger ground and imperfect faith
+would imply an imperfect Christ. The confessional doctrine denies the inference. Weak faith and
+strong faith lay hold of the same complete Savior. Their subjective effects differ, especially in
+assurance and stability, but the ground they receive does not vary with their internal intensity.
+
+C. Do Apostolic-Father Commands and Reward Passages Defeat Sola Fide?
+The third objection appeals to the abundance of Apostolic-Father exhortations, warnings,
+conditional statements, and promises of reward. These texts defeat only a doctrine that equates
+sola fide with moral indifference. The Reformed claim has never been that works are
+unnecessary in every sense. It is that they are unnecessary and inadmissible as the ground or
+instrument of justification. They remain necessary as fruit, vocation, obedience, evidence, and
+the ordained path of the regenerate life.
+    This is why Clement can deny justification through holy works and immediately command
+every good work. It is why Polycarp can say salvation is by grace rather than works and proceed
+to demand obedience. It is why Ignatius can locate true life in Christ received by belief while
+promising reward for faithful labor. The apparent contradiction arises only when every statement
+about salvation, reward, holiness, and final judgment is compressed into a single undifferentiated
+causal category.
+
+D. Is the Argument Anachronistic?
+The fourth objection is historical. The Apostolic Fathers did not confront Trent, distinguish
+imputed from infused righteousness with later precision, or formulate sola fide as the Reformers
+did. Therefore, it may be argued, their texts cannot support the doctrine.
+     The premise is true and the conclusion does not follow. A later doctrine may render explicit
+a distinction already operative in earlier texts. The doctrine of the Trinity employs terminology
+whose conciliar precision developed through controversy, yet that development does not prevent
+earlier texts from bearing genuine trinitarian structures. Likewise, a first-century author need not
+anticipate every scholastic category in order to distinguish divine source from human work,
+Christ’s righteousness from human lawlessness, and faith from deeds performed in holiness of
+heart.
+     The argument of this paper is deliberately structural. It does not claim that the Apostolic
+Fathers were confessional Protestants born fifteen centuries early. It claims that several of the
+earliest post-apostolic texts preserve the causal asymmetry that the Reformation later defended
+against a system in which internal righteousness and grace-enabled works entered the
+
+
+
+
+                                                                                                 24
+                                  SOLA FIDE IN THE APOSTOLIC FATHERS
+
+
+
+justificatory ground. That narrower claim is historically defensible and theologically
+consequential.
+
+E. Does Clement Exclude Only Works Performed Before Grace?
+The fifth objection supplies the most direct Roman answer to 1 Clement 32.4. Clement may be
+excluding only works arising from unaided nature or works performed before the divine calling.
+If so, the passage would remain compatible with the Tridentine claim that no one merits initial
+justification, while leaving grace-enabled cooperation, inherent righteousness, and subsequent
+merit untouched.
+     The wording does not support the proposed restriction. Clement’s subject is “we” who have
+been called through God’s will in Christ Jesus. The excluded list includes piety and deeds
+actually performed in holiness of heart. The text does not say “works before grace,” “works of
+nature,” or “works apart from Christ.” Nor does it move from an initial stage in which faith alone
+receives justification to a later stage in which holy works preserve and increase it. Instead, it
+extends the same divine pattern from the patriarchs to Christians and attributes God’s
+justification of all from the beginning to faith.
+     The counterreading remains possible only by importing a later initial-versus-increased
+distinction into the sentence. That may show how Clement can be accommodated to Trent, but
+accommodation is not derivation. The historical question is which architecture Clement’s own
+antithesis naturally supplies. Its explicit terms locate divine will, Christ, faith, and God’s
+justifying act on the positive side, while placing the called subject’s wisdom, understanding,
+piety, and holy works on the negative side. That architecture is closer to the Reformed exclusion
+than to Trent’s formal and progressive account of inherent justice.
+
+F. Does Grace-Enabled Causality Cease to Be Human Causality?
+The sixth objection argues that because every meritorious work is elicited and sustained by
+grace, no human contribution competes with God. The objection is correct if “competition”
+means an independent natural power acting without divine assistance. It fails if the question is
+whether an internal human operation enters the causal function at all. A secondary cause does not
+cease to be a cause because a primary cause enables it. Trent itself insists that the works are not
+only God’s gifts but also the genuine merits of the justified person.
+     The formal test avoids a dispute over rhetoric. If, with divine grace and Christ’s merit held
+constant, a variation in the subject’s works changes the increase of justice or the merited
+attainment of eternal life, then those works possess causal relevance to that outcome. Calling
+them gifts of grace explains how the operations become possible. It does not relocate them
+outside the subject or convert them into Christ’s historical obedience. The whole point of the
+
+
+
+                                                                                                25
+                                    SOLA FIDE IN THE APOSTOLIC FATHERS
+
+
+
+Tridentine doctrine is that the renewed person truly cooperates and truly merits. The Reformed
+objection takes that claim seriously.
+     Consequently, the issue cannot be resolved by saying that God crowns his own gifts.
+Reformed theology can use the same Augustinian language for gracious reward while denying
+merit as a title to justification or eternal life. The disputed question remains the office assigned to
+the crowned work. If it is rewarded within the order of a salvation wholly grounded in Christ, the
+source-output distinction remains intact. If it preserves or increases justifying righteousness or
+merits the attainment of eternal life, output has entered the acceptance function.
+
+G. Does Counterevidence Elsewhere in the Collection Defeat the Thesis?
+The final objection appeals to the Didache, Second Clement, and other morally severe writings in
+the collection. Their language of ransom, repentance, perseverance, almsgiving, and judgment
+according to works can sound closer to later penitential theology than to a Reformed confession.
+This evidence defeats a claim of uniform dogmatic precision across the Apostolic Fathers. The
+present argument does not require that claim.
+     Historical presence and historical unanimity are different propositions. To refute the
+assertion that sola fide is a sheer sixteenth-century invention, one need not prove that every post-
+apostolic author articulated it consistently. One must demonstrate that its constitutive causal
+distinction appears in genuinely early witnesses and explain those witnesses without evacuating
+their language. Clement’s explicit exclusion, Polycarp’s grace-not-works formula, and
+Diognetus’s righteousness of the one cannot be cancelled merely because another early sermon
+speaks imprecisely or differently about almsgiving.
+     The countertexts also clarify what the positive case can and cannot establish. They show that
+the collection contains diverse paraenetic idioms and that later theological development cannot
+be reconstructed as a straight line from a unanimous first-century formula. They do not show that
+Clement meant the opposite of what his cumulative antithesis says. The proper conclusion is
+therefore neither universal consensus nor historical absence, but the demonstrable early presence
+of the architecture later defended as sola fide.
+
+VII. Conclusion
+The doctrine of sola fide is not exhausted by the statement that faith is important, that grace
+comes first, or that Christ makes salvation possible. It protects a definite order in which the
+righteousness of justification originates outside the sinner, is complete in Christ, and is received
+through a faith that contributes nothing to its ground. Good works follow with necessity because
+the faith that receives Christ is living and the Spirit who grants it renews the person. Yet no
+
+
+
+
+                                                                                                    26
+                                   SOLA FIDE IN THE APOSTOLIC FATHERS
+
+
+
+vigor, holiness, or necessity belonging to those works permits them to migrate backward into the
+basis of the divine verdict.
+     The Apostolic-Father evidence considered here does not merely furnish isolated phrases that
+resemble Protestant slogans. Clement of Rome supplies the controlling distinction by excluding
+the self, wisdom, understanding, piety, and deeds performed in holiness of heart from
+justification, then ordering believers toward vigorous good works. Polycarp assigns salvation to
+grace and divine will through Christ while describing faith as a root that bears fruit. The Epistle
+to Diognetus locates justifying righteousness in the righteous one whose righteousness covers the
+lawless. Barnabas places life in the divinely appointed object of faith, and Ignatius places true
+life in Christ while treating works as the faithful operations of those already enlisted in his
+service.
+     Read cybernetically, these Apostolic-Father claims disclose a single causal order rather than
+a collection of isolated Protestant-sounding phrases. Clement distinguishes source, reception, and
+visible output. Polycarp shows externally initiated life continuing through recursive obedience.
+Diognetus distinguishes participation in another’s righteousness from origination of one’s own.
+Barnabas frames salvation through acceptance rather than internal production, while Ignatius
+locates reward and endurance within a relation already constituted in Christ. Across the texts, an
+externally grounded condition becomes internally operative without becoming internally
+produced; reception generates response without producing the received object; feedback
+regulates conduct without creating its reference; and output evidences and continues a relation
+without becoming its source. Cybernetics formally reconstructs this order, renders its causal
+offices explicit, and subjects competing theological accounts to the same counterfactual test.
+Once source, ground, reception, state, feedback, and output are distinguished, the Apostolic-
+Father order and the Tridentine order cannot be treated as verbal variations within one
+architecture. They assign internal operation to incompatible causal offices.
+      Trent affirms grace, rejects unaided human merit, and assigns divine initiative to the
+beginning of salvation. Nevertheless, by making cooperation necessary to preparation for
+justification, inherent charity part of justifying righteousness, and grace-enabled works causes of
+its increase and the merit of eternal life, it crosses the boundary that sola fide exists to preserve.
+The difference is not whether grace assists human action. It is whether human action, however
+assisted, becomes part of the reason for which God accepts the sinner as righteous.
+     The formal result is therefore direct. In the Apostolic-Father architecture developed from
+Clement and the convergent witnesses, variation in the recipient’s internal holiness or works
+does not vary the ground of justification, because that ground remains Christ. In Trent, variation
+in grace-enabled works varies the increase of inherent justice and the merited attainment of
+eternal life. The systems are not distinguished merely by terminology or by different emphases
+
+
+                                                                                                   27
+                                  SOLA FIDE IN THE APOSTOLIC FATHERS
+
+
+
+within one shared causal order. They differ over whether output generated within the renewed
+subject enters the constitutive and final function of justification.
+     The Christian answer must remain as uncompromising as the order of the gospel itself. God
+is the source. Christ is the righteousness. Faith receives. Works follow. To reverse that order at
+any point is not to complete grace, but to relocate its ground.
+
+
+
+
+                                                                                               28
+                                 SOLA FIDE IN THE APOSTOLIC FATHERS
+
+
+
+Bibliography
+Arnold, Brian J. Justification in the Second Century. Waco, TX: Baylor University Press, 2017.
+Ashby, W. Ross. An Introduction to Cybernetics. London: Chapman & Hall, 1956.
+Belgic Confession. Articles 22-24.
+Catholic Church. Catechism of the Catholic Church. 2nd ed. Vatican City: Libreria Editrice
+    Vaticana, 1997.
+Clement of Rome. First Clement. In The Apostolic Fathers: Greek Texts and English
+    Translations, edited and translated by Michael W. Holmes, 3rd ed., 44-131. Grand Rapids,
+    MI: Baker Academic, 2007.
+Council of Trent. “Decree on Justification.” Session 6. In Decrees of the Ecumenical Councils,
+   edited by Norman P. Tanner, vol. 2, 671-681. Washington, DC: Georgetown University
+   Press, 1990.
+Downs, David J. “Justification, Good Works, and Creation in Clement of Rome’s Appropriation
+   of Romans 5-6.” New Testament Studies 59, no. 3 (2013): 415-432.
+Downs, David J. “Almsgiving and Competing Soteriologies in Second-Century Christianity.”
+   Religions 9, no. 7 (2018): article 201. https://doi.org/10.3390/rel9070201.
+Ignatius of Antioch. The Letters of Ignatius. In The Apostolic Fathers: Greek Texts and English
+    Translations, edited and translated by Michael W. Holmes, 3rd ed., 182-271. Grand Rapids,
+    MI: Baker Academic, 2007.
+Luhmann, Niklas. Social Systems. Translated by John Bednarz Jr. with Dirk Baecker. Stanford,
+   CA: Stanford University Press, 1995.
+Polycarp of Smyrna. The Letter of Polycarp to the Philippians. In The Apostolic Fathers: Greek
+    Texts and English Translations, edited and translated by Michael W. Holmes, 3rd ed., 280-
+    297. Grand Rapids, MI: Baker Academic, 2007.
+Second Clement. In The Apostolic Fathers: Greek Texts and English Translations, edited and
+    translated by Michael W. Holmes, 3rd ed., 138-165. Grand Rapids, MI: Baker Academic,
+    2007.
+The Didache. In The Apostolic Fathers: Greek Texts and English Translations, edited and
+    translated by Michael W. Holmes, 3rd ed., 344-369. Grand Rapids, MI: Baker Academic,
+    2007.
+The Epistle of Barnabas. In The Apostolic Fathers: Greek Texts and English Translations, edited
+    and translated by Michael W. Holmes, 3rd ed., 380-441. Grand Rapids, MI: Baker
+    Academic, 2007.
+The Epistle to Diognetus. In The Apostolic Fathers: Greek Texts and English Translations,
+    edited and translated by Michael W. Holmes, 3rd ed., 694-719. Grand Rapids, MI: Baker
+    Academic, 2007.
+Westminster Confession of Faith. Chapter 11, “Of Justification.”
+Wiener, Norbert. Cybernetics: Or Control and Communication in the Animal and the Machine.
+   2nd ed. Cambridge, MA: MIT Press, 1961.
+
+
+
+                                                                                                 29

@@ -7,6 +7,7 @@ import shutil
 
 from .book_language import _sections
 from .numbered_paragraphs import numbered_paragraphs, paragraph_ledger
+from .structured_books import structured_units
 from .language_corpus import near_duplicate
 
 
@@ -28,33 +29,78 @@ def validate_published_manifest(repository_root, manifest_path):
         if not isinstance(row, dict) or not row.get("approved_for_training"):
             raise ValueError("Every corpus entry must be explicitly approved")
         ident = row.get("id")
-        relative = row.get("path")
         expected = row.get("sha256")
-        if not isinstance(ident, str) or not re.fullmatch(r"[A-Za-z0-9_-]{1,80}", ident):
-            raise ValueError("Invalid published work identifier")
         if ident in ids:
             raise ValueError("Duplicate publication ID")
         ids.add(ident)
-        if not isinstance(relative, str) or not relative.startswith("published_books/"):
-            raise ValueError("Published sources must be inside published_books/")
-        path = (root / relative).resolve()
-        if not path.is_relative_to(root / "published_books") or path.suffix.lower() != ".txt":
-            raise ValueError("Invalid or escaping publication path")
-        if not isinstance(expected, str) or not re.fullmatch(r"[a-f0-9]{64}", expected):
-            raise ValueError("Missing pinned SHA-256 for published source")
-        if not path.is_file() or _digest(path) != expected:
-            raise ValueError("Published source hash differs from approved edition")
-        txt = path.read_text(encoding="utf-8")
+        shard_rows = row.get("parts")
+        if shard_rows is None:
+            shard_rows = [{"path": row.get("path"), "sha256": expected}]
+        if not isinstance(shard_rows, list) or not shard_rows:
+            raise ValueError("Publication requires nonempty source parts")
+        recovered = []
+        paths = []
+        for part in shard_rows:
+            if not isinstance(part, dict):
+                raise ValueError("Invalid source part")
+            relative, part_hash = part.get("path"), part.get("sha256")
+            if not isinstance(relative, str) or not relative.startswith("published_books/"):
+                raise ValueError("Published sources must be inside published_books/")
+            path = (root / relative).resolve()
+            if not path.is_relative_to(root / "published_books") or path.suffix.lower() != ".txt":
+                raise ValueError("Invalid or escaping publication path")
+            if not isinstance(part_hash, str) or not re.fullmatch(r"[a-f0-9]{64}", part_hash):
+                raise ValueError("Missing pinned SHA-256 for published source part")
+            if not path.is_file() or _digest(path) != part_hash:
+                raise ValueError("Published source hash differs from approved edition")
+            paths.append(relative)
+            recovered.append(path.read_text(encoding="utf-8"))
+        joiner = row.get("part_joiner", "\n")
+        if joiner not in ("", "\n"):
+            raise ValueError("Unsupported source-part join rule")
+        txt = joiner.join(recovered)
+        aggregate = sha256(txt.encode("utf-8")).hexdigest()
+        if expected is not None and expected != aggregate:
+            raise ValueError("Combined published work hash mismatch")
+        relative = paths[0]
+        # For one supplied DOCX, the generic page extraction omitted Word
+        # OMML objects. A separately SHA-pinned, source-anchored transcription
+        # restores those formulas directly beside the corresponding argument.
+        overlay = row.get("math_overlay")
+        if overlay is not None:
+            overlay_path = overlay.get("path")
+            if (not isinstance(overlay_path, str) or
+                    not overlay_path.startswith("published_books/library/") or
+                    not overlay_path.endswith(".json")):
+                raise ValueError("Invalid mathematical overlay path")
+            resolved = (root / overlay_path).resolve()
+            if not resolved.is_relative_to(root / "published_books"):
+                raise ValueError("Mathematical overlay escapes approved source directory")
+            if _digest(resolved) != overlay.get("sha256"):
+                raise ValueError("Mathematical overlay source hash differs")
+            math_source = json.loads(resolved.read_text(encoding="utf-8"))
+            if (math_source.get("format") != "omml_text_overlay_v1" or
+                    math_source.get("work_id") != ident):
+                raise ValueError("Mathematical overlay belongs to another publication")
+            for item in math_source["insertions"]:
+                anchor, math = item["after"], item["text"]
+                expression = r"\s+".join(re.escape(part) for part in anchor.split())
+                matches = list(re.finditer(expression, txt))
+                if len(matches) != 1 or not math.strip():
+                    raise ValueError("Mathematical insertion anchor is missing or ambiguous")
+                idx = matches[0].end()
+                txt = txt[:idx] + "\n\n[Linearized source equation]\n" + math + "\n\n" + txt[idx:]
+            aggregate = sha256(txt.encode("utf-8")).hexdigest()
         if len(txt.split()) < 1000:
             raise ValueError("Insufficient usable text in approved work")
         if any(near_duplicate(txt, other) for other in texts):
             raise ValueError("Overlapping publication edition detected")
         texts.append(txt)
         chunking = row.get("chunking", "legacy_sections")
-        if chunking not in ("legacy_sections", "numbered_paragraph"):
+        if chunking not in ("legacy_sections", "numbered_paragraph", "structured_units"):
             raise ValueError("Unrecognized approved book chunking method")
-        accepted.append({"id": ident, "text": txt, "sha256": expected,
-                         "relative_path": relative, "chunking": chunking,
+        accepted.append({"id": ident, "text": txt, "sha256": aggregate,
+                         "relative_path": relative, "source_parts": paths, "chunking": chunking,
                          "edition": row.get("edition", "")})
     return {"corpus_id": data.get("corpus_id"),
             "manifest_sha256": _digest(manifest_path),
@@ -86,44 +132,48 @@ def prepare_published_corpus(repository_root, manifest_path, destination,
             reading_ledgers[book["id"]] = paragraph_ledger(units)
             grouped_units[book["id"]] = [
                 (book["id"], u["id"], u["text"]) for u in units]
+        elif book["chunking"] == "structured_units":
+            units = structured_units(book["text"])
+            grouped_units[book["id"]] = [
+                (book["id"], u["id"], u["text"]) for u in units]
         else:
             sections = _sections(book["text"], target_words=target_words)
             grouped_units[book["id"]] = [
                 (book["id"], "s%06d" % index, text)
                 for index, text in enumerate(sections)]
-    if len(sources) >= 3:
-        selected = sorted(sources, key=lambda row: row["sha256"])
-        for split, books in (
-            ("train", selected[:-2]),
-            ("validation", selected[-2:-1]),
-            ("test", selected[-1:]),
-        ):
-            for book in books:
-                parts[split].extend(grouped_units[book["id"]])
-        policy = "document_disjoint"
-    else:
-        for book in sources:
-            units = grouped_units[book["id"]]
-            if len(units) < 10:
-                raise ValueError("Book too short for disjoint paragraph holdouts")
-            n = len(units)
-            val = max(1, round(n * .1))
-            test = max(1, round(n * .1))
-            parts["train"].extend(units[:n-val-test])
-            parts["validation"].extend(units[n-val-test:n-test])
-            parts["test"].extend(units[n-test:])
-        policy = ("numbered_paragraph_disjoint_same_book"
-                  if all(b["chunking"] == "numbered_paragraph" for b in sources)
-                  else "section_disjoint_same_book")
+    # Every approved work must participate in TRAINING. A whole-book holdout
+    # discards two of seven authored works; keep unit-disjoint per-work splits
+    # instead, with immutable source hashes and no overlapping logical units.
+    for book in sources:
+        units = grouped_units[book["id"]]
+        if len(units) < 10:
+            raise ValueError("Book too short for independent train/validation/test units")
+        n = len(units)
+        valid = max(1, round(n * .1))
+        test = max(1, round(n * .1))
+        parts["train"].extend(units[:n-valid-test])
+        parts["validation"].extend(units[n-valid-test:n-test])
+        parts["test"].extend(units[n-test:])
+    policy = "per_work_unit_disjoint"
     if any(not rows for rows in parts.values()):
         raise ValueError("Corpus needs training, validation and test material")
+    # Repeated running headers, citations and page boilerplate are common in
+    # PDFs. Assign identical units to their first partition, never silently
+    # train on the same text also held out as validation/test.
     seen = {}
-    for split, rows in parts.items():
-        for name, idx, text in rows:
-            fingerprint = sha256(" ".join(text.casefold().split()).encode()).hexdigest()
-            if fingerprint in seen and seen[fingerprint] != split:
-                raise ValueError("Near-identical section across training/test boundary")
+    dropped_duplicates = {"train": 0, "validation": 0, "test": 0}
+    for split in ("train", "validation", "test"):
+        unique = []
+        for row in parts[split]:
+            fingerprint = sha256(" ".join(row[2].casefold().split()).encode()).hexdigest()
+            if fingerprint in seen:
+                dropped_duplicates[split] += 1
+                continue
             seen[fingerprint] = split
+            unique.append(row)
+        parts[split] = unique
+    if any(not parts[split] for split in parts):
+        raise ValueError("Duplicate elimination exhausted an evaluation partition")
     dest.mkdir(parents=True)
     manifest = {
         "format": "approved_books_v1", "corpus_id": parsed["corpus_id"],
@@ -131,8 +181,11 @@ def prepare_published_corpus(repository_root, manifest_path, destination,
         "sources": [{"id": book["id"], "source_sha256": book["sha256"],
                      "edition": book["edition"]} for book in sources],
         "sections": {k: len(v) for k,v in parts.items()},
-        "chunk_unit": "numbered_paragraph" if reading_ledgers else "legacy_sections",
+        "chunk_unit": ("mixed_structured" if any(b["chunking"]=="structured_units" for b in sources)
+                       else "numbered_paragraph" if reading_ledgers else "legacy_sections"),
+        "chunking_by_work": {b["id"]: b["chunking"] for b in sources},
         "reading_ledgers": reading_ledgers,
+        "duplicate_source_units_excluded": dropped_duplicates,
     }
     try:
         for split, rows in parts.items():

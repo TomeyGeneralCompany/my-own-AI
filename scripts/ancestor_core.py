@@ -9,6 +9,7 @@ import torch
 
 from my_own_ai.book_instruction import create_book_continuations
 from my_own_ai.reasoning_curriculum import create_reasoning_lessons
+from my_own_ai.english_drills import augment_grounded_curriculum
 from my_own_ai.corpus import collect_documents
 from my_own_ai.language_training import _example, load_dialogues, load_language, train_language
 from my_own_ai.language_inference import answer_question
@@ -75,9 +76,11 @@ def train(args):
     prepare_published_corpus(repo, repo / "published_books/manifest.json", books,
                              target_words=args.section_words)
     curriculum = getattr(args, "curriculum", "continuation")
-    if curriculum == "reasoning":
+    if curriculum in ("reasoning", "english_grounded"):
         create_reasoning_lessons(books, scratch / "exercises",
                                 limit_per_split=getattr(args, "max_reasoning_lessons", 2000))
+        if curriculum == "english_grounded":
+            augment_grounded_curriculum(scratch / "exercises")
     elif curriculum == "continuation":
         create_book_continuations(books, scratch / "exercises",
                                   limit_per_split=args.max_exercises)
@@ -200,7 +203,8 @@ def train(args):
                 context=args.context, batch_size=args.batch, threads=args.threads,
                 seed=args.seed, lr=args.instruction_lr,
                 checkpoint_every=min(25, args.max_instruction_updates or 25),
-                time_budget_seconds=available_seconds())
+                time_budget_seconds=available_seconds(),
+                english_drill_fraction=0.5 if curriculum == "english_grounded" else 0.0)
             saved["best_instruction_loss"] = result["best_validation_loss"]
             saved["instruction_stop_reason"] = result["stop_reason"]
             target = result["completed_steps"]
@@ -278,7 +282,7 @@ def main():
     for name in ("state", "scratch", "generation"):
         t.add_argument("--" + name, required=True)
     t.add_argument("--repository", default=".")
-    t.add_argument("--curriculum", choices=("continuation", "reasoning"), default="continuation")
+    t.add_argument("--curriculum", choices=("continuation", "reasoning", "english_grounded"), default="continuation")
     t.add_argument("--max-reasoning-lessons", type=int, default=2000,
                    help="Allow grounded lessons from the whole manuscript; separate from legacy continuation limit")
     t.add_argument("--parent-state")

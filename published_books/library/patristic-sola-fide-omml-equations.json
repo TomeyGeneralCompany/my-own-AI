@@ -1,0 +1,35 @@
+{
+  "format": "omml_text_overlay_v1",
+  "work_id": "patristic-cybernetic-sola-fide",
+  "extraction_note": "Linearized text from the owner's DOCX OMML equations. Mathematical typographic nesting is approximated; original document is authoritative.",
+  "insertions": [
+    {
+      "after": "It therefore establishes an ordered transition:",
+      "text": "Grace --through faith--> salvation and new creation → good works."
+    },
+    {
+      "after": "The Reformed claim is:",
+      "text": "C = the obedience and satisfaction of Christ; F_t = exercised faith; J_t = justified standing; S_t = sanctified condition; W_t = works generated within renewed life.\nG_J(C, F_t, S_t, W_t) = C,\nI_J(F_t) = Reception(C),\n∂G_J/∂S_t = 0,   ∂G_J/∂W_t = 0,   ∂G_J/∂F_t = 0."
+    },
+    {
+      "after": "Sanctification and works form a genuine recursive order downstream from the verdict:",
+      "text": "W_t = Ψ(J_t, S_t),\nS_{t+1} = Φ(S_t, J_t, W_t)."
+    },
+    {
+      "after": "within that established relation:",
+      "text": "Divine source → Christic gift --faith--> received standing → obedient output."
+    },
+    {
+      "after": "canons 24 and 32 yield the following relations:",
+      "text": "M_J = C,   Q_J = R_t,\nR_{t+1} = H(R_t, Γ_t, W_t),\nE = Ω(C, R_T, W_{0:T})."
+    },
+    {
+      "after": "provided the person dies in grace. Thus:",
+      "text": "Ω(C, R_T, W_{0:T}=a) ≠ Ω(C, R_T, W_{0:T}=b)."
+    },
+    {
+      "after": "but it cannot alter the justifying ground:",
+      "text": "G_J(C, S_t, W_{0:T}=a) = G_J(C, S_t, W_{0:T}=b) = C."
+    }
+  ]
+}

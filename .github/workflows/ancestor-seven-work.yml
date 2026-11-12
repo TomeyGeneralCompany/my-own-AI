@@ -1,0 +1,146 @@
+name: Seven-work original-author library integration and cross-domain lab
+
+on:
+  pull_request:
+    paths:
+      - published_books/**
+      - my_own_ai/published_corpus.py
+      - my_own_ai/structured_books.py
+      - my_own_ai/reasoning_curriculum.py
+      - my_own_ai/progressive_reading.py
+      - scripts/ancestor_cross_work.py
+      - .github/workflows/ancestor-seven-work.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ancestor-seven-work-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  authentic-library-lab:
+    name: Seven originals through neural training and held-out cross-work questions
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      GH_TOKEN: ${{ github.token }}
+      OMP_NUM_THREADS: '2'
+      MKL_NUM_THREADS: '2'
+      CUDA_VISIBLE_DEVICES: ''
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install CPU original-weight model
+        run: |
+          python -m pip install 'torch==2.5.1+cpu' --index-url https://download.pytorch.org/whl/cpu
+          python -m pip install -e '.[dev]'
+      - name: Validate seven pinned sources and independent evaluation coverage
+        run: |
+          set -euo pipefail
+          mkdir -p data/seven
+          python - <<'PY'
+          from pathlib import Path
+          from my_own_ai.published_corpus import validate_published_manifest,prepare_published_corpus
+          from my_own_ai.reasoning_curriculum import create_reasoning_lessons
+          from scripts.ancestor_cross_work import make_suite
+          m=validate_published_manifest(".", "published_books/manifest.json")
+          assert len(m["sources"])==7
+          result=prepare_published_corpus(".", "published_books/manifest.json", "data/seven/books")
+          assert result["reading_ledgers"]["commerce"]["numbered_paragraphs"]==537
+          assert result["chunk_unit"]=="mixed_structured"
+          assert result["policy"]=="per_work_unit_disjoint"
+          q=create_reasoning_lessons("data/seven/books","data/seven/lessons",limit_per_split=4000)
+          cases=make_suite("data/seven/lessons",{s["id"] for s in m["sources"]}, questions_per_book=2)
+          assert len(cases)==14
+          assert all(q["splits"][name]["total"]>0 for name in ("train","validation","test"))
+          print("All 7 supplied original works hash verified, every book holds out independent units")
+          print("Seven-work lessons:",q["splits"])
+          PY
+      - name: Restore actual immutable g0001 trained neural parent
+        run: |
+          set -euo pipefail
+          gh release download ancestor-g0001-candidate --pattern core-generation.zip --dir data/seven
+          sha256sum data/seven/core-generation.zip > data/seven/parent-before.sha256
+          python scripts/ancestor_core.py unpack --archive data/seven/core-generation.zip \
+            --state data/seven/parent --generation g0001 > data/seven/unpack-parent.json
+      - name: Train authentic g0002 descendant on all seven books and reasoning lessons
+        run: |
+          set -euo pipefail
+          python -u scripts/ancestor_core.py train --repository . \
+            --generation g0002 --parent-state data/seven/parent \
+            --state data/seven/descendant --scratch data/seven/fit \
+            --curriculum reasoning --max-reasoning-lessons 4000 \
+            --passes 1 --instruction-steps 40 \
+            --max-reading-updates 50000 --max-instruction-updates 40 \
+            --threads 2 > data/seven/training.json
+          python - <<'PY'
+          import json
+          p=json.load(open("data/seven/descendant/generation.json"))
+          assert p["phase"]=="candidate",p
+          assert p["generation"]=="g0002",p
+          assert p["curriculum"]=="reasoning",p
+          assert p["completed_reading_passes"]==1,p
+          assert p["completed_instruction_steps"]==40,p
+          assert p["parent_checkpoint_sha256"],p
+          print("Seven-work neural training and inherited checkpoint PASS")
+          PY
+      - name: Run fourteen real held-out cross-book questions (two per work)
+        run: |
+          set -euo pipefail
+          python scripts/ancestor_cross_work.py \
+            --state data/seven/descendant --prepared data/seven/fit/books \
+            --exercises data/seven/fit/exercises \
+            --questions-per-book 2 \
+            --output data/seven/cross-work.json
+          python - <<'PY'
+          import json
+          r=json.load(open("data/seven/cross-work.json"))
+          assert len(r["source_books"])==7,r
+          assert r["evaluated"]==14,r
+          assert r["training_executed"] is False,r
+          assert all(x["utf8_valid"] for x in r["questions"]),r
+          print("Cross-domain held-out neural inference PASS; exact:",r["exact_correct"],"/14")
+          PY
+      - name: Preserve unchanged 200-question English evaluation as independent metric
+        run: |
+          set -euo pipefail
+          python scripts/ancestor_core.py evaluate \
+            --state data/seven/descendant --cases examples/english/gauntlet.json \
+            --limit 200 --output data/seven/english-200.json > data/seven/eval-report.json
+          python scripts/ancestor_ci_contract.py \
+            --report data/seven/english-200.json --generation g0002 \
+            --output data/seven/english-contract.json
+          python - <<'PY'
+          import json,os
+          a=json.load(open("data/seven/english-contract.json"))
+          b=json.load(open("data/seven/cross-work.json"))
+          with open(os.environ["GITHUB_STEP_SUMMARY"],"a") as f:
+              f.write("## Seven-work descendant model lab\n\n")
+              f.write("Seven authored source works verified and trained; original g0001 preserved.\n\n")
+              f.write(f"Frozen English benchmark: **{a['exact_correct']}/130**, g0001 baseline **0/130**.\n\n")
+              f.write(f"Cross-book held-out questions: **{b['exact_correct']}/14** across seven authorship units.\n\n")
+              f.write("Scores are diagnostics, not automatic proof of understanding or promotion.\n")
+          PY
+      - name: Parent release remains unchanged
+        run: |
+          sha256sum data/seven/core-generation.zip > data/seven/parent-after.sha256
+          cmp data/seven/parent-before.sha256 data/seven/parent-after.sha256
+      - name: Retain complete lab evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ancestor-seven-work-${{ github.run_id }}
+          path: |
+            data/seven/training.json
+            data/seven/cross-work.json
+            data/seven/english-200.json
+            data/seven/english-contract.json
+            data/seven/descendant/generation.json
+            data/seven/parent-before.sha256
+            data/seven/parent-after.sha256
+          if-no-files-found: warn
+          retention-days: 30
