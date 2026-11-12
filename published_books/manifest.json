@@ -11,7 +11,8 @@
       "source_status": "author-approved published text",
       "path": "published_books/communal-nature-of-commerce-revised-second-edition.txt",
       "sha256": "ef2ef735c90c3e08bfce7e265f4801ca647bda35d4464bc300fc7be78841889c",
-      "approved_for_training": true
+      "approved_for_training": true,
+      "chunking": "numbered_paragraph"
     }
   ]
 }
