@@ -81,6 +81,8 @@ def prepare_new_book(*, input_path, repository, ident, title, author,
                      chunking="structured_units", approve=False, dry_run=False):
     root = Path(repository).resolve()
     source = Path(input_path).resolve()
+    if not approve and not dry_run:
+        raise ValueError("Explicit --approve required before committing new training material")
     if not source.is_file():
         raise FileNotFoundError(source)
     if not re.fullmatch(r"[a-z0-9-]{3,70}",ident):
@@ -112,6 +114,7 @@ def prepare_new_book(*, input_path, repository, ident, title, author,
          "source_format":source.suffix.lower()[1:]+"_text_extraction",
          "source_status":"author-approved source text" if approve else "pending author approval",
          "approved_for_training":bool(approve),"chunking":chunking,
+         "part_joiner":"", "sha256":sha256(text.encode()).hexdigest(),
          "parts":[{"path":path,"sha256":sha256(part.encode()).hexdigest()}
                   for path,part in outputs]}
     report={"id":ident,"source_file":str(source),"source_characters":len(text),
