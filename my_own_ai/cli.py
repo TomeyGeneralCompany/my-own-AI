@@ -8,6 +8,8 @@ from .tokenizer import ByteBPETokenizer
 from .language_training import train_language
 from .language_inference import answer_question
 from .language_evaluation import load_gauntlet, evaluate_english
+from .language_corpus import prepare_english_corpus
+from .language_regression import promote_english
 from .train import train, load_model, benchmark
 from .corpus import build_manifest
 from .modules import CheckpointStore, ModuleController, default_modules
@@ -184,6 +186,20 @@ def main(argv=None):
     draft.add_argument("--brief", type=Path, required=True)
     draft.add_argument("--limit", type=int, default=5)
     draft.add_argument("--threads", type=int, default=4)
+    prepare_language = sub.add_parser("prepare-english-corpus", help="Create disjoint, deduplicated English corpus partitions")
+    prepare_language.add_argument("--source", type=Path, required=True)
+    prepare_language.add_argument("--output", type=Path, required=True)
+    prepare_language.add_argument("--seed", type=int, default=42)
+    english_gate = sub.add_parser("gate-english", help="Reject regressions and require manual evaluation before promotion")
+    english_gate.add_argument("--previous", type=Path, required=True)
+    english_gate.add_argument("--candidate", type=Path, required=True)
+    english_gate.add_argument("--tokenizer", type=Path, required=True)
+    english_gate.add_argument("--cases", type=Path, required=True)
+    english_gate.add_argument("--report", type=Path, required=True)
+    english_gate.add_argument("--review", type=Path)
+    english_gate.add_argument("--promote-to", type=Path)
+    english_gate.add_argument("--tokens", type=int, default=80)
+    english_gate.add_argument("--threads", type=int, default=2)
     token = sub.add_parser("train-tokenizer", help="Train original subword vocabulary on an approved English corpus")
     token.add_argument("--corpus", type=Path, required=True)
     token.add_argument("--output", type=Path, required=True)
@@ -224,7 +240,15 @@ def main(argv=None):
     gauntlet.add_argument("--tokens", type=int, default=120)
     gauntlet.add_argument("--threads", type=int, default=2)
     a = parser.parse_args(argv)
-    if a.command == "train-tokenizer":
+    if a.command == "prepare-english-corpus":
+        print(json.dumps(prepare_english_corpus(a.source, a.output, seed=a.seed), indent=2))
+    elif a.command == "gate-english":
+        result = promote_english(a.previous, a.candidate, a.tokenizer, a.cases, a.report,
+                                 destination=a.promote_to, review_path=a.review,
+                                 tokens=a.tokens, threads=a.threads)
+        print(json.dumps({k: v for k, v in result.items() if k not in ("baseline", "candidate")}, indent=2))
+        return int(not result["promotable"])
+    elif a.command == "train-tokenizer":
         from .corpus import collect_documents
         rows = collect_documents(a.corpus)
         vocab = ByteBPETokenizer.train([row["text"] for row in rows], vocab_size=a.vocab)
