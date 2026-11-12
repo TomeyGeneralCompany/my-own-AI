@@ -37,7 +37,7 @@ def _reading_documents(folder):
     manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
     if manifest.get("format") != "approved_books_v1":
         return rows
-    if manifest.get("chunk_unit") == "numbered_paragraph":
+    if manifest.get("chunk_unit") in ("numbered_paragraph", "mixed_structured"):
         # Each document is one complete numbered paragraph with its equations.
         # Never stitch adjacent paragraphs into an artificial training sample.
         return rows
@@ -186,7 +186,7 @@ def train_progressive(*, tokenizer_path, training, validation, output,
     if train_ids & {row["id"] for row in valid_docs}:
         raise ValueError("Training and validation documents overlap")
     training_hash, validation_hash = _identity(train_docs), _identity(valid_docs)
-    paragraph_mode = json.loads((Path(training).parent / "manifest.json").read_text(encoding="utf-8")).get("chunk_unit") == "numbered_paragraph" if (Path(training).parent / "manifest.json").is_file() else False
+    paragraph_mode = json.loads((Path(training).parent / "manifest.json").read_text(encoding="utf-8")).get("chunk_unit") in ("numbered_paragraph", "mixed_structured") if (Path(training).parent / "manifest.json").is_file() else False
     windows = overlapping_windows(train_docs, tokenizer, context, overlap)
     source_lookup = {row["id"]: row["source"] for row in train_docs}
     last_read_unit = None
@@ -247,7 +247,7 @@ def train_progressive(*, tokenizer_path, training, validation, output,
 
     def persist(*, measured=None, mark_best=False):
         state = {**identity, "tokenizer_state": tokenizer.state(),
-                 "chunk_unit": "numbered_paragraph" if paragraph_mode else "legacy_sections",
+                 "chunk_unit": ("mixed_structured" if paragraph_mode and (Path(training).parent / "manifest.json").is_file() and json.loads((Path(training).parent / "manifest.json").read_text()).get("chunk_unit") == "mixed_structured" else "numbered_paragraph") if paragraph_mode else "legacy_sections",
                  "last_read_unit": last_read_unit,
                  "phase": "pretrain", "state_dict": model.state_dict(),
                  "optimizer": optimizer.state_dict(), "torch_rng": torch.get_rng_state(),
