@@ -25,6 +25,10 @@ on:
       - my_own_ai/language_training.py
       - my_own_ai/language_inference.py
       - my_own_ai/language_evaluation.py
+      - my_own_ai/language_regression.py
+      - my_own_ai/language_relational.py
+      - my_own_ai/language_corpus.py
+      - my_own_ai/bpe_engine.py
       - my_own_ai/tokenizer.py
       - scripts/github_english_trial.py
       - examples/english/**
@@ -66,6 +70,8 @@ jobs:
             data/hosted-english/gauntlet-results.json
             data/hosted-english/tokenizer.json
             data/hosted-english/pretrain.pt
+            data/hosted-english/pretrain.best.pt
             data/hosted-english/english-core.pt
+            data/hosted-english/english-core.best.pt
           if-no-files-found: warn
           retention-days: 7
