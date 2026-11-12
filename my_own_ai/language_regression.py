@@ -142,3 +142,62 @@ def promote_english(previous, candidate, tokenizer, gauntlet, report_path, *,
         json.dump(report, stream, indent=2)
     os.replace(temporary, report_path)
     return report
+
+
+def make_review_worksheet(comparison_report, output_json, output_markdown):
+    """Provide a blank human grading sheet; never auto-approve the Core."""
+    import html
+    report = json.loads(Path(comparison_report).read_text(encoding="utf-8"))
+    needed = {"previous_sha256", "candidate_sha256", "gauntlet_sha256",
+              "baseline", "candidate"}
+    if not isinstance(report, dict) or not needed <= report.keys():
+        raise ValueError("English comparison report is incomplete")
+    before = {item["id"]: item for item in report["baseline"]["cases"]
+              if item["category"] in MANUAL}
+    after = {item["id"]: item for item in report["candidate"]["cases"]
+             if item["category"] in MANUAL}
+    if len(before) != 70 or before.keys() != after.keys():
+        raise ValueError("Expected all 70 open-ended language evaluation cases")
+    draft = {
+        "reviewer_approved": False,
+        "previous_sha256": report["previous_sha256"],
+        "candidate_sha256": report["candidate_sha256"],
+        "gauntlet_sha256": report["gauntlet_sha256"],
+        "previous": {key: {"grammar": 0, "coherence": 0, "relevance": 0}
+                     for key in sorted(before)},
+        "candidate": {key: {"grammar": 0, "coherence": 0, "relevance": 0}
+                      for key in sorted(after)},
+    }
+    json_file = Path(output_json)
+    markdown_file = Path(output_markdown)
+    if json_file.resolve() == markdown_file.resolve():
+        raise ValueError("Review template and worksheet must be separate")
+    json_file.parent.mkdir(parents=True, exist_ok=True)
+    markdown_file.parent.mkdir(parents=True, exist_ok=True)
+    json_file.write_text(json.dumps(draft, indent=2), encoding="utf-8")
+    lines = [
+        "# Independent English language review",
+        "",
+        "For each response, grade grammar, coherence and relevance on an integer 1–5 scale.",
+        "Review both models independently. Enter all scores in the JSON template.",
+        "Leave reviewer_approved false until the independent review is complete.",
+        "No model responses or scores are automatically endorsed.",
+        "",
+    ]
+    for identifier in sorted(before):
+        old, new = before[identifier], after[identifier]
+        lines.extend([
+            "## " + html.escape(identifier),
+            "",
+            "**Question**", "",
+            "<pre>" + html.escape(old["question"]) + "</pre>",
+            "", "**Previous model**", "",
+            "<pre>" + html.escape(old["actual"]) + "</pre>",
+            "", "**Candidate model**", "",
+            "<pre>" + html.escape(new["actual"]) + "</pre>",
+            "", "Grades for each model: grammar 1–5; coherence 1–5; relevance 1–5.",
+            "",
+        ])
+    markdown_file.write_text("\n".join(lines) + "\n", encoding="utf-8")
+    return {"cases": len(before), "review_template": str(json_file),
+            "worksheet": str(markdown_file), "approved": False}
