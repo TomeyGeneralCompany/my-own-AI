@@ -4,6 +4,7 @@ import json
 import os
 from pathlib import Path
 import shutil
+from time import monotonic
 import torch
 
 from my_own_ai.book_instruction import create_book_continuations
@@ -59,6 +60,13 @@ def prepare_fitting_dialogues(training, validation, tokenizer, context, output):
 
 def train(args):
     generation = validate_generation(args.generation)
+    started = monotonic()
+    session_budget = getattr(args, "max_session_seconds", None)
+    if session_budget is not None and session_budget <= 0:
+        raise ValueError("Continuous training session requires a positive time budget")
+    def available_seconds():
+        return None if session_budget is None else max(1.0, session_budget - (monotonic() - started))
+
     repo, state, scratch = Path(args.repository).resolve(), Path(args.state), Path(args.scratch)
     publications = validate_published_manifest(repo, repo / "published_books/manifest.json")
     scratch.mkdir(parents=True, exist_ok=True)
@@ -85,9 +93,16 @@ def train(args):
         if not parent.is_file():
             raise ValueError("Missing ancestral model checkpoint")
         shutil.copyfile(older / "tokenizer.json", state / "tokenizer.json")
+    migrating_paragraphs = bool(
+        saved and generation == "g0001" and
+        saved.get("published_manifest_sha256") == "ff235d7ea592d7943fadf4f360e8192293af908e1c931ceaec189e574df23de1" and
+        publications["corpus_id"] == "commerce-revised-second-edition-2026" and
+        not saved.get("chunk_unit") and
+        not saved.get("paragraph_migration_completed"))
     if saved:
         if (saved.get("generation") != generation or
-                saved.get("published_manifest_sha256") != publications["manifest_sha256"] or
+                (saved.get("published_manifest_sha256") != publications["manifest_sha256"]
+                 and not migrating_paragraphs) or
                 saved.get("model_config") != config or
                 saved.get("target_reading_passes") != args.passes or
                 saved.get("target_instruction_steps") != args.instruction_steps):
@@ -110,7 +125,8 @@ def train(args):
             "published_manifest_sha256": publications["manifest_sha256"],
             "published_corpus_id": publications["corpus_id"],
             "tokenizer_sha256": tok.fingerprint(),
-            "model_config": config, "target_reading_passes": args.passes,
+            "model_config": config, "chunk_unit": "numbered_paragraph",
+            "target_reading_passes": args.passes,
             "target_instruction_steps": args.instruction_steps,
             "completed_reading_passes": 0, "completed_instruction_steps": 0,
             "parent_checkpoint_sha256": digest_file(parent) if parent else None,
@@ -123,22 +139,36 @@ def train(args):
             passes=args.passes, overlap=args.overlap,
             context=args.context, embed=args.embed, heads=args.heads,
             layers=args.layers, batch_size=args.batch, threads=args.threads,
-            seed=args.seed, checkpoint_every=min(25, args.max_reading_updates),
+            seed=args.seed, checkpoint_every=min(25, args.max_reading_updates or 25),
             lr=args.reading_lr, max_updates=args.max_reading_updates,
+            time_budget_seconds=available_seconds(),
+            allow_resegment=migrating_paragraphs,
             resume=reading.exists(),
             init_checkpoint=parent if not reading.exists() else None)
+        if migrating_paragraphs:
+            saved["paragraph_migration_completed"] = True
+            saved["previous_manifest_sha256"] = saved["published_manifest_sha256"]
+            saved["published_manifest_sha256"] = publications["manifest_sha256"]
+            saved["chunk_unit"] = "numbered_paragraph"
+            saved["migration_policy"] = "preserve_weights_optimizer_rng_replay_incomplete_pass"
         saved["completed_reading_passes"] = result["completed_passes"]
         saved["reading_progress"] = {
             "next_window": result["next_window"],
             "completed_steps": result["completed_steps"],
             "best_loss": result["best_validation_loss"],
             "stop_reason": result["stop_reason"],
+            "windows_per_pass": result["read_windows_per_pass"],
+            "target_tokens_per_pass": result["unique_supervised_tokens_per_pass"],
+            "updates_this_session": result["updates_this_run"],
         }
         if result["completed_passes"] < args.passes:
             write_json(meta, saved)
             return saved
         saved["phase"] = "instruction"
     if saved["phase"] == "instruction":
+        if available_seconds() is not None and available_seconds() < 10:
+            write_json(meta, saved)
+            return saved
         fitting = prepare_fitting_dialogues(
             scratch / "exercises/train.json", scratch / "exercises/validation.json",
             tok, args.context, scratch / "fitted")
@@ -146,7 +176,8 @@ def train(args):
         assistant = state / "assistant.pt"
         count = (int(torch.load(assistant, map_location="cpu", weights_only=True)["completed_steps"])
                  if assistant.exists() else 0)
-        target = min(args.instruction_steps, count + args.max_instruction_updates)
+        target = min(args.instruction_steps,
+                     count + (args.max_instruction_updates or args.instruction_steps))
         if target > count:
             result = train_language(
                 tokenizer_path=tokenizer_path,
@@ -158,8 +189,11 @@ def train(args):
                 embed=args.embed, heads=args.heads, layers=args.layers,
                 context=args.context, batch_size=args.batch, threads=args.threads,
                 seed=args.seed, lr=args.instruction_lr,
-                checkpoint_every=min(25, args.max_instruction_updates))
+                checkpoint_every=min(25, args.max_instruction_updates or 25),
+                time_budget_seconds=available_seconds())
             saved["best_instruction_loss"] = result["best_validation_loss"]
+            saved["instruction_stop_reason"] = result["stop_reason"]
+            target = result["completed_steps"]
         saved["completed_instruction_steps"] = target
         if target == args.instruction_steps:
             saved["phase"] = "candidate"
@@ -240,9 +274,11 @@ def main():
         ("context",512), ("embed",128), ("heads",4), ("layers",4),
         ("batch",2), ("seed",42), ("threads",2), ("passes",5),
         ("overlap",64), ("instruction-steps",600),
-        ("max-reading-updates",40), ("max-instruction-updates",40),
+        ("max-reading-updates",None), ("max-instruction-updates",None),
     ):
         t.add_argument("--" + name, type=int, default=default)
+    t.add_argument("--max-session-seconds", type=float,
+                   help="Continue reading/instruction until this session budget; None means no time bound")
     t.add_argument("--reading-lr", type=float, default=.0005)
     t.add_argument("--instruction-lr", type=float, default=.0003)
     pack = sub.add_parser("pack")

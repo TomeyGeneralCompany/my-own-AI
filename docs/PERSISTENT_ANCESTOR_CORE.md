@@ -50,3 +50,25 @@ GitHub Actions release operations require the repository's workflow token to hav
 ### What constitutes progress
 
 Compare validation loss, reading-pass coverage, repeated-token degeneration, natural EOS and actual answers to unfamiliar questions across *immutable successive generations of the same model*. Prior synthetic diagnostic scores are not silently compared as if they came from the same trained checkpoint. The Core can still produce nonsense while the training and release architecture works: that is a measurable learning issue, not an excuse to reset the checkpoint.
+
+## PR #19 — Chapterless paragraph controller and autonomous campaign
+
+**The author's treatise has no chapters.** The authoritative source is the complete numbered sequence `[0]`–`[536]`, 537 numbered paragraphs. The PR #19 parser recognizes only consecutive paragraph headers at the beginnings of lines, records source hashes and paragraph numbers, and preserves **every character from each header to the next header**. An equation, equation number, display-math layout, and accompanying explanation remain part of their numbered paragraph. Frontmatter is indexed separately. No words or equation lines are dropped to enforce a word limit.
+
+The reading corpus is split on **whole paragraphs**, never inside an equation. Long paragraphs are processed by overlapping *token windows within that same paragraph*, with overlap tokens masked from repeated loss. The controller reads paragraphs **in author order** within each pass. It stores the most recent paragraph source, next token window, current pass, optimizer state, and neural weights at each checkpoint.
+
+### Begin or resume one autonomous campaign
+
+On the GitHub Actions page, launch **Train Ancestor Core — autonomous numbered-paragraph reading** once with `generation=g0001`, `reading_passes=5`, `instruction_steps=600`, `session_seconds=2100`, and `auto_continue=true`. There is **no artificial 40-update limit**. The controller trains for the available CPU session budget, saves the verified checkpoint to a new immutable asset in `ancestor-progress-g0001`, then dispatches the next identical workflow on `main` if reading or instruction work remains. Each next job restores the newest durable snapshot and advances from the exact saved training cursor. GitHub workflow concurrency prevents two jobs from advancing the same generation simultaneously.
+
+The next job is queued **only after** the previous checkpoint upload succeeded. If the GitHub token lacks Actions write permission, dispatch fails and the published checkpoint remains available for a manual retry. A failed job does not silently mark any reading as complete. The campaign stops dispatching when the immutable candidate release is created. Stopping a queued campaign or setting `auto_continue=false` prevents further automatic chaining, while the last published checkpoint remains intact.
+
+### Migration from PR #18's existing g0001 snapshots
+
+The old g0001 snapshots used 512-word sections. New paragraph-based training changes the source/validation window identities, so **the old cursor must never be reused as if it pointed to a paragraph**. A strictly limited migration is supported for the known published commerce manifest and its verified predecessor hash. It keeps the current model weights, AdamW moments, tokenizer, RNG state, and completed training-step count; it resets only the *unfinished* reading pass's cursor to the first new paragraph, recomputes validation on the new split, records the previous corpus hashes in the reading history, and preserves the legacy snapshot in the old immutable GitHub Release asset. Re-reading that incomplete pass avoids missing previously unseen paragraph targets.
+
+After migration, ordinary sessions resume the new exact paragraph window index. A changed book edition, unrelated manuscript, tokenizer, model configuration, or training hyperparameter remains an error and is **not** automatically migrated.
+
+### Operational boundary
+
+The controller does not itself interpret mathematical semantics; it supplies numbered prose and equations together as contiguous neural training context. The model still must acquire English and reasoning capability through weight updates and independent held-out evaluation. Auto-resumption solves the manual restart bottleneck; it does not by itself establish fluent English.

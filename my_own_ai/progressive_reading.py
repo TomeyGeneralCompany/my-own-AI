@@ -10,7 +10,7 @@ from hashlib import sha256
 import json
 import math
 from pathlib import Path
-from time import perf_counter
+from time import perf_counter, monotonic
 
 import torch
 from torch.nn import functional as F
@@ -37,6 +37,10 @@ def _reading_documents(folder):
     manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
     if manifest.get("format") != "approved_books_v1":
         return rows
+    if manifest.get("chunk_unit") == "numbered_paragraph":
+        # Each document is one complete numbered paragraph with its equations.
+        # Never stitch adjacent paragraphs into an artificial training sample.
+        return rows
     import re
     known = {re.sub(r"[^A-Za-z0-9_-]", "_", row["id"]): row["id"]
              for row in manifest.get("sources", [])}
@@ -44,6 +48,8 @@ def _reading_documents(folder):
     for row in rows:
         stem = Path(row["source"]).stem
         prefix, sep, index = stem.rpartition("_")
+        if index.startswith("s") and index[1:].isdecimal():
+            index = index[1:]
         if not sep or not index.isdecimal() or prefix not in known:
             raise ValueError("Prepared book section name does not match approved manifest")
         groups.setdefault(prefix, []).append((int(index), row["text"]))
@@ -143,7 +149,8 @@ def train_progressive(*, tokenizer_path, training, validation, output,
                       passes=5, overlap=64, embed=128, heads=4,
                       layers=4, context=512, lr=.0005, seed=42, threads=4,
                       checkpoint_every=25, resume=False, init_checkpoint=None,
-                      patience=0, batch_size=1, max_updates=None):
+                      patience=0, batch_size=1, max_updates=None,
+                      time_budget_seconds=None, allow_resegment=False):
     """Exhaustively read complete book chunks, with resumable ordered cursor.
 
     Pass count is an upper bound, not a fabricated English proficiency gate.
@@ -159,6 +166,9 @@ def train_progressive(*, tokenizer_path, training, validation, output,
         raise ValueError("Cannot both resume and initialize a new generation")
     if max_updates is not None and (type(max_updates) is not int or max_updates < 1):
         raise ValueError("Reading update budget must be a positive integer")
+    if time_budget_seconds is not None and (not isinstance(time_budget_seconds, (int, float))
+            or not math.isfinite(time_budget_seconds) or time_budget_seconds <= 0):
+        raise ValueError("Reading session duration must be positive")
     output = Path(output)
     if output.exists() and not resume:
         raise ValueError("Existing reading checkpoint requires --resume or a new output path")
@@ -176,7 +186,10 @@ def train_progressive(*, tokenizer_path, training, validation, output,
     if train_ids & {row["id"] for row in valid_docs}:
         raise ValueError("Training and validation documents overlap")
     training_hash, validation_hash = _identity(train_docs), _identity(valid_docs)
+    paragraph_mode = json.loads((Path(training).parent / "manifest.json").read_text(encoding="utf-8")).get("chunk_unit") == "numbered_paragraph" if (Path(training).parent / "manifest.json").is_file() else False
     windows = overlapping_windows(train_docs, tokenizer, context, overlap)
+    source_lookup = {row["id"]: row["source"] for row in train_docs}
+    last_read_unit = None
     valid_windows = overlapping_windows(valid_docs, tokenizer, context, overlap)
     total_targets = sum(len(w[3]) for w in windows)
     valid_targets = sum(len(w[3]) for w in valid_windows)
@@ -196,7 +209,12 @@ def train_progressive(*, tokenizer_path, training, validation, output,
     }
     if resume:
         payload = torch.load(output, map_location="cpu", weights_only=True)
-        if any(payload.get(key) != value for key, value in identity.items()):
+        differences = [key for key, value in identity.items()
+                       if payload.get(key) != value]
+        resegmenting = bool(differences and allow_resegment and
+                            set(differences) <= {"training_sha256", "validation_sha256"}
+                            and payload.get("reading_format") == 1)
+        if differences and not resegmenting:
             raise ValueError("Reading resume requires matching corpus, tokenizer and configuration")
         model.load_state_dict(payload["state_dict"])
         optimizer.load_state_dict(payload["optimizer"])
@@ -224,10 +242,13 @@ def train_progressive(*, tokenizer_path, training, validation, output,
 
     log = list(payload.get("reading_history", [])) if resume else []
     started = perf_counter()
+    clock_start = monotonic()
     last_validation = None
 
     def persist(*, measured=None, mark_best=False):
         state = {**identity, "tokenizer_state": tokenizer.state(),
+                 "chunk_unit": "numbered_paragraph" if paragraph_mode else "legacy_sections",
+                 "last_read_unit": last_read_unit,
                  "phase": "pretrain", "state_dict": model.state_dict(),
                  "optimizer": optimizer.state_dict(), "torch_rng": torch.get_rng_state(),
                  "reading_pass": current_pass, "next_window": next_index,
@@ -250,15 +271,44 @@ def train_progressive(*, tokenizer_path, training, validation, output,
         persist(measured=last_validation, mark_best=True)
     elif resume:
         last_validation = payload["validation_loss"]
+        if resegmenting:
+            # The old cursor described 512-word sections, not numbered paragraphs.
+            # Preserve learned weights, optimizer moments, RNG and completed passes.
+            # Replay the incomplete pass from the start; never skip new paragraph
+            # targets or fabricate coverage. Previous checkpoint survives in the
+            # immutable source release even after this successor is published.
+            old_training_hash = payload["training_sha256"]
+            old_validation_hash = payload["validation_sha256"]
+            next_index = 0
+            last_validation = _validation_windows(model, valid_windows)
+            best_loss, best_pass, no_improvement = last_validation, current_pass, 0
+            log.append({"event": "paragraph_resegmentation",
+                        "previous_training_sha256": old_training_hash,
+                        "previous_validation_sha256": old_validation_hash,
+                        "preserved_completed_steps": update_count,
+                        "replayed_incomplete_pass": current_pass,
+                        "validation_loss": last_validation})
+            persist(measured=last_validation, mark_best=True)
 
     stopped_reason = "target_passes"
     updates_on_this_run = 0
+    most_recent_update = 0.
     for pass_idx in range(current_pass, passes):
-        order = _pass_order(windows, seed, pass_idx)
+        # Numbered treatises are read in AUTHOR ORDER, including nested math.
+        # Legacy sampled sections keep their existing deterministic pass order.
+        order = (list(range(len(windows))) if paragraph_mode else
+                 _pass_order(windows, seed, pass_idx))
         start_at = next_index if pass_idx == current_pass else 0
         model.train()
         for cursor in range(start_at, len(order), batch_size):
+            if time_budget_seconds is not None and updates_on_this_run > 0 and (
+                    monotonic() - clock_start + max(5., most_recent_update * 2) >= time_budget_seconds):
+                stopped_reason = "time_budget"
+                persist(measured=last_validation)
+                break
+            update_start = monotonic()
             selected = [windows[k] for k in order[cursor:cursor + batch_size]]
+            last_read_unit = source_lookup[selected[-1][0]]
             x, y = _batch(selected)
             logits, _ = model(x)
             loss = F.cross_entropy(logits.reshape(-1, logits.shape[-1]),
@@ -271,6 +321,7 @@ def train_progressive(*, tokenizer_path, training, validation, output,
             optimizer.step()
             update_count += 1
             updates_on_this_run += 1
+            most_recent_update = monotonic() - update_start
             next_index = min(cursor + batch_size, len(order))
             current_pass = pass_idx
             if next_index < len(order) and update_count % checkpoint_every == 0:
@@ -279,7 +330,7 @@ def train_progressive(*, tokenizer_path, training, validation, output,
                 stopped_reason = "update_budget"
                 persist(measured=last_validation)
                 break
-        if stopped_reason == "update_budget":
+        if stopped_reason in ("update_budget", "time_budget"):
             break
         current_pass = pass_idx + 1
         next_index = 0
@@ -304,9 +355,16 @@ def train_progressive(*, tokenizer_path, training, validation, output,
         if max_updates is not None and updates_on_this_run >= max_updates:
             stopped_reason = "update_budget" if current_pass < passes else "target_passes"
             break
+        if time_budget_seconds is not None and (monotonic() - clock_start + 10
+                                                >= time_budget_seconds):
+            stopped_reason = "time_budget" if current_pass < passes else "target_passes"
+            break
     return {
         "reading_format": 1, "completed_passes": current_pass,
         "next_window": next_index, "updates_this_run": updates_on_this_run,
+        "last_read_unit": last_read_unit,
+        "chunk_unit": "numbered_paragraph" if paragraph_mode else "legacy_sections",
+        "paragraph_resegmented": bool(resume and resegmenting),
         "completed_steps": update_count, "read_windows_per_pass": len(windows),
         "unique_supervised_tokens_per_pass": total_targets,
         "heldout_validation_tokens": valid_targets,
