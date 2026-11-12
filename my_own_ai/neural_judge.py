@@ -376,7 +376,20 @@ def evaluate_judge(cases, judge, *, include_scores=False):
     paired = {}
     for row in results:
         paired.setdefault(row["group"], []).append(row)
-    counters = [rows for rows in paired.values() if len({row["accepted"] for row in rows}) > 1]
+    # A valid premise switch holds the question and candidate ordering constant.
+    # Merely changing the answer label within a group is not a counterfactual test.
+    source_cases = {case.identifier: case for case in cases}
+    counters = []
+    for rows in paired.values():
+        by_task = {}
+        for row in rows:
+            case = source_cases[row["id"]]
+            key = (_key(case.question), tuple(_key(value) for value in case.candidates))
+            by_task.setdefault(key, []).append((row, case))
+        for task_rows in by_task.values():
+            if (len({row["accepted"] for row, _ in task_rows}) > 1
+                    and len({tuple(_key(value) for value in case.evidence) for _, case in task_rows}) > 1):
+                counters.append([row for row, _ in task_rows])
     unresolved = [row for row in results if row["accepted"] is None]
     return {"passed": sum(row["passed"] for row in results), "total": len(results),
             "unresolved_correct": sum(row["passed"] for row in unresolved), "unresolved_total": len(unresolved),
