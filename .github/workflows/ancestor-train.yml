@@ -1,0 +1,146 @@
+name: Train Ancestor Core — published books, persistent lineage
+
+on:
+  workflow_dispatch:
+    inputs:
+      generation:
+        description: 'Generation ID, e.g. g0001; use the SAME ID to continue training'
+        required: true
+        default: 'g0001'
+        type: string
+      reading_passes:
+        description: 'Cumulative complete passes through approved published corpus'
+        required: true
+        default: '5'
+        type: string
+      instruction_steps:
+        description: 'Cumulative instruction updates'
+        required: true
+        default: '600'
+        type: string
+      updates_per_run:
+        description: 'Maximum reading updates in this bounded hosted session'
+        required: true
+        default: '40'
+        type: string
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ancestor-training-${{ inputs.generation }}
+  cancel-in-progress: false
+
+jobs:
+  train:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      GH_TOKEN: ${{ github.token }}
+      OMP_NUM_THREADS: '2'
+      MKL_NUM_THREADS: '2'
+      CUDA_VISIBLE_DEVICES: ''
+      GENERATION: ${{ inputs.generation }}
+      READING_PASSES: ${{ inputs.reading_passes }}
+      INSTRUCTION_STEPS: ${{ inputs.instruction_steps }}
+      READING_UPDATES: ${{ inputs.updates_per_run }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install original CPU-only neural runtime
+        run: |
+          python -m pip install 'torch==2.5.1+cpu' --index-url https://download.pytorch.org/whl/cpu
+          python -m pip install -e '.[dev]'
+      - name: Verify generation settings and actual published book contents
+        run: |
+          python - <<'PY'
+          import os, re
+          from my_own_ai.published_corpus import validate_published_manifest
+          assert re.fullmatch(r'g[0-9]{4}',os.environ["GENERATION"])
+          for name in ("READING_PASSES","INSTRUCTION_STEPS","READING_UPDATES"):
+              assert os.environ[name].isdecimal() and 1 <= int(os.environ[name]) <= 10000
+          report=validate_published_manifest(".", "published_books/manifest.json")
+          print("Verified published works:",len(report["sources"]),report["corpus_id"])
+          PY
+      - name: Restore latest durable training snapshot or active ancestor
+        run: |
+          set -euo pipefail
+          mkdir -p data/download data/ancestor-state
+          PROGRESS_TAG="ancestor-progress-${GENERATION}"
+          if gh release view "$PROGRESS_TAG" >/dev/null 2>&1; then
+            ASSET="$(gh api "repos/${GITHUB_REPOSITORY}/releases/tags/${PROGRESS_TAG}" --jq '.assets | sort_by(.created_at) | last | .name')"
+            if [ -z "$ASSET" ] || [ "$ASSET" = null ]; then
+              echo 'Progress release exists but has no snapshot asset'; exit 1
+            fi
+            gh release download "$PROGRESS_TAG" --pattern "$ASSET" --dir data/download
+            python scripts/ancestor_core.py unpack --archive "data/download/$ASSET" --state data/ancestor-state --generation "$GENERATION"
+          elif [ "$GENERATION" != g0001 ]; then
+            if ! gh release view ancestor-active >/dev/null 2>&1; then
+              echo 'No active ancestor: generation g0001 must be selected first'; exit 1
+            fi
+            gh release view ancestor-active --json body --jq .body > data/download/active.json
+            python scripts/ancestor_core.py inspect-active --file data/download/active.json > data/download/pointer.json
+            ANCESTOR_TAG="$(python -c 'import json;print(json.load(open("data/download/pointer.json"))["candidate_tag"])')"
+            EXPECTED="$(python -c 'import json;print(json.load(open("data/download/pointer.json"))["bundle_sha256"])')"
+            gh release download "$ANCESTOR_TAG" --pattern core-generation.zip --dir data/download
+            python scripts/ancestor_core.py unpack --archive data/download/core-generation.zip --state data/ancestor-parent --sha256 "$EXPECTED"
+            echo "PARENT_STATE=data/ancestor-parent" >> "$GITHUB_ENV"
+          fi
+      - name: Continue original-model book reading / instruction without resetting weights
+        run: |
+          set -euo pipefail
+          PARENT_ARGS=()
+          if [ -n "${PARENT_STATE:-}" ]; then PARENT_ARGS=(--parent-state "$PARENT_STATE"); fi
+          python -u scripts/ancestor_core.py train \
+            --repository . --state data/ancestor-state --scratch data/session \
+            --generation "$GENERATION" --passes "$READING_PASSES" \
+            --instruction-steps "$INSTRUCTION_STEPS" \
+            --max-reading-updates "$READING_UPDATES" \
+            --max-instruction-updates 40 \
+            "${PARENT_ARGS[@]}"
+      - name: Package cryptographically verified persistent model state
+        run: |
+          python scripts/ancestor_core.py pack --state data/ancestor-state --archive data/core-state.zip > data/package-report.json
+          cat data/package-report.json
+      - name: Publish immutable run snapshot for next session
+        run: |
+          set -euo pipefail
+          TAG="ancestor-progress-${GENERATION}"
+          if ! gh release view "$TAG" >/dev/null 2>&1; then
+            gh release create "$TAG" --title "Ancestor Core progress ${GENERATION}" \
+              --notes "Immutable per-run state assets. Not an inference model." --prerelease
+          fi
+          ASSET="ancestor-state-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}.zip"
+          cp data/core-state.zip "data/$ASSET"
+          gh release upload "$TAG" "data/$ASSET"
+          echo "Saved resumable snapshot $ASSET to $TAG" >> "$GITHUB_STEP_SUMMARY"
+      - name: Publish immutable candidate ONLY after all reading and instruction targets
+        if: success()
+        run: |
+          set -euo pipefail
+          PHASE="$(python -c 'import json;print(json.load(open("data/ancestor-state/generation.json"))["phase"])')"
+          echo "Generation phase: $PHASE" >> "$GITHUB_STEP_SUMMARY"
+          if [ "$PHASE" = candidate ]; then
+            TAG="ancestor-${GENERATION}-candidate"
+            if gh release view "$TAG" >/dev/null 2>&1; then
+              echo "Candidate release already exists; refusing overwrite"; exit 1
+            fi
+            cp data/core-state.zip data/core-generation.zip
+            gh release create "$TAG" data/core-generation.zip \
+              --title "Ancestor Core ${GENERATION} immutable candidate" \
+              --notes "Candidate original-weight model trained on SHA-256-pinned published books; evaluation and explicit activation still required." \
+              --prerelease
+            echo "Created immutable candidate $TAG" >> "$GITHUB_STEP_SUMMARY"
+          fi
+      - name: Upload current-run diagnostics (release remains durable)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ancestor-training-${{ github.run_id }}
+          path: |
+            data/ancestor-state/generation.json
+            data/package-report.json
+          if-no-files-found: warn
+          retention-days: 7
