@@ -90,13 +90,17 @@ def test_gate_promotes_only_improvements_without_forgetting(monkeypatch, tmp_pat
     monkeypatch.setattr(cumulative_learning, "_score", lambda cases, checkpoint, threads, tokens:
                         reports[(Path(checkpoint).name, "old.json" if cases[0]["domain"] == "old" else "new.json")])
     destination = tmp_path / "release.pt"
+    training = save(tmp_path / "training.json", [row("training", "training_group", "How is a new signal delivered?")])
+    validation = save(tmp_path / "validation.json", [row("validation", "validation_group", "When does response occur?")])
     result = gate_and_promote(baseline, candidate, old, new, tmp_path / "report.json",
+                              training_examples=training, validation_examples=validation,
                               destination=destination)
     assert result["promotable"] and result["promoted"]
     assert destination.read_bytes() == b"new"
     reports[("candidate.pt", "old.json")] = _report([("a", "g1", True), ("b", "g1", False)])
     candidate.write_bytes(b"new-second")
     result = gate_and_promote(baseline, candidate, old, new, tmp_path / "report.json",
+                              training_examples=training, validation_examples=validation,
                               destination=destination)
     assert not result["promotable"] and not result["promoted"]
     assert destination.read_bytes() == b"new"
@@ -123,3 +127,19 @@ def test_proposal_resume_restores_optimizer_rng_and_rejects_data_change(tmp_path
     training.write_text(training.read_text().replace("delayed notice", "missing notice"))
     with pytest.raises(ValueError, match="Resume requires matching"):
         train_proposals(interrupted, training, valid, interrupted, steps=5, threads=1, resume=True)
+
+
+def test_gate_blocks_training_answer_leakage(monkeypatch, tmp_path):
+    baseline, candidate = tmp_path / "baseline.pt", tmp_path / "candidate.pt"
+    baseline.write_bytes(b"previous")
+    candidate.write_bytes(b"next")
+    old = save(tmp_path / "old.json", [{"id": "old", "group": "old_group", "domain": "old_domain",
+                                        "question": "What happens to the old system?"}])
+    new = save(tmp_path / "new.json", [{"id": "new", "group": "new_group", "domain": "new_domain",
+                                        "question": "What happens to the new system?"}])
+    training = save(tmp_path / "training.json", [row("training", "new_group", "What happens to the new system?")])
+    validation = save(tmp_path / "validation.json", [row("validation", "validation_group", "When does the valve respond?")])
+    monkeypatch.setattr(cumulative_learning, "load_relational_cases", lambda path: json.loads(Path(path).read_text()))
+    with pytest.raises(ValueError, match="absent from training"):
+        gate_and_promote(baseline, candidate, old, new, tmp_path / "report.json",
+                         training_examples=training, validation_examples=validation)
