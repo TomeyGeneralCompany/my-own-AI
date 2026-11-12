@@ -11,6 +11,7 @@ from .session import configure_session, demo, load_proposer, session
 from .corpus_eval import evaluate_cases, load_cases
 from .retrieval import CorpusIndex, build_index
 from .proposal_training import train_proposals
+from .relational_curriculum import prepare_curriculum, evaluate_relational, load_relational_cases, check_relational_splits
 from .grounding import SPAN_FORMAT
 from . import neural_judge
 from .autonomous_inference import GeneratingProposer, infer
@@ -82,6 +83,19 @@ def main(argv=None):
     proposals.add_argument("--seed", type=int, default=42)
     proposals.add_argument("--threads", type=int, default=4)
     proposals.add_argument("--format", choices=(SUPERVISED_FORMAT, SPAN_FORMAT), default=SUPERVISED_FORMAT)
+    relational = sub.add_parser("prepare-relational", help="Prepare author-supervised relational training from private cases")
+    relational.add_argument("--training", type=Path, required=True)
+    relational.add_argument("--validation", type=Path, required=True)
+    relational.add_argument("--held-out", type=Path, required=True)
+    relational.add_argument("--output", type=Path, required=True)
+    relational_eval = sub.add_parser("evaluate-relational", help="Measure held-out relational neural generation")
+    relational_eval.add_argument("--checkpoint", type=Path, required=True)
+    relational_eval.add_argument("--cases", type=Path, required=True)
+    relational_eval.add_argument("--training", type=Path, required=True)
+    relational_eval.add_argument("--validation", type=Path, required=True)
+    relational_eval.add_argument("--threads", type=int, default=4)
+    relational_eval.add_argument("--tokens", type=int, default=512)
+    relational_eval.add_argument("--include-answers", action="store_true")
     judge_training = sub.add_parser("train-neural-judge", help="Train a local evidence-conditioned claim ranker")
     judge_training.add_argument("--examples", type=Path, required=True)
     judge_training.add_argument("--validation", type=Path, required=True)
@@ -152,6 +166,22 @@ def main(argv=None):
                                  steps=a.steps, batch_size=a.batch, learning_rate=a.lr, seed=a.seed,
                                  threads=a.threads, format_name=a.format)
         print(json.dumps(report, indent=2))
+    elif a.command == "prepare-relational":
+        result = prepare_curriculum(a.training, a.validation, a.held_out, a.output)
+        print(json.dumps(result, indent=2))
+    elif a.command == "evaluate-relational":
+        train_cases = load_relational_cases(a.training)
+        validation_cases = load_relational_cases(a.validation)
+        held_cases = load_relational_cases(a.cases)
+        check_relational_splits(train_cases, validation_cases, held_cases)
+        engine = load_proposer(a.checkpoint, a.threads, a.tokens)
+        report = evaluate_relational(held_cases, engine)
+        if not a.include_answers:
+            for case in report["cases"]:
+                case.pop("generated_consequence", None)
+        print(json.dumps(report, indent=2))
+        return int(report["exact_consequences"] != report["total"]
+                   or report["counterfactual_passed"] != report["counterfactual_families"])
     elif a.command == "train-neural-judge":
         report = neural_judge.train_judge(a.examples, a.validation, a.output, held_out=a.held_out,
                                           steps=a.steps, threads=a.threads)
