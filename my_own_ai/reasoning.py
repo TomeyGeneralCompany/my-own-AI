@@ -123,7 +123,7 @@ def advance(run, module, engine, tools, prior):
         run.feedback = evidence
     else:
         context = module.prepare(run.snapshot(), tools, prior) if stage == Stage.FORMULATE else run.context
-        procedure = module.procedures[stage]
+        procedure = module.procedure(run.operation, stage)
         proposal = engine.propose(ProposalRequest(module.name, run.operation, stage, procedure,
                                                   run.objective, json_copy(context), run.plan,
                                                   run.candidate, run.feedback))
@@ -141,6 +141,25 @@ def advance(run, module, engine, tools, prior):
     run.history.append({"stage": stage, "passed": passed, "evidence": evidence})
 
 
+def _grounded_prompt(request, capacity):
+    label = f"\n{request.stage.value.capitalize()}: ".encode()
+    directive = request.procedure.encode()[:capacity // 5]
+    question = request.objective.encode()[:capacity // 6]
+    feedback = request.feedback.encode()[:capacity // 8]
+    previous = (request.candidate or request.plan).encode()[:capacity // 12]
+    prefix = b"\n".join((directive, question, feedback, previous)) + b"\n"
+    remaining = max(0, capacity - len(prefix) - len(label))
+    evidence = request.context["evidence"]
+    shown = min(len(evidence), max(1, remaining // 90))
+    allowance = remaining // max(1, shown)
+    excerpts = b"".join(
+        f"[{number}] ".encode() + source["text"].encode()[:max(0, allowance - len(f"[{number}] ") - 1)] + b"\n"
+        for number, source in enumerate(evidence[:shown], 1)
+        if allowance >= 6
+    )
+    return list((prefix + excerpts + label)[-capacity:])
+
+
 class LocalProposer:
     """Greedy CPU decoding using the existing byte-level Transformer's forward interface."""
     def __init__(self, model, tokens=96):
@@ -155,22 +174,30 @@ class LocalProposer:
         import torch
 
         capacity = self.model.config.context_size
-        label = f"\n{request.stage.value.capitalize()}: ".encode("utf-8")
-        prompt = b"\n".join([
-            request.procedure.encode("utf-8")[:capacity // 6],
-            request.objective.encode("utf-8")[:capacity // 4],
-            request.feedback.encode("utf-8")[:capacity // 4],
-            request.plan.encode("utf-8")[:capacity // 8],
-            request.candidate.encode("utf-8")[:capacity // 8],
-        ])
-        remaining = max(0, capacity - len(label) - len(prompt) - 1)
-        context = json.dumps(request.context, ensure_ascii=False).encode("utf-8")[:remaining]
-        window = list((context + b"\n" + prompt + label)[-capacity:])
+        grounded = "evidence" in request.context and request.operation == "grounded_analysis"
+        anchor = _grounded_prompt(request, max(1, capacity * 3 // 4)) if grounded else []
+        if grounded:
+            window = anchor
+        else:
+            label = f"\n{request.stage.value.capitalize()}: ".encode("utf-8")
+            prompt = b"\n".join([
+                request.procedure.encode("utf-8")[:capacity // 6],
+                request.objective.encode("utf-8")[:capacity // 4],
+                request.feedback.encode("utf-8")[:capacity // 4],
+                request.plan.encode("utf-8")[:capacity // 8],
+                request.candidate.encode("utf-8")[:capacity // 8],
+            ])
+            remaining = max(0, capacity - len(label) - len(prompt) - 1)
+            context = json.dumps(request.context, ensure_ascii=False).encode("utf-8")[:remaining]
+            window = list((context + b"\n" + prompt + label)[-capacity:])
         generated = bytearray()
         with torch.inference_mode():
             for _ in range(self.tokens):
                 logits, _ = self.model(torch.tensor([window], dtype=torch.long, device="cpu"))
                 token = int(logits[0, -1].argmax())
                 generated.append(token)
-                window = (window + [token])[-self.model.config.context_size:]
+                if anchor and len(anchor) < capacity:
+                    window = anchor + list(generated[-(capacity - len(anchor)):])
+                else:
+                    window = (window + [token])[-capacity:]
         return generated.decode("utf-8", errors="replace")

@@ -1,0 +1,14 @@
+[
+  {
+    "id": "beacon_delay",
+    "question": "What would happen to a beacon hazard warning if clearance became mandatory before broadcasting?",
+    "expected_sources": ["beacon.txt"],
+    "inference_terms": ["delay", "warning"]
+  },
+  {
+    "id": "dispatch_review",
+    "question": "How could the harbor dispatcher preserve review of a reroute when the central harbor office is closed?",
+    "expected_sources": ["dispatch.txt"],
+    "inference_terms": ["record", "review"]
+  }
+]

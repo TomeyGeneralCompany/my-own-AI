@@ -1,0 +1,2 @@
+The beacon keeper sends the current hazard code before asking the harbor master for clearance.
+A captain can inspect the beacon log without needing permission from the harbor master.

@@ -13,6 +13,7 @@ def configure_session(parser):
     parser.add_argument("--checkpoint", type=Path, required=True)
     parser.add_argument("--memory", type=Path, default=Path("data/module-memory"))
     parser.add_argument("--workspace", type=Path, default=Path.cwd())
+    parser.add_argument("--corpus-index", type=Path, help="Local passage index for Research")
     parser.add_argument("--threads", type=int, default=4)
     parser.add_argument("--tokens", type=int, default=96)
     parser.add_argument("--memory-budget-mib", type=int)
@@ -40,17 +41,21 @@ def _commands(controller):
             "export": controller.export, "metrics": hardware_metrics}
 
 
-def session(args, source, output):
+def load_proposer(checkpoint, threads, tokens):
     import torch
     from .train import load_model
 
-    if args.threads < 1:
+    if threads < 1:
         raise ValueError("Thread count must be positive")
-    torch.set_num_threads(min(args.threads, hardware_metrics()["available_cpus"]))
-    model = load_model(args.checkpoint)
-    modules = default_modules(args.workspace)
+    torch.set_num_threads(min(threads, hardware_metrics()["available_cpus"]))
+    return LocalProposer(load_model(checkpoint), tokens)
+
+
+def session(args, source, output):
+    proposer = load_proposer(args.checkpoint, args.threads, args.tokens)
+    modules = default_modules(args.workspace, corpus_index=getattr(args, "corpus_index", None))
     modules.extend(_factory(specification)(args.workspace) for specification in args.module)
-    with ModuleController(CheckpointStore(args.memory), modules, LocalProposer(model, args.tokens),
+    with ModuleController(CheckpointStore(args.memory), modules, proposer,
                           memory_budget_mib=args.memory_budget_mib) as controller:
         commands = _commands(controller)
         for line in source:
