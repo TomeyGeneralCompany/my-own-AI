@@ -10,7 +10,7 @@ from hashlib import sha256
 import json
 import math
 from pathlib import Path
-from time import perf_counter
+from time import perf_counter, monotonic
 
 import torch
 from torch.nn import functional as F
@@ -147,7 +147,8 @@ def train_progressive(*, tokenizer_path, training, validation, output,
                       passes=5, overlap=64, embed=128, heads=4,
                       layers=4, context=512, lr=.0005, seed=42, threads=4,
                       checkpoint_every=25, resume=False, init_checkpoint=None,
-                      patience=0, batch_size=1, max_updates=None):
+                      patience=0, batch_size=1, max_updates=None,
+                      time_budget_seconds=None, allow_resegment=False):
     """Exhaustively read complete book chunks, with resumable ordered cursor.
 
     Pass count is an upper bound, not a fabricated English proficiency gate.
@@ -163,6 +164,9 @@ def train_progressive(*, tokenizer_path, training, validation, output,
         raise ValueError("Cannot both resume and initialize a new generation")
     if max_updates is not None and (type(max_updates) is not int or max_updates < 1):
         raise ValueError("Reading update budget must be a positive integer")
+    if time_budget_seconds is not None and (not isinstance(time_budget_seconds, (int, float))
+            or not math.isfinite(time_budget_seconds) or time_budget_seconds <= 0):
+        raise ValueError("Reading session duration must be positive")
     output = Path(output)
     if output.exists() and not resume:
         raise ValueError("Existing reading checkpoint requires --resume or a new output path")
@@ -200,7 +204,12 @@ def train_progressive(*, tokenizer_path, training, validation, output,
     }
     if resume:
         payload = torch.load(output, map_location="cpu", weights_only=True)
-        if any(payload.get(key) != value for key, value in identity.items()):
+        differences = [key for key, value in identity.items()
+                       if payload.get(key) != value]
+        resegmenting = bool(differences and allow_resegment and
+                            set(differences) <= {"training_sha256", "validation_sha256"}
+                            and payload.get("reading_format") == 1)
+        if differences and not resegmenting:
             raise ValueError("Reading resume requires matching corpus, tokenizer and configuration")
         model.load_state_dict(payload["state_dict"])
         optimizer.load_state_dict(payload["optimizer"])
@@ -228,6 +237,7 @@ def train_progressive(*, tokenizer_path, training, validation, output,
 
     log = list(payload.get("reading_history", [])) if resume else []
     started = perf_counter()
+    clock_start = monotonic()
     last_validation = None
 
     def persist(*, measured=None, mark_best=False):
@@ -254,14 +264,39 @@ def train_progressive(*, tokenizer_path, training, validation, output,
         persist(measured=last_validation, mark_best=True)
     elif resume:
         last_validation = payload["validation_loss"]
+        if resegmenting:
+            # The old cursor described 512-word sections, not numbered paragraphs.
+            # Preserve learned weights, optimizer moments, RNG and completed passes.
+            # Replay the incomplete pass from the start; never skip new paragraph
+            # targets or fabricate coverage. Previous checkpoint survives in the
+            # immutable source release even after this successor is published.
+            old_training_hash = payload["training_sha256"]
+            old_validation_hash = payload["validation_sha256"]
+            next_index = 0
+            last_validation = _validation_windows(model, valid_windows)
+            best_loss, best_pass, no_improvement = last_validation, current_pass, 0
+            log.append({"event": "paragraph_resegmentation",
+                        "previous_training_sha256": old_training_hash,
+                        "previous_validation_sha256": old_validation_hash,
+                        "preserved_completed_steps": update_count,
+                        "replayed_incomplete_pass": current_pass,
+                        "validation_loss": last_validation})
+            persist(measured=last_validation, mark_best=True)
 
     stopped_reason = "target_passes"
     updates_on_this_run = 0
+    most_recent_update = 0.
     for pass_idx in range(current_pass, passes):
         order = _pass_order(windows, seed, pass_idx)
         start_at = next_index if pass_idx == current_pass else 0
         model.train()
         for cursor in range(start_at, len(order), batch_size):
+            if time_budget_seconds is not None and updates_on_this_run > 0 and (
+                    monotonic() - clock_start + max(5., most_recent_update * 2) >= time_budget_seconds):
+                stopped_reason = "time_budget"
+                persist(measured=last_validation)
+                break
+            update_start = monotonic()
             selected = [windows[k] for k in order[cursor:cursor + batch_size]]
             x, y = _batch(selected)
             logits, _ = model(x)
@@ -275,6 +310,7 @@ def train_progressive(*, tokenizer_path, training, validation, output,
             optimizer.step()
             update_count += 1
             updates_on_this_run += 1
+            most_recent_update = monotonic() - update_start
             next_index = min(cursor + batch_size, len(order))
             current_pass = pass_idx
             if next_index < len(order) and update_count % checkpoint_every == 0:
@@ -283,7 +319,7 @@ def train_progressive(*, tokenizer_path, training, validation, output,
                 stopped_reason = "update_budget"
                 persist(measured=last_validation)
                 break
-        if stopped_reason == "update_budget":
+        if stopped_reason in ("update_budget", "time_budget"):
             break
         current_pass = pass_idx + 1
         next_index = 0
@@ -308,9 +344,14 @@ def train_progressive(*, tokenizer_path, training, validation, output,
         if max_updates is not None and updates_on_this_run >= max_updates:
             stopped_reason = "update_budget" if current_pass < passes else "target_passes"
             break
+        if time_budget_seconds is not None and (monotonic() - clock_start + 10
+                                                >= time_budget_seconds):
+            stopped_reason = "time_budget" if current_pass < passes else "target_passes"
+            break
     return {
         "reading_format": 1, "completed_passes": current_pass,
         "next_window": next_index, "updates_this_run": updates_on_this_run,
+        "paragraph_resegmented": bool(resume and resegmenting),
         "completed_steps": update_count, "read_windows_per_pass": len(windows),
         "unique_supervised_tokens_per_pass": total_targets,
         "heldout_validation_tokens": valid_targets,
