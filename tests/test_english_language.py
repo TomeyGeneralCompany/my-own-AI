@@ -9,6 +9,8 @@ from my_own_ai.tokenizer import ByteBPETokenizer, BOS, EOS, USER, ASSISTANT
 from my_own_ai.language_training import _example, load_language, train_language
 from my_own_ai.language_inference import answer_question, prompt_tokens
 from my_own_ai.language_evaluation import load_gauntlet, repetition_rate
+from my_own_ai.language_corpus import prepare_english_corpus, near_duplicate
+from my_own_ai import language_regression
 from my_own_ai.train import load_model
 
 ROOT = Path(__file__).resolve().parents[1] / "examples" / "english"
@@ -112,3 +114,63 @@ def test_fixed_gauntlet_counts_and_no_training_question_overlap():
     assert len(prompts) == 200
     assert not prompts.intersection(row["question"].casefold() for row in training + validation)
     assert repetition_rate([1, 2, 3, 1, 2, 3, 1, 2, 3]) > 0
+
+
+def test_english_corpus_uses_document_disjoint_splits_and_deduplicates(tmp_path):
+    source = tmp_path / "sources"
+    source.mkdir()
+    for i, statement in enumerate((
+        "The mechanic checked the gearbox before making a repair.",
+        "The gardener watered the trees during the early morning.",
+        "The researcher observed a signal moving through the laboratory.",
+        "The supervisor sent a report to the accounting department.",
+        "The teacher discussed a poem with the class after lunch.",
+        "The courier carried a letter to the distant library.",
+    )):
+        (source / f"document{i}.txt").write_text(statement * 4, encoding="utf-8")
+    (source / "duplicate.txt").write_text((source / "document0.txt").read_text())
+    result = prepare_english_corpus(source, tmp_path / "prepared")
+    assert sum(result[k] for k in ("train", "validation", "test")) == 6
+    assert sum(len(list((tmp_path / "prepared" / k).glob("*.txt")))
+               for k in ("train", "validation", "test")) == 6
+    assert near_duplicate("The reader wrote a new report.", "The reader wrote a new report.")
+    with pytest.raises(ValueError, match="must not exist"):
+        prepare_english_corpus(source, tmp_path / "prepared")
+
+
+def test_english_release_gate_rejects_forgetting_and_requires_human_review(monkeypatch, tmp_path):
+    old, candidate = tmp_path / "old.pt", tmp_path / "candidate.pt"
+    old.write_bytes(b"old-model")
+    candidate.write_bytes(b"new-model")
+    tokenizer = tmp_path / "tokenizer.json"
+    tokenizer.write_text("{}")
+    gauntlet = ROOT / "gauntlet.json"
+    original = [{"id": "a", "exact_match": True}, {"id": "b", "exact_match": False}]
+    improved = [{"id": "a", "exact_match": True}, {"id": "b", "exact_match": True}]
+    def fake(*args, **kwargs):
+        return {"exact_correct": sum(x["exact_match"] for x in
+                (original if Path(args[0]) == old else improved)),
+                "cases": original if Path(args[0]) == old else improved}
+    monkeypatch.setattr(language_regression, "evaluate_english", fake)
+    report = language_regression.compare_english(old, candidate, tokenizer, gauntlet)
+    assert report["automatic_improvement"] and not report["promotable"]
+    review = tmp_path / "review.json"
+    from hashlib import sha256
+    review.write_text(json.dumps({
+        "reviewer_approved": True,
+        "candidate_sha256": sha256(candidate.read_bytes()).hexdigest(),
+        "gauntlet_sha256": sha256(gauntlet.read_bytes()).hexdigest(),
+        "manual_cases_reviewed": 70, "grammar_average": 4.5,
+        "coherence_average": 4.2}))
+    accepted = language_regression.promote_english(
+        old, candidate, tokenizer, gauntlet, tmp_path / "report.json",
+        destination=tmp_path / "released.pt", review_path=review)
+    assert accepted["promoted"]
+    assert (tmp_path / "released.pt").read_bytes() == candidate.read_bytes()
+    def regress(*args, **kwargs):
+        return {"exact_correct": 1, "cases": original if Path(args[0]) == old else
+                [{"id": "a", "exact_match": False}, {"id": "b", "exact_match": True}]}
+    monkeypatch.setattr(language_regression, "evaluate_english", regress)
+    denied = language_regression.compare_english(
+        old, candidate, tokenizer, gauntlet, review_path=review)
+    assert denied["lost_previously_correct"] == ["a"] and not denied["promotable"]
