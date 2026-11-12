@@ -3,10 +3,10 @@
 The first 256 IDs represent raw bytes, providing lossless UTF-8 round trips.
 No downloaded vocabulary, pretrained tokenization artifacts or external models.
 """
-from collections import Counter
 from hashlib import sha256
 import json
 from pathlib import Path
+from .bpe_engine import apply_ranked_merges, train_byte_merges
 
 PAD = 256
 BOS = 257
@@ -37,15 +37,7 @@ class ByteBPETokenizer:
     def encode(self, text):
         if not isinstance(text, str):
             raise TypeError("Tokenizer input must be text")
-        ids = list(text.encode("utf-8"))
-        while len(ids) > 1:
-            matches = [(self.ranks[(a, b)], i) for i, (a, b) in enumerate(zip(ids, ids[1:]))
-                       if (a, b) in self.ranks]
-            if not matches:
-                break
-            token, pos = min(matches)
-            ids[pos:pos + 2] = [token]
-        return ids
+        return apply_ranked_merges(text.encode("utf-8"), self.ranks)
 
     def decode(self, ids):
         pieces = []
@@ -61,32 +53,8 @@ class ByteBPETokenizer:
     def train(cls, documents, vocab_size=8192, min_frequency=2):
         if not FIRST_MERGE <= vocab_size <= 16384 or min_frequency < 2:
             raise ValueError("Invalid BPE configuration")
-        sequences = [list(text.encode("utf-8")) for text in documents if text.strip()]
-        if not sequences:
-            raise ValueError("Cannot train tokenizer on empty corpus")
-        merges = []
-        while len(merges) + FIRST_MERGE < vocab_size:
-            pairs = Counter((a, b) for seq in sequences for a, b in zip(seq, seq[1:]))
-            if not pairs:
-                break
-            best, count = min(pairs.items(), key=lambda pair: (-pair[1], pair[0]))
-            if count < min_frequency:
-                break
-            token = FIRST_MERGE + len(merges)
-            merges.append(best)
-            updated = []
-            for seq in sequences:
-                result = []
-                i = 0
-                while i < len(seq):
-                    if i + 1 < len(seq) and (seq[i], seq[i + 1]) == best:
-                        result.append(token)
-                        i += 2
-                    else:
-                        result.append(seq[i])
-                        i += 1
-                updated.append(result)
-            sequences = updated
+        merges = train_byte_merges(documents, vocab_size, min_frequency,
+                                   first_merge=FIRST_MERGE)
         return cls(merges)
 
     def state(self):
