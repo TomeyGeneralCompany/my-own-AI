@@ -1,5 +1,23 @@
 # my-own-AI
 
+## Original English acquisition (PR #14, experimental)
+
+The Core now has a separate versioned original subword tokenizer, CPU-only
+English pretraining and question-answer training, best/latest checkpoint
+selection, and a 200-question diagnostic gauntlet. **The demonstration
+checkpoint is not a fluent conversational assistant**: the first full
+synthetic test scored 0/130 automatically assessed answers. A longer run
+memorized a training question but still failed on unseen questions.
+
+[English training and validation guide](docs/ENGLISH_ACQUISITION.md)
+
+To ask it a question without the laptop, use
+[Ancestor Core English acquisition](https://github.com/TomeyGeneralCompany/my-own-AI/actions/workflows/english-acquisition.yml)
+under GitHub Actions and choose **Run workflow** after PR #14 is merged.
+The actual neural answer and diagnostics appear in the run summary. Do not
+enter confidential text in public Actions questions or artifacts.
+
+
 Original-weight, CPU-first modular AI foundation. The neural model starts from random parameters and trains on a user-supplied local corpus. No downloaded neural weights, hosted inference, telemetry, or paid AI service are needed.
 
 ## Install and try
