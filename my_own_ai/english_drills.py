@@ -24,8 +24,8 @@ FAMILIES = {
 TEMPLATES = (
     ("grammar", "Correct the sentence: The {actor} carry the {object}.",
      "The {actor} carries the {object}."),
-    ("grammar", "Correct the sentence: A {actor} are in the {place}.",
-     "A {actor} is in the {place}."),
+    ("grammar", "Correct the sentence: {article} {actor} are in the {place}.",
+     "{article} {actor} is in the {place}."),
     ("grammar", "Correct the sentence: The {object} were in the {place}.",
      "The {object} was in the {place}."),
     ("reading", "Read: The {actor} put the {object} in the {place}. Who put it there?",
@@ -54,7 +54,8 @@ def english_drills(split):
         for _, obj, object_place in FAMILIES[split]:
             place = actor_place if actor_place != object_place else object_place
             for category, prompt, answer in TEMPLATES:
-                values = {"actor": actor, "object": obj, "place": place}
+                values = {"actor": actor, "object": obj, "place": place,
+                          "article": "An" if actor[0].lower() in "aeiou" else "A"}
                 question = prompt.format(**values)
                 response = answer.format(**values)
                 key = sha256((split + "\\0" + category + "\\0" + question).encode()).hexdigest()[:24]
