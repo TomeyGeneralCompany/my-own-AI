@@ -8,6 +8,7 @@ from time import monotonic
 import torch
 
 from my_own_ai.book_instruction import create_book_continuations
+from my_own_ai.reasoning_curriculum import create_reasoning_lessons
 from my_own_ai.corpus import collect_documents
 from my_own_ai.language_training import _example, load_dialogues, load_language, train_language
 from my_own_ai.language_inference import answer_question
@@ -73,8 +74,15 @@ def train(args):
     books = scratch / "books"
     prepare_published_corpus(repo, repo / "published_books/manifest.json", books,
                              target_words=args.section_words)
-    create_book_continuations(books, scratch / "exercises",
-                              limit_per_split=args.max_exercises)
+    curriculum = getattr(args, "curriculum", "continuation")
+    if curriculum == "reasoning":
+        create_reasoning_lessons(books, scratch / "exercises",
+                                limit_per_split=args.max_exercises)
+    elif curriculum == "continuation":
+        create_book_continuations(books, scratch / "exercises",
+                                  limit_per_split=args.max_exercises)
+    else:
+        raise ValueError("Unknown instruction curriculum")
     state.mkdir(parents=True, exist_ok=True)
     meta = state / "generation.json"
     saved = read_json(meta) if meta.is_file() else None
@@ -105,7 +113,8 @@ def train(args):
                  and not migrating_paragraphs) or
                 saved.get("model_config") != config or
                 saved.get("target_reading_passes") != args.passes or
-                saved.get("target_instruction_steps") != args.instruction_steps):
+                saved.get("target_instruction_steps") != args.instruction_steps or
+                saved.get("curriculum", "continuation") != curriculum):
             raise ValueError("Generation/corpus/model settings changed during resume")
         if saved.get("phase") == "candidate":
             raise ValueError("Finished candidate is immutable")
@@ -128,6 +137,7 @@ def train(args):
             "model_config": config, "chunk_unit": "numbered_paragraph",
             "target_reading_passes": args.passes,
             "target_instruction_steps": args.instruction_steps,
+            "curriculum": curriculum,
             "completed_reading_passes": 0, "completed_instruction_steps": 0,
             "parent_checkpoint_sha256": digest_file(parent) if parent else None,
         }
@@ -268,6 +278,7 @@ def main():
     for name in ("state", "scratch", "generation"):
         t.add_argument("--" + name, required=True)
     t.add_argument("--repository", default=".")
+    t.add_argument("--curriculum", choices=("continuation", "reasoning"), default="continuation")
     t.add_argument("--parent-state")
     for name, default in (
         ("section-words",512), ("max-exercises",250), ("vocab",2048),
