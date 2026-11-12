@@ -10,6 +10,7 @@ from .modules import CheckpointStore, ModuleController, default_modules
 from .session import configure_session, demo, load_proposer, session
 from .corpus_eval import evaluate_cases, load_cases
 from .retrieval import CorpusIndex, build_index
+from .proposal_training import train_proposals
 
 def main(argv=None):
     parser = argparse.ArgumentParser(prog="my-own-ai")
@@ -60,6 +61,17 @@ def main(argv=None):
     evaluate.add_argument("--tokens", type=int, default=256)
     evaluate.add_argument("--limit", type=int, default=5)
     evaluate.add_argument("--max-corrections", type=int, default=2)
+    proposals = sub.add_parser("train-proposals", help="Train on worked reasoning proposals")
+    proposals.add_argument("--checkpoint", type=Path, required=True)
+    proposals.add_argument("--examples", type=Path, required=True)
+    proposals.add_argument("--validation", type=Path, required=True)
+    proposals.add_argument("--held-out", type=Path)
+    proposals.add_argument("--output", type=Path, required=True)
+    proposals.add_argument("--steps", type=int, default=200)
+    proposals.add_argument("--batch", type=int, default=4)
+    proposals.add_argument("--lr", type=float, default=.001)
+    proposals.add_argument("--seed", type=int, default=42)
+    proposals.add_argument("--threads", type=int, default=4)
     a = parser.parse_args(argv)
     if a.command == "ingest":
         m = build_manifest(a.corpus, a.manifest)
@@ -82,6 +94,11 @@ def main(argv=None):
     elif a.command == "search-corpus":
         with CorpusIndex(a.index) as corpus:
             print(json.dumps(corpus.search(a.query, a.limit), indent=2))
+    elif a.command == "train-proposals":
+        report = train_proposals(a.checkpoint, a.examples, a.validation, a.output, held_out=a.held_out,
+                                 steps=a.steps, batch_size=a.batch, learning_rate=a.lr, seed=a.seed,
+                                 threads=a.threads)
+        print(json.dumps(report, indent=2))
     elif a.command == "evaluate-corpus":
         cases = load_cases(a.cases)
         engine = load_proposer(a.checkpoint, a.threads, a.tokens)

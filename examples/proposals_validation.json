@@ -1,0 +1,41 @@
+[
+  {
+    "id": "shift_record_formulate",
+    "group": "shift_record",
+    "stage": "formulate",
+    "question": "When must the dispatcher record a reroute's justification?",
+    "passages": [
+      "The dispatcher must record the reason before the next shift begins."
+    ],
+    "plan": "",
+    "candidate": "",
+    "feedback": "",
+    "answer": "Identify the deadline for recording the reason."
+  },
+  {
+    "id": "shift_record_construct",
+    "group": "shift_record",
+    "stage": "construct",
+    "question": "When must the dispatcher record a reroute's justification?",
+    "passages": [
+      "The dispatcher must record the reason before the next shift begins."
+    ],
+    "plan": "Identify the deadline for recording the reason.",
+    "candidate": "",
+    "feedback": "",
+    "answer": "Premises:\n- [1] record the reason before the next shift\nInference: The record must be made before the next shift begins."
+  },
+  {
+    "id": "shift_record_correct",
+    "group": "shift_record",
+    "stage": "correct",
+    "question": "When must the dispatcher record a reroute's justification?",
+    "passages": [
+      "The dispatcher must record the reason before the next shift begins."
+    ],
+    "plan": "Identify the deadline for recording the reason.",
+    "candidate": "The record can be updated whenever convenient.",
+    "feedback": "Use Premises: with exact quote bullets followed by a substantive Inference: section",
+    "answer": "Premises:\n- [1] record the reason before the next shift\nInference: The record must be made before the next shift begins."
+  }
+]
