@@ -12,7 +12,7 @@ from time import perf_counter
 
 from my_own_ai.corpus import collect_documents
 from my_own_ai.tokenizer import ByteBPETokenizer
-from my_own_ai.language_training import train_language
+from my_own_ai.language_training import train_language, load_dialogues
 from my_own_ai.language_inference import answer_question
 from my_own_ai.language_evaluation import load_gauntlet, evaluate_english
 
@@ -38,11 +38,15 @@ def run():
         validation=ROOT / "corpus/validation", output=pretrain_path,
         steps=60, checkpoint_every=20, lr=.001
     )
+    instruction_steps = int(os.environ.get("ENGLISH_INSTRUCTION_STEPS", "120"))
+    if not 1 <= instruction_steps <= 5000:
+        raise ValueError("English instruction steps must be between 1 and 5000")
     taught_path = OUT / "english-core.pt"
     instruction = train_language(
         **common, phase="instruction", training=ROOT / "dialogue/train.json",
         validation=ROOT / "dialogue/validation.json", output=taught_path,
-        init_checkpoint=pretrain_path, steps=120, checkpoint_every=40, lr=.001
+        init_checkpoint=pretrain_path, steps=instruction_steps,
+        checkpoint_every=40, lr=.001
     )
 
     user_question = os.environ.get("CORE_QUESTION", "").strip()
@@ -52,7 +56,15 @@ def run():
                                max_tokens=80, threads=2)
     response = answer_question(taught_path, tokenizer_path, user_question,
                                max_tokens=80, threads=2)
-    question_record = {"before_instruction_training": baseline, "trained_response": response}
+    known = load_dialogues(ROOT / "dialogue/train.json")[0]
+    known_response = answer_question(taught_path, tokenizer_path, known["question"],
+                                     max_tokens=80, threads=2)
+    question_record = {
+        "before_instruction_training": baseline, "trained_response": response,
+        "known_training_question": known["question"],
+        "known_training_target": known["answer"],
+        "known_training_response": known_response,
+    }
     (OUT / "question-response.json").write_text(json.dumps(question_record, indent=2),
                                                   encoding="utf-8")
 
@@ -67,6 +79,9 @@ def run():
         "tokenizer_vocab_size": tokenizer.vocab_size,
         "tokenizer_sha256": tokenizer.fingerprint(),
         "pretraining": pretrain, "instruction": instruction,
+        "instruction_steps": instruction_steps,
+        "known_training_target_exact": (
+            known_response["answer"].strip() == known["answer"].strip()),
         "evaluation_cases": report["total"],
         "auto_exact": report["exact_correct"],
         "auto_scored": report["automatically_scored"],
@@ -87,6 +102,8 @@ def run():
         f"**Tokenizer:** {tokenizer.vocab_size} learned/byte-fallback tokens.",
         f"**Pretraining validation loss:** {pretrain['validation_loss']:.4f}",
         f"**Instruction validation loss:** {instruction['validation_loss']:.4f}",
+        f"**Instruction updates:** {instruction_steps}.",
+        f"**Known training example copied exactly:** {comparison['known_training_target_exact']}.",
         f"**Frozen gauntlet:** {report['total']} items; {report['exact_correct']}/{report['automatically_scored']} strict automatic matches.",
         f"**Manual review pending:** {report['manual_review_pending']} items.",
         f"**Natural EOS:** {report['natural_eos']}/{report['total']} items.",
@@ -100,6 +117,12 @@ def run():
         "## Model response — after English training",
         "",
         "<pre>" + html.escape(response["answer"]) + "</pre>",
+        "",
+        "## Response to a known training question (memorization diagnostic)",
+        "",
+        "<pre>" + html.escape(known["question"]) + "</pre>",
+        "",
+        "<pre>" + html.escape(known_response["answer"]) + "</pre>",
         "",
         "## Model response — before instruction training",
         "",
