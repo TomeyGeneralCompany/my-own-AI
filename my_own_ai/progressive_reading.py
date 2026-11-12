@@ -37,7 +37,9 @@ def _reading_documents(folder):
     manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
     if manifest.get("format") != "approved_books_v1":
         return rows
-    known = {row["id"] for row in manifest.get("sources", [])}
+    import re
+    known = {re.sub(r"[^A-Za-z0-9_-]", "_", row["id"]): row["id"]
+             for row in manifest.get("sources", [])}
     groups = {}
     for row in rows:
         stem = Path(row["source"]).stem
@@ -53,7 +55,7 @@ def _reading_documents(folder):
             raise ValueError("Duplicate book section index")
         content = "\n\n".join(text for _, text in ordered)
         combined.append({"id": sha256(content.encode()).hexdigest(),
-                         "source": name, "text": content})
+                         "source": known[name], "text": content})
     if not combined:
         raise ValueError("Prepared corpus has no readable book sections")
     return combined
@@ -156,6 +158,8 @@ def train_progressive(*, tokenizer_path, training, validation, output,
     if resume and init_checkpoint:
         raise ValueError("Cannot both resume and initialize a new generation")
     output = Path(output)
+    if output.exists() and not resume:
+        raise ValueError("Existing reading checkpoint requires --resume or a new output path")
     source_paths = [Path(p).resolve() for p in (tokenizer_path, training, validation)]
     if output.resolve() in source_paths:
         raise ValueError("Checkpoint must not replace a source")
