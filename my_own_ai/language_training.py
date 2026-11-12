@@ -7,6 +7,7 @@ from dataclasses import asdict
 from hashlib import sha256
 import json
 import math
+from time import perf_counter
 from pathlib import Path
 import torch
 from torch.nn import functional as F
@@ -206,9 +207,13 @@ def train_language(*, tokenizer_path, training, validation, output,
         return measured
     model.train()
     measured = None
+    started = perf_counter()
+    supervised_tokens = 0
     for step in range(start + 1, steps + 1):
         chosen = torch.randint(len(train_samples), (batch_size,), generator=sampler).tolist()
-        loss = _loss(model, _batch(train_samples, chosen))
+        current_batch = _batch(train_samples, chosen)
+        supervised_tokens += int((current_batch[1] != -100).sum())
+        loss = _loss(model, current_batch)
         optimizer.zero_grad(set_to_none=True)
         loss.backward()
         torch.nn.utils.clip_grad_norm_(model.parameters(), 1.)
@@ -217,7 +222,11 @@ def train_language(*, tokenizer_path, training, validation, output,
             measured = save(step)
     if measured is None:
         measured = float(torch.load(output, map_location="cpu", weights_only=True)["validation_loss"])
+    elapsed = perf_counter() - started
     return {"phase": phase, "steps": steps, "completed_this_run": steps - start,
+            "trained_target_tokens": supervised_tokens,
+            "elapsed_seconds": round(elapsed, 3),
+            "target_tokens_per_second": round(supervised_tokens / max(elapsed, 1e-6), 2),
             "validation_loss": measured, "validation_perplexity": math.exp(min(measured, 50)),
             "best_validation_loss": best_loss, "best_step": best_step,
             "best_checkpoint": str(best_path),
