@@ -29,12 +29,13 @@ def segments(text):
             re.split(r"(?<=[.!?])\s+(?=[A-Z“\"'\[])", prose) if s.strip()]
 
 
-def extract_lessons(text, *, source_id, max_answer_chars=190):
+def extract_lessons(text, *, source_id, max_answer_chars=190, unit_label=None):
     match = NUMBERED.match(text)
-    if not match:
+    if not match and not unit_label:
         return []
-    number = int(match.group(1))
-    lines = segments(text[match.end():])
+    number = int(match.group(1)) if match else None
+    location = f"numbered paragraph [{number}]" if match else f"source unit {unit_label}"
+    lines = segments(text[match.end():] if match else text)
     if not lines:
         return []
     result = []
@@ -54,7 +55,7 @@ def extract_lessons(text, *, source_id, max_answer_chars=190):
     for sentence in lines:
         if len(sentence) <= max_answer_chars:
             if DEFINITION.search(sentence):
-                add("definition", f"State the author's definition or identity claim in numbered paragraph [{number}].",
+                add("definition", f"State the author's definition or identity claim in {location}.",
                     sentence)
                 break
     # Premise/consequence instruction uses a *source passage*, not an
@@ -62,22 +63,22 @@ def extract_lessons(text, *, source_id, max_answer_chars=190):
     for prev, current in zip(lines, lines[1:]):
         if (CONSEQUENCE.search(current) and
             25 <= len(prev) <= max_answer_chars and 20 <= len(current) <= max_answer_chars):
-            add("derivation", f"In paragraph [{number}], the author writes: {prev}\n"
+            add("derivation", f"In {location}, the author writes: {prev}\n"
                 "What consequence does the author give?", current)
             break
     for line in text.splitlines():
         piece = line.strip()
         if 5 <= len(piece) <= max_answer_chars and MATH.search(piece):
-            add("mathematical", f"Reproduce one mathematical expression from paragraph [{number}].",piece)
+            add("mathematical", f"Reproduce one mathematical expression from {location}.",piece)
             break
     # Distinctions and examples are literal claims from the author.
     for sentence in lines:
         if COMPARISON.search(sentence) and len(sentence) <= max_answer_chars:
-            add("comparison", f"What distinction does paragraph [{number}] draw?", sentence)
+            add("comparison", f"What distinction does {location} draw?", sentence)
             break
     for sentence in lines:
         if APPLICATION.search(sentence) and len(sentence) <= max_answer_chars:
-            add("application", f"What example or application appears in paragraph [{number}]?", sentence)
+            add("application", f"What example or application appears in {location}?", sentence)
             break
     # The author's adjacent terms paragraph provides actual definitions of
     # symbols; teach the mapping explicitly, without manufacturing equations.
@@ -88,13 +89,13 @@ def extract_lessons(text, *, source_id, max_answer_chars=190):
             variable = VARIABLE.search(clause)
             if variable and len(clause) <= max_answer_chars:
                 add("mathematical_interpretation",
-                    f"According to paragraph [{number}], what does {variable.group(1)} mean?",
+                    f"According to {location}, what does {variable.group(1)} mean?",
                     clause)
     # Explicit reading/comprehension instruction, not an unsupported semantic
     # paraphrase or manufactured counterfactual.
     for sentence in lines[:2]:
         if 25 <= len(sentence) <= max_answer_chars:
-            add("proposition", f"What proposition does numbered paragraph [{number}] state?",
+            add("proposition", f"What proposition does {location} state?",
                 sentence)
             break
     # Deduplicate question IDs within paragraph, preserving source order.
@@ -109,14 +110,15 @@ def create_reasoning_lessons(prepared, destination, *, limit_per_split=800):
     if output.exists() or output == source or output.is_relative_to(source):
         raise ValueError("Reasoning lessons must use a new separate destination")
     manifest = json.loads((source / "manifest.json").read_text())
-    if manifest.get("format") != "approved_books_v1" or manifest.get("chunk_unit") != "numbered_paragraph":
+    if manifest.get("format") != "approved_books_v1" or manifest.get("chunk_unit") not in ("numbered_paragraph", "mixed_structured"):
         raise ValueError("Numbered-paragraph approved corpus required")
     result = {}
     pool = {}
     for split in ("train", "validation", "test"):
         lessons = []
         for doc in collect_documents(source / split):
-            lessons.extend(extract_lessons(doc["text"], source_id=doc["source"]))
+            lessons.extend(extract_lessons(doc["text"], source_id=doc["source"],
+                unit_label=Path(doc["source"]).stem))
         pool[split] = lessons
     # Question+answer exact collision cannot leak across partitions.
     normalized = {}
