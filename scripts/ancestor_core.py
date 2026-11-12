@@ -204,6 +204,10 @@ def ask(state, question, evidence, output, active=None, threads=2, tokens=120):
         pointer = load_active_pointer(Path(active).read_text(encoding="utf-8"))
         if pointer["generation"] != metadata["generation"]:
             raise ValueError("Downloaded model differs from the active generation")
+        if pointer.get("checkpoint_sha256") != digest_file(state / "assistant.best.pt"):
+            raise ValueError("Active pointer checkpoint SHA-256 does not match downloaded model")
+        if pointer.get("tokenizer_sha256") != metadata.get("tokenizer_sha256"):
+            raise ValueError("Active pointer tokenizer differs from downloaded model")
     if not question.strip() or len(question) > 1000 or len(evidence) > 1200:
         raise ValueError("Invalid question or evidence length")
     prompt = (question if not evidence.strip() else
