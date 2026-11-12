@@ -9,7 +9,7 @@ from tempfile import NamedTemporaryFile
 from .intellectual_ledger import approved_sources
 from .module_memory import encode_json
 from .proposal_training import load_examples, verify_splits
-from .relational_curriculum import load_relational_cases, evaluate_relational
+from .relational_curriculum import load_relational_cases, evaluate_relational, _normalized
 from .session import load_proposer
 
 
@@ -81,9 +81,9 @@ def compare_models(baseline, candidate, old_cases, new_cases, *, training_exampl
     validation = load_examples(validation_examples)
     verify_splits(training, validation, [])
     seen_groups = {row["group"] for row in training + validation}
-    seen_questions = {" ".join(row["question"].casefold().split()) for row in training + validation}
+    seen_questions = {_normalized(row["question"]) for row in training + validation}
     eval_groups = old_groups | new_groups
-    eval_questions = {" ".join(row["question"].casefold().split()) for row in old + new}
+    eval_questions = {_normalized(row["question"]) for row in old + new}
     if eval_groups & seen_groups or eval_questions & seen_questions:
         raise ValueError("Evaluation questions and groups must be absent from training and validation")
     old_domains = {row["domain"] for row in old}
