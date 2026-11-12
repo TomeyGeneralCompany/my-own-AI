@@ -71,11 +71,11 @@ def _report(rows):
 
 def test_gate_promotes_only_improvements_without_forgetting(monkeypatch, tmp_path):
     old = save(tmp_path / "old.json", [
-        {"id": "a", "group": "g1", "domain": "old"},
-        {"id": "b", "group": "g1", "domain": "old"}])
+        {"id": "a", "group": "g1", "domain": "old", "question": "What happens in the old system?"},
+        {"id": "b", "group": "g1", "domain": "old", "question": "What happens in the old system?"}])
     new = save(tmp_path / "new.json", [
-        {"id": "c", "group": "g2", "domain": "new"},
-        {"id": "d", "group": "g2", "domain": "new"}])
+        {"id": "c", "group": "g2", "domain": "new", "question": "What happens in the new system?"},
+        {"id": "d", "group": "g2", "domain": "new", "question": "What happens in the new system?"}])
     baseline = tmp_path / "baseline.pt"
     candidate = tmp_path / "candidate.pt"
     baseline.write_bytes(b"old")
