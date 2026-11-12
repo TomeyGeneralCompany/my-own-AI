@@ -16,10 +16,47 @@ import torch
 from torch.nn import functional as F
 
 from .corpus import collect_documents
-from .language_training import _validation, load_language
 from .model import LocalTransformer, ModelConfig
 from .tokenizer import BOS, EOS, ByteBPETokenizer
 from .train import _atomic_save
+
+
+def _reading_documents(folder):
+    """Restore sequential sections to one continuous stream per source book.
+
+    A PR #15 prepared corpus contains separate numbered section files plus
+    a manifest. Rejoin only sections in the *same partition*, in original
+    sequence. No training window may cross a validation/test boundary.
+    Plain text corpora without a manifest keep per-file isolation.
+    """
+    folder = Path(folder)
+    rows = collect_documents(folder)
+    manifest_path = folder.parent / "manifest.json"
+    if not manifest_path.is_file():
+        return rows
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    if manifest.get("format") != "approved_books_v1":
+        return rows
+    known = {row["id"] for row in manifest.get("sources", [])}
+    groups = {}
+    for row in rows:
+        stem = Path(row["source"]).stem
+        prefix, sep, index = stem.rpartition("_")
+        if not sep or not index.isdecimal() or prefix not in known:
+            raise ValueError("Prepared book section name does not match approved manifest")
+        groups.setdefault(prefix, []).append((int(index), row["text"]))
+    combined = []
+    for name, sections in sorted(groups.items()):
+        ordered = sorted(sections)
+        indices = [i for i, _ in ordered]
+        if len(indices) != len(set(indices)):
+            raise ValueError("Duplicate book section index")
+        content = "\n\n".join(text for _, text in ordered)
+        combined.append({"id": sha256(content.encode()).hexdigest(),
+                         "source": name, "text": content})
+    if not combined:
+        raise ValueError("Prepared corpus has no readable book sections")
+    return combined
 
 
 def _identity(docs):
@@ -128,7 +165,7 @@ def train_progressive(*, tokenizer_path, training, validation, output,
     cfg = ModelConfig(vocab_size=tokenizer.vocab_size, context_size=context,
                       embed_dim=embed, heads=heads, layers=layers)
     cfg.validate()
-    train_docs, valid_docs = collect_documents(training), collect_documents(validation)
+    train_docs, valid_docs = _reading_documents(training), _reading_documents(validation)
     train_ids = {row["id"] for row in train_docs}
     if train_ids & {row["id"] for row in valid_docs}:
         raise ValueError("Training and validation documents overlap")
