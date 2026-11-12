@@ -12,9 +12,9 @@ my-own-ai ingest --corpus examples
 my-own-ai train --corpus examples --steps 20 --context 64 --checkpoint-every 10
 my-own-ai train --corpus examples --steps 40 --context 64 --resume
 my-own-ai benchmark --checkpoint data/checkpoints/brain.pt
-my-own-ai switch --mode writing
+my-own-ai demo
 ```
 
 TXT, Markdown, DOCX and text-based PDF are accepted for corpus ingestion. A few iterations on sample text produce meaningless output: the current neural network is a mathematical research foundation, not a useful assistant. Book data should remain in ignored `corpus/private/`, **never committed to this public repo**.
 
-See [training guide](docs/TRAINING.md) and [architecture](docs/ARCHITECTURE.md). The module socket and controller are still lifecycle stubs, not functioning coding/writing assistants. Only the user merges pull requests.
+See the [training guide](docs/TRAINING.md) and the [Linux session and module extension guide](docs/ARCHITECTURE.md). A session keeps one CPU model loaded and switches between Conversation, Writing, Coding and Research. The controller saves project progress, restricts tools to the active module and checks proposals against module-specific criteria. Only the user merges pull requests.
