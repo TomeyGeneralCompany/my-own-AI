@@ -76,3 +76,17 @@ def test_cross_work_heldout_questions_have_provenance_for_every_book(tmp_path):
     trains=json.loads((lessons/"train.json").read_text())
     tests=json.loads((lessons/"test.json").read_text())
     assert not {r["question"] for r in trains}&{r["question"] for r in tests}
+
+
+def test_patristic_omml_equations_restored_next_to_their_source_arguments():
+    sources=validate_published_manifest(ROOT,ROOT/"published_books/manifest.json")["sources"]
+    text=next(x["text"] for x in sources if x["id"]=="patristic-cybernetic-sola-fide")
+    assert "G_J(C, F_t, S_t, W_t) = C" in text
+    assert "∂G_J/∂S_t = 0" in text
+    assert "W_t = Ψ(J_t, S_t)" in text
+    assert "R_{t+1} = H(R_t, Γ_t, W_t)" in text
+    units=structured_units(text)
+    assert any("The Reformed claim is:" in x["text"] and
+               "G_J(C, F_t, S_t, W_t) = C" in x["text"] for x in units)
+    assert any("Sanctification and works form a genuine recursive order" in x["text"] and
+               "W_t = Ψ(J_t, S_t)" in x["text"] for x in units)
