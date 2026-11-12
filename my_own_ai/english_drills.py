@@ -49,6 +49,7 @@ def english_drills(split):
     if split not in FAMILIES:
         raise ValueError("Unknown English drill split")
     rows = []
+    seen = set()
     for actor, _, actor_place in FAMILIES[split]:
         for _, obj, object_place in FAMILIES[split]:
             place = actor_place if actor_place != object_place else object_place
@@ -57,7 +58,9 @@ def english_drills(split):
                 question = prompt.format(**values)
                 response = answer.format(**values)
                 key = sha256((split + "\\0" + category + "\\0" + question).encode()).hexdigest()[:24]
-                rows.append({"id": "english-" + key, "question": question, "answer": response})
+                if question not in seen:
+                    seen.add(question)
+                    rows.append({"id": "english-" + key, "question": question, "answer": response})
     return rows
 
 
