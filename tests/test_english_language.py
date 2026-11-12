@@ -6,6 +6,7 @@ import pytest
 import torch
 
 from my_own_ai.tokenizer import ByteBPETokenizer, BOS, EOS, USER, ASSISTANT
+from my_own_ai.bpe_engine import apply_ranked_merges, train_byte_merges
 from my_own_ai.language_training import _example, load_language, train_language
 from my_own_ai.language_inference import answer_question, prompt_tokens
 from my_own_ai.language_evaluation import load_gauntlet, repetition_rate
@@ -194,3 +195,51 @@ def test_english_release_gate_rejects_forgetting_and_requires_human_review(monke
     denied = language_regression.compare_english(
         previous, candidate, tokenizer, gauntlet, review_path=review)
     assert denied["lost_previously_correct"] == ["a"] and not denied["promotable"]
+
+
+def test_original_fast_bpe_matches_reference_merging():
+    from collections import Counter
+
+    docs = ["banana banana bandana", "a better banana", "banana in a basket"]
+    def slow_merges(texts, target):
+        sequences = [list(text.encode()) for text in texts]
+        merges = []
+        while len(merges) < target:
+            pairs = Counter((a, b) for seq in sequences for a, b in zip(seq, seq[1:]))
+            if not pairs:
+                break
+            pair, count = min(pairs.items(), key=lambda p: (-p[1], p[0]))
+            if count < 2:
+                break
+            token = 262 + len(merges)
+            merges.append(pair)
+            transformed = []
+            for seq in sequences:
+                result = []
+                i = 0
+                while i < len(seq):
+                    if i + 1 < len(seq) and (seq[i], seq[i+1]) == pair:
+                        result.append(token)
+                        i += 2
+                    else:
+                        result.append(seq[i])
+                        i += 1
+                transformed.append(result)
+            sequences = transformed
+        return merges
+
+    actual = train_byte_merges(docs, vocab_size=282, min_frequency=2)
+    assert actual == slow_merges(docs, 20)
+    tokenizer = ByteBPETokenizer(actual)
+    sample = "a banana and a bandana"
+    ids = list(sample.encode())
+    while len(ids) > 1:
+        pairs = [(tokenizer.ranks[(a, b)], i)
+                 for i, (a, b) in enumerate(zip(ids, ids[1:]))
+                 if (a, b) in tokenizer.ranks]
+        if not pairs:
+            break
+        token, index = min(pairs)
+        ids[index:index + 2] = [token]
+    assert tokenizer.encode(sample) == ids
+    assert tokenizer.decode(ids) == sample
