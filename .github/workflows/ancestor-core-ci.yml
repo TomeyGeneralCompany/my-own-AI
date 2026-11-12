@@ -107,6 +107,7 @@ jobs:
       - name: Train a small fresh neural model through full real manuscript pass
         run: |
           set -euo pipefail
+          mkdir -p data/ci
           python scripts/ancestor_core.py train --repository . \
             --generation g0001 --state data/ci/lab-state --scratch data/ci/lab-scratch \
             --passes 1 --instruction-steps 2 --max-reading-updates 20000 \
