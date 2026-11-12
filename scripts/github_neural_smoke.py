@@ -17,7 +17,7 @@ OUTPUT = Path("data/hosted-neural-experiment")
 
 
 class RecordingProposer:
-    def __init__(self, model, tokens=256):
+    def __init__(self, model, tokens=512):
         model.proposal_format = SUPERVISED_FORMAT
         self.proposer = LocalProposer(model, tokens=tokens)
         self.records = []
@@ -70,9 +70,9 @@ def main():
     trained_path = OUTPUT / "relational-brain.pt"
     training = train_proposals(
         initial, curriculum["training"], curriculum["validation"],
-        trained_path, steps=16, batch_size=4, learning_rate=.001,
+        trained_path, steps=240, batch_size=4, learning_rate=.001,
         threads=2, format_name=SUPERVISED_FORMAT,
-        pair_batches=True, checkpoint_every=8
+        pair_batches=True, checkpoint_every=60
     )
     after, trained_outputs = evaluate_checkpoint(trained_path, held_cases)
     result = {
