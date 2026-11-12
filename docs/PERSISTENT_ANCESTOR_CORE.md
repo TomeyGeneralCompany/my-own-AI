@@ -72,3 +72,28 @@ After migration, ordinary sessions resume the new exact paragraph window index. 
 ### Operational boundary
 
 The controller does not itself interpret mathematical semantics; it supplies numbered prose and equations together as contiguous neural training context. The model still must acquire English and reasoning capability through weight updates and independent held-out evaluation. Auto-resumption solves the manual restart bottleneck; it does not by itself establish fluent English.
+
+## Seven-work authored library (PR #22)
+
+The approved library now contains **seven independently hash-pinned authored works**. The original *On the Communal Nature of Commerce* remains a consecutively numbered 537-paragraph treatise with its existing lossless numbered-paragraph index. Six new sources use chapter, heading, paragraph and equation-aware `structured_units` indexing instead of pretending they have the same paragraph numbering. The 635-page Calvin commentary is represented by three verified source-text transport parts; its three parts are reassembled into one book before indexing. The complete approved source texts are committed, while **the original PDF/DOCX binaries are not**.
+
+All books contribute training, validation, and test units. Repeated PDF running headers and duplicated passages are excluded from the derived partitions to prevent training/evaluation leakage, while the full stored source texts remain untouched. Each independent lesson is traceable through `train-provenance.json`, `validation-provenance.json`, or `test-provenance.json` to a specific source unit.
+
+The existing 200-question frozen English benchmark is **not modified**. A separate seven-work held-out lab adds two source-grounded questions per book (14 total) using a real descendant model. These are evidence of functional training and evaluation wiring until competence scores establish otherwise, and their automatic score does not activate any candidate.
+
+### Import another authored book
+
+Run on a local checkout that has the book available as PDF, DOCX, TXT or Markdown:
+
+```bash
+python scripts/import_authored_book.py --input /path/to/work.docx \
+  --repository . --id new-work --title "New Work" --dry-run
+python scripts/import_authored_book.py --input /path/to/work.docx \
+  --repository . --id new-work --title "New Work" --approve
+```
+
+The importer refuses to replace a previously approved edition, retains text/OMML math tokens where recoverable, builds source partitions without losing bytes, writes sha256-pinned transport files and updates the author-approved manifest. A scanned PDF with no usable text is rejected. PDF images, some displayed mathematical layouts and OMML matrices still require a visual comparison to their original; reconstructed textual notation is not a mathematical-proof validator.
+
+### Generation ancestry
+
+The expanded library targets **g0002**, inheriting from the immutable `ancestor-g0001-candidate`. It does not rewrite the legacy g0001 corpus, weights or tokenizer. Merge the reasoning-curriculum PR #21 before PR #22. After both are merged, launch `ancestor-train.yml` with `generation=g0002`, `parent_generation=g0001`, `curriculum=reasoning`, `reading_passes=5`, `instruction_steps=600`, `auto_continue=true`. First inspect the seven-work CI results and adjust budgets if needed. The new corpus changes the generation source SHA and must not be used to resume an earlier unrelated g0002 checkpoint.
