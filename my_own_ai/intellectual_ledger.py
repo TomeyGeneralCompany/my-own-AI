@@ -126,3 +126,41 @@ def export_manifest(ledger, destination, *, kind=None):
         raise ValueError("Manifest cannot overwrite ledger")
     _save(destination, payload)
     return {"count": len(approved), "manifest": str(Path(destination))}
+
+
+def stage_approved_corpus(ledger, destination):
+    """Stage only approved manuscript files in a fresh local training directory."""
+    import shutil
+    from tempfile import TemporaryDirectory
+
+    destination = Path(destination).resolve()
+    if destination.exists():
+        raise ValueError("Corpus destination must be a new directory; existing material is never overwritten")
+    works = [row for row in approved_sources(ledger)
+             if row["kind"] in ("authored_work", "derived_work")]
+    if not works:
+        raise ValueError("No approved manuscript sources")
+    allowed = {".txt", ".md", ".pdf", ".docx"}
+    if any(Path(row["source"]).suffix.casefold() not in allowed for row in works):
+        raise ValueError("Approved manuscripts require TXT, MD, text-PDF or DOCX format")
+    for row in works:
+        source = Path(row["source"]).resolve()
+        if destination == source or destination in source.parents:
+            raise ValueError("Corpus destination must not be inside an approved source")
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    with TemporaryDirectory(prefix=".approved-corpus-", dir=destination.parent) as tmp:
+        staged = Path(tmp) / "corpus"
+        staged.mkdir()
+        manifests = []
+        for row in works:
+            source = Path(row["source"])
+            target = staged / (row["id"] + source.suffix.lower())
+            shutil.copyfile(source, target)
+            if _digest(target) != row["sha256"]:
+                raise ValueError("Approved manuscript changed while staging")
+            manifests.append({"id": row["id"], "origin": row["origin"],
+                              "sha256": row["sha256"], "file": target.name})
+        with (staged / "source-manifest.json").open("w", encoding="utf-8") as stream:
+            json.dump({"format": FORMAT, "sources": manifests}, stream, indent=2)
+        os.replace(staged, destination)
+    return {"documents": len(works), "corpus": str(destination)}
