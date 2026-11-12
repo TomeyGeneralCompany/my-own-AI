@@ -84,7 +84,7 @@ def validate_published_manifest(repository_root, manifest_path):
                 raise ValueError("Mathematical overlay belongs to another publication")
             for item in math_source["insertions"]:
                 anchor, math = item["after"], item["text"]
-                expression = r"\\s+".join(re.escape(part) for part in anchor.split())
+                expression = r"\s+".join(re.escape(part) for part in anchor.split())
                 matches = list(re.finditer(expression, txt))
                 if len(matches) != 1 or not math.strip():
                     raise ValueError("Mathematical insertion anchor is missing or ambiguous")
