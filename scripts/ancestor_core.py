@@ -179,6 +179,7 @@ def evaluate(state, cases, output, limit=200, tokens=40, threads=2):
     report = {
         "format": "ancestor_evaluation_v1",
         "generation": metadata["generation"],
+        "gauntlet_sha256": digest_file(cases),
         "checkpoint_sha256": digest_file(checkpoint),
         "tokenizer_sha256": metadata["tokenizer_sha256"],
         "exact_correct": result["exact_correct"],
@@ -187,6 +188,7 @@ def evaluate(state, cases, output, limit=200, tokens=40, threads=2):
         "evaluated": result["total"],
         "category_scores": result["categories"],
         "promotable": False,
+        "reason": "Independent human review required; raw scores alone never promote",
         "raw_results": result,
     }
     write_json(output, report)
