@@ -1,31 +1,20 @@
 # my-own-AI
 
-Local-first original neural-network research project with a deterministic exclusive module controller.
+Original-weight, CPU-first modular AI foundation. The neural model starts from random parameters and trains on a user-supplied local corpus. No downloaded neural weights, hosted inference, telemetry, or paid AI service are needed.
 
-The neural model begins from **randomly initialized weights**: no pretrained weights, paid inference API, cloud services, or telemetry. PyTorch is a numerical library, not a hosted neural model. Initial CPU target: Linux, i7-8650U, 16 GB RAM.
+## Install and try
 
-## Try locally
-
-Python 3.10+ required. Installing packages may need an internet connection once; the application and training are offline.
-
-```bash
-python3 -m venv .venv
-source .venv/bin/activate
+```sh
+python3 -m venv .venv && source .venv/bin/activate
 pip install -e '.[dev]'
 pytest -q
+my-own-ai ingest --corpus examples
+my-own-ai train --corpus examples --steps 20 --context 64 --checkpoint-every 10
+my-own-ai train --corpus examples --steps 40 --context 64 --resume
+my-own-ai benchmark --checkpoint data/checkpoints/brain.pt
 my-own-ai switch --mode writing
-my-own-ai train --corpus examples --output data/checkpoints/demo.pt --steps 20
-my-own-ai generate --checkpoint data/checkpoints/demo.pt --prompt "This" --tokens 40
 ```
 
-A few steps on the tiny sample **will not produce a capable conversational AI**. This validates the math, data path, training, and checkpoint reload. Supply your own UTF-8 text files through --corpus; do not put private books into public Git history.
+TXT, Markdown, DOCX and text-based PDF are accepted for corpus ingestion. A few iterations on sample text produce meaningless output: the current neural network is a mathematical research foundation, not a useful assistant. Book data should remain in ignored `corpus/private/`, **never committed to this public repo**.
 
-## Architecture
-
-- **Brain**: original byte-level causal Transformer; weights created from scratch.
-- **Training**: explicit local corpus, CPU optimizer, atomically stored model checkpoint.
-- **Controller**: exactly one active module; snapshot before unload; rollback on activation failure.
-- **Modules**: conversation, writing, coding, research — currently lifecycle stubs, not implemented skill engines.
-- **Memory**: local atomic JSON checkpoints; optional external archive synchronization is a later feature.
-
-See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) for constraints and upcoming milestones. There is no unattended merge or release system.
+See [training guide](docs/TRAINING.md) and [architecture](docs/ARCHITECTURE.md). The module socket and controller are still lifecycle stubs, not functioning coding/writing assistants. Only the user merges pull requests.

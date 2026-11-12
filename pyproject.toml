@@ -3,12 +3,13 @@ requires = ["setuptools>=68"]
 build-backend = "setuptools.build_meta"
 [project]
 name = "my-own-ai"
-version = "0.1.0"
+version = "0.2.0"
 description = "Local original-model training and modular AI foundation"
 requires-python = ">=3.10"
 dependencies = ["torch>=2.2"]
 [project.optional-dependencies]
-dev = ["pytest>=8"]
+books = ["pypdf>=4", "python-docx>=1"]
+dev = ["pytest>=8", "pypdf>=4", "python-docx>=1"]
 [project.scripts]
 my-own-ai = "my_own_ai.cli:main"
 [tool.setuptools.packages.find]
