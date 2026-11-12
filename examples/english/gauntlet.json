@@ -1122,140 +1122,140 @@
   {
     "id": "english_conditional_01",
     "category": "conditional",
-    "question": "At the workshop, the mechanic can complete the task only if the package arrives. The package has not arrived. Can the mechanic complete the task? Answer yes or no.",
-    "expected_answer": "no",
+    "question": "In the workshop, the mechanic can complete the assigned task if and only if the package arrives. The package has arrived. Under the stated rule, can the mechanic complete the task? Answer yes or no.",
+    "expected_answer": "yes",
     "requires_manual_review": false
   },
   {
     "id": "english_conditional_02",
     "category": "conditional",
-    "question": "At the workshop, the supervisor can complete the task only if the sample arrives. The sample has not arrived. Can the supervisor complete the task? Answer yes or no.",
+    "question": "In the workshop, the mechanic can complete the assigned task if and only if the package arrives. The package has not arrived. Under the stated rule, can the mechanic complete the task? Answer yes or no.",
     "expected_answer": "no",
     "requires_manual_review": false
   },
   {
     "id": "english_conditional_03",
     "category": "conditional",
-    "question": "At the workshop, the researcher can complete the task only if the drawing arrives. The drawing has not arrived. Can the researcher complete the task? Answer yes or no.",
-    "expected_answer": "no",
+    "question": "In the warehouse, the supervisor can complete the assigned task if and only if the sample arrives. The sample has arrived. Under the stated rule, can the supervisor complete the task? Answer yes or no.",
+    "expected_answer": "yes",
     "requires_manual_review": false
   },
   {
     "id": "english_conditional_04",
     "category": "conditional",
-    "question": "At the workshop, the gardener can complete the task only if the letter arrives. The letter has not arrived. Can the gardener complete the task? Answer yes or no.",
+    "question": "In the warehouse, the supervisor can complete the assigned task if and only if the sample arrives. The sample has not arrived. Under the stated rule, can the supervisor complete the task? Answer yes or no.",
     "expected_answer": "no",
     "requires_manual_review": false
   },
   {
     "id": "english_conditional_05",
     "category": "conditional",
-    "question": "At the workshop, the librarian can complete the task only if the schedule arrives. The schedule has not arrived. Can the librarian complete the task? Answer yes or no.",
-    "expected_answer": "no",
+    "question": "In the laboratory, the researcher can complete the assigned task if and only if the drawing arrives. The drawing has arrived. Under the stated rule, can the researcher complete the task? Answer yes or no.",
+    "expected_answer": "yes",
     "requires_manual_review": false
   },
   {
     "id": "english_conditional_06",
     "category": "conditional",
-    "question": "At the workshop, the inspector can complete the task only if the manual arrives. The manual has not arrived. Can the inspector complete the task? Answer yes or no.",
+    "question": "In the laboratory, the researcher can complete the assigned task if and only if the drawing arrives. The drawing has not arrived. Under the stated rule, can the researcher complete the task? Answer yes or no.",
     "expected_answer": "no",
     "requires_manual_review": false
   },
   {
     "id": "english_conditional_07",
     "category": "conditional",
-    "question": "At the workshop, the clerk can complete the task only if the signal arrives. The signal has not arrived. Can the clerk complete the task? Answer yes or no.",
-    "expected_answer": "no",
+    "question": "In the garden, the gardener can complete the assigned task if and only if the letter arrives. The letter has arrived. Under the stated rule, can the gardener complete the task? Answer yes or no.",
+    "expected_answer": "yes",
     "requires_manual_review": false
   },
   {
     "id": "english_conditional_08",
     "category": "conditional",
-    "question": "At the workshop, the teacher can complete the task only if the report arrives. The report has not arrived. Can the teacher complete the task? Answer yes or no.",
+    "question": "In the garden, the gardener can complete the assigned task if and only if the letter arrives. The letter has not arrived. Under the stated rule, can the gardener complete the task? Answer yes or no.",
     "expected_answer": "no",
     "requires_manual_review": false
   },
   {
     "id": "english_conditional_09",
     "category": "conditional",
-    "question": "At the workshop, the operator can complete the task only if the valve arrives. The valve has not arrived. Can the operator complete the task? Answer yes or no.",
-    "expected_answer": "no",
+    "question": "In the library, the librarian can complete the assigned task if and only if the schedule arrives. The schedule has arrived. Under the stated rule, can the librarian complete the task? Answer yes or no.",
+    "expected_answer": "yes",
     "requires_manual_review": false
   },
   {
     "id": "english_conditional_10",
     "category": "conditional",
-    "question": "At the workshop, the courier can complete the task only if the record arrives. The record has not arrived. Can the courier complete the task? Answer yes or no.",
+    "question": "In the library, the librarian can complete the assigned task if and only if the schedule arrives. The schedule has not arrived. Under the stated rule, can the librarian complete the task? Answer yes or no.",
     "expected_answer": "no",
     "requires_manual_review": false
   },
   {
     "id": "english_conditional_11",
     "category": "conditional",
-    "question": "At the warehouse, the mechanic can complete the task only if the package arrives. The package has not arrived. Can the mechanic complete the task? Answer yes or no.",
-    "expected_answer": "no",
+    "question": "In the factory, the inspector can complete the assigned task if and only if the manual arrives. The manual has arrived. Under the stated rule, can the inspector complete the task? Answer yes or no.",
+    "expected_answer": "yes",
     "requires_manual_review": false
   },
   {
     "id": "english_conditional_12",
     "category": "conditional",
-    "question": "At the warehouse, the supervisor can complete the task only if the sample arrives. The sample has not arrived. Can the supervisor complete the task? Answer yes or no.",
+    "question": "In the factory, the inspector can complete the assigned task if and only if the manual arrives. The manual has not arrived. Under the stated rule, can the inspector complete the task? Answer yes or no.",
     "expected_answer": "no",
     "requires_manual_review": false
   },
   {
     "id": "english_conditional_13",
     "category": "conditional",
-    "question": "At the warehouse, the researcher can complete the task only if the drawing arrives. The drawing has not arrived. Can the researcher complete the task? Answer yes or no.",
-    "expected_answer": "no",
+    "question": "In the station, the clerk can complete the assigned task if and only if the signal arrives. The signal has arrived. Under the stated rule, can the clerk complete the task? Answer yes or no.",
+    "expected_answer": "yes",
     "requires_manual_review": false
   },
   {
     "id": "english_conditional_14",
     "category": "conditional",
-    "question": "At the warehouse, the gardener can complete the task only if the letter arrives. The letter has not arrived. Can the gardener complete the task? Answer yes or no.",
+    "question": "In the station, the clerk can complete the assigned task if and only if the signal arrives. The signal has not arrived. Under the stated rule, can the clerk complete the task? Answer yes or no.",
     "expected_answer": "no",
     "requires_manual_review": false
   },
   {
     "id": "english_conditional_15",
     "category": "conditional",
-    "question": "At the warehouse, the librarian can complete the task only if the schedule arrives. The schedule has not arrived. Can the librarian complete the task? Answer yes or no.",
-    "expected_answer": "no",
+    "question": "In the museum, the teacher can complete the assigned task if and only if the report arrives. The report has arrived. Under the stated rule, can the teacher complete the task? Answer yes or no.",
+    "expected_answer": "yes",
     "requires_manual_review": false
   },
   {
     "id": "english_conditional_16",
     "category": "conditional",
-    "question": "At the warehouse, the inspector can complete the task only if the manual arrives. The manual has not arrived. Can the inspector complete the task? Answer yes or no.",
+    "question": "In the museum, the teacher can complete the assigned task if and only if the report arrives. The report has not arrived. Under the stated rule, can the teacher complete the task? Answer yes or no.",
     "expected_answer": "no",
     "requires_manual_review": false
   },
   {
     "id": "english_conditional_17",
     "category": "conditional",
-    "question": "At the warehouse, the clerk can complete the task only if the signal arrives. The signal has not arrived. Can the clerk complete the task? Answer yes or no.",
-    "expected_answer": "no",
+    "question": "In the market, the operator can complete the assigned task if and only if the valve arrives. The valve has arrived. Under the stated rule, can the operator complete the task? Answer yes or no.",
+    "expected_answer": "yes",
     "requires_manual_review": false
   },
   {
     "id": "english_conditional_18",
     "category": "conditional",
-    "question": "At the warehouse, the teacher can complete the task only if the report arrives. The report has not arrived. Can the teacher complete the task? Answer yes or no.",
+    "question": "In the market, the operator can complete the assigned task if and only if the valve arrives. The valve has not arrived. Under the stated rule, can the operator complete the task? Answer yes or no.",
     "expected_answer": "no",
     "requires_manual_review": false
   },
   {
     "id": "english_conditional_19",
     "category": "conditional",
-    "question": "At the warehouse, the operator can complete the task only if the valve arrives. The valve has not arrived. Can the operator complete the task? Answer yes or no.",
-    "expected_answer": "no",
+    "question": "In the school, the courier can complete the assigned task if and only if the record arrives. The record has arrived. Under the stated rule, can the courier complete the task? Answer yes or no.",
+    "expected_answer": "yes",
     "requires_manual_review": false
   },
   {
     "id": "english_conditional_20",
     "category": "conditional",
-    "question": "At the warehouse, the courier can complete the task only if the record arrives. The record has not arrived. Can the courier complete the task? Answer yes or no.",
+    "question": "In the school, the courier can complete the assigned task if and only if the record arrives. The record has not arrived. Under the stated rule, can the courier complete the task? Answer yes or no.",
     "expected_answer": "no",
     "requires_manual_review": false
   },
