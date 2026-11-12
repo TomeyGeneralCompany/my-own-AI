@@ -419,6 +419,8 @@ my-own-ai gate-learning --baseline data/checkpoints/previous.pt \
   --candidate data/checkpoints/candidate.pt \
   --old-cases corpus/private/old-heldout.json \
   --new-cases corpus/private/new-heldout.json \
+  --training-examples data/rehearsal.json \
+  --validation-examples data/stable-validation.json \
   --report data/learning-comparison.json \
   --promote-to data/checkpoints/active-approved.pt
 ```
@@ -433,3 +435,5 @@ metrics, not proof of philosophical correctness.
 The requested success criterion—measured new learning *and* non-regression on
 real old tasks—requires local private training and a passing independent
 `gate-learning` run, not merely a green PR.
+
+The gate also rejects a held-out question or counterfactual family found in the supplied training or validation examples. The evaluated training and validation file digests are recorded in the release report.
