@@ -55,7 +55,10 @@ def validate_published_manifest(repository_root, manifest_path):
                 raise ValueError("Published source hash differs from approved edition")
             paths.append(relative)
             recovered.append(path.read_text(encoding="utf-8"))
-        txt = "\n".join(recovered) if len(recovered)>1 else recovered[0]
+        joiner = row.get("part_joiner", "\n")
+        if joiner not in ("", "\n"):
+            raise ValueError("Unsupported source-part join rule")
+        txt = joiner.join(recovered)
         aggregate = sha256(txt.encode("utf-8")).hexdigest()
         if expected is not None and expected != aggregate:
             raise ValueError("Combined published work hash mismatch")
