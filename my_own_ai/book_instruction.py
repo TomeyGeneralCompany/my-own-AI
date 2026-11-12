@@ -41,10 +41,13 @@ def create_book_continuations(prepared, destination, *, limit_per_split=250,
                "source_manifest_sha256": sha256(
                    (source / "manifest.json").read_bytes()).hexdigest(),
                "task": "next-sentence English continuation, not factual inference"}
-    seen = set()
     try:
+        # Collect before limiting so a repeated *question* across splits
+        # can be removed from ALL partitions. Pair-only deduplication is
+        # insufficient: the same opening may have different continuations.
+        candidates = {}
         for split in ("train", "validation", "test"):
-            rows = []
+            found = []
             docs = collect_documents(source / split)
             for doc in docs:
                 for paragraph in re.split(r"\n\s*\n", doc["text"]):
@@ -54,19 +57,29 @@ def create_book_continuations(prepared, destination, *, limit_per_split=250,
                             continue
                         prompt = "Continue the following English passage with its next sentence:\n" + first
                         key = sha256((first + "\n" + second).encode("utf-8")).hexdigest()
-                        if key in seen:
-                            continue
-                        seen.add(key)
-                        rows.append({"id": f"{split}_{key[:24]}",
-                                     "question": prompt, "answer": second})
-                        if len(rows) >= limit_per_split:
-                            break
-                    if len(rows) >= limit_per_split:
-                        break
+                        found.append({"id": f"{split}_{key[:24]}",
+                                      "question": prompt, "answer": second})
+            candidates[split] = found
+        memberships = {}
+        for split, rows in candidates.items():
+            for row in rows:
+                normalized = " ".join(row["question"].casefold().split())
+                memberships.setdefault(normalized, set()).add(split)
+        overlapping = {question for question, splits in memberships.items()
+                       if len(splits) > 1}
+        summary["cross_split_prompts_excluded"] = len(overlapping)
+        for split in ("train", "validation", "test"):
+            rows, seen_questions = [], set()
+            for row in candidates[split]:
+                normalized = " ".join(row["question"].casefold().split())
+                if normalized in overlapping or normalized in seen_questions:
+                    continue
+                seen_questions.add(normalized)
+                rows.append(row)
                 if len(rows) >= limit_per_split:
                     break
             if not rows:
-                raise ValueError(f"No complete consecutive sentences for {split} exercises")
+                raise ValueError(f"No independent consecutive sentences for {split} exercises")
             (output / f"{split}.json").write_text(
                 json.dumps(rows, ensure_ascii=False, indent=2), encoding="utf-8")
             summary["splits"][split] = len(rows)
