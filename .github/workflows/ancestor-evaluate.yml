@@ -1,0 +1,80 @@
+name: Evaluate Ancestor Core — immutable candidate
+
+on:
+  workflow_dispatch:
+    inputs:
+      generation:
+        description: 'Completed candidate generation (g0001 format)'
+        required: true
+        default: 'g0001'
+        type: string
+      full_gauntlet:
+        description: 'Run all 200 held-out English cases (short mode is diagnostic only)'
+        required: true
+        default: true
+        type: boolean
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ancestor-evaluate-${{ inputs.generation }}
+  cancel-in-progress: false
+
+jobs:
+  independent-evaluation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GENERATION: ${{ inputs.generation }}
+      FULL: ${{ inputs.full_gauntlet }}
+      OMP_NUM_THREADS: '2'
+      MKL_NUM_THREADS: '2'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install original CPU-only neural runtime
+        run: |
+          python -m pip install 'torch==2.5.1+cpu' --index-url https://download.pytorch.org/whl/cpu
+          python -m pip install -e '.[dev]'
+      - name: Retrieve verified immutable candidate weights
+        run: |
+          set -euo pipefail
+          TAG="ancestor-${GENERATION}-candidate"
+          mkdir -p data/candidate
+          gh release download "$TAG" --pattern core-generation.zip --dir data
+          python scripts/ancestor_core.py unpack --archive data/core-generation.zip --state data/candidate --generation "$GENERATION"
+      - name: Execute actual model generations on held-out English cases
+        run: |
+          set -euo pipefail
+          LIMIT=14
+          if [ "$FULL" = true ]; then LIMIT=200; fi
+          python -u scripts/ancestor_core.py evaluate \
+            --state data/candidate --cases examples/english/gauntlet.json \
+            --output data/ancestor-evaluation.json --limit "$LIMIT"
+          python - <<'PY'
+          import json,os
+          r=json.load(open("data/ancestor-evaluation.json"))
+          with open(os.environ["GITHUB_STEP_SUMMARY"],"a",encoding="utf-8") as f:
+              f.write("# Ancestor Core candidate evaluation\n\n")
+              f.write("Generation: "+r["generation"]+"\n\n")
+              f.write("Exact automatic matches: "+str(r["exact_correct"])+"/"+str(r["automatically_scored"])+"\n\n")
+              f.write("Human review pending: "+str(r["human_review_pending"])+"\n\n")
+              f.write("**No automatic promotion.**\n")
+          PY
+      - name: Retain evaluation with immutable candidate release
+        run: |
+          set -euo pipefail
+          cp data/ancestor-evaluation.json "data/evaluation-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}.json"
+          gh release upload "ancestor-${GENERATION}-candidate" "data/evaluation-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}.json"
+      - name: Upload raw responses and scores
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ancestor-evaluation-${{ github.run_id }}
+          path: data/ancestor-evaluation.json
+          retention-days: 30
+          if-no-files-found: warn
