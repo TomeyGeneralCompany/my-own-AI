@@ -274,7 +274,7 @@ def main():
         ("context",512), ("embed",128), ("heads",4), ("layers",4),
         ("batch",2), ("seed",42), ("threads",2), ("passes",5),
         ("overlap",64), ("instruction-steps",600),
-        ("max-reading-updates",40), ("max-instruction-updates",40),
+        ("max-reading-updates",None), ("max-instruction-updates",None),
     ):
         t.add_argument("--" + name, type=int, default=default)
     t.add_argument("--max-session-seconds", type=float,
