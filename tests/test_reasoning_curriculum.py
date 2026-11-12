@@ -61,7 +61,7 @@ def test_no_source_text_no_manufactured_answers(tmp_path):
 
 def test_legacy_training_unaffected_and_new_curriculum_explicit():
     source=(ROOT/"scripts/ancestor_core.py").read_text()
-    assert 'choices=("continuation", "reasoning")' in source
+    assert 'choices=("continuation", "reasoning", "english_grounded")' in source
     workflow=(ROOT/".github/workflows/ancestor-train.yml").read_text()
     assert 'parent_generation:' in workflow
     assert 'curriculum:' in workflow
