@@ -1,0 +1,106 @@
+name: PR21 real g0002 reasoning lineage and capacity lab
+
+on:
+  push:
+    branches:
+      - feature/ancestor-reasoning-curriculum-g0002
+  pull_request:
+    paths:
+      - my_own_ai/reasoning_curriculum.py
+      - scripts/ancestor_core.py
+      - scripts/ancestor_capacity_lab.py
+      - .github/workflows/ancestor-train.yml
+      - .github/workflows/ancestor-pr21-integration.yml
+      - tests/test_reasoning_curriculum.py
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ancestor-pr21-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  real-g0002-reasoning:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      GH_TOKEN: ${{ github.token }}
+      OMP_NUM_THREADS: '2'
+      MKL_NUM_THREADS: '2'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install original CPU neural runtime
+        run: |
+          python -m pip install 'torch==2.5.1+cpu' --index-url https://download.pytorch.org/whl/cpu
+          python -m pip install -e '.[dev]'
+      - name: Fetch immutable parent g0001 candidate (never modified)
+        run: |
+          set -euo pipefail
+          mkdir -p data/pr21
+          gh release download ancestor-g0001-candidate --pattern core-generation.zip --dir data/pr21
+          sha256sum data/pr21/core-generation.zip > data/pr21/parent.sha256
+          python scripts/ancestor_core.py unpack --archive data/pr21/core-generation.zip \
+            --state data/pr21/parent --generation g0001 > data/pr21/parent.json
+      - name: Train real derived generation on authored reasoning lessons
+        run: |
+          set -euo pipefail
+          python scripts/ancestor_core.py train --repository . \
+            --parent-state data/pr21/parent --state data/pr21/child \
+            --scratch data/pr21/scratch --generation g0002 --curriculum reasoning \
+            --passes 1 --instruction-steps 600 --max-reading-updates 20000 \
+            --max-instruction-updates 600 --threads 2 > data/pr21/training.json
+          python - <<'PY'
+          import json
+          p=json.load(open("data/pr21/child/generation.json"))
+          assert p["generation"]=="g0002",p
+          assert p["phase"]=="candidate",p
+          assert p["curriculum"]=="reasoning",p
+          assert p["parent_checkpoint_sha256"],p
+          assert p["completed_reading_passes"]==1,p
+          assert p["completed_instruction_steps"]==600,p
+          print("REAL G0002: inherited g0001 candidate, completed paragraph reading and grounded reasoning tuning")
+          PY
+      - name: Evaluate all 200 unchanged English gauntlet questions
+        run: |
+          set -euo pipefail
+          python scripts/ancestor_core.py evaluate --state data/pr21/child \
+            --cases examples/english/gauntlet.json --limit 200 \
+            --output data/pr21/evaluation.json > data/pr21/evaluation-log.json
+          python scripts/ancestor_ci_contract.py --report data/pr21/evaluation.json \
+            --generation g0002 --output data/pr21/contract.json
+          python - <<'PY'
+          import json,os
+          r=json.load(open("data/pr21/contract.json"))
+          with open(os.environ["GITHUB_STEP_SUMMARY"],"a") as f:
+              f.write("## g0002 reasoning curriculum experimental evaluation\n\n")
+              f.write("The inherited model completed real training and all 200 frozen questions.\n\n")
+              f.write(f"Automatic exact matches: **{r['exact_correct']}/130** (g0001 baseline **0/130**).\n\n")
+              f.write(f"Conditional pairs: **{r['conditional_pairs_passed']}/10**.\n\n")
+              f.write("This experimental 600-step test is **not** a completed production curriculum.\n")
+          PY
+      - name: Audit model capacity on CPU without mutating g0001/g0002
+        run: |
+          python scripts/ancestor_capacity_lab.py --steps 3 --output data/pr21/capacity.json
+      - name: Confirm published g0001 ancestor archive unchanged
+        run: |
+          sha256sum data/pr21/core-generation.zip > data/pr21/parent-after.sha256
+          cmp data/pr21/parent.sha256 data/pr21/parent-after.sha256
+      - name: Save real training, evaluation and capacity evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ancestor-pr21-integration-${{ github.run_id }}
+          path: |
+            data/pr21/child/generation.json
+            data/pr21/training.json
+            data/pr21/evaluation.json
+            data/pr21/contract.json
+            data/pr21/capacity.json
+            data/pr21/parent.sha256
+            data/pr21/parent-after.sha256
+          if-no-files-found: warn
+          retention-days: 30
