@@ -1,0 +1,42 @@
+[
+  {
+    "id": "english_validation_1",
+    "question": "Why might an old measurement mislead a controller?",
+    "answer": "An old measurement may no longer describe the current condition of the system."
+  },
+  {
+    "id": "english_validation_2",
+    "question": "How does a blocked channel affect a signal?",
+    "answer": "A blocked channel prevents the signal from reaching its intended recipient."
+  },
+  {
+    "id": "english_validation_3",
+    "question": "What is the role of a comparison?",
+    "answer": "A comparison identifies similarities and differences between two cases."
+  },
+  {
+    "id": "english_validation_4",
+    "question": "What makes an answer relevant?",
+    "answer": "A relevant answer addresses the information requested by the question."
+  },
+  {
+    "id": "english_validation_5",
+    "question": "What is a system's boundary?",
+    "answer": "A system boundary distinguishes the components under analysis from their surroundings."
+  },
+  {
+    "id": "english_validation_6",
+    "question": "How do instructions guide action?",
+    "answer": "Instructions communicate the tasks and conditions needed for a particular action."
+  },
+  {
+    "id": "english_validation_7",
+    "question": "What does uncertainty mean?",
+    "answer": "Uncertainty means that the available information does not determine an outcome completely."
+  },
+  {
+    "id": "english_validation_8",
+    "question": "Why should a writer distinguish facts from guesses?",
+    "answer": "The reader needs to know which claims are supported by evidence."
+  }
+]

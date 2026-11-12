@@ -14,7 +14,7 @@ class ModelConfig:
     dropout: float = 0.0
 
     def validate(self):
-        if self.vocab_size != 256 or min(self.context_size, self.embed_dim, self.heads, self.layers) <= 0:
+        if (self.vocab_size != 256 and not 262 <= self.vocab_size <= 16384) or min(self.context_size, self.embed_dim, self.heads, self.layers) <= 0:
             raise ValueError("Invalid model dimensions")
         if self.embed_dim % self.heads:
             raise ValueError("embed_dim must be divisible by heads")

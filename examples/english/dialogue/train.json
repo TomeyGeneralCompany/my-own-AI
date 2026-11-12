@@ -1,0 +1,152 @@
+[
+  {
+    "id": "english_train_1",
+    "question": "What does a sensor do?",
+    "answer": "A sensor measures a condition and sends information to a controller."
+  },
+  {
+    "id": "english_train_2",
+    "question": "Why is communication important?",
+    "answer": "Communication allows people to coordinate their actions using shared information."
+  },
+  {
+    "id": "english_train_3",
+    "question": "What is a feedback loop?",
+    "answer": "A feedback loop uses measurements of an output to adjust future behavior."
+  },
+  {
+    "id": "english_train_4",
+    "question": "What happens if a message is delayed?",
+    "answer": "A delayed message may cause the recipient to act on outdated information."
+  },
+  {
+    "id": "english_train_5",
+    "question": "Why should an explanation cite evidence?",
+    "answer": "Evidence helps the reader distinguish supported claims from speculation."
+  },
+  {
+    "id": "english_train_6",
+    "question": "What does delegation mean?",
+    "answer": "Delegation gives another person responsibility and authority for a defined task."
+  },
+  {
+    "id": "english_train_7",
+    "question": "How are an owner and an operator different?",
+    "answer": "An owner holds rights over an asset, while an operator performs work using it."
+  },
+  {
+    "id": "english_train_8",
+    "question": "What is a counterfactual?",
+    "answer": "A counterfactual asks what would change if a condition were different."
+  },
+  {
+    "id": "english_train_9",
+    "question": "Why can a bottleneck reduce output?",
+    "answer": "A bottleneck delays work because more tasks arrive than the constrained step can process."
+  },
+  {
+    "id": "english_train_10",
+    "question": "What is a conclusion?",
+    "answer": "A conclusion is a statement derived from premises or evidence."
+  },
+  {
+    "id": "english_train_11",
+    "question": "What is a hypothesis?",
+    "answer": "A hypothesis is a proposition that can be tested against observations."
+  },
+  {
+    "id": "english_train_12",
+    "question": "How does a valve control flow?",
+    "answer": "A valve changes the passage available to a flowing substance."
+  },
+  {
+    "id": "english_train_13",
+    "question": "What is a control condition?",
+    "answer": "A control condition provides a reference for evaluating an experimental change."
+  },
+  {
+    "id": "english_train_14",
+    "question": "Why do machines need cooling?",
+    "answer": "Cooling transfers excess heat away from components."
+  },
+  {
+    "id": "english_train_15",
+    "question": "What does a report communicate?",
+    "answer": "A report organizes facts and findings for a reader."
+  },
+  {
+    "id": "english_train_16",
+    "question": "What makes writing coherent?",
+    "answer": "Coherent writing connects each idea logically to the surrounding ideas."
+  },
+  {
+    "id": "english_train_17",
+    "question": "What is an internal state?",
+    "answer": "An internal state is a condition of a system that influences its behavior."
+  },
+  {
+    "id": "english_train_18",
+    "question": "What is a communication channel?",
+    "answer": "A communication channel carries information between participants."
+  },
+  {
+    "id": "english_train_19",
+    "question": "Why do definitions matter?",
+    "answer": "Definitions establish the meanings of terms used in reasoning."
+  },
+  {
+    "id": "english_train_20",
+    "question": "What is an observation?",
+    "answer": "An observation is information obtained by examining an event or condition."
+  },
+  {
+    "id": "english_train_21",
+    "question": "What is a prediction?",
+    "answer": "A prediction states an expected outcome under specified conditions."
+  },
+  {
+    "id": "english_train_22",
+    "question": "What is the difference between cause and correlation?",
+    "answer": "Correlation describes association, while causation identifies a producing influence."
+  },
+  {
+    "id": "english_train_23",
+    "question": "How does trust affect coordination?",
+    "answer": "Trust can reduce the need to check every action independently."
+  },
+  {
+    "id": "english_train_24",
+    "question": "Why does the sequence of events matter?",
+    "answer": "The order of events can help distinguish causes from consequences."
+  },
+  {
+    "id": "english_train_25",
+    "question": "What is a premise?",
+    "answer": "A premise is a statement used as support for an argument."
+  },
+  {
+    "id": "english_train_26",
+    "question": "What does an engineer investigate?",
+    "answer": "An engineer investigates how systems behave and how their performance can be improved."
+  },
+  {
+    "id": "english_train_27",
+    "question": "What is the purpose of a question?",
+    "answer": "A question requests information, explanation, or clarification."
+  },
+  {
+    "id": "english_train_28",
+    "question": "Why can a change have different effects?",
+    "answer": "Its consequences depend on the surrounding conditions and relationships."
+  },
+  {
+    "id": "english_train_29",
+    "question": "How does a team share responsibilities?",
+    "answer": "Team members perform different tasks according to their assigned roles."
+  },
+  {
+    "id": "english_train_30",
+    "question": "What is an experiment?",
+    "answer": "An experiment tests how changing a condition affects an observed outcome."
+  }
+]

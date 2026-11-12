@@ -1,0 +1,39 @@
+Section 1. Communication changes a system because information influences the decisions its members can make. When information is timely and accurate, a coordinator can correct errors before they spread.
+
+Section 2. An organization contains people with different responsibilities. A supervisor establishes priorities while specialists decide how to carry out their assigned work. The distinction helps reduce unnecessary waiting.
+
+Section 3. A machine cannot respond to a measurement that never reaches its controller. The sensor may be accurate, yet the feedback loop remains ineffective if its transmission channel has failed.
+
+Section 4. A good explanation separates observations from conclusions. The evidence tells us what happened, while reasoning describes why one event may produce another.
+
+Section 5. Language allows a speaker to distinguish a cause from its effect. Saying that a broken wire prevented a signal from arriving is different from saying that the missing signal broke the wire.
+
+Section 6. Every claim has a scope. A result observed in one factory does not automatically describe every other factory. New evidence may expand or restrict the conclusion.
+
+Section 7. When an engineer changes the load on a motor, the temperature may rise. The cooling system then has to transfer heat to the surrounding air to maintain safe operation.
+
+Section 8. A business may expand when additional workers handle tasks that once depended on a single person. Delegation can improve speed if authority and accountability are clearly assigned.
+
+Section 9. The same change can be beneficial in one context and harmful in another. Removing a gate may increase the movement of goods, but removing a safety gate may expose workers to danger.
+
+Section 10. Clear writing requires more than correct spelling. Each sentence should contribute an idea, and each paragraph should make its relationship to the previous paragraph understandable.
+
+Section 11. A river carries water downstream because differences in elevation create a potential for movement. Dams change the flow by restricting the passage of water and storing energy.
+
+Section 12. When a reader asks a question about a passage, a useful response identifies the relevant statement and explains how it bears on the question. Repeating the question is not an answer.
+
+Section 13. The purpose of a report is to make a decision easier. It should identify facts, uncertainty, and consequences without replacing missing information with an invented story.
+
+Section 14. People coordinate through promises, messages, and observations. Trust can reduce the need to verify every detail, though trust depends on the reliability of previous conduct.
+
+Section 15. In a workshop, the person who owns a machine may be different from the person who operates it. Ownership determines certain rights, while operating authority controls particular actions.
+
+Section 16. To compare two explanations, first identify what both accounts agree upon. Then find the observation on which their predicted outcomes differ.
+
+Section 17. Learning occurs when new evidence changes an internal representation. Memorization of a phrase is insufficient if the learner cannot apply it to a different circumstance.
+
+Section 18. A question can ask for a definition, a cause, a comparison, or a prediction. Before answering, the speaker must recognize which kind of response the question requests.
+
+Section 19. During an experiment, a control condition establishes a reference point. A changed condition helps investigators determine whether the measured outcome depends on the intervention.
+
+Section 20. An accurate answer can be short. If the user asks when an event happened, the response should provide the time rather than an unrelated account of the entire project.
