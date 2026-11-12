@@ -69,7 +69,10 @@ def test_original_cpu_train_and_resume_match_uninterrupted(tmp_path):
                   batch_size=1, seed=7, threads=1, lr=.001, checkpoint_every=1)
     original = root / "whole.pt"
     resumed = root / "resumed.pt"
-    train_language(**common, output=original, steps=4)
+    result = train_language(**common, output=original, steps=4)
+    assert result["best_step"] in (1, 2, 3, 4)
+    assert result["best_validation_loss"] <= result["validation_loss"]
+    assert Path(result["best_checkpoint"]).exists()
     train_language(**common, output=resumed, steps=2)
     train_language(**common, output=resumed, steps=4, resume=True)
     m1, _ = load_language(original, tokenizer)
