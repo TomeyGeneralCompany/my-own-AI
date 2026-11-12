@@ -37,6 +37,13 @@ def load_gauntlet(path):
         count[item["category"]] += 1
     if dict(count) != SIZES:
         raise ValueError("English gauntlet has incorrect category sizes")
+    if len({row["question"].casefold().strip() for row in data}) != 200:
+        raise ValueError("English gauntlet questions must be distinct")
+    switches = sorted((row for row in data if row["category"] == "conditional"),
+                      key=lambda row: row["id"])
+    for first, second in zip(switches[::2], switches[1::2]):
+        if (first["expected_answer"], second["expected_answer"]) != ("yes", "no"):
+            raise ValueError("Conditional pair must have opposite correct conclusions")
     return data
 
 
@@ -86,7 +93,14 @@ def evaluate_english(checkpoint, tokenizer_path, cases, *,
             "exact": sum(x["exact_match"] for x in scored),
             "manual_review_pending": sum(x["manual_review_pending"] for x in values),
         }
+    switches = sorted((item for item in results if item["category"] == "conditional"),
+                      key=lambda item: item["id"])
+    pair_total = len(switches) // 2
+    pair_passed = sum(first["exact_match"] is True and second["exact_match"] is True
+                      for first, second in zip(switches[::2], switches[1::2]))
     return {
+        "conditional_pairs": pair_total,
+        "conditional_pairs_passed": pair_passed,
         "total": len(results), "automatically_scored": sum(x["exact_match"] is not None for x in results),
         "exact_correct": sum(x["exact_match"] is True for x in results),
         "manual_review_pending": sum(x["manual_review_pending"] for x in results),
