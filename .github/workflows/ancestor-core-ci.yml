@@ -1,0 +1,148 @@
+name: Ancestor Core CI — real neural lab and 200-question gauntlet
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ancestor-core-ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  full-200-question-gauntlet:
+    name: Full 200-question immutable-model evaluation
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      GH_TOKEN: ${{ github.token }}
+      OMP_NUM_THREADS: '2'
+      MKL_NUM_THREADS: '2'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install CPU inference runtime
+        run: |
+          python -m pip install 'torch==2.5.1+cpu' --index-url https://download.pytorch.org/whl/cpu
+          python -m pip install -e '.[dev]'
+      - name: Retrieve immutable real candidate (not mocked, not retrained)
+        run: |
+          set -euo pipefail
+          mkdir -p data/ci/download
+          gh release download ancestor-g0001-candidate --pattern core-generation.zip --dir data/ci/download
+          python scripts/ancestor_core.py unpack \
+            --archive data/ci/download/core-generation.zip \
+            --state data/ci/candidate --generation g0001
+      - name: Execute ALL 200 frozen questions on actual original-weight model
+        run: |
+          set -euo pipefail
+          python scripts/ancestor_core.py evaluate \
+            --state data/ci/candidate \
+            --cases examples/english/gauntlet.json \
+            --limit 200 --output data/ci/evaluation.json > data/ci/evaluation-log.json
+          python scripts/ancestor_ci_contract.py \
+            --report data/ci/evaluation.json --generation g0001 \
+            --output data/ci/gauntlet-contract.json
+      - name: Publish accurate score without failing CI for an immature learner
+        if: success()
+        run: |
+          python - <<'PY'
+          import json,os
+          r=json.load(open("data/ci/gauntlet-contract.json"))
+          with open(os.environ["GITHUB_STEP_SUMMARY"],"a") as f:
+              f.write("## All 200 held-out questions executed\n\n")
+              f.write("**CI integration:** PASS (verified case count, identity, inference and scoring)\n\n")
+              f.write(f"**English proficiency:** {r['exact_correct']}/130 automatic exact matches; {r['manual_pending']} human-review cases pending.\n\n")
+              f.write(f"**Conditional reasoning pairs:** {r['conditional_pairs_passed']}/10.\n\n")
+              f.write("**No inference from an immature exact-match score to English fluency. No automatic promotion.**\n")
+          PY
+      - name: Retain full raw answers, hashes, categories and scoring evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ancestor-ci-200-gauntlet-${{ github.run_id }}
+          path: |
+            data/ci/evaluation.json
+            data/ci/gauntlet-contract.json
+          if-no-files-found: warn
+          retention-days: 30
+
+  integrated-neural-lab:
+    name: Real book to weights to checkpoint to deterministic answer
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      OMP_NUM_THREADS: '2'
+      MKL_NUM_THREADS: '2'
+      CUDA_VISIBLE_DEVICES: ''
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install original CPU neural runtime
+        run: |
+          python -m pip install 'torch==2.5.1+cpu' --index-url https://download.pytorch.org/whl/cpu
+          python -m pip install -e '.[dev]'
+      - name: Verify numbered book and equation-preserving paragraph index
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          from my_own_ai.numbered_paragraphs import numbered_paragraphs
+          text=Path("published_books/communal-nature-of-commerce-revised-second-edition.txt").read_text()
+          parsed=numbered_paragraphs(text)
+          assert "".join(p["text"] for p in parsed)==text
+          assert [p["number"] for p in parsed if p["number"] is not None]==list(range(537))
+          fifth=next(p["text"] for p in parsed if p["number"]==5)
+          assert "Xi,t" in fifth and "(1)" in fifth
+          assert "[6]" not in fifth
+          print("LAB: exact 537 paragraph sequence, attached equation and full reconstruction OK")
+          PY
+      - name: Train a small fresh neural model through full real manuscript pass
+        run: |
+          set -euo pipefail
+          mkdir -p data/ci
+          python scripts/ancestor_core.py train --repository . \
+            --generation g0001 --state data/ci/lab-state --scratch data/ci/lab-scratch \
+            --passes 1 --instruction-steps 2 --max-reading-updates 20000 \
+            --max-instruction-updates 2 --embed 16 --heads 4 --layers 1 \
+            --context 512 --vocab 384 --batch 4 --threads 2 > data/ci/lab-train.json
+          python scripts/ancestor_core.py pack --state data/ci/lab-state \
+            --archive data/ci/lab-generation.zip > data/ci/lab-pack.json
+          python scripts/ancestor_core.py unpack --archive data/ci/lab-generation.zip \
+            --state data/ci/lab-restored --generation g0001 > data/ci/lab-unpack.json
+      - name: Ask twice from restored checkpoint and validate integration contract
+        run: |
+          set -euo pipefail
+          python scripts/ancestor_core.py ask --state data/ci/lab-restored \
+            --question 'What does identity mean in the first axiom?' \
+            --output data/ci/lab-answer-a.json --tokens 20 > /dev/null
+          python scripts/ancestor_core.py ask --state data/ci/lab-restored \
+            --question 'What does identity mean in the first axiom?' \
+            --output data/ci/lab-answer-b.json --tokens 20 > /dev/null
+          python scripts/ancestor_ci_contract.py \
+            --lab-state data/ci/lab-restored/generation.json \
+            --lab-answer-a data/ci/lab-answer-a.json \
+            --lab-answer-b data/ci/lab-answer-b.json \
+            --output data/ci/lab-contract.json
+          echo '## Full manuscript → original weights → verified zip → fresh restore → deterministic read-only inference: PASS' >> "$GITHUB_STEP_SUMMARY"
+      - name: Retain actual lab evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ancestor-ci-neural-lab-${{ github.run_id }}
+          path: |
+            data/ci/lab-train.json
+            data/ci/lab-pack.json
+            data/ci/lab-unpack.json
+            data/ci/lab-answer-a.json
+            data/ci/lab-answer-b.json
+            data/ci/lab-contract.json
+          if-no-files-found: warn
+          retention-days: 30
