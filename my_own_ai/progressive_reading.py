@@ -37,6 +37,10 @@ def _reading_documents(folder):
     manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
     if manifest.get("format") != "approved_books_v1":
         return rows
+    if manifest.get("chunk_unit") == "numbered_paragraph":
+        # Each document is one complete numbered paragraph with its equations.
+        # Never stitch adjacent paragraphs into an artificial training sample.
+        return rows
     import re
     known = {re.sub(r"[^A-Za-z0-9_-]", "_", row["id"]): row["id"]
              for row in manifest.get("sources", [])}
