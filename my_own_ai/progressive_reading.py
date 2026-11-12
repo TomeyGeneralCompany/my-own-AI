@@ -186,7 +186,10 @@ def train_progressive(*, tokenizer_path, training, validation, output,
     if train_ids & {row["id"] for row in valid_docs}:
         raise ValueError("Training and validation documents overlap")
     training_hash, validation_hash = _identity(train_docs), _identity(valid_docs)
+    paragraph_mode = json.loads((Path(training).parent / "manifest.json").read_text(encoding="utf-8")).get("chunk_unit") == "numbered_paragraph" if (Path(training).parent / "manifest.json").is_file() else False
     windows = overlapping_windows(train_docs, tokenizer, context, overlap)
+    source_lookup = {row["id"]: row["source"] for row in train_docs}
+    last_read_unit = None
     valid_windows = overlapping_windows(valid_docs, tokenizer, context, overlap)
     total_targets = sum(len(w[3]) for w in windows)
     valid_targets = sum(len(w[3]) for w in valid_windows)
@@ -244,6 +247,8 @@ def train_progressive(*, tokenizer_path, training, validation, output,
 
     def persist(*, measured=None, mark_best=False):
         state = {**identity, "tokenizer_state": tokenizer.state(),
+                 "chunk_unit": "numbered_paragraph" if paragraph_mode else "legacy_sections",
+                 "last_read_unit": last_read_unit,
                  "phase": "pretrain", "state_dict": model.state_dict(),
                  "optimizer": optimizer.state_dict(), "torch_rng": torch.get_rng_state(),
                  "reading_pass": current_pass, "next_window": next_index,
@@ -289,7 +294,10 @@ def train_progressive(*, tokenizer_path, training, validation, output,
     updates_on_this_run = 0
     most_recent_update = 0.
     for pass_idx in range(current_pass, passes):
-        order = _pass_order(windows, seed, pass_idx)
+        # Numbered treatises are read in AUTHOR ORDER, including nested math.
+        # Legacy sampled sections keep their existing deterministic pass order.
+        order = (list(range(len(windows))) if paragraph_mode else
+                 _pass_order(windows, seed, pass_idx))
         start_at = next_index if pass_idx == current_pass else 0
         model.train()
         for cursor in range(start_at, len(order), batch_size):
@@ -300,6 +308,7 @@ def train_progressive(*, tokenizer_path, training, validation, output,
                 break
             update_start = monotonic()
             selected = [windows[k] for k in order[cursor:cursor + batch_size]]
+            last_read_unit = source_lookup[selected[-1][0]]
             x, y = _batch(selected)
             logits, _ = model(x)
             loss = F.cross_entropy(logits.reshape(-1, logits.shape[-1]),
@@ -353,6 +362,8 @@ def train_progressive(*, tokenizer_path, training, validation, output,
     return {
         "reading_format": 1, "completed_passes": current_pass,
         "next_window": next_index, "updates_this_run": updates_on_this_run,
+        "last_read_unit": last_read_unit,
+        "chunk_unit": "numbered_paragraph" if paragraph_mode else "legacy_sections",
         "paragraph_resegmented": bool(resume and resegmenting),
         "completed_steps": update_count, "read_windows_per_pass": len(windows),
         "unique_supervised_tokens_per_pass": total_targets,
