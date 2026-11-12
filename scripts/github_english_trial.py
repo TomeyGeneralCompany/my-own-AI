@@ -61,8 +61,8 @@ def run():
     # The same prompt is supplied before/after instruction training.
     # Evidence is explicit user text, not a source verified by this demo.
     model_question = (user_question if not evidence else
-                      "User-provided evidence (not independently verified):\\n"
-                      + evidence + "\\nQuestion: " + user_question)
+                      "User-provided evidence (not independently verified):\n"
+                      + evidence + "\nQuestion: " + user_question)
     baseline = answer_question(pretrain_path, tokenizer_path, model_question,
                                max_tokens=80, threads=2)
     preferred = Path(instruction["best_checkpoint"])
