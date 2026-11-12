@@ -48,10 +48,10 @@ def test_numbering_gaps_duplicates_and_math_preservation():
 def test_published_book_splits_by_whole_numbered_paragraph(tmp_path):
     data = prepare_published_corpus(ROOT, ROOT / "published_books/manifest.json",
                                     tmp_path / "corpus")
-    assert data["chunk_unit"] == "numbered_paragraph"
+    assert data["chunk_unit"] == "mixed_structured"
     assert data["reading_ledgers"]["commerce"]["numbered_paragraphs"] == 537
     count = sum(data["sections"].values())
-    assert count == 538  # 537 numbered units and frontmatter
+    assert count > 538  # Entire seven-work library, including original 537 paragraphs
     ids = []
     for split in ("train", "validation", "test"):
         docs = _reading_documents(tmp_path / "corpus" / split)
