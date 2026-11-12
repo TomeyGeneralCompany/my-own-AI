@@ -124,4 +124,6 @@ def test_autonomous_workflow_resumes_via_dispatch_after_persisting():
     assert "--max-session-seconds" in source
     assert "actions: write" in source
     assert "cancel-in-progress: false" in source
-    assert "40" not in source.split("Continue",1)[0] if False else True
+    assert "--max-reading-updates" not in source
+    assert "auto_continue:" in source
+    assert "session_seconds:" in source
