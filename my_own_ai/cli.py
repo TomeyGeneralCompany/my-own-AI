@@ -39,6 +39,7 @@ def main(argv=None):
     t.add_argument("--seed", type=int, default=42)
     t.add_argument("--checkpoint-every", type=int, default=10)
     t.add_argument("--resume", action="store_true")
+    t.add_argument("--init-checkpoint", type=Path, help="Start new corpus generation from previous model weights")
     t.add_argument("--schedule-steps", type=int, default=1000)
     t.add_argument("--warmup-steps", type=int, default=10)
     b = sub.add_parser("benchmark")
@@ -187,7 +188,7 @@ def main(argv=None):
         cfg = ModelConfig(context_size=a.context, embed_dim=a.embed, heads=a.heads, layers=a.layers)
         print(json.dumps(train(a.corpus, a.output, cfg, a.steps, a.batch, a.lr, a.seed,
                                a.resume, a.checkpoint_every, schedule_steps=a.schedule_steps,
-                               warmup_steps=a.warmup_steps), indent=2))
+                               warmup_steps=a.warmup_steps, init_checkpoint=a.init_checkpoint), indent=2))
     elif a.command == "benchmark":
         print(json.dumps(benchmark(a.checkpoint, a.iterations, generation_tokens=a.tokens), indent=2))
     elif a.command == "generate":
