@@ -1,6 +1,6 @@
 {
   "format": "ancestor_published_corpus_v1",
-  "corpus_id": "commerce-revised-second-edition-2026",
+  "corpus_id": "tomey-author-library-seven-works-2026",
   "works": [
     {
       "id": "commerce",
@@ -13,6 +13,90 @@
       "sha256": "ef2ef735c90c3e08bfce7e265f4801ca647bda35d4464bc300fc7be78841889c",
       "approved_for_training": true,
       "chunking": "numbered_paragraph"
+    },
+    {
+      "id": "calvin-commentary",
+      "title": "A Guided Commentary on Calvin's Institutes of the Christian Religion",
+      "author": "Isaiz James Tomey",
+      "source_format": "pdf_text_extraction",
+      "source_status": "author-supplied original work; extracted training text",
+      "structure": "chaptered_prose",
+      "approved_for_training": true,
+      "chunking": "structured_units",
+      "parts": [
+        {
+          "path": "published_books/library/calvin-commentary-part-01.txt",
+          "sha256": "26a05c123aa86bede727e8d6c2028c2731a88344659897b54b69a39abfddb4f7"
+        },
+        {
+          "path": "published_books/library/calvin-commentary-part-02.txt",
+          "sha256": "a7ab0a17e257052be93b5f46ea07c44eb451b1c2a3227e1f5307af6274c59d1a"
+        },
+        {
+          "path": "published_books/library/calvin-commentary-part-03.txt",
+          "sha256": "d44ad6d0bdf3783e61c0497f841399d10541c04ef5a2830cd1c92174ba040d31"
+        }
+      ]
+    },
+    {
+      "id": "electromagnetic-void",
+      "title": "The Electromagnetic Void: A Cybernetic Theory of Energetic Disequilibrium in Complex Electrical Networks",
+      "author": "Isaiz James Tomey",
+      "source_format": "docx_text_extraction",
+      "source_status": "author-supplied original work; extracted training text",
+      "structure": "equation_prose",
+      "approved_for_training": true,
+      "chunking": "structured_units",
+      "path": "published_books/library/electromagnetic-void.txt",
+      "sha256": "949defc6ae14bcb9ca767309e7f176b4d3960214ce14fbabdba039b82c5f598f"
+    },
+    {
+      "id": "biospiritual-realism",
+      "title": "Biospiritual Realism",
+      "author": "Isaiz James Tomey",
+      "source_format": "docx_text_extraction",
+      "source_status": "author-supplied original work; extracted training text",
+      "structure": "essay_prose",
+      "approved_for_training": true,
+      "chunking": "structured_units",
+      "path": "published_books/library/biospiritual-realism.txt",
+      "sha256": "f676232a1c3961fdb8ae832ac261c18c3689a55afb67239187de8abed27f77ee"
+    },
+    {
+      "id": "patristic-cybernetic-sola-fide",
+      "title": "The Patristic and Cybernetic Case for Sola Fide",
+      "author": "Isaiz James Tomey",
+      "source_format": "docx_text_extraction",
+      "source_status": "author-supplied original work; extracted training text",
+      "structure": "sectioned_essay",
+      "approved_for_training": true,
+      "chunking": "structured_units",
+      "path": "published_books/library/patristic-cybernetic-sola-fide.txt",
+      "sha256": "88c8892749d28e5ea51977467bcc39c0fc34b5d4e78c267b150d135dd3d8d6f7"
+    },
+    {
+      "id": "ten-commandments-exposition",
+      "title": "The Exposition on the Ten Commandments of Almighty God",
+      "author": "Isaiz James Tomey",
+      "source_format": "docx_text_extraction",
+      "source_status": "author-supplied original work; extracted training text",
+      "structure": "chaptered_prose",
+      "approved_for_training": true,
+      "chunking": "structured_units",
+      "path": "published_books/library/ten-commandments-exposition.txt",
+      "sha256": "cd824d370d978834978464a01a82a4d198d020a6a30af7bc02f68bd13ef6ad84"
+    },
+    {
+      "id": "noetic-cybernetics-melito",
+      "title": "Noetic Cybernetics and Melito of Sardis",
+      "author": "Isaiz James Tomey",
+      "source_format": "pdf_text_extraction",
+      "source_status": "author-supplied original work; extracted training text",
+      "structure": "math_historical_analysis",
+      "approved_for_training": true,
+      "chunking": "structured_units",
+      "path": "published_books/library/noetic-cybernetics-melito.txt",
+      "sha256": "6c9ec644018d6887787ee8dde7e16c4e3c67643038add4b557c1539331e323aa"
     }
   ]
 }
