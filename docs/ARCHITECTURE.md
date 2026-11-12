@@ -259,3 +259,91 @@ my-own-ai evaluate-neural-inference \
 The independent evaluation rubric remains outside the model's input.
 A full-pass requires retrieved and cited expected sources, substantive target
 terms and controller completion; the rubric is still not an entailment proof.
+
+
+## Relational reasoning curriculum (PR #10)
+
+The two foundational claims of the author's ontology are **identity as a unity
+of self and other**, where relationships are constitutive of identity, and
+**hierarchically ordered communion**, where roles, direction and asymmetry
+matter. The training procedure operationalizes these principles without
+treating them as generic graph slogans: examples require analysis of
+constitutive identity, ordered roles, communication channels, internal states,
+disturbances, feedback and the **derived consequence**. Training targets supply
+worked derivations; the runtime model receives only the question, source
+evidence and its own generated plan.
+
+A relational input JSON file is a list of case objects:
+
+```json
+{
+  "id": "case_open",
+  "group": "counterfactual_family",
+  "domain": "engineering",
+  "question": "How does the signal affect adjustment?",
+  "evidence": ["A controller receives pressure readings and adjusts its valve."],
+  "analysis": {
+    "identity": "The effective system depends on this sensor-controller relation.",
+    "hierarchy": "The controller commands the valve while the sensor informs it.",
+    "channels": "Pressure measurements flow from sensor to controller.",
+    "states": "The controller has an updated measurement.",
+    "disturbance": "Changing pressure disturbs the target state.",
+    "feedback": "A subsequent valve correction counteracts the disturbance."
+  },
+  "conclusion": "The controller can adjust the valve in response to pressure changes."
+}
+```
+
+Every counterfactual family must contain at least two cases with the same
+question and domain, **changed evidence and changed conclusions**. Families
+are disjoint across training, validation and held-out files. Evaluation
+domains must be entirely absent from training and validation. The supplied
+`examples/relational` corpus is a small, **synthetic software fixture**, not
+the user's manuscripts; private authored examples belong outside Git.
+
+Generate worked examples:
+
+```sh
+my-own-ai prepare-relational \
+  --training examples/relational/train.json \
+  --validation examples/relational/validation.json \
+  --held-out examples/relational/held.json \
+  --output data/relational
+```
+
+The command creates two validated worked-example files for the **existing
+original-weight Transformer**. It does not create a new neural brain, publish
+private source documents, train the model automatically or expose held-out
+answer keys to the training input. For substantive research, replace these
+demonstration examples with author-approved cases based on privately indexed
+writings, with distinct held-out disciplines.
+
+Train with an existing proposal-capable local checkpoint and sufficient
+context for the six worked operations; use a context size of **at least 2048
+bytes**, preferably 4096 or more for longer worked analysis:
+
+```sh
+my-own-ai train-proposals \
+  --checkpoint data/checkpoints/brain.pt \
+  --examples data/relational/relational_train.json \
+  --validation data/relational/relational_validation.json \
+  --output data/checkpoints/relational-brain.pt \
+  --format grounded_supervised_v1 --steps 400
+```
+
+Then test **real neural outputs**, not scripted examples:
+
+```sh
+my-own-ai evaluate-relational \
+  --checkpoint data/checkpoints/relational-brain.pt \
+  --training examples/relational/train.json \
+  --validation examples/relational/validation.json \
+  --cases examples/relational/held.json
+```
+
+This reports exact conclusions, correctly cited evidence, complete
+counterfactual families, and per-domain held-out results. The strict exact
+conclusion metric is conservative; paraphrases may fail it, and even an exact
+match is not a proof of semantic entailment. More importantly, **a green
+software test suite is not evidence that the neural model has learned the
+ontology**. Novel-discipline success requires measured held-out outputs.
