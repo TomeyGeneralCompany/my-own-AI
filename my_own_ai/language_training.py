@@ -150,6 +150,13 @@ def train_language(*, tokenizer_path, training, validation, output,
     model = LocalTransformer(cfg)
     optimizer = torch.optim.AdamW(model.parameters(), lr=lr)
     sampler = torch.Generator().manual_seed(seed)
+    # Uniform-by-block oversamples short tails of long books. In new
+    # English prose runs, sample in proportion to actual supervised
+    # tokens so each source token has comparable exposure.
+    training_token_count = sum(len(labels) for _, labels in train_samples)
+    validation_token_count = sum(len(labels) for _, labels in val_samples)
+    sampling_policy = ("pretrain_target_token_weighted" if phase == "pretrain"
+                       else "instruction_example_uniform")
     start = 0
     original = None
     best_loss = float('inf')
@@ -168,6 +175,9 @@ def train_language(*, tokenizer_path, training, validation, output,
         sampler.set_state(payload["sampler_rng"])
         torch.set_rng_state(payload["torch_rng"])
         start = int(payload["completed_steps"])
+        # Preserve old PR #14 uniform sampling when continuing a checkpoint
+        # that predates this policy; do not silently change its RNG stream.
+        sampling_policy = payload.get("sampling_policy", "legacy_uniform")
         original = payload.get("parent_sha256")
         best_loss = float(payload.get("best_validation_loss", payload["validation_loss"]))
         best_step = int(payload.get("best_step", start))
@@ -197,6 +207,9 @@ def train_language(*, tokenizer_path, training, validation, output,
             "completed_steps": step, "phase": phase, "seed": seed,
             "lr": lr, "batch_size": batch_size, "training_sha256": source_hash,
             "validation_sha256": validation_hash, "parent_sha256": original,
+            "sampling_policy": sampling_policy,
+            "training_target_tokens": training_token_count,
+            "validation_target_tokens": validation_token_count,
             "validation_loss": measured,
             "best_validation_loss": best_loss, "best_step": best_step,
         }
@@ -210,7 +223,14 @@ def train_language(*, tokenizer_path, training, validation, output,
     started = perf_counter()
     supervised_tokens = 0
     for step in range(start + 1, steps + 1):
-        chosen = torch.randint(len(train_samples), (batch_size,), generator=sampler).tolist()
+        if sampling_policy == "pretrain_target_token_weighted":
+            weights = torch.tensor([len(labels) for _, labels in train_samples],
+                                   dtype=torch.float64)
+            chosen = torch.multinomial(weights, batch_size, replacement=True,
+                                       generator=sampler).tolist()
+        else:
+            chosen = torch.randint(len(train_samples), (batch_size,),
+                                   generator=sampler).tolist()
         current_batch = _batch(train_samples, chosen)
         supervised_tokens += int((current_batch[1] != -100).sum())
         loss = _loss(model, current_batch)
@@ -225,6 +245,11 @@ def train_language(*, tokenizer_path, training, validation, output,
     elapsed = perf_counter() - started
     return {"phase": phase, "steps": steps, "completed_this_run": steps - start,
             "trained_target_tokens": supervised_tokens,
+            "training_target_tokens": training_token_count,
+            "validation_target_tokens": validation_token_count,
+            "effective_training_passes": round(
+                supervised_tokens / max(training_token_count, 1), 3),
+            "sampling_policy": sampling_policy,
             "elapsed_seconds": round(elapsed, 3),
             "target_tokens_per_second": round(supervised_tokens / max(elapsed, 1e-6), 2),
             "validation_loss": measured, "validation_perplexity": math.exp(min(measured, 50)),
