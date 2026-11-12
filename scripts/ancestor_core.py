@@ -77,7 +77,7 @@ def train(args):
     curriculum = getattr(args, "curriculum", "continuation")
     if curriculum == "reasoning":
         create_reasoning_lessons(books, scratch / "exercises",
-                                limit_per_split=args.max_exercises)
+                                limit_per_split=getattr(args, "max_reasoning_lessons", 2000))
     elif curriculum == "continuation":
         create_book_continuations(books, scratch / "exercises",
                                   limit_per_split=args.max_exercises)
@@ -279,6 +279,8 @@ def main():
         t.add_argument("--" + name, required=True)
     t.add_argument("--repository", default=".")
     t.add_argument("--curriculum", choices=("continuation", "reasoning"), default="continuation")
+    t.add_argument("--max-reasoning-lessons", type=int, default=2000,
+                   help="Allow grounded lessons from the whole manuscript; separate from legacy continuation limit")
     t.add_argument("--parent-state")
     for name, default in (
         ("section-words",512), ("max-exercises",250), ("vocab",2048),
