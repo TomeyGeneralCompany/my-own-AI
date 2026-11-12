@@ -275,3 +275,30 @@ def test_frozen_conditional_cases_are_true_premise_switch_pairs():
         left, right = pair
         assert (left["expected_answer"], right["expected_answer"]) == ("yes", "no")
         assert left["question"].replace("has arrived", "has not arrived") == right["question"]
+
+
+def test_review_template_never_approves_itself(tmp_path):
+    from my_own_ai.language_regression import make_review_worksheet
+    cases = [row for row in load_gauntlet(ROOT / "gauntlet.json")
+             if row["requires_manual_review"]]
+    comparison = {
+        "previous_sha256": "a" * 64, "candidate_sha256": "b" * 64,
+        "gauntlet_sha256": "c" * 64,
+        "baseline": {"cases": [{"id": row["id"], "category": row["category"],
+                                "question": row["question"], "actual": "Prior output"}
+                               for row in cases]},
+        "candidate": {"cases": [{"id": row["id"], "category": row["category"],
+                                 "question": row["question"], "actual": "Next output"}
+                                for row in cases]},
+    }
+    source = tmp_path / "comparison.json"
+    source.write_text(json.dumps(comparison), encoding="utf-8")
+    result = make_review_worksheet(source, tmp_path / "review.json",
+                                   tmp_path / "review.md")
+    assert result["cases"] == 70 and result["approved"] is False
+    draft = json.loads((tmp_path / "review.json").read_text())
+    assert draft["reviewer_approved"] is False
+    assert all(all(grade == 0 for grade in scores.values())
+               for scores in draft["candidate"].values())
+    assert "Prior output" in (tmp_path / "review.md").read_text()
+    assert "Next output" in (tmp_path / "review.md").read_text()
