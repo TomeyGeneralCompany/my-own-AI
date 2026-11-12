@@ -220,9 +220,8 @@ def train_progressive(*, tokenizer_path, training, validation, output,
         model.load_state_dict(payload["state_dict"])
         parent_digest = sha256(parent.read_bytes()).hexdigest()
 
-    log = []
+    log = list(payload.get("reading_history", [])) if resume else []
     started = perf_counter()
-    best_marker = False
     last_validation = None
 
     def persist(*, measured=None, mark_best=False):
@@ -233,6 +232,8 @@ def train_progressive(*, tokenizer_path, training, validation, output,
                  "completed_steps": update_count, "best_validation_loss": best_loss,
                  "best_pass": best_pass, "passes_without_improvement": no_improvement,
                  "validation_loss": measured,
+                 "reading_history": log,
+                 "reading_coverage": next_index / max(len(windows), 1),
                  "parent_sha256": parent_digest, "training_target_tokens": total_targets,
                  "validation_target_tokens": valid_targets}
         _atomic_save(state, output)
@@ -242,9 +243,9 @@ def train_progressive(*, tokenizer_path, training, validation, output,
     if current_pass == 0 and next_index == 0 and not resume:
         last_validation = _validation_windows(model, valid_windows)
         best_loss, best_pass = last_validation, 0
-        persist(measured=last_validation, mark_best=True)
         log.append({"pass": 0, "validation_loss": last_validation,
                     "completed_windows": 0, "read_target_tokens": 0})
+        persist(measured=last_validation, mark_best=True)
     elif resume:
         last_validation = payload["validation_loss"]
 
@@ -281,12 +282,12 @@ def train_progressive(*, tokenizer_path, training, validation, output,
         else:
             no_improvement += 1
         last_validation = measured
-        persist(measured=measured, mark_best=improved)
         log.append({"pass": current_pass, "validation_loss": measured,
                     "best_validation_loss": best_loss,
                     "completed_windows": len(windows),
                     "read_target_tokens": total_targets,
                     "coverage": 1.0})
+        persist(measured=measured, mark_best=improved)
         if patience and no_improvement >= patience:
             stopped_reason = "validation_plateau"
             break
