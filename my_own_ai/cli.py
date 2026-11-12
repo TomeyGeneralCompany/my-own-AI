@@ -11,7 +11,7 @@ from .session import configure_session, demo, load_proposer, session
 from .corpus_eval import evaluate_cases, load_cases
 from .retrieval import CorpusIndex, build_index
 from .proposal_training import train_proposals
-from .intellectual_ledger import register, decide, approved_sources, export_manifest
+from .intellectual_ledger import register, decide, approved_sources, stage_approved_corpus
 from .cumulative_learning import prepare_replay, gate_and_promote
 from .relational_curriculum import prepare_curriculum, evaluate_relational, load_relational_cases, check_relational_splits
 from .grounding import SPAN_FORMAT
@@ -101,6 +101,9 @@ def main(argv=None):
     approval.add_argument("--decision", choices=["approved", "rejected"], required=True)
     inventory = sub.add_parser("approved-works", help="Verify approved source digests")
     inventory.add_argument("--ledger", type=Path, required=True)
+    approved_corpus = sub.add_parser("stage-approved-corpus", help="Stage digest-verified approved manuscripts for training")
+    approved_corpus.add_argument("--ledger", type=Path, required=True)
+    approved_corpus.add_argument("--output", type=Path, required=True)
     replay = sub.add_parser("prepare-replay", help="Keep old worked examples with approved new training")
     replay.add_argument("--ledger", type=Path, required=True)
     replay.add_argument("--retained", type=Path, required=True)
@@ -209,6 +212,8 @@ def main(argv=None):
         print(json.dumps(decide(a.ledger, a.id, a.decision), indent=2))
     elif a.command == "approved-works":
         print(json.dumps(approved_sources(a.ledger), indent=2))
+    elif a.command == "stage-approved-corpus":
+        print(json.dumps(stage_approved_corpus(a.ledger, a.output), indent=2))
     elif a.command == "prepare-replay":
         print(json.dumps(prepare_replay(a.ledger, a.retained, a.validation, a.output,
                                         accepted_ids=a.work_id), indent=2))
