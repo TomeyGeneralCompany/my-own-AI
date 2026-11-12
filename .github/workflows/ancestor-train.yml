@@ -23,6 +23,17 @@ on:
         required: true
         default: '2100'
         type: string
+      curriculum:
+        description: 'Instruction learning objective: reasoning for g0002, continuation for legacy g0001'
+        required: true
+        default: 'continuation'
+        type: choice
+        options: [continuation, reasoning]
+      parent_generation:
+        description: 'Explicit completed parent candidate generation (empty for g0001)'
+        required: false
+        default: ''
+        type: string
       auto_continue:
         description: 'Queue the next session automatically until candidate is complete'
         required: true
@@ -51,6 +62,8 @@ jobs:
       INSTRUCTION_STEPS: ${{ inputs.instruction_steps }}
       SESSION_SECONDS: ${{ inputs.session_seconds }}
       AUTO_CONTINUE: ${{ inputs.auto_continue }}
+      CURRICULUM: ${{ inputs.curriculum }}
+      PARENT_GENERATION: ${{ inputs.parent_generation }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -68,6 +81,13 @@ jobs:
           assert re.fullmatch(r'g[0-9]{4}',os.environ["GENERATION"])
           for name in ("READING_PASSES","INSTRUCTION_STEPS"):
               assert os.environ[name].isdecimal() and 1 <= int(os.environ[name]) <= 10000
+          assert os.environ["CURRICULUM"] in ("continuation","reasoning")
+          if os.environ["GENERATION"]=="g0001":
+              assert os.environ["CURRICULUM"]=="continuation"
+              assert not os.environ["PARENT_GENERATION"]
+          else:
+              assert os.environ["PARENT_GENERATION"] and re.fullmatch(r'g[0-9]{4}',os.environ["PARENT_GENERATION"])
+              assert int(os.environ["PARENT_GENERATION"][1:])<int(os.environ["GENERATION"][1:])
           assert os.environ["SESSION_SECONDS"].isdecimal()
           assert 60 <= int(os.environ["SESSION_SECONDS"]) <= 2250
           approved=validate_published_manifest(".","published_books/manifest.json")
@@ -89,12 +109,9 @@ jobs:
             python scripts/ancestor_core.py unpack --archive "data/download/$ASSET" --state data/ancestor-state --generation "$GENERATION"
             echo "Restored $ASSET" >> "$GITHUB_STEP_SUMMARY"
           elif [ "$GENERATION" != g0001 ]; then
-            gh release view ancestor-active --json body --jq .body > data/download/active.json
-            python scripts/ancestor_core.py inspect-active --file data/download/active.json > data/download/pointer.json
-            ANCESTOR_TAG="$(python -c 'import json;print(json.load(open("data/download/pointer.json"))["candidate_tag"])')"
-            EXPECTED="$(python -c 'import json;print(json.load(open("data/download/pointer.json"))["bundle_sha256"])')"
+            ANCESTOR_TAG="ancestor-${PARENT_GENERATION}-candidate"
             gh release download "$ANCESTOR_TAG" --pattern core-generation.zip --dir data/download
-            python scripts/ancestor_core.py unpack --archive data/download/core-generation.zip --state data/ancestor-parent --sha256 "$EXPECTED"
+            python scripts/ancestor_core.py unpack --archive data/download/core-generation.zip --state data/ancestor-parent --generation "$PARENT_GENERATION"
             echo "PARENT_STATE=data/ancestor-parent" >> "$GITHUB_ENV"
           fi
       - name: Continuously read numbered paragraphs, keep equations, then instruction-tune
@@ -104,7 +121,7 @@ jobs:
           if [ -n "${PARENT_STATE:-}" ]; then PARENT_ARGS=(--parent-state "$PARENT_STATE"); fi
           python -u scripts/ancestor_core.py train \
             --repository . --state data/ancestor-state --scratch data/session \
-            --generation "$GENERATION" --passes "$READING_PASSES" \
+            --generation "$GENERATION" --curriculum "$CURRICULUM" --passes "$READING_PASSES" \
             --instruction-steps "$INSTRUCTION_STEPS" \
             --max-session-seconds "$SESSION_SECONDS" \
             "${PARENT_ARGS[@]}" | tee data/session-report.json
@@ -153,6 +170,8 @@ jobs:
               -f reading_passes="$READING_PASSES" \
               -f instruction_steps="$INSTRUCTION_STEPS" \
               -f session_seconds="$SESSION_SECONDS" \
+              -f curriculum="$CURRICULUM" \
+              -f parent_generation="$PARENT_GENERATION" \
               -f auto_continue=true
             echo "Queued continuation for $GENERATION from the newly published checkpoint" >> "$GITHUB_STEP_SUMMARY"
           fi
