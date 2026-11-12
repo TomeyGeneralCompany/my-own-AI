@@ -1,0 +1,65 @@
+name: Ancestor Core English acquisition
+
+on:
+  workflow_dispatch:
+    inputs:
+      question:
+        description: 'Ask the English-trained Core (still experimental)'
+        required: false
+        type: string
+      full_gauntlet:
+        description: 'Run the full 200-question frozen English evaluation'
+        required: false
+        default: true
+        type: boolean
+  push:
+    branches:
+      - foundation/english-language-acquisition
+    paths:
+      - .github/workflows/english-acquisition.yml
+      - my_own_ai/language_training.py
+      - my_own_ai/language_inference.py
+      - my_own_ai/language_evaluation.py
+      - my_own_ai/tokenizer.py
+      - scripts/github_english_trial.py
+      - examples/english/**
+
+permissions:
+  contents: read
+
+jobs:
+  english-trial:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      OMP_NUM_THREADS: '2'
+      MKL_NUM_THREADS: '2'
+      CUDA_VISIBLE_DEVICES: ''
+      CORE_QUESTION: ${{ github.event_name == 'push' && 'Why might a centralized approval system slow down a company?' || inputs.question || '' }}
+      ENGLISH_GAUNTLET_LIMIT: ${{ github.event_name == 'push' && '14' || inputs.full_gauntlet && '200' || '14' }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install original CPU neural runtime
+        run: |
+          python -m pip install 'torch==2.5.1+cpu' --index-url https://download.pytorch.org/whl/cpu
+          python -m pip install -e '.[dev]'
+      - name: Run original-English training, browser question and gauntlet
+        run: python -u scripts/github_english_trial.py
+      - name: Upload complete diagnostic artifacts and weights
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ancestor-english-${{ github.run_id }}
+          path: |
+            data/hosted-english/SUMMARY.md
+            data/hosted-english/metrics.json
+            data/hosted-english/question-response.json
+            data/hosted-english/gauntlet-results.json
+            data/hosted-english/tokenizer.json
+            data/hosted-english/pretrain.pt
+            data/hosted-english/english-core.pt
+          if-no-files-found: warn
+          retention-days: 7
