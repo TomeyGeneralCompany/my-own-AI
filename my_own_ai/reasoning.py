@@ -160,6 +160,14 @@ def _grounded_prompt(request, capacity):
     return list((prefix + excerpts + label)[-capacity:])
 
 
+SUPERVISED_FORMAT = "grounded_supervised_v1"
+END_PROPOSAL = 0
+
+
+def supervised_prefix(request, capacity):
+    return _grounded_prompt(request, capacity // 2)
+
+
 class LocalProposer:
     """Greedy CPU decoding using the existing byte-level Transformer's forward interface."""
     def __init__(self, model, tokens=96):
@@ -175,7 +183,11 @@ class LocalProposer:
 
         capacity = self.model.config.context_size
         grounded = "evidence" in request.context and request.operation == "grounded_analysis"
-        anchor = _grounded_prompt(request, max(1, capacity * 3 // 4)) if grounded else []
+        supervised = grounded and getattr(self.model, "proposal_format", None) == SUPERVISED_FORMAT
+        if supervised:
+            anchor = supervised_prefix(request, capacity)
+        else:
+            anchor = _grounded_prompt(request, max(1, capacity * 3 // 4)) if grounded else []
         if grounded:
             window = anchor
         else:
@@ -191,10 +203,13 @@ class LocalProposer:
             context = json.dumps(request.context, ensure_ascii=False).encode("utf-8")[:remaining]
             window = list((context + b"\n" + prompt + label)[-capacity:])
         generated = bytearray()
+        limit = min(self.tokens, capacity - len(anchor) + 1) if supervised else self.tokens
         with torch.inference_mode():
-            for _ in range(self.tokens):
+            for _ in range(limit):
                 logits, _ = self.model(torch.tensor([window], dtype=torch.long, device="cpu"))
                 token = int(logits[0, -1].argmax())
+                if supervised and token == END_PROPOSAL:
+                    break
                 generated.append(token)
                 if anchor and len(anchor) < capacity:
                     window = anchor + list(generated[-(capacity - len(anchor)):])

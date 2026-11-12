@@ -98,3 +98,19 @@ my-own-ai evaluate-corpus --index data/demo-corpus.sqlite \
 ```
 
 Each held-out case has an ID, a question, expected source paths relative to the indexed corpus, and required inference terms. The CLI uses the real local checkpoint for proposals and exits with status 1 when any case misses its rubric. The report distinguishes expected-source retrieval, verified citation coverage, inference term coverage, and operation outcome. The expected sources and terms stay outside the model prompt. Keep case files outside the training corpus. Assess substantive reasoning separately because exact quotes and required terms can be verified mechanically, while the soundness of an inference requires reviewing the argument. A tiny continuation-trained checkpoint may retrieve the right passages through the index while still producing unusable proposals.
+
+## Train on worked proposals
+
+`train-proposals` starts from an original-weight checkpoint created with `train` and writes a separate CPU checkpoint. The training objective predicts the worked answer bytes and an end marker. The prompt bytes are masked out of the loss. The same prompt formatter supplies the numbered passages during training and inference. The controller still owns evaluation, so the training file can contain targets for Formulate, Construct and Correct.
+
+A row has an `id`, a `group` for variants of one exercise, a `stage`, a `question`, numbered `passages` as a list of text strings, and `plan`, `candidate`, `feedback` and `answer` strings. Formulate uses empty plan, candidate and feedback fields. Construct includes the prior plan. Correct also supplies the rejected candidate and evaluation feedback. Construct and Correct targets must cite an exact excerpt visible in the model prompt and state an inference. Keep all variants of an exercise together. The loader checks group separation between training and validation and detects repeated normalized questions across those files and the held-out cases. Review paraphrases and near-duplicates when authoring the splits.
+
+```sh
+my-own-ai train --corpus corpus/private --steps 20 --context 384 \
+  --output data/example-base.pt
+my-own-ai train-proposals --checkpoint data/example-base.pt \
+  --examples examples/proposals_train.json --validation examples/proposals_validation.json \
+  --held-out examples/grounded_cases.json --output data/example-proposals.pt
+```
+
+The starting checkpoint must have a context of at least 256 bytes and must have training documents longer than its context. Use the private manuscript corpus or another local text source with sufficiently long documents. Review validation loss and use the same held-out questions and decoding budget for both checkpoints. Validation loss measures byte prediction against worked targets. Report held-out citation and inference checks independently.

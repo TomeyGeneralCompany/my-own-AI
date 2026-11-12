@@ -138,6 +138,7 @@ def load_model(checkpoint):
     data = torch.load(checkpoint, map_location="cpu", weights_only=True)
     model = LocalTransformer(ModelConfig(**data["model_config"]))
     model.load_state_dict(data["state_dict"])
+    model.proposal_format = data.get("proposal_format")
     model.eval()
     return model
 

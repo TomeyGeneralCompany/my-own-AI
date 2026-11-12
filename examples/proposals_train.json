@@ -1,0 +1,41 @@
+[
+  {
+    "id": "log_access_formulate",
+    "group": "log_access",
+    "stage": "formulate",
+    "question": "How could a captain review how a warning was handled?",
+    "passages": [
+      "A captain can inspect the beacon log without needing permission from the harbor master."
+    ],
+    "plan": "",
+    "candidate": "",
+    "feedback": "",
+    "answer": "Find where an independent record is available."
+  },
+  {
+    "id": "log_access_construct",
+    "group": "log_access",
+    "stage": "construct",
+    "question": "How could a captain review how a warning was handled?",
+    "passages": [
+      "A captain can inspect the beacon log without needing permission from the harbor master."
+    ],
+    "plan": "Find where an independent record is available.",
+    "candidate": "",
+    "feedback": "",
+    "answer": "Premises:\n- [1] A captain can inspect the beacon log\nInference: The captain can inspect the log directly for an independent record of the warning."
+  },
+  {
+    "id": "log_access_correct",
+    "group": "log_access",
+    "stage": "correct",
+    "question": "How could a captain review how a warning was handled?",
+    "passages": [
+      "A captain can inspect the beacon log without needing permission from the harbor master."
+    ],
+    "plan": "Find where an independent record is available.",
+    "candidate": "The record can be updated whenever convenient.",
+    "feedback": "Use Premises: with exact quote bullets followed by a substantive Inference: section",
+    "answer": "Premises:\n- [1] A captain can inspect the beacon log\nInference: The captain can inspect the log directly for an independent record of the warning."
+  }
+]
