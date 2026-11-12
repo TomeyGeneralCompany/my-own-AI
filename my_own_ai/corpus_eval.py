@@ -35,12 +35,12 @@ def validate_cases(cases):
     return cases
 
 
-def evaluate_cases(index, cases, engine, *, limit=5, max_corrections=2):
+def evaluate_cases(index, cases, engine, *, limit=5, max_corrections=2, include_answers=False, rulebook=None):
     """Run the production Research operation with rubrics outside the model input."""
     validate_cases(cases)
     results = []
     with TemporaryDirectory(prefix="my-own-ai-eval-") as directory:
-        with ModuleController(CheckpointStore(directory), default_modules(corpus_index=index), engine) as core:
+        with ModuleController(CheckpointStore(directory), default_modules(corpus_index=index, rulebook=rulebook), engine) as core:
             core.switch("research")
             for case in cases:
                 start = perf_counter()
@@ -56,12 +56,18 @@ def evaluate_cases(index, cases, engine, *, limit=5, max_corrections=2):
                 terms = [term for term in case["inference_terms"] if term.casefold() in inference.casefold()]
                 passed = (run["status"] == Status.COMPLETED and expected <= used
                           and len(terms) == len(case["inference_terms"]))
-                results.append({"id": case["id"], "passed": passed, "status": run["status"],
+                result = {"id": case["id"], "passed": passed, "status": run["status"],
                                 "retrieved_expected": len(expected & retrieved), "expected_sources": len(expected),
                                 "cited_expected": len(expected & used), "verified_citations": len(cited),
                                 "matched_inference_terms": len(terms),
                                 "required_inference_terms": len(case["inference_terms"]),
                                 "stages": [event["stage"] for event in run["history"]],
-                                "wall_seconds": perf_counter() - start})
+                                "wall_seconds": perf_counter() - start,
+                                "evaluation_feedback": run["feedback"]}
+                if include_answers:
+                    result["answer"] = run["candidate"]
+                    result["citations"] = [{key: passages[number - 1][key] for key in ("source", "locator")}
+                                           for number in sorted(cited)]
+                results.append(result)
     return {"cases": results, "passed": sum(result["passed"] for result in results),
             "total": len(results), "hardware": hardware_metrics()}

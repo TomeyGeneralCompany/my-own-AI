@@ -1,0 +1,4 @@
+[
+  {"id":"late_notice","question":"Will a late notice delay the dispatcher's response?","expected_sources":["response.txt"],"inference_terms":["notice","delays","feedback"]},
+  {"id":"market_permit","question":"May the parish steward grant a market permit?","expected_sources":["charter.txt"],"inference_terms":["charter","authority","market"]}
+]

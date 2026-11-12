@@ -114,3 +114,58 @@ my-own-ai train-proposals --checkpoint data/example-base.pt \
 ```
 
 The starting checkpoint must have a context of at least 256 bytes and must have training documents longer than its context. Use the private manuscript corpus or another local text source with sufficiently long documents. Review validation loss and use the same held-out questions and decoding budget for both checkpoints. Validation loss measures byte prediction against worked targets. Report held-out citation and inference checks independently.
+
+### Evidence selection and inference
+
+Choose `--format grounded_span_v2` when training from a checkpoint with at least 512 bytes of context. Construct and Correct examples in this format use one verified premise. Their learning targets are the displayed passage number followed by the inference text. The model chooses among up to three bounded, word-aligned excerpts and generates the inference. The controller inserts the exact excerpt as the premise, checks that it exists in the saved corpus evidence, and runs the usual citation checks. An unfinished inference, an unavailable selection, or a response without a specific term from the selected evidence fails evaluation. Older checkpoints keep their existing generation behavior.
+
+```sh
+my-own-ai train --corpus corpus/private --steps 1800 --context 512 --embed 96 \
+  --heads 4 --layers 2 --batch 4 --schedule-steps 1800 --warmup-steps 40 \
+  --output data/base-512.pt
+my-own-ai train-proposals --format grounded_span_v2 --checkpoint data/base-512.pt \
+  --examples examples/proposals_train.json --validation examples/proposals_validation.json \
+  --held-out examples/grounded_cases.json --output data/span-proposals.pt
+my-own-ai evaluate-corpus --index data/demo-corpus.sqlite --cases examples/grounded_cases.json \
+  --checkpoint data/span-proposals.pt --tokens 160 --include-answers
+```
+
+`--include-answers` prints answers and the source locations of verified quotes for human review. Treat this output as private when the index contains manuscript text. Review whether the inference addresses the question and follows from the cited premise. The structural and keyword checks alone cannot establish that.
+
+## Verified rulebook reasoning
+
+Research can use a locally reviewed rulebook for bounded questions. Use
+`--rulebook` to select this path explicitly. A session can also load a
+checkpoint for its other operations. Rulebook Research runs offline and does
+not require model weights.
+
+```sh
+my-own-ai index-corpus --corpus examples/rulebook_corpus --index data/rulebook-demo.sqlite
+my-own-ai evaluate-corpus --index data/rulebook-demo.sqlite \
+  --rulebook examples/inference_rules.json --cases examples/rulebook_cases.json --include-answers
+my-own-ai session --corpus-index data/rulebook-demo.sqlite --rulebook examples/inference_rules.json
+```
+
+A rulebook is a versioned JSON file with extractors and rules. An extractor
+declares whether it reads the question or indexed evidence, a regular
+expression, and the fact it recognizes. Evidence extractors may identify an
+exact corpus-relative source path. Facts are arrays beginning with a
+predicate name. Variables begin with `$` and refer to named captures in
+extractors. In a rule, the same variable must bind to the same value in each
+required fact. A rule's `produces` fact can be used by another rule. A
+terminal rule supplies an `answer` paragraph and can refer to bound
+variables with braces.
+
+The controller retrieves text for matching source-linked premises, derives
+the result, and checks the exact citations and derivation before completion.
+A terminal result needs both a question match and indexed evidence. When the
+available evidence supplies no answer or competing answers, the operation
+returns unresolved. Evaluation feedback records the applied rule IDs.
+Checkpoints retain the rulebook digest and the exact evidence. A pending
+operation requires the original rulebook when resumed.
+
+Patterns and logical rules must be written or reviewed by the operator.
+Their coverage and the evidence they retrieve bound the conclusions.
+A tested rulebook gives usable results on covered questions. General neural
+reasoning remains a separate capability. The optional answer audit may
+contain private manuscript excerpts.

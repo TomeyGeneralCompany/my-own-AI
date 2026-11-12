@@ -110,3 +110,15 @@ class CorpusIndex:
             "JOIN passages p ON p.id = terms.rowid WHERE terms MATCH ? "
             "ORDER BY bm25(terms, 1.0, 0.35), p.id LIMIT ?", (pattern, limit))
         return [dict(zip(("source", "locator", "text", "sha256"), row)) for row in rows]
+
+
+    def find_support(self, source, pattern):
+        """Find the first passage satisfying an owner-defined source-specific premise."""
+        if self.db is None:
+            raise RuntimeError("Corpus index is closed")
+        rows = self.db.execute("SELECT source, locator, body, sha256 FROM passages "
+                               "WHERE source = ? ORDER BY id", (source,))
+        for row in rows:
+            if pattern.search(row[2]):
+                return dict(zip(("source", "locator", "text", "sha256"), row))
+        return None

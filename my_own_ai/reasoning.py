@@ -5,6 +5,8 @@ import json
 
 from .module_memory import IDENTIFIER, json_copy
 
+from .grounding import GroundedProposal, SPAN_FORMAT, span_prompt
+
 
 class Stage(str, Enum):
     FORMULATE = "formulate"
@@ -127,6 +129,8 @@ def advance(run, module, engine, tools, prior):
         proposal = engine.propose(ProposalRequest(module.name, run.operation, stage, procedure,
                                                   run.objective, json_copy(context), run.plan,
                                                   run.candidate, run.feedback))
+        if isinstance(proposal, GroundedProposal) and stage in (Stage.CONSTRUCT, Stage.CORRECT):
+            proposal = module.render_grounded(proposal, context)
         if not isinstance(proposal, str) or not proposal.strip() or len(proposal) > 64_000:
             passed, evidence = False, "Proposal must be nonempty text up to 64,000 characters"
         else:
@@ -183,7 +187,10 @@ class LocalProposer:
 
         capacity = self.model.config.context_size
         grounded = "evidence" in request.context and request.operation == "grounded_analysis"
-        supervised = grounded and getattr(self.model, "proposal_format", None) == SUPERVISED_FORMAT
+        format_name = getattr(self.model, "proposal_format", None)
+        if grounded and format_name == SPAN_FORMAT:
+            return self._propose_span(request, capacity)
+        supervised = grounded and format_name == SUPERVISED_FORMAT
         if supervised:
             anchor = supervised_prefix(request, capacity)
         else:
@@ -216,3 +223,33 @@ class LocalProposer:
                 else:
                     window = (window + [token])[-capacity:]
         return generated.decode("utf-8", errors="replace")
+
+
+    def _propose_span(self, request, capacity):
+        import torch
+
+        prefix, excerpts = span_prompt(request, capacity)
+        choices = tuple(excerpts) if request.stage != Stage.FORMULATE else ()
+        if request.stage != Stage.FORMULATE and not choices:
+            return GroundedProposal(0, "", "", False)
+        output = bytearray()
+        selected = None
+        finished = False
+        with torch.inference_mode():
+            for step in range(min(self.tokens, capacity - len(prefix) + 1)):
+                window = prefix + list(output)
+                logits, _ = self.model(torch.tensor([window], dtype=torch.long, device="cpu"))
+                scores = logits[0, -1]
+                if step == 0 and choices:
+                    allowed = [ord(str(choice)) for choice in choices]
+                    token = allowed[int(scores[allowed].argmax())]
+                    selected = int(chr(token))
+                else:
+                    token = int(scores.argmax())
+                if token == END_PROPOSAL:
+                    finished = True
+                    break
+                output.append(token)
+        if selected is None:
+            return output.decode("utf-8", errors="replace")
+        return GroundedProposal(selected, excerpts[selected], output[1:].decode("utf-8", errors="replace"), finished)
