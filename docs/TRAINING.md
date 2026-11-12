@@ -21,7 +21,7 @@ my-own-ai train --corpus corpus/private --output data/checkpoints/brain.pt --ste
 my-own-ai benchmark --checkpoint data/checkpoints/brain.pt
 ```
 
-Resume requires identical corpus content, seed, model dimensions, batch size, and learning rate. The target `--steps` is the **total** number of optimizer steps. Checkpoints contain model weights, optimizer state, sampling RNG, corpus fingerprint, and holdout metrics. Writes are atomic at the file level, so an interrupted save preserves the preceding checkpoint.
+Resume requires identical corpus content, seed, model dimensions, batch size, learning rate, warmup and schedule horizon. An immutable linear-warmup/cosine-decay learning-rate schedule is configured by `--warmup-steps` and `--schedule-steps`; its horizon does not change when a run is resumed with a larger `--steps` target. The target `--steps` is the **total** number of optimizer steps. Checkpoints contain model weights, optimizer state, sampling RNG, corpus fingerprint, and holdout metrics. Writes are atomic at the file level, so an interrupted save preserves the preceding checkpoint.
 
 ## Validation
 
@@ -31,4 +31,4 @@ CPU throughput and timing are measured for local comparison; they are not promis
 
 ## Limits and future work
 
-No substantive natural-language reasoning, instruction tuning, curriculum learning, model scaling, or cloud sync is implemented yet. Ingestion produces a manifest and in-memory text corpus, not an indexed retrieval database. A learning-rate scheduler is postponed until a fixed schedule can be represented and resumed without changing results; the current constant-rate optimizer is exactly resumable.
+No substantive natural-language reasoning, instruction tuning, curriculum learning, model scaling, or cloud sync is implemented yet. Ingestion produces a manifest and in-memory text corpus, not an indexed retrieval database. The learning-rate horizon must be selected independently of total run length to preserve exact resume semantics.
