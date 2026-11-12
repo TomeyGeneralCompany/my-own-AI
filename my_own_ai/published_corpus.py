@@ -126,13 +126,23 @@ def prepare_published_corpus(repository_root, manifest_path, destination,
     policy = "per_work_unit_disjoint"
     if any(not rows for rows in parts.values()):
         raise ValueError("Corpus needs training, validation and test material")
+    # Repeated running headers, citations and page boilerplate are common in
+    # PDFs. Assign identical units to their first partition, never silently
+    # train on the same text also held out as validation/test.
     seen = {}
-    for split, rows in parts.items():
-        for name, idx, text in rows:
-            fingerprint = sha256(" ".join(text.casefold().split()).encode()).hexdigest()
-            if fingerprint in seen and seen[fingerprint] != split:
-                raise ValueError("Near-identical section across training/test boundary")
+    dropped_duplicates = {"train": 0, "validation": 0, "test": 0}
+    for split in ("train", "validation", "test"):
+        unique = []
+        for row in parts[split]:
+            fingerprint = sha256(" ".join(row[2].casefold().split()).encode()).hexdigest()
+            if fingerprint in seen:
+                dropped_duplicates[split] += 1
+                continue
             seen[fingerprint] = split
+            unique.append(row)
+        parts[split] = unique
+    if any(not parts[split] for split in parts):
+        raise ValueError("Duplicate elimination exhausted an evaluation partition")
     dest.mkdir(parents=True)
     manifest = {
         "format": "approved_books_v1", "corpus_id": parsed["corpus_id"],
@@ -144,6 +154,7 @@ def prepare_published_corpus(repository_root, manifest_path, destination,
                        else "numbered_paragraph" if reading_ledgers else "legacy_sections"),
         "chunking_by_work": {b["id"]: b["chunking"] for b in sources},
         "reading_ledgers": reading_ledgers,
+        "duplicate_source_units_excluded": dropped_duplicates,
     }
     try:
         for split, rows in parts.items():
