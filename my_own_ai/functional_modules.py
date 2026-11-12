@@ -7,6 +7,7 @@ import re
 from .corpus import SUPPORTED, extract_text
 from .modules import BasicModule, Manifest, Tool
 from .reasoning import Evaluation, Stage
+from .grounding import evidence_terms
 from .retrieval import CorpusIndex, PASSAGE_LIMIT, digest
 
 
@@ -205,10 +206,11 @@ class Research(LocalFiles):
                                      "Verify quoted premises and check inference structure",
                                      "Fix citation or inference defects. Use Premises: and Inference:")
 
-    def __init__(self, workspace, corpus_index=None):
+    def __init__(self, workspace, corpus_index=None, rulebook=None):
         super().__init__("research", workspace)
         self.index_path = corpus_index
         self.index = None
+        self.rulebook = rulebook
 
     def procedure(self, operation, stage):
         if operation == "grounded_analysis":
@@ -226,7 +228,14 @@ class Research(LocalFiles):
     def search(self, query, limit):
         if self.index is None:
             raise ValueError("Configure a local corpus index with --corpus-index")
-        return self.index.search(query, limit)
+        hits = self.index.search(query, limit)
+        if self.rulebook is None:
+            return hits
+        support = self.rulebook.search_support(query, self.index, limit)
+        distinct = {}
+        for hit in support + hits:
+            distinct.setdefault((hit["source"], hit["locator"]), hit)
+        return list(distinct.values())[:limit]
 
     def tool_handlers(self):
         return {"acquire_source": self.read_document, "search_corpus": self.search}
@@ -246,6 +255,8 @@ class Research(LocalFiles):
     def prepare(self, run, tools, prior):
         context = super().prepare(run, tools, prior)
         if run["operation"] == "grounded_analysis":
+            if self.rulebook is not None:
+                context["rulebook"] = self.rulebook.digest
             context["evidence"] = tools.call("search_corpus", query=run["objective"],
                                              limit=run["inputs"].get("limit", 5))
         else:
@@ -254,6 +265,9 @@ class Research(LocalFiles):
 
     def validate_context(self, operation, inputs, context):
         if operation == "grounded_analysis":
+            identity = context.get("rulebook")
+            if identity is not None and (not isinstance(identity, str) or not re.fullmatch("[0-9a-f]{64}", identity)):
+                raise ValueError("Invalid saved rulebook identity")
             evidence = context.get("evidence")
             if not isinstance(evidence, list) or len(evidence) > inputs.get("limit", 5):
                 raise ValueError("Invalid retrieved evidence")
@@ -273,8 +287,39 @@ class Research(LocalFiles):
                     or hashlib.sha256(source["text"].encode("utf-8")).hexdigest() != source["sha256"]):
                 raise ValueError("Invalid acquired source in research checkpoint")
 
+    def validate_execution(self, operation, context):
+        identity = context.get("rulebook")
+        if identity is not None and (self.rulebook is None or self.rulebook.digest != identity):
+            raise ValueError("The original rulebook is required to resume this grounded operation")
+
+    def render_grounded(self, proposal, context):
+        evidence = context.get("evidence", [])
+        index = proposal.passage
+        if not (1 <= index <= len(evidence) and len(proposal.quote) >= 8
+                and proposal.quote in evidence[index - 1]["text"]):
+            return "No verified evidence span was selected."
+        inference = proposal.inference.strip()
+        if (not proposal.finished or not inference.endswith((".", "?", "!"))
+                or "\n" in inference or any(not character.isprintable() for character in inference)):
+            return f"Unfinished inference: {inference}"
+        if not evidence_terms(inference) & evidence_terms(proposal.quote):
+            return f"Inference lacks a term from the selected evidence: {inference}"
+        return f"Premises:\n- [{index}] {proposal.quote}\nInference: {inference}"
+
     def evaluate(self, run, tools):
         if run["operation"] == "grounded_analysis":
+            if run["context"].get("rulebook") is not None:
+                result, steps = self.rulebook.resolve(run["objective"], run["context"]["evidence"])
+                if not steps:
+                    return Evaluation(False, result)
+                if run["candidate"] != result:
+                    return Evaluation(False, "The proposal differs from the verified rule derivation")
+                verified, _, error = grounded_evidence(result, run["context"]["evidence"])
+                return Evaluation(not error, error or "Verified rules: " + ", ".join(steps))
+            if run["candidate"].startswith("Inference lacks a term from the selected evidence:"):
+                return Evaluation(False, "Relate the inference to a specific term in the selected evidence")
+            if run["candidate"].startswith("Unfinished inference:"):
+                return Evaluation(False, "Finish the inference with a complete sentence")
             verified, _, error = grounded_evidence(run["candidate"], run["context"]["evidence"])
             return Evaluation(not error, error or f"Verified {len(verified)} quoted premises and an inference section")
         sources = run["context"]["sources"]

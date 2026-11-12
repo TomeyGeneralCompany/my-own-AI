@@ -7,10 +7,12 @@ from time import perf_counter, process_time
 
 from .modules import CheckpointStore, ModuleController, default_modules, hardware_metrics
 from .reasoning import LocalProposer, Stage, Status
+from .rulebook import Rulebook, RulebookProposer
 
 
 def configure_session(parser):
-    parser.add_argument("--checkpoint", type=Path, required=True)
+    parser.add_argument("--checkpoint", type=Path)
+    parser.add_argument("--rulebook", type=Path, help="Opt in to verified Research derivations")
     parser.add_argument("--memory", type=Path, default=Path("data/module-memory"))
     parser.add_argument("--workspace", type=Path, default=Path.cwd())
     parser.add_argument("--corpus-index", type=Path, help="Local passage index for Research")
@@ -52,8 +54,13 @@ def load_proposer(checkpoint, threads, tokens):
 
 
 def session(args, source, output):
-    proposer = load_proposer(args.checkpoint, args.threads, args.tokens)
-    modules = default_modules(args.workspace, corpus_index=getattr(args, "corpus_index", None))
+    book_path = getattr(args, "rulebook", None)
+    if not args.checkpoint and not book_path:
+        raise ValueError("Specify a neural checkpoint or a rulebook")
+    book = Rulebook.load(book_path) if book_path else None
+    model = load_proposer(args.checkpoint, args.threads, args.tokens) if args.checkpoint else None
+    proposer = RulebookProposer(book, model) if book is not None else model
+    modules = default_modules(args.workspace, corpus_index=getattr(args, "corpus_index", None), rulebook=book)
     modules.extend(_factory(specification)(args.workspace) for specification in args.module)
     with ModuleController(CheckpointStore(args.memory), modules, proposer,
                           memory_budget_mib=args.memory_budget_mib) as controller:
