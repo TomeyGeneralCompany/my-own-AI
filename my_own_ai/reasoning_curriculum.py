@@ -16,6 +16,9 @@ NUMBERED = re.compile(r"^\s*\[(\d+)\]\s+", re.S)
 DEFINITION = re.compile(r"\b(?:means|is defined as|is therefore|is consequently|is a|is an|is the|names|denotes|refers to)\b", re.I)
 CONSEQUENCE = re.compile(r"\b(?:therefore|consequently|hence|thus|it follows|means that)\b", re.I)
 MATH = re.compile(r"[∂∑∈≠≤≥=Φτ]|(?<![A-Za-z])(?:Xi,t|X\(i,t\))")
+COMPARISON = re.compile(r"\b(?:whereas|rather than|instead of|in contrast|but not)\b", re.I)
+APPLICATION = re.compile(r"\b(?:for example|for instance|consider the|in practice|suppose that)\b", re.I)
+VARIABLE = re.compile(r"\b([A-Za-zΦτ][A-Za-z0-9Φτ]*\([^)]{1,30}\))\s+is\s+")
 WORDS = re.compile(r"\S+")
 
 
@@ -67,6 +70,26 @@ def extract_lessons(text, *, source_id, max_answer_chars=190):
         if 5 <= len(piece) <= max_answer_chars and MATH.search(piece):
             add("mathematical", f"Reproduce one mathematical expression from paragraph [{number}].",piece)
             break
+    # Distinctions and examples are literal claims from the author.
+    for sentence in lines:
+        if COMPARISON.search(sentence) and len(sentence) <= max_answer_chars:
+            add("comparison", f"What distinction does paragraph [{number}] draw?", sentence)
+            break
+    for sentence in lines:
+        if APPLICATION.search(sentence) and len(sentence) <= max_answer_chars:
+            add("application", f"What example or application appears in paragraph [{number}]?", sentence)
+            break
+    # The author's adjacent terms paragraph provides actual definitions of
+    # symbols; teach the mapping explicitly, without manufacturing equations.
+    if "Terms." in text[:120]:
+        normalized = re.sub(r"\s+", " ", text)
+        for clause in normalized.split(";"):
+            clause = clause.strip()
+            variable = VARIABLE.search(clause)
+            if variable and len(clause) <= max_answer_chars:
+                add("mathematical_interpretation",
+                    f"According to paragraph [{number}], what does {variable.group(1)} mean?",
+                    clause)
     # Explicit reading/comprehension instruction, not an unsupported semantic
     # paraphrase or manufactured counterfactual.
     for sentence in lines[:2]:
