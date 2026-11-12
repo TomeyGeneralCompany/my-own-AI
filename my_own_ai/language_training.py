@@ -222,10 +222,10 @@ def train_language(*, tokenizer_path, training, validation, output,
     measured = None
     started = perf_counter()
     supervised_tokens = 0
+    weights = torch.tensor([len(labels) for _, labels in train_samples],
+                           dtype=torch.float64)
     for step in range(start + 1, steps + 1):
         if sampling_policy == "pretrain_target_token_weighted":
-            weights = torch.tensor([len(labels) for _, labels in train_samples],
-                                   dtype=torch.float64)
             chosen = torch.multinomial(weights, batch_size, replacement=True,
                                        generator=sampler).tolist()
         else:
