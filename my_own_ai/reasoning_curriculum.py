@@ -128,18 +128,22 @@ def create_reasoning_lessons(prepared, destination, *, limit_per_split=800):
     excluded = {key for key, locations in normalized.items() if len(locations)>1}
     output.mkdir(parents=True)
     for split, lessons in pool.items():
-        filtered, used = [], set()
+        filtered, used, provenance = [], set(), {}
         for row in lessons:
             key = " ".join(row["question"].casefold().split())
             if key in excluded or key in used:
                 continue
             used.add(key)
             filtered.append({k:row[k] for k in ("id","question","answer")})
+            provenance[row["id"]] = {"source": row["source"], "kind": row["kind"],
+                                     "paragraph": row["paragraph"]}
             if len(filtered) == limit_per_split:
                 break
         if not filtered:
             raise ValueError(f"No grounded reasoning lessons for {split}")
         (output / f"{split}.json").write_text(json.dumps(filtered,ensure_ascii=False,indent=2))
+        (output / f"{split}-provenance.json").write_text(
+            json.dumps(provenance, ensure_ascii=False, indent=2))
         result[split]={"total":len(filtered),
                        "kinds":dict(Counter(row["kind"] for row in lessons))}
     summary={"format":"numbered_reasoning_lessons_v1",
