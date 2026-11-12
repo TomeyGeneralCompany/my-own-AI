@@ -92,3 +92,27 @@ def test_rejects_bad_labels_and_leaking_splits(tmp_path):
     second = save(tmp_path, "second.json", examples("other", ["another steward"]))
     with pytest.raises(ValueError, match="separate"):
         train_judge(first, second, first, steps=1)
+
+
+def test_counterfactual_metric_requires_identical_task_and_changed_evidence():
+    """Different questions or candidate orders must not inflate premise-switch coverage."""
+    class StubJudge:
+        def rank(self, question, evidence, candidates):
+            return {"selected": 0, "scores": [1, 0], "evidence_positions": [0, 0]}
+
+    base = examples("paired", ["lock keeper"])[:2]
+    valid = parse_cases(base)
+    assert evaluate_judge(valid, StubJudge())["counterfactual_total"] == 1
+
+    changed_question = [dict(base[0]), dict(base[1])]
+    changed_question[1]["question"] = "Does a completely different subject respond?"
+    assert evaluate_judge(parse_cases(changed_question), StubJudge())["counterfactual_total"] == 0
+
+    changed_candidates = [dict(base[0]), dict(base[1])]
+    changed_candidates[1]["candidates"] = list(reversed(base[1]["candidates"]))
+    changed_candidates[1]["accepted"] = 0
+    assert evaluate_judge(parse_cases(changed_candidates), StubJudge())["counterfactual_total"] == 0
+
+    same_evidence = [dict(base[0]), dict(base[1])]
+    same_evidence[1]["evidence"] = list(base[0]["evidence"])
+    assert evaluate_judge(parse_cases(same_evidence), StubJudge())["counterfactual_total"] == 0
