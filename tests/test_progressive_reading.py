@@ -72,6 +72,9 @@ def test_full_passes_resume_exactly_and_feed_language_instruction(tmp_path):
     s = torch.load(short, map_location="cpu", weights_only=True)
     f = torch.load(full, map_location="cpu", weights_only=True)
     assert s["reading_pass"] == 2 and s["next_window"] == 0
+    assert [row["pass"] for row in s["reading_history"]] == [0, 1, 2]
+    assert [row["validation_loss"] for row in s["reading_history"]] == [
+        row["validation_loss"] for row in f["reading_history"]]
     assert s["completed_steps"] == f["completed_steps"]
     assert all(torch.equal(s["state_dict"][key], f["state_dict"][key])
                for key in s["state_dict"])
