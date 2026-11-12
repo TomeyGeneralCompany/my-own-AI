@@ -22,6 +22,17 @@ def test_grounded_definitions_consequences_and_attached_math():
     assert any(x["answer"]=="A = B + C" for x in rows)
 
 
+def test_source_mathematical_term_definitions_are_retrieved_not_invented():
+    source=(ROOT/"published_books/communal-nature-of-commerce-revised-second-edition.txt").read_text()
+    from my_own_ai.numbered_paragraphs import numbered_paragraphs
+    terms=next(x["text"] for x in numbered_paragraphs(source) if x["number"]==6)
+    rows=extract_lessons(terms,source_id="p000006")
+    math=[x for x in rows if x["kind"]=="mathematical_interpretation"]
+    assert math
+    assert any("X(i,t)" in x["question"] for x in math)
+    assert all(x["answer"] in " ".join(terms.split()) for x in math)
+
+
 def test_full_author_manuscript_yields_disjoint_real_reasoning_lessons(tmp_path):
     corpus=tmp_path/"prepared"
     summary=prepare_published_corpus(ROOT,ROOT/"published_books/manifest.json",corpus)
