@@ -42,6 +42,7 @@ def create_book_continuations(prepared, destination, *, limit_per_split=250,
                    (source / "manifest.json").read_bytes()).hexdigest(),
                "task": "next-sentence English continuation, not factual inference"}
     try:
+        paragraph_units = manifest.get("chunk_unit") == "numbered_paragraph"
         # Collect before limiting so a repeated *question* across splits
         # can be removed from ALL partitions. Pair-only deduplication is
         # insufficient: the same opening may have different continuations.
@@ -50,7 +51,13 @@ def create_book_continuations(prepared, destination, *, limit_per_split=250,
             found = []
             docs = collect_documents(source / split)
             for doc in docs:
-                for paragraph in re.split(r"\n\s*\n", doc["text"]):
+                # PDF extraction inserts blank lines after visual line wraps.
+                # For numbered paragraphs those wraps are not true paragraph
+                # boundaries. Keep a complete numbered unit together when
+                # constructing next-sentence exercises, including equations.
+                pieces = ([doc["text"]] if paragraph_units else
+                          re.split(r"\n\s*\n", doc["text"]))
+                for paragraph in pieces:
                     sentences = list(_sentences(paragraph))
                     for first, second in zip(sentences, sentences[1:]):
                         if len(first) > max_question_chars or len(second) > 240:
