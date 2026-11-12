@@ -125,7 +125,46 @@ It must be reviewed on genuinely held-out questions beyond synthetic
 templates before broad English proficiency can be claimed.
 
 `gate-english` compares previous and candidate language checkpoints on the
-identical frozen cases and refuses promotion without independent review. The
+identical frozen cases and refuses promotion without independent review.
+
+First produce an initial comparison report. Without manual review, this command
+intentionally exits nonzero but still writes the measured answers.
+
+```bash
+my-own-ai gate-english --previous data/checkpoints/english-previous.pt \
+  --candidate data/checkpoints/english-candidate.pt \
+  --tokenizer data/english/tokenizer.json \
+  --cases examples/english/gauntlet.json \
+  --report data/english/comparison.json
+
+my-own-ai prepare-english-review \
+  --comparison data/english/comparison.json \
+  --template data/english/review.json \
+  --worksheet data/english/review.md
+```
+
+The worksheet shows the previous and candidate responses side by side for
+all 70 open-ended cases. The JSON template starts with all scores at **zero**
+and approval **false**. An independent reviewer must enter integer 1–5
+grammar, coherence and relevance grades for both versions of every case
+and explicitly approve after completing the assessment. The gate requires
+average 4/5, 70% successful responses in each open-ended category, and
+preservation of previously strong manual responses.
+
+```bash
+my-own-ai gate-english --previous data/checkpoints/english-previous.pt \
+  --candidate data/checkpoints/english-candidate.pt \
+  --tokenizer data/english/tokenizer.json \
+  --cases examples/english/gauntlet.json \
+  --review data/english/review.json \
+  --report data/english/final-comparison.json \
+  --promote-to data/checkpoints/english-approved.pt
+```
+
+Promotion additionally requires at least 80% exact automatic performance
+overall and 70% in each objectively scored category, including at least
+seven of ten correctly answered yes/no premise-switch pairs.
+ The
 review must be bound to both candidate and evaluation-set SHA-256 hashes.
 
 ## Original relational reasoning survives
