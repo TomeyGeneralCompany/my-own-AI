@@ -1,0 +1,7 @@
+Section 1. Signals can coordinate a team only when their recipients receive them. A delayed instruction can produce different actions even when the instruction itself is correct.
+
+Section 2. A careful argument distinguishes a proposed mechanism from an observed result. A plausible account should not be treated as proof without supporting evidence.
+
+Section 3. A workshop can improve its output by reducing unnecessary handoffs. The benefit depends on whether each worker has the information and authority needed to complete a task.
+
+Section 4. Clear sentences help readers follow a sequence of events. An explanation should distinguish what happened first from what followed and why the sequence mattered.
