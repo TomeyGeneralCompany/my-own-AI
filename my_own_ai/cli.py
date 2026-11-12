@@ -10,6 +10,7 @@ from .language_inference import answer_question
 from .language_evaluation import load_gauntlet, evaluate_english
 from .language_corpus import prepare_english_corpus
 from .language_regression import promote_english
+from .language_relational import prepare_language_relational, evaluate_language_relational
 from .train import train, load_model, benchmark
 from .corpus import build_manifest
 from .modules import CheckpointStore, ModuleController, default_modules
@@ -186,6 +187,18 @@ def main(argv=None):
     draft.add_argument("--brief", type=Path, required=True)
     draft.add_argument("--limit", type=int, default=5)
     draft.add_argument("--threads", type=int, default=4)
+    bridge = sub.add_parser("prepare-english-relational", help="Train the same English Core on approved relational worked examples")
+    bridge.add_argument("--training", type=Path, required=True)
+    bridge.add_argument("--validation", type=Path, required=True)
+    bridge.add_argument("--held-out", type=Path, required=True)
+    bridge.add_argument("--output", type=Path, required=True)
+    bridge_eval = sub.add_parser("evaluate-english-relational", help="Test language Core against unseen relational cases")
+    bridge_eval.add_argument("--checkpoint", type=Path, required=True)
+    bridge_eval.add_argument("--tokenizer", type=Path, required=True)
+    bridge_eval.add_argument("--cases", type=Path, required=True)
+    bridge_eval.add_argument("--output", type=Path, required=True)
+    bridge_eval.add_argument("--threads", type=int, default=2)
+    bridge_eval.add_argument("--tokens", type=int, default=300)
     prepare_language = sub.add_parser("prepare-english-corpus", help="Create disjoint, deduplicated English corpus partitions")
     prepare_language.add_argument("--source", type=Path, required=True)
     prepare_language.add_argument("--output", type=Path, required=True)
@@ -240,7 +253,17 @@ def main(argv=None):
     gauntlet.add_argument("--tokens", type=int, default=120)
     gauntlet.add_argument("--threads", type=int, default=2)
     a = parser.parse_args(argv)
-    if a.command == "prepare-english-corpus":
+    if a.command == "prepare-english-relational":
+        print(json.dumps(prepare_language_relational(a.training, a.validation,
+                                                     a.held_out, a.output), indent=2))
+    elif a.command == "evaluate-english-relational":
+        result = evaluate_language_relational(a.checkpoint, a.tokenizer, a.cases,
+                                              max_tokens=a.tokens, threads=a.threads)
+        a.output.parent.mkdir(parents=True, exist_ok=True)
+        a.output.write_text(json.dumps(result, indent=2), encoding="utf-8")
+        print(json.dumps({k: v for k, v in result.items() if k != "cases"}, indent=2))
+        return int(result["exact_conclusions"] != result["total"])
+    elif a.command == "prepare-english-corpus":
         print(json.dumps(prepare_english_corpus(a.source, a.output, seed=a.seed), indent=2))
     elif a.command == "gate-english":
         result = promote_english(a.previous, a.candidate, a.tokenizer, a.cases, a.report,
