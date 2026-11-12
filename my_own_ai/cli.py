@@ -112,6 +112,8 @@ def main(argv=None):
     promotion.add_argument("--candidate", type=Path, required=True)
     promotion.add_argument("--old-cases", type=Path, required=True)
     promotion.add_argument("--new-cases", type=Path, required=True)
+    promotion.add_argument("--training-examples", type=Path, required=True)
+    promotion.add_argument("--validation-examples", type=Path, required=True)
     promotion.add_argument("--report", type=Path, required=True)
     promotion.add_argument("--promote-to", type=Path)
     promotion.add_argument("--threads", type=int, default=4)
@@ -212,8 +214,9 @@ def main(argv=None):
                                         accepted_ids=a.work_id), indent=2))
     elif a.command == "gate-learning":
         result = gate_and_promote(a.baseline, a.candidate, a.old_cases, a.new_cases,
-                                  a.report, destination=a.promote_to,
-                                  threads=a.threads, tokens=a.tokens)
+                                  a.report, training_examples=a.training_examples,
+                                  validation_examples=a.validation_examples,
+                                  destination=a.promote_to, threads=a.threads, tokens=a.tokens)
         print(json.dumps(result, indent=2))
         return int(not result["promotable"])
     elif a.command == "prepare-relational":
