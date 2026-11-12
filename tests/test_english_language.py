@@ -76,7 +76,7 @@ def test_original_cpu_train_and_resume_match_uninterrupted(tmp_path):
     assert response["model_generated"] and response["prompt_token_ids"][1] == USER
     assert response["stopped_by"] in ("eos", "max_tokens")
     assert isinstance(response["answer"], str)
-    with pytest.raises(ValueError, match="legacy"):
+    with pytest.raises(ValueError, match="Language checkpoint"):
         load_model(resumed).generate(b"Hi", 1)
 
 
