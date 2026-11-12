@@ -9,6 +9,8 @@ from .language_training import train_language
 from .language_inference import answer_question
 from .language_evaluation import load_gauntlet, evaluate_english
 from .language_corpus import prepare_english_corpus
+from .book_language import prepare_approved_books
+from .book_instruction import create_book_continuations
 from .language_regression import promote_english, make_review_worksheet
 from .language_relational import prepare_language_relational, evaluate_language_relational
 from .train import train, load_model, benchmark
@@ -256,6 +258,14 @@ def main(argv=None):
     gauntlet.add_argument("--limit", type=int)
     gauntlet.add_argument("--tokens", type=int, default=120)
     gauntlet.add_argument("--threads", type=int, default=2)
+    books = sub.add_parser("prepare-approved-books", help="Split approved local books into English training, validation and test sections")
+    books.add_argument("--ledger", type=Path, required=True)
+    books.add_argument("--output", type=Path, required=True)
+    books.add_argument("--section-words", type=int, default=512)
+    exercises = sub.add_parser("prepare-book-exercises", help="Build source-faithful English continuation supervision")
+    exercises.add_argument("--prepared", type=Path, required=True)
+    exercises.add_argument("--output", type=Path, required=True)
+    exercises.add_argument("--limit", type=int, default=250)
     a = parser.parse_args(argv)
     if a.command == "prepare-english-relational":
         print(json.dumps(prepare_language_relational(a.training, a.validation,
@@ -267,6 +277,12 @@ def main(argv=None):
         a.output.write_text(json.dumps(result, indent=2), encoding="utf-8")
         print(json.dumps({k: v for k, v in result.items() if k != "cases"}, indent=2))
         return int(result["exact_conclusions"] != result["total"])
+    elif a.command == "prepare-approved-books":
+        print(json.dumps(prepare_approved_books(a.ledger, a.output,
+                                                target_words=a.section_words), indent=2))
+    elif a.command == "prepare-book-exercises":
+        print(json.dumps(create_book_continuations(a.prepared, a.output,
+                                                   limit_per_split=a.limit), indent=2))
     elif a.command == "prepare-english-corpus":
         print(json.dumps(prepare_english_corpus(a.source, a.output, seed=a.seed), indent=2))
     elif a.command == "prepare-english-review":
