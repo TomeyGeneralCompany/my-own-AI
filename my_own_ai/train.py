@@ -1,6 +1,7 @@
 """Resumable original-weight CPU training with held-out evaluation and checkpoints."""
 from dataclasses import asdict
 import math
+import hashlib
 import os
 from pathlib import Path
 import tempfile
@@ -8,6 +9,14 @@ import time
 import torch
 from .model import ModelConfig, LocalTransformer
 from .corpus import collect_documents, corpus_fingerprint, split_documents
+
+def _sha256_file(path):
+    digest = hashlib.sha256()
+    with Path(path).open("rb") as handle:
+        for block in iter(lambda: handle.read(65536), b""):
+            digest.update(block)
+    return digest.hexdigest()
+
 
 def collect_corpus(folder):
     return b"\n".join(d["text"].encode("utf-8") for d in collect_documents(folder))
@@ -97,6 +106,10 @@ def train(corpus_dir, output, cfg, steps=20, batch_size=4, learning_rate=0.001,
         start_step = 0
         first_loss = None
         previous_loss = None
+    source_generation = (state.get("initialized_from") if resume
+                         else str(Path(init_checkpoint)) if init_checkpoint else None)
+    source_digest = (state.get("initialized_from_sha256") if resume
+                     else _sha256_file(init_checkpoint) if init_checkpoint else None)
     model.train()
     begin = time.perf_counter()
     # This horizon is immutable across resumed runs.
@@ -114,7 +127,8 @@ def train(corpus_dir, output, cfg, steps=20, batch_size=4, learning_rate=0.001,
                       "batch_size": batch_size, "learning_rate": learning_rate,
                       "schedule_steps": schedule_steps, "warmup_steps": warmup_steps,
                       "corpus_fingerprint": fingerprint, "split_strategy": split_strategy,
-                      "initialized_from": str(Path(init_checkpoint)) if init_checkpoint else None,
+                      "initialized_from": source_generation,
+                      "initialized_from_sha256": source_digest,
                       "initial_loss": first_loss, "final_loss": loss,
                       "validation_loss": validation}, output)
         return validation
@@ -137,8 +151,8 @@ def train(corpus_dir, output, cfg, steps=20, batch_size=4, learning_rate=0.001,
         validation = state.get("validation_loss")
     elapsed = time.perf_counter() - begin
     return {"steps": steps, "steps_completed_this_run": steps - start_step,
-            "initialized_from": str(Path(init_checkpoint)) if init_checkpoint else
-                                state.get("initialized_from") if resume else None,
+            "initialized_from": source_generation,
+            "initialized_from_sha256": source_digest,
             "learning_rate": scheduled_rate(steps), "schedule_steps": schedule_steps,
             "initial_loss": first_loss, "final_loss": previous_loss,
             "validation_loss": validation,
