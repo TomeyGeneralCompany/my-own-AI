@@ -4,6 +4,10 @@ import json
 import sys
 from pathlib import Path
 from .model import ModelConfig
+from .tokenizer import ByteBPETokenizer
+from .language_training import train_language
+from .language_inference import answer_question
+from .language_evaluation import load_gauntlet, evaluate_english
 from .train import train, load_model, benchmark
 from .corpus import build_manifest
 from .modules import CheckpointStore, ModuleController, default_modules
@@ -180,8 +184,74 @@ def main(argv=None):
     draft.add_argument("--brief", type=Path, required=True)
     draft.add_argument("--limit", type=int, default=5)
     draft.add_argument("--threads", type=int, default=4)
+    token = sub.add_parser("train-tokenizer", help="Train original subword vocabulary on an approved English corpus")
+    token.add_argument("--corpus", type=Path, required=True)
+    token.add_argument("--output", type=Path, required=True)
+    token.add_argument("--vocab", type=int, default=8192)
+    language = sub.add_parser("train-english", help="CPU English pretraining or supervised dialogue tuning")
+    language.add_argument("--tokenizer", type=Path, required=True)
+    language.add_argument("--training", type=Path, required=True)
+    language.add_argument("--validation", type=Path, required=True)
+    language.add_argument("--output", type=Path, required=True)
+    language.add_argument("--phase", choices=["pretrain", "instruction"], required=True)
+    language.add_argument("--steps", type=int, required=True)
+    language.add_argument("--init-checkpoint", type=Path)
+    language.add_argument("--resume", action="store_true")
+    language.add_argument("--embed", type=int, default=64)
+    language.add_argument("--heads", type=int, default=4)
+    language.add_argument("--layers", type=int, default=2)
+    language.add_argument("--context", type=int, default=256)
+    language.add_argument("--batch", type=int, default=2)
+    language.add_argument("--lr", type=float, default=.001)
+    language.add_argument("--seed", type=int, default=42)
+    language.add_argument("--threads", type=int, default=2)
+    language.add_argument("--checkpoint-every", type=int, default=20)
+    ask_english = sub.add_parser("ask-english", help="Generate with the original English-trained Core")
+    ask_english.add_argument("--checkpoint", type=Path, required=True)
+    ask_english.add_argument("--tokenizer", type=Path, required=True)
+    ask_english.add_argument("--question", required=True)
+    ask_english.add_argument("--tokens", type=int, default=120)
+    ask_english.add_argument("--temperature", type=float, default=0)
+    ask_english.add_argument("--top-p", type=float, default=1.)
+    ask_english.add_argument("--seed", type=int, default=42)
+    ask_english.add_argument("--threads", type=int, default=2)
+    gauntlet = sub.add_parser("evaluate-english", help="Evaluate original-model answers on frozen English gauntlet")
+    gauntlet.add_argument("--checkpoint", type=Path, required=True)
+    gauntlet.add_argument("--tokenizer", type=Path, required=True)
+    gauntlet.add_argument("--cases", type=Path, required=True)
+    gauntlet.add_argument("--output", type=Path, required=True)
+    gauntlet.add_argument("--limit", type=int)
+    gauntlet.add_argument("--tokens", type=int, default=120)
+    gauntlet.add_argument("--threads", type=int, default=2)
     a = parser.parse_args(argv)
-    if a.command == "ingest":
+    if a.command == "train-tokenizer":
+        from .corpus import collect_documents
+        rows = collect_documents(a.corpus)
+        vocab = ByteBPETokenizer.train([row["text"] for row in rows], vocab_size=a.vocab)
+        vocab.save(a.output)
+        print(json.dumps({"vocab_size": vocab.vocab_size,
+                          "tokenizer_sha256": vocab.fingerprint()}, indent=2))
+    elif a.command == "train-english":
+        report = train_language(tokenizer_path=a.tokenizer, training=a.training,
+                                validation=a.validation, output=a.output,
+                                phase=a.phase, steps=a.steps, init_checkpoint=a.init_checkpoint,
+                                resume=a.resume, embed=a.embed, layers=a.layers,
+                                heads=a.heads, context=a.context, batch_size=a.batch,
+                                lr=a.lr, seed=a.seed, threads=a.threads,
+                                checkpoint_every=a.checkpoint_every)
+        print(json.dumps(report, indent=2))
+    elif a.command == "ask-english":
+        print(json.dumps(answer_question(a.checkpoint, a.tokenizer, a.question,
+                                         max_tokens=a.tokens, temperature=a.temperature,
+                                         top_p=a.top_p, seed=a.seed, threads=a.threads), indent=2))
+    elif a.command == "evaluate-english":
+        report = evaluate_english(a.checkpoint, a.tokenizer, load_gauntlet(a.cases),
+                                  limit=a.limit, max_tokens=a.tokens, threads=a.threads)
+        a.output.parent.mkdir(parents=True, exist_ok=True)
+        a.output.write_text(json.dumps(report, indent=2), encoding="utf-8")
+        print(json.dumps({k: v for k, v in report.items() if k != "cases"}, indent=2))
+        return int(not report["english_milestone_met"])
+    elif a.command == "ingest":
         m = build_manifest(a.corpus, a.manifest)
         print(json.dumps({"documents": len(m["documents"]), "fingerprint": m["fingerprint"]}, indent=2))
     elif a.command == "train":
