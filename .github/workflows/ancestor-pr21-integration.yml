@@ -51,8 +51,8 @@ jobs:
           python scripts/ancestor_core.py train --repository . \
             --parent-state data/pr21/parent --state data/pr21/child \
             --scratch data/pr21/scratch --generation g0002 --curriculum reasoning \
-            --passes 1 --instruction-steps 24 --max-reading-updates 20000 \
-            --max-instruction-updates 24 --threads 2 > data/pr21/training.json
+            --passes 1 --instruction-steps 600 --max-reading-updates 20000 \
+            --max-instruction-updates 600 --threads 2 > data/pr21/training.json
           python - <<'PY'
           import json
           p=json.load(open("data/pr21/child/generation.json"))
@@ -61,7 +61,7 @@ jobs:
           assert p["curriculum"]=="reasoning",p
           assert p["parent_checkpoint_sha256"],p
           assert p["completed_reading_passes"]==1,p
-          assert p["completed_instruction_steps"]==24,p
+          assert p["completed_instruction_steps"]==600,p
           print("REAL G0002: inherited g0001 candidate, completed paragraph reading and grounded reasoning tuning")
           PY
       - name: Evaluate all 200 unchanged English gauntlet questions
@@ -80,7 +80,7 @@ jobs:
               f.write("The inherited model completed real training and all 200 frozen questions.\n\n")
               f.write(f"Automatic exact matches: **{r['exact_correct']}/130** (g0001 baseline **0/130**).\n\n")
               f.write(f"Conditional pairs: **{r['conditional_pairs_passed']}/10**.\n\n")
-              f.write("This experimental 24-step test is **not** a completed production curriculum.\n")
+              f.write("This experimental 600-step test is **not** a completed production curriculum.\n")
           PY
       - name: Audit model capacity on CPU without mutating g0001/g0002
         run: |
