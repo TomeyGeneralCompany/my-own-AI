@@ -110,7 +110,11 @@ def train_language(*, tokenizer_path, training, validation, output,
                    phase, steps, init_checkpoint=None, resume=False,
                    embed=64, layers=2, heads=4, context=256,
                    batch_size=2, lr=0.001, seed=42, checkpoint_every=20, threads=2,
-                   time_budget_seconds=None):
+                   time_budget_seconds=None, english_drill_fraction=0.0):
+    if not 0 <= english_drill_fraction <= 1 or not math.isfinite(english_drill_fraction):
+        raise ValueError("Invalid English drill sampling fraction")
+    if phase != "instruction" and english_drill_fraction:
+        raise ValueError("English drill sampling requires instruction phase")
     if phase not in ("pretrain", "instruction"):
         raise ValueError("Invalid language training phase")
     if any(type(x) is not int or x < 1 for x in
@@ -160,7 +164,12 @@ def train_language(*, tokenizer_path, training, validation, output,
     training_token_count = sum(len(labels) for _, labels in train_samples)
     validation_token_count = sum(len(labels) for _, labels in val_samples)
     sampling_policy = ("pretrain_target_token_weighted" if phase == "pretrain"
+                       else "english_grounded_balanced" if english_drill_fraction
                        else "instruction_example_uniform")
+    drill_indices = [i for i, row in enumerate(train_rows) if row["id"].startswith("english-")] if phase == "instruction" else []
+    authored_indices = [i for i, row in enumerate(train_rows) if not row["id"].startswith("english-")] if phase == "instruction" else []
+    if english_drill_fraction and (not drill_indices or not authored_indices):
+        raise ValueError("Balanced curriculum needs English and original-author lessons")
     start = 0
     original = None
     best_loss = float('inf')
@@ -182,6 +191,9 @@ def train_language(*, tokenizer_path, training, validation, output,
         # Preserve old PR #14 uniform sampling when continuing a checkpoint
         # that predates this policy; do not silently change its RNG stream.
         sampling_policy = payload.get("sampling_policy", "legacy_uniform")
+        expected_policy = "english_grounded_balanced" if english_drill_fraction else ("pretrain_target_token_weighted" if phase == "pretrain" else "instruction_example_uniform")
+        if sampling_policy != expected_policy and not (not english_drill_fraction and sampling_policy == "legacy_uniform"):
+            raise ValueError("Instruction sampling policy changed during resume")
         original = payload.get("parent_sha256")
         best_loss = float(payload.get("best_validation_loss", payload["validation_loss"]))
         best_step = int(payload.get("best_step", start))
@@ -212,6 +224,7 @@ def train_language(*, tokenizer_path, training, validation, output,
             "lr": lr, "batch_size": batch_size, "training_sha256": source_hash,
             "validation_sha256": validation_hash, "parent_sha256": original,
             "sampling_policy": sampling_policy,
+            "english_drill_fraction": english_drill_fraction,
             "training_target_tokens": training_token_count,
             "validation_target_tokens": validation_token_count,
             "validation_loss": measured,
@@ -238,7 +251,15 @@ def train_language(*, tokenizer_path, training, validation, output,
             stop_reason = "time_budget"
             break
         update_start = monotonic()
-        if sampling_policy == "pretrain_target_token_weighted":
+        if sampling_policy == "english_grounded_balanced":
+            # Select independently from English mechanics and authored reasoning,
+            # making neither curriculum silently drown out the other.
+            chosen = []
+            for _ in range(batch_size):
+                is_drill = bool(torch.rand((), generator=sampler).item() < english_drill_fraction)
+                pool = drill_indices if is_drill else authored_indices
+                chosen.append(pool[int(torch.randint(len(pool), (1,), generator=sampler).item())])
+        elif sampling_policy == "pretrain_target_token_weighted":
             chosen = torch.multinomial(weights, batch_size, replacement=True,
                                        generator=sampler).tolist()
         else:
