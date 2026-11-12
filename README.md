@@ -44,3 +44,7 @@ For local original-weight English learning from your approved DOCX, PDF, TXT or 
 ## Progressive full-book reading
 
 The original-weight English Core can now read approved book sections in complete, ordered, overlapping token passes with exact checkpoint/resume support. Use `my-own-ai read-progressively` or the PR #15 private-book trainer. Details, example commands, validation boundaries and limitations: [Progressive reading controller](docs/PROGRESSIVE_READING.md). The checkpointed reader exposes every eligible training token; English comprehension must still be established separately on unseen questions.
+
+## Persistent book-trained Ancestor Core (PR #18)
+
+The default **Ask the Core** workflow now loads the immutable, selected original-weight model trained on the SHA-256-pinned published book corpus; it never retrains on question requests. Separate GitHub Actions workflows create resumable progressive-reading snapshots, evaluate candidate generations, and explicitly activate or roll back a model. For first use and complete safeguards, see [Persistent Ancestor Core operations](docs/PERSISTENT_ANCESTOR_CORE.md). The separate Synthetic English diagnostic remains available for reproducible baseline tests but is not the active Core.

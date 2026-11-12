@@ -10,14 +10,16 @@ import ast
 ROOT = Path(__file__).resolve().parents[1]
 
 
-def test_ask_core_workflow_routes_to_original_english_pipeline():
+def test_ask_core_workflow_routes_to_persistent_original_english_checkpoint():
     workflow = (ROOT / ".github/workflows/core-neural-smoke.yml").read_text()
-    assert "python -u scripts/github_english_trial.py" in workflow
-    assert "python -u scripts/github_neural_smoke.py" not in workflow
-    assert "public demo" in workflow.lower()
+    assert "scripts/ancestor_core.py ask" in workflow
+    assert "scripts/ancestor_core.py unpack" in workflow
+    assert "gh release view ancestor-active" in workflow
+    assert "scripts/github_neural_smoke.py" not in workflow
+    assert "scripts/github_english_trial.py" not in workflow
     assert "CORE_QUESTION:" in workflow
     assert "CORE_EVIDENCE:" in workflow
-    assert "data/hosted-english/question-response.json" in workflow
+    assert "data/answer.json" in workflow
 
 
 def test_english_question_run_records_model_provenance():

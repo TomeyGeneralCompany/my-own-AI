@@ -1,0 +1,17 @@
+{
+  "format": "ancestor_published_corpus_v1",
+  "corpus_id": "commerce-revised-second-edition-2026",
+  "works": [
+    {
+      "id": "commerce",
+      "title": "On the Communal Nature of Commerce, and the Coordination, Opacity, and the Moral Preconditions of Free and Voluntary Exchange in Market Societies under Conditions of Finitude",
+      "author": "Isaiz James Tomey",
+      "edition": "Revised Second Edition",
+      "source_format": "owner_supplied_docx_text_extraction",
+      "source_status": "author-approved published text",
+      "path": "published_books/communal-nature-of-commerce-revised-second-edition.txt",
+      "sha256": "ef2ef735c90c3e08bfce7e265f4801ca647bda35d4464bc300fc7be78841889c",
+      "approved_for_training": true
+    }
+  ]
+}

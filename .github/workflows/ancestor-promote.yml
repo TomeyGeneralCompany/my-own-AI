@@ -1,0 +1,98 @@
+name: Activate or roll back Ancestor Core — explicit owner selection
+
+on:
+  workflow_dispatch:
+    inputs:
+      generation:
+        description: 'Immutable candidate to activate (g0001, g0002, etc.)'
+        required: true
+        default: 'g0001'
+        type: string
+      experimental_bootstrap:
+        description: 'Explicitly activate an unqualified EXPERIMENTAL checkpoint (never claim English proficiency)'
+        required: true
+        default: false
+        type: boolean
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ancestor-active-pointer
+  cancel-in-progress: false
+
+jobs:
+  activate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GENERATION: ${{ inputs.generation }}
+      EXPERIMENTAL: ${{ inputs.experimental_bootstrap }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install CPU model runtime for checkpoint compatibility verification
+        run: |
+          python -m pip install 'torch==2.5.1+cpu' --index-url https://download.pytorch.org/whl/cpu
+          python -m pip install -e '.[dev]'
+      - name: Verify the candidate release is an immutable completed model
+        run: |
+          set -euo pipefail
+          mkdir -p data/download data/model
+          test "$(echo "$GENERATION" | grep -Ec '^g[0-9]{4}$')" -eq 1
+          TAG="ancestor-${GENERATION}-candidate"
+          gh release download "$TAG" --pattern core-generation.zip --dir data/download
+          python scripts/ancestor_core.py unpack --archive data/download/core-generation.zip \
+            --state data/model --generation "$GENERATION"
+      - name: Check independent evidence unless owner explicitly selects experimental status
+        run: |
+          set -euo pipefail
+          EXTRA_ARGS=()
+          if [ "$EXPERIMENTAL" = true ]; then
+            EXTRA_ARGS=(--experimental)
+          else
+            TAG="ancestor-${GENERATION}-candidate"
+            ASSET="$(gh api "repos/${GITHUB_REPOSITORY}/releases/tags/${TAG}" --jq '[.assets[] | select(.name | startswith("evaluation-"))] | sort_by(.created_at) | last | .name')"
+            if [ -z "$ASSET" ] || [ "$ASSET" = null ]; then
+              echo "Qualified promotion requires a complete independently scored evaluation"; exit 1
+            fi
+            gh release download "$TAG" --pattern "$ASSET" --dir data/download
+            REVIEW="reviews/${GENERATION}.json"
+            if [ ! -f "$REVIEW" ]; then
+              echo "Missing owner-reviewed 70-case independent evaluation: $REVIEW"; exit 1
+            fi
+            EXTRA_ARGS=(--evaluation "data/download/$ASSET" --review "$REVIEW")
+            if gh release view ancestor-active >/dev/null 2>&1; then
+              gh release view ancestor-active --json body --jq .body > data/download/previous-active.json
+              python scripts/ancestor_core.py inspect-active --file data/download/previous-active.json > data/download/previous.json
+              PREV="$(python -c 'import json;print(json.load(open("data/download/previous.json"))["candidate_tag"])')"
+              PREVIOUS_ASSET="$(gh api "repos/${GITHUB_REPOSITORY}/releases/tags/${PREV}" --jq '[.assets[] | select(.name | startswith("evaluation-"))] | sort_by(.created_at) | last | .name')"
+              if [ -z "$PREVIOUS_ASSET" ] || [ "$PREVIOUS_ASSET" = null ]; then
+                echo "Cannot assert non-regression: previous active model lacks complete evaluation"; exit 1
+              fi
+              mkdir -p data/previous
+              gh release download "$PREV" --pattern "$PREVIOUS_ASSET" --dir data/previous
+              EXTRA_ARGS+=(--previous-evaluation "data/previous/$PREVIOUS_ASSET")
+            fi
+          fi
+          python scripts/ancestor_promote.py --state data/model \
+            --archive data/download/core-generation.zip --output data/active.json "${EXTRA_ARGS[@]}"
+      - name: Atomically select verified active release pointer (also supports rollback)
+        run: |
+          set -euo pipefail
+          if gh release view ancestor-active >/dev/null 2>&1; then
+            gh release edit ancestor-active --notes-file data/active.json
+          else
+            gh release create ancestor-active --title "Ancestor Core active checkpoint pointer" \
+              --notes-file data/active.json --prerelease
+          fi
+          cat data/active.json >> "$GITHUB_STEP_SUMMARY"
+      - name: Retain activation evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: ancestor-activation-${{ github.run_id }}
+          path: data/active.json
+          retention-days: 90

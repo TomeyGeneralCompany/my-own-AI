@@ -1,4 +1,4 @@
-name: Ancestor Core English acquisition
+name: Synthetic English diagnostic — independent baseline
 
 on:
   workflow_dispatch:

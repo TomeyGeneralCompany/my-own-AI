@@ -143,7 +143,7 @@ def train_progressive(*, tokenizer_path, training, validation, output,
                       passes=5, overlap=64, embed=128, heads=4,
                       layers=4, context=512, lr=.0005, seed=42, threads=4,
                       checkpoint_every=25, resume=False, init_checkpoint=None,
-                      patience=0, batch_size=1):
+                      patience=0, batch_size=1, max_updates=None):
     """Exhaustively read complete book chunks, with resumable ordered cursor.
 
     Pass count is an upper bound, not a fabricated English proficiency gate.
@@ -157,6 +157,8 @@ def train_progressive(*, tokenizer_path, training, validation, output,
         raise ValueError("Invalid reading settings")
     if resume and init_checkpoint:
         raise ValueError("Cannot both resume and initialize a new generation")
+    if max_updates is not None and (type(max_updates) is not int or max_updates < 1):
+        raise ValueError("Reading update budget must be a positive integer")
     output = Path(output)
     if output.exists() and not resume:
         raise ValueError("Existing reading checkpoint requires --resume or a new output path")
@@ -250,6 +252,7 @@ def train_progressive(*, tokenizer_path, training, validation, output,
         last_validation = payload["validation_loss"]
 
     stopped_reason = "target_passes"
+    updates_on_this_run = 0
     for pass_idx in range(current_pass, passes):
         order = _pass_order(windows, seed, pass_idx)
         start_at = next_index if pass_idx == current_pass else 0
@@ -267,10 +270,17 @@ def train_progressive(*, tokenizer_path, training, validation, output,
             torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0)
             optimizer.step()
             update_count += 1
+            updates_on_this_run += 1
             next_index = min(cursor + batch_size, len(order))
             current_pass = pass_idx
             if next_index < len(order) and update_count % checkpoint_every == 0:
                 persist(measured=last_validation)
+            if max_updates is not None and updates_on_this_run >= max_updates and next_index < len(order):
+                stopped_reason = "update_budget"
+                persist(measured=last_validation)
+                break
+        if stopped_reason == "update_budget":
+            break
         current_pass = pass_idx + 1
         next_index = 0
         measured = _validation_windows(model, valid_windows)
@@ -291,8 +301,12 @@ def train_progressive(*, tokenizer_path, training, validation, output,
         if patience and no_improvement >= patience:
             stopped_reason = "validation_plateau"
             break
+        if max_updates is not None and updates_on_this_run >= max_updates:
+            stopped_reason = "update_budget" if current_pass < passes else "target_passes"
+            break
     return {
         "reading_format": 1, "completed_passes": current_pass,
+        "next_window": next_index, "updates_this_run": updates_on_this_run,
         "completed_steps": update_count, "read_windows_per_pass": len(windows),
         "unique_supervised_tokens_per_pass": total_targets,
         "heldout_validation_tokens": valid_targets,
