@@ -12,7 +12,7 @@ from .corpus_eval import evaluate_cases, load_cases
 from .retrieval import CorpusIndex, build_index
 from .proposal_training import train_proposals
 from .intellectual_ledger import register, decide, approved_sources, stage_approved_corpus
-from .cumulative_learning import prepare_replay, gate_and_promote
+from .cumulative_learning import prepare_replay, gate_and_promote, capture_successful_reasoning
 from .relational_curriculum import prepare_curriculum, evaluate_relational, load_relational_cases, check_relational_splits
 from .grounding import SPAN_FORMAT
 from . import neural_judge
@@ -158,6 +158,8 @@ def main(argv=None):
     inference.add_argument("--seed", type=int, default=42)
     inference.add_argument("--threads", type=int, default=4)
     inference.add_argument("--max-corrections", type=int, default=2)
+    inference.add_argument("--ledger", type=Path)
+    inference.add_argument("--archive-dir", type=Path)
     neural_eval = sub.add_parser("evaluate-neural-inference", help="Evaluate generated conclusions on held-out questions")
     neural_eval.add_argument("--checkpoint", type=Path, required=True)
     neural_eval.add_argument("--judge", type=Path, required=True)
@@ -253,9 +255,13 @@ def main(argv=None):
     elif a.command == "infer-neural":
         model = load_proposer(a.checkpoint, a.threads, a.tokens).model
         judge = neural_judge.NeuralJudge.load(a.judge, a.threads)
+        if (a.ledger is None) != (a.archive_dir is None):
+            raise ValueError("Provide both --ledger and --archive-dir to archive reasoning")
         result = infer(a.index, model, judge, a.question, limit=a.limit, attempts=a.attempts,
                        tokens=a.tokens, temperature=a.temperature, seed=a.seed,
                        max_corrections=a.max_corrections)
+        if a.ledger is not None and result["status"] == "completed":
+            result["intellectual_record"] = capture_successful_reasoning(a.ledger, a.archive_dir, result)
         print(json.dumps(result, indent=2))
         return int(result["status"] != "completed")
     elif a.command == "evaluate-neural-inference":
