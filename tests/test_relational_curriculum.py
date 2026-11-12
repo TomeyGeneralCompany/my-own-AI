@@ -9,7 +9,7 @@ from my_own_ai.relational_curriculum import (
     FACETS, _training_rows, check_relational_splits, evaluate_relational,
     load_relational_cases, prepare_curriculum,
 )
-from my_own_ai.proposal_training import load_examples
+from my_own_ai.proposal_training import encode_example, load_examples
 from my_own_ai.reasoning import Stage
 
 
@@ -110,3 +110,12 @@ def test_cli_prepares_curriculum(tmp_path, capsys):
     report = json.loads(capsys.readouterr().out)
     assert report["held_out_domains"] == ["hunting"]
     assert Path(report["training"]).exists()
+
+
+def test_worked_cases_encode_with_existing_transformer_training_path():
+    train, _, _ = datasets()
+    for row in _training_rows(train):
+        inputs, labels = encode_example(row, 4096)
+        assert len(inputs) == len(labels)
+        assert len(inputs) <= 4096
+        assert (labels != -100).any()
