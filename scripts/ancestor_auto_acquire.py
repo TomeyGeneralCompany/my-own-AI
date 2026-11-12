@@ -65,8 +65,8 @@ def candidate_metadata(generation):
 def main():
     manifest = hashlib.sha256(Path("published_books/manifest.json").read_bytes()).hexdigest()
     tags = {row["tagName"] for row in json.loads(gh("release", "list", "--limit", "1000", "--json", "tagName"))}
-    latest = max((generation_number(match.group(1)), match.group(1))
-                 for tag in tags if (match := TAG.fullmatch(tag)), default=None)
+    latest = max(((generation_number(match.group(1)), match.group(1))
+                  for tag in tags if (match := TAG.fullmatch(tag))), default=None)
     metadata = candidate_metadata(latest[1]) if latest else None
     # The training workflow itself automatically hands off sessions. Only
     # restart interrupted campaigns when no job is active.
