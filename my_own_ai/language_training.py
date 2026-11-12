@@ -7,7 +7,7 @@ from dataclasses import asdict
 from hashlib import sha256
 import json
 import math
-from time import perf_counter
+from time import perf_counter, monotonic
 from pathlib import Path
 import torch
 from torch.nn import functional as F
@@ -109,7 +109,8 @@ def _validation(model, samples):
 def train_language(*, tokenizer_path, training, validation, output,
                    phase, steps, init_checkpoint=None, resume=False,
                    embed=64, layers=2, heads=4, context=256,
-                   batch_size=2, lr=0.001, seed=42, checkpoint_every=20, threads=2):
+                   batch_size=2, lr=0.001, seed=42, checkpoint_every=20, threads=2,
+                   time_budget_seconds=None):
     if phase not in ("pretrain", "instruction"):
         raise ValueError("Invalid language training phase")
     if any(type(x) is not int or x < 1 for x in
@@ -117,6 +118,9 @@ def train_language(*, tokenizer_path, training, validation, output,
         raise ValueError("Invalid training dimensions")
     if not math.isfinite(lr) or lr <= 0:
         raise ValueError("Invalid learning rate")
+    if time_budget_seconds is not None and (not isinstance(time_budget_seconds, (int, float))
+            or not math.isfinite(time_budget_seconds) or time_budget_seconds <= 0):
+        raise ValueError("Invalid instruction time budget")
     if resume and init_checkpoint:
         raise ValueError("Resume and new-generation initialization are separate operations")
     targets = [Path(p).resolve() for p in (tokenizer_path, training, validation, output)]
@@ -221,10 +225,19 @@ def train_language(*, tokenizer_path, training, validation, output,
     model.train()
     measured = None
     started = perf_counter()
+    clock_start = monotonic()
     supervised_tokens = 0
+    completed = start
+    recent_update = 0.
+    stop_reason = "target_steps"
     weights = torch.tensor([len(labels) for _, labels in train_samples],
                            dtype=torch.float64)
     for step in range(start + 1, steps + 1):
+        if time_budget_seconds is not None and completed > start and (
+                monotonic() - clock_start + max(5., recent_update * 2) >= time_budget_seconds):
+            stop_reason = "time_budget"
+            break
+        update_start = monotonic()
         if sampling_policy == "pretrain_target_token_weighted":
             chosen = torch.multinomial(weights, batch_size, replacement=True,
                                        generator=sampler).tolist()
@@ -238,12 +251,19 @@ def train_language(*, tokenizer_path, training, validation, output,
         loss.backward()
         torch.nn.utils.clip_grad_norm_(model.parameters(), 1.)
         optimizer.step()
+        completed = step
+        recent_update = monotonic() - update_start
         if step % checkpoint_every == 0 or step == steps:
             measured = save(step)
+    if completed > start and (not output.exists() or
+                              int(torch.load(output, map_location="cpu", weights_only=True)["completed_steps"]) < completed):
+        measured = save(completed)
     if measured is None:
         measured = float(torch.load(output, map_location="cpu", weights_only=True)["validation_loss"])
     elapsed = perf_counter() - started
-    return {"phase": phase, "steps": steps, "completed_this_run": steps - start,
+    return {"phase": phase, "steps": steps, "completed_steps": completed,
+            "stop_reason": stop_reason,
+            "completed_this_run": completed - start,
             "trained_target_tokens": supervised_tokens,
             "training_target_tokens": training_token_count,
             "validation_target_tokens": validation_token_count,
