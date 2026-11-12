@@ -48,6 +48,8 @@ def _reading_documents(folder):
     for row in rows:
         stem = Path(row["source"]).stem
         prefix, sep, index = stem.rpartition("_")
+        if index.startswith("s") and index[1:].isdecimal():
+            index = index[1:]
         if not sep or not index.isdecimal() or prefix not in known:
             raise ValueError("Prepared book section name does not match approved manifest")
         groups.setdefault(prefix, []).append((int(index), row["text"]))
