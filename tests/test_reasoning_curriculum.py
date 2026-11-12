@@ -36,7 +36,7 @@ def test_source_mathematical_term_definitions_are_retrieved_not_invented():
 def test_full_author_manuscript_yields_disjoint_real_reasoning_lessons(tmp_path):
     corpus=tmp_path/"prepared"
     summary=prepare_published_corpus(ROOT,ROOT/"published_books/manifest.json",corpus)
-    assert summary["chunk_unit"]=="numbered_paragraph"
+    assert summary["chunk_unit"]=="mixed_structured"
     out=tmp_path/"lessons"
     info=create_reasoning_lessons(corpus,out,limit_per_split=1000)
     assert info["format"]=="numbered_reasoning_lessons_v1"
