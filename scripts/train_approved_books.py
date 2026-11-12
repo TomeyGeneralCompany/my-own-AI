@@ -33,6 +33,10 @@ def run(argv=None):
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--question", default="Why can centralized decisions become slow?")
     parser.add_argument("--max-exercises", type=int, default=200)
+    parser.add_argument("--qa-training", type=Path,
+                        help="Optional owner-reviewed question/answer examples (private JSON)")
+    parser.add_argument("--qa-validation", type=Path,
+                        help="Separate held-out owner-reviewed question/answer validation JSON")
     args = parser.parse_args(argv)
     out = args.output.resolve()
     if out.exists():
@@ -41,6 +45,8 @@ def run(argv=None):
         parser.error("Training steps must be positive")
     if args.context < 256 or args.embed < 16 or args.layers < 1 or args.batch < 1:
         parser.error("Invalid model or batch size")
+    if (args.qa_training is None) != (args.qa_validation is None):
+        parser.error("Both --qa-training and --qa-validation are required together")
     if args.max_exercises < 1:
         parser.error("At least one training exercise required")
     torch.set_num_threads(args.threads)
@@ -70,9 +76,37 @@ def run(argv=None):
         lr=.0005
     )
     dialogues = out / "exercises"
+    training_path = dialogues / "train.json"
+    validation_path = dialogues / "validation.json"
+    reviewed_qa = {"train": 0, "validation": 0}
+    if args.qa_training is not None:
+        # Never auto-infer a 'correct' answer to the author's arguments.
+        # Reviewed Q&A pairs are an explicit separate source of supervision.
+        combined = {}
+        for split, path, extra in (
+            ("train", training_path, args.qa_training),
+            ("validation", validation_path, args.qa_validation),
+        ):
+            existing = load_dialogues(path)
+            added = load_dialogues(extra)
+            existing_ids = {row["id"] for row in existing}
+            if existing_ids & {row["id"] for row in added}:
+                raise ValueError("Duplicate identifier between book exercise and reviewed Q&A")
+            combined[split] = existing + added
+            reviewed_qa[split] = len(added)
+        train_questions = {row["question"].casefold().strip() for row in combined["train"]}
+        validation_questions = {row["question"].casefold().strip() for row in combined["validation"]}
+        if train_questions & validation_questions:
+            raise ValueError("Reviewed QA training and validation questions overlap")
+        training_path = dialogues / "combined-train.json"
+        validation_path = dialogues / "combined-validation.json"
+        training_path.write_text(json.dumps(combined["train"], ensure_ascii=False, indent=2),
+                                 encoding="utf-8")
+        validation_path.write_text(json.dumps(combined["validation"], ensure_ascii=False, indent=2),
+                                   encoding="utf-8")
     tuned = train_language(
-        **config, phase="instruction", training=dialogues / "train.json",
-        validation=dialogues / "validation.json",
+        **config, phase="instruction", training=training_path,
+        validation=validation_path,
         output=out / "english-book-instruct.pt",
         init_checkpoint=base["best_checkpoint"],
         steps=args.instruction_steps,
@@ -98,6 +132,7 @@ def run(argv=None):
         })
     report = {
         "prepared_books": prepared, "continuation_exercises": curriculum,
+        "owner_reviewed_qa": reviewed_qa,
         "tokenizer_sha256": tokenizer.fingerprint(), "tokens_in_vocabulary": tokenizer.vocab_size,
         "pretrain": base, "instruction": tuned,
         "question_result": question_result,
