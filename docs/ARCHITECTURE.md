@@ -328,7 +328,7 @@ my-own-ai train-proposals \
   --examples data/relational/relational_train.json \
   --validation data/relational/relational_validation.json \
   --output data/checkpoints/relational-brain.pt \
-  --format grounded_supervised_v1 --steps 400
+  --format grounded_supervised_v1 --pair-batches --steps 400
 ```
 
 Then test **real neural outputs**, not scripted examples:
@@ -342,7 +342,7 @@ my-own-ai evaluate-relational \
 ```
 
 This reports exact conclusions, correctly cited evidence, complete
-counterfactual families, and per-domain held-out results. The strict exact
+counterfactual families, and per-domain held-out results. With `--pair-batches`, supervised updates sample whole counterfactual families: both source states and both Formulate/Construct stages remain together. This is paired exposure under the existing token-prediction objective, **not a separately validated causal-learning loss**. Use validation and held-out changes to decide whether it improves premise sensitivity.\n\nThe strict exact
 conclusion metric is conservative; paraphrases may fail it, and even an exact
 match is not a proof of semantic entailment. More importantly, **a green
 software test suite is not evidence that the neural model has learned the
