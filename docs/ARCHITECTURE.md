@@ -169,3 +169,50 @@ Their coverage and the evidence they retrieve bound the conclusions.
 A tested rulebook gives usable results on covered questions. General neural
 reasoning remains a separate capability. The optional answer audit may
 contain private manuscript excerpts.
+
+## Experimental neural evidence ranking
+
+The neural judge learns to rank candidate conclusions against a question and
+evidence. It uses original CPU weights, local lexical features and supervised
+contrast examples. It receives no answer key or Research rulebook at inference.
+When the top score is weak, the margin is narrow, or retrieved passages favor
+different candidates, it can abstain. These checks do not establish semantic
+entailment.
+
+Provide training, validation and test files with separate case groups and
+questions. Each row has this format:
+
+```json
+{
+  "id": "delay_example_a",
+  "group": "delay_example",
+  "question": "Will a late notice delay the response?",
+  "evidence": ["The keeper can act only after reading the notice."],
+  "candidates": [
+    "The late notice delays the keeper's response.",
+    "An independent signal triggers the response without the notice."
+  ],
+  "accepted": 0
+}
+```
+
+Use a zero-based candidate index for an accepted conclusion and `null` when
+the material supplies no supported answer. To test evidence dependence, keep
+the question, candidates and their order fixed while changing the premise and
+the expected choice in two cases with the same group. The evaluator reports
+fully correct groups separately from individual cases. It exits with status 1
+if any case is wrong.
+
+```sh
+my-own-ai train-neural-judge --examples data/train.json --validation data/validation.json \
+  --held-out data/test.json --output data/neural-judge.pt
+my-own-ai evaluate-neural-judge --checkpoint data/neural-judge.pt --cases data/test.json
+my-own-ai draft-neural-outline --checkpoint data/neural-judge.pt --index data/corpus.sqlite \
+  --brief data/brief.json
+```
+
+A brief contains a question and a list of candidate theses. The outline
+command retrieves corpus passages and returns the selected thesis with its
+exact source and locator, or an unresolved result. It does not generate the
+candidate prose. The original local proposal engine and verified Research
+remain available through their respective commands.
