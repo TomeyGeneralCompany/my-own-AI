@@ -1,5 +1,6 @@
 """Shared chat formatting and true original-model autoregressive decoding."""
 import math
+from time import perf_counter
 import torch
 from .tokenizer import BOS, EOS, USER, ASSISTANT, PAD
 from .language_training import load_language
@@ -27,6 +28,7 @@ def answer_question(checkpoint, tokenizer_path, question, *,
     generated = []
     generator = torch.Generator().manual_seed(seed)
     reason = "max_tokens"
+    started = perf_counter()
     for _ in range(min(max_tokens, model.config.context_size - len(prompt))):
         logits, _ = model(torch.tensor([history], dtype=torch.long))
         scores = logits[0, -1].clone()
@@ -55,8 +57,11 @@ def answer_question(checkpoint, tokenizer_path, question, *,
         rendered = bytes(b for i in generated for b in tokenizer.vocab[i]).decode(
             "utf-8", errors="replace")
         decoding_valid = False
+    elapsed = perf_counter() - started
     return {
         "question": question, "answer": rendered, "raw_token_ids": generated,
+        "generation_seconds": round(elapsed, 4),
+        "generated_tokens_per_second": round(len(generated) / max(elapsed, 1e-6), 2),
         "prompt_token_ids": prompt, "tokenizer_sha256": tokenizer.fingerprint(),
         "stopped_by": reason, "valid_utf8": decoding_valid,
         "model_generated": True, "evaluated_for_truth": False,
