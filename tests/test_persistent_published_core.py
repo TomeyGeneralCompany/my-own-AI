@@ -56,7 +56,7 @@ def test_published_corpus_checks_hash_and_holdout(tmp_path):
     assert len(validate_published_manifest(root, root / "published_books/manifest.json")["sources"]) == 1
     made = prepare_published_corpus(root, root / "published_books/manifest.json",
                                     tmp_path / "prepared", target_words=128)
-    assert made["policy"] == "section_disjoint_same_book"
+    assert made["policy"] == "per_work_unit_disjoint"
     assert all(made["sections"][part] for part in ("train", "validation", "test"))
     with pytest.raises(ValueError):
         prepare_published_corpus(root, root / "published_books/manifest.json",

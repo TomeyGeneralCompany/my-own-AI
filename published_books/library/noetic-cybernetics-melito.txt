@@ -1,0 +1,1291 @@
+Noetic Cybernetics, and a Proper
+Analysis of the Works of Saint
+Melito of Sardis and the Antiquity of
+the Protestant Old Testament Canon
+as Opposed to the Roman Catholic
+and/or Eastern Orthodox Old
+Testament Canons
+
+By: Isaiz James Tomey
+
+Copyright © 2026 Tomey General
+Company LLC. All rights
+reserved.
+
+This work is the intellectual property
+of Tomey General Company LLC.
+Tomey General Company LLC
+retains full authority to transfer,
+assign, or otherwise convey
+ownership or usage rights to this
+work to any subsidiary entity under
+its control.
+When it comes to examining Melito
+of Sardis, there is really only one
+place that we can properly begin,
+and that is by examining his view of
+the Old Testament canon of
+Scripture. This is the issue for which
+Melito is most famous, because the
+list he puts forth is actually the
+oldest known list of Old Testament
+Scriptures ever compiled by a
+Christian author. What is especially
+important is that Melito's
+understanding of the Old Testament
+canon vindicates the Protestant
+canon of the Old Testament as the
+one that most accurately reflects the
+canon of the very early Christian
+Church.
+
+The importance of Melito's
+testimony becomes still clearer when
+the canonical question is treated as a
+problem of information, recognition,
+transmission, and systemic
+continuity. Within the framework of
+Prototectonic Cybernetics, a canon is
+not an abstract, floating theological
+ideal, nor is it merely an accidental
+pile of ancient literature. A canon is
+a determinate state of a
+communicative community. It
+consists not merely in the physical
+existence of texts, but in the
+operational recognition of certain
+texts as belonging to the
+authoritative, inspired corpus.
+
+Consequently, when a historical
+canon is compared with a later
+canon, what must be measured is not
+simply whether the lists look
+superficially alike to a casual
+observer, but what transformations
+of state are required to pass from one
+configuration to the other. We must
+analyze the system's architecture to
+see how information is maintained,
+how boundaries are drawn, and how
+the system self-regulates across
+centuries of transmission.
+
+To ground our mathematical
+comparisons and prevent linguistic
+ambiguity, we must formally define
+the three distinct modern collections
+of Old Testament Scripture under
+consideration. Each tradition
+represents a unique membership
+vector containing a specific set of
+operational boundaries.
+
+The received Protestant Old
+Testament configuration (𝑀𝑃)
+consists of exactly 39 books. Its
+membership is structurally identical
+to the Hebrew Bible (the Tanakh),
+categorizing books into the
+Pentateuch, Historical books,
+Poetical/Wisdom literature, and the
+Prophets. Protestants view books
+outside this vector as apocryphal and
+non-canonical, meaning they cannot
+be used to formulate or regulate
+church doctrine.
+
+The Roman Catholic configuration (
+𝑀𝑅) consists of exactly 46 books.
+This vector encompasses the 39
+books found in the Protestant canon
+alongside an additional layer termed
+the Deuterocanon ("second canon").
+This layer includes seven distinct
+books: Tobit, Judith, Wisdom of
+Solomon, Sirach (Ecclesiasticus),
+Baruch (including the Letter of
+Jeremiah), 1 Maccabees, and 2
+Maccabees, as well as distinct Greek
+expansions to the books of Esther
+and Daniel (such as Susanna and Bel
+and the Dragon).
+
+The Eastern Orthodox configuration
+(𝑀𝑂) typically contains between 49
+and 51 books, depending on specific
+national jurisdictions and historical
+enumerations. Grounded primarily
+in the ancient Greek Septuagint
+translation network, this vector
+accepts all 46 books of the Roman
+Catholic canon but expands the
+boundaries to include 1 Esdras, 3
+Maccabees, Psalm 151, and the
+Prayer of Manasseh. Within Eastern
+Orthodoxy, these
+extra-protocanonical books are
+historically classified as the
+Anagignoskomena ("things that are
+read").
+
+Melito's homily on Passover is the
+only writing of his that has been
+preserved in its entirety to the
+present day. In addition to this,
+however, we have a number of
+fragments of other writings from
+Melito preserved by other writers in
+Christian history, which gives us
+further insight into what Melito
+believed about various topics. From
+one of these fragments comes
+Melito's famous canon list of the Old
+Testament Scriptures. That fragment
+is especially valuable because it
+gives us an observed canonical state
+from approximately the second
+century. If we represent the
+canonical state at a given time as 𝐶𝑡,
+then Melito gives us evidence
+concerning a particular historical
+state 𝐶𝑀. Later Christian traditions
+can likewise be represented as
+distinct states, such as 𝐶𝑃 for the
+Protestant canon, 𝑀𝑅 or 𝐶𝑅 for the
+Roman Catholic canon, and 𝐶𝑂 for
+an Orthodox canonical
+configuration. The historical
+question is therefore capable of
+being stated with precision: how
+much transformation is required to
+move from 𝐶𝑀 to each of these later
+states?
+Melito's canon list of the Old
+Testament comes to us from the
+Ecclesiastical History of Eusebius of
+Caesarea, a highly respected early
+Church historian. Melito's canon can
+be found in Book 4, Chapter 26 of
+the Ecclesiastical History. His
+understanding of the Old Testament
+canon is as follows:
+
+      There are five books of
+      Moses: Genesis,
+      Exodus, Numbers,
+      Leviticus,
+      Deuteronomy; Joshua,
+      the son of Nave; Judges;
+      Ruth; four books of the
+      kingdoms; two books of
+      omissions; the Psalms
+      of David; the Proverbs
+      and the Wisdom of
+      Solomon; Ecclesiastes;
+      the Song of Songs; Job;
+      and among the prophets,
+      Isaiah and Jeremiah.
+      There are twelve
+      prophets in one book,
+      and Daniel, Ezekiel, and
+      Esdras. From these I
+      have made my extracts
+      which are divided into
+      six books.
+
+The first thing to note is that the
+order in which Melito reports these
+books is different from the manner
+in which we order them today. The
+contents of the books themselves,
+however, are nearly identical to the
+Protestant canon of the Old
+Testament. This distinction is
+important because not every
+difference between two canonical
+descriptions constitutes a difference
+in the canonical state itself. If one
+description places Numbers before
+Leviticus, while another places
+Leviticus before Numbers, there has
+been a change in ordering, but no
+corresponding change in
+membership. Likewise, if Samuel is
+represented within the books of the
+Kingdoms, the encoding of the
+corpus has changed without
+necessarily changing the corpus
+itself.
+
+The canonical question may
+therefore be represented as a
+comparison between historical states
+rather than as an assertion that one
+tradition merely "looks more
+ancient" than another.
+
+𝐶𝑡 = (𝑀𝑡, 𝑂𝑡, 𝐺𝑡)
+
+Here 𝐶𝑡 represents the total
+canonical state at time 𝑡. The
+variable 𝑀𝑡 represents the specific
+membership vector of the canonical
+corpus at that time—the actual
+identity and count of the distinct
+books recognized as divine
+Scripture. The variable 𝑂𝑡 represents
+the structural ordering in which
+those books are reported or arranged
+within the list. The variable 𝐺𝑡
+represents their grouping, taxonomy,
+or division into sub-collections (such
+as combining multiple books into a
+single unit or under a broader
+umbrella title).
+
+This clear cybernetic distinction is
+absolutely necessary because two
+canonical lists may differ wildly in
+their ordering (𝑂𝑡) or their grouping
+(𝐺𝑡) without differing materially or
+substantively in the actual
+membership (𝑀𝑡) of the books
+which they recognize as holy
+Scripture. If a system rearranges its
+data blocks or alters its indexing
+titles, the representation has shifted,
+but the core information boundary
+remains completely identical.
+
+Thus, when Melito places Numbers
+before Leviticus, groups Samuel
+with the Kingdoms, or places
+Lamentations under Jeremiah, these
+are changes in 𝑂𝑡 or 𝐺𝑡, not changes
+in 𝑀𝑡. The substantive canonical
+question is therefore whether the
+membership of the corpus differs.
+
+Accordingly, the differences in order
+and grouping include listing
+Numbers before Leviticus instead of
+after it, grouping 1 and 2 Samuel
+into the books of the Kingdoms,
+referring to 1 and 2 Chronicles as the
+books of omissions, grouping
+Lamentations under Jeremiah, and
+using Esdras to refer to both Ezra
+and Nehemiah. These differences
+tell us something about the historical
+representation of the corpus, but
+they do not substantially alter the set
+of books being represented.
+
+In cybernetic terms, the system has
+changed its encoding without
+changing the controlled state. The
+distinction is directly analogous to
+the difference between changing the
+physical representation of
+information (like switching from a
+digital font to a printed script) and
+changing the underlying information
+which that representation is intended
+to preserve. We cannot let apologists
+confuse a change in indexing for a
+change in substance.
+
+There are only two aspects of this
+canon list which differ from the
+Protestant canon. The first is the
+clear omission of Esther. Some
+scholars do argue that this omission
+is accidental, but I admittedly am not
+convinced that this is the case. It is
+worth mentioning that, out of all the
+books of the Old Testament, the
+exclusion of Esther is the least
+surprising considering the history of
+its reception not only in the
+Christian Church, but also within
+rabbinic Judaism, where its status
+was long debated due to its lack of
+the explicit name of God. In terms of
+canonical state, however, this is a
+genuine membership difference. If
+Esther belongs to the Protestant
+canonical state but is absent from
+Melito's, then the membership
+vectors differ at that specific
+coordinate.
+
+When we reach the question of
+actual differences between Melito
+and the Protestant canon, we must
+deploy the mathematical tool
+designed to isolate variance between
+two sets:
+
+∆𝑀 = 𝑀𝑀△𝑀𝑃
+
+Here 𝑀𝑀 represents the baseline
+membership vector of Melito's
+canon, and 𝑀𝑃 represents the
+membership vector of the received
+Protestant canon. The symbol △
+denotes the symmetric difference
+operator, which isolates the specific
+elements that occur in one set or the
+other, but not in both. It filters out all
+the shared data points and measures
+precisely the books whose canonical
+status differs between the two lists.
+
+If Esther alone is the missing
+coordinate between the two sets,
+then the magnitude of the symmetric
+difference is expressed as:
+
+|∆𝑀| = 1
+
+If the book of the Wisdom of
+Solomon is also treated as a separate
+canonical book added to the
+collection rather than a
+nomenclature variation, the
+magnitude of the difference
+increases to:
+
+|∆𝑀| = 2
+
+The second area in which Melito's
+list potentially differs from the
+Protestant canon is his inclusion of
+the book of the Wisdom of Solomon,
+or Wisdom for short. This seen in
+Melito's exact phrasing of "the
+Proverbs and the Wisdom of
+Solomon," suggesting to some that
+he is distinguishing between two
+separate books. However, there is
+legitimate debate within scholarship
+as to whether or not Melito is
+referencing the apocryphal Wisdom
+of Solomon, or if he is actually using
+the term "wisdom" as an additional
+descriptive title for the book of
+Proverbs itself, which was widely
+referred to as Sophia (Wisdom) in
+the ancient world. That is, when
+Melito lists the Wisdom of Solomon,
+he may actually be referring to the
+book of Proverbs under another
+well-known name.
+
+The correct treatment of such
+historical ambiguity is not to conceal
+it or force it into an absolute box, but
+to preserve it as uncertainty in the
+observed state vector. Under one
+interpretation, Wisdom constitutes a
+separate membership coordinate;
+under another, it does not.
+
+Bruce Metzger, as one recent
+example, believes that Melito's list
+does not include any of the
+additional books in the Greek
+Septuagint, which would include the
+Wisdom of Solomon. But even if we
+were to concede that Melito omitted
+Esther and included the Wisdom of
+Solomon in his canon, his canon list
+is still far closer to the Protestant
+canon than to both the Roman
+Catholic and Eastern Orthodox
+canons.
+
+To prove this with absolute
+precision, we must introduce the
+distance function separately:
+
+𝑑(𝐶𝑖, 𝐶𝑗) = |𝑀𝑖△𝑀𝑗|
+
+For purposes of comparing the
+substantive membership of two
+canonical states, 𝑑(𝐶𝑖, 𝐶𝑗) therefore
+gives the unweighted Hamming
+distance between the two
+systems—the exact number of
+discrete book modifications
+(additions or deletions) required to
+physically transform one corpus into
+the other. This function deliberately
+disregards all non-substantive
+differences of ordering (𝑂) and
+grouping (𝐺), since those cosmetic
+variations do not constitute true
+system entries or system exclusions
+from the authoritative corpus.
+
+Then the argument becomes very
+crisp:
+
+𝑑(𝐶𝑀, 𝐶𝑃) = 1
+
+or
+
+𝑑(𝐶𝑀, 𝐶𝑃) = 2
+
+depending upon how Wisdom is
+interpreted. On this measure,
+Melito's canon stands substantially
+closer to the Protestant canon than to
+the larger Roman Catholic or
+Orthodox canonical configurations,
+which demand the addition of a
+whole suite of deuterocanonical
+historical, prophetic, and wisdom
+books (such as Tobit, Judith,
+Maccabees, and Sirach). The math
+doesn't lie.
+
+The Protestant state occupies a much
+smaller canonical distance from the
+earliest known Christian list than the
+competing later states do.
+
+This is extremely important in light
+of how early this canon list appears
+in the history of the Christian
+Church. Melito reported this canon
+around the year 170 AD, which
+makes it the oldest known Old
+Testament canon list in the entire
+history of the Christian Church.
+What this means is that the single
+most ancient Old Testament canon
+list, the one that is closest to the time
+of the apostles, is a list that validates
+the Protestant canon as the one that
+most accurately reflects the canon of
+the early Church. The chronological
+significance is itself a problem of
+state continuity. If a later canonical
+state is alleged to be the product of a
+radical sixteenth-century subtraction,
+then one would expect the relevant
+ancient state to stand at a substantial
+distance from it. Yet the earliest
+Christian canonical state presently
+available to us lies remarkably close
+to the Protestant state.
+Just as important as this canon list
+itself is the method by which Melito
+obtained knowledge of this canon in
+the first place. Protestants are often
+criticized by both Roman Catholics
+and Eastern Orthodox for
+supposedly lacking any objective
+basis for knowing what books
+belong in the canon of Scripture. As
+the objection is often formulated,
+without the canon being officially
+defined by the magisterium of the
+Church or an infallible decree from
+an ecumenical council, there is no
+possible way to possess objective
+certainty as to what books belong in
+the canon of Scripture. This
+objection that is often raised against
+Protestants today is commonly
+referred to as the canon conundrum.
+
+The objection can itself be expressed
+as a problem of regulation within a
+complex information architecture. A
+complex ecclesial environment
+contains a certain amount of
+canonical variety: regional
+differences, disputed texts,
+incomplete information,
+geographical separation, differing
+patterns of reception, and competing
+claims concerning which writings
+possess divine authority. Let 𝑉𝐷
+represent the variety of disturbances
+confronting the canonical system,
+and 𝑉𝑅 the regulatory variety
+available to the mechanism
+responsible for resolving those
+disturbances. Ashby's Law of
+Requisite Variety states, in its
+general form, that only variety can
+absorb variety.
+
+\(V_{R}\ge V_{D}\)
+
+In Ashby's formulation, 𝑉𝐷
+represents the total variety presented
+by the disturbances confronting a
+system, while 𝑉𝑅 represents the
+variety available to the regulator.
+The inequality expresses the strict
+condition under which the regulator
+possesses sufficient internal capacity
+and selective power to discriminate
+among, manage, and neutralize the
+relevant disturbances. If the
+regulator possesses less variety than
+the environment presents, some
+distinctions necessarily remain
+outside its capacity to regulate,
+leading to systemic instability or
+uncontrolled noise.
+
+The Roman and Orthodox objection
+implicitly assumes that the canonical
+system requires a particular form of
+regulatory architecture, namely a
+centralized, top-down authority
+capable of issuing an infallible
+determination, in order to reduce
+canonical uncertainty to an
+authoritative outcome. They believe
+that without a supreme command
+node, 𝑉𝑅 drops to zero and the
+system collapses into chaos. But the
+historical evidence does not show
+that the early Church operated
+through such a centralized
+mechanism.
+
+To evaluate this properly under
+Prototectonic Cybernetics, we must
+deconstruct why a centralized
+command node is actually an
+informational bottleneck. In a
+strictly hierarchical command
+structure, a single centralized
+regulator (a pope or a singular
+centralized council) has a limited
+operational bandwidth. It faces an
+exponential explosion of
+environmental variety (𝑉𝐷) radiating
+from dozens of geographically
+isolated, culturally distinct, and
+linguistically separated regional
+networks across the Mediterranean
+world. Because a centralized node
+cannot process multiple distinct
+textual data streams simultaneously
+without severe transmission delay
+and internal information
+degradation, its available regulatory
+variety (𝑉𝑅) is inherently restricted
+by its processing architecture. It
+becomes a localized point of system
+failure; if the central node is
+compromised, blind, or lagging, the
+entire system's boundary regulation
+collapses.
+
+Conversely, the historical evidence
+shows that the early Church operated
+as a highly distributed, decentralized
+parallel processing network. In this
+decentralized architecture, individual
+local ecclesial nodes act as
+independent verification
+sub-routines. When a textual
+disturbance or variant arises, it does
+not wait for a global system
+command to be analyzed. Instead,
+neighboring nodes engage in
+immediate cross-referencing,
+multi-directional verification, and
+local data packet validation. Because
+these independent nodes process
+local environmental variety in
+parallel, the total cumulative
+capacity of the decentralized
+network generates a massive,
+dynamic pool of regulatory variety (
+𝑉𝑅). The system absorbs noise and
+excludes spurious data blocks
+rapidly across its entire topography
+precisely because it lacks a
+centralized bottleneck. Requisite
+variety is achieved not by
+concentrated power, but by
+distributed parallel computation.
+
+The irony of this objection is that
+any criticism that can be leveled
+against Protestants for our
+understanding of the canon is a
+criticism that can be leveled in the
+exact same way against Melito of
+Sardis, and not just him, but every
+Church Father living during his time
+period. Melito lived during the mid
+to late second century, which means
+that he lived before every single
+ecumenical council. He was
+nevertheless able to acquire and
+transmit canonical information with
+sufficient confidence to produce an
+ordered list. The historical
+observation therefore supplies a
+counterexample to the claim that
+canonical recognition requires the
+later centralized regulatory
+mechanism presupposed by the
+canon conundrum.
+
+Considering that Melito is
+recognized as a saint by both Roman
+Catholicism and Eastern Orthodoxy,
+I highly doubt that such criticisms
+would be leveled against a man of
+his esteem. As we have already
+pointed out, he was the first
+Christian in recorded history to put
+forth an ordered list of books in the
+Old Testament canon. The relevant
+question is therefore not whether
+Melito possessed an ecumenical
+decree. He plainly did not. The
+relevant question is what regulatory
+process actually produced his
+canonical knowledge.
+
+Thanks, Eusebius records Melito's
+own words telling us how he came
+to such knowledge. Melito states
+that he visited the East and reached
+the place where all these things were
+proclaimed and done, that being the
+land of Jerusalem, the Holy Land
+where the Lord Jesus and the
+apostles ministered. By visiting
+Jerusalem and inquiring into the
+sources available in that area, Melito
+states that he gained accurate
+information about the Old Testament
+books that he sends to Onesimus.
+
+In cybernetic terms, this is an
+information-acquisition operation
+over a historical communication
+channel:
+
+𝐼𝐴: 𝐸𝐷 → 𝑅𝑆
+Here 𝐼𝐴 represents the operation of
+information acquisition, 𝐸𝐷
+represents the decentralized
+information environment of the early
+Christian network, and 𝑅𝑆 represents
+the resulting stabilized
+representation of the canonical state.
+
+Standard apologetic frameworks
+consistently treat canonical certainty
+as a passive system dependent
+entirely on a global command signal
+transmitted from a single historical
+epicenter. Within that flawed model,
+a local node cannot know the true
+system state unless it passively
+awaits an authoritative transmission
+broadcast.
+
+Melito’s operational report
+completely upends this passive
+paradigm by mapping a precise
+feedback-stabilization loop. Melito
+does not travel to the East to receive
+a top-down executive decree from a
+universal command center; no such
+center existed in 170 AD. Instead,
+his journey is an active
+data-sampling mission targeting a
+specific primary database node. He
+targets Jerusalem because it is the
+localized geographic node
+containing the baseline historical
+records—the precise site "where all
+these things were proclaimed and
+done."
+
+By entering this historical data
+source, Melito executes a series of
+active inquiry operations: he
+samples the extant textual variants,
+interviews the local human
+transmission vectors, and
+cross-references the data blocks
+against the received traditions of the
+wider network. This is an
+error-correcting feedback
+mechanism. He actively filters out
+the localized noise, isolates the core
+message signal, stabilizes the
+variances, and maps the boundaries
+of the corpus. When he returns to
+Sardis, he does not bring back a
+blind administrative command; he
+brings back a verified, structurally
+sound state representation (𝑅𝑆)
+achieved through rigorous systemic
+sampling. Canonical confidence is
+demonstrated here to be the product
+of active scientific inquiry and
+network verification, not passive
+bureaucratic alignment.
+
+Melito encounters a problem of
+knowledge, identifies a relevant
+information environment, enters that
+environment, gathers information
+from it through active search, and
+returns with a stabilized
+representation of the canonical state.
+His own account therefore describes
+a process of active inquiry and
+information transmission rather than
+an act of passive reception from a
+universal canonical command center.
+Melito did not have an ecumenical
+council to appeal to in order to know
+what the Old Testament canon was.
+He did not have an official
+magisterial Church teaching telling
+him what the Old Testament canon
+was. Despite this, as he himself
+states, Melito was able to gain
+accurate information about what
+books belonged in the Old
+Testament simply as a result of his
+labors and his endeavors.
+That is to say, Melito was able to
+gain great confidence and assurance
+in what books God delivered in the
+Old Testament to be recognized as
+Holy Scripture. The system therefore
+demonstrates that canonical
+information can be acquired and
+stabilized through distributed
+processes of inquiry, recognition,
+and communication. The existence
+of a regulatory process is not in
+question. The historical question is
+what form that process takes.
+
+Now, this does not at all mean that
+Melito came to this knowledge
+completely independently from the
+Church. After all, he himself was a
+bishop in the Christian Church. But
+Protestants likewise do not come to
+a knowledge of the canon
+completely independently from the
+Church. The Church is indeed an
+authority set in place to promulgate
+the Scriptures unto the people. But
+the Church does so by recognition
+and deliverance. The Church
+recognizes which books are
+Scripture and delivers such
+knowledge unto the Christian
+people. A cybernetic account makes
+it possible to distinguish recognition
+from manufacture. A regulator can
+preserve and communicate a state
+without being the author of the state
+it regulates.
+
+In the entire history of the early
+Church, the canon of Scripture was
+never placed upon the people's
+consciences by virtue of an infallible
+decree from an ecumenical council.
+In fact, none of the ecumenical
+councils in the early Church defined
+what the canon of Scripture was.
+Although some regional councils put
+forth canon lists, like the Council of
+Hippo or the Council of Carthage,
+these canon lists were not
+recognized as infallible by the early
+Church or even by Roman
+Catholicism and Eastern Orthodoxy
+today. They were therefore not
+bound upon people's consciences in
+the same way that the Council of
+Florence or the Council of Trent is
+in Roman Catholicism, for example.
+Whatever later ecclesial mechanisms
+may have existed, they cannot
+simply be projected backward into
+the second century and then treated
+as the mechanism by which Melito
+himself acquired canonical
+knowledge.
+
+Instead, as time went on, those in the
+early Church were able to gradually
+recognize which books were of
+divine origin and which were not. As
+books became readily available
+throughout the Mediterranean world,
+and once books were recognized and
+received as Scripture in various
+areas and regions, they were then
+delivered unto the people to be
+received as divine Scripture.
+
+This is a distributed information
+process occurring across a system of
+network nodes:
+
+\(S_{N}=\{N_{1},N_{2},N_{3},\do
+ts ,N_{n}\}\)
+
+Here 𝑆𝑁 represents the total system
+network of the early Church, and 𝑁𝑥
+represents localized, geographically
+separated ecclesial nodes (such as
+Sardis or Jerusalem) interacting to
+reproduce a common canonical state.
+Canonical information is generated,
+transmitted, compared, received, and
+reproduced across multiple ecclesial
+locations. The stability of the
+resulting system does not depend
+upon every local node possessing the
+entire informational history of the
+Church, but upon the capacity of the
+system to preserve and communicate
+the distinctions necessary for the
+reproduction of its canonical state.
+
+This exact process of recognizing
+the canon of Scripture is what we
+find in the testimony of Melito of
+Sardis. It is the same recognition
+process that is received by
+Protestants today, trusting that the
+Holy Spirit has guided His Church
+to recognize God's Word and to
+receive it as such, on the principle
+that Christ's sheep know His voice
+and follow Him. The cybernetic
+description identifies the observable
+organization of the process:
+information is acquired,
+distinguished, transmitted, received,
+and stabilized. The theological claim
+identifies the divine ground of that
+process. These are not competing
+explanations.
+
+Despite the fact that Melito's canon
+clearly vindicates the antiquity of the
+Protestant canon over and against all
+others, there are still some who
+object to the Protestant
+understanding of Melito's words.
+The most frequently raised objection
+against the Protestant reading of
+Melito is that he supposedly never
+intended to discern the Christian Old
+Testament. Instead, he was
+supposedly only intending to discern
+the Jewish canon of Scripture in
+order that he and Onesimus would
+use this knowledge to know what
+books to refer to in their apologetic
+discourses with the Jews in their
+area.
+
+Some modern apologists try to brush
+Melito's list aside by claiming he
+only captured a "localized Hebrew
+canon" rather than the broader
+Christian Greek tradition. Frankly,
+this is pure cope. It completely
+ignores Melito's own words. He
+explicitly states his goal was to find
+the books regarding "the Savior and
+all of our faith." He wasn't tracking
+an ethnic data set; he was tracking a
+Christian theological state.
+Furthermore, there is zero historical
+evidence from the second century to
+support this localized theory.
+Inventing a silent tradition centuries
+after the fact to overwrite an author's
+plain text isn't historical
+analysis—it's anachronistic wishful
+thinking.
+
+But a plain reading of Melito's
+words as recorded by Eurasian
+clearly shows us that Melito was
+obviously intending to deliver unto
+Onesimus a Christian Old Testament
+canon. I do recognize that describing
+this conclusion as being clear and
+obvious may come across as being a
+little harsh against those who
+disagree with Protestantism on this
+point, but sometimes the truth is just
+so clear and obvious that it needs to
+be said for the confidence of those
+who would otherwise doubt
+something that has no reason to be
+doubted. This is one of those cases.
+
+Based on the words that we see here
+from both Melito and Eusebius, we
+can confidently be assured that
+Melito was intending to discern a
+Christian Old Testament canon, and
+that what we read here from Melito
+is his view of what Christians
+believe to be the Old Testament
+canon. This fragment from Melito
+may be small, but it contains a
+number of clear examples
+demonstrating the point that I am
+making. Melito was obviously
+intending to deliver unto Onesimus a
+canon of the Christian Old
+Testament.
+
+In the first example, Melito states
+that it is Onesimus, his Christian
+brother in the faith, who wanted
+extracts from the Law and the
+Prophets, and that these extracts
+Onesimus desired regarded the
+Savior and all of our faith, clearly
+referencing the Lord Jesus Christ
+and our faith as the Christian faith.
+Already from the opening words of
+this fragment, we can see that the
+primary reason why Onesimus
+desired this knowledge was not for
+apologetic discourses with rabbinic
+Jews. The primary reason why he
+desired this knowledge is so that he
+could learn more regarding the
+Savior and all of our faith, that being
+the Lord Jesus Christ and the
+Christian faith. This desire of
+Onesimus has Christian intentions
+behind it, not Jewish intentions.
+
+Melito continues on to say that
+Onesimus also desired the accurate
+facts about the ancient books,
+especially their number and order: "I
+was eager to do this for you,
+knowing your fervor for the faith,
+the word, and your eternal
+salvation." Again, we get a clear
+picture of what Melito's true
+intentions for discerning the Old
+Testament canon were. He did not
+go on this endeavor for the purposes
+of determining what the Jews
+believe to be the fullness of the
+canon. He specifically states that he
+was eager to do this for the sake of
+Onesimus, the same Onesimus who
+desired extracts regarding the Savior
+and all our faith. I cannot stress that
+enough.
+
+Finally, after Melito states that he
+did visit the East and reach the place
+where all these things were
+proclaimed and done, he gained
+accurate information about the Old
+Testament books. The reference to
+the books being a part of the Old
+Testament is obviously a reference
+to a Christian canon because a
+reference to the Old Testament
+implies that there is also a New
+Testament, a new covenant
+established by the Lord Jesus Christ.
+Rabbinic Jews do not embrace the
+New Testament, the New Covenant,
+or the Lord Jesus Christ. So they
+would never refer to their canon of
+books as the Old Testament
+Scriptures. The reference to the Old
+Testament canon can only refer to a
+Christian canon. Again,
+demonstrating that Melito was
+intending to discern the Christian
+Old Testament canon, not the Jewish
+canon.
+
+This point is not only proved by
+Melito in the fragment as quoted by
+Eusebius, but this same point is also
+proved by Eusebius himself as he
+introduces the fragment of Melito in
+the first place, when he states that
+Melito began his preface with a list
+of the recognized writings of the Old
+Testament, clearly showing that
+Eusebius, like the Protestants,
+understood that Melito was
+delivering unto Onesimus the
+Christian Old Testament canon, not
+the Jewish canon.
+
+At this point the historical and
+cybernetic arguments converge. The
+earliest Christian canonical state
+presently available to us is not a
+blank space waiting for a later
+magisterial authority to create
+canonical certainty. It is an already
+functioning informational state
+within a living ecclesial network.
+Melito investigates that state,
+acquires information concerning it,
+represents it in an ordered list, and
+transmits it to another Christian. The
+state he reports is substantially
+continuous with the Protestant
+canonical state. The later accusation
+that Protestants subjected the
+Christian Old Testament to a
+sixteenth-century act of arbitrary
+excision therefore encounters a
+simple historical difficulty: the
+supposed Protestant result was
+already substantially present in the
+earliest Christian canonical state for
+which we possess an ordered list.
+
+The force of the point can be
+expressed in terms of historical state
+transformation across time:
+
+𝑇𝑐: 𝐶170 → 𝐶2026
+
+Here 𝑇𝑐 represents the macro-level
+state trajectory operator across
+centuries. It demonstrates that the
+actual structural transitions required
+to reach the contemporary Protestant
+state from the ancient
+second-century node are minimal
+compared to competing
+configurations. The system shows
+structural invariance at the core
+membership coordinates.
+
+To understand how an informational
+state remains continuous across a
+highly noisy transmission channel
+spanning nearly two millennia, we
+must analyze the structural
+mechanics of state preservation. In
+standard information theory, any
+signal transmitted across a temporal
+channel over time is subjected to
+constant thermodynamic decay and
+environmental noise—copyist errors,
+linguistic shifts, geopolitical
+upheavals, and deliberate polemical
+distortions. Under normal
+conditions, a data vector left to
+unregulated historical transmission
+will inevitably decay, causing its
+coordinate entries to mutate or
+completely drop out of the system.
+
+Yet, when we calculate the state
+trajectory 𝑇𝑐 from the ancient node
+𝐶170 to the modern Protestant node
+𝐶2026, we observe a phenomenon of
+profound structural invariance: the
+membership vector 𝑀𝑡 maps to an
+unweighted Hamming distance of
+only 1 or 2. This mathematical
+reality demands a structural
+explanation. In Prototectonic
+Cybernetics, a system cannot
+maintain an invariant state across a
+noisy channel for 2,000 years
+without an absolute internal system
+invariant acting as the ultimate
+error-correcting mechanism.
+
+This is where the structural
+description perfectly interfaces with
+the theological reality: the Holy
+Spirit is the absolute systemic
+invariant embedded within the
+distributed ecclesial network. The
+divine guidance of the Holy Spirit
+operates operationally as a
+continuous, self-correcting
+regulatory loop across the nodes. It
+does not manifest as a visible
+bureaucratic command station;
+rather, it operates invisibly through
+the corporate, distributed
+interactions of the network nodes,
+constantly suppressing historical
+noise and preserving the core
+structural identity of the signal. The
+fact that the Protestant state sits at an
+immediate, measurable proximity to
+𝐶170 proves that the system
+trajectory has not suffered arbitrary
+16th-century excision, but has
+successfully preserved its primitive
+systemic equilibrium across the
+centuries.
+
+If the Protestant account were
+fundamentally the result of a
+Reformation-era subtraction, then
+the historical trajectory would have
+to be represented as a large
+canonical transformation from the
+ancient Christian state into the
+Protestant state. Yet the earliest
+Christian state we can actually
+observe lies at a small canonical
+distance from the Protestant state.
+Conversely, the later Roman
+Catholic and Orthodox
+configurations require a greater
+number of membership
+transformations relative to Melito.
+Thus the explanatory burden does
+not fall upon the Protestant merely
+because Protestantism lacks a later
+centralized canonical decree. The
+historical evidence instead requires
+an explanation of why the earliest
+Christian canonical state already
+exhibits such close structural
+continuity with the Protestant
+configuration.
+
+So if you are a Protestant and you
+ever come across the canon
+conundrum in your discourses with
+Rome or the East, remember Melito
+of Sardis. Remember the way in
+which he recognized the Old
+Testament canon, and remember
+what books he believed to be a part
+of the Old Testament canon. The
+relevant evidence does not show a
+Christian Church incapable of
+canonical recognition until a later
+infallible institution supplied the
+missing regulatory mechanism. It
+shows Christians acquiring,
+recognizing, transmitting, and
+preserving canonical information
+through the ordinary operations of
+the Church. And when the resulting
+canonical state is compared with the
+later traditions, the Protestant canon
+is the configuration that stands
+nearest to this earliest Christian
+witness. In doing so, you can rest
+assured that your understanding of
+Scripture and what makes up the Old
+Testament canon is the one that has
+the greatest support from Christian
+antiquity.
+
+And just as a quick fun fact before
+moving on, for those who are
+interested, the Museum of the Bible
+in Washington, DC, has an entire
+floor that is dedicated to explaining
+the transmission and translation
+process of the Bible. At least as I am
+recording this in early July 2026,
+there is an exhibit in the Museum of
+the Bible that is specifically
+dedicated to Melito of Sardis and his
+view of the Old Testament canon. I
+recently had the opportunity to visit
+the Museum of the Bible for myself
+and see this exhibit in person. When
+I did, I was very excited to see this,
+not only because this was a Church
+Father that I had read and whose
+work I was familiar with, but also
+because I knew I was going to be
+preparing this work rather shortly
+here. And so I suppose it provided
+extra encouragement to make sure
+that this work was done in good
+quality. So if you are ever in the
+Washington, DC, area and visit the
+Museum of the Bible, be sure to be
+on the lookout for the exhibit on
+Melito of Sardis.
+Bibliography
+
+Ashby, W. Ross. An Introduction to
+Cybernetics. London: Chapman &
+Hall, 1956.
+
+Ashby, W. Ross. "Requisite Variety
+and Its Implications for the Control
+of Complex Systems." Cybernetica
+1, no. 2 (1958): 83-99.
+
+Bateson, Gregory. Steps to an
+Ecology of Mind: Collected Essays
+in Anthropology, Psychiatry,
+Evolution, and Epistemology. New
+York: Chandler Publishing
+Company, 1972.
+
+Beer, Stafford. Brain of the Firm:
+The Managerial Cybernetics of
+Organization. London: Allen Lane,
+1972.
+Beer, Stafford. The Heart of
+Enterprise. Chichester: John Wiley
+& Sons, 1979.
+
+Beer, Stafford. Diagnosing the
+System for Organizations.
+Chichester: John Wiley & Sons,
+1985.
+
+Luhmann, Niklas. Social Systems.
+Translated by John Bednarz Jr. and
+Dirk Baecker. Stanford: Stanford
+University Press, 1995.
+
+Shannon, Claude E., and Warren
+Weaver. The Mathematical Theory
+of Communication. Urbana:
+University of Illinois Press, 1949.
+
+Wiener, Norbert. Cybernetics: Or
+Control and Communication in the
+Animal and the Machine.
+Cambridge, MA: MIT Press, 1948.
