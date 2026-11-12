@@ -12,6 +12,7 @@ from .corpus_eval import evaluate_cases, load_cases
 from .retrieval import CorpusIndex, build_index
 from .proposal_training import train_proposals
 from .grounding import SPAN_FORMAT
+from . import neural_judge
 from .rulebook import Rulebook, RulebookProposer
 from .reasoning import SUPERVISED_FORMAT
 
@@ -80,6 +81,24 @@ def main(argv=None):
     proposals.add_argument("--seed", type=int, default=42)
     proposals.add_argument("--threads", type=int, default=4)
     proposals.add_argument("--format", choices=(SUPERVISED_FORMAT, SPAN_FORMAT), default=SUPERVISED_FORMAT)
+    judge_training = sub.add_parser("train-neural-judge", help="Train a local evidence-conditioned claim ranker")
+    judge_training.add_argument("--examples", type=Path, required=True)
+    judge_training.add_argument("--validation", type=Path, required=True)
+    judge_training.add_argument("--held-out", type=Path)
+    judge_training.add_argument("--output", type=Path, required=True)
+    judge_training.add_argument("--steps", type=int, default=300)
+    judge_training.add_argument("--threads", type=int, default=4)
+    judge_evaluation = sub.add_parser("evaluate-neural-judge", help="Test evidence-sensitive claim ranking")
+    judge_evaluation.add_argument("--checkpoint", type=Path, required=True)
+    judge_evaluation.add_argument("--cases", type=Path, required=True)
+    judge_evaluation.add_argument("--threads", type=int, default=4)
+    judge_evaluation.add_argument("--include-scores", action="store_true")
+    draft = sub.add_parser("draft-neural-outline", help="Prepare an offline outline around a supported thesis")
+    draft.add_argument("--checkpoint", type=Path, required=True)
+    draft.add_argument("--index", type=Path, required=True)
+    draft.add_argument("--brief", type=Path, required=True)
+    draft.add_argument("--limit", type=int, default=5)
+    draft.add_argument("--threads", type=int, default=4)
     a = parser.parse_args(argv)
     if a.command == "ingest":
         m = build_manifest(a.corpus, a.manifest)
@@ -107,6 +126,26 @@ def main(argv=None):
                                  steps=a.steps, batch_size=a.batch, learning_rate=a.lr, seed=a.seed,
                                  threads=a.threads, format_name=a.format)
         print(json.dumps(report, indent=2))
+    elif a.command == "train-neural-judge":
+        report = neural_judge.train_judge(a.examples, a.validation, a.output, held_out=a.held_out,
+                                          steps=a.steps, threads=a.threads)
+        print(json.dumps(report, indent=2))
+    elif a.command == "evaluate-neural-judge":
+        judge = neural_judge.NeuralJudge.load(a.checkpoint, a.threads)
+        report = neural_judge.evaluate_judge(neural_judge.load_cases(a.cases), judge,
+                                            include_scores=a.include_scores)
+        print(json.dumps(report, indent=2))
+        return int(report["passed"] != report["total"])
+    elif a.command == "draft-neural-outline":
+        with a.brief.open(encoding="utf-8") as stream:
+            brief = json.load(stream)
+        if not isinstance(brief, dict) or set(brief) != {"question", "candidates"}:
+            raise ValueError("Expected a question and candidate theses in the brief")
+        judge = neural_judge.NeuralJudge.load(a.checkpoint, a.threads)
+        with CorpusIndex(a.index) as index:
+            result = neural_judge.draft_outline(index, judge, **brief, limit=a.limit)
+        print(json.dumps(result, indent=2))
+        return int(result["status"] != "draft_outline")
     elif a.command == "evaluate-corpus":
         cases = load_cases(a.cases)
         book = Rulebook.load(a.rulebook) if a.rulebook else None
