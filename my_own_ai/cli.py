@@ -83,6 +83,7 @@ def main(argv=None):
     proposals.add_argument("--seed", type=int, default=42)
     proposals.add_argument("--threads", type=int, default=4)
     proposals.add_argument("--format", choices=(SUPERVISED_FORMAT, SPAN_FORMAT), default=SUPERVISED_FORMAT)
+    proposals.add_argument("--pair-batches", action="store_true", help="Keep both counterfactual variants together in updates")
     relational = sub.add_parser("prepare-relational", help="Prepare author-supervised relational training from private cases")
     relational.add_argument("--training", type=Path, required=True)
     relational.add_argument("--validation", type=Path, required=True)
@@ -164,7 +165,7 @@ def main(argv=None):
     elif a.command == "train-proposals":
         report = train_proposals(a.checkpoint, a.examples, a.validation, a.output, held_out=a.held_out,
                                  steps=a.steps, batch_size=a.batch, learning_rate=a.lr, seed=a.seed,
-                                 threads=a.threads, format_name=a.format)
+                                 threads=a.threads, format_name=a.format, pair_batches=a.pair_batches)
         print(json.dumps(report, indent=2))
     elif a.command == "prepare-relational":
         result = prepare_curriculum(a.training, a.validation, a.held_out, a.output)
