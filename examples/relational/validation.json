@@ -1,0 +1,38 @@
+[
+  {
+    "id": "pollination_open",
+    "group": "pollination_path",
+    "domain": "ecology",
+    "question": "How does a change in pollinator movement alter the plant's reproduction?",
+    "evidence": [
+      "The plant depends on insects carrying pollen between flowers. Pollinators continue moving between the plant and compatible flowers. A new flowering period begins."
+    ],
+    "analysis": {
+      "identity": "The plant's reproductive function depends on relations with pollinators and compatible flowers.",
+      "hierarchy": "The plant supplies nectar and the insect carries pollen; their contributions are asymmetric.",
+      "channels": "Pollinators transport pollen between compatible flowers.",
+      "states": "Pollinators remain active during flowering.",
+      "disturbance": "Flowering creates a new opportunity for pollen transfer.",
+      "feedback": "Continued movement between flowers sustains transfer."
+    },
+    "conclusion": "The flowering plant can continue transferring pollen through the active insect pathway."
+  },
+  {
+    "id": "pollination_cut",
+    "group": "pollination_path",
+    "domain": "ecology",
+    "question": "How does a change in pollinator movement alter the plant's reproduction?",
+    "evidence": [
+      "The plant depends on insects carrying pollen between flowers. Pollinators cannot cross the new barrier separating the plant from compatible flowers. A new flowering period begins."
+    ],
+    "analysis": {
+      "identity": "The plant's reproduction remains dependent on pollinator-mediated relations.",
+      "hierarchy": "The plant supplies nectar, but the insect cannot deliver pollen across the barrier.",
+      "channels": "The insect transport channel is interrupted by the barrier.",
+      "states": "The plant flowers without access to its usual transport pathway.",
+      "disturbance": "Flowering begins while the crossing route is blocked.",
+      "feedback": "Feedback through pollinator movement no longer links the flowers."
+    },
+    "conclusion": "The flowering plant cannot continue the usual pollen transfer while the insect pathway is blocked."
+  }
+]

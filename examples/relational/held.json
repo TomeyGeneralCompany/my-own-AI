@@ -1,0 +1,38 @@
+[
+  {
+    "id": "buck_rut_focus",
+    "group": "deer_signal",
+    "domain": "hunting",
+    "question": "How will the buck's response to the same rustling leaves change?",
+    "evidence": [
+      "A buck detects rustling leaves near the trail. Its immediate behavioral state is focused on pursuing a receptive doe, and the leaf sound does not interrupt the pursuit."
+    ],
+    "analysis": {
+      "identity": "The buck's conduct is constituted in part by its relation to the doe and competing environmental cues.",
+      "hierarchy": "The pursuit state orders which signals receive priority, rather than all sounds commanding equal response.",
+      "channels": "Rustling leaves reach the buck, but the pursuit context changes their relative significance.",
+      "states": "The buck remains occupied with pursuing a receptive doe.",
+      "disturbance": "The audible rustling is an external disturbance during pursuit.",
+      "feedback": "The buck's behavioral feedback continues toward the doe instead of diverting to the sound."
+    },
+    "conclusion": "The buck is less likely to interrupt its pursuit in response to the rustling under the stated conditions."
+  },
+  {
+    "id": "buck_alert_focus",
+    "group": "deer_signal",
+    "domain": "hunting",
+    "question": "How will the buck's response to the same rustling leaves change?",
+    "evidence": [
+      "A buck detects rustling leaves near the trail. Its immediate behavioral state is vigilant and scanning for nearby disturbance, so the leaf sound interrupts its movement."
+    ],
+    "analysis": {
+      "identity": "The buck's response depends on its current relation to environmental signals and priorities.",
+      "hierarchy": "Vigilance orders environmental alerts above continued movement.",
+      "channels": "Rustling leaves reach the buck while the alert pathway is prioritized.",
+      "states": "The buck is scanning for disturbance rather than pursuing a doe.",
+      "disturbance": "The same sound becomes a salient disturbance in the changed state.",
+      "feedback": "The buck pauses movement to assess the environmental cue."
+    },
+    "conclusion": "The buck is more likely to interrupt its movement in response to the rustling under the stated conditions."
+  }
+]

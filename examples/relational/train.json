@@ -1,0 +1,74 @@
+[
+  {
+    "id": "governor_signal_open",
+    "group": "governor_signal",
+    "domain": "engineering",
+    "question": "How does the pressure signal affect the pump's adjustment?",
+    "evidence": [
+      "The pump output is governed by a regulator that reads the pressure sensor. The sensor transmits pressure changes promptly. The regulator then opens or closes a valve to offset deviations."
+    ],
+    "analysis": {
+      "identity": "The pump's operating state depends on the sensor-regulator-valve relationship, not on an isolated pump component.",
+      "hierarchy": "The regulator commands the valve, while the sensor informs the regulator; neither operation is interchangeable.",
+      "channels": "Pressure changes are communicated through the sensor to the regulator.",
+      "states": "The regulator receives current measurements and can adjust the valve.",
+      "disturbance": "Pressure changes disturb the desired output.",
+      "feedback": "Feedback closes the loop by correcting valve position after the pressure change."
+    },
+    "conclusion": "The regulator can compensate for the pressure disturbance because the measurement channel remains open."
+  },
+  {
+    "id": "governor_signal_blocked",
+    "group": "governor_signal",
+    "domain": "engineering",
+    "question": "How does the pressure signal affect the pump's adjustment?",
+    "evidence": [
+      "The pump output is governed by a regulator that reads the pressure sensor. The sensor connection is severed, so pressure changes never reach the regulator. The valve keeps its last command."
+    ],
+    "analysis": {
+      "identity": "The pump's effective behavior depends on whether the sensor-regulator-valve relation remains intact.",
+      "hierarchy": "The regulator still commands the valve, but has no current measurement from the sensor.",
+      "channels": "The pressure information channel to the regulator is disconnected.",
+      "states": "The regulator holds an outdated valve command.",
+      "disturbance": "Pressure changes disturb the desired output without updated information.",
+      "feedback": "The corrective feedback loop is broken because the sensor message never arrives."
+    },
+    "conclusion": "The regulator cannot compensate for the new pressure disturbance while the measurement channel is severed."
+  },
+  {
+    "id": "merchant_price_visible",
+    "group": "merchant_signal",
+    "domain": "commerce",
+    "question": "What happens to inventory adjustment when buyers' requests change?",
+    "evidence": [
+      "A merchant sets replenishment orders in response to buyer requests conveyed by a shop clerk. The clerk reports a surge in demand promptly. The merchant changes the order after the report."
+    ],
+    "analysis": {
+      "identity": "Inventory adjustment is constituted through the buyer-clerk-merchant exchange.",
+      "hierarchy": "The merchant sets orders while the clerk communicates requests; their functions differ.",
+      "channels": "Buyers communicate demand through the clerk to the merchant.",
+      "states": "The merchant receives fresh demand information before ordering.",
+      "disturbance": "A surge in buyer requests perturbs the existing inventory plan.",
+      "feedback": "The merchant revises replenishment after receiving the signal."
+    },
+    "conclusion": "The merchant can revise the replenishment order to meet the newly reported demand."
+  },
+  {
+    "id": "merchant_price_hidden",
+    "group": "merchant_signal",
+    "domain": "commerce",
+    "question": "What happens to inventory adjustment when buyers' requests change?",
+    "evidence": [
+      "A merchant sets replenishment orders in response to buyer requests conveyed by a shop clerk. The clerk withholds the buyers' new requests. The merchant sees only the older demand report."
+    ],
+    "analysis": {
+      "identity": "Inventory adjustment depends upon the buyer-clerk-merchant communication relation.",
+      "hierarchy": "The merchant controls orders but cannot replace missing reports from the clerk.",
+      "channels": "The updated demand message is withheld at the clerk.",
+      "states": "The merchant retains an outdated estimate of buyer demand.",
+      "disturbance": "Buyer requests change while the merchant's information does not.",
+      "feedback": "Feedback from buyers cannot update the merchant's replenishment decision."
+    },
+    "conclusion": "The merchant cannot adjust replenishment to the newly changed demand while the updated report is withheld."
+  }
+]
