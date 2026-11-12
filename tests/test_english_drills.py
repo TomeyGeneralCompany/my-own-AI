@@ -8,8 +8,8 @@ from my_own_ai.english_drills import english_drills, augment_grounded_curriculum
 
 def test_drills_are_distinct_and_grammatical():
     train, validation = english_drills("train"), english_drills("validation")
-    assert len(train) == 472 and len(validation) == 124
-    assert len({row["id"] for row in train + validation}) == 596
+    assert len(train) == 416 and len(validation) == 112
+    assert len({row["id"] for row in train + validation}) == 528
     assert {r["question"].casefold() for r in train}.isdisjoint(
         {r["question"].casefold() for r in validation})
     assert {r["answer"] for r in train}.isdisjoint(
