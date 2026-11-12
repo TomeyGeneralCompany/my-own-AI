@@ -151,6 +151,9 @@ def train_language(*, tokenizer_path, training, validation, output,
     sampler = torch.Generator().manual_seed(seed)
     start = 0
     original = None
+    best_loss = float('inf')
+    best_step = 0
+    best_path = Path(output).with_name(Path(output).stem + '.best.pt')
     if resume:
         payload = torch.load(output, map_location="cpu", weights_only=True)
         if any((payload.get(k) != v) for k, v in {
@@ -165,6 +168,8 @@ def train_language(*, tokenizer_path, training, validation, output,
         torch.set_rng_state(payload["torch_rng"])
         start = int(payload["completed_steps"])
         original = payload.get("parent_sha256")
+        best_loss = float(payload.get("best_validation_loss", payload["validation_loss"]))
+        best_step = int(payload.get("best_step", start))
     elif init_checkpoint:
         parent = Path(init_checkpoint)
         payload = torch.load(parent, map_location="cpu", weights_only=True)
@@ -177,7 +182,10 @@ def train_language(*, tokenizer_path, training, validation, output,
     if steps < start:
         raise ValueError("Requested steps precede saved progress")
     def save(step):
+        nonlocal best_loss, best_step
         measured = _validation(model, val_samples)
+        if measured < best_loss:
+            best_loss, best_step = measured, step
         if not math.isfinite(measured):
             raise ValueError("Non-finite validation loss")
         state = {
@@ -189,8 +197,11 @@ def train_language(*, tokenizer_path, training, validation, output,
             "lr": lr, "batch_size": batch_size, "training_sha256": source_hash,
             "validation_sha256": validation_hash, "parent_sha256": original,
             "validation_loss": measured,
+            "best_validation_loss": best_loss, "best_step": best_step,
         }
         _atomic_save(state, output)
+        if step == best_step:
+            _atomic_save(state, best_path)
         model.train()
         return measured
     model.train()
@@ -208,6 +219,8 @@ def train_language(*, tokenizer_path, training, validation, output,
         measured = float(torch.load(output, map_location="cpu", weights_only=True)["validation_loss"])
     return {"phase": phase, "steps": steps, "completed_this_run": steps - start,
             "validation_loss": measured, "validation_perplexity": math.exp(min(measured, 50)),
+            "best_validation_loss": best_loss, "best_step": best_step,
+            "best_checkpoint": str(best_path),
             "tokenizer_sha256": tokenizer.fingerprint(), "parent_sha256": original,
             "parameters": sum(p.numel() for p in model.parameters()), "checkpoint": str(output)}
 
