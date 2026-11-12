@@ -49,8 +49,9 @@ def structured_units(text, *, max_chars=3400):
             chunks.append(item)
     grouped=[]
     for item in chunks:
-        if grouped and (len(item.strip()) < 90 and (SYMBOLS.search(item) or
-           not re.search(r"[.!?]\s*$", item.strip()))):
+        if grouped and (item.lstrip().startswith("[Linearized source equation]") or
+                        (len(item.strip()) < 90 and (SYMBOLS.search(item) or
+           not re.search(r"[.!?]\s*$", item.strip())))):
             grouped[-1] += item
         else:
             grouped.append(item)
