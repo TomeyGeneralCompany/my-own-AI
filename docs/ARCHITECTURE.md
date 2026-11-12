@@ -368,8 +368,21 @@ my-own-ai decide-work --ledger data/intellectual-ledger.json \
 my-own-ai approved-works --ledger data/intellectual-ledger.json
 ```
 
-Approved manuscripts may be included in subsequent **local corpus training**,
-but registration alone never silently changes model weights. To train on an
+Approved manuscripts can be staged in a fresh **private** local training directory
+and fed into the existing corpus trainer. Registration alone never silently
+changes the model's weights:
+
+```sh
+my-own-ai stage-approved-corpus --ledger data/intellectual-ledger.json \
+  --output corpus/approved-generation-1
+my-own-ai train --corpus corpus/approved-generation-1 \
+  --output data/checkpoints/new-corpus-brain.pt --context 512 --steps 200
+```
+
+Every staged source is copied only after its SHA-256 matches the approved record;
+pending or rejected works never enter that corpus. Its manifest preserves
+the origin and approval lineage. A new generation uses a fresh output directory;
+existing corpora are not overwritten automatically. To train on an
 approved *worked reasoning file*, register it as `reasoning`, manually approve
 it, and build a rehearsal dataset containing both the previously learned
 examples and new approved material:
