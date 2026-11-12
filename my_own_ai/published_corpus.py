@@ -6,6 +6,7 @@ import re
 import shutil
 
 from .book_language import _sections
+from .numbered_paragraphs import numbered_paragraphs, paragraph_ledger
 from .language_corpus import near_duplicate
 
 
@@ -49,8 +50,11 @@ def validate_published_manifest(repository_root, manifest_path):
         if any(near_duplicate(txt, other) for other in texts):
             raise ValueError("Overlapping publication edition detected")
         texts.append(txt)
+        chunking = row.get("chunking", "legacy_sections")
+        if chunking not in ("legacy_sections", "numbered_paragraph"):
+            raise ValueError("Unrecognized approved book chunking method")
         accepted.append({"id": ident, "text": txt, "sha256": expected,
-                         "relative_path": relative,
+                         "relative_path": relative, "chunking": chunking,
                          "edition": row.get("edition", "")})
     return {"corpus_id": data.get("corpus_id"),
             "manifest_sha256": _digest(manifest_path),
@@ -74,28 +78,43 @@ def prepare_published_corpus(repository_root, manifest_path, destination,
         raise ValueError("Prepared destination must be new and separate from the source")
     sources = parsed["sources"]
     parts = {"train": [], "validation": [], "test": []}
+    reading_ledgers = {}
+    grouped_units = {}
+    for book in sources:
+        if book["chunking"] == "numbered_paragraph":
+            units = numbered_paragraphs(book["text"])
+            reading_ledgers[book["id"]] = paragraph_ledger(units)
+            grouped_units[book["id"]] = [
+                (book["id"], u["id"], u["text"]) for u in units]
+        else:
+            sections = _sections(book["text"], target_words=target_words)
+            grouped_units[book["id"]] = [
+                (book["id"], "s%06d" % index, text)
+                for index, text in enumerate(sections)]
     if len(sources) >= 3:
         selected = sorted(sources, key=lambda row: row["sha256"])
-        grouping = {"train": selected[:-2], "validation": [selected[-2]],
-                    "test": [selected[-1]]}
-        for split, books in grouping.items():
+        for split, books in (
+            ("train", selected[:-2]),
+            ("validation", selected[-2:-1]),
+            ("test", selected[-1:]),
+        ):
             for book in books:
-                for index, section in enumerate(_sections(book["text"], target_words=target_words)):
-                    parts[split].append((book["id"], index, section))
+                parts[split].extend(grouped_units[book["id"]])
         policy = "document_disjoint"
     else:
         for book in sources:
-            sections = _sections(book["text"], target_words=target_words)
-            if len(sections) < 10:
-                raise ValueError("Book too short for independent held-out sections")
-            n = len(sections)
+            units = grouped_units[book["id"]]
+            if len(units) < 10:
+                raise ValueError("Book too short for disjoint paragraph holdouts")
+            n = len(units)
             val = max(1, round(n * .1))
             test = max(1, round(n * .1))
-            for idx, section in enumerate(sections):
-                split = "train" if idx < n-val-test else (
-                    "validation" if idx < n-test else "test")
-                parts[split].append((book["id"], idx, section))
-        policy = "section_disjoint_same_book"
+            parts["train"].extend(units[:n-val-test])
+            parts["validation"].extend(units[n-val-test:n-test])
+            parts["test"].extend(units[n-test:])
+        policy = ("numbered_paragraph_disjoint_same_book"
+                  if all(b["chunking"] == "numbered_paragraph" for b in sources)
+                  else "section_disjoint_same_book")
     if any(not rows for rows in parts.values()):
         raise ValueError("Corpus needs training, validation and test material")
     seen = {}
@@ -112,13 +131,15 @@ def prepare_published_corpus(repository_root, manifest_path, destination,
         "sources": [{"id": book["id"], "source_sha256": book["sha256"],
                      "edition": book["edition"]} for book in sources],
         "sections": {k: len(v) for k,v in parts.items()},
+        "chunk_unit": "numbered_paragraph" if reading_ledgers else "legacy_sections",
+        "reading_ledgers": reading_ledgers,
     }
     try:
         for split, rows in parts.items():
             folder = dest / split
             folder.mkdir()
             for name, idx, text in rows:
-                (folder / f"{name}_{idx:05}.txt").write_text(text + "\n", encoding="utf-8")
+                (folder / f"{name}_{idx}.txt").write_text(text, encoding="utf-8")
         (dest / "manifest.json").write_text(json.dumps(manifest, indent=2) + "\n",
                                             encoding="utf-8")
     except BaseException:
