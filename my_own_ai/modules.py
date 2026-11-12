@@ -187,6 +187,9 @@ class BasicModule:
     def prepare(self, run, tools, prior):
         return {"shared": tools.shared(), "prior": prior}
 
+    def validate_execution(self, operation, context):
+        """Validate runtime dependencies before advancing a saved operation."""
+
     def procedure(self, operation, stage):
         return self.procedures[stage]
 
@@ -510,6 +513,7 @@ class ModuleController:
         run = Operation.restore(self._current(state))
         if run.stage is None:
             raise RuntimeError("Operation has already ended")
+        module.validate_execution(run.operation, run.context)
         if run.stage != Stage.EVALUATE and self.engine is None:
             raise RuntimeError("A local proposal engine is required for this stage")
         shared = self.store.read(SHARED, legacy=False)
@@ -547,8 +551,8 @@ class ModuleController:
             handle.write(run["candidate"])
 
 
-def default_modules(workspace=None, *, corpus_index=None):
+def default_modules(workspace=None, *, corpus_index=None, rulebook=None):
     from .functional_modules import Coding, Conversation, Research, Writing
 
     workspace = Path(workspace or Path.cwd()).resolve()
-    return [Conversation(), Writing(workspace), Coding(workspace), Research(workspace, corpus_index)]
+    return [Conversation(), Writing(workspace), Coding(workspace), Research(workspace, corpus_index, rulebook)]

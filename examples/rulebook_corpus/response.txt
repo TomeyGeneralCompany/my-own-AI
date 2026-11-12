@@ -1,0 +1,1 @@
+The dispatcher acts only after reading the notice. The next ferry departure has a fixed cutoff.

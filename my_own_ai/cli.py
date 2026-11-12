@@ -12,6 +12,7 @@ from .corpus_eval import evaluate_cases, load_cases
 from .retrieval import CorpusIndex, build_index
 from .proposal_training import train_proposals
 from .grounding import SPAN_FORMAT
+from .rulebook import Rulebook, RulebookProposer
 from .reasoning import SUPERVISED_FORMAT
 
 def main(argv=None):
@@ -58,7 +59,9 @@ def main(argv=None):
     evaluate = sub.add_parser("evaluate-corpus", help="Measure grounded reasoning on held-out cases")
     evaluate.add_argument("--index", type=Path, required=True)
     evaluate.add_argument("--cases", type=Path, required=True)
-    evaluate.add_argument("--checkpoint", type=Path, required=True)
+    route = evaluate.add_mutually_exclusive_group(required=True)
+    route.add_argument("--checkpoint", type=Path)
+    route.add_argument("--rulebook", type=Path)
     evaluate.add_argument("--threads", type=int, default=4)
     evaluate.add_argument("--tokens", type=int, default=256)
     evaluate.add_argument("--limit", type=int, default=5)
@@ -106,9 +109,10 @@ def main(argv=None):
         print(json.dumps(report, indent=2))
     elif a.command == "evaluate-corpus":
         cases = load_cases(a.cases)
-        engine = load_proposer(a.checkpoint, a.threads, a.tokens)
+        book = Rulebook.load(a.rulebook) if a.rulebook else None
+        engine = RulebookProposer(book) if book is not None else load_proposer(a.checkpoint, a.threads, a.tokens)
         report = evaluate_cases(a.index, cases, engine, limit=a.limit,
-                                max_corrections=a.max_corrections, include_answers=a.include_answers)
+                                max_corrections=a.max_corrections, include_answers=a.include_answers, rulebook=book)
         print(json.dumps(report, indent=2))
         return int(report["passed"] != report["total"])
     else:

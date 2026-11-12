@@ -1,0 +1,344 @@
+{
+  "version": 1,
+  "extractors": [
+    {
+      "input": "question",
+      "pattern": "(?=.*\\b(?:late|after|postpone|delay(?:ed)?|timing|before)\\b)(?=.*\\b(?:report|bulletin|notice|update|gauge|message|reading|alert|signal|signal[s])\\b)",
+      "fact": [
+        "ask_timing"
+      ]
+    },
+    {
+      "input": "evidence",
+      "pattern": "\\b(?:act\\w*|adjust\\w*|respond\\w*|correct\\w*|interven\\w*|react\\w*)\\b[^.!?]{0,55}\\bonly after\\b[^.!?]{0,65}\\b(?P<message>report|bulletin|notice|message|update|reading|alert|signal)\\b",
+      "fact": [
+        "waits_for",
+        "$message"
+      ]
+    },
+    {
+      "input": "evidence",
+      "pattern": "\\b(?:respond\\w*|act\\w*|adjust\\w*|interven\\w*|react\\w*) immediately (?:to|on|upon) (?:an? |the )?(?P<trigger>[\\w-]+)\\b[^.!?]{0,80}\\b(?:use\\w*|keep\\w*|retain\\w*)\\b[^.!?]{0,30}\\b(?P<message>report|bulletin|notice|message|update|reading|alert)\\b[^.!?]{0,15}\\bonly (?:to|for) (?:log\\w*|record\\w*)",
+      "fact": [
+        "independent_trigger",
+        "$trigger",
+        "$message"
+      ]
+    },
+    {
+      "input": "evidence",
+      "pattern": "\\bonly (?:act\\w*|adjust\\w*|respond\\w*|correct\\w*|interven\\w*|react\\w*)\\b[^.!?]{0,55}\\bafter\\b[^.!?]{0,65}\\b(?P<message>report|bulletin|notice|message|update|reading|alert|signal)\\b",
+      "fact": [
+        "waits_for",
+        "$message"
+      ]
+    },
+    {
+      "input": "question",
+      "pattern": "(?=.*\\b(?:may|can|could|who|authority|permission|allowed|entitled)\\b)(?=.*\\b(?:permit|permits|licen[cs]e|renewal|authorization)\\b)",
+      "fact": [
+        "ask_permission"
+      ]
+    },
+    {
+      "input": "question",
+      "pattern": "\\b(?:take over|assume control|override|supersede|substitute for)\\b",
+      "fact": [
+        "asks_transfer"
+      ]
+    },
+    {
+      "input": "question",
+      "pattern": "\\b(?:can|could|may) (?:the )?(?P<holder>[\\w -]{3,40}?) (?:grant|issue|renew|approve|authorize) (?:an? |the )?(?P<scope>[\\w-]+(?: [\\w-]+){0,3}) permits?\\b",
+      "fact": [
+        "ask_holder",
+        "$holder",
+        "$scope"
+      ]
+    },
+    {
+      "input": "evidence",
+      "pattern": "\\bcharter (?:delegates|assigns|entrusts) (?P<action>[^.!?]{6,70}?) to (?:the )?(?P<holder>[^.!?]{3,45})(?=[.!?])",
+      "fact": [
+        "delegates",
+        "$holder",
+        "$action"
+      ]
+    },
+    {
+      "input": "evidence",
+      "pattern": "(?:^|[.!?]\\s+)(?:the )?(?P<holder>[\\w -]{3,40}?) (?:has|holds) (?:the )?authority to (?P<action>(?:issue|grant|renew|approve|authorize) (?:an? |the )?(?P<scope>[\\w-]+(?: [\\w-]+){0,3}) permits?) under (?:the )?charter\\b",
+      "fact": [
+        "authorized",
+        "$holder",
+        "$scope",
+        "$action"
+      ]
+    },
+    {
+      "input": "evidence",
+      "pattern": "(?:^|[.!?]\\s+)(?:the )?(?P<holder>[\\w -]{3,40}?) can only record (?P<items>[^.!?]{3,48})\\.\\s+(?:the )?(?P<issuer>[\\w -]{3,45}?) (?:grants|issues|authorizes) (?P<action>(?:an? |the )?(?P<scope>[\\w-]+(?: [\\w-]+){0,3}) permits?)(?=[.!?])",
+      "fact": [
+        "records_only",
+        "$holder",
+        "$scope",
+        "$items",
+        "$issuer",
+        "$action"
+      ]
+    },
+    {
+      "input": "question",
+      "pattern": "\\b(?:author(?:ship|ed)?|creat(?:ed|es|ion)|compos(?:ed|es)|writ(?:es|ten|ing)|wrote|origin(?:ated)?)\\b",
+      "fact": [
+        "ask_authorship"
+      ]
+    },
+    {
+      "input": "evidence",
+      "pattern": "(?:^|[.!?]\\s+)(?:the )?(?P<actor>[\\w -]{3,38}?) (?:circulates|distributes|publishes|prints|reprints|releases) [^.!?]{4,80}? (?:written|composed|created|prepared|drawn) by (?:an? |the )?(?P<author>[^.!?]{3,50})(?=[.!?])",
+      "fact": [
+        "distributes_other",
+        "$actor",
+        "$author"
+      ]
+    },
+    {
+      "input": "evidence",
+      "pattern": "(?:^|[.!?]\\s+)(?:the )?(?P<actor>[\\w -]{3,38}?) (?:composed|authored|wrote|created) [^.!?]{5,100}? and (?:also )?(?:published|printed|distributed|circulated|released)\\b",
+      "fact": [
+        "creates_and_distributes",
+        "$actor"
+      ]
+    },
+    {
+      "input": "evidence",
+      "pattern": "(?:^|[.!?]\\s+)(?:the )?(?P<actor>[\\w -]{3,38}?) (?:circulates|distributes|publishes|releases) [^.!?]{4,80}? deposited by (?P<depositor>[^.!?]{3,48})\\.\\s+[^.!?]{0,100}\\b(?:catalogs|catalogues|lists|credits)\\b[^.!?]{0,65}\\bunder (?:each|its|the) [^.!?]{0,30}name\\b",
+      "fact": [
+        "distributes_catalogued",
+        "$actor",
+        "$depositor"
+      ]
+    },
+    {
+      "input": "question",
+      "pattern": "(?=.*\\b(?:fair(?:ness)?|just(?:ice)?|ethical|moral|properly|honest)\\b)(?=.*\\b(?:ledger|accounts?|profit|surplus|costs?|contracts?|revenue|balance)\\b)",
+      "fact": [
+        "ask_fairness"
+      ]
+    },
+    {
+      "input": "evidence",
+      "pattern": "\\b(?:surplus|residual|positive balance|profit)\\b[^.!?]{0,85}\\b(?:subtract\\w*|after|net of)\\b[^.!?]{0,55}\\b(?:costs|expenses|expenditures)\\b[^.!?]*[.!?]\\s+[^.!?]{0,100}\\b(?:no account|says nothing|does not show|does not record|omits)\\b[^.!?]{0,65}\\b(?:how|manner|means|awarded|earned|conduct)\\b",
+      "fact": [
+        "accounts_only"
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "id": "timing_dependency",
+      "requires": [
+        [
+          "waits_for",
+          "$message"
+        ]
+      ],
+      "produces": [
+        "depends_on_notice",
+        "$message"
+      ]
+    },
+    {
+      "id": "late_notice",
+      "requires": [
+        [
+          "ask_timing"
+        ],
+        [
+          "depends_on_notice",
+          "$message"
+        ]
+      ],
+      "produces": [
+        "response_delayed",
+        "$message"
+      ],
+      "answer": "A late {message} delays the response because corrective feedback must wait for the {message}. If the response window closes first, the correction can miss it."
+    },
+    {
+      "id": "separate_trigger",
+      "requires": [
+        [
+          "ask_timing"
+        ],
+        [
+          "independent_trigger",
+          "$trigger",
+          "$message"
+        ]
+      ],
+      "produces": [
+        "response_independent",
+        "$message"
+      ],
+      "answer": "The late {message} does not delay the response because the independent {trigger} triggers action. The {message} serves as a record."
+    },
+    {
+      "id": "delegation_from_charter",
+      "requires": [
+        [
+          "delegates",
+          "$holder",
+          "$action"
+        ]
+      ],
+      "produces": [
+        "entrusted",
+        "$holder",
+        "$action"
+      ]
+    },
+    {
+      "id": "scoped_delegation",
+      "requires": [
+        [
+          "ask_permission"
+        ],
+        [
+          "asks_transfer"
+        ],
+        [
+          "entrusted",
+          "$holder",
+          "$action"
+        ]
+      ],
+      "produces": [
+        "office_bound",
+        "$holder",
+        "$action"
+      ],
+      "answer": "The charter delegates {action} to the {holder}. A different office needs its own authority to take over that function. Disagreement alone does not supply it."
+    },
+    {
+      "id": "express_authority",
+      "requires": [
+        [
+          "ask_permission"
+        ],
+        [
+          "ask_holder",
+          "$holder",
+          "$scope"
+        ],
+        [
+          "authorized",
+          "$holder",
+          "$scope",
+          "$action"
+        ]
+      ],
+      "produces": [
+        "permitted",
+        "$holder",
+        "$action"
+      ],
+      "answer": "The {holder} can {action}. The charter grants that authority for this action."
+    },
+    {
+      "id": "distinct_offices",
+      "requires": [
+        [
+          "ask_permission"
+        ],
+        [
+          "ask_holder",
+          "$holder",
+          "$scope"
+        ],
+        [
+          "records_only",
+          "$holder",
+          "$scope",
+          "$items",
+          "$issuer",
+          "$action"
+        ]
+      ],
+      "produces": [
+        "issuer_is",
+        "$issuer",
+        "$action"
+      ],
+      "answer": "The {holder} can record {items}. The {issuer} grants {action}, so the recording office cannot issue them."
+    },
+    {
+      "id": "separate_authorship",
+      "requires": [
+        [
+          "ask_authorship"
+        ],
+        [
+          "distributes_other",
+          "$actor",
+          "$author"
+        ]
+      ],
+      "produces": [
+        "author_is",
+        "$author"
+      ],
+      "answer": "The {actor} distributes the material. The source credits {author}, so the {actor}'s control of distribution does not establish its authorship."
+    },
+    {
+      "id": "distribution_and_attribution",
+      "requires": [
+        [
+          "ask_authorship"
+        ],
+        [
+          "distributes_catalogued",
+          "$actor",
+          "$depositor"
+        ]
+      ],
+      "produces": [
+        "separate_distribution_attribution"
+      ],
+      "answer": "The {actor} distributes material deposited by {depositor}. Distribution gives the {actor} control over access. Authorship must be assessed from attribution such as the names recorded in the catalog."
+    },
+    {
+      "id": "common_authorship",
+      "requires": [
+        [
+          "ask_authorship"
+        ],
+        [
+          "creates_and_distributes",
+          "$actor"
+        ]
+      ],
+      "produces": [
+        "author_is",
+        "$actor"
+      ],
+      "answer": "The {actor} created the material and also distributed it. The act of composition establishes the {actor}'s authorship."
+    },
+    {
+      "id": "bookkeeping_scope",
+      "requires": [
+        [
+          "ask_fairness"
+        ],
+        [
+          "accounts_only"
+        ]
+      ],
+      "produces": [
+        "fairness_unknown"
+      ],
+      "answer": "The ledger records a surplus after costs. Assessing fairness requires evidence about the means used to award the contracts or earn the surplus."
+    }
+  ]
+}

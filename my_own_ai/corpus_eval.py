@@ -35,12 +35,12 @@ def validate_cases(cases):
     return cases
 
 
-def evaluate_cases(index, cases, engine, *, limit=5, max_corrections=2, include_answers=False):
+def evaluate_cases(index, cases, engine, *, limit=5, max_corrections=2, include_answers=False, rulebook=None):
     """Run the production Research operation with rubrics outside the model input."""
     validate_cases(cases)
     results = []
     with TemporaryDirectory(prefix="my-own-ai-eval-") as directory:
-        with ModuleController(CheckpointStore(directory), default_modules(corpus_index=index), engine) as core:
+        with ModuleController(CheckpointStore(directory), default_modules(corpus_index=index, rulebook=rulebook), engine) as core:
             core.switch("research")
             for case in cases:
                 start = perf_counter()

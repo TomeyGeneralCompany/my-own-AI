@@ -131,3 +131,41 @@ my-own-ai evaluate-corpus --index data/demo-corpus.sqlite --cases examples/groun
 ```
 
 `--include-answers` prints answers and the source locations of verified quotes for human review. Treat this output as private when the index contains manuscript text. Review whether the inference addresses the question and follows from the cited premise. The structural and keyword checks alone cannot establish that.
+
+## Verified rulebook reasoning
+
+Research can use a locally reviewed rulebook for bounded questions. Use
+`--rulebook` to select this path explicitly. A session can also load a
+checkpoint for its other operations. Rulebook Research runs offline and does
+not require model weights.
+
+```sh
+my-own-ai index-corpus --corpus examples/rulebook_corpus --index data/rulebook-demo.sqlite
+my-own-ai evaluate-corpus --index data/rulebook-demo.sqlite \
+  --rulebook examples/inference_rules.json --cases examples/rulebook_cases.json --include-answers
+my-own-ai session --corpus-index data/rulebook-demo.sqlite --rulebook examples/inference_rules.json
+```
+
+A rulebook is a versioned JSON file with extractors and rules. An extractor
+declares whether it reads the question or indexed evidence, a regular
+expression, and the fact it recognizes. Evidence extractors may identify an
+exact corpus-relative source path. Facts are arrays beginning with a
+predicate name. Variables begin with `$` and refer to named captures in
+extractors. In a rule, the same variable must bind to the same value in each
+required fact. A rule's `produces` fact can be used by another rule. A
+terminal rule supplies an `answer` paragraph and can refer to bound
+variables with braces.
+
+The controller retrieves text for matching source-linked premises, derives
+the result, and checks the exact citations and derivation before completion.
+A terminal result needs both a question match and indexed evidence. When the
+available evidence supplies no answer or competing answers, the operation
+returns unresolved. Evaluation feedback records the applied rule IDs.
+Checkpoints retain the rulebook digest and the exact evidence. A pending
+operation requires the original rulebook when resumed.
+
+Patterns and logical rules must be written or reviewed by the operator.
+Their coverage and the evidence they retrieve bound the conclusions.
+A tested rulebook gives usable results on covered questions. General neural
+reasoning remains a separate capability. The optional answer audit may
+contain private manuscript excerpts.
