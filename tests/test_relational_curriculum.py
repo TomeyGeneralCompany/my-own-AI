@@ -9,7 +9,7 @@ from my_own_ai.relational_curriculum import (
     FACETS, _training_rows, check_relational_splits, evaluate_relational,
     load_relational_cases, prepare_curriculum,
 )
-from my_own_ai.proposal_training import encode_example, load_examples
+from my_own_ai.proposal_training import counterfactual_batches, encode_example, load_examples
 from my_own_ai.reasoning import Stage
 
 
@@ -119,3 +119,21 @@ def test_worked_cases_encode_with_existing_transformer_training_path():
         assert len(inputs) == len(labels)
         assert len(inputs) <= 4096
         assert (labels != -100).any()
+
+
+def test_counterfactual_batch_sampling_keeps_both_states_and_stages():
+    train, _, _ = datasets()
+    worked = _training_rows(train)
+    families = counterfactual_batches(worked)
+    assert len(families) == 2
+    for family in families:
+        variants = {tuple(worked[index]["passages"]) for index in family}
+        assert len(variants) == 2
+        assert len(family) == 4
+        assert {worked[index]["stage"] for index in family} == {"formulate", "construct"}
+    with pytest.raises(ValueError, match="two distinct evidence states"):
+        counterfactual_batches([worked[0], worked[1]])
+    with pytest.raises(ValueError, match="distinct consequences"):
+        duplicate = [dict(row) for row in worked[:4]]
+        duplicate[-1]["answer"] = duplicate[1]["answer"]
+        counterfactual_batches(duplicate)
