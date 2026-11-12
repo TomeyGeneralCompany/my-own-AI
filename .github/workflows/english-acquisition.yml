@@ -7,6 +7,11 @@ on:
         description: 'Ask the English-trained Core (still experimental)'
         required: false
         type: string
+      training_steps:
+        description: 'Original-model supervised training updates (1–5000)'
+        required: false
+        default: '120'
+        type: string
       full_gauntlet:
         description: 'Run the full 200-question frozen English evaluation'
         required: false
@@ -32,6 +37,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 45
     env:
+      ENGLISH_INSTRUCTION_STEPS: ${{ github.event_name == 'push' && '1200' || inputs.training_steps || '120' }}
       OMP_NUM_THREADS: '2'
       MKL_NUM_THREADS: '2'
       CUDA_VISIBLE_DEVICES: ''
