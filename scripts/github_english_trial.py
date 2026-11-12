@@ -4,6 +4,7 @@ A completed workflow means that the experiment ran. It does not establish
 English proficiency; the frozen gauntlet and raw output expose failures.
 """
 import html
+from hashlib import sha256
 import json
 import os
 from pathlib import Path
@@ -52,15 +53,33 @@ def run():
     user_question = os.environ.get("CORE_QUESTION", "").strip()
     if not user_question:
         user_question = "Why does a broken communication channel delay a company's decisions?"
-    baseline = answer_question(pretrain_path, tokenizer_path, user_question,
+    evidence = os.environ.get("CORE_EVIDENCE", "").strip()
+    if not 1 <= len(user_question) <= 1000:
+        raise ValueError("Question must contain 1–1000 characters")
+    if len(evidence) > 1200:
+        raise ValueError("Evidence must not exceed 1200 characters")
+    # The same prompt is supplied before/after instruction training.
+    # Evidence is explicit user text, not a source verified by this demo.
+    model_question = (user_question if not evidence else
+                      "User-provided evidence (not independently verified):\\n"
+                      + evidence + "\\nQuestion: " + user_question)
+    baseline = answer_question(pretrain_path, tokenizer_path, model_question,
                                max_tokens=80, threads=2)
     preferred = Path(instruction["best_checkpoint"])
-    response = answer_question(preferred, tokenizer_path, user_question,
+    response = answer_question(preferred, tokenizer_path, model_question,
                                max_tokens=80, threads=2)
     known = load_dialogues(ROOT / "dialogue/train.json")[0]
     known_response = answer_question(preferred, tokenizer_path, known["question"],
                                      max_tokens=80, threads=2)
     question_record = {
+        "displayed_question": user_question,
+        "user_supplied_evidence": evidence or None,
+        "model_prompt": model_question,
+        "checkpoint_sha256": sha256(preferred.read_bytes()).hexdigest(),
+        "checkpoint_path": str(preferred),
+        "checkpoint_type": "original_subword_english_instruction",
+        "training_source": "public_synthetic_demo_only",
+        "manuscript_trained": False,
         "before_instruction_training": baseline, "trained_response": response,
         "known_training_question": known["question"],
         "known_training_target": known["answer"],
@@ -77,6 +96,10 @@ def run():
                                                 encoding="utf-8")
     comparison = {
         "experiment": "original-weight-english-acquisition",
+        "checkpoint_sha256": question_record["checkpoint_sha256"],
+        "checkpoint_type": question_record["checkpoint_type"],
+        "training_source": question_record["training_source"],
+        "manuscript_trained": False,
         "tokenizer_vocab_size": tokenizer.vocab_size,
         "tokenizer_sha256": tokenizer.fingerprint(),
         "pretraining": pretrain, "instruction": instruction,
@@ -101,7 +124,10 @@ def run():
     summary = [
         "# Ancestor Core — English acquisition report",
         "",
-        "This is the real locally trained Core. No pretrained weights, external AI or substituted response.",
+        "This is the original English model, freshly trained on PUBLIC SYNTHETIC examples. It is NOT the private manuscript-trained checkpoint. No pretrained weights or external inference.",
+        "",
+        f"**Checkpoint SHA-256:** `{question_record['checkpoint_sha256']}`",
+        f"**Training data:** {question_record['training_source']}; manuscript trained: false.",
         "",
         f"**Tokenizer:** {tokenizer.vocab_size} learned/byte-fallback tokens.",
         f"**Pretraining validation loss:** {pretrain['validation_loss']:.4f}",
@@ -120,6 +146,9 @@ def run():
         "## Your question",
         "",
         "<pre>" + html.escape(user_question) + "</pre>",
+        "",
+        "**User-supplied evidence (unverified):**",
+        "<pre>" + html.escape(evidence or "(none)") + "</pre>",
         "",
         "## Model response — after English training",
         "",
