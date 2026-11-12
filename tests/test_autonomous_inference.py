@@ -3,7 +3,7 @@ import torch
 
 from my_own_ai.autonomous_inference import GeneratingProposer, infer
 from my_own_ai.model import LocalTransformer, ModelConfig
-from my_own_ai.reasoning import ProposalRequest, Stage, SUPERVISED_FORMAT
+from my_own_ai.reasoning import LocalProposer, ProposalRequest, Stage, SUPERVISED_FORMAT
 from my_own_ai.retrieval import build_index
 
 
@@ -64,8 +64,9 @@ def test_research_cycle_uses_neural_origin_and_real_source(monkeypatch, tmp_path
     second = f"Premises:\n- [1] {source}\nInference: A late signal delays the keeper's response."
     options = iter([first, second])
     monkeypatch.setattr(GeneratingProposer, "_sample", lambda self, _: next(options))
-    # The formulation proposal remains neural; the hypothesis samples are replaced
-    # in this deterministic integration test so controller boundaries can be tested.
+    # The controller lifecycle is tested here, not the untrained model's ability
+    # to formulate a plan. Separate tests exercise actual neural sampling.
+    monkeypatch.setattr(LocalProposer, "propose", lambda self, req: "Analyze the signal timing.")
     result = infer(index, small_model(), Judge(selected=1),
                    "What happens when the signal arrives late?", attempts=2, tokens=32)
     assert result["status"] == "completed"
