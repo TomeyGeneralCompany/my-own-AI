@@ -376,6 +376,7 @@ changes the model's weights:
 my-own-ai stage-approved-corpus --ledger data/intellectual-ledger.json \
   --output corpus/approved-generation-1
 my-own-ai train --corpus corpus/approved-generation-1 \
+  --init-checkpoint data/checkpoints/previous-corpus-brain.pt \
   --output data/checkpoints/new-corpus-brain.pt --context 512 --steps 200
 ```
 
@@ -468,3 +469,5 @@ registers the file under a digest, and leaves approval pending. To reuse an
 approved record as training, an author must convert the approved reasoning into
 an independently reviewed worked-example dataset; raw archived JSON isn't
 implicitly a valid supervised example. No archived argument auto-edits weights.
+
+For raw-text generational continuity, `train --init-checkpoint` retains the prior model weights but resets the optimizer and sampling schedule for the changed, approved corpus. It preserves the previous checkpoint and records its SHA-256 in the new checkpoint. Ordinary `--resume` remains restricted to an **unchanged** corpus and a matching training configuration; using `--resume` with `--init-checkpoint` is rejected.
