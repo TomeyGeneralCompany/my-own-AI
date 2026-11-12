@@ -2,6 +2,15 @@ name: Core neural learning smoke test
 
 on:
   workflow_dispatch:
+    inputs:
+      question:
+        description: 'Ask the Core a question (experimental model)'
+        required: false
+        type: string
+      evidence:
+        description: 'Optional supporting source text for its answer'
+        required: false
+        type: string
   push:
     branches:
       - experiment/github-neural-training-benchmark
@@ -20,6 +29,8 @@ jobs:
       OMP_NUM_THREADS: '2'
       MKL_NUM_THREADS: '2'
       CUDA_VISIBLE_DEVICES: ''
+      CORE_QUESTION: ${{ inputs.question || '' }}
+      CORE_EVIDENCE: ${{ inputs.evidence || '' }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -42,6 +53,7 @@ jobs:
             data/hosted-neural-experiment/results.json
             data/hosted-neural-experiment/raw-generations.json
             data/hosted-neural-experiment/SUMMARY.md
+            data/hosted-neural-experiment/question-response.json
             data/hosted-neural-experiment/untrained-base.pt
             data/hosted-neural-experiment/relational-brain.pt
           if-no-files-found: warn
