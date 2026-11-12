@@ -52,7 +52,10 @@ validation text is excluded from weight updates.
 
 The checkpoint stores tokenizer configuration and digest, weights,
 optimizer, PyTorch and sampler RNG states, phase and corpus digests,
-completed steps and validation loss. An interrupted run may use `--resume`
+completed steps and validation loss. Every run keeps a latest checkpoint
+for exact resumption and a separate `.best.pt` checkpoint selected by the
+lowest measured validation loss. Use the best checkpoint for inference or
+new-generation initialization; do not assume the latest update is strongest. An interrupted run may use `--resume`
 with unchanged configuration and source files. `--steps` means cumulative
 total steps. A new approved work begins a new generation, passing
 `--init-checkpoint` to initialize from previous weights with a fresh optimizer
@@ -155,9 +158,18 @@ must be tested with `evaluate-english-relational` before promotion.
 Initial smoke: tokenizer built successfully; pretraining validation loss
 5.4137, dialogue-tuning validation loss 4.6052; 0/14 automatic questions
 correct, and the model responded "A ce." after instruction training.
+A later 1,200-step run exactly reproduced one *training* answer (about a
+sensor), but scored 0/130 on unseen automatically scored cases. Its
+validation loss increased to 6.1580, demonstrating overfitting and
+motivating best-checkpoint preservation. That is evidence of memorization,
+not generalization.
 
 **That is an infrastructure success, not English fluency.** A tiny model
 trained on approximately 20 paragraphs and 30 short dialogue examples
 cannot establish broad English. Meaningful English acquisition still
 requires a sufficiently large approved language corpus, longer training,
 capacity benchmarks, and an independently reviewed gauntlet result.
+
+**Privacy:** GitHub Actions workflow inputs, summaries, logs and artifacts in
+a public repository may be publicly accessible. Do not enter private company
+information or unpublished manuscript text into the browser question field.
