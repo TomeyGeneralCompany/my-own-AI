@@ -245,3 +245,17 @@ Train the proposal model with `train-proposals --format grounded_supervised_v1`
 and the ranker with `train-neural-judge`. Measure generalization on untouched
 cases, particularly paired premise changes. Increasing sample count does not
 by itself establish the model learned the user's ontology.
+
+Run the same held-out manuscript evaluation used for earlier grounded Research
+trials, without giving the generator the expected sources or inference terms:
+
+```sh
+my-own-ai evaluate-neural-inference \
+  --checkpoint data/checkpoints/proposals.pt \
+  --judge data/checkpoints/judge.pt \
+  --index data/books.sqlite --cases private/held-out.json
+```
+
+The independent evaluation rubric remains outside the model's input.
+A full-pass requires retrieved and cited expected sources, substantive target
+terms and controller completion; the rubric is still not an entailment proof.
