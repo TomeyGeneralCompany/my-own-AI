@@ -12,6 +12,7 @@ from my_own_ai.language_inference import answer_question, prompt_tokens
 from my_own_ai.language_evaluation import load_gauntlet, repetition_rate
 from my_own_ai.language_corpus import prepare_english_corpus, near_duplicate
 from my_own_ai import language_regression
+from my_own_ai.language_relational import prepare_language_relational
 from my_own_ai.train import load_model
 
 ROOT = Path(__file__).resolve().parents[1] / "examples" / "english"
@@ -243,3 +244,31 @@ def test_original_fast_bpe_matches_reference_merging():
         ids[index:index + 2] = [token]
     assert tokenizer.encode(sample) == ids
     assert tokenizer.decode(ids) == sample
+
+
+def test_relational_author_supervision_keeps_labels_out_of_english_prompts(tmp_path):
+    origin = ROOT.parent / "relational"
+    result = prepare_language_relational(
+        origin / "train.json", origin / "validation.json",
+        origin / "held.json", tmp_path / "relational-worked")
+    assert result["heldout_labels_written"] is False
+    worked = json.loads((tmp_path / "relational-worked" / "train.json").read_text())
+    assert len(worked) == result["train"] == 4
+    assert all("Identity:" in row["answer"] and "Conclusion:" in row["answer"]
+               for row in worked)
+    original = json.loads((origin / "train.json").read_text())
+    for row, source in zip(worked, original):
+        assert source["conclusion"] not in row["question"]
+        assert source["conclusion"] in row["answer"]
+    assert not (tmp_path / "relational-worked" / "held.json").exists()
+
+
+def test_frozen_conditional_cases_are_true_premise_switch_pairs():
+    held = load_gauntlet(ROOT / "gauntlet.json")
+    changes = sorted((row for row in held if row["category"] == "conditional"),
+                     key=lambda row: row["id"])
+    assert len(changes) == 20
+    for pair in zip(changes[::2], changes[1::2]):
+        left, right = pair
+        assert (left["expected_answer"], right["expected_answer"]) == ("yes", "no")
+        assert left["question"].replace("has arrived", "has not arrived") == right["question"]
