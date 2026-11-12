@@ -347,3 +347,89 @@ conclusion metric is conservative; paraphrases may fail it, and even an exact
 match is not a proof of semantic entailment. More importantly, **a green
 software test suite is not evidence that the neural model has learned the
 ontology**. Novel-discipline success requires measured held-out outputs.
+
+
+## Cumulative intellectual development: owner-approved inheritance (PR #11)
+
+This system deliberately separates *preserving an intellectual record* from
+*training on it as accepted truth*. Every record has a local immutable file
+digest, a declared origin (`authored_work`, `derived_work` or `reasoning`),
+optional evidence locators, and an explicit `pending / approved / rejected`
+decision. A Research operation's format validation does **not** authorize its
+claim as training data. The owner decides; neither model nor controller
+automatically approves its own inventions.
+
+```sh
+my-own-ai register-work --ledger data/intellectual-ledger.json \
+  --id book_2030 --kind authored_work --source corpus/private/book.txt \
+  --origin "author: original manuscript"
+my-own-ai decide-work --ledger data/intellectual-ledger.json \
+  --id book_2030 --decision approved
+my-own-ai approved-works --ledger data/intellectual-ledger.json
+```
+
+Approved manuscripts may be included in subsequent **local corpus training**,
+but registration alone never silently changes model weights. To train on an
+approved *worked reasoning file*, register it as `reasoning`, manually approve
+it, and build a rehearsal dataset containing both the previously learned
+examples and new approved material:
+
+```sh
+my-own-ai prepare-replay \
+  --ledger data/intellectual-ledger.json \
+  --retained data/previous-worked.json \
+  --validation data/stable-validation.json \
+  --work-id approved_reasoning_1 \
+  --output data/rehearsal.json
+```
+
+No previous accepted training example is silently dropped. The old examples
+and approved additions are checked for duplicated IDs, groups and validation
+questions. The output stays local and private.
+
+`train-proposals` can resume interrupted runs from the same output checkpoint,
+preserving **optimizer state, PyTorch RNG, data sampler RNG, cumulative step count,
+data fingerprints and training settings**:
+
+```sh
+my-own-ai train-proposals --checkpoint data/checkpoints/brain.pt \
+  --examples data/rehearsal.json --validation data/stable-validation.json \
+  --output data/checkpoints/candidate.pt --format grounded_supervised_v1 \
+  --steps 100 --checkpoint-every 25
+my-own-ai train-proposals --checkpoint data/checkpoints/candidate.pt \
+  --examples data/rehearsal.json --validation data/stable-validation.json \
+  --output data/checkpoints/candidate.pt --format grounded_supervised_v1 \
+  --steps 200 --checkpoint-every 25 --resume
+```
+
+`--steps` on resume means the **total target step count**, not steps to add.
+Changing the training/validation examples requires a *new training run from the
+previous checkpoint weights*, with a new output file and optimizer; it is not
+permitted to pretend the prior optimizer trajectory is still identical.
+
+Before adopting a candidate, compare it with the previous checkpoint on
+identical old held-out cases and new held-out cases from genuinely unseen
+disciplines. Neither set's answer labels enter the neural model prompt.
+Promotion requires: no loss of **any individually correct old case**, retention
+of previously correct counterfactual families, and strictly improved new-case
+accuracy without reducing new counterfactual-pair results.
+
+```sh
+my-own-ai gate-learning --baseline data/checkpoints/previous.pt \
+  --candidate data/checkpoints/candidate.pt \
+  --old-cases corpus/private/old-heldout.json \
+  --new-cases corpus/private/new-heldout.json \
+  --report data/learning-comparison.json \
+  --promote-to data/checkpoints/active-approved.pt
+```
+
+The report records immutable input SHA-256 identities and per-suite scores.
+On failure, the previous released checkpoint is left untouched. On pass, the
+candidate is copied into the release destination via a same-directory atomic
+replacement. Success is based on conservative exact-consequence and paired
+metrics, not proof of philosophical correctness.
+
+**Important:** passing software CI demonstrates that the mechanism works.
+The requested success criterion—measured new learning *and* non-regression on
+real old tasks—requires local private training and a passing independent
+`gate-learning` run, not merely a green PR.
