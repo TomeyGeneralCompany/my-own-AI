@@ -167,6 +167,8 @@ def train(corpus_dir, output, cfg, steps=20, batch_size=4, learning_rate=0.001,
 
 def load_model(checkpoint):
     data = torch.load(checkpoint, map_location="cpu", weights_only=True)
+    if "language_format" in data:
+        raise ValueError("Language checkpoint requires load_language() and its matching tokenizer")
     model = LocalTransformer(ModelConfig(**data["model_config"]))
     model.load_state_dict(data["state_dict"])
     model.proposal_format = data.get("proposal_format")
