@@ -12,6 +12,7 @@ from my_own_ai.book_instruction import create_book_continuations
 from my_own_ai.corpus import collect_documents
 from my_own_ai.tokenizer import ByteBPETokenizer
 from my_own_ai.language_training import load_dialogues, train_language
+from my_own_ai.progressive_reading import train_progressive
 from my_own_ai.language_inference import answer_question
 
 
@@ -26,7 +27,14 @@ def run(argv=None):
     parser.add_argument("--layers", type=int, default=4)
     parser.add_argument("--heads", type=int, default=4)
     parser.add_argument("--context", type=int, default=512)
-    parser.add_argument("--pretrain-steps", type=int, default=1000)
+    parser.add_argument("--pretrain-steps", type=int, default=1000,
+                        help="Legacy random-sampled prose training updates when --reading-passes=0")
+    parser.add_argument("--reading-passes", type=int, default=5,
+                        help="Complete exhaustive passes through all eligible book training tokens; 0 uses legacy sampler")
+    parser.add_argument("--reading-overlap", type=int, default=64,
+                        help="Context tokens carried into next window, masked from repeated loss")
+    parser.add_argument("--reading-patience", type=int, default=0,
+                        help="Stop after this many complete passes without validation improvement (0 disables)")
     parser.add_argument("--instruction-steps", type=int, default=600)
     parser.add_argument("--batch", type=int, default=2)
     parser.add_argument("--threads", type=int, default=4)
@@ -41,6 +49,10 @@ def run(argv=None):
     out = args.output.resolve()
     if out.exists():
         parser.error("Output must be a new private directory")
+    if args.reading_passes < 0 or args.reading_patience < 0:
+        parser.error("Reading passes/patience must not be negative")
+    if args.reading_passes and not 0 <= args.reading_overlap < args.context:
+        parser.error("Reading overlap must be smaller than model context")
     if args.pretrain_steps < 1 or args.instruction_steps < 1:
         parser.error("Training steps must be positive")
     if args.context < 256 or args.embed < 16 or args.layers < 1 or args.batch < 1:
@@ -69,12 +81,24 @@ def run(argv=None):
         "layers": args.layers, "heads": args.heads, "context": args.context,
         "batch_size": args.batch, "threads": args.threads, "seed": args.seed
     }
-    base = train_language(
-        **config, phase="pretrain", training=book_dir / "train",
-        validation=book_dir / "validation", output=out / "english-pretrain.pt",
-        steps=args.pretrain_steps, checkpoint_every=max(1, args.pretrain_steps // 10),
-        lr=.0005
-    )
+    if args.reading_passes:
+        base = train_progressive(
+            tokenizer_path=tokenizer_path,
+            training=book_dir / "train", validation=book_dir / "validation",
+            output=out / "english-pretrain.pt",
+            passes=args.reading_passes, overlap=args.reading_overlap,
+            patience=args.reading_patience, embed=args.embed,
+            heads=args.heads, layers=args.layers, context=args.context,
+            batch_size=args.batch, threads=args.threads, seed=args.seed,
+            checkpoint_every=25, lr=.0005
+        )
+    else:
+        base = train_language(
+            **config, phase="pretrain", training=book_dir / "train",
+            validation=book_dir / "validation", output=out / "english-pretrain.pt",
+            steps=args.pretrain_steps, checkpoint_every=max(1, args.pretrain_steps // 10),
+            lr=.0005
+        )
     dialogues = out / "exercises"
     training_path = dialogues / "train.json"
     validation_path = dialogues / "validation.json"
@@ -158,6 +182,9 @@ def run(argv=None):
         "held_out_exact": report["held_out_continuation"]["exact"],
         "held_out_total": len(tests),
         "english_proficiency_proven": False,
+        "reading_passes_completed": base.get("completed_passes"),
+        "reading_coverage_per_complete_pass": (
+            1.0 if base.get("completed_passes", 0) > 0 else None),
         "private_report": str(out / "report.json")
     }, indent=2))
 

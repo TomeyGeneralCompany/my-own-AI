@@ -6,6 +6,7 @@ from pathlib import Path
 from .model import ModelConfig
 from .tokenizer import ByteBPETokenizer
 from .language_training import train_language
+from .progressive_reading import train_progressive
 from .language_inference import answer_question
 from .language_evaluation import load_gauntlet, evaluate_english
 from .language_corpus import prepare_english_corpus
@@ -241,6 +242,25 @@ def main(argv=None):
     language.add_argument("--seed", type=int, default=42)
     language.add_argument("--threads", type=int, default=2)
     language.add_argument("--checkpoint-every", type=int, default=20)
+    reading = sub.add_parser("read-progressively", help="Exhaustively train original English Core on ordered overlapping book tokens")
+    reading.add_argument("--tokenizer", type=Path, required=True)
+    reading.add_argument("--training", type=Path, required=True)
+    reading.add_argument("--validation", type=Path, required=True)
+    reading.add_argument("--output", type=Path, required=True)
+    reading.add_argument("--passes", type=int, default=5)
+    reading.add_argument("--overlap", type=int, default=64)
+    reading.add_argument("--patience", type=int, default=0)
+    reading.add_argument("--embed", type=int, default=128)
+    reading.add_argument("--heads", type=int, default=4)
+    reading.add_argument("--layers", type=int, default=4)
+    reading.add_argument("--context", type=int, default=512)
+    reading.add_argument("--batch", type=int, default=1)
+    reading.add_argument("--lr", type=float, default=.0005)
+    reading.add_argument("--seed", type=int, default=42)
+    reading.add_argument("--threads", type=int, default=4)
+    reading.add_argument("--checkpoint-every", type=int, default=25)
+    reading.add_argument("--resume", action="store_true")
+    reading.add_argument("--init-checkpoint", type=Path)
     ask_english = sub.add_parser("ask-english", help="Generate with the original English-trained Core")
     ask_english.add_argument("--checkpoint", type=Path, required=True)
     ask_english.add_argument("--tokenizer", type=Path, required=True)
@@ -300,6 +320,17 @@ def main(argv=None):
         vocab.save(a.output)
         print(json.dumps({"vocab_size": vocab.vocab_size,
                           "tokenizer_sha256": vocab.fingerprint()}, indent=2))
+    elif a.command == "read-progressively":
+        result = train_progressive(tokenizer_path=a.tokenizer, training=a.training,
+                                   validation=a.validation, output=a.output,
+                                   passes=a.passes, overlap=a.overlap,
+                                   patience=a.patience, embed=a.embed,
+                                   heads=a.heads, layers=a.layers, context=a.context,
+                                   batch_size=a.batch, lr=a.lr, seed=a.seed,
+                                   threads=a.threads,
+                                   checkpoint_every=a.checkpoint_every,
+                                   resume=a.resume, init_checkpoint=a.init_checkpoint)
+        print(json.dumps(result, indent=2))
     elif a.command == "train-english":
         report = train_language(tokenizer_path=a.tokenizer, training=a.training,
                                 validation=a.validation, output=a.output,
