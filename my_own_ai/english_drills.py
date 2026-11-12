@@ -49,13 +49,15 @@ def english_drills(split):
     if split not in FAMILIES:
         raise ValueError("Unknown English drill split")
     rows = []
-    for index, (actor, obj, place) in enumerate(FAMILIES[split]):
-        for category, prompt, answer in TEMPLATES:
-            values = {"actor": actor, "object": obj, "place": place}
-            question = prompt.format(**values)
-            response = answer.format(**values)
-            key = sha256((split + "\\0" + category + "\\0" + question).encode()).hexdigest()[:24]
-            rows.append({"id": "english-" + key, "question": question, "answer": response})
+    for actor, _, actor_place in FAMILIES[split]:
+        for _, obj, object_place in FAMILIES[split]:
+            place = actor_place if actor_place != object_place else object_place
+            for category, prompt, answer in TEMPLATES:
+                values = {"actor": actor, "object": obj, "place": place}
+                question = prompt.format(**values)
+                response = answer.format(**values)
+                key = sha256((split + "\\0" + category + "\\0" + question).encode()).hexdigest()[:24]
+                rows.append({"id": "english-" + key, "question": question, "answer": response})
     return rows
 
 
