@@ -1,0 +1,86 @@
+name: PR19 migrate existing g0001 without resetting trained weights
+
+on:
+  push:
+    branches:
+      - feature/continuous-paragraph-reading-controller
+    paths:
+      - my_own_ai/progressive_reading.py
+      - my_own_ai/published_corpus.py
+      - my_own_ai/numbered_paragraphs.py
+      - scripts/ancestor_core.py
+      - .github/workflows/ancestor-pr19-migration.yml
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ancestor-pr19-migration-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  migrate-real-existing-model:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      GH_TOKEN: ${{ github.token }}
+      OMP_NUM_THREADS: '2'
+      MKL_NUM_THREADS: '2'
+      CUDA_VISIBLE_DEVICES: ''
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install original CPU model runtime
+        run: |
+          python -m pip install 'torch==2.5.1+cpu' --index-url https://download.pytorch.org/whl/cpu
+          python -m pip install -e '.[dev]'
+      - name: Download real original g0001 state (READ-ONLY release)
+        run: |
+          set -euo pipefail
+          TAG=ancestor-progress-g0001
+          mkdir -p data/download
+          ASSET="$(gh api "repos/${GITHUB_REPOSITORY}/releases/tags/${TAG}" --jq '[.assets[] | select(.name | startswith("ancestor-state-"))] | sort_by(.created_at) | last | .name')"
+          test -n "$ASSET" && test "$ASSET" != null
+          gh release download "$TAG" --pattern "$ASSET" --dir data/download
+          python scripts/ancestor_core.py unpack --archive "data/download/$ASSET" \
+            --state data/state --generation g0001
+          cp data/state/generation.json data/previous-generation.json
+          python - <<'PY'
+          import torch
+          p=torch.load("data/state/reading.pt",map_location="cpu",weights_only=True)
+          assert p["reading_format"]==1
+          print("PREVIOUS:",p["completed_steps"],p["reading_pass"],p["next_window"])
+          PY
+      - name: Migrate exact previous trained checkpoint to numbered paragraph units
+        run: |
+          set -euo pipefail
+          python scripts/ancestor_core.py train \
+            --repository . --state data/state --scratch data/scratch \
+            --generation g0001 --passes 5 --instruction-steps 600 \
+            --max-reading-updates 1 --max-session-seconds 120 > data/migration-report.json
+          python - <<'PY'
+          import json,torch
+          from my_own_ai.numbered_paragraphs import numbered_paragraphs
+          a=json.load(open("data/previous-generation.json"))
+          b=json.load(open("data/state/generation.json"))
+          assert b["paragraph_migration_completed"] is True,b
+          assert b["previous_manifest_sha256"]==a["published_manifest_sha256"]
+          assert b["published_manifest_sha256"]!=a["published_manifest_sha256"]
+          assert b["reading_progress"]["completed_steps"] > a["reading_progress"]["completed_steps"]
+          p=torch.load("data/state/reading.pt",map_location="cpu",weights_only=True)
+          assert p["optimizer"]["state"]
+          assert any(e.get("event")=="paragraph_resegmentation" for e in p["reading_history"])
+          assert p["chunk_unit"]=="numbered_paragraph"
+          print("MIGRATION PASS: real prior training preserved, paragraph cursor restarted safely, optimizer retained")
+          PY
+      - name: Upload migration evidence without touching actual progress release
+        uses: actions/upload-artifact@v4
+        with:
+          name: pr19-real-g0001-migration-${{ github.run_id }}
+          path: |
+            data/migration-report.json
+            data/previous-generation.json
+            data/state/generation.json
+          retention-days: 14
