@@ -13,7 +13,7 @@ from .retrieval import CorpusIndex, build_index
 from .proposal_training import train_proposals
 from .grounding import SPAN_FORMAT
 from . import neural_judge
-from .autonomous_inference import infer
+from .autonomous_inference import GeneratingProposer, infer
 from .rulebook import Rulebook, RulebookProposer
 from .reasoning import SUPERVISED_FORMAT
 
@@ -106,6 +106,19 @@ def main(argv=None):
     inference.add_argument("--seed", type=int, default=42)
     inference.add_argument("--threads", type=int, default=4)
     inference.add_argument("--max-corrections", type=int, default=2)
+    neural_eval = sub.add_parser("evaluate-neural-inference", help="Evaluate generated conclusions on held-out questions")
+    neural_eval.add_argument("--checkpoint", type=Path, required=True)
+    neural_eval.add_argument("--judge", type=Path, required=True)
+    neural_eval.add_argument("--index", type=Path, required=True)
+    neural_eval.add_argument("--cases", type=Path, required=True)
+    neural_eval.add_argument("--attempts", type=int, default=4)
+    neural_eval.add_argument("--tokens", type=int, default=160)
+    neural_eval.add_argument("--temperature", type=float, default=.85)
+    neural_eval.add_argument("--seed", type=int, default=42)
+    neural_eval.add_argument("--threads", type=int, default=4)
+    neural_eval.add_argument("--limit", type=int, default=5)
+    neural_eval.add_argument("--max-corrections", type=int, default=2)
+    neural_eval.add_argument("--include-answers", action="store_true")
     draft = sub.add_parser("draft-neural-outline", help="Prepare an offline outline around a supported thesis")
     draft.add_argument("--checkpoint", type=Path, required=True)
     draft.add_argument("--index", type=Path, required=True)
@@ -157,6 +170,16 @@ def main(argv=None):
                        max_corrections=a.max_corrections)
         print(json.dumps(result, indent=2))
         return int(result["status"] != "completed")
+    elif a.command == "evaluate-neural-inference":
+        model = load_proposer(a.checkpoint, a.threads, a.tokens).model
+        judge = neural_judge.NeuralJudge.load(a.judge, a.threads)
+        engine = GeneratingProposer(model, judge, attempts=a.attempts, tokens=a.tokens,
+                                    temperature=a.temperature, seed=a.seed)
+        report = evaluate_cases(a.index, load_cases(a.cases), engine, limit=a.limit,
+                                max_corrections=a.max_corrections, include_answers=a.include_answers)
+        report["semantic_entailment_verified"] = False
+        print(json.dumps(report, indent=2))
+        return int(report["passed"] != report["total"])
     elif a.command == "draft-neural-outline":
         with a.brief.open(encoding="utf-8") as stream:
             brief = json.load(stream)
