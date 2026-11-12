@@ -40,3 +40,7 @@ See the [training guide](docs/TRAINING.md) and the [Linux session and module ext
 ## Train on approved private books
 
 For local original-weight English learning from your approved DOCX, PDF, TXT or Markdown manuscripts, see [Private book training](docs/BOOK_LANGUAGE_TRAINING.md). The book preparation splits source material into held-out passages, trains the tokenizer only on training text, then supports English prose pretraining followed by source-faithful continuation and optional owner-reviewed Q&A supervision. Private manuscripts are **not** committed to GitHub or shipped in public Actions artifacts; public CI uses synthetic books only. Book-based training is a learning experiment, not yet a demonstrated solution to unseen-question generalization.
+
+## Progressive full-book reading
+
+The original-weight English Core can now read approved book sections in complete, ordered, overlapping token passes with exact checkpoint/resume support. Use `my-own-ai read-progressively` or the PR #15 private-book trainer. Details, example commands, validation boundaries and limitations: [Progressive reading controller](docs/PROGRESSIVE_READING.md). The checkpointed reader exposes every eligible training token; English comprehension must still be established separately on unseen questions.
