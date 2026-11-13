@@ -104,4 +104,28 @@ def fundamentals(split):
                 ident = sha256((split+"\\0"+question+"\\0"+word).encode()).hexdigest()[:24]
                 examples.append({"id":"english-foundation-"+ident,
                                  "question":question,"answer":word})
+    if split == "train":
+        # Compositional copying practice teaches the operation, not just the
+        # original 72 known labels. These invented but pronounceable strings
+        # are instruction material, never frozen examination answers.
+        starts = ("bal", "cor", "den", "fel", "gar", "hel", "jor", "kel",
+                  "lum", "mar", "nel", "por", "ren", "sil", "tor", "ven")
+        ends = ("ada", "bine", "cora", "delle", "fira", "glen", "hame", "lora",
+                "mira", "neth", "pali", "riva", "sela", "tane", "vora", "wren")
+        heldout = {w for triple in (FOUNDATION_TEST + VALIDATION) for w in triple}
+        for left in starts:
+            for right in ends:
+                word = left + right
+                if word in heldout:
+                    continue
+                prompts = (
+                    f"Repeat exactly the word after the colon: {word}",
+                    f"Copy the English word exactly, without extra text: {word}",
+                    f"Read the label and answer with only its word: Label = {word}",
+                    f"Which word is written here? {word}",
+                )
+                for question in prompts:
+                    ident = sha256(("train\\0"+question+"\\0"+word).encode()).hexdigest()[:24]
+                    examples.append({"id": "english-foundation-composition-"+ident,
+                                     "question": question, "answer": word})
     return examples
