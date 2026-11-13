@@ -40,7 +40,7 @@ jobs:
       - name: Perform a real original-weight neural update and independent English exam
         run: |
           set -euo pipefail
-          python scripts/ancestor_staged.py train --repository .             --state data/stage-ci --scratch data/stage-ci-scratch             --parent-state data/parent --parent-generation g0002             --english-updates 800 --read-updates 1 --book-updates 1             | tee data/stage-ci-result.json
+          python scripts/ancestor_staged.py train --repository .             --state data/stage-ci --scratch data/stage-ci-scratch             --parent-state data/parent --parent-generation g0002             --english-updates 4000 --read-updates 1 --book-updates 1             | tee data/stage-ci-result.json
           python - <<'PY'
           import json,os
           from pathlib import Path
