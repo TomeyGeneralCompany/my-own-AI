@@ -307,13 +307,17 @@ def apply_owner_review(state_dir, review_file):
     return {"qualified": True, "review_checkpoint": exam["checkpoint_sha256"]}
 
 
-def export_qualified_candidate(state_dir, archive, *, generation="g0003"):
+def export_qualified_candidate(state_dir, archive, *, generation=None):
     """Native candidate package is impossible until *all* gates are approved."""
     from tempfile import TemporaryDirectory
     from my_own_ai.persistent_registry import validate_generation
-    validate_generation(generation)
     state = Path(state_dir)
     ledger = json.loads((state / "stage-ledger.json").read_text())
+    parent = validate_generation(ledger["parent_generation"])
+    expected_generation = f"g{int(parent[1:]) + 1:04d}"
+    generation = validate_generation(generation or expected_generation)
+    if generation != expected_generation:
+        raise ValueError("Qualified descendant must inherit its exact ancestral generation")
     if ledger.get("stage") != COMPLETE or not (state / "owner-review.json").is_file():
         raise ValueError("Cannot publish an unqualified neural checkpoint")
     last_book = ledger["books"][-1]
@@ -378,7 +382,7 @@ def main():
     export = cmd.add_parser("export-candidate")
     export.add_argument("--state",required=True)
     export.add_argument("--archive",required=True)
-    export.add_argument("--generation",default="g0003")
+    export.add_argument("--generation")
     a = p.parse_args()
     if a.command == "train":
         result = train_batch(a)
