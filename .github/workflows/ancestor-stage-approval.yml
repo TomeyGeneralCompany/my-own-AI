@@ -1,0 +1,100 @@
+name: Owner review and qualify original Core reasoning
+
+on:
+  workflow_dispatch:
+    inputs:
+      passes_logic:
+        description: 'I examined the actual answers and verified logical reasoning'
+        required: true
+        type: boolean
+        default: false
+      passes_mathematics:
+        description: 'I verified the use and derivation of my mathematical relationships'
+        required: true
+        type: boolean
+        default: false
+      passes_transfer:
+        description: 'I verified application to an unseen or changed-premise problem'
+        required: true
+        type: boolean
+        default: false
+      rationale:
+        description: 'Substantive review of exact generated responses (80+ chars)'
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  independent-owner-review:
+    if: github.actor == 'TomeyGeneralCompany'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      GH_TOKEN: ${{ github.token }}
+      PASSES_LOGIC: ${{ inputs.passes_logic }}
+      PASSES_MATH: ${{ inputs.passes_mathematics }}
+      PASSES_TRANSFER: ${{ inputs.passes_transfer }}
+      REVIEW_RATIONALE: ${{ inputs.rationale }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install CPU original neural runtime
+        run: |
+          python -m pip install 'torch==2.5.1+cpu' --index-url https://download.pytorch.org/whl/cpu
+          python -m pip install -e '.[dev]'
+      - name: Retrieve all exact checkpoint and examination evidence
+        run: |
+          set -euo pipefail
+          DIGEST="$(sha256sum published_books/manifest.json | cut -c1-12)"
+          TAG="ancestor-stage-progress-${DIGEST}"
+          ASSET="$(gh api "repos/${GITHUB_REPOSITORY}/releases/tags/${TAG}" --jq '[.assets[] | select(.name | startswith("stage-state-"))] | sort_by(.created_at) | last | .name')"
+          test -n "$ASSET" && test "$ASSET" != null
+          mkdir -p data/review-download data/review-state
+          gh release download "$TAG" --pattern "$ASSET" --dir data/review-download
+          python scripts/ancestor_staged.py unpack --archive "data/review-download/$ASSET" --state data/review-state
+      - name: Validate owner verdict against real synthesis responses
+        run: |
+          python - <<'PY'
+          import json,os
+          from pathlib import Path
+          from my_own_ai.persistent_registry import digest_file
+          state=Path("data/review-state")
+          exam=state/"last-exam.json"
+          report=json.loads(exam.read_text())
+          review={
+              "format":"owner_synthesis_review_v1",
+              "approved":True,
+              "checkpoint_sha256":report["checkpoint_sha256"],
+              "exam_sha256":digest_file(exam),
+              "passes_logic":os.environ["PASSES_LOGIC"]=="true",
+              "passes_mathematics":os.environ["PASSES_MATH"]=="true",
+              "passes_transfer":os.environ["PASSES_TRANSFER"]=="true",
+              "rationale":os.environ["REVIEW_RATIONALE"],
+          }
+          Path("data/owner-verdict.json").write_text(json.dumps(review,indent=2))
+          PY
+          python scripts/ancestor_staged.py review --state data/review-state --review data/owner-verdict.json
+      - name: Export and publish only the independently qualified model
+        run: |
+          set -euo pipefail
+          python scripts/ancestor_staged.py export-candidate             --state data/review-state --archive data/core-generation.zip --generation g0003
+          if gh release view ancestor-g0003-candidate >/dev/null 2>&1; then
+            echo "Qualified candidate exists; never overwrite immutable trained weights"
+            exit 1
+          fi
+          gh release create ancestor-g0003-candidate data/core-generation.zip             --title "Original neural Core g0003 — demonstrated competency"             --notes "English, sequential seven-work reading, per-book comprehension, synthesis and owner review evidence gate all passed."             --prerelease
+      - name: Preserve signed-off review summary and ledger
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: original-core-owner-review-${{ github.run_id }}
+          path: |
+            data/review-state/stage-ledger.json
+            data/review-state/last-exam.json
+            data/review-state/owner-review.json
+            data/owner-verdict.json
+          if-no-files-found: warn
