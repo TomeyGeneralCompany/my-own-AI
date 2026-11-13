@@ -4,6 +4,10 @@ on:
   pull_request:
     paths:
       - 'my_own_ai/stage_controller.py'
+      - 'my_own_ai/english_acquisition.py'
+      - 'my_own_ai/language_training.py'
+      - 'my_own_ai/foundation_diagnostics.py'
+      - 'tests/test_foundation_cycles.py'
       - 'my_own_ai/ordered_book_learning.py'
       - 'scripts/ancestor_staged.py'
       - '.github/workflows/ancestor-staged.yml'
@@ -67,5 +71,6 @@ jobs:
           path: |
             data/stage-ci/stage-ledger.json
             data/stage-ci/last-exam.json
+            data/stage-ci/foundation-diagnostics.json
             data/stage-ci-result.json
           retention-days: 14
