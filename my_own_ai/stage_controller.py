@@ -22,11 +22,12 @@ def fingerprint(path):
     return sha256(Path(path).read_bytes()).hexdigest()
 
 
-def initial_ledger(manifest_sha256, books, parent):
+def initial_ledger(manifest_sha256, books, parent, source_hashes=None):
     if not books or len(books) != len(set(books)):
         raise ValueError("Approved works must have unique ordered IDs")
     return {"format": "competency_locked_v1", "manifest_sha256": manifest_sha256,
             "parent_generation": parent, "books": list(books),
+            "source_hashes": source_hashes or {},
             "stage": ENGLISH, "book_index": 0, "attempts": {},
             "evidence": [], "last_checkpoint_sha256": None}
 
@@ -88,10 +89,14 @@ def advance(ledger, kind, report, *, checkpoint_sha256):
                   report.get("next_window") == 0 and
                   report.get("covered_targets", 0) > 0 and
                   report.get("last_read_unit") is not None and
-                  report.get("ordered_manifest_sha256") == ledger["manifest_sha256"])
+                  report.get("ordered_manifest_sha256") == ledger["manifest_sha256"] and
+                  report.get("read_units_expected", 0) >= 10 and
+                  report.get("read_units_seen") == report.get("read_units_expected") and
+                  report.get("source_sha256") == ledger["source_hashes"].get(report["book"], report.get("source_sha256")) )
     elif stage == COMPREHEND:
         passed = (report.get("book") == ledger["books"][ledger["book_index"]] and
-                  bool(book_pass(report)))
+                  bool(book_pass(report)) and
+                  report.get("source_sha256") == ledger["source_hashes"].get(report["book"], report.get("source_sha256")) )
     else:
         passed = (report.get("passes_logic") is True and
                   report.get("passes_mathematics") is True and
