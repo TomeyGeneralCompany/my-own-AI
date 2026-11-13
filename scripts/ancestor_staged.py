@@ -45,20 +45,14 @@ def prepare_book(prepared, book, destination):
     out.mkdir(parents=True, exist_ok=True)
     reading = out / "reading"
     (reading / "train").mkdir(parents=True, exist_ok=True)
-    (reading / "validation").mkdir()
     count = 0
-    calibration = None
     for split in ("train", "validation", "test"):
         for entry in sorted((base / split).glob(book + "_*.txt")):
             copied = reading / "train" / entry.name
             shutil.copyfile(entry, copied)
             count += 1
-            if calibration is None:
-                calibration = entry.read_text()
     if count == 0:
         raise ValueError("No source units for book " + book)
-    # Repeated source passage is loss telemetry only, NOT a held-out exam.
-    (reading / "validation" / "calibration.txt").write_text("Calibration passage from the current authored work: " + calibration)
     manifest = json.loads((base / "manifest.json").read_text())
     manifest["reading_calibration"] = "overlap_with_source_not_a_competence_exam"
     (reading / "manifest.json").write_text(json.dumps(manifest))
