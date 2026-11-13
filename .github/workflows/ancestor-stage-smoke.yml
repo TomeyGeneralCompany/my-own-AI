@@ -63,7 +63,8 @@ jobs:
           assert (state/"foundation.pt").is_file()
           with open(os.environ["GITHUB_STEP_SUMMARY"],"a") as f:
               f.write("# Staged neural smoke — actual g0002-inherited weights\n\n")
-              f.write("Independent unseen word-reference answers: "+str(report["correct"])+"/"+str(report["total"])+"\\n\\n")\n              f.write("In-distribution instruction probe: "+str(diagnostics["probes"]["training"]["correct"])+"/"+str(diagnostics["probes"]["training"]["total"])+"\\n\\n")
+              f.write("Independent unseen word-reference answers: "+str(report["correct"])+"/"+str(report["total"])+"\\n\\n")
+              f.write("In-distribution instruction probe: "+str(diagnostics["probes"]["training"]["correct"])+"/"+str(diagnostics["probes"]["training"]["total"])+"\\n\\n")
               f.write("Controller locked stage after exam: "+ledger["stage"]+"\n\n")
               f.write("**Integration pass is not English competence certification.**\n")
           PY
