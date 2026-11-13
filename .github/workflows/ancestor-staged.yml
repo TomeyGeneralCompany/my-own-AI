@@ -74,6 +74,16 @@ jobs:
           ASSET="stage-state-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}.zip"
           cp data/stage.zip "data/$ASSET"
           gh release upload ancestor-stage-progress "data/$ASSET"
+      - name: Mark review gate for auto-scheduler
+        run: |
+          set -euo pipefail
+          STAGE="$(python -c 'import json;print(json.load(open("data/learning/stage-ledger.json"))["stage"])')"
+          if [ "$STAGE" = awaiting_owner_review ]; then
+            if ! gh release view ancestor-stage-review >/dev/null 2>&1; then
+              gh release create ancestor-stage-review --title "Core requires owner synthesis review" \
+                --notes "No automatic qualification or activation. See the last-exam.json artifact and stage ledger." --prerelease
+            fi
+          fi
       - name: Resume autonomously unless awaiting owner review
         run: |
           set -euo pipefail
