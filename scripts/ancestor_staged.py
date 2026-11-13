@@ -13,14 +13,15 @@ import torch
 
 from my_own_ai.corpus import collect_documents
 from my_own_ai.english_drills import english_drills
+from my_own_ai.tokenizer import ByteBPETokenizer
 from my_own_ai.language_training import train_language
 from my_own_ai.language_inference import answer_question
 from my_own_ai.language_evaluation import evaluate_english, load_gauntlet
-from my_own_ai.persistent_registry import digest_file
+from my_own_ai.persistent_registry import digest_file, package_generation
 from my_own_ai.ordered_book_learning import read_all_units
 from my_own_ai.published_corpus import prepare_published_corpus, validate_published_manifest
 from my_own_ai.reasoning_curriculum import extract_lessons
-from my_own_ai.stage_controller import (initial_ledger, verify_ledger, advance, fingerprint,
+from my_own_ai.stage_controller import (initial_ledger, verify_ledger, advance, approve, fingerprint,
     ENGLISH, READ, COMPREHEND, SYNTHESIS, REVIEW, COMPLETE)
 
 # Fixed compatible architecture of the trained original-weight g0002 ancestor.
@@ -278,6 +279,73 @@ def restore(archive, folder):
             (root / name).write_bytes(payload)
 
 
+def apply_owner_review(state_dir, review_file):
+    """Require a human verdict tied to the exact model outputs and checkpoint."""
+    state = Path(state_dir)
+    ledger_path = state / "stage-ledger.json"
+    ledger = json.loads(ledger_path.read_text())
+    exam_path = state / "last-exam.json"
+    exam = json.loads(exam_path.read_text())
+    review = json.loads(Path(review_file).read_text())
+    if ledger.get("stage") != REVIEW or exam.get("stage") != SYNTHESIS:
+        raise ValueError("Synthesis responses not ready for owner review")
+    if (review.get("format") != "owner_synthesis_review_v1" or
+            review.get("approved") is not True or
+            review.get("checkpoint_sha256") != exam.get("checkpoint_sha256") or
+            review.get("exam_sha256") != fingerprint(exam_path) or
+            any(review.get(key) is not True for key in (
+                "passes_logic", "passes_mathematics", "passes_transfer")) or
+            not isinstance(review.get("rationale"), str) or
+            len(review["rationale"].strip()) < 80):
+        raise ValueError("Review must verify actual reasoning, mathematics and transfer")
+    evidence_sha = sha256(json.dumps(ledger["evidence"], sort_keys=True).encode()).hexdigest()
+    approve(ledger, evidence_sha256=evidence_sha,
+            checkpoint_sha256=exam["checkpoint_sha256"])
+    dump(ledger_path, ledger)
+    dump(state / "owner-review.json", review)
+    return {"qualified": True, "review_checkpoint": exam["checkpoint_sha256"]}
+
+
+def export_qualified_candidate(state_dir, archive, *, generation="g0003"):
+    """Native candidate package is impossible until *all* gates are approved."""
+    from tempfile import TemporaryDirectory
+    from my_own_ai.persistent_registry import validate_generation
+    validate_generation(generation)
+    state = Path(state_dir)
+    ledger = json.loads((state / "stage-ledger.json").read_text())
+    if ledger.get("stage") != COMPLETE or not (state / "owner-review.json").is_file():
+        raise ValueError("Cannot publish an unqualified neural checkpoint")
+    last_book = ledger["books"][-1]
+    checkpoint = state / "current.best.pt"
+    reading = state / ("read_" + last_book + ".pt")
+    if not checkpoint.is_file() or not reading.is_file():
+        raise ValueError("Missing complete learned reading/instruction weights")
+    if ledger["last_checkpoint_sha256"] != digest_file(checkpoint):
+        raise ValueError("Qualified model differs from independently reviewed checkpoint")
+    with TemporaryDirectory() as work:
+        output = Path(work)
+        for source, dest in ((state/"tokenizer.json","tokenizer.json"),
+                             (reading,"reading.pt"), (reading,"reading.best.pt"),
+                             (checkpoint,"assistant.pt"), (checkpoint,"assistant.best.pt")):
+            shutil.copyfile(source,output/dest)
+        dump(output/"generation.json",{
+            "format":"ancestor_generation_v1", "generation":generation,
+            "phase":"candidate", "curriculum":"competency_locked_v1",
+            "published_manifest_sha256":ledger["manifest_sha256"],
+            "published_corpus_id":"owner-approved-source-order",
+            "tokenizer_sha256":ByteBPETokenizer.load(state/"tokenizer.json").fingerprint(),
+            "model_config":{"context":512,"embed":128,"heads":4,"layers":4,
+                            "batch_size":2,"seed":42},
+            "parent_generation":ledger["parent_generation"],
+            "completed_reading_passes":len(ledger["books"]),
+            "target_reading_passes":len(ledger["books"]),
+            "completed_instruction_steps":1,"target_instruction_steps":1,
+            "competence_evidence_sha256":fingerprint(state/"stage-ledger.json"),
+            "review_sha256":fingerprint(state/"owner-review.json")
+        })
+        return package_generation(output,archive)
+
+
 def main():
     p = argparse.ArgumentParser()
     cmd = p.add_subparsers(dest="command", required=True)
@@ -294,10 +362,21 @@ def main():
         x = cmd.add_parser(op)
         x.add_argument("--state", required=True)
         x.add_argument("--archive", required=True)
+    review = cmd.add_parser("review")
+    review.add_argument("--state",required=True)
+    review.add_argument("--review",required=True)
+    export = cmd.add_parser("export-candidate")
+    export.add_argument("--state",required=True)
+    export.add_argument("--archive",required=True)
+    export.add_argument("--generation",default="g0003")
     a = p.parse_args()
     if a.command == "train":
         result = train_batch(a)
         print(json.dumps(result, indent=2))
+    elif a.command == "review":
+        print(json.dumps(apply_owner_review(a.state, a.review),indent=2))
+    elif a.command == "export-candidate":
+        print(json.dumps(export_qualified_candidate(a.state, a.archive, generation=a.generation),indent=2))
     elif a.command == "pack":
         package(a.state, a.archive)
     else:
