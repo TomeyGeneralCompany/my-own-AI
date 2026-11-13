@@ -166,12 +166,12 @@ def train_batch(args):
                        resume=ckpt.exists(),
                        init_checkpoint=None if ckpt.exists() else state/"inherited.pt",
                        checkpoint_every=200, **MODEL)
-        report = score_book(best, tok, inputs/"test.json", fingerprint(inputs/"train.json"), limit=100)
+        report = score_book(ckpt, tok, inputs/"test.json", fingerprint(inputs/"train.json"), limit=100)
         report["exam_sha256"] = report["questions_sha256"]
         dump(state/"last-exam.json",report)
-        passed = advance_fundamentals(ledger,report,checkpoint_sha256=digest_file(best))
+        passed = advance_fundamentals(ledger,report,checkpoint_sha256=digest_file(ckpt))
         if passed:
-            shutil.copyfile(best,state/"current.best.pt")
+            shutil.copyfile(ckpt,state/"current.best.pt")
         dump(ledger_path,ledger)
         return {"stage":ENGLISH,"fundamentals_correct":report["correct"],
                 "fundamentals_total":report["total"],
@@ -191,7 +191,7 @@ def train_batch(args):
                        resume=ckpt.exists(),
                        init_checkpoint=None if ckpt.exists() else state / "current.best.pt",
                        checkpoint_every=200, **MODEL)
-        results = evaluate_english(best, tok,
+        results = evaluate_english(ckpt, tok,
                                    load_gauntlet(root / "examples/english/gauntlet.json"),
                                    max_tokens=50, limit=200, threads=2)
         report = {"evaluated": results["total"],
@@ -199,12 +199,12 @@ def train_batch(args):
                   "exact_correct": results["exact_correct"],
                   "category_scores": results["categories"],
                   "raw_results": results,
-                  "checkpoint_sha256": digest_file(best)}
+                  "checkpoint_sha256": digest_file(ckpt)}
         dump(state / "last-exam.json", report)
         passed = advance(ledger, "english_exam", report,
-                         checkpoint_sha256=digest_file(best))
+                         checkpoint_sha256=digest_file(ckpt))
         if passed:
-            shutil.copyfile(best, state / "current.best.pt")
+            shutil.copyfile(ckpt, state / "current.best.pt")
         dump(ledger_path, ledger)
         return {"stage": ledger["stage"], "english_correct": results["exact_correct"],
                 "english_total": results["automatically_scored"],
@@ -255,14 +255,14 @@ def train_batch(args):
                        resume=ckpt.exists(),
                        init_checkpoint=None if ckpt.exists() else previous,
                        checkpoint_every=25, **MODEL)
-        report = score_book(best, tok, folder / "test.json",
+        report = score_book(ckpt, tok, folder / "test.json",
                             published["sources"][ledger["book_index"]]["sha256"])
         report["book"] = book
         dump(state / "last-exam.json", report)
         passed = advance(ledger, "book_exam", report,
                          checkpoint_sha256=digest_file(best))
         if passed:
-            shutil.copyfile(best, previous)
+            shutil.copyfile(ckpt, previous)
         dump(ledger_path, ledger)
         return {"stage": ledger["stage"], "book": book, "correct": report["correct"],
                 "total": report["total"], "passed": passed}
