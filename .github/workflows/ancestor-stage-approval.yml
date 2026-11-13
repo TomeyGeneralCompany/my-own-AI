@@ -81,12 +81,13 @@ jobs:
       - name: Export and publish only the independently qualified model
         run: |
           set -euo pipefail
-          python scripts/ancestor_staged.py export-candidate             --state data/review-state --archive data/core-generation.zip --generation g0003
-          if gh release view ancestor-g0003-candidate >/dev/null 2>&1; then
+          GENERATION="$(python -c 'import json; p=json.load(open("data/review-state/stage-ledger.json"))["parent_generation"]; print("g%04d"%(int(p[1:])+1))')"
+          python scripts/ancestor_staged.py export-candidate --state data/review-state --archive data/core-generation.zip --generation "$GENERATION"
+          if gh release view "ancestor-${GENERATION}-candidate" >/dev/null 2>&1; then
             echo "Qualified candidate exists; never overwrite immutable trained weights"
             exit 1
           fi
-          gh release create ancestor-g0003-candidate data/core-generation.zip             --title "Original neural Core g0003 — demonstrated competency"             --notes "English, sequential seven-work reading, per-book comprehension, synthesis and owner review evidence gate all passed."             --prerelease
+          gh release create "ancestor-${GENERATION}-candidate" data/core-generation.zip             --title "Original neural Core ${GENERATION} — demonstrated competency"             --notes "English, sequential seven-work reading, per-book comprehension, synthesis and owner review evidence gate all passed."             --prerelease
       - name: Persist qualified ledger and owner's actual review
         run: |
           set -euo pipefail
