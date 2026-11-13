@@ -50,6 +50,9 @@ jobs:
             test -n "$ASSET" && test "$ASSET" != null
             gh release download "$STAGE_TAG" --pattern "$ASSET" --dir data/restore
             python scripts/ancestor_staged.py unpack --archive "data/restore/$ASSET" --state data/learning
+          elif git ls-remote --exit-code --tags origin "refs/tags/${STAGE_TAG}" >/dev/null 2>&1; then
+            echo "::error::Checkpoint release tag exists but release metadata is temporarily unavailable; refusing to reset learning."
+            exit 1
           else
             gh release download "ancestor-${PARENT}-candidate" --pattern core-generation.zip --dir data/restore
             python scripts/ancestor_core.py unpack --archive data/restore/core-generation.zip --state data/parent --generation "$PARENT"
