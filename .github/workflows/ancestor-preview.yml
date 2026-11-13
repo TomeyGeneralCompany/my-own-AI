@@ -1,0 +1,78 @@
+name: Preview the actual neural Core response
+
+on:
+  workflow_dispatch:
+    inputs:
+      question:
+        description: 'Ask the current training checkpoint; does not unlock any stages'
+        required: true
+        default: 'What is the relationship between virtue, trust, and efficient capital gain?'
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      GH_TOKEN: ${{ github.token }}
+      CORE_QUESTION: ${{ inputs.question }}
+      OMP_NUM_THREADS: '2'
+      MKL_NUM_THREADS: '2'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install original CPU neural inference
+        run: |
+          python -m pip install 'torch==2.5.1+cpu' --index-url https://download.pytorch.org/whl/cpu
+          python -m pip install -e '.[dev]'
+      - name: Restore current locked-stage weights without activation
+        run: |
+          set -euo pipefail
+          DIGEST="$(sha256sum published_books/manifest.json | cut -c1-12)"
+          TAG="ancestor-stage-progress-${DIGEST}"
+          ASSET="$(gh api "repos/${GITHUB_REPOSITORY}/releases/tags/${TAG}" --jq '[.assets[] | select(.name | startswith("stage-state-"))] | sort_by(.created_at) | last | .name')"
+          test -n "$ASSET" && test "$ASSET" != null
+          mkdir -p data/preview-download data/preview-state
+          gh release download "$TAG" --pattern "$ASSET" --dir data/preview-download
+          python scripts/ancestor_staged.py unpack --archive "data/preview-download/$ASSET" --state data/preview-state
+      - name: Generate and show the actual model's answer
+        run: |
+          python - <<'PY'
+          import json,os
+          from pathlib import Path
+          from my_own_ai.language_inference import answer_question
+          from my_own_ai.persistent_registry import digest_file
+          state=Path("data/preview-state")
+          ledger=json.loads((state/"stage-ledger.json").read_text())
+          checkpoint=next((state/name for name in ("current.best.pt","english.best.pt","inherited.pt")
+                            if (state/name).is_file()),None)
+          if checkpoint is None:
+              raise ValueError("No trained neural checkpoint for preview")
+          question=os.environ["CORE_QUESTION"]
+          if not question.strip() or len(question)>1000:
+              raise ValueError("Question is empty or too long")
+          answer=answer_question(checkpoint,state/"tokenizer.json",
+                                 question,max_tokens=160,threads=2)
+          report={"stage":ledger["stage"],"book_index":ledger["book_index"],
+                  "checkpoint_sha256":digest_file(checkpoint),
+                  "question":question,"answer":answer}
+          Path("data/preview-result.json").write_text(json.dumps(report,indent=2))
+          with open(os.environ["GITHUB_STEP_SUMMARY"],"a") as f:
+              f.write("# Original neural Core response (unqualified preview)\n\n")
+              f.write("Learning stage: "+ledger["stage"]+"\n\n")
+              f.write("Question: "+question+"\n\n")
+              f.write("Answer produced by actual weights:\n\n")
+              f.write("~~~text\n"+answer["answer"].replace("~~~","- - -")+"\n~~~\n")
+          print(json.dumps(report,ensure_ascii=False,indent=2))
+          PY
+      - name: Retain exact neural output and checkpoint identity
+        uses: actions/upload-artifact@v4
+        with:
+          name: original-core-answer-${{ github.run_id }}
+          path: data/preview-result.json
+          retention-days: 30
