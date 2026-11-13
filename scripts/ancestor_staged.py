@@ -260,7 +260,7 @@ def train_batch(args):
         report["book"] = book
         dump(state / "last-exam.json", report)
         passed = advance(ledger, "book_exam", report,
-                         checkpoint_sha256=digest_file(best))
+                         checkpoint_sha256=digest_file(ckpt))
         if passed:
             shutil.copyfile(ckpt, previous)
         dump(ledger_path, ledger)
