@@ -28,7 +28,8 @@ def initial_ledger(manifest_sha256, books, parent, source_hashes=None):
     return {"format": "competency_locked_v1", "manifest_sha256": manifest_sha256,
             "parent_generation": parent, "books": list(books),
             "source_hashes": source_hashes or {},
-            "stage": ENGLISH, "book_index": 0, "attempts": {},
+            "stage": ENGLISH, "english_fundamentals_passed": False,
+            "book_index": 0, "attempts": {},
             "evidence": [], "last_checkpoint_sha256": None}
 
 
@@ -66,6 +67,24 @@ def book_pass(report):
             report.get("questions_sha256"))
 
 
+def advance_fundamentals(ledger, report, *, checkpoint_sha256):
+    """Unseen word and reference extraction must be learned before grammar."""
+    if ledger.get("stage") != ENGLISH or ledger.get("english_fundamentals_passed"):
+        raise ValueError("Foundation exam is not the current unlocked stage")
+    if report.get("checkpoint_sha256") != checkpoint_sha256:
+        raise ValueError("Foundation exam belongs to different learned weights")
+    total, correct = report.get("total", 0), report.get("correct", 0)
+    passed = total >= 24 and correct / total >= .80 and report.get("exam_sha256")
+    ledger["attempts"]["english_fundamentals"] = ledger["attempts"].get("english_fundamentals", 0) + 1
+    ledger["evidence"].append({"stage": "english_fundamentals",
+        "checkpoint_sha256":checkpoint_sha256, "passed":bool(passed),
+        "report_sha256":sha256(json.dumps(report,sort_keys=True).encode()).hexdigest()})
+    ledger["last_checkpoint_sha256"] = checkpoint_sha256
+    if passed:
+        ledger["english_fundamentals_passed"] = True
+    return bool(passed)
+
+
 def advance(ledger, kind, report, *, checkpoint_sha256):
     """Apply a verified result; failures retain the exact locked stage.
 
@@ -82,6 +101,8 @@ def advance(ledger, kind, report, *, checkpoint_sha256):
     if report.get("checkpoint_sha256") != checkpoint_sha256:
         raise ValueError("Exam does not belong to this trained checkpoint")
     if stage == ENGLISH:
+        if ledger.get("english_fundamentals_passed") is not True:
+            raise ValueError("Vocabulary/reference foundation exam must pass before English graduation")
         passed = english_pass(report)
     elif stage == READ:
         passed = (report.get("book") == ledger["books"][ledger["book_index"]] and
