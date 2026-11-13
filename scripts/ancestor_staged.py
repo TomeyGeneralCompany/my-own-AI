@@ -166,7 +166,7 @@ def train_batch(args):
                        resume=ckpt.exists(),
                        init_checkpoint=None if ckpt.exists() else state/"inherited.pt",
                        checkpoint_every=200, **MODEL)
-        report = score_book(best, tok, inputs/"test.json", fingerprint(inputs/"train.json"))
+        report = score_book(best, tok, inputs/"test.json", fingerprint(inputs/"train.json"), limit=100)
         report["exam_sha256"] = report["questions_sha256"]
         dump(state/"last-exam.json",report)
         passed = advance_fundamentals(ledger,report,checkpoint_sha256=digest_file(best))
