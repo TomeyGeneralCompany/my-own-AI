@@ -165,7 +165,7 @@ def train_batch(args):
                        validation=inputs/"validation.json", output=ckpt,
                        phase="instruction", steps=start+args.english_updates,
                        resume=ckpt.exists(), curriculum_cycles=True,
-                       allow_curriculum_migration=True,
+                       allow_curriculum_migration=True, dynamic_copy=True,
                        init_checkpoint=None if ckpt.exists() else state/"inherited.pt",
                        checkpoint_every=200, **MODEL)
         diagnostics = diagnose_foundation(ckpt, tok, inputs/"train.json",
