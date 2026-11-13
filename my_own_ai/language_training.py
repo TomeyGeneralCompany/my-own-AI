@@ -182,6 +182,7 @@ def train_language(*, tokenizer_path, training, validation, output,
     best_loss = float('inf')
     best_step = 0
     best_path = Path(output).with_name(Path(output).stem + '.best.pt')
+    last_training_loss = None
     if resume:
         payload = torch.load(output, map_location="cpu", weights_only=True)
         stable = {"language_format": 1, "tokenizer_sha256": tokenizer.fingerprint(),
@@ -222,6 +223,7 @@ def train_language(*, tokenizer_path, training, validation, output,
         sampler.set_state(payload["sampler_rng"])
         torch.set_rng_state(payload["torch_rng"])
         start = int(payload["completed_steps"])
+        last_training_loss = payload.get("last_training_loss")
         # Preserve old PR #14 uniform sampling when continuing a checkpoint
         # that predates this policy; do not silently change its RNG stream.
         sampling_policy = new_policy
@@ -270,6 +272,7 @@ def train_language(*, tokenizer_path, training, validation, output,
             "training_target_tokens": training_token_count,
             "validation_target_tokens": validation_token_count,
             "validation_loss": measured,
+            "last_training_loss": last_training_loss,
             "best_validation_loss": best_loss, "best_step": best_step,
         }
         _atomic_save(state, output)
@@ -319,6 +322,9 @@ def train_language(*, tokenizer_path, training, validation, output,
         current_batch = _batch(train_samples, chosen)
         supervised_tokens += int((current_batch[1] != -100).sum())
         loss = _loss(model, current_batch)
+        if not torch.isfinite(loss):
+            raise ValueError("Nonfinite training loss")
+        last_training_loss = float(loss.detach())
         optimizer.zero_grad(set_to_none=True)
         loss.backward()
         torch.nn.utils.clip_grad_norm_(model.parameters(), 1.)
@@ -348,6 +354,7 @@ def train_language(*, tokenizer_path, training, validation, output,
             "sampling_policy": sampling_policy,
             "elapsed_seconds": round(elapsed, 3),
             "target_tokens_per_second": round(supervised_tokens / max(elapsed, 1e-6), 2),
+            "last_training_loss": last_training_loss,
             "validation_loss": measured, "validation_perplexity": math.exp(min(measured, 50)),
             "best_validation_loss": best_loss, "best_step": best_step,
             "best_checkpoint": str(best_path),
