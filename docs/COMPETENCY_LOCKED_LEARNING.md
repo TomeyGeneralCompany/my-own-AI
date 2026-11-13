@@ -77,3 +77,46 @@ answers. **A green infrastructure CI run does not certify English fluency.**
 The controller's examination ledger is the competency result; if the
 English score is insufficient, its stage remains English. The immutable
 g0002 baseline is preserved and is not retroactively called competent.
+
+## Foundation plateau repair: coverage and neural evidence
+
+The foundation phase retains the original g0002 learned weights and AdamW optimizer.
+Legacy random-with-replacement checkpoints transition once, explicitly, to
+`instruction_coverage_cycles`; the prior dataset hashes, sampling policy and
+migration update are recorded in the checkpoint lineage. No previously learned
+weights are discarded and a second implicit curriculum change is refused.
+
+The expanded foundation teaching set contains the original four extraction/copy
+forms and compositionally varied instructional words. It never imports the frozen
+test vocabulary. Each cycle visits every assigned example exactly once in a
+persisted shuffled order. Every runner session finishes the current cycle before
+administering its independently held-out foundation exam. Incomplete cycle
+progress cannot authorize examination or advancement.
+
+`foundation-diagnostics.json` includes 16 known and 16 validation examples with
+raw model outputs, EOS behavior, training/validation losses, and exact curriculum
+coverage. These are diagnostic probes, not an alternative graduation gate.
+The real frozen 72-question examination remains the only foundation graduation
+test (80% pass), and every later stage gate remains unchanged.
+
+For auditing: the historical 129,200 updates used the old random sampling
+policy and do **not** constitute recorded full-coverage cycles. The first newly
+recorded cycle begins after explicit migration.
+
+### Continually novel copying exercises
+
+The first production-weight trial demonstrated that even 13 complete passes
+through a **fixed** expanded list reduced validation loss without producing
+correct new-word answers. The foundation now pairs its fixed instructional
+material with a deterministically generated set of **new** copy examples for
+each numbered teaching cycle. The generated text and response are neural
+training examples, not a hard-coded inference shortcut. Their content is
+derived from cycle/index/seed using the versioned
+`character_copy_cycle_v1` generator. No frozen examination answers are read
+by this generator. The checkpoint records the current cycle and cursor,
+allowing the new examples to be reconstructed exactly on resume.
+
+This change addresses the verified failure mode directly: rote reproduction
+of a small fixed list is no longer enough to minimize the complete training
+objective. The genuine 72-question unseen-word exam still determines
+graduation, and a lower validation loss is not a substitute for passing.

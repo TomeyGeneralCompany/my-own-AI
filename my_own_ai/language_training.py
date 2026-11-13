@@ -15,6 +15,7 @@ from .model import ModelConfig, LocalTransformer
 from .tokenizer import ByteBPETokenizer, BOS, EOS, USER, ASSISTANT, PAD
 from .train import _atomic_save
 from .corpus import collect_documents
+from .copy_curriculum import synthetic_copy_rows, VERSION as COPY_VERSION
 
 
 def load_dialogues(path):
@@ -110,9 +111,17 @@ def train_language(*, tokenizer_path, training, validation, output,
                    phase, steps, init_checkpoint=None, resume=False,
                    embed=64, layers=2, heads=4, context=256,
                    batch_size=2, lr=0.001, seed=42, checkpoint_every=20, threads=2,
-                   time_budget_seconds=None, english_drill_fraction=0.0):
+                   time_budget_seconds=None, english_drill_fraction=0.0,
+                   curriculum_cycles=False, allow_curriculum_migration=False,
+                   dynamic_copy=False):
     if not 0 <= english_drill_fraction <= 1 or not math.isfinite(english_drill_fraction):
         raise ValueError("Invalid English drill sampling fraction")
+    if dynamic_copy and not curriculum_cycles:
+        raise ValueError("Dynamic copy requires complete instructional cycles")
+    if curriculum_cycles and (phase != "instruction" or english_drill_fraction):
+        raise ValueError("Ordered curriculum requires independent instruction examples")
+    if allow_curriculum_migration and not curriculum_cycles:
+        raise ValueError("Curriculum migration requires ordered instruction")
     if phase != "instruction" and english_drill_fraction:
         raise ValueError("English drill sampling requires instruction phase")
     if phase not in ("pretrain", "instruction"):
@@ -172,31 +181,68 @@ def train_language(*, tokenizer_path, training, validation, output,
         raise ValueError("Balanced curriculum needs English and original-author lessons")
     start = 0
     original = None
+    curriculum_order, curriculum_cursor, curriculum_completed = [], 0, 0
+    curriculum_lineage = []
+    curriculum_length = len(train_samples) * (2 if dynamic_copy else 1)
+    active_copy_cycle, active_copy_samples = None, []
     best_loss = float('inf')
     best_step = 0
     best_path = Path(output).with_name(Path(output).stem + '.best.pt')
+    last_training_loss = None
     if resume:
         payload = torch.load(output, map_location="cpu", weights_only=True)
-        if any((payload.get(k) != v) for k, v in {
-            "language_format": 1, "tokenizer_sha256": tokenizer.fingerprint(),
-            "model_config": asdict(cfg), "phase": phase,
-            "training_sha256": source_hash, "validation_sha256": validation_hash,
-            "batch_size": batch_size, "lr": lr, "seed": seed}.items()):
-            raise ValueError("Resume corpus, tokenizer, settings or phase changed")
+        stable = {"language_format": 1, "tokenizer_sha256": tokenizer.fingerprint(),
+                  "model_config": asdict(cfg), "phase": phase,
+                  "batch_size": batch_size, "lr": lr, "seed": seed}
+        if any(payload.get(k) != v for k, v in stable.items()):
+            raise ValueError("Resume architecture, tokenizer or optimizer settings changed")
+        changed_corpus = (payload.get("training_sha256") != source_hash or
+                          payload.get("validation_sha256") != validation_hash)
+        old_policy = payload.get("sampling_policy", "legacy_uniform")
+        new_policy = ("instruction_coverage_cycles" if curriculum_cycles else
+                      "english_grounded_balanced" if english_drill_fraction else
+                      "pretrain_target_token_weighted" if phase == "pretrain" else
+                      "instruction_example_uniform")
+        changing_policy = old_policy != new_policy
+        if not changing_policy and payload.get("copy_generator_version") != (
+                COPY_VERSION if dynamic_copy else None):
+            raise ValueError("Copy curriculum generator changed during resume")
+        if changed_corpus or changing_policy:
+            if not (allow_curriculum_migration and curriculum_cycles and
+                    old_policy in ("instruction_example_uniform", "legacy_uniform") and
+                    not payload.get("curriculum_lineage")):
+                raise ValueError("Curriculum changed without explicit permitted migration")
+            curriculum_lineage = [{"prior_training_sha256": payload.get("training_sha256"),
+                                   "prior_validation_sha256":payload.get("validation_sha256"),
+                                   "prior_policy":old_policy,
+                                   "migrated_at_update":int(payload["completed_steps"])}]
+            best_loss, best_step = float("inf"), 0
+        else:
+            curriculum_lineage = payload.get("curriculum_lineage", [])
+        if curriculum_cycles and not changing_policy:
+            curriculum_order = list(payload.get("curriculum_order", []))
+            curriculum_cursor = int(payload.get("curriculum_cursor", 0))
+            curriculum_completed = int(payload.get("curriculum_completed", 0))
+            if (len(curriculum_order) != curriculum_length or
+                    sorted(curriculum_order) != list(range(curriculum_length)) or
+                    not 0 <= curriculum_cursor < len(curriculum_order)):
+                raise ValueError("Invalid saved curriculum coverage ledger")
         model.load_state_dict(payload["state_dict"])
         optimizer.load_state_dict(payload["optimizer"])
         sampler.set_state(payload["sampler_rng"])
         torch.set_rng_state(payload["torch_rng"])
         start = int(payload["completed_steps"])
+        last_training_loss = payload.get("last_training_loss")
         # Preserve old PR #14 uniform sampling when continuing a checkpoint
         # that predates this policy; do not silently change its RNG stream.
-        sampling_policy = payload.get("sampling_policy", "legacy_uniform")
-        expected_policy = "english_grounded_balanced" if english_drill_fraction else ("pretrain_target_token_weighted" if phase == "pretrain" else "instruction_example_uniform")
-        if sampling_policy != expected_policy and not (not english_drill_fraction and sampling_policy == "legacy_uniform"):
+        sampling_policy = new_policy
+        if not curriculum_cycles and changing_policy and not (
+                not english_drill_fraction and old_policy == "legacy_uniform"):
             raise ValueError("Instruction sampling policy changed during resume")
         original = payload.get("parent_sha256")
-        best_loss = float(payload.get("best_validation_loss", payload["validation_loss"]))
-        best_step = int(payload.get("best_step", start))
+        if not (changed_corpus or changing_policy):
+            best_loss = float(payload.get("best_validation_loss", payload["validation_loss"]))
+            best_step = int(payload.get("best_step", start))
     elif init_checkpoint:
         parent = Path(init_checkpoint)
         payload = torch.load(parent, map_location="cpu", weights_only=True)
@@ -206,6 +252,10 @@ def train_language(*, tokenizer_path, training, validation, output,
             raise ValueError("Parent model and tokenizer are incompatible")
         model.load_state_dict(payload["state_dict"])
         original = sha256(parent.read_bytes()).hexdigest()
+    if curriculum_cycles:
+        sampling_policy = "instruction_coverage_cycles"
+        if not curriculum_order:
+            curriculum_order = torch.randperm(curriculum_length, generator=sampler).tolist()
     if steps < start:
         raise ValueError("Requested steps precede saved progress")
     def save(step):
@@ -224,10 +274,15 @@ def train_language(*, tokenizer_path, training, validation, output,
             "lr": lr, "batch_size": batch_size, "training_sha256": source_hash,
             "validation_sha256": validation_hash, "parent_sha256": original,
             "sampling_policy": sampling_policy,
+            "curriculum_order": curriculum_order, "curriculum_cursor": curriculum_cursor,
+            "curriculum_completed": curriculum_completed,
+            "curriculum_lineage": curriculum_lineage,
+            "copy_generator_version": COPY_VERSION if dynamic_copy else None,
             "english_drill_fraction": english_drill_fraction,
             "training_target_tokens": training_token_count,
             "validation_target_tokens": validation_token_count,
             "validation_loss": measured,
+            "last_training_loss": last_training_loss,
             "best_validation_loss": best_loss, "best_step": best_step,
         }
         _atomic_save(state, output)
@@ -245,13 +300,26 @@ def train_language(*, tokenizer_path, training, validation, output,
     stop_reason = "target_steps"
     weights = torch.tensor([len(labels) for _, labels in train_samples],
                            dtype=torch.float64)
-    for step in range(start + 1, steps + 1):
+    step = start
+    while step < steps or (curriculum_cycles and curriculum_cursor):
+        step += 1
         if time_budget_seconds is not None and completed > start and (
                 monotonic() - clock_start + max(5., recent_update * 2) >= time_budget_seconds):
             stop_reason = "time_budget"
             break
         update_start = monotonic()
-        if sampling_policy == "english_grounded_balanced":
+        if sampling_policy == "instruction_coverage_cycles":
+            if dynamic_copy and active_copy_cycle != curriculum_completed:
+                words = synthetic_copy_rows(curriculum_completed, len(train_samples), seed)
+                active_copy_samples = [_example(row, tokenizer, context) for row in words]
+                active_copy_cycle = curriculum_completed
+            chosen = curriculum_order[curriculum_cursor:curriculum_cursor + batch_size]
+            curriculum_cursor += len(chosen)
+            if curriculum_cursor == len(curriculum_order):
+                curriculum_completed += 1
+                curriculum_cursor = 0
+                curriculum_order = torch.randperm(curriculum_length, generator=sampler).tolist()
+        elif sampling_policy == "english_grounded_balanced":
             # Select independently from English mechanics and authored reasoning,
             # making neither curriculum silently drown out the other.
             chosen = []
@@ -265,9 +333,12 @@ def train_language(*, tokenizer_path, training, validation, output,
         else:
             chosen = torch.randint(len(train_samples), (batch_size,),
                                    generator=sampler).tolist()
-        current_batch = _batch(train_samples, chosen)
+        current_batch = _batch(train_samples + active_copy_samples if dynamic_copy else train_samples, chosen)
         supervised_tokens += int((current_batch[1] != -100).sum())
         loss = _loss(model, current_batch)
+        if not torch.isfinite(loss):
+            raise ValueError("Nonfinite training loss")
+        last_training_loss = float(loss.detach())
         optimizer.zero_grad(set_to_none=True)
         loss.backward()
         torch.nn.utils.clip_grad_norm_(model.parameters(), 1.)
@@ -288,11 +359,17 @@ def train_language(*, tokenizer_path, training, validation, output,
             "trained_target_tokens": supervised_tokens,
             "training_target_tokens": training_token_count,
             "validation_target_tokens": validation_token_count,
+            "curriculum_cycles_completed": curriculum_completed,
+            "curriculum_cursor": curriculum_cursor,
+            "curriculum_examples_total": curriculum_length,
+            "copy_generator_version": COPY_VERSION if dynamic_copy else None,
+            "curriculum_migrated": bool(curriculum_lineage),
             "effective_training_passes": round(
                 supervised_tokens / max(training_token_count, 1), 3),
             "sampling_policy": sampling_policy,
             "elapsed_seconds": round(elapsed, 3),
             "target_tokens_per_second": round(supervised_tokens / max(elapsed, 1e-6), 2),
+            "last_training_loss": last_training_loss,
             "validation_loss": measured, "validation_perplexity": math.exp(min(measured, 50)),
             "best_validation_loss": best_loss, "best_step": best_step,
             "best_checkpoint": str(best_path),

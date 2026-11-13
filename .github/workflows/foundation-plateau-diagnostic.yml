@@ -1,0 +1,71 @@
+name: Real foundation plateau diagnosis
+
+on:
+  pull_request:
+    paths:
+      - 'my_own_ai/english_acquisition.py'
+      - 'my_own_ai/copy_curriculum.py'
+      - 'my_own_ai/language_training.py'
+      - 'my_own_ai/foundation_diagnostics.py'
+      - 'scripts/ancestor_staged.py'
+      - '.github/workflows/foundation-plateau-diagnostic.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  diagnosis:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      GH_TOKEN: ${{ github.token }}
+      OMP_NUM_THREADS: '2'
+      MKL_NUM_THREADS: '2'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install original model CPU runtime
+        run: |
+          python -m pip install 'torch==2.5.1+cpu' --index-url https://download.pytorch.org/whl/cpu
+          python -m pip install -e '.[dev]'
+      - name: Fetch immutable copy of the current autonomous checkpoint
+        run: |
+          set -euo pipefail
+          mkdir -p data/source data/foundation-baseline
+          DIGEST="$(sha256sum published_books/manifest.json | cut -c1-12)"
+          TAG="ancestor-stage-progress-${DIGEST}"
+          ASSET="$(gh api "repos/${GITHUB_REPOSITORY}/releases/tags/${TAG}" --jq '[.assets[] | select(.name | startswith("stage-state-"))] | sort_by(.created_at) | last | .name')"
+          test -n "$ASSET" && test "$ASSET" != null
+          gh release download "$TAG" --pattern "$ASSET" --dir data/source
+          python scripts/ancestor_staged.py unpack --archive "data/source/$ASSET" --state data/foundation-baseline
+      - name: Diagnose actual learned weights without training or moving stages
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          from my_own_ai.english_acquisition import fundamentals
+          from my_own_ai.foundation_diagnostics import diagnose_foundation
+          from scripts.ancestor_staged import score_book
+          root=Path("data/foundation-baseline")
+          inputs=Path("data/source")
+          for split in ("train","validation","test"):
+              (inputs / f"{split}.json").write_text(json.dumps(fundamentals(split)))
+          result=diagnose_foundation(root/"foundation.pt",root/"tokenizer.json",
+                                     inputs/"train.json",inputs/"validation.json")
+          result["frozen_exam"]=score_book(root/"foundation.pt",root/"tokenizer.json",
+                                           inputs/"test.json", "unchanged-independent-exam",limit=100)
+          (inputs/"diagnostics.json").write_text(json.dumps(result,indent=2))
+          print(json.dumps({k: result[k] for k in (
+              "completed_updates","validation_loss","best_validation_loss",
+              "last_training_loss","probes")},indent=2)[:1500])
+          PY
+      - name: Upload original-weight diagnostic evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: foundation-baseline-${{ github.run_id }}
+          path: data/source/diagnostics.json
+          retention-days: 30

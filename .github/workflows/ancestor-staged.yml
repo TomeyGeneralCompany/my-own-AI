@@ -50,6 +50,9 @@ jobs:
             test -n "$ASSET" && test "$ASSET" != null
             gh release download "$STAGE_TAG" --pattern "$ASSET" --dir data/restore
             python scripts/ancestor_staged.py unpack --archive "data/restore/$ASSET" --state data/learning
+          elif git ls-remote --exit-code --tags origin "refs/tags/${STAGE_TAG}" >/dev/null 2>&1; then
+            echo "::error::Checkpoint release tag exists but release metadata is temporarily unavailable; refusing to reset learning."
+            exit 1
           else
             gh release download "ancestor-${PARENT}-candidate" --pattern core-generation.zip --dir data/restore
             python scripts/ancestor_core.py unpack --archive data/restore/core-generation.zip --state data/parent --generation "$PARENT"
@@ -78,7 +81,23 @@ jobs:
           fi
           ASSET="stage-state-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}.zip"
           cp data/stage.zip "data/$ASSET"
-          gh release upload "$STAGE_TAG" "data/$ASSET"
+          # GitHub release reads/uploads can intermittently return
+          # "release not found" even while the tag exists. Retry the same
+          # uniquely named asset; never advance without a confirmed upload.
+          uploaded=false
+          for attempt in 1 2 3 4 5; do
+            if gh release upload "$STAGE_TAG" "data/$ASSET"; then
+              uploaded=true
+              break
+            fi
+            if gh api "repos/${GITHUB_REPOSITORY}/releases/tags/${STAGE_TAG}" \
+                  --jq '.assets[].name' | grep -Fxq "$ASSET"; then
+              uploaded=true
+              break
+            fi
+            sleep 5
+          done
+          test "$uploaded" = true
       - name: Mark review gate for auto-scheduler
         run: |
           set -euo pipefail
@@ -105,6 +124,7 @@ jobs:
           path: |
             data/learning/stage-ledger.json
             data/learning/last-exam.json
+            data/learning/foundation-diagnostics.json
             data/stage-result.json
           if-no-files-found: warn
           retention-days: 90

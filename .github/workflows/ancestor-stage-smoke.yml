@@ -4,6 +4,11 @@ on:
   pull_request:
     paths:
       - 'my_own_ai/stage_controller.py'
+      - 'my_own_ai/english_acquisition.py'
+      - 'my_own_ai/copy_curriculum.py'
+      - 'my_own_ai/language_training.py'
+      - 'my_own_ai/foundation_diagnostics.py'
+      - 'tests/test_foundation_cycles.py'
       - 'my_own_ai/ordered_book_learning.py'
       - 'scripts/ancestor_staged.py'
       - '.github/workflows/ancestor-staged.yml'
@@ -50,12 +55,17 @@ jobs:
           assert ledger["format"]=="competency_locked_v1"
           from my_own_ai.english_acquisition import fundamentals
           assert report["total"]==len(fundamentals("test"))
-          assert report["correct"] >= 1, "Neural smoke must correctly reproduce at least one previously unseen reference word"
+          diagnostics=json.loads((state/"foundation-diagnostics.json").read_text())
+          assert diagnostics["probes"]["training"]["correct"] >= 1, "Original neural model must reproduce at least one instructed word"
+          # The independent unseen exam is the competence gate, not a smoke
+          # requirement: the earlier >=1 assertion was met by a leaked word.
+          assert ledger["english_fundamentals_passed"] == (report["correct"] / report["total"] >= .80)
           assert ledger["evidence"] and ledger["evidence"][-1]["stage"]=="english_fundamentals"
           assert (state/"foundation.pt").is_file()
           with open(os.environ["GITHUB_STEP_SUMMARY"],"a") as f:
               f.write("# Staged neural smoke — actual g0002-inherited weights\n\n")
-              f.write("Unseen word-reference answers correct: "+str(report["correct"])+"/"+str(report["total"])+"\\n\\n")
+              f.write("Independent unseen word-reference answers: "+str(report["correct"])+"/"+str(report["total"])+"\\n\\n")
+              f.write("In-distribution instruction probe: "+str(diagnostics["probes"]["training"]["correct"])+"/"+str(diagnostics["probes"]["training"]["total"])+"\\n\\n")
               f.write("Controller locked stage after exam: "+ledger["stage"]+"\n\n")
               f.write("**Integration pass is not English competence certification.**\n")
           PY
@@ -67,5 +77,6 @@ jobs:
           path: |
             data/stage-ci/stage-ledger.json
             data/stage-ci/last-exam.json
+            data/stage-ci/foundation-diagnostics.json
             data/stage-ci-result.json
           retention-days: 14

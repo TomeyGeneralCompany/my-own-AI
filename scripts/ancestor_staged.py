@@ -16,6 +16,7 @@ from my_own_ai.english_drills import english_drills
 from my_own_ai.english_acquisition import drills as acquisition_drills, fundamentals
 from my_own_ai.tokenizer import ByteBPETokenizer
 from my_own_ai.language_training import train_language
+from my_own_ai.foundation_diagnostics import diagnose_foundation
 from my_own_ai.language_inference import answer_question
 from my_own_ai.language_evaluation import evaluate_english, load_gauntlet
 from my_own_ai.persistent_registry import digest_file, package_generation
@@ -160,12 +161,20 @@ def train_batch(args):
         ckpt = state / "foundation.pt"
         best = state / "foundation.best.pt"
         start = int(torch.load(ckpt,map_location="cpu",weights_only=True)["completed_steps"]) if ckpt.exists() else 0
-        train_language(tokenizer_path=tok, training=inputs/"train.json",
+        training = train_language(tokenizer_path=tok, training=inputs/"train.json",
                        validation=inputs/"validation.json", output=ckpt,
                        phase="instruction", steps=start+args.english_updates,
-                       resume=ckpt.exists(),
+                       resume=ckpt.exists(), curriculum_cycles=True,
+                       allow_curriculum_migration=True, dynamic_copy=True,
                        init_checkpoint=None if ckpt.exists() else state/"inherited.pt",
                        checkpoint_every=200, **MODEL)
+        diagnostics = diagnose_foundation(ckpt, tok, inputs/"train.json",
+                                          inputs/"validation.json")
+        dump(state/"foundation-diagnostics.json", diagnostics)
+        # An independent examination is permitted only at the end of a
+        # fully covered teaching cycle, never for an arbitrary step target.
+        if training["curriculum_cursor"] != 0 or training["curriculum_cycles_completed"] < 1:
+            raise ValueError("Attempted foundation examination on incomplete teaching cycle")
         report = score_book(ckpt, tok, inputs/"test.json", fingerprint(inputs/"train.json"), limit=100)
         report["exam_sha256"] = report["questions_sha256"]
         dump(state/"last-exam.json",report)
@@ -174,8 +183,14 @@ def train_batch(args):
             shutil.copyfile(ckpt,state/"current.best.pt")
         dump(ledger_path,ledger)
         return {"stage":ENGLISH,"fundamentals_correct":report["correct"],
-                "fundamentals_total":report["total"],
-                "passed":passed,"completed_updates":start+args.english_updates}
+                "fundamentals_total":report["total"], "passed":passed,
+                "completed_updates":training["completed_steps"],
+                "curriculum_cycles":training["curriculum_cycles_completed"],
+                "curriculum_examples":training["curriculum_examples_total"],
+                "validation_loss":training["validation_loss"],
+                "last_training_loss":training["last_training_loss"],
+                "known_probe_correct":diagnostics["probes"]["training"]["correct"],
+                "unseen_probe_correct":diagnostics["probes"]["validation"]["correct"]}
 
     if stage == ENGLISH:
         inputs = scratch / "english"
