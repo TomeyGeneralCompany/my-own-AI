@@ -55,7 +55,7 @@ jobs:
           assert (state/"foundation.pt").is_file()
           with open(os.environ["GITHUB_STEP_SUMMARY"],"a") as f:
               f.write("# Staged neural smoke — actual g0002-inherited weights\n\n")
-              f.write("Frozen 200-case exam exact: "+str(report["exact_correct"])+"/130\n\n")
+              f.write("Unseen word-reference answers correct: "+str(report["correct"])+"/"+str(report["total"])+"\\n\\n")
               f.write("Controller locked stage after exam: "+ledger["stage"]+"\n\n")
               f.write("**Integration pass is not English competence certification.**\n")
           PY
