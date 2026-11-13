@@ -87,6 +87,14 @@ jobs:
             exit 1
           fi
           gh release create ancestor-g0003-candidate data/core-generation.zip             --title "Original neural Core g0003 — demonstrated competency"             --notes "English, sequential seven-work reading, per-book comprehension, synthesis and owner review evidence gate all passed."             --prerelease
+      - name: Persist qualified ledger and owner's actual review
+        run: |
+          set -euo pipefail
+          DIGEST="$(sha256sum published_books/manifest.json | cut -c1-12)"
+          TAG="ancestor-stage-progress-${DIGEST}"
+          python scripts/ancestor_staged.py pack --state data/review-state --archive data/qualified-stage.zip
+          cp data/qualified-stage.zip "data/stage-state-approved-${GITHUB_RUN_ID}.zip"
+          gh release upload "$TAG" "data/stage-state-approved-${GITHUB_RUN_ID}.zip"
       - name: Preserve signed-off review summary and ledger
         if: always()
         uses: actions/upload-artifact@v4
