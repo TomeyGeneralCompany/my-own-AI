@@ -13,7 +13,7 @@ import torch
 
 from my_own_ai.corpus import collect_documents
 from my_own_ai.english_drills import english_drills
-from my_own_ai.english_acquisition import drills as acquisition_drills
+from my_own_ai.english_acquisition import drills as acquisition_drills, fundamentals
 from my_own_ai.tokenizer import ByteBPETokenizer
 from my_own_ai.language_training import train_language
 from my_own_ai.language_inference import answer_question
@@ -22,7 +22,7 @@ from my_own_ai.persistent_registry import digest_file, package_generation
 from my_own_ai.ordered_book_learning import read_all_units
 from my_own_ai.published_corpus import prepare_published_corpus, validate_published_manifest
 from my_own_ai.reasoning_curriculum import extract_lessons
-from my_own_ai.stage_controller import (initial_ledger, verify_ledger, advance, approve, fingerprint,
+from my_own_ai.stage_controller import (initial_ledger, verify_ledger, advance, advance_fundamentals, approve, fingerprint,
     ENGLISH, READ, COMPREHEND, SYNTHESIS, REVIEW, COMPLETE)
 
 # Fixed compatible architecture of the trained original-weight g0002 ancestor.
@@ -152,6 +152,31 @@ def train_batch(args):
         dump(ledger_path, ledger)
         return {"stage": REVIEW, "status": "awaiting_owner_review", "responses": responses}
 
+    if stage == ENGLISH and not ledger.get("english_fundamentals_passed", False):
+        inputs = scratch / "fundamentals"
+        inputs.mkdir(parents=True, exist_ok=True)
+        for split in ("train","validation","test"):
+            dump(inputs / (split + ".json"), fundamentals(split))
+        ckpt = state / "foundation.pt"
+        best = state / "foundation.best.pt"
+        start = int(torch.load(ckpt,map_location="cpu",weights_only=True)["completed_steps"]) if ckpt.exists() else 0
+        train_language(tokenizer_path=tok, training=inputs/"train.json",
+                       validation=inputs/"validation.json", output=ckpt,
+                       phase="instruction", steps=start+args.english_updates,
+                       resume=ckpt.exists(),
+                       init_checkpoint=None if ckpt.exists() else state/"inherited.pt",
+                       checkpoint_every=200, **MODEL)
+        report = score_book(best, tok, inputs/"test.json", fingerprint(inputs/"train.json"))
+        report["exam_sha256"] = report["questions_sha256"]
+        dump(state/"last-exam.json",report)
+        passed = advance_fundamentals(ledger,report,checkpoint_sha256=digest_file(best))
+        if passed:
+            shutil.copyfile(best,state/"current.best.pt")
+        dump(ledger_path,ledger)
+        return {"stage":ENGLISH,"fundamentals_correct":report["correct"],
+                "fundamentals_total":report["total"],
+                "passed":passed,"completed_updates":start+args.english_updates}
+
     if stage == ENGLISH:
         inputs = scratch / "english"
         inputs.mkdir(parents=True, exist_ok=True)
@@ -164,7 +189,7 @@ def train_batch(args):
                        validation=inputs / "validation.json", output=ckpt,
                        phase="instruction", steps=start + args.english_updates,
                        resume=ckpt.exists(),
-                       init_checkpoint=None if ckpt.exists() else state / "inherited.pt",
+                       init_checkpoint=None if ckpt.exists() else state / "current.best.pt",
                        checkpoint_every=200, **MODEL)
         results = evaluate_english(best, tok,
                                    load_gauntlet(root / "examples/english/gauntlet.json"),
@@ -328,7 +353,7 @@ def export_qualified_candidate(state_dir, archive, *, generation=None):
     if ledger["last_checkpoint_sha256"] != digest_file(checkpoint):
         raise ValueError("Qualified model differs from independently reviewed checkpoint")
     actual_instruction_steps = sum(int(torch.load(path, map_location="cpu", weights_only=True)["completed_steps"])
-                                   for path in [state/"english.pt", *sorted(state.glob("learn_*.pt"))]
+                                   for path in [state/"foundation.pt", state/"english.pt", *sorted(state.glob("learn_*.pt"))]
                                    if path.is_file())
     actual_read_updates = sum(int(torch.load(path, map_location="cpu", weights_only=True)["completed_steps"])
                               for path in sorted(state.glob("read_*.pt")))
