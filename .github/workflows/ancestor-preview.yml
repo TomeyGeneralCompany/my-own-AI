@@ -51,10 +51,10 @@ jobs:
           ledger=json.loads((state/"stage-ledger.json").read_text())
           book=ledger["books"][ledger["book_index"]] if ledger["book_index"] < len(ledger["books"]) else ""
           stage=ledger["stage"]
-          preferred=([f"learn_{book}.best.pt"] if stage=="comprehend" else
+          preferred=([f"learn_{book}.pt"] if stage=="comprehend" else
                      [f"read_{book}.pt"] if stage=="read" else
-                     ["foundation.best.pt"] if stage=="english" and not ledger.get("english_fundamentals_passed") else
-                     ["english.best.pt"] if stage=="english" else [])
+                     ["foundation.pt"] if stage=="english" and not ledger.get("english_fundamentals_passed") else
+                     ["english.pt"] if stage=="english" else [])
           checkpoint=next((state/name for name in preferred+["current.best.pt","english.best.pt","inherited.pt"]
                             if (state/name).is_file()),None)
           if checkpoint is None:
