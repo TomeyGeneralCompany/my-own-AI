@@ -58,7 +58,7 @@ def prepare_book(prepared, book, destination):
     if count == 0:
         raise ValueError("No source units for book " + book)
     # Repeated source passage is loss telemetry only, NOT a held-out exam.
-    (reading / "validation" / "calibration.txt").write_text(calibration)
+    (reading / "validation" / "calibration.txt").write_text("Calibration passage from the current authored work: " + calibration)
     manifest = json.loads((base / "manifest.json").read_text())
     manifest["reading_calibration"] = "overlap_with_source_not_a_competence_exam"
     (reading / "manifest.json").write_text(json.dumps(manifest))
