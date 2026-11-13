@@ -92,8 +92,11 @@ def fundamentals(split):
         raise ValueError("Unknown foundation split")
     families = TRAIN if split=="train" else VALIDATION if split=="validation" else FOUNDATION_TEST
     examples = []
+    heldout_words = {word for triple in FOUNDATION_TEST for word in triple}
     for actor, obj, place in families:
         for word in (actor, obj, place):
+            if split != "test" and word in heldout_words:
+                continue  # Never teach any frozen examination vocabulary.
             prompts = (
                 f"Repeat exactly the word after the colon: {word}",
                 f"Copy the English word exactly, without extra text: {word}",
