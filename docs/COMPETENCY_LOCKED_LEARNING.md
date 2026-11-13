@@ -102,3 +102,21 @@ test (80% pass), and every later stage gate remains unchanged.
 For auditing: the historical 129,200 updates used the old random sampling
 policy and do **not** constitute recorded full-coverage cycles. The first newly
 recorded cycle begins after explicit migration.
+
+### Continually novel copying exercises
+
+The first production-weight trial demonstrated that even 13 complete passes
+through a **fixed** expanded list reduced validation loss without producing
+correct new-word answers. The foundation now pairs its fixed instructional
+material with a deterministically generated set of **new** copy examples for
+each numbered teaching cycle. The generated text and response are neural
+training examples, not a hard-coded inference shortcut. Their content is
+derived from cycle/index/seed using the versioned
+`character_copy_cycle_v1` generator. No frozen examination answers are read
+by this generator. The checkpoint records the current cycle and cursor,
+allowing the new examples to be reconstructed exactly on resume.
+
+This change addresses the verified failure mode directly: rote reproduction
+of a small fixed list is no longer enough to minimize the complete training
+objective. The genuine 72-question unseen-word exam still determines
+graduation, and a lower validation loss is not a substitute for passing.
