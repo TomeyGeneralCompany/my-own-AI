@@ -79,6 +79,7 @@ jobs:
           import os,re
           from my_own_ai.published_corpus import validate_published_manifest
           assert re.fullmatch(r'g[0-9]{4}',os.environ["GENERATION"])
+          assert int(os.environ["GENERATION"][1:]) <= 2, "New training generations require the competency-locked staged workflow"
           for name in ("READING_PASSES","INSTRUCTION_STEPS"):
               assert os.environ[name].isdecimal() and 1 <= int(os.environ[name]) <= 10000
           assert os.environ["CURRICULUM"] in ("continuation","reasoning","english_grounded")

@@ -1,0 +1,71 @@
+name: Staged Core real neural integration
+
+on:
+  pull_request:
+    paths:
+      - 'my_own_ai/stage_controller.py'
+      - 'my_own_ai/ordered_book_learning.py'
+      - 'scripts/ancestor_staged.py'
+      - '.github/workflows/ancestor-staged.yml'
+      - '.github/workflows/ancestor-stage-smoke.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  actual-gated-english:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      GH_TOKEN: ${{ github.token }}
+      OMP_NUM_THREADS: '2'
+      MKL_NUM_THREADS: '2'
+      CUDA_VISIBLE_DEVICES: ''
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install original CPU neural runtime
+        run: |
+          python -m pip install 'torch==2.5.1+cpu' --index-url https://download.pytorch.org/whl/cpu
+          python -m pip install -e '.[dev]'
+      - name: Retrieve real learned g0002 ancestor
+        run: |
+          set -euo pipefail
+          mkdir -p data/parent-download data/parent
+          gh release download ancestor-g0002-candidate --pattern core-generation.zip --dir data/parent-download
+          python scripts/ancestor_core.py unpack --archive data/parent-download/core-generation.zip --state data/parent --generation g0002
+      - name: Perform a real original-weight neural update and independent English exam
+        run: |
+          set -euo pipefail
+          python scripts/ancestor_staged.py train --repository .             --state data/stage-ci --scratch data/stage-ci-scratch             --parent-state data/parent --parent-generation g0002             --english-updates 4000 --read-updates 1 --book-updates 1             | tee data/stage-ci-result.json
+          python - <<'PY'
+          import json,os
+          from pathlib import Path
+          state=Path("data/stage-ci")
+          ledger=json.loads((state/"stage-ledger.json").read_text())
+          report=json.loads((state/"last-exam.json").read_text())
+          assert ledger["format"]=="competency_locked_v1"
+          from my_own_ai.english_acquisition import fundamentals
+          assert report["total"]==len(fundamentals("test"))
+          assert report["correct"] >= 1, "Neural smoke must correctly reproduce at least one previously unseen reference word"
+          assert ledger["evidence"] and ledger["evidence"][-1]["stage"]=="english_fundamentals"
+          assert (state/"foundation.pt").is_file()
+          with open(os.environ["GITHUB_STEP_SUMMARY"],"a") as f:
+              f.write("# Staged neural smoke — actual g0002-inherited weights\n\n")
+              f.write("Unseen word-reference answers correct: "+str(report["correct"])+"/"+str(report["total"])+"\\n\\n")
+              f.write("Controller locked stage after exam: "+ledger["stage"]+"\n\n")
+              f.write("**Integration pass is not English competence certification.**\n")
+          PY
+      - name: Retain generated answers for independent inspection
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: stage-neural-integration-${{ github.run_id }}
+          path: |
+            data/stage-ci/stage-ledger.json
+            data/stage-ci/last-exam.json
+            data/stage-ci-result.json
+          retention-days: 14

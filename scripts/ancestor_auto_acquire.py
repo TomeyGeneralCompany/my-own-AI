@@ -63,31 +63,27 @@ def candidate_metadata(generation):
 
 
 def main():
-    manifest = hashlib.sha256(Path("published_books/manifest.json").read_bytes()).hexdigest()
-    tags = {row["tagName"] for row in json.loads(gh("release", "list", "--limit", "1000", "--json", "tagName"))}
+    """Start/resume the *staged* controller; never call the step-count candidate path."""
+    tags = {row["tagName"] for row in json.loads(
+        gh("release", "list", "--limit", "1000", "--json", "tagName"))}
     latest = max(((generation_number(match.group(1)), match.group(1))
                   for tag in tags if (match := TAG.fullmatch(tag))), default=None)
-    metadata = candidate_metadata(latest[1]) if latest else None
-    # The training workflow itself automatically hands off sessions. Only
-    # restart interrupted campaigns when no job is active.
-    runs = json.loads(gh("run", "list", "--workflow", "ancestor-train.yml",
+    if latest is None:
+        raise RuntimeError("A trained ancestral checkpoint is required; cannot fabricate weights")
+    corpus_digest = hashlib.sha256(Path("published_books/manifest.json").read_bytes()).hexdigest()[:12]
+    if "ancestor-stage-review-" + corpus_digest in tags:
+        print("Locked reasoning examination awaits owner review; no auto-promotion")
+        return 0
+    runs = json.loads(gh("run", "list", "--workflow", "ancestor-staged.yml",
                          "--limit", "30", "--json", "status,headBranch"))
     active = any(run["status"] in ("queued", "in_progress", "waiting", "requested", "pending")
                  and run.get("headBranch") == "main" for run in runs)
-    decision = plan(tags, manifest, metadata, active)
-    print(json.dumps(decision, sort_keys=True))
-    if decision["action"] in ("start", "resume"):
-        gh("workflow", "run", "ancestor-train.yml", "--ref", "main",
-           "-f", f"generation={decision['generation']}",
-           "-f", f"parent_generation={decision['parent']}",
-           "-f", f"curriculum={CURRICULUM}",
-           "-f", f"reading_passes={PASSES}",
-           "-f", f"instruction_steps={STEPS}",
-           "-f", f"session_seconds={SESSION}",
-           "-f", "auto_continue=true")
-        print("Dispatched original-weight training", decision["generation"])
-    elif decision["action"] == "missing_parent":
-        raise RuntimeError("No g0001 candidate exists; recover trained parent before scheduling")
+    if active:
+        print("Competency-locked training already active")
+        return 0
+    gh("workflow", "run", "ancestor-staged.yml", "--ref", "main",
+       "-f", f"parent_generation={latest[1]}")
+    print("Dispatched competency-locked original neural training from", latest[1])
     return 0
 
 
