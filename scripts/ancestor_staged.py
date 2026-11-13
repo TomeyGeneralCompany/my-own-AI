@@ -115,7 +115,8 @@ def train_batch(args):
     else:
         if not args.parent_state:
             raise ValueError("Initial staged generation requires trained ancestral weights")
-        ledger = initial_ledger(published["manifest_sha256"], books, args.parent_generation)
+        ledger = initial_ledger(published["manifest_sha256"], books, args.parent_generation,
+                                {x["id"]: x["sha256"] for x in published["sources"]})
         parent = Path(args.parent_state)
         if not (parent / "assistant.best.pt").exists():
             raise ValueError("Missing completed ancestral checkpoint")
@@ -209,6 +210,9 @@ def train_batch(args):
                   "covered_targets": result["unique_supervised_tokens_per_pass"] if completed else 0,
                   "last_read_unit": result["last_read_unit"],
                   "ordered_manifest_sha256": published["manifest_sha256"],
+                  "read_units_expected": details["units"],
+                  "read_units_seen": details["units"] if completed else result["next_window"],
+                  "source_sha256": published["sources"][ledger["book_index"]]["sha256"],
                   "checkpoint_sha256": digest_file(ckpt)}
         dump(state / "last-exam.json", report)
         if completed and advance(ledger, "reading_coverage", report,
@@ -231,7 +235,8 @@ def train_batch(args):
                        resume=ckpt.exists(),
                        init_checkpoint=None if ckpt.exists() else previous,
                        checkpoint_every=25, **MODEL)
-        report = score_book(best, tok, folder / "test.json", details["source_sha256"])
+        report = score_book(best, tok, folder / "test.json",
+                            published["sources"][ledger["book_index"]]["sha256"])
         report["book"] = book
         dump(state / "last-exam.json", report)
         passed = advance(ledger, "book_exam", report,
