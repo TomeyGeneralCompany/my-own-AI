@@ -322,6 +322,13 @@ def export_qualified_candidate(state_dir, archive, *, generation="g0003"):
         raise ValueError("Missing complete learned reading/instruction weights")
     if ledger["last_checkpoint_sha256"] != digest_file(checkpoint):
         raise ValueError("Qualified model differs from independently reviewed checkpoint")
+    actual_instruction_steps = sum(int(torch.load(path, map_location="cpu", weights_only=True)["completed_steps"])
+                                   for path in [state/"english.pt", *sorted(state.glob("learn_*.pt"))]
+                                   if path.is_file())
+    actual_read_updates = sum(int(torch.load(path, map_location="cpu", weights_only=True)["completed_steps"])
+                              for path in sorted(state.glob("read_*.pt")))
+    if actual_instruction_steps <= 0 or actual_read_updates <= 0:
+        raise ValueError("Qualified candidate missing substantive recorded learned updates")
     with TemporaryDirectory() as work:
         output = Path(work)
         for source, dest in ((state/"tokenizer.json","tokenizer.json"),
@@ -339,7 +346,9 @@ def export_qualified_candidate(state_dir, archive, *, generation="g0003"):
             "parent_generation":ledger["parent_generation"],
             "completed_reading_passes":len(ledger["books"]),
             "target_reading_passes":len(ledger["books"]),
-            "completed_instruction_steps":1,"target_instruction_steps":1,
+            "completed_instruction_steps":actual_instruction_steps,
+            "target_instruction_steps":actual_instruction_steps,
+            "completed_reading_updates":actual_read_updates,
             "competence_evidence_sha256":fingerprint(state/"stage-ledger.json"),
             "review_sha256":fingerprint(state/"owner-review.json")
         })
