@@ -70,7 +70,8 @@ def main():
                   for tag in tags if (match := TAG.fullmatch(tag))), default=None)
     if latest is None:
         raise RuntimeError("A trained ancestral checkpoint is required; cannot fabricate weights")
-    if "ancestor-stage-review" in tags:
+    corpus_digest = hashlib.sha256(Path("published_books/manifest.json").read_bytes()).hexdigest()[:12]
+    if "ancestor-stage-review-" + corpus_digest in tags:
         print("Locked reasoning examination awaits owner review; no auto-promotion")
         return 0
     runs = json.loads(gh("run", "list", "--workflow", "ancestor-staged.yml",
