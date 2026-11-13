@@ -4,7 +4,7 @@ import json
 import pytest
 
 from my_own_ai.stage_controller import (
-    initial_ledger, verify_ledger, advance, approve, english_pass, book_pass,
+    initial_ledger, verify_ledger, advance, advance_fundamentals, approve, english_pass, book_pass,
     ENGLISH, READ, COMPREHEND, SYNTHESIS, REVIEW, COMPLETE)
 from scripts.ancestor_staged import package, restore
 
@@ -38,6 +38,7 @@ def coverage(book="one", done=True):
 
 def test_failed_english_cannot_unlock_anything():
     state = initial_ledger(MANIFEST, ["one", "two"], "g0002")
+    state["english_fundamentals_passed"] = True
     assert not advance(state, "english_exam", english_report(correct=0), checkpoint_sha256=SHA)
     assert state["stage"] == ENGLISH and state["book_index"] == 0
     assert not advance(state, "english_exam", english_report(correct=130, paired=0), checkpoint_sha256=SHA)
@@ -46,6 +47,7 @@ def test_failed_english_cannot_unlock_anything():
 
 def test_no_book_skips_and_no_step_count_promotions():
     state = initial_ledger(MANIFEST, ["one", "two"], "g0002")
+    state["english_fundamentals_passed"] = True
     with pytest.raises(ValueError, match="Out-of-order"):
         advance(state, "reading_coverage", coverage(), checkpoint_sha256=SHA)
     assert advance(state, "english_exam", english_report(), checkpoint_sha256=SHA)
@@ -83,6 +85,7 @@ def test_owner_cannot_approve_before_synthesis():
 
 def test_synthesis_still_requires_independent_verified_result():
     state = initial_ledger(MANIFEST, ["one"], "g0002")
+    state["english_fundamentals_passed"] = True
     advance(state, "english_exam", english_report(), checkpoint_sha256=SHA)
     advance(state, "reading_coverage", coverage(), checkpoint_sha256=SHA)
     advance(state, "book_exam", book_report(), checkpoint_sha256=SHA)
@@ -116,3 +119,18 @@ def test_legacy_workflow_cannot_certify_new_generations():
     assert 'int(os.environ["GENERATION"][1:]) <= 2' in script.read_text()
     auto = (script.parent/"ancestor-auto-acquire.yml").read_text()
     assert "ancestor-staged.yml" in auto
+
+
+def test_unseen_word_foundation_is_a_nonnegotiable_first_gate():
+    state=initial_ledger(MANIFEST,["one"],"g0002")
+    with pytest.raises(ValueError,match="foundation exam"):
+        advance(state,"english_exam",english_report(),checkpoint_sha256=SHA)
+    failing={"total":24,"correct":1,"exam_sha256":SHA,"checkpoint_sha256":SHA}
+    assert not advance_fundamentals(state,failing,checkpoint_sha256=SHA)
+    assert state["stage"]==ENGLISH and not state["english_fundamentals_passed"]
+    passing={**failing,"correct":20}
+    assert advance_fundamentals(state,passing,checkpoint_sha256=SHA)
+    assert state["english_fundamentals_passed"] is True
+    assert state["stage"]==ENGLISH
+    assert advance(state,"english_exam",english_report(),checkpoint_sha256=SHA)
+    assert state["stage"]==READ
