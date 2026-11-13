@@ -82,3 +82,35 @@ def test_compositional_curriculum_is_disjoint_from_unseen_examination():
     assert {x["question"] for x in train}.isdisjoint(x["question"] for x in exam)
     assert {x["answer"] for x in train}.isdisjoint(x["answer"] for x in exam)
     assert {x["question"] for x in val}.isdisjoint(x["question"] for x in exam)
+
+
+def test_dynamic_character_copy_generates_new_examples_each_cycle():
+    from my_own_ai.copy_curriculum import synthetic_copy_rows
+    first=synthetic_copy_rows(0, 50)
+    second=synthetic_copy_rows(1, 50)
+    assert first == synthetic_copy_rows(0, 50)
+    assert {x["question"] for x in first}.isdisjoint(x["question"] for x in second)
+    assert all(x["answer"] in x["question"] for x in first)
+    heldout={word for triple in __import__("my_own_ai.english_acquisition",
+                       fromlist=["FOUNDATION_TEST"]).FOUNDATION_TEST for word in triple}
+    assert {x["answer"] for x in first+second}.isdisjoint(heldout)
+
+
+def test_dynamic_curriculum_exact_resume(tmp_path):
+    args,_,_=fixtures(tmp_path)
+    single=tmp_path/"dynamic-single.pt"
+    split=tmp_path/"dynamic-split.pt"
+    a=train_language(**args,output=single,steps=5,curriculum_cycles=True,dynamic_copy=True)
+    assert a["curriculum_examples_total"]==8
+    assert a["curriculum_cycles_completed"]==2
+    assert a["completed_steps"]==8
+    train_language(**args,output=split,steps=4,curriculum_cycles=True,dynamic_copy=True)
+    b=train_language(**args,output=split,steps=5,resume=True,
+                     curriculum_cycles=True,dynamic_copy=True)
+    assert b["completed_steps"]==8
+    m1=torch.load(single,weights_only=True)
+    m2=torch.load(split,weights_only=True)
+    assert m1["copy_generator_version"]==m2["copy_generator_version"]
+    assert m1["curriculum_order"]==m2["curriculum_order"]
+    assert all(torch.equal(m1["state_dict"][k],m2["state_dict"][k])
+               for k in m1["state_dict"])
