@@ -77,3 +77,31 @@ def drills(split):
         # evaluation bounded. The full 200-case frozen exam is still separate.
         rows = rows[::4]
     return rows
+
+
+FOUNDATION_TEST = [
+    ("miller","flour","mill"), ("gardener","spade","plot"),
+    ("sailor","rope","vessel"), ("librarian","folio","shelf"),
+    ("cooper","barrel","cellar"), ("blacksmith","anvil","forge"),
+]
+
+
+def fundamentals(split):
+    """Teach reference/copy before interpretation; test on unseen vocabulary."""
+    if split not in ("train", "validation", "test"):
+        raise ValueError("Unknown foundation split")
+    families = TRAIN if split=="train" else VALIDATION if split=="validation" else FOUNDATION_TEST
+    examples = []
+    for actor, obj, place in families:
+        for word in (actor, obj, place):
+            prompts = (
+                f"Repeat exactly the word after the colon: {word}",
+                f"Copy the English word exactly, without extra text: {word}",
+                f"Read the label and answer with only its word: Label = {word}",
+                f"Which word is written here? {word}",
+            )
+            for question in prompts:
+                ident = sha256((split+"\\0"+question+"\\0"+word).encode()).hexdigest()[:24]
+                examples.append({"id":"english-foundation-"+ident,
+                                 "question":question,"answer":word})
+    return examples
