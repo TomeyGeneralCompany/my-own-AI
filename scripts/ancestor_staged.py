@@ -17,7 +17,7 @@ from my_own_ai.language_training import train_language
 from my_own_ai.language_inference import answer_question
 from my_own_ai.language_evaluation import evaluate_english, load_gauntlet
 from my_own_ai.persistent_registry import digest_file
-from my_own_ai.progressive_reading import train_progressive
+from my_own_ai.ordered_book_learning import read_all_units
 from my_own_ai.published_corpus import prepare_published_corpus, validate_published_manifest
 from my_own_ai.reasoning_curriculum import extract_lessons
 from my_own_ai.stage_controller import (initial_ledger, verify_ledger, advance, fingerprint,
@@ -196,22 +196,21 @@ def train_batch(args):
     if stage == READ:
         ckpt = state / ("read_" + book + ".pt")
         best = state / ("read_" + book + ".best.pt")
-        result = train_progressive(
-            tokenizer_path=tok, training=book_dir / "reading/train",
-            validation=book_dir / "reading/validation",
-            output=ckpt, passes=1, resume=ckpt.exists(),
-            init_checkpoint=None if ckpt.exists() else previous,
-            max_updates=args.read_updates, checkpoint_every=25,
-            embed=128, heads=4, layers=4, context=512, batch_size=2,
-            seed=42, threads=2)
-        completed = result["completed_passes"] == 1 and result["next_window"] == 0
+        result = read_all_units(
+            tokenizer_path=tok, source=book_dir / "reading/train",
+            output=ckpt, parent=previous, max_updates=args.read_updates,
+            context=512, overlap=64, embed=128, layers=4, heads=4,
+            batch_size=2, seed=42, threads=2)
+        completed = result["read_complete"]
         report = {"book": book, "read_complete": completed,
                   "next_window": result["next_window"],
-                  "covered_targets": result["unique_supervised_tokens_per_pass"] if completed else 0,
+                  "covered_targets": result["covered_targets"],
+                  "expected_targets": result["expected_targets"],
                   "last_read_unit": result["last_read_unit"],
+                  "ordered_unit_sha256": result["ordered_unit_sha256"],
                   "ordered_manifest_sha256": published["manifest_sha256"],
                   "read_units_expected": details["units"],
-                  "read_units_seen": details["units"] if completed else result["next_window"],
+                  "read_units_seen": result["source_units"] if completed else 0,
                   "source_sha256": published["sources"][ledger["book_index"]]["sha256"],
                   "checkpoint_sha256": digest_file(ckpt)}
         dump(state / "last-exam.json", report)
