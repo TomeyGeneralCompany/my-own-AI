@@ -31,6 +31,8 @@ def coverage(book="one", done=True):
     return {"book":book, "read_complete":done,
             "next_window":0 if done else 1, "covered_targets":100 if done else 0,
             "last_read_unit":"source-unit-42", "ordered_manifest_sha256":MANIFEST,
+            "read_units_expected":42, "read_units_seen":42 if done else 2,
+            "source_sha256":SHA,
             "checkpoint_sha256":SHA}
 
 
@@ -59,7 +61,7 @@ def test_no_book_skips_and_no_step_count_promotions():
     assert advance(state, "reading_coverage", coverage("two"), checkpoint_sha256=SHA)
     assert advance(state, "book_exam", book_report("two"), checkpoint_sha256=SHA)
     assert state["stage"] == SYNTHESIS and state["book_index"] == 2
-    assert len(state["evidence"]) == 8
+    assert len(state["evidence"]) == 9
 
 
 def test_reject_changed_corpus_order_or_checkpoint():
