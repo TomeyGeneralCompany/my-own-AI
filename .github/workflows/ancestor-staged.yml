@@ -78,7 +78,23 @@ jobs:
           fi
           ASSET="stage-state-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}.zip"
           cp data/stage.zip "data/$ASSET"
-          gh release upload "$STAGE_TAG" "data/$ASSET"
+          # GitHub release reads/uploads can intermittently return
+          # "release not found" even while the tag exists. Retry the same
+          # uniquely named asset; never advance without a confirmed upload.
+          uploaded=false
+          for attempt in 1 2 3 4 5; do
+            if gh release upload "$STAGE_TAG" "data/$ASSET"; then
+              uploaded=true
+              break
+            fi
+            if gh api "repos/${GITHUB_REPOSITORY}/releases/tags/${STAGE_TAG}" \
+                  --jq '.assets[].name' | grep -Fxq "$ASSET"; then
+              uploaded=true
+              break
+            fi
+            sleep 5
+          done
+          test "$uploaded" = true
       - name: Mark review gate for auto-scheduler
         run: |
           set -euo pipefail
