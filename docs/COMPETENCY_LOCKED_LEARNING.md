@@ -7,7 +7,7 @@ mechanics and conditional reasoning; they do not replace those premises.
 
 ## Hard stages
 
-1. **English acquisition.** The g0002 original-weight checkpoint is inherited.
+1. **Word-reference foundation.** The g0002 original-weight checkpoint is inherited. The Core must first correctly reproduce at least 80% of unseen reference words from a separate word-copy and identification examination. Failure retains this stage and preserves its neural checkpoint. No grammar or reading stage unlocks before it succeeds.\n2. **English acquisition.** After word-reference competence has been demonstrated, the inherited trained weights proceed to full English instruction.
    New, independently generated English exercises teach grammar, object and
    location extraction, sentence construction, paraphrase, conversation,
    coherent prose and yes/no conditional reasoning. The frozen 200-question
@@ -17,25 +17,25 @@ mechanics and conditional reasoning; they do not replace those premises.
    premise-change pairs**. The 70 open-ended answers remain available for
    additional human review. Failure preserves weights and repeats learning;
    it does not unlock a book.
-2. **Book reading.** Approved works are processed in the manifest's original
+3. **Book reading.** Approved works are processed in the manifest's original
    order. The complete work is split into lossless, ordered text units,
    including the original mathematical expressions. The neural reader
    processes **every unit**, including repeated units, and checkpoints its
    exact next-token window, source SHA, optimizer, RNG and covered-token count.
    A partial pass cannot unlock comprehension. No entire authored work is
    discarded as a test partition.
-3. **Book comprehension.** Independently selected, source-grounded questions
+4. **Book comprehension.** Independently selected, source-grounded questions
    from each work's untouched instruction test partition examine the model.
    A minimum of ten unseen prompts and **80% correct** are required.
    Failure trains further on source-grounded examples for the same book,
    without changing the held-out exam; success permits the next book.
-4. **Cross-work reasoning and mathematics.** The final model receives actual
+5. **Cross-work reasoning and mathematics.** The final model receives actual
    questions about virtue, trust and capital gain; the user's two axioms;
    a mathematical trust/friction relationship; and counterfactual changes.
    Every raw neural response is preserved. An owner review must explicitly
    establish valid inference, correct mathematics and transfer before
    qualification.
-5. **Candidate publication and activation.** The owner-controlled review
+6. **Candidate publication and activation.** The owner-controlled review
    workflow binds the verdict to the exact checkpoint and exam evidence
    before publishing an immutable native candidate. Activation remains
    separate. No unit count, elapsed time, token-validity check or declining
