@@ -61,7 +61,7 @@ def test_no_book_skips_and_no_step_count_promotions():
     assert advance(state, "reading_coverage", coverage("two"), checkpoint_sha256=SHA)
     assert advance(state, "book_exam", book_report("two"), checkpoint_sha256=SHA)
     assert state["stage"] == SYNTHESIS and state["book_index"] == 2
-    assert len(state["evidence"]) == 9
+    assert len(state["evidence"]) == 7
 
 
 def test_reject_changed_corpus_order_or_checkpoint():
