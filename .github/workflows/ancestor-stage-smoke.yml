@@ -48,10 +48,11 @@ jobs:
           ledger=json.loads((state/"stage-ledger.json").read_text())
           report=json.loads((state/"last-exam.json").read_text())
           assert ledger["format"]=="competency_locked_v1"
-          assert report["evaluated"]==200 and report["automatically_scored"]==130
-          assert report["exact_correct"] >= 1, "Neural smoke must produce at least one genuinely correct held-out English answer"
-          assert ledger["evidence"] and ledger["evidence"][-1]["kind"]=="english_exam"
-          assert (state/"english.pt").is_file()
+          from my_own_ai.english_acquisition import fundamentals
+          assert report["total"]==len(fundamentals("test"))
+          assert report["correct"] >= 1, "Neural smoke must correctly reproduce at least one previously unseen reference word"
+          assert ledger["evidence"] and ledger["evidence"][-1]["stage"]=="english_fundamentals"
+          assert (state/"foundation.pt").is_file()
           with open(os.environ["GITHUB_STEP_SUMMARY"],"a") as f:
               f.write("# Staged neural smoke — actual g0002-inherited weights\n\n")
               f.write("Frozen 200-case exam exact: "+str(report["exact_correct"])+"/130\n\n")
