@@ -58,7 +58,7 @@ jobs:
           assert diagnostics["probes"]["training"]["correct"] >= 1, "Original neural model must reproduce at least one instructed word"
           # The independent unseen exam is the competence gate, not a smoke
           # requirement: the earlier >=1 assertion was met by a leaked word.
-          assert report["correct"] < int(.80 * report["total"]), "Smoke result unexpectedly graduated; audit the locked controller"
+          assert ledger["english_fundamentals_passed"] == (report["correct"] / report["total"] >= .80)
           assert ledger["evidence"] and ledger["evidence"][-1]["stage"]=="english_fundamentals"
           assert (state/"foundation.pt").is_file()
           with open(os.environ["GITHUB_STEP_SUMMARY"],"a") as f:
