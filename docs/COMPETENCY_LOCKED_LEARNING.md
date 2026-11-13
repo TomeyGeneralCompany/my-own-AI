@@ -77,3 +77,28 @@ answers. **A green infrastructure CI run does not certify English fluency.**
 The controller's examination ledger is the competency result; if the
 English score is insufficient, its stage remains English. The immutable
 g0002 baseline is preserved and is not retroactively called competent.
+
+## Foundation plateau repair: coverage and neural evidence
+
+The foundation phase retains the original g0002 learned weights and AdamW optimizer.
+Legacy random-with-replacement checkpoints transition once, explicitly, to
+`instruction_coverage_cycles`; the prior dataset hashes, sampling policy and
+migration update are recorded in the checkpoint lineage. No previously learned
+weights are discarded and a second implicit curriculum change is refused.
+
+The expanded foundation teaching set contains the original four extraction/copy
+forms and compositionally varied instructional words. It never imports the frozen
+test vocabulary. Each cycle visits every assigned example exactly once in a
+persisted shuffled order. Every runner session finishes the current cycle before
+administering its independently held-out foundation exam. Incomplete cycle
+progress cannot authorize examination or advancement.
+
+`foundation-diagnostics.json` includes 16 known and 16 validation examples with
+raw model outputs, EOS behavior, training/validation losses, and exact curriculum
+coverage. These are diagnostic probes, not an alternative graduation gate.
+The real frozen 72-question examination remains the only foundation graduation
+test (80% pass), and every later stage gate remains unchanged.
+
+For auditing: the historical 129,200 updates used the old random sampling
+policy and do **not** constitute recorded full-coverage cycles. The first newly
+recorded cycle begins after explicit migration.
