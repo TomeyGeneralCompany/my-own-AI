@@ -13,6 +13,7 @@ import torch
 
 from my_own_ai.corpus import collect_documents
 from my_own_ai.english_drills import english_drills
+from my_own_ai.english_acquisition import drills as acquisition_drills
 from my_own_ai.tokenizer import ByteBPETokenizer
 from my_own_ai.language_training import train_language
 from my_own_ai.language_inference import answer_question
@@ -155,7 +156,7 @@ def train_batch(args):
         inputs = scratch / "english"
         inputs.mkdir(parents=True, exist_ok=True)
         for split in ("train", "validation"):
-            dump(inputs / (split + ".json"), english_drills(split))
+            dump(inputs / (split + ".json"), english_drills(split) + acquisition_drills(split))
         ckpt = state / "english.pt"
         best = state / "english.best.pt"
         start = int(torch.load(ckpt, map_location="cpu", weights_only=True)["completed_steps"]) if ckpt.exists() else 0
