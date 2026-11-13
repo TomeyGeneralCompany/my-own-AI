@@ -5,6 +5,7 @@ on:
     paths:
       - 'my_own_ai/stage_controller.py'
       - 'my_own_ai/english_acquisition.py'
+      - 'my_own_ai/copy_curriculum.py'
       - 'my_own_ai/language_training.py'
       - 'my_own_ai/foundation_diagnostics.py'
       - 'tests/test_foundation_cycles.py'
