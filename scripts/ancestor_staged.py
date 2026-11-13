@@ -165,7 +165,7 @@ def train_batch(args):
                        phase="instruction", steps=start + args.english_updates,
                        resume=ckpt.exists(),
                        init_checkpoint=None if ckpt.exists() else state / "inherited.pt",
-                       checkpoint_every=25, **MODEL)
+                       checkpoint_every=200, **MODEL)
         results = evaluate_english(best, tok,
                                    load_gauntlet(root / "examples/english/gauntlet.json"),
                                    max_tokens=50, limit=200, threads=2)
