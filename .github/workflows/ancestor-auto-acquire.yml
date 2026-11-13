@@ -8,6 +8,9 @@ on:
       - 'my_own_ai/english_drills.py'
       - 'my_own_ai/reasoning_curriculum.py'
       - 'scripts/ancestor_auto_acquire.py'
+      - 'scripts/ancestor_staged.py'
+      - 'my_own_ai/stage_controller.py'
+      - '.github/workflows/ancestor-staged.yml'
       - '.github/workflows/ancestor-auto-acquire.yml'
   schedule:
     - cron: '17 8 * * *'
