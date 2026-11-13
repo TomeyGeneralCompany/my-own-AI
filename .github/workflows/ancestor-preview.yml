@@ -49,7 +49,12 @@ jobs:
           from my_own_ai.persistent_registry import digest_file
           state=Path("data/preview-state")
           ledger=json.loads((state/"stage-ledger.json").read_text())
-          checkpoint=next((state/name for name in ("current.best.pt","english.best.pt","inherited.pt")
+          book=ledger["books"][ledger["book_index"]] if ledger["book_index"] < len(ledger["books"]) else ""
+          stage=ledger["stage"]
+          preferred=([f"learn_{book}.best.pt"] if stage=="comprehend" else
+                     [f"read_{book}.pt"] if stage=="read" else
+                     ["english.best.pt"] if stage=="english" else [])
+          checkpoint=next((state/name for name in preferred+["current.best.pt","english.best.pt","inherited.pt"]
                             if (state/name).is_file()),None)
           if checkpoint is None:
               raise ValueError("No trained neural checkpoint for preview")
