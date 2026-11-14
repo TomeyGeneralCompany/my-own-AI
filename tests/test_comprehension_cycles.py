@@ -30,7 +30,8 @@ def test_conditional_counterfactual_pairs():
         yes=_row("conditional",0,i,42,"train")
         no=_row("conditional",0,i+1,42,"train")
         assert yes["answer"]=="yes" and no["answer"]=="no"
-        assert yes["question"].replace(" is ready."," is not ready.",1)==no["question"]
+        prefix, fact, suffix = yes["question"].rsplit(" is ready.", 1)[0], " is ready.", yes["question"].rsplit(" is ready.", 1)[1]
+        assert prefix + " is not ready." + suffix == no["question"]
 
 
 def test_retention_distinguishes_forgetting_and_acquisition():
