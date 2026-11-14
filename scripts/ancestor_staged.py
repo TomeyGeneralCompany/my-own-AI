@@ -17,6 +17,7 @@ from my_own_ai.english_acquisition import drills as acquisition_drills, fundamen
 from my_own_ai.tokenizer import ByteBPETokenizer
 from my_own_ai.language_training import train_language
 from my_own_ai.foundation_diagnostics import diagnose_foundation
+from my_own_ai.comprehension_diagnostics import retention
 from my_own_ai.language_inference import answer_question
 from my_own_ai.language_evaluation import evaluate_english, load_gauntlet
 from my_own_ai.persistent_registry import digest_file, package_generation
@@ -200,12 +201,18 @@ def train_batch(args):
         ckpt = state / "english.pt"
         best = state / "english.best.pt"
         start = int(torch.load(ckpt, map_location="cpu", weights_only=True)["completed_steps"]) if ckpt.exists() else 0
-        train_language(tokenizer_path=tok, training=inputs / "train.json",
+        previous_report = json.loads((state / "last-exam.json").read_text()) if (state / "last-exam.json").exists() else None
+        diagnostics_path = state / "comprehension-diagnostics.json"
+        historical = json.loads(diagnostics_path.read_text()) if diagnostics_path.exists() else {}
+        training = train_language(tokenizer_path=tok, training=inputs / "train.json",
                        validation=inputs / "validation.json", output=ckpt,
                        phase="instruction", steps=start + args.english_updates,
-                       resume=ckpt.exists(),
+                       resume=ckpt.exists(), curriculum_cycles=True,
+                       allow_curriculum_migration=True, comprehension_cycles=True,
                        init_checkpoint=None if ckpt.exists() else state / "current.best.pt",
-                       checkpoint_every=200, **MODEL)
+                       checkpoint_every=1000, **MODEL)
+        if training["curriculum_cursor"] != 0 or training["curriculum_cycles_completed"] < 1:
+            raise ValueError("Attempted English exam before complete comprehension coverage")
         results = evaluate_english(ckpt, tok,
                                    load_gauntlet(root / "examples/english/gauntlet.json"),
                                    max_tokens=50, limit=200, threads=2)
@@ -215,6 +222,15 @@ def train_batch(args):
                   "category_scores": results["categories"],
                   "raw_results": results,
                   "checkpoint_sha256": digest_file(ckpt)}
+        diagnostics = retention(previous_report, report, historical.get("best_observed_correct", 0))
+        diagnostics.update({"checkpoint_sha256": report["checkpoint_sha256"],
+                            "completed_updates": training["completed_steps"],
+                            "curriculum_cycles": training["curriculum_cycles_completed"],
+                            "curriculum_examples": training["curriculum_examples_total"],
+                            "validation_loss": training["validation_loss"],
+                            "last_training_loss": training["last_training_loss"],
+                            "learning_rate": training["comprehension_schedule"]["lr"]})
+        dump(diagnostics_path, diagnostics)
         dump(state / "last-exam.json", report)
         passed = advance(ledger, "english_exam", report,
                          checkpoint_sha256=digest_file(ckpt))
@@ -223,7 +239,13 @@ def train_batch(args):
         dump(ledger_path, ledger)
         return {"stage": ledger["stage"], "english_correct": results["exact_correct"],
                 "english_total": results["automatically_scored"],
-                "passed": passed, "completed_updates": start + args.english_updates}
+                "passed": passed, "completed_updates": training["completed_steps"],
+                "curriculum_cycles": diagnostics["curriculum_cycles"],
+                "curriculum_examples": diagnostics["curriculum_examples"],
+                "validation_loss": diagnostics["validation_loss"],
+                "learning_rate": diagnostics["learning_rate"],
+                "retained": diagnostics["retained"], "lost": diagnostics["lost"],
+                "gained": diagnostics["gained"], "best_observed_correct": diagnostics["best_observed_correct"]}
 
     book = books[ledger["book_index"]]
     book_dir = scratch / ("book_" + book)
