@@ -41,24 +41,39 @@ jobs:
           test -n "$ASSET" && test "$ASSET" != null
           gh release download "$TAG" --pattern "$ASSET" --dir data/recovery
           python scripts/ancestor_staged.py unpack --archive "data/recovery/$ASSET" --state data/trial
-      - name: Run full-cycle adaptive foundation trial on actual learned weights
+      - name: Run full-cycle continuation on actual learned weights
         run: |
           set -euo pipefail
           python -u scripts/ancestor_staged.py train --repository . --state data/trial \
             --scratch data/trial-scratch --parent-generation g0002 \
             --english-updates 8000 | tee data/trial-result.json
           python - <<'PY'
-          import json,os
+          import json,os,torch
+          from pathlib import Path
           result=json.load(open("data/trial-result.json"))
-          evidence=json.load(open("data/trial/foundation-diagnostics.json"))
           assert result["curriculum_cycles"] >= 1
-          assert evidence["curriculum_migration"], "Live checkpoint was not migrated"
+          if "fundamentals_correct" in result:
+              evidence=json.load(open("data/trial/foundation-diagnostics.json"))
+              assert evidence["curriculum_migration"], "Live foundation checkpoint was not migrated"
+              summary = ("Frozen unseen exam: "+str(result["fundamentals_correct"])+"/"+str(result["fundamentals_total"])+"\n\n"
+                         +"Training probe: "+str(result["known_probe_correct"])+"/16; validation probe: "+str(result["unseen_probe_correct"])+"/16\n\n"
+                         +"Training loss: "+str(result["last_training_loss"])+"; validation loss: "+str(result["validation_loss"])+"\n\n")
+          else:
+              assert "english_correct" in result, "Unexpected continuation stage"
+              evidence=json.load(open("data/trial/comprehension-diagnostics.json"))
+              checkpoint=torch.load(Path("data/trial/english.pt"),map_location="cpu",weights_only=True)
+              assert checkpoint["curriculum_lineage"], "Live comprehension checkpoint was not migrated"
+              assert checkpoint["curriculum_cursor"] == 0, "Incomplete instructional cycle"
+              assert evidence["prior_comparable"] == 130, "Missing comparable exam evidence"
+              assert evidence["retained"]+evidence["lost"]==evidence["previous_correct"]
+              assert evidence["retained"]+evidence["gained"]==result["english_correct"]
+              summary = ("Frozen comprehension exam: "+str(result["english_correct"])+"/"+str(result["english_total"])+"\n\n"
+                         +"Retained: "+str(evidence["retained"])+"; lost: "+str(evidence["lost"])+"; gained: "+str(evidence["gained"])+"\n\n"
+                         +"Validation loss: "+str(result["validation_loss"])+"\n\n")
           with open(os.environ["GITHUB_STEP_SUMMARY"],"a") as f:
               f.write("# Actual production checkpoint continuation trial\n\n")
               f.write("Completed updates: "+str(result["completed_updates"])+"\n\n")
-              f.write("Frozen unseen exam: "+str(result["fundamentals_correct"])+"/"+str(result["fundamentals_total"])+"\n\n")
-              f.write("Training probe: "+str(result["known_probe_correct"])+"/16; validation probe: "+str(result["unseen_probe_correct"])+"/16\n\n")
-              f.write("Training loss: "+str(result["last_training_loss"])+"; validation loss: "+str(result["validation_loss"])+"\n\n")
+              f.write(summary)
               f.write("No checkpoint was uploaded or merged. Competence gate unchanged.\n")
           PY
       - name: Publish trial diagnostics (not its learned weights)
@@ -69,5 +84,6 @@ jobs:
           path: |
             data/trial-result.json
             data/trial/foundation-diagnostics.json
+            data/trial/comprehension-diagnostics.json
             data/trial/last-exam.json
           retention-days: 30
