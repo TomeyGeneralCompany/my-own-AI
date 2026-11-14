@@ -46,7 +46,7 @@ jobs:
           set -euo pipefail
           mkdir -p data/restore data/learning
           if gh release view "$STAGE_TAG" >/dev/null 2>&1; then
-            ASSET="$(gh api "repos/${GITHUB_REPOSITORY}/releases/tags/${STAGE_TAG}" --jq '[.assets[] | select(.name | startswith("stage-state-"))] | sort_by(.created_at) | last | .name')"
+            ASSET="$(python scripts/stage_checkpoint_storage.py latest --repo "$GITHUB_REPOSITORY" --tag "$STAGE_TAG")"
             test -n "$ASSET" && test "$ASSET" != null
             gh release download "$STAGE_TAG" --pattern "$ASSET" --dir data/restore
             python scripts/ancestor_staged.py unpack --archive "data/restore/$ASSET" --state data/learning
@@ -79,6 +79,7 @@ jobs:
           if ! gh release view "$STAGE_TAG" >/dev/null 2>&1; then
             gh release create "$STAGE_TAG" --title "Competency-locked Core progress"               --notes "Original weights and controller ledger; competence gates never bypassed." --prerelease
           fi
+          python scripts/stage_checkpoint_storage.py rotate --repo "$GITHUB_REPOSITORY" --tag "$STAGE_TAG"
           ASSET="stage-state-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}.zip"
           cp data/stage.zip "data/$ASSET"
           # GitHub release reads/uploads can intermittently return
