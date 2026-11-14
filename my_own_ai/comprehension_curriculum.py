@@ -50,29 +50,31 @@ def _rng(split, cycle, group, index, seed):
 
 
 def _row(group, cycle, index, seed, split):
-    rng = _rng(split, cycle, group, index, seed)
+    draw = index // 2 if group == "conditional" else index
+    rng = _rng(split, cycle, group, draw, seed)
     actor_pool, object_pool, place_pool = TRAIN_WORDS if split == "train" else VALID_WORDS
     actor, obj, place = (rng.choice(pool) for pool in (actor_pool, object_pool, place_pool))
     other = rng.choice([w for w in object_pool if w != obj])
     elsewhere = rng.choice([w for w in place_pool if w != place])
     # Novel identifiers provide a virtually unbounded compositional signal.
     # They are referenced explicitly, not assumed to carry real-world meaning.
-    tag = "".join(rng.choice("abcdefghijklmnopqrstuvwxyz") for _ in range(5 + index % 5))
-    item = f"{obj} {tag}" if index % 3 == 0 else obj
-    location = f"{place} {tag}" if index % 3 == 1 else place
+    tag = "".join(rng.choice("abcdefghijklmnopqrstuvwxyz") for _ in range(5 + draw % 5))
+    item = f"{obj} {tag}" if draw % 2 == 0 else obj
+    location = f"{place} {tag}" if draw % 2 == 1 else place
+    article = "An" if actor[0] in "aeiou" else "A"
     n = index % 4
     if group == "syntax":
         pairs = (
             (f"Complete the clause: The {actor} fetched the {item} since", f"the {item} was required."),
-            (f"Repair the verb: A {actor} carry the {item} to the {location}.", f"A {actor} carries the {item} to the {location}."),
+            (f"Repair the verb: {article} {actor} carry the {item} to the {location}.", f"{article} {actor} carries the {item} to the {location}."),
             (f"Correct the agreement: The {item} were beside the {location}.", f"The {item} was beside the {location}."),
             (f"Put these words in order: the / {actor} / moved / the / {item}", f"The {actor} moved the {item}."),
         )
     elif group == "reading":
         pairs = (
             (f"The {actor} set down the {item}, then moved the {other}. Name only the object set down.", item),
-            (f"In the {location}, the {actor} examined a {item}. Give the item alone.", item),
-            (f"A {other} remained outside. The {actor} carried the {item} indoors. What was carried? Give only its name.", item),
+            (f"In the {location}, the {actor} examined the {item}. Give the item alone.", item),
+            (f"The {other} remained outside. The {actor} carried the {item} indoors. What was carried? Give only its name.", item),
             (f"The {item} belonged to the {actor}. Identify the owner with one word.", actor),
         )
     elif group == "qa":
@@ -80,7 +82,7 @@ def _row(group, cycle, index, seed, split):
             (f"The {actor} was at the {location} with a {item}. Name the place only.", location),
             (f"The {actor} left the {elsewhere} and reached the {location}. Give only the destination.", location),
             (f"The {item} was in the {location}, not the {elsewhere}. In which place was it? Give only the place name.", location),
-            (f"The {actor} put a {item} in the {location}. Identify the location, without a sentence.", location),
+            (f"The {actor} put the {item} in the {location}. Identify the location, without a sentence.", location),
         )
     elif group == "conditional":
         positive = index % 2 == 0
@@ -91,9 +93,9 @@ def _row(group, cycle, index, seed, split):
             question = f"Only a ready {item} permits work at the {location}, and readiness is sufficient. {fact} Under this rule may work begin? Answer yes or no."
         pairs = ((question, "yes" if positive else "no"),) * 4
     elif group == "paraphrase":
-        pairs = ((f"Express the same meaning differently: The {actor} returned carrying a {item}.", f"The {actor} came back with a {item}."),) * 4
+        pairs = ((f"Express the same meaning differently: The {actor} returned carrying the {item}.", f"The {actor} came back with the {item}."),) * 4
     elif group == "coherence":
-        pairs = ((f"Write three connected sentences: a {actor} seeks a {item}, reaches the {location}, and finds it.", f"The {actor} looked for the {item}. The {actor} reached the {location}. There the {actor} found the {item}."),) * 4
+        pairs = ((f"Write three connected sentences: the {actor} seeks the {item}, reaches the {location}, and finds it.", f"The {actor} looked for the {item}. The {actor} reached the {location}. There the {actor} found the {item}."),) * 4
     elif group == "followup":
         pairs = ((f"Person: The {item} is in the {location}. Assistant: I can look there. Person: What will you look for? Assistant:", f"I will look for the {item}."),) * 4
     else:
@@ -107,6 +109,8 @@ def quotas(fixed_rows):
     # Equalize the four assessed skills while retaining all fixed examples.
     target = max(counts[g] for g in CORE) + 512
     fresh = {g: target - counts[g] for g in CORE}
+    # Pair positive and negative versions even if the fixed counts are odd.
+    fresh["conditional"] += fresh["conditional"] % 2
     fresh.update({g: max(128, 768 - counts[g]) for g in GROUPS[4:7]})
     fresh["foundation"] = max(256, target // 3)
     return fresh
