@@ -412,7 +412,7 @@ def train_language(*, tokenizer_path, training, validation, output,
         if tiered_memory and step % 16 == 0:
             # Preserve the full original curriculum, adding one bounded replay batch.
             group = replay_group(memory, step)
-            row = source_examples(group, seed, (step // 16) % 97)[(step // 16) % 4]
+            row = source_examples(group, seed, (step // 16) % 97)[(step // 256) % 4]
             # Reserve the complete target and structural delimiters before adding context.
             limit = context - len(tokenizer.encode(row["answer"])) - 5
             enriched = dict(row, question=contextual_question(memory, row["question"], tokenizer, limit, group))
