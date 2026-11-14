@@ -18,6 +18,9 @@ from .corpus import collect_documents
 from .copy_curriculum import synthetic_copy_rows, VERSION as COPY_VERSION
 from .comprehension_curriculum import (VERSION as COMPREHENSION_VERSION, cycle_size,
                                        lesson_groups, validation_lessons)
+from .intellectual_memory import (new_memory, validate_memory, consolidate,
+    replay_group, source_examples, contextual_question)
+from .comprehension_curriculum import GROUPS
 
 
 def load_dialogues(path):
@@ -115,7 +118,9 @@ def train_language(*, tokenizer_path, training, validation, output,
                    batch_size=2, lr=0.001, seed=42, checkpoint_every=20, threads=2,
                    time_budget_seconds=None, english_drill_fraction=0.0,
                    curriculum_cycles=False, allow_curriculum_migration=False,
-                   dynamic_copy=False, comprehension_cycles=False):
+                   dynamic_copy=False, comprehension_cycles=False, tiered_memory=False):
+    if tiered_memory and not comprehension_cycles:
+        raise ValueError("Tiered memory requires comprehension cycles")
     if not 0 <= english_drill_fraction <= 1 or not math.isfinite(english_drill_fraction):
         raise ValueError("Invalid English drill sampling fraction")
     if comprehension_cycles and (not curriculum_cycles or dynamic_copy or phase != "instruction"):
@@ -193,6 +198,7 @@ def train_language(*, tokenizer_path, training, validation, output,
                          len(train_samples) * (2 if dynamic_copy else 1))
     comprehension_schedule = {"best": None, "bad_cycles": 0, "last_cycle": 0,
                               "lr": min(lr, 0.0005)}
+    memory = None
     active_copy_cycle, active_copy_samples = None, []
     best_loss = float('inf')
     best_step = 0
@@ -247,6 +253,10 @@ def train_language(*, tokenizer_path, training, validation, output,
             if not (0 < comprehension_schedule["lr"] <= lr and
                     comprehension_schedule["last_cycle"] <= curriculum_completed):
                 raise ValueError("Invalid persisted comprehension schedule")
+        if tiered_memory:
+            memory = payload.get("intellectual_memory")
+            if memory is None and curriculum_cursor:
+                raise ValueError("Tiered memory migration requires a complete cycle boundary")
         sampler.set_state(payload["sampler_rng"])
         torch.set_rng_state(payload["torch_rng"])
         start = int(payload["completed_steps"])
@@ -284,6 +294,13 @@ def train_language(*, tokenizer_path, training, validation, output,
     if comprehension_cycles:
         for group in optimizer.param_groups:
             group["lr"] = comprehension_schedule["lr"]
+    if tiered_memory:
+        if memory is None:
+            memory = new_memory(train_rows, seed, curriculum_completed)
+        validate_memory(memory, train_rows, seed, curriculum_completed)
+        # Stable training-only anchors measure retention without using held-out exams.
+        anchors = {g: [_example(row, tokenizer, context) for row in source_examples(g, seed)]
+                   for g in GROUPS}
     if steps < start:
         raise ValueError("Requested steps precede saved progress")
     def save(step):
@@ -309,7 +326,11 @@ def train_language(*, tokenizer_path, training, validation, output,
             comprehension_schedule["last_cycle"] = curriculum_completed
             for group in optimizer.param_groups:
                 group["lr"] = comprehension_schedule["lr"]
+        if tiered_memory and curriculum_cursor == 0 and memory["covered_through"] < curriculum_completed - 1:
+            consolidate(memory, {g: _validation(model, anchors[g]) for g in GROUPS},
+                        curriculum_completed - 1)
         state = {
+            **({"intellectual_memory": memory} if tiered_memory else {}),
             "language_format": 1, "model_config": asdict(cfg),
             "tokenizer_state": tokenizer.state(), "tokenizer_sha256": tokenizer.fingerprint(),
             "state_dict": model.state_dict(), "optimizer": optimizer.state_dict(),
@@ -388,6 +409,16 @@ def train_language(*, tokenizer_path, training, validation, output,
         current_batch = _batch(train_samples + active_copy_samples if (dynamic_copy or comprehension_cycles) else train_samples, chosen)
         supervised_tokens += int((current_batch[1] != -100).sum())
         loss = _loss(model, current_batch)
+        if tiered_memory and step % 16 == 0:
+            # Preserve the full original curriculum, adding one bounded replay batch.
+            group = replay_group(memory, step)
+            row = source_examples(group, seed, (step // 16) % 97)[(step // 16) % 4]
+            # Reserve the complete target and structural delimiters before adding context.
+            limit = context - len(tokenizer.encode(row["answer"])) - 5
+            enriched = dict(row, question=contextual_question(memory, row["question"], tokenizer, limit, group))
+            replay = _batch([_example(row, tokenizer, context), _example(enriched, tokenizer, context)], [0, 1])
+            supervised_tokens += int((replay[1] != -100).sum())
+            loss = loss + 0.5 * _loss(model, replay)
         if not torch.isfinite(loss):
             raise ValueError("Nonfinite training loss")
         last_training_loss = float(loss.detach())
@@ -417,6 +448,7 @@ def train_language(*, tokenizer_path, training, validation, output,
             "curriculum_examples_total": curriculum_length,
             "copy_generator_version": COPY_VERSION if dynamic_copy else None,
             "curriculum_migrated": bool(curriculum_lineage),
+            **({"memory_tiers": {g: memory["records"][g]["tier"] for g in GROUPS}} if tiered_memory else {}),
             **({"comprehension_schedule": comprehension_schedule} if comprehension_cycles else {}),
             "effective_training_passes": round(
                 supervised_tokens / max(training_token_count, 1), 3),
