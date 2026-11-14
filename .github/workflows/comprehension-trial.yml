@@ -6,6 +6,9 @@ on:
       - 'my_own_ai/language_training.py'
       - 'scripts/ancestor_staged.py'
       - 'tests/test_comprehension_cycles.py'
+      - 'tests/test_intellectual_memory.py'
+      - 'my_own_ai/intellectual_memory.py'
+      - 'my_own_ai/language_inference.py'
       - '.github/workflows/comprehension-trial.yml'
   workflow_dispatch:
 permissions:

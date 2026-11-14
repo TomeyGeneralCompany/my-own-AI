@@ -208,7 +208,7 @@ def train_batch(args):
                        validation=inputs / "validation.json", output=ckpt,
                        phase="instruction", steps=start + args.english_updates,
                        resume=ckpt.exists(), curriculum_cycles=True,
-                       allow_curriculum_migration=True, comprehension_cycles=True,
+                       allow_curriculum_migration=True, comprehension_cycles=True, tiered_memory=True,
                        init_checkpoint=None if ckpt.exists() else state / "current.best.pt",
                        checkpoint_every=1000, **MODEL)
         if training["curriculum_cursor"] != 0 or training["curriculum_cycles_completed"] < 1:
@@ -229,7 +229,8 @@ def train_batch(args):
                             "curriculum_examples": training["curriculum_examples_total"],
                             "validation_loss": training["validation_loss"],
                             "last_training_loss": training["last_training_loss"],
-                            "learning_rate": training["comprehension_schedule"]["lr"]})
+                            "learning_rate": training["comprehension_schedule"]["lr"],
+                            "memory_tiers": training["memory_tiers"]})
         dump(diagnostics_path, diagnostics)
         dump(state / "last-exam.json", report)
         passed = advance(ledger, "english_exam", report,
@@ -244,6 +245,7 @@ def train_batch(args):
                 "curriculum_examples": diagnostics["curriculum_examples"],
                 "validation_loss": diagnostics["validation_loss"],
                 "learning_rate": diagnostics["learning_rate"],
+                "memory_tiers": diagnostics["memory_tiers"],
                 "retained": diagnostics["retained"], "lost": diagnostics["lost"],
                 "gained": diagnostics["gained"], "best_observed_correct": diagnostics["best_observed_correct"]}
 

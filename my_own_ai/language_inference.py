@@ -4,6 +4,7 @@ from time import perf_counter
 import torch
 from .tokenizer import BOS, EOS, USER, ASSISTANT, PAD
 from .language_training import load_language
+from .intellectual_memory import contextual_question
 
 
 def prompt_tokens(question, tokenizer, context_size):
@@ -17,13 +18,20 @@ def prompt_tokens(question, tokenizer, context_size):
 
 @torch.inference_mode()
 def answer_question(checkpoint, tokenizer_path, question, *,
-                    max_tokens=128, temperature=0., top_p=1., seed=42, threads=2):
+                    max_tokens=128, temperature=0., top_p=1., seed=42, threads=2,
+                    retrieve_memory=False):
     if not (1 <= max_tokens <= 4096 and 0 <= temperature <= 4
             and 0 < top_p <= 1 and isinstance(seed, int)):
         raise ValueError("Invalid decoding settings")
     torch.set_num_threads(threads)
     model, tokenizer = load_language(checkpoint, tokenizer_path)
-    prompt = prompt_tokens(question, tokenizer, model.config.context_size)
+    contextual = question
+    if retrieve_memory:
+        memory = torch.load(checkpoint, map_location="cpu", weights_only=True).get("intellectual_memory")
+        if memory is not None:
+            contextual = contextual_question(memory, question, tokenizer,
+                model.config.context_size - 4 - max_tokens)
+    prompt = prompt_tokens(contextual, tokenizer, model.config.context_size)
     history = list(prompt)
     generated = []
     generator = torch.Generator().manual_seed(seed)
@@ -59,7 +67,8 @@ def answer_question(checkpoint, tokenizer_path, question, *,
         decoding_valid = False
     elapsed = perf_counter() - started
     return {
-        "question": question, "answer": rendered, "raw_token_ids": generated,
+        "question": question, "answer": rendered,
+        "memory_context_used": contextual != question, "raw_token_ids": generated,
         "generation_seconds": round(elapsed, 4),
         "generated_tokens_per_second": round(len(generated) / max(elapsed, 1e-6), 2),
         "prompt_token_ids": prompt, "tokenizer_sha256": tokenizer.fingerprint(),
