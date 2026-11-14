@@ -126,6 +126,7 @@ jobs:
             data/learning/stage-ledger.json
             data/learning/last-exam.json
             data/learning/foundation-diagnostics.json
+            data/learning/comprehension-diagnostics.json
             data/stage-result.json
           if-no-files-found: warn
           retention-days: 90
