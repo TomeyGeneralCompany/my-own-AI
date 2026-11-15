@@ -308,7 +308,7 @@ def train_language(*, tokenizer_path, training, validation, output,
             if curriculum_cursor:
                 raise ValueError('Transfer migration requires a complete cycle boundary')
             transfer_state = {'version': 2, 'introduced_at_cycle': curriculum_completed,
-                              'author_hash': _hash(excerpts), 'probe_history': {}, 'last_probe_cycle': curriculum_completed-1}
+                              'author_hash': _hash(excerpts), 'probe_history': {}, 'last_probe_cycle': curriculum_completed-1, 'transfer_batches': 0}
             comprehension_schedule.update(best=None, bad_cycles=0, lr=min(lr, 0.00025))
             for group in optimizer.param_groups:
                 group['lr'] = comprehension_schedule['lr']
@@ -444,7 +444,7 @@ def train_language(*, tokenizer_path, training, validation, output,
         loss = _loss(model, current_batch)
         if transfer_learning and step % 4 == 0:
             # Full ordinary coverage remains intact; transfer examples are supplementary.
-            group = replay_group(memory, step * 4)
+            group = replay_group(memory, step)
             idx = step // 4
             if group == 'conditional':
                 idx *= 2
@@ -457,6 +457,7 @@ def train_language(*, tokenizer_path, training, validation, output,
             extra = _batch(samples, list(range(len(samples))))
             supervised_tokens += int((extra[1] != -100).sum())
             loss = loss + 0.75 * _loss(model, extra)
+            transfer_state['transfer_batches'] = transfer_state.get('transfer_batches', 0) + 1
         if tiered_memory and step % 16 == 0:
             # Preserve the full original curriculum, adding one bounded replay batch.
             group = replay_group(memory, step)
@@ -497,7 +498,7 @@ def train_language(*, tokenizer_path, training, validation, output,
             "copy_generator_version": COPY_VERSION if dynamic_copy else None,
             "curriculum_migrated": bool(curriculum_lineage),
             **({"memory_tiers": {g: memory["records"][g]["tier"] for g in GROUPS}} if tiered_memory else {}),
-            **({"transfer_probe_loss": transfer_state["probe_history"], "author_excerpt_count": len(author_samples)} if transfer_learning else {}),
+            **({"transfer_probe_loss": transfer_state["probe_history"], "author_excerpt_count": len(author_samples), "transfer_batches": transfer_state["transfer_batches"]} if transfer_learning else {}),
             **({"comprehension_schedule": comprehension_schedule} if comprehension_cycles else {}),
             "effective_training_passes": round(
                 supervised_tokens / max(training_token_count, 1), 3),
