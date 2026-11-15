@@ -1,0 +1,181 @@
+"""Finite, objective English tasks, with separate teaching and testing prompts.
+
+The dictionary source is not a philosophical teacher. Exact recall is tested
+separately from lexical discrimination, grammar, reading and composition.
+No automatic claim is made about unrestricted natural-language composition.
+"""
+import re
+from collections import defaultdict
+from hashlib import sha256
+
+STAGES = ("grammar", "dictionary", "usage", "reading", "composition")
+ACTORS = ("child", "farmer", "teacher", "sailor", "clerk", "doctor", "worker", "cook")
+OBJECTS = ("book", "key", "cup", "rope", "letter", "bag", "chair", "lamp")
+PLACES = ("house", "school", "garden", "shop", "field", "room", "barn", "station")
+VERBS = (("carry","carries"),("hold","holds"),("find","finds"),("read","reads"),
+         ("open","opens"),("move","moves"),("lift","lifts"),("bring","brings"))
+
+def clean(text):
+    return " ".join(text.split())
+
+def words(text):
+    return re.findall(r"[^\W\d_]+(?:['’-][^\W\d_]+)*",text.casefold(),re.UNICODE)
+
+def chunks(text, tokenizer, budget):
+    """No text discarded: bounded chunks using the actual checkpoint tokenizer."""
+    parts=clean(text).split()
+    output=[]
+    current=""
+    for word in parts:
+        if len(tokenizer.encode(word))>budget:
+            if current:
+                output.append(current)
+                current=""
+            part=""
+            for char in word:
+                if part and len(tokenizer.encode(part+char))>budget:
+                    output.append(part)
+                    part=""
+                part+=char
+            if part:
+                output.append(part)
+            continue
+        candidate=(current+" "+word).strip()
+        if current and len(tokenizer.encode(candidate))>budget:
+            output.append(current)
+            current=word
+        else:
+            current=candidate
+    if current:
+        output.append(current)
+    if not output:
+        raise ValueError("Empty dictionary text")
+    return output
+
+class Curriculum:
+    def __init__(self, records, tokenizer, context):
+        self.records=records
+        self.tokenizer=tokenizer
+        self.context=context
+        self.lookup=defaultdict(list)
+        for i,(word,_) in enumerate(records):
+            self.lookup[word.casefold()].append(i)
+        self.totals={"grammar":128,"dictionary":len(records),"usage":len(records),
+                     "reading":128,"composition":128}
+        if not records:
+            raise ValueError("Empty dictionary")
+    def indices(self, text):
+        found=set()
+        missing=set()
+        for word in words(text):
+            variants=[word]
+            if word.endswith("'s") or word.endswith("’s"):
+                variants.append(word[:-2])
+            if word.endswith("s"):
+                variants.append(word[:-1])
+            if word.endswith("ies"):
+                variants.append(word[:-3]+"y")
+            if word.endswith("es"):
+                variants.append(word[:-2])
+            for suffix in ("ed","ing"):
+                if word.endswith(suffix):
+                    base=word[:-len(suffix)]
+                    variants.extend([base,base+"e",base[:-1]])
+            ids=next((self.lookup[v] for v in variants if v in self.lookup),[])
+            if ids:
+                found.update(ids)
+            else:
+                missing.add(word)
+        return sorted(found),sorted(missing)
+    def _lex(self, stage, index):
+        word, definition=self.records[index]
+        label=f"Webster 1913 entry {index+1}: {word}"
+        budget=min(80,self.context//4)
+        pieces=chunks(definition,self.tokenizer,budget)
+        result=[]
+        for n,part in enumerate(pieces,1):
+            if stage=="dictionary":
+                train=f"Write the text of {label}, part {n} of {len(pieces)}."
+                exam=f"From memory, reproduce {label}, section {n}/{len(pieces)}."
+                answer=part
+            else:
+                # The selected lexical item is the source entry. Decoys are
+                # distinct headwords, not generated alternative definitions.
+                others=[]
+                for shift in range(1,len(self.records)):
+                    candidate=self.records[(index+shift*97)%len(self.records)][0]
+                    if candidate.casefold()!=word.casefold() and candidate not in others:
+                        others.append(candidate)
+                    if len(others)==2:
+                        break
+                choices=[word]+others
+                rotation=(index+n)%len(choices)
+                choices=choices[rotation:]+choices[:rotation]
+                choices2=list(reversed(choices))
+                train=f"Select the source headword: {part}\nOptions: {' | '.join(choices)}"
+                exam=f"Which listed word belongs to this dictionary passage? {part}\nChoices: {' | '.join(choices2)}"
+                answer=word
+            result.append(dict(id=f"{stage}-{index}-{n}",question=train,exam=exam,answer=answer,lexical_text=word))
+        return result
+    def units(self, stage, index):
+        if not 0<=index<self.totals[stage]:
+            raise ValueError("Curriculum cursor escaped")
+        if stage in ("dictionary","usage"):
+            return self._lex(stage,index)
+        a=ACTORS[index%8]
+        obj=OBJECTS[(index//8+index)%8]
+        place=PLACES[(index//16+index)%8]
+        verb,agree=VERBS[(index//8)%8]
+        mode=(index//32)%4
+        if stage=="grammar":
+            if mode==0:
+                broken=f"The {a} {verb} the {obj}."
+                answer=f"The {a} {agree} the {obj}."
+                q=f"Correct the verb agreement: {broken}"
+                exam=f"Repair only the subject-verb disagreement in: {broken}"
+            elif mode==1:
+                broken=f"the {a} {agree} the {obj}"
+                answer=broken.capitalize()+"."
+                q=f"Add the initial capital and final period: {broken}"
+                exam=f"Capitalize and end this statement with a period: {broken}"
+            elif mode==2:
+                broken=f"The {a}s is in the {place}."
+                answer=f"The {a}s are in the {place}."
+                q=f"Change only the incorrect verb: {broken}"
+                exam=f"Make the verb agree with the plural subject: {broken}"
+            else:
+                broken=f"The {a} did not {agree} the {obj}."
+                answer=f"The {a} did not {verb} the {obj}."
+                q=f"Repair the verb after did not: {broken}"
+                exam=f"Correct only the verb following the auxiliary: {broken}"
+            lexical=broken+" "+answer
+        elif stage=="reading":
+            passage=f"The {a} left the {obj} in the {place}."
+            field=("object","place","person","object")[mode]
+            answer={"object":obj,"place":place,"person":a}[field]
+            q=f"{passage} Name the {field} only."
+            exam=f"{passage} Give just the word naming the {field}."
+            lexical=passage
+        elif stage=="composition":
+            # Constrained composition: objectively gradable, not open essays.
+            tokens=["the",a,agree,"the",obj]
+            answer=" ".join(tokens).capitalize()+"."
+            prompt=f"subject=the {a}; verb={verb}; object=the {obj}"
+            q=f"Compose a third-person present-tense statement, subject then verb then object: {prompt}"
+            exam=f"Write one capitalized present-tense sentence with a full stop, in subject-verb-object order: {prompt}"
+            lexical=answer
+        else:
+            raise ValueError("Unknown English stage")
+        return [dict(id=f"{stage}-{index}",question=q,exam=exam,answer=answer,lexical_text=lexical)]
+    def unit(self, key):
+        stage,index,part=key
+        return self.units(stage,index)[part]
+    def first(self, stage,index):
+        return [stage,index,0]
+    def next(self, key):
+        stage,index,part=key
+        if part+1<len(self.units(stage,index)):
+            return [stage,index,part+1]
+        if index+1<self.totals[stage]:
+            return [stage,index+1,0]
+        return None
