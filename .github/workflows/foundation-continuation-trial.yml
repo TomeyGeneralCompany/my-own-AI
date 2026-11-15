@@ -3,6 +3,9 @@ name: Real checkpoint foundation continuation trial
 on:
   pull_request:
     paths:
+      - 'my_own_ai/english_mastery*.py'
+      - 'my_own_ai/verified_memory.py'
+      - 'my_own_ai/webster1913.py'
       - 'my_own_ai/language_training.py'
       - 'my_own_ai/english_acquisition.py'
       - 'my_own_ai/copy_curriculum.py'
@@ -44,6 +47,15 @@ jobs:
       - name: Run full-cycle continuation on actual learned weights
         run: |
           set -euo pipefail
+          python - <<'PY'
+          import json, torch
+          from pathlib import Path
+          path=Path("data/trial/english.pt")
+          if path.exists():
+              saved=torch.load(path,map_location="cpu",weights_only=True)
+              torch.save({k:saved[k] for k in ("state_dict","completed_steps","tokenizer_sha256")}, "data/recovery/english-before.pt")
+              Path("data/recovery/memory-before.json").write_text(json.dumps(saved.get("verified_memory",{})))
+          PY
           python -u scripts/ancestor_staged.py train --repository . --state data/trial \
             --scratch data/trial-scratch --parent-generation g0002 \
             --english-updates 8000 | tee data/trial-result.json
@@ -51,14 +63,42 @@ jobs:
           import json,os,torch
           from pathlib import Path
           result=json.load(open("data/trial-result.json"))
-          assert result["curriculum_cycles"] >= 1
-          if "fundamentals_correct" in result:
+          if "substage" in result:
+              evidence=json.load(open("data/trial/english-mastery-diagnostics.json"))
+              checkpoint=torch.load(Path("data/trial/english.pt"),map_location="cpu",weights_only=True)
+              before=torch.load(Path("data/recovery/english-before.pt"),map_location="cpu",weights_only=True)
+              progress=checkpoint["english_mastery"]
+              assert checkpoint["tokenizer_sha256"]==before["tokenizer_sha256"]
+              assert result["session_updates"]>0 and result["session_tests"]>0
+              assert checkpoint["completed_steps"]==before["completed_steps"]+result["session_updates"]==result["completed_updates"]
+              assert checkpoint["state_dict"].keys()==before["state_dict"].keys()
+              assert any(not torch.equal(v,before["state_dict"][k]) for k,v in checkpoint["state_dict"].items()), "No neural weight updates"
+              assert progress["initial_step"]+progress["training_updates"]==checkpoint["completed_steps"]
+              assert progress["passed_items"]==result["mastered"] and progress["cursor"]==result["cursor"]
+              assert progress["cumulative_items"]==result["cumulative"]
+              assert progress["phase"]==result["phase"] and len(progress["remediation"])==result["remediation_pending"]
+              assert len(checkpoint["verified_memory"])==result["verified_memory_count"]
+              old_memory=json.load(open("data/recovery/memory-before.json"))
+              assert all(checkpoint["verified_memory"].get(k)==v for k,v in old_memory.items()), "Verified memory lost"
+              assert evidence["completed_updates"]==result["completed_updates"]
+              if not progress["qualified"]:
+                  assert result["stage"]=="english" and not result["passed"], "Competency gate bypassed"
+              else:
+                  assert progress["cumulative_items"]==progress["totals"] and not progress["remediation"]
+              summary=("English mastery substage: "+result["substage"]+"\n\n"
+                       +"Session updates: "+str(result["session_updates"])+"; tests: "+str(result["session_tests"])+"\n\n"
+                       +"Mastered: "+str(result["mastered"])+"; verified memories: "+str(result["verified_memory_count"])+"\n\n"
+                       +"Remediation pending: "+str(result["remediation_pending"])+"; last answer: "+str(result["last_answer"])+"\n\n"
+                       +"Training loss: "+str(result["last_training_loss"])+" (not a mastery score)\n\n")
+          elif "fundamentals_correct" in result:
+              assert result["curriculum_cycles"] >= 1
               evidence=json.load(open("data/trial/foundation-diagnostics.json"))
               assert evidence["curriculum_migration"], "Live foundation checkpoint was not migrated"
               summary = ("Frozen unseen exam: "+str(result["fundamentals_correct"])+"/"+str(result["fundamentals_total"])+"\n\n"
                          +"Training probe: "+str(result["known_probe_correct"])+"/16; validation probe: "+str(result["unseen_probe_correct"])+"/16\n\n"
                          +"Training loss: "+str(result["last_training_loss"])+"; validation loss: "+str(result["validation_loss"])+"\n\n")
           else:
+              assert result["curriculum_cycles"] >= 1
               assert "english_correct" in result, "Unexpected continuation stage"
               evidence=json.load(open("data/trial/comprehension-diagnostics.json"))
               checkpoint=torch.load(Path("data/trial/english.pt"),map_location="cpu",weights_only=True)
@@ -86,4 +126,5 @@ jobs:
             data/trial/foundation-diagnostics.json
             data/trial/comprehension-diagnostics.json
             data/trial/last-exam.json
+            data/trial/english-mastery-diagnostics.json
           retention-days: 30
