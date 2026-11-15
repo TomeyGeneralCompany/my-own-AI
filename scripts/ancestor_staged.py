@@ -214,7 +214,7 @@ def train_batch(args):
                        checkpoint_every=1000, **MODEL)
         if training["curriculum_cursor"] != 0 or training["curriculum_cycles_completed"] < 1:
             raise ValueError("Attempted English exam before complete comprehension coverage")
-        if not training.get("transfer_probe_loss") or training.get("author_excerpt_count", 0) < 1:
+        if not training.get("transfer_probe_loss") or training.get("author_excerpt_count", 0) < 1 or training.get("transfer_batches", 0) < 1:
             raise ValueError("English transfer training did not execute with owner language and independent probes")
         results = evaluate_english(ckpt, tok,
                                    load_gauntlet(root / "examples/english/gauntlet.json"),
@@ -235,7 +235,8 @@ def train_batch(args):
                             "learning_rate": training["comprehension_schedule"]["lr"],
                             "memory_tiers": training["memory_tiers"],
                             "transfer_probe_loss": training["transfer_probe_loss"],
-                            "author_excerpt_count": training["author_excerpt_count"]})
+                            "author_excerpt_count": training["author_excerpt_count"],
+                            "transfer_batches": training["transfer_batches"]})
         dump(diagnostics_path, diagnostics)
         dump(state / "last-exam.json", report)
         passed = advance(ledger, "english_exam", report,
@@ -253,6 +254,7 @@ def train_batch(args):
                 "memory_tiers": diagnostics["memory_tiers"],
                 "transfer_probe_loss": diagnostics["transfer_probe_loss"],
                 "author_excerpt_count": diagnostics["author_excerpt_count"],
+                "transfer_batches": diagnostics["transfer_batches"],
                 "retained": diagnostics["retained"], "lost": diagnostics["lost"],
                 "gained": diagnostics["gained"], "best_observed_correct": diagnostics["best_observed_correct"]}
 
