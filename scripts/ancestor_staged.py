@@ -18,6 +18,7 @@ from my_own_ai.tokenizer import ByteBPETokenizer
 from my_own_ai.language_training import train_language
 from my_own_ai.foundation_diagnostics import diagnose_foundation
 from my_own_ai.comprehension_diagnostics import retention
+from my_own_ai.transfer_diagnostics import paired_transfer
 from my_own_ai.language_inference import answer_question
 from my_own_ai.language_evaluation import evaluate_english, load_gauntlet
 from my_own_ai.persistent_registry import digest_file, package_generation
@@ -209,10 +210,13 @@ def train_batch(args):
                        phase="instruction", steps=start + args.english_updates,
                        resume=ckpt.exists(), curriculum_cycles=True,
                        allow_curriculum_migration=True, comprehension_cycles=True, tiered_memory=True,
+                       transfer_learning=True, author_language_folder=prepared / 'train',
                        init_checkpoint=None if ckpt.exists() else state / "current.best.pt",
                        checkpoint_every=1000, **MODEL)
         if training["curriculum_cursor"] != 0 or training["curriculum_cycles_completed"] < 1:
             raise ValueError("Attempted English exam before complete comprehension coverage")
+        if not training.get("transfer_probe_loss") or training.get("author_excerpt_count", 0) < 1 or training.get("transfer_batches", 0) < 1:
+            raise ValueError("English transfer training did not execute with owner language and independent probes")
         results = evaluate_english(ckpt, tok,
                                    load_gauntlet(root / "examples/english/gauntlet.json"),
                                    max_tokens=50, limit=200, threads=2)
@@ -223,6 +227,8 @@ def train_batch(args):
                   "raw_results": results,
                   "checkpoint_sha256": digest_file(ckpt)}
         diagnostics = retention(previous_report, report, historical.get("best_observed_correct", 0))
+        diagnostics["paired_transfer"] = paired_transfer(ckpt, tok)
+        dump(state / "transfer-diagnostics.json", diagnostics["paired_transfer"])
         diagnostics.update({"checkpoint_sha256": report["checkpoint_sha256"],
                             "completed_updates": training["completed_steps"],
                             "curriculum_cycles": training["curriculum_cycles_completed"],
@@ -230,7 +236,10 @@ def train_batch(args):
                             "validation_loss": training["validation_loss"],
                             "last_training_loss": training["last_training_loss"],
                             "learning_rate": training["comprehension_schedule"]["lr"],
-                            "memory_tiers": training["memory_tiers"]})
+                            "memory_tiers": training["memory_tiers"],
+                            "transfer_probe_loss": training["transfer_probe_loss"],
+                            "author_excerpt_count": training["author_excerpt_count"],
+                            "transfer_batches": training["transfer_batches"]})
         dump(diagnostics_path, diagnostics)
         dump(state / "last-exam.json", report)
         passed = advance(ledger, "english_exam", report,
@@ -246,6 +255,11 @@ def train_batch(args):
                 "validation_loss": diagnostics["validation_loss"],
                 "learning_rate": diagnostics["learning_rate"],
                 "memory_tiers": diagnostics["memory_tiers"],
+                "transfer_probe_loss": diagnostics["transfer_probe_loss"],
+                "author_excerpt_count": diagnostics["author_excerpt_count"],
+                "transfer_batches": diagnostics["transfer_batches"],
+                "paired_transfer_both_correct": diagnostics["paired_transfer"]["both_correct"],
+                "paired_transfer_wording_sensitive": diagnostics["paired_transfer"]["wording_sensitive"],
                 "retained": diagnostics["retained"], "lost": diagnostics["lost"],
                 "gained": diagnostics["gained"], "best_observed_correct": diagnostics["best_observed_correct"]}
 

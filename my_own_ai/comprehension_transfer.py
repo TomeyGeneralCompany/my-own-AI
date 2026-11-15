@@ -76,7 +76,7 @@ def author_examples(folder, limit=256):
     rows=[]
     seen=set()
     paths = sorted(Path(folder).glob("*.txt"))
-    # Round-robin source units rather than drawing all excerpts from the first book.
+    # Collect a bounded number of excerpts per source unit.
     candidates = []
     for path in paths:
         text=path.read_text(encoding="utf-8")
@@ -102,7 +102,9 @@ def author_examples(folder, limit=256):
                 break
         rows.extend(candidates)
         candidates = []
-    return rows[:limit]
+    if len(rows) <= limit:
+        return rows
+    return [rows[i * len(rows) // limit] for i in range(limit)]
 
 
 def probe_rows(group, seed, cycle):
