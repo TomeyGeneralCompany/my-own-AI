@@ -60,8 +60,8 @@ class Curriculum:
         self.lookup=defaultdict(list)
         for i,(word,_) in enumerate(records):
             self.lookup[word.casefold()].append(i)
-        self.totals={"grammar":128,"dictionary":len(records),"usage":len(records),
-                     "reading":128,"composition":128}
+        self.totals={"grammar":384,"dictionary":len(records),"usage":len(records),
+                     "reading":256,"composition":128}
         if not records:
             raise ValueError("Empty dictionary")
     def indices(self, text):
@@ -103,7 +103,7 @@ class Curriculum:
                 # distinct headwords, not generated alternative definitions.
                 others=[]
                 for shift in range(1,len(self.records)):
-                    candidate=self.records[(index+shift*97)%len(self.records)][0]
+                    candidate=self.records[(index+shift)%len(self.records)][0]
                     if candidate.casefold()!=word.casefold() and candidate not in others:
                         others.append(candidate)
                     if len(others)==2:
@@ -126,7 +126,7 @@ class Curriculum:
         obj=OBJECTS[(index//8+index)%8]
         place=PLACES[(index//16+index)%8]
         verb,agree=VERBS[(index//8)%8]
-        mode=(index//32)%4
+        mode=(index//32)%(12 if stage=="grammar" else 8 if stage=="reading" else 4)
         if stage=="grammar":
             if mode==0:
                 broken=f"The {a} {verb} the {obj}."
@@ -143,18 +143,66 @@ class Curriculum:
                 answer=f"The {a}s are in the {place}."
                 q=f"Change only the incorrect verb: {broken}"
                 exam=f"Make the verb agree with the plural subject: {broken}"
-            else:
+            elif mode==3:
                 broken=f"The {a} did not {agree} the {obj}."
                 answer=f"The {a} did not {verb} the {obj}."
                 q=f"Repair the verb after did not: {broken}"
                 exam=f"Correct only the verb following the auxiliary: {broken}"
+            elif mode==4:
+                broken=f"The {a} saw a apple near the {place}."
+                answer=f"The {a} saw an apple near the {place}."
+                q=f"Correct the indefinite article: {broken}"
+                exam=f"Replace only the incorrect article in: {broken}"
+            elif mode==5:
+                broken=f"The {a} saw an {obj}."
+                answer=f"The {a} saw a {obj}."
+                q=f"Correct the article before the object: {broken}"
+                exam=f"Use the right indefinite article without any other change: {broken}"
+            elif mode==6:
+                broken=f"The {a} and me went to the {place}."
+                answer=f"The {a} and I went to the {place}."
+                q=f"Correct the subject pronoun: {broken}"
+                exam=f"Fix only the pronoun in the compound subject: {broken}"
+            elif mode==7:
+                broken=f"The {a} gave I the {obj}."
+                answer=f"The {a} gave me the {obj}."
+                q=f"Correct the object pronoun: {broken}"
+                exam=f"Replace the subject pronoun with the appropriate object form: {broken}"
+            elif mode==8:
+                broken=f"Where is the {obj} in the {place}."
+                answer=broken[:-1]+"?"
+                q=f"Correct the punctuation at the end of the question: {broken}"
+                exam=f"Change only the final punctuation to mark a question: {broken}"
+            elif mode==9:
+                broken=f"The {a} said I found the {obj}."
+                answer=f'The {a} said, "I found the {obj}."'
+                q=f'Punctuate the direct quotation starting with I, using double quotation marks: {broken}'
+                exam=f'Add a comma and double quotes around the direct speech beginning with I, with the period inside: {broken}'
+            elif mode==10:
+                broken=f"The {a} will {agree} the {obj}."
+                answer=f"The {a} will {verb} the {obj}."
+                q=f"Correct the verb after will: {broken}"
+                exam=f"Fix only the form of the verb following the modal: {broken}"
+            else:
+                broken=f"The {a}s {agree} the {obj}."
+                answer=f"The {a}s {verb} the {obj}."
+                q=f"Correct the plural subject and verb agreement: {broken}"
+                exam=f"Repair only the verb for the plural subject: {broken}"
             lexical=broken+" "+answer
         elif stage=="reading":
             passage=f"The {a} left the {obj} in the {place}."
-            field=("object","place","person","object")[mode]
-            answer={"object":obj,"place":place,"person":a}[field]
-            q=f"{passage} Name the {field} only."
-            exam=f"{passage} Give just the word naming the {field}."
+            if mode<4:
+                field=("object","place","person","object")[mode]
+                answer={"object":obj,"place":place,"person":a}[field]
+                q=f"{passage} Name the {field} only."
+                exam=f"{passage} Give just the word naming the {field}."
+            else:
+                positive=index%2==0
+                fact=f"The {obj} is "+("ready." if positive else "not ready.")
+                passage=f"The {a} may enter the {place} if and only if the {obj} is ready. {fact}"
+                answer="yes" if positive else "no"
+                q=f"{passage} May the person enter? Reply yes or no."
+                exam=f"{passage} Under the rule, is entry permitted? Answer yes or no."
             lexical=passage
         elif stage=="composition":
             # Constrained composition: objectively gradable, not open essays.
