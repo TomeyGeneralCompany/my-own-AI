@@ -13,6 +13,7 @@ from .language_training import _example, _batch, _loss
 from .train import _atomic_save
 from .english_mastery_curriculum import Curriculum, STAGES, clean
 from .webster1913 import BLOB
+from .verified_memory import VerifiedMemory
 
 VERSION=1
 REPETITIONS=(100,200,300)
@@ -181,7 +182,7 @@ def mastered_replay(p,curriculum,step):
     return training_row(units[(step//max(1,count))%len(units)])
 
 def train_session(checkpoint,tokenizer_path,records,*,parent=None,budget=400,
-                  threads=2,max_tests=64,time_budget=1500,identity=BLOB):
+                  threads=2,max_tests=64,time_budget=1500,identity=BLOB, prior_exam=None):
     if budget<1 or max_tests<1 or time_budget<=0:
         raise ValueError("Invalid session budget")
     checkpoint=Path(checkpoint)
@@ -210,6 +211,13 @@ def train_session(checkpoint,tokenizer_path,records,*,parent=None,budget=400,
         payload.pop("english_mastery",None)
     p=payload.get("english_mastery") or new_progress(curriculum,step,identity)
     verify_progress(p,curriculum,identity,step)
+    memory=VerifiedMemory(payload.get("verified_memory",{}))
+    if prior_exam is not None and "english_mastery" not in payload:
+        memory.import_exam(prior_exam,step)
+    p.setdefault("retrieval_hits",0)
+    p.setdefault("new_verified",0)
+    p.setdefault("unaided_tests",0)
+    p.setdefault("unaided_correct",0)
     start=step
     tests=0
     started=monotonic()
@@ -218,12 +226,19 @@ def train_session(checkpoint,tokenizer_path,records,*,parent=None,budget=400,
         verify_progress(p,curriculum,identity,step)
         payload.update(state_dict=model.state_dict(),optimizer=optimizer.state_dict(),
                        completed_steps=step,torch_rng=torch.get_rng_state(),
-                       english_mastery=p,sampling_policy="english_mastery_v1",
+                       english_mastery=p,verified_memory=memory.records,sampling_policy="english_mastery_v1",
                        phase="instruction")
         _atomic_save(payload,checkpoint)
     while not p["qualified"] and step-start<budget and tests<max_tests and monotonic()-started<time_budget:
         key=p["remediation"][0] if p["phase"] in ("remediate","remedial_exam") else p["cursor"]
         unit=curriculum.unit(key)
+        known=memory.exact(unit["exam"])
+        if known and correct(unit,known["answer"],True) and p["phase"]=="teach":
+            p["phase"]="exam"
+            p["remaining"]=0
+        if known and correct(unit,known["answer"],True) and p["phase"]=="remediate":
+            p["phase"]="remedial_exam"
+            p["remaining"]=0
         if p["phase"] in ("teach","remediate"):
             rows=[training_row(unit)]
             replay=mastered_replay(p,curriculum,step) if step%4==0 else None
@@ -247,13 +262,25 @@ def train_session(checkpoint,tokenizer_path,records,*,parent=None,budget=400,
             if p["remaining"]==0:
                 p["phase"]="remedial_exam" if p["phase"]=="remediate" else "exam"
         else:
-            answer,ended=generate(model,tokenizer,unit["exam"],unit["answer"])
+            if known:
+                answer,ended=known["answer"],True
+                p["retrieval_hits"]+=1
+                origin="verified_memory"
+            else:
+                question=memory.contextual(unit["exam"],tokenizer,max(0,cfg.context_size-5-len(tokenizer.encode(unit["answer"]))*2-16))
+                answer,ended=generate(model,tokenizer,question,unit["answer"])
+                origin="neural" if question==unit["exam"] else "memory_assisted_neural"
+                if origin=="neural":
+                    p["unaided_tests"]+=1
+                    p["unaided_correct"]+=int(correct(unit,answer,ended))
             ok=correct(unit,answer,ended)
+            if ok and not known:
+                p["new_verified"]+=int(memory.remember(unit["exam"],answer,expected=unit["answer"],step=step,provenance=origin))
             tests+=1
             p["attempts"]+=1
             p["correct"]+=int(ok)
             p["last_answer"]=dict(id=unit["id"],question=unit["exam"],
-                                  actual=answer,expected=unit["answer"],correct=ok,eos=ended)
+                                  actual=answer,expected=unit["answer"],correct=ok,eos=ended,origin=origin)
             if p["phase"]=="remedial_exam":
                 if not ok:
                     p["remediation_round"]+=1
@@ -279,6 +306,7 @@ def train_session(checkpoint,tokenizer_path,records,*,parent=None,budget=400,
         if step!=start and step%100==0 and p["phase"] in ("exam","remedial_exam"):
             save()
     save()
+    p["verified_memory_count"]=len(memory.records)
     return dict(substage=STAGES[p["stage_index"]] if p["stage_index"]<len(STAGES) else "cumulative",
                 completed_updates=step,session_updates=step-start,session_tests=tests,
                 mastery=p,passed=p["qualified"],last_training_loss=last_loss,
