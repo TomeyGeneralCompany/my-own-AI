@@ -209,10 +209,13 @@ def train_batch(args):
                        phase="instruction", steps=start + args.english_updates,
                        resume=ckpt.exists(), curriculum_cycles=True,
                        allow_curriculum_migration=True, comprehension_cycles=True, tiered_memory=True,
+                       transfer_learning=True, author_language_folder=prepared / 'train',
                        init_checkpoint=None if ckpt.exists() else state / "current.best.pt",
                        checkpoint_every=1000, **MODEL)
         if training["curriculum_cursor"] != 0 or training["curriculum_cycles_completed"] < 1:
             raise ValueError("Attempted English exam before complete comprehension coverage")
+        if not training.get("transfer_probe_loss") or training.get("author_excerpt_count", 0) < 1:
+            raise ValueError("English transfer training did not execute with owner language and independent probes")
         results = evaluate_english(ckpt, tok,
                                    load_gauntlet(root / "examples/english/gauntlet.json"),
                                    max_tokens=50, limit=200, threads=2)
@@ -230,7 +233,9 @@ def train_batch(args):
                             "validation_loss": training["validation_loss"],
                             "last_training_loss": training["last_training_loss"],
                             "learning_rate": training["comprehension_schedule"]["lr"],
-                            "memory_tiers": training["memory_tiers"]})
+                            "memory_tiers": training["memory_tiers"],
+                            "transfer_probe_loss": training["transfer_probe_loss"],
+                            "author_excerpt_count": training["author_excerpt_count"]})
         dump(diagnostics_path, diagnostics)
         dump(state / "last-exam.json", report)
         passed = advance(ledger, "english_exam", report,
@@ -246,6 +251,8 @@ def train_batch(args):
                 "validation_loss": diagnostics["validation_loss"],
                 "learning_rate": diagnostics["learning_rate"],
                 "memory_tiers": diagnostics["memory_tiers"],
+                "transfer_probe_loss": diagnostics["transfer_probe_loss"],
+                "author_excerpt_count": diagnostics["author_excerpt_count"],
                 "retained": diagnostics["retained"], "lost": diagnostics["lost"],
                 "gained": diagnostics["gained"], "best_observed_correct": diagnostics["best_observed_correct"]}
 
