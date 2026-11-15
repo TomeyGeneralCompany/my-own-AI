@@ -66,6 +66,10 @@ jobs:
           d=json.load(open("data/retention-"+i+".json"))
           assert d["curriculum_cycles"]>=int(i)
           assert d["prior_comparable"]==130
+          assert d["transfer_batches"] > 0
+          assert d["author_excerpt_count"] > 0
+          assert set(d["transfer_probe_loss"]) == {"syntax","reading","qa","conditional","paraphrase","coherence","followup","foundation"}
+          print("Transfer evidence:", d["transfer_batches"], d["author_excerpt_count"], d["transfer_probe_loss"])
           print(json.dumps({k:d[k] for k in ("correct","previous_correct","retained","lost","gained","validation_loss","learning_rate","categories")},indent=2))
           PY
             if python -c 'import json,sys;sys.exit(0 if json.load(open("data/trial/stage-ledger.json"))["stage"]!="english" else 1)'; then break; fi
