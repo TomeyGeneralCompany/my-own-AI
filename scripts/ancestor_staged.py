@@ -25,6 +25,9 @@ from my_own_ai.persistent_registry import digest_file, package_generation
 from my_own_ai.ordered_book_learning import read_all_units
 from my_own_ai.published_corpus import prepare_published_corpus, validate_published_manifest
 from my_own_ai.reasoning_curriculum import extract_lessons
+from my_own_ai.english_mastery import train_session as train_mastery, graduation_report
+from my_own_ai.webster1913 import acquire as acquire_webster
+from my_own_ai.stage_controller import advance_english_mastery
 from my_own_ai.stage_controller import (initial_ledger, verify_ledger, advance, advance_fundamentals, approve, fingerprint,
     ENGLISH, READ, COMPREHEND, SYNTHESIS, REVIEW, COMPLETE)
 
@@ -195,73 +198,34 @@ def train_batch(args):
                 "unseen_probe_correct":diagnostics["probes"]["validation"]["correct"]}
 
     if stage == ENGLISH:
-        inputs = scratch / "english"
-        inputs.mkdir(parents=True, exist_ok=True)
-        for split in ("train", "validation"):
-            dump(inputs / (split + ".json"), english_drills(split) + acquisition_drills(split))
-        ckpt = state / "english.pt"
-        best = state / "english.best.pt"
-        start = int(torch.load(ckpt, map_location="cpu", weights_only=True)["completed_steps"]) if ckpt.exists() else 0
-        previous_report = json.loads((state / "last-exam.json").read_text()) if (state / "last-exam.json").exists() else None
-        diagnostics_path = state / "comprehension-diagnostics.json"
-        historical = json.loads(diagnostics_path.read_text()) if diagnostics_path.exists() else {}
-        training = train_language(tokenizer_path=tok, training=inputs / "train.json",
-                       validation=inputs / "validation.json", output=ckpt,
-                       phase="instruction", steps=start + args.english_updates,
-                       resume=ckpt.exists(), curriculum_cycles=True,
-                       allow_curriculum_migration=True, comprehension_cycles=True, tiered_memory=True,
-                       transfer_learning=True, author_language_folder=prepared / 'train',
-                       init_checkpoint=None if ckpt.exists() else state / "current.best.pt",
-                       checkpoint_every=1000, **MODEL)
-        if training["curriculum_cursor"] != 0 or training["curriculum_cycles_completed"] < 1:
-            raise ValueError("Attempted English exam before complete comprehension coverage")
-        if not training.get("transfer_probe_loss") or training.get("author_excerpt_count", 0) < 1 or training.get("transfer_batches", 0) < 1:
-            raise ValueError("English transfer training did not execute with owner language and independent probes")
-        results = evaluate_english(ckpt, tok,
-                                   load_gauntlet(root / "examples/english/gauntlet.json"),
-                                   max_tokens=50, limit=200, threads=2)
-        report = {"evaluated": results["total"],
-                  "automatically_scored": results["automatically_scored"],
-                  "exact_correct": results["exact_correct"],
-                  "category_scores": results["categories"],
-                  "raw_results": results,
-                  "checkpoint_sha256": digest_file(ckpt)}
-        diagnostics = retention(previous_report, report, historical.get("best_observed_correct", 0))
-        diagnostics["paired_transfer"] = paired_transfer(ckpt, tok)
-        dump(state / "transfer-diagnostics.json", diagnostics["paired_transfer"])
-        diagnostics.update({"checkpoint_sha256": report["checkpoint_sha256"],
-                            "completed_updates": training["completed_steps"],
-                            "curriculum_cycles": training["curriculum_cycles_completed"],
-                            "curriculum_examples": training["curriculum_examples_total"],
-                            "validation_loss": training["validation_loss"],
-                            "last_training_loss": training["last_training_loss"],
-                            "learning_rate": training["comprehension_schedule"]["lr"],
-                            "memory_tiers": training["memory_tiers"],
-                            "transfer_probe_loss": training["transfer_probe_loss"],
-                            "author_excerpt_count": training["author_excerpt_count"],
-                            "transfer_batches": training["transfer_batches"]})
-        dump(diagnostics_path, diagnostics)
+        # This is the production path, not an optional side routine.
+        ledger["english_mastery_required"] = True
+        records = acquire_webster(scratch / "dictionary")
+        checkpoint = state / "english.pt"
+        result = train_mastery(checkpoint, tok, records,
+                               parent=state / "current.best.pt",
+                               budget=args.english_updates)
+        report = graduation_report(result)
+        progress = result["mastery"]
+        dump(state / "english-mastery-diagnostics.json", result)
         dump(state / "last-exam.json", report)
-        passed = advance(ledger, "english_exam", report,
-                         checkpoint_sha256=digest_file(ckpt))
+        passed = advance_english_mastery(ledger, report,
+                                          checkpoint_sha256=digest_file(checkpoint))
         if passed:
-            shutil.copyfile(ckpt, state / "current.best.pt")
+            shutil.copyfile(checkpoint, state / "current.best.pt")
         dump(ledger_path, ledger)
-        return {"stage": ledger["stage"], "english_correct": results["exact_correct"],
-                "english_total": results["automatically_scored"],
-                "passed": passed, "completed_updates": training["completed_steps"],
-                "curriculum_cycles": diagnostics["curriculum_cycles"],
-                "curriculum_examples": diagnostics["curriculum_examples"],
-                "validation_loss": diagnostics["validation_loss"],
-                "learning_rate": diagnostics["learning_rate"],
-                "memory_tiers": diagnostics["memory_tiers"],
-                "transfer_probe_loss": diagnostics["transfer_probe_loss"],
-                "author_excerpt_count": diagnostics["author_excerpt_count"],
-                "transfer_batches": diagnostics["transfer_batches"],
-                "paired_transfer_both_correct": diagnostics["paired_transfer"]["both_correct"],
-                "paired_transfer_wording_sensitive": diagnostics["paired_transfer"]["wording_sensitive"],
-                "retained": diagnostics["retained"], "lost": diagnostics["lost"],
-                "gained": diagnostics["gained"], "best_observed_correct": diagnostics["best_observed_correct"]}
+        return {"stage":ledger["stage"], "substage": result["substage"],
+                "passed":passed, "completed_updates":result["completed_updates"],
+                "session_updates":result["session_updates"],"session_tests":result["session_tests"],
+                "stage_totals":progress["totals"],"mastered":progress["passed_items"],
+                "cumulative":progress["cumulative_items"],"cursor":progress["cursor"],
+                "phase":progress["phase"],"remaining_repetitions":progress["remaining"],
+                "remediation_pending":len(progress["remediation"]),
+                "remedial_updates":progress["remedial_updates"],
+                "retention_tests":progress["retention_tests"],
+                "retention_failures":progress["retention_failures"],
+                "last_answer":progress["last_answer"],
+                "last_training_loss":result["last_training_loss"]}
 
     book = books[ledger["book_index"]]
     book_dir = scratch / ("book_" + book)
