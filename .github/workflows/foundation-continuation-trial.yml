@@ -55,6 +55,7 @@ jobs:
               saved=torch.load(path,map_location="cpu",weights_only=True)
               torch.save({k:saved[k] for k in ("state_dict","completed_steps","tokenizer_sha256")}, "data/recovery/english-before.pt")
               Path("data/recovery/memory-before.json").write_text(json.dumps(saved.get("verified_memory",{})))
+              Path("data/recovery/mastery-before.json").write_text(json.dumps(saved.get("english_mastery",{})))
           PY
           python -u scripts/ancestor_staged.py train --repository . --state data/trial \
             --scratch data/trial-scratch --parent-generation g0002 \
@@ -81,6 +82,23 @@ jobs:
               old_memory=json.load(open("data/recovery/memory-before.json"))
               assert all(checkpoint["verified_memory"].get(k)==v for k,v in old_memory.items()), "Verified memory lost"
               assert evidence["completed_updates"]==result["completed_updates"]
+              # A green continuation trial must demonstrate escape from the
+              # live failed exercise, not merely changed weights or low loss.
+              from my_own_ai.verified_memory import key, normalize
+              previous=json.load(open("data/recovery/mastery-before.json"))
+              failed=previous.get("last_answer") or {}
+              if (previous.get("phase") in ("remediate","remedial_exam")
+                  and failed.get("id","").startswith("dictionary-")
+                  and failed.get("correct") is False):
+                  memory_key=key(failed["question"])
+                  if memory_key not in old_memory:
+                      repaired=checkpoint["verified_memory"].get(memory_key)
+                      assert repaired is not None, ("Real checkpoint remains blocked on "
+                                                    +failed["id"]+": "+str(result["last_answer"]))
+                      assert repaired["provenance"]=="neural", "Repair must be unaided"
+                      assert normalize(repaired["answer"])==normalize(failed["expected"])
+                      assert repaired["step"]>=before["completed_steps"]
+              print("Held-out wording diagnostic:", progress.get("last_transfer"))
               if not progress["qualified"]:
                   assert result["stage"]=="english" and not result["passed"], "Competency gate bypassed"
               else:

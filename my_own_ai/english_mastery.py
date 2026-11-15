@@ -96,15 +96,24 @@ def record_partial(p, unit, answer, ended, tokenizer):
     previous = table.get(identity, {})
     retained = set(previous.get("retained", []))
     # Exact answers are unambiguous; otherwise align in reference order.
+    alignment = SequenceMatcher(None, reference, actual, autojunk=False)
     matched = set()
-    for block in SequenceMatcher(None, reference, actual, autojunk=False).get_matching_blocks():
+    for block in alignment.get_matching_blocks():
         matched.update(range(block.a, block.a + block.size))
     new = matched - retained
     regressed = retained - matched
     retained.update(matched)
+    # Count insertions as errors too; a fully matched subsequence is not an exact answer.
+    distance = sum(max(b-a, d-c) for tag,a,b,c,d in alignment.get_opcodes() if tag!="equal")
+    best = previous.get("best_distance", distance)
+    stagnant = 0 if distance < best else previous.get("stagnant", 0)+1
+    first = next((i for i,(x,y) in enumerate(zip(reference,actual)) if x!=y),
+                 min(len(reference),len(actual)))
     table[identity] = dict(retained=sorted(retained), latest=sorted(matched),
                            missing=sorted(set(range(len(reference)))-matched),
-                           regressions=sorted(regressed), attempts=previous.get("attempts",0)+1)
+                           regressions=sorted(regressed), attempts=previous.get("attempts",0)+1,
+                           distance=distance,best_distance=min(best,distance),stagnant=stagnant,
+                           first_divergence=first,actual=answer,ended=ended)
     p["partial_new_tokens"] = p.get("partial_new_tokens",0)+len(new)
     p["partial_regressions"] = p.get("partial_regressions",0)+len(regressed)
     return table[identity]
@@ -115,13 +124,64 @@ def correction_sample(p, unit, tokenizer, context):
     record = p.get("partial_answers", {}).get(digest([unit["exam"], reference]))
     if not record or not record["missing"]:
         return None
-    inputs, labels = _example(training_row(unit), tokenizer, context)
+    inputs, labels = _example(dict(training_row(unit),question=unit["exam"]), tokenizer, context)
     # Only target positions if training and assessment tokenizations agree.
     if [v for v in labels if v != -100] != reference:
         return None
     start = len(labels)-len(reference)
     missing = set(record["missing"])
     return inputs, [v if i-start in missing else -100 for i,v in enumerate(labels)]
+
+def remediation_samples(p, unit, tokenizer, context):
+    """Teach the failed prompt itself and repair the first autoregressive error.
+
+    Recovery is an explicit restart exercise: a causal decoder cannot erase
+    an already emitted wrong token. No failed prefix is inserted into exams.
+    """
+    reference=tokenizer.encode(clean(unit["answer"]))+[EOS]
+    record=p.get("partial_answers",{}).get(digest([unit["exam"],reference]),{})
+    # Include the full answer under the exam wording even when no partial
+    # record exists (e.g. a checkpoint from before this trainer version).
+    row=dict(training_row(unit),question=unit["exam"])
+    inputs,labels=_example(row,tokenizer,context)
+    samples=[(inputs,labels)]
+    targeted=correction_sample(p,unit,tokenizer,context)
+    if targeted is not None:
+        samples.append(targeted)
+    # The first wrong/extra token includes insertion errors missed by
+    # matching reference subsequences. Train the correct next token there.
+    first=record.get("first_divergence")
+    if first is not None and 0<=first<len(reference) and [v for v in labels if v!=-100]==reference:
+        pos=len(labels)-len(reference)+first
+        samples.append((inputs,[v if i==pos else -100 for i,v in enumerate(labels)]))
+    # Change the supervision on a persistent plateau, instead of merely
+    # repeating the same near-zero-loss teacher-forced row.
+    if record.get("stagnant",0)>=3 or record.get("attempts",0)>=3:
+        actual=record.get("actual","")
+        if actual:
+            actual_tokens=tokenizer.encode(clean(actual))
+            try:
+                prefix=tokenizer.decode(actual_tokens[:(first if first is not None else 0)+1])
+            except UnicodeDecodeError:
+                prefix=actual
+            recovery=dict(row,question=(unit["exam"]+"\nYour attempt began: "+prefix+
+                                        "\nRestart and give the complete corrected answer."))
+            if len(tokenizer.encode(recovery["question"]))+len(reference)+4<=context:
+                samples.append(_example(recovery,tokenizer,context))
+        # Distinct teaching paraphrase, not the held-out transfer wording.
+        paraphrase=dict(row,question="Follow this instruction exactly: "+unit["question"])
+        if len(tokenizer.encode(paraphrase["question"]))+len(reference)+4<=context:
+            samples.append(_example(paraphrase,tokenizer,context))
+    return samples
+
+
+def transfer_question(unit):
+    """Never used for optimizer updates; a separate wording diagnostic."""
+    if unit["id"].startswith("dictionary-"):
+        # Preserve the exact source entry and section identity.
+        return unit["exam"].replace("From memory, reproduce ","Recall verbatim ").replace(", section ",", passage ",1)
+    return "Give the requested response without changing the task: "+unit["question"]
+
 
 def reset_cumulative(p,step):
     p["cumulative_items"]={s:0 for s in STAGES}
@@ -282,9 +342,19 @@ def train_session(checkpoint,tokenizer_path,records,*,parent=None,budget=400,
             if replay is not None:
                 rows.append(replay)
             samples=[_example(row,tokenizer,cfg.context_size) for row in rows]
-            targeted=correction_sample(p,unit,tokenizer,cfg.context_size)
-            if targeted is not None:
-                samples.append(targeted)
+            if p["phase"]=="remediate":
+                # The old record lacks first-divergence/raw-answer metadata.
+                # Hydrate it from the saved failure, without resetting state.
+                last=p.get("last_answer") or {}
+                reference=tokenizer.encode(clean(unit["answer"]))+[EOS]
+                prior=p.get("partial_answers",{}).get(digest([unit["exam"],reference]),{})
+                if last.get("id")==unit["id"] and not last.get("correct") and "first_divergence" not in prior:
+                    record_partial(p,unit,last["actual"],last.get("eos",False),tokenizer)
+                samples.extend(remediation_samples(p,unit,tokenizer,cfg.context_size))
+            else:
+                targeted=correction_sample(p,unit,tokenizer,cfg.context_size)
+                if targeted is not None:
+                    samples.append(targeted)
             model.train()
             loss=_loss(model,_batch(samples,list(range(len(samples)))))
             if not torch.isfinite(loss):
@@ -307,7 +377,7 @@ def train_session(checkpoint,tokenizer_path,records,*,parent=None,budget=400,
                 p["retrieval_hits"]+=1
                 origin="verified_memory"
             else:
-                question=memory.contextual(unit["exam"],tokenizer,max(0,cfg.context_size-5-len(tokenizer.encode(unit["answer"]))*2-16))
+                question=unit["exam"] if p["phase"]=="remedial_exam" else memory.contextual(unit["exam"],tokenizer,max(0,cfg.context_size-5-len(tokenizer.encode(unit["answer"]))*2-16))
                 answer,ended=generate(model,tokenizer,question,unit["answer"])
                 origin="neural" if question==unit["exam"] else "memory_assisted_neural"
                 if origin=="neural":
@@ -317,6 +387,17 @@ def train_session(checkpoint,tokenizer_path,records,*,parent=None,budget=400,
             partial=None
             if not known:
                 partial=record_partial(p,unit,answer,ended,tokenizer)
+            if ok and not known and p["phase"]=="remedial_exam":
+                # Evaluate transfer independently, with no retrieved answers.
+                # The original exact examination gate is unchanged.
+                alternate=transfer_question(unit)
+                if len(tokenizer.encode(alternate))+4+len(tokenizer.encode(unit["answer"]))<=cfg.context_size:
+                    response,finished=generate(model,tokenizer,alternate,unit["answer"])
+                    transfer_ok=correct(unit,response,finished)
+                    p["transfer_tests"]=p.get("transfer_tests",0)+1
+                    p["transfer_correct"]=p.get("transfer_correct",0)+int(transfer_ok)
+                    p["last_transfer"]=dict(id=unit["id"],question=alternate,actual=response,
+                                            correct=transfer_ok,eos=finished,origin="neural")
             if ok and not known:
                 p["new_verified"]+=int(memory.remember(unit["exam"],answer,expected=unit["answer"],step=step,provenance=origin))
             tests+=1
