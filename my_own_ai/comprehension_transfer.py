@@ -30,18 +30,24 @@ def exercise(group, index, seed, cycle, split="train", variant=0):
     a, item, place = (rng.choice(p) for p in POOLS[split])
     other = rng.choice([x for x in POOLS[split][1] if x != item])
     k = (pair + variant) % 3
+    phrasing = PHRASES if split == "train" else {
+        "reading": ("Which thing was picked up by {a}? Give its name.", "Name what {a} lifted, without a sentence.", "What was taken in hand by {a}? One noun only."),
+        "qa": ("Name the place that now contains it.", "In what place did {a} leave it? Name only that place.", "Where is the thing now? State only the location."),
+        "conditional": ("Can the person leave under this rule? Yes or no.", "State whether leaving is allowed, using yes or no.", "Is the stated requirement satisfied? Answer yes or no."),
+        "syntax": ("Change only the erroneous verb:", "Correct the verb while preserving every other word:", "Make the verb agree with its subject, keeping the rest unchanged:"),
+    }
     if group == "reading":
-        q = f"The {a} left the {other} behind and picked up the {item}. " + PHRASES[group][k].format(a="the "+a)
+        q = f"The {a} left the {other} behind and picked up the {item}. " + phrasing[group][k].format(a="the "+a)
         answer = item
     elif group == "qa":
-        q = f"The {a} put the {item} in the {place}. " + PHRASES[group][k].format(a="the "+a)
+        q = f"The {a} put the {item} in the {place}. " + phrasing[group][k].format(a="the "+a)
         answer = place
     elif group == "conditional":
         yes = index % 2 == 0
-        q = f"The {a} is allowed to leave only when the {item} is dry, and dryness is enough. The {item} is " + ("dry. " if yes else "not dry. ") + PHRASES[group][k]
+        q = f"The {a} is allowed to leave only when the {item} is dry, and dryness is enough. The {item} is " + ("dry. " if yes else "not dry. ") + phrasing[group][k]
         answer = "yes" if yes else "no"
     elif group == "syntax":
-        q = PHRASES[group][k] + f" The {a} hold the {item}."
+        q = phrasing[group][k] + f" The {a} hold the {item}."
         answer = f"The {a} holds the {item}."
     elif group == "foundation":
         row = synthetic_copy_rows(cycle, index+1, seed + (71321 if split=="probe" else 39181))[-1]
@@ -69,7 +75,10 @@ def author_examples(folder, limit=256):
         return []
     rows=[]
     seen=set()
-    for path in sorted(Path(folder).glob("*.txt")):
+    paths = sorted(Path(folder).glob("*.txt"))
+    # Round-robin source units rather than drawing all excerpts from the first book.
+    candidates = []
+    for path in paths:
         text=path.read_text(encoding="utf-8")
         for line in text.splitlines():
             for sentence in re.split(r"(?<=[.!?])\s+",line.strip()):
@@ -84,12 +93,16 @@ def author_examples(folder, limit=256):
                 prefix=" ".join(words[:-2])
                 tail=" ".join(words[-2:])
                 ident=hashlib.sha256((path.name+"\0"+sentence).encode()).hexdigest()[:24]
-                rows.append({"id":"owner-language-"+ident,
+                candidates.append({"id":"owner-language-"+ident,
                              "question":"Continue this exact quotation: "+prefix,
                              "answer":tail})
-                if len(rows) >= limit:
-                    return rows
-    return rows
+                if len(candidates) >= 4:
+                    break
+            if len(candidates) >= 4:
+                break
+        rows.extend(candidates)
+        candidates = []
+    return rows[:limit]
 
 
 def probe_rows(group, seed, cycle):
