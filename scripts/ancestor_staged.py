@@ -204,7 +204,7 @@ def train_batch(args):
         checkpoint = state / "english.pt"
         result = train_mastery(checkpoint, tok, records,
                                parent=state / "current.best.pt",
-                               budget=args.english_updates)
+                               budget=args.english_updates, prior_exam=state / "last-exam.json")
         report = graduation_report(result)
         progress = result["mastery"]
         dump(state / "english-mastery-diagnostics.json", result)
@@ -219,6 +219,9 @@ def train_batch(args):
                 "session_updates":result["session_updates"],"session_tests":result["session_tests"],
                 "stage_totals":progress["totals"],"mastered":progress["passed_items"],
                 "cumulative":progress["cumulative_items"],"cursor":progress["cursor"],
+                "verified_memory_count":progress["verified_memory_count"],
+                "memory_retrieval_hits":progress["retrieval_hits"],
+                "new_verified":progress["new_verified"],
                 "phase":progress["phase"],"remaining_repetitions":progress["remaining"],
                 "remediation_pending":len(progress["remediation"]),
                 "remedial_updates":progress["remedial_updates"],
