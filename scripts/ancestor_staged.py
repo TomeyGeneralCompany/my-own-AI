@@ -18,6 +18,7 @@ from my_own_ai.tokenizer import ByteBPETokenizer
 from my_own_ai.language_training import train_language
 from my_own_ai.foundation_diagnostics import diagnose_foundation
 from my_own_ai.comprehension_diagnostics import retention
+from my_own_ai.transfer_diagnostics import paired_transfer
 from my_own_ai.language_inference import answer_question
 from my_own_ai.language_evaluation import evaluate_english, load_gauntlet
 from my_own_ai.persistent_registry import digest_file, package_generation
@@ -226,6 +227,8 @@ def train_batch(args):
                   "raw_results": results,
                   "checkpoint_sha256": digest_file(ckpt)}
         diagnostics = retention(previous_report, report, historical.get("best_observed_correct", 0))
+        diagnostics["paired_transfer"] = paired_transfer(ckpt, tok)
+        dump(state / "transfer-diagnostics.json", diagnostics["paired_transfer"])
         diagnostics.update({"checkpoint_sha256": report["checkpoint_sha256"],
                             "completed_updates": training["completed_steps"],
                             "curriculum_cycles": training["curriculum_cycles_completed"],
@@ -255,6 +258,8 @@ def train_batch(args):
                 "transfer_probe_loss": diagnostics["transfer_probe_loss"],
                 "author_excerpt_count": diagnostics["author_excerpt_count"],
                 "transfer_batches": diagnostics["transfer_batches"],
+                "paired_transfer_both_correct": diagnostics["paired_transfer"]["both_correct"],
+                "paired_transfer_wording_sensitive": diagnostics["paired_transfer"]["wording_sensitive"],
                 "retained": diagnostics["retained"], "lost": diagnostics["lost"],
                 "gained": diagnostics["gained"], "best_observed_correct": diagnostics["best_observed_correct"]}
 
