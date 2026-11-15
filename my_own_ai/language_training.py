@@ -21,6 +21,7 @@ from .comprehension_curriculum import (VERSION as COMPREHENSION_VERSION, cycle_s
 from .intellectual_memory import (new_memory, validate_memory, consolidate,
     replay_group, source_examples, contextual_question)
 from .comprehension_curriculum import GROUPS
+from .comprehension_transfer import exercise, grounded_row, author_examples, probe_rows
 
 
 def load_dialogues(path):
@@ -118,7 +119,10 @@ def train_language(*, tokenizer_path, training, validation, output,
                    batch_size=2, lr=0.001, seed=42, checkpoint_every=20, threads=2,
                    time_budget_seconds=None, english_drill_fraction=0.0,
                    curriculum_cycles=False, allow_curriculum_migration=False,
-                   dynamic_copy=False, comprehension_cycles=False, tiered_memory=False):
+                   dynamic_copy=False, comprehension_cycles=False, tiered_memory=False,
+                   transfer_learning=False, author_language_folder=None):
+    if transfer_learning and not tiered_memory:
+        raise ValueError("Transfer learning requires tiered comprehension memory")
     if tiered_memory and not comprehension_cycles:
         raise ValueError("Tiered memory requires comprehension cycles")
     if not 0 <= english_drill_fraction <= 1 or not math.isfinite(english_drill_fraction):
@@ -294,6 +298,25 @@ def train_language(*, tokenizer_path, training, validation, output,
     if comprehension_cycles:
         for group in optimizer.param_groups:
             group["lr"] = comprehension_schedule["lr"]
+    transfer_state = None
+    if transfer_learning:
+        excerpts = author_examples(author_language_folder)
+        author_samples = [_example(row, tokenizer, context) for row in excerpts
+                          if len(tokenizer.encode(row['question'])) + len(tokenizer.encode(row['answer'])) + 5 <= context]
+        prior_transfer = payload.get('transfer_state') if resume else None
+        if prior_transfer is None:
+            if curriculum_cursor:
+                raise ValueError('Transfer migration requires a complete cycle boundary')
+            transfer_state = {'version': 2, 'introduced_at_cycle': curriculum_completed,
+                              'author_hash': _hash(excerpts), 'probe_history': {}, 'last_probe_cycle': curriculum_completed-1}
+            comprehension_schedule.update(best=None, bad_cycles=0, lr=min(lr, 0.00025))
+            for group in optimizer.param_groups:
+                group['lr'] = comprehension_schedule['lr']
+        else:
+            transfer_state = prior_transfer
+            if transfer_state['version'] != 2 or transfer_state['author_hash'] != _hash(excerpts):
+                raise ValueError('Transfer source or version changed')
+        train_samples = [_example(grounded_row(row), tokenizer, context) for row in train_rows]
     if tiered_memory:
         if memory is None:
             memory = new_memory(train_rows, seed, curriculum_completed)
@@ -327,10 +350,20 @@ def train_language(*, tokenizer_path, training, validation, output,
             for group in optimizer.param_groups:
                 group["lr"] = comprehension_schedule["lr"]
         if tiered_memory and curriculum_cursor == 0 and memory["covered_through"] < curriculum_completed - 1:
-            consolidate(memory, {g: _validation(model, anchors[g]) for g in GROUPS},
-                        curriculum_completed - 1)
+            if transfer_learning:
+                probes = {g: [_example(row, tokenizer, context) for row in probe_rows(g, seed, curriculum_completed-1)] for g in GROUPS}
+                losses = {g: _validation(model, probes[g]) for g in GROUPS}
+                if not transfer_state['probe_history']:
+                    for record in memory['records'].values():
+                        record.update(tier='acquisition', streak=0, loss=None, best=None)
+                transfer_state['probe_history'] = losses
+                transfer_state['last_probe_cycle'] = curriculum_completed-1
+                consolidate(memory, losses, curriculum_completed-1)
+            else:
+                consolidate(memory, {g: _validation(model, anchors[g]) for g in GROUPS}, curriculum_completed - 1)
         state = {
             **({"intellectual_memory": memory} if tiered_memory else {}),
+            **({"transfer_state": transfer_state} if transfer_learning else {}),
             "language_format": 1, "model_config": asdict(cfg),
             "tokenizer_state": tokenizer.state(), "tokenizer_sha256": tokenizer.fingerprint(),
             "state_dict": model.state_dict(), "optimizer": optimizer.state_dict(),
@@ -409,6 +442,21 @@ def train_language(*, tokenizer_path, training, validation, output,
         current_batch = _batch(train_samples + active_copy_samples if (dynamic_copy or comprehension_cycles) else train_samples, chosen)
         supervised_tokens += int((current_batch[1] != -100).sum())
         loss = _loss(model, current_batch)
+        if transfer_learning and step % 4 == 0:
+            # Full ordinary coverage remains intact; transfer examples are supplementary.
+            group = replay_group(memory, step * 4)
+            idx = step // 4
+            if group == 'conditional':
+                idx *= 2
+            rows = [exercise(group, idx % 96, seed, curriculum_completed, variant=v) for v in (0, 1)]
+            if group == 'conditional':
+                rows[1] = exercise(group, (idx % 96)+1, seed, curriculum_completed, variant=0)
+            samples = [_example(row, tokenizer, context) for row in rows]
+            if idx % 4 == 0 and author_samples:
+                samples.append(author_samples[(idx // 4) % len(author_samples)])
+            extra = _batch(samples, list(range(len(samples))))
+            supervised_tokens += int((extra[1] != -100).sum())
+            loss = loss + 0.75 * _loss(model, extra)
         if tiered_memory and step % 16 == 0:
             # Preserve the full original curriculum, adding one bounded replay batch.
             group = replay_group(memory, step)
@@ -449,6 +497,7 @@ def train_language(*, tokenizer_path, training, validation, output,
             "copy_generator_version": COPY_VERSION if dynamic_copy else None,
             "curriculum_migrated": bool(curriculum_lineage),
             **({"memory_tiers": {g: memory["records"][g]["tier"] for g in GROUPS}} if tiered_memory else {}),
+            **({"transfer_probe_loss": transfer_state["probe_history"], "author_excerpt_count": len(author_samples)} if transfer_learning else {}),
             **({"comprehension_schedule": comprehension_schedule} if comprehension_cycles else {}),
             "effective_training_passes": round(
                 supervised_tokens / max(training_token_count, 1), 3),
