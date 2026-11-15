@@ -103,6 +103,8 @@ def advance(ledger, kind, report, *, checkpoint_sha256):
     if stage == ENGLISH:
         if ledger.get("english_fundamentals_passed") is not True:
             raise ValueError("Vocabulary/reference foundation exam must pass before English graduation")
+        if ledger.get("english_mastery_required"):
+            raise ValueError("Strict English mastery cannot use the legacy exam gate")
         passed = english_pass(report)
     elif stage == READ:
         passed = (report.get("book") == ledger["books"][ledger["book_index"]] and
@@ -153,3 +155,33 @@ def approve(ledger, *, evidence_sha256, checkpoint_sha256):
         raise ValueError("Approval is not bound to the full assessment ledger")
     ledger["stage"] = COMPLETE
     return ledger
+
+
+def advance_english_mastery(ledger, report, *, checkpoint_sha256):
+    """Production English gate: no counter, average or earlier checkpoint can pass."""
+    from .english_mastery_curriculum import STAGES
+    from .webster1913 import BLOB
+    if ledger["stage"] != ENGLISH or not ledger.get("english_fundamentals_passed"):
+        raise ValueError("Out-of-order strict English gate")
+    if (not isinstance(checkpoint_sha256,str) or len(checkpoint_sha256)!=64 or
+        report.get("checkpoint_sha256")!=checkpoint_sha256 or
+        report.get("format")!="english_mastery_v1" or report.get("source")!=BLOB):
+        raise ValueError("Unverified English mastery evidence")
+    ledger["english_mastery_required"]=True
+    totals=report.get("totals",{})
+    passed=(set(totals)==set(STAGES) and
+            all(type(n) is int and n>0 for n in totals.values()) and
+            totals.get("dictionary",0)>=100000 and totals.get("usage")==totals.get("dictionary") and
+            report.get("passed_items")==totals and report.get("cumulative_items")==totals and
+            set(report.get("stage_passes",{}))==set(STAGES) and
+            report.get("cumulative_started")==report.get("completed_updates") and
+            report.get("qualified") is True and report.get("phase")=="complete" and
+            report.get("cursor") is None and report.get("remediation_pending")==0)
+    ledger["attempts"]["english_mastery"]=ledger["attempts"].get("english_mastery",0)+1
+    ledger["last_checkpoint_sha256"]=checkpoint_sha256
+    ledger["evidence"].append({"stage":ENGLISH,"kind":"english_mastery_v1",
+        "checkpoint_sha256":checkpoint_sha256,"passed":bool(passed),
+        "report_sha256":sha256(json.dumps(report,sort_keys=True).encode()).hexdigest()})
+    if passed:
+        ledger["stage"]=READ
+    return bool(passed)
