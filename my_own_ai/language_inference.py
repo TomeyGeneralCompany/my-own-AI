@@ -5,6 +5,7 @@ import torch
 from .tokenizer import BOS, EOS, USER, ASSISTANT, PAD
 from .language_training import load_language
 from .intellectual_memory import contextual_question
+from .verified_memory import VerifiedMemory
 
 
 def prompt_tokens(question, tokenizer, context_size):
@@ -19,7 +20,7 @@ def prompt_tokens(question, tokenizer, context_size):
 @torch.inference_mode()
 def answer_question(checkpoint, tokenizer_path, question, *,
                     max_tokens=128, temperature=0., top_p=1., seed=42, threads=2,
-                    retrieve_memory=False):
+                    retrieve_memory=True):
     if not (1 <= max_tokens <= 4096 and 0 <= temperature <= 4
             and 0 < top_p <= 1 and isinstance(seed, int)):
         raise ValueError("Invalid decoding settings")
@@ -27,9 +28,21 @@ def answer_question(checkpoint, tokenizer_path, question, *,
     model, tokenizer = load_language(checkpoint, tokenizer_path)
     contextual = question
     if retrieve_memory:
-        memory = torch.load(checkpoint, map_location="cpu", weights_only=True).get("intellectual_memory")
+        payload = torch.load(checkpoint, map_location="cpu", weights_only=True)
+        verified = VerifiedMemory(payload.get("verified_memory",{}))
+        match = verified.exact(question)
+        if match:
+            return {"question":question,"answer":match["answer"],"memory_context_used":True,
+                    "answer_origin":"verified_memory","raw_token_ids":tokenizer.encode(match["answer"]),
+                    "generation_seconds":0.0,"generated_tokens_per_second":0.0,
+                    "prompt_token_ids":prompt_tokens(question,tokenizer,model.config.context_size),
+                    "tokenizer_sha256":tokenizer.fingerprint(),"stopped_by":"memory",
+                    "valid_utf8":True,"model_generated":False,"evaluated_for_truth":True,
+                    "settings":{"max_tokens":max_tokens,"temperature":temperature,"top_p":top_p,"seed":seed}}
+        contextual = verified.contextual(question,tokenizer,model.config.context_size-4-max_tokens)
+        memory = payload.get("intellectual_memory")
         if memory is not None:
-            contextual = contextual_question(memory, question, tokenizer,
+            contextual = contextual_question(memory, contextual, tokenizer,
                 model.config.context_size - 4 - max_tokens)
     prompt = prompt_tokens(contextual, tokenizer, model.config.context_size)
     history = list(prompt)
@@ -73,6 +86,7 @@ def answer_question(checkpoint, tokenizer_path, question, *,
         "generated_tokens_per_second": round(len(generated) / max(elapsed, 1e-6), 2),
         "prompt_token_ids": prompt, "tokenizer_sha256": tokenizer.fingerprint(),
         "stopped_by": reason, "valid_utf8": decoding_valid,
+        "answer_origin": "memory_assisted_neural" if contextual != question else "neural",
         "model_generated": True, "evaluated_for_truth": False,
         "settings": {"max_tokens": max_tokens, "temperature": temperature,
                      "top_p": top_p, "seed": seed},
