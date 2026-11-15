@@ -1,6 +1,7 @@
 """Checkpointed, CPU-bounded English mastery; no teacher model or answer injection."""
 from dataclasses import asdict
 from hashlib import sha256
+from difflib import SequenceMatcher
 import json
 import math
 from pathlib import Path
@@ -85,6 +86,42 @@ def correct(unit,answer,ended):
     # Case and punctuation are substantive in grammatical tasks; whitespace
     # differences alone are not a language error.
     return ended and clean(answer)==clean(unit["answer"])
+
+def record_partial(p, unit, answer, ended, tokenizer):
+    """Persist confirmed reference-token positions; never use them as exam output."""
+    reference = tokenizer.encode(clean(unit["answer"])) + [EOS]
+    actual = tokenizer.encode(clean(answer)) + ([EOS] if ended else [])
+    identity = digest([unit["exam"], reference])
+    table = p.setdefault("partial_answers", {})
+    previous = table.get(identity, {})
+    retained = set(previous.get("retained", []))
+    # Exact answers are unambiguous; otherwise align in reference order.
+    matched = set()
+    for block in SequenceMatcher(None, reference, actual, autojunk=False).get_matching_blocks():
+        matched.update(range(block.a, block.a + block.size))
+    new = matched - retained
+    regressed = retained - matched
+    retained.update(matched)
+    table[identity] = dict(retained=sorted(retained), latest=sorted(matched),
+                           missing=sorted(set(range(len(reference)))-matched),
+                           regressions=sorted(regressed), attempts=previous.get("attempts",0)+1)
+    p["partial_new_tokens"] = p.get("partial_new_tokens",0)+len(new)
+    p["partial_regressions"] = p.get("partial_regressions",0)+len(regressed)
+    return table[identity]
+
+def correction_sample(p, unit, tokenizer, context):
+    """Extra supervision for current errors; ordinary full-answer loss remains."""
+    reference = tokenizer.encode(clean(unit["answer"])) + [EOS]
+    record = p.get("partial_answers", {}).get(digest([unit["exam"], reference]))
+    if not record or not record["missing"]:
+        return None
+    inputs, labels = _example(training_row(unit), tokenizer, context)
+    # Only target positions if training and assessment tokenizations agree.
+    if [v for v in labels if v != -100] != reference:
+        return None
+    start = len(labels)-len(reference)
+    missing = set(record["missing"])
+    return inputs, [v if i-start in missing else -100 for i,v in enumerate(labels)]
 
 def reset_cumulative(p,step):
     p["cumulative_items"]={s:0 for s in STAGES}
@@ -245,6 +282,9 @@ def train_session(checkpoint,tokenizer_path,records,*,parent=None,budget=400,
             if replay is not None:
                 rows.append(replay)
             samples=[_example(row,tokenizer,cfg.context_size) for row in rows]
+            targeted=correction_sample(p,unit,tokenizer,cfg.context_size)
+            if targeted is not None:
+                samples.append(targeted)
             model.train()
             loss=_loss(model,_batch(samples,list(range(len(samples)))))
             if not torch.isfinite(loss):
@@ -274,13 +314,17 @@ def train_session(checkpoint,tokenizer_path,records,*,parent=None,budget=400,
                     p["unaided_tests"]+=1
                     p["unaided_correct"]+=int(correct(unit,answer,ended))
             ok=correct(unit,answer,ended)
+            partial=None
+            if not known:
+                partial=record_partial(p,unit,answer,ended,tokenizer)
             if ok and not known:
                 p["new_verified"]+=int(memory.remember(unit["exam"],answer,expected=unit["answer"],step=step,provenance=origin))
             tests+=1
             p["attempts"]+=1
             p["correct"]+=int(ok)
             p["last_answer"]=dict(id=unit["id"],question=unit["exam"],
-                                  actual=answer,expected=unit["answer"],correct=ok,eos=ended,origin=origin)
+                                  actual=answer,expected=unit["answer"],correct=ok,eos=ended,origin=origin,
+                                  partial=partial)
             if p["phase"]=="remedial_exam":
                 if not ok:
                     p["remediation_round"]+=1
