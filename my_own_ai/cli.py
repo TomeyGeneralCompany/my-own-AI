@@ -64,6 +64,7 @@ def main(argv=None):
     s.add_argument("--mode", choices=["conversation", "writing", "coding", "research"], required=True)
     s.add_argument("--memory", type=Path, default=Path("data/module-memory"))
     configure_session(sub.add_parser("session", help="Run a local JSON-lines controller session"))
+    configure_session(sub.add_parser("workbench", help="Open the local graphical module selector"))
     sub.add_parser("demo", help="Demonstrate local reasoning, switching and checkpoint restoration")
     index = sub.add_parser("index-corpus", help="Build an offline passage index")
     index.add_argument("--corpus", type=Path, required=True)
@@ -363,6 +364,9 @@ def main(argv=None):
         print(json.dumps(benchmark(a.checkpoint, a.iterations, generation_tokens=a.tokens), indent=2))
     elif a.command == "generate":
         print(load_model(a.checkpoint).generate(a.prompt.encode(), a.tokens).decode("utf-8", errors="replace"))
+    elif a.command == "workbench":
+        from .workbench import launch
+        launch(a)
     elif a.command == "session":
         session(a, sys.stdin, sys.stdout)
     elif a.command == "demo":
