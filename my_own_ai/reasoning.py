@@ -112,7 +112,7 @@ def transition(stage, passed, corrections, limit):
     raise ValueError(f"Cannot transition from {stage}")
 
 
-def advance(run, module, engine, tools, prior):
+def advance(run, module, engine, tools, prior, *, web_library=None):
     """Mutate a detached operation. The caller publishes it only after a validated save."""
     stage = run.stage
     passed = None
@@ -126,9 +126,28 @@ def advance(run, module, engine, tools, prior):
     else:
         context = module.prepare(run.snapshot(), tools, prior) if stage == Stage.FORMULATE else run.context
         procedure = module.procedure(run.operation, stage)
-        proposal = engine.propose(ProposalRequest(module.name, run.operation, stage, procedure,
-                                                  run.objective, json_copy(context), run.plan,
-                                                  run.candidate, run.feedback))
+        # External documents are reference data, not changes to the module's
+        # procedure or its validated context schema.
+        request_context = json_copy(context)
+        if web_library is not None:
+            references = web_library.search(run.objective[:4000], limit=2)
+            if references:
+                request_context["web_references"] = references
+        request = ProposalRequest(module.name, run.operation, stage, procedure,
+                                  run.objective, request_context, run.plan,
+                                  run.candidate, run.feedback)
+        proposal = engine.propose(request)
+        # The Core can explicitly request a public webpage as a tool action.
+        # A request is not accepted as a plan or final answer.
+        if web_library is not None and isinstance(proposal, str) and proposal.startswith("WEBPAGE "):
+            url = proposal[len("WEBPAGE "):].strip()
+            record = web_library.acquire(url)
+            request_context["web_references"] = web_library.search(run.objective[:4000], limit=2)
+            request_context["web_acquisition"] = record
+            proposal = engine.propose(ProposalRequest(module.name, run.operation, stage,
+                procedure, run.objective, request_context, run.plan, run.candidate, run.feedback))
+            if isinstance(proposal, str) and proposal.startswith("WEBPAGE "):
+                raise RuntimeError("Additional webpage requested; archive saved, resume this stage")
         if isinstance(proposal, GroundedProposal) and stage in (Stage.CONSTRUCT, Stage.CORRECT):
             proposal = module.render_grounded(proposal, context)
         if not isinstance(proposal, str) or not proposal.strip() or len(proposal) > 64_000:
