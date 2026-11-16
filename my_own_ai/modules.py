@@ -414,6 +414,16 @@ class ModuleController:
         return state
 
     @_serialized
+    def mode_catalog(self):
+        from .plugin_catalog import LABELS
+        return {"active":self._active.name if self._active else None,
+                "modules":[{"id":name,"label":LABELS.get(name,name),
+                            "loaded":module.loaded,
+                            "operations":list(self._manifests[name].operations),
+                            "version":self._manifests[name].version}
+                           for name,module in self._modules.items()]}
+
+    @_serialized
     def switch(self, target):
         new = self._modules[target]
         old = self._active
