@@ -545,14 +545,34 @@ class ModuleController:
         return self.web_library.discover(query, limit)
 
     @_serialized
-    def acquire_webpage(self, url):
+    def acquire_webpage(self, url, folder=""):
         self._require_active()
-        return self.web_library.acquire(url)
+        return self.web_library.acquire(url, folder)
 
     @_serialized
-    def search_web_library(self, query, limit=3):
+    def search_web_library(self, query, limit=3, folder=""):
         self._require_active()
-        return self.web_library.search(query, limit)
+        return self.web_library.search(query, limit, folder)
+
+    @_serialized
+    def browse_library(self, folder=""):
+        self._require_active()
+        return self.web_library.browse(folder)
+
+    @_serialized
+    def create_library_folder(self, folder):
+        self._require_active()
+        return self.web_library.create_folder(folder)
+
+    @_serialized
+    def classify_document(self, source, folder):
+        self._require_active()
+        return self.web_library.classify(source, folder)
+
+    @_serialized
+    def read_library_page(self, source, page):
+        self._require_active()
+        return self.web_library.read_page(source, page)
 
     @_serialized
     def work_product(self, project=None):
