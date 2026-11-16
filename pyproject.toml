@@ -8,6 +8,7 @@ description = "Local original-model training and modular AI foundation"
 requires-python = ">=3.10"
 dependencies = ["torch>=2.2"]
 [project.optional-dependencies]
+web = ["playwright>=1.48", "pypdf>=4"]
 books = ["pypdf>=4", "python-docx>=1"]
 dev = ["pytest>=8", "pypdf>=4", "python-docx>=1"]
 [project.scripts]
