@@ -6,16 +6,19 @@ import ast
 ROOT = Path(__file__).resolve().parents[1]
 
 
-def test_question_workflow_loads_exact_active_generation_and_never_trains():
+def test_question_workflow_loads_latest_staged_checkpoint_and_never_trains():
     workflow = (ROOT / ".github/workflows/core-neural-smoke.yml").read_text()
-    assert "gh release view ancestor-active" in workflow
+    assert "stage_checkpoint_storage.py latest" in workflow
+    assert "ancestor-stage-progress-" in workflow
     assert "gh release download" in workflow
-    assert "--sha256" in workflow
-    assert "scripts/ancestor_core.py ask" in workflow
+    assert "scripts/ancestor_staged.py unpack" in workflow
+    assert "scripts/ask_modern_core.py" in workflow
     assert "scripts/github_neural_smoke.py" not in workflow
     assert "scripts/github_english_trial.py" not in workflow
     assert "scripts/ancestor_core.py train" not in workflow
-    assert "core-generation.zip" in workflow
+    assert "data/checkpoint-asset.txt" in workflow
+    assert "contents: read" in workflow
+    assert "scripts/ancestor_staged.py train" not in workflow
     assert "python -m pip install" in workflow
 
 

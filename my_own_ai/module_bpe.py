@@ -1,5 +1,6 @@
 """Use the original local language model for module proposals, without weight updates."""
 import json
+from .foundation_contract import FoundationContract, immutable_inference
 from .language_inference import prompt_tokens
 from .tokenizer import PAD, BOS, EOS, USER, ASSISTANT, UNK
 
@@ -13,6 +14,8 @@ class BPEProposer:
         if any(p.device.type != "cpu" for p in model.parameters()):
             raise ValueError("Module runtime requires a CPU model")
         self.model = model.eval()
+        self.model.requires_grad_(False)
+        self.foundation = FoundationContract()
         self.tokenizer = tokenizer
         self.tokens = tokens
 
@@ -24,14 +27,14 @@ class BPEProposer:
         question = json.dumps({
             "module": request.module, "operation": request.operation,
             "stage": request.stage.value, "procedure": request.procedure,
-            "objective": request.objective, "context": request.context,
+            "objective": request.objective, "foundation": self.foundation.record(), "context": request.context,
             "plan": request.plan, "candidate": request.candidate,
             "feedback": request.feedback
         }, ensure_ascii=False, separators=(",", ":"))
         capacity = self.model.config.context_size
         history = prompt_tokens(question, self.tokenizer, capacity)
         generated = []
-        with torch.inference_mode():
+        with immutable_inference(self.model):
             for _ in range(min(self.tokens, capacity-len(history))):
                 logits, _ = self.model(torch.tensor([history], dtype=torch.long))
                 scores = logits[0,-1].clone()
