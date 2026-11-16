@@ -43,7 +43,8 @@ def _commands(controller):
             "checkpoint": controller.checkpoint, "remember": controller.remember,
             "export": controller.export, "metrics": hardware_metrics,
             "work_product": controller.work_product, "export_manuscript": controller.export_manuscript,
-            "dialogue_history": controller.dialogue_history}
+            "dialogue_history": controller.dialogue_history,
+            "acquire_webpage": controller.acquire_webpage, "search_web_library": controller.search_web_library}
 
 
 def load_proposer(checkpoint, threads, tokens):
