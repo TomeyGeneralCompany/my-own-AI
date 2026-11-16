@@ -19,7 +19,7 @@ def test_no_future_observations():
 
 
 def test_no_fabricated_liquidity():
-    rows=[quote(1,99,100,10,1),quote(2,100,101,10,0),quote(3,200,201)]
+    rows=[quote(1,99,100,10,1),quote(2,100,101,10,0),quote(3,200,201,10,0)]
     result=replay_policy(rows,imbalance_policy(Fraction(1,2)))
     assert result["cash_cents"]=="100"
     assert result["ledger"]==[]
