@@ -2,6 +2,7 @@
 from datetime import datetime, timezone
 from hashlib import sha256
 import json
+import shutil
 from pathlib import Path
 from tempfile import TemporaryDirectory
 from urllib.parse import urlsplit, urlencode
@@ -93,13 +94,89 @@ class WebLibrary:
             raise ValueError("Expected a positive result count")
         return self.discoverer(query, limit)
 
-    def acquire(self, url):
+    def _folder(self, folder=""):
+        if not isinstance(folder, str) or "\\" in folder or "\x00" in folder:
+            raise ValueError("Expected a relative library folder")
+        if folder and any(part in ("", ".", "..") for part in folder.split("/")):
+            raise ValueError("Expected ordinary folder names separated by /")
+        root = self.documents.resolve()
+        target = (root / folder).resolve()
+        if not target.is_relative_to(root):
+            raise ValueError("Folder lies outside library")
+        return target
+
+    def create_folder(self, folder):
+        target = self._folder(folder)
+        target.mkdir(parents=True, exist_ok=True)
+        return {"folder":target.relative_to(self.documents.resolve()).as_posix()}
+
+    def browse(self, folder=""):
+        target = self._folder(folder)
+        if not target.exists():
+            return {"folder":folder,"folders":[],"documents":[]}
+        folders, documents = [], []
+        for path in sorted(target.iterdir()):
+            if path.is_symlink():
+                continue
+            if path.is_dir():
+                folders.append(path.relative_to(self.documents).as_posix())
+            elif path.suffix == ".json" and path.with_suffix(".pdf").is_file():
+                documents.append(json.loads(path.read_text(encoding="utf-8")))
+        return {"folder":folder,"folders":folders,"documents":documents}
+
+    def _metadata(self, source):
+        if not isinstance(source,str) or not source.endswith(".pdf"):
+            raise ValueError("Expected a library PDF path")
+        parent, _, name = source.rpartition("/")
+        target = self._folder(parent)/name
+        if target.is_symlink() or not target.is_file():
+            raise ValueError("Unknown library document")
+        return target, json.loads(target.with_suffix(".json").read_text(encoding="utf-8"))
+
+    def read_page(self, source, page):
+        target, record = self._metadata(source)
+        if type(page) is not int or page < 1:
+            raise ValueError("Expected positive PDF page number")
+        for number, (locator, text) in enumerate(source_sections(target),1):
+            if number == page:
+                return {"source":source,"locator":locator,"text":text,
+                        "url":record["url"],"pdf_sha256":record["sha256"]}
+        raise ValueError("PDF page not found")
+
+    def classify(self, source, folder):
+        target, record = self._metadata(source)
+        destination = self._folder(folder)
+        destination.mkdir(parents=True,exist_ok=True)
+        new_pdf = destination/target.name
+        if new_pdf == target:
+            return record
+        if new_pdf.exists() or new_pdf.with_suffix(".json").exists():
+            raise ValueError("Destination already contains this document")
+        updated = {**record,"pdf":new_pdf.relative_to(self.documents).as_posix(),"folder":folder}
+        # Copy before committing metadata; retain original if the operation fails.
+        shutil.copy2(target,new_pdf)
+        try:
+            new_pdf.with_suffix(".json").write_text(json.dumps(updated),encoding="utf-8")
+            if record["readable_text"]:
+                build_index(self.documents,self.index)
+        except BaseException:
+            new_pdf.unlink(missing_ok=True)
+            new_pdf.with_suffix(".json").unlink(missing_ok=True)
+            raise
+        target.unlink()
+        target.with_suffix(".json").unlink()
+        if record["readable_text"]:
+            build_index(self.documents,self.index)
+        return updated
+
+    def acquire(self, url, folder=""):
         if not isinstance(url, str) or any(c.isspace() or ord(c)<32 for c in url):
             raise ValueError("Expected an HTTP(S) webpage URL")
         parts = urlsplit(url)
         if parts.scheme not in ("http", "https") or not parts.hostname or parts.username or parts.password:
             raise ValueError("Expected an HTTP(S) webpage URL without credentials")
-        self.documents.mkdir(parents=True, exist_ok=True)
+        destination = self._folder(folder)
+        destination.mkdir(parents=True, exist_ok=True)
         with TemporaryDirectory(dir=self.root) as directory:
             temp = Path(directory)/"page.pdf"
             rendered = self.renderer(url, temp) or {}
@@ -111,9 +188,9 @@ class WebLibrary:
             captured = datetime.now(timezone.utc).isoformat()
             record_id = sha256((url+"\n"+identity).encode()).hexdigest()
             name = record_id+".pdf"
-            target = self.documents/name
-            metadata = self.documents/(record_id+".json")
-            record = {"url":url,"pdf":name,"sha256":identity,"captured_at":captured,
+            target = destination/name
+            metadata = destination/(record_id+".json")
+            record = {"url":url,"pdf":target.relative_to(self.documents).as_posix(),"folder":folder,"sha256":identity,"captured_at":captured,
                       "readable_text":readable, "final_url":rendered.get("final_url",url),
                       "title":rendered.get("title","")}
             if metadata.exists():
@@ -127,11 +204,12 @@ class WebLibrary:
                 build_index(self.documents,self.index)
             return record
 
-    def search(self, query, limit=3):
+    def search(self, query, limit=3, folder=""):
+        self._folder(folder)
         if not self.index.exists():
             return []
         with CorpusIndex(self.index) as index:
-            rows=index.search(query,limit)
+            rows=index.search(query,limit,folder=folder)
         for row in rows:
             record=json.loads((self.documents/Path(row["source"]).with_suffix(".json")).read_text(encoding="utf-8"))
             row["url"]=record["url"]
