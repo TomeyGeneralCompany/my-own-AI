@@ -70,3 +70,55 @@ def test_small_release_is_untouched():
     release = FakeRelease(100)
     assert rotate("owner/repo", "stage", release) == 0
     assert not release.deleted
+
+
+def test_delete_error_for_already_removed_asset_is_reconciled():
+    import subprocess
+
+    class StaleDelete(FakeRelease):
+        def __call__(self, path, *, delete=False):
+            result = super().__call__(path, delete=delete)
+            if delete and path.endswith("/1"):
+                raise subprocess.CalledProcessError(1, ["gh"], stderr="HTTP 404")
+            return result
+
+    release = StaleDelete()
+    assert rotate("owner/repo", "stage", release) == 20
+    assert len(release.assets) == 980
+    assert latest("owner/repo", "stage", release) == "stage-state-100999-1.zip"
+
+
+def test_retry_transient_delete_failure():
+    import subprocess
+
+    class RetryDelete(FakeRelease):
+        failures = 0
+
+        def __call__(self, path, *, delete=False):
+            if delete and self.failures < 2:
+                self.failures += 1
+                raise subprocess.CalledProcessError(1, ["gh"], stderr="temporary failure")
+            return super().__call__(path, delete=delete)
+
+    release = RetryDelete()
+    assert rotate("owner/repo", "stage", release) == 20
+    assert release.failures == 2
+
+
+def test_persistent_delete_failure_with_and_without_headroom(capsys):
+    import subprocess
+
+    class BrokenDelete(FakeRelease):
+        def __call__(self, path, *, delete=False):
+            if delete:
+                raise subprocess.CalledProcessError(1, ["gh"], stderr="HTTP 403")
+            return super().__call__(path, delete=delete)
+
+    release = BrokenDelete(990)
+    assert rotate("owner/repo", "stage", release) == 0
+    assert len(release.assets) == 990
+    assert "cleanup deferred" in capsys.readouterr().err
+    full = BrokenDelete(1000)
+    with pytest.raises(ValueError, match="full and rotation failed"):
+        rotate("owner/repo", "stage", full)
+    assert len(full.assets) == 1000

@@ -73,6 +73,7 @@ jobs:
               f.write("Latest evidence: `"+json.dumps(result,ensure_ascii=False)[:1800]+"`\n")
           PY
       - name: Save integrity-verified state before handoff
+        id: save_state
         run: |
           set -euo pipefail
           python scripts/ancestor_staged.py pack --state data/learning --archive data/stage.zip
@@ -117,6 +118,14 @@ jobs:
             gh workflow run ancestor-staged.yml --ref main -f parent_generation="$PARENT"
             echo "Queued next locked-stage learning session" >> "$GITHUB_STEP_SUMMARY"
           fi
+      - name: Preserve packed learning state if release save fails
+        if: failure() && steps.save_state.outcome == 'failure'
+        uses: actions/upload-artifact@v4
+        with:
+          name: stage-recovery-${{ github.run_id }}-${{ github.run_attempt }}
+          path: data/stage.zip
+          if-no-files-found: warn
+          retention-days: 30
       - name: Upload examination and stage diagnostics
         if: always()
         uses: actions/upload-artifact@v4

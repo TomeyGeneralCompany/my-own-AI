@@ -3,6 +3,7 @@ import argparse
 import json
 import re
 import subprocess
+import sys
 
 CAPACITY = 1000
 HIGH_WATER = 990
@@ -65,15 +66,43 @@ def rotate(repo, tag, request=api):
     count = len(assets) - TARGET
     if count > len(candidates) - 2:
         raise ValueError("Insufficient old checkpoints to rotate safely")
+    protected = {int(a["id"]) for a in candidates[-2:]}
     for asset in candidates[:count]:
-        request(f"repos/{repo}/releases/assets/{asset['id']}", delete=True)
-    # Confirm sufficient headroom, including any unrelated release assets.
+        asset_id = int(asset["id"])
+        path = f"repos/{repo}/releases/assets/{asset_id}"
+        deferred = False
+        for attempt in range(3):
+            try:
+                request(path, delete=True)
+                break
+            except subprocess.CalledProcessError as exc:
+                # GitHub can remove an asset but return an error or list an
+                # already deleted asset. Never infer absence from an error.
+                _, current = inventory(repo, tag, request)
+                present = {int(a["id"]) for a in current}
+                if not protected <= present or latest_name(current) != candidates[-1]["name"]:
+                    raise ValueError("Protected recovery checkpoint unexpectedly changed") from exc
+                if asset_id not in present:
+                    break
+                if attempt == 2:
+                    if len(current) >= CAPACITY:
+                        # A full release cannot accept the new checkpoint.
+                        raise ValueError("Checkpoint release is full and rotation failed") from exc
+                    print(f"Checkpoint cleanup deferred for asset {asset_id}: {exc.stderr or exc}",
+                          file=sys.stderr)
+                    # Do not churn through more deletions after a persistent
+                    # API failure when enough space for the next save exists.
+                    deferred = True
+                    break
+        if deferred:
+            break
     _, remaining = inventory(repo, tag, request)
+    ids = {int(a["id"]) for a in remaining}
     if len(remaining) >= CAPACITY:
         raise ValueError("Checkpoint release remains full after rotation")
-    if latest_name(remaining) != candidates[-1]["name"]:
-        raise ValueError("Newest recovery checkpoint unexpectedly changed")
-    return count
+    if not protected <= ids or latest_name(remaining) != candidates[-1]["name"]:
+        raise ValueError("Protected recovery checkpoint unexpectedly changed")
+    return sum(int(a["id"]) not in ids for a in candidates[:count])
 
 
 def latest_name(assets):
