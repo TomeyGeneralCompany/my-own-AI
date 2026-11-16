@@ -540,6 +540,11 @@ class ModuleController:
         return json_copy(snapshot)
 
     @_serialized
+    def discover_webpages(self, query, limit=5):
+        self._require_active()
+        return self.web_library.discover(query, limit)
+
+    @_serialized
     def acquire_webpage(self, url):
         self._require_active()
         return self.web_library.acquire(url)
