@@ -191,6 +191,12 @@ def migrate_assessment(p, step):
     p["assessment_version"]=ASSESSMENT_VERSION
     p["independent_cumulative_units"]=0
     p["legacy_mastery_credit"]=dict(p["passed_items"])
+    p["legacy_unaided_tests"]=p.get("unaided_tests",0)
+    p["legacy_unaided_correct"]=p.get("unaided_correct",0)
+    p["legacy_transfer_tests"]=p.get("transfer_tests",0)
+    p["legacy_transfer_correct"]=p.get("transfer_correct",0)
+    for key in ("unaided_tests","unaided_correct","transfer_tests","transfer_correct"):
+        p[key]=0
     if p["stage_index"]==len(STAGES):
         p["qualified"]=False
         if not p["remediation"]:
@@ -267,7 +273,8 @@ def advance_cursor(p,curriculum,step):
             next_key=[STAGES[p["stage_index"]],0,0]
         else:
             if stage==STAGES[-1]:
-                if p["cumulative_items"]!=curriculum.totals or p["cumulative_started"]!=step:
+                if (p["cumulative_items"]!=curriculum.totals or p["cumulative_started"]!=step or
+                        p.get("independent_cumulative_units",0)<sum(curriculum.totals.values())):
                     raise ValueError("Cumulative verification did not use fixed weights")
                 p["qualified"]=True
                 p["cursor"]=None
@@ -393,6 +400,11 @@ def train_session(checkpoint,tokenizer_path,records,*,parent=None,budget=400,
                 if last.get("id")==unit["id"] and not last.get("correct") and "first_divergence" not in prior:
                     record_partial(p,unit,last["actual"],last.get("eos",False),tokenizer)
                 samples.extend(remediation_samples(p,unit,tokenizer,cfg.context_size))
+                last_checks=p.get("last_independent_exam",[])
+                if last_checks and last_checks[-1]["id"]==unit["id"] and last_checks[-1]["kind"]=="transfer" and not last_checks[-1]["correct"]:
+                    alternate_teaching=dict(training_row(unit),question="Follow this instruction exactly: "+unit["question"])
+                    if len(tokenizer.encode(alternate_teaching["question"]))+len(reference)+4<=cfg.context_size:
+                        samples.append(_example(alternate_teaching,tokenizer,cfg.context_size))
             else:
                 targeted=correction_sample(p,unit,tokenizer,cfg.context_size)
                 if targeted is not None:
