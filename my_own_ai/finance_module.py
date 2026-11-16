@@ -5,6 +5,8 @@ from pathlib import Path
 
 from .modules import BasicModule, Manifest, Tool
 from .reasoning import Evaluation, Stage
+from .retrieval import CorpusIndex, PASSAGE_LIMIT, digest
+from .functional_modules import grounded_evidence
 
 MAX_ROWS = 128
 MAX_CENTS = 10**12
@@ -88,8 +90,9 @@ class Finance(BasicModule):
     """Explicitly registered development module; not in default_modules."""
     manifest = Manifest("finance", memory_mib=4,
                         tools=(Tool("scenario", (Stage.FORMULATE,)),
-                               Tool("replay", (Stage.EVALUATE,))),
-                        operations=("scenario_replay",))
+                               Tool("replay", (Stage.EVALUATE,)),
+                               Tool("search_library", (Stage.FORMULATE,))),
+                        operations=("scenario_replay", "library_research"))
     procedures = {
         Stage.FORMULATE: "Review the owner objective, cash, fees and supplied simulated price scenario.",
         Stage.CONSTRUCT: "Return JSON only: an array of orders with index, side (buy or sell), and units.",
@@ -100,6 +103,25 @@ class Finance(BasicModule):
     def __init__(self, workspace):
         super().__init__("finance")
         self.workspace = Path(workspace).resolve()
+
+    def procedure(self, operation, stage):
+        if operation == "library_research":
+            return {
+                Stage.FORMULATE: "Investigate the objective using the retrieved source passages.",
+                Stage.CONSTRUCT: "Use Premises: then - [n] exact quote, then Inference: and your own reasoning.",
+                Stage.EVALUATE: "Check quoted premises against retrieved source text.",
+                Stage.CORRECT: "Correct the response using the observed citation feedback.",
+            }[stage]
+        return super().procedure(operation, stage)
+
+    def search_library(self, name, query, limit):
+        relative = Path(name)
+        path = (self.workspace / relative).resolve()
+        if (relative.is_absolute() or ".." in relative.parts or
+                not path.is_relative_to(self.workspace) or not path.is_file()):
+            raise ValueError("Invalid owner-selected library index")
+        with CorpusIndex(path) as index:
+            return index.search(query, limit)
 
     def scenario(self, name):
         relative = Path(name)
@@ -118,6 +140,11 @@ class Finance(BasicModule):
                     prices_cents=validate_prices(data["prices_cents"]))
 
     def validate_inputs(self, operation, inputs):
+        if operation == "library_research":
+            if set(inputs) != {"index", "limit"} or not isinstance(inputs["index"], str) or not inputs["index"].strip():
+                raise ValueError("Expected local library index and passage limit")
+            integer(inputs["limit"], 1, 12, "passage limit")
+            return
         if operation!="scenario_replay" or set(inputs)!={"scenario","initial_cents","target_cents","fee_cents"}:
             raise ValueError("Expected scenario, initial_cents, target_cents, fee_cents")
         if not isinstance(inputs["scenario"],str) or not inputs["scenario"].strip():
@@ -127,15 +154,30 @@ class Finance(BasicModule):
         integer(inputs["fee_cents"],0,MAX_CENTS,"fee")
 
     def tool_handlers(self):
-        return {"scenario":self.scenario,"replay":replay}
+        return {"scenario":self.scenario,"replay":replay,"search_library":self.search_library}
 
     def prepare(self, run, tools, prior):
         o=run["inputs"]
+        if run["operation"] == "library_research":
+            return {"index": o["index"], "evidence": tools.call(
+                "search_library", name=o["index"], query=run["objective"], limit=o["limit"])}
         return dict(simulated=True,initial_cents=o["initial_cents"],target_cents=o["target_cents"],
                     fee_cents=o["fee_cents"],scenario=tools.call("scenario",name=o["scenario"]))
 
     def validate_context(self, operation, inputs, context):
         if not context:
+            return
+        if operation == "library_research":
+            if set(context) != {"index", "evidence"} or context["index"] != inputs["index"]:
+                raise ValueError("Library source changed")
+            evidence = context["evidence"]
+            if not isinstance(evidence, list) or len(evidence) > inputs["limit"]:
+                raise ValueError("Invalid library evidence")
+            for source in evidence:
+                if (not isinstance(source, dict) or set(source) != {"source", "locator", "text", "sha256"}
+                        or not all(isinstance(v, str) and v for v in source.values())
+                        or len(source["text"]) > PASSAGE_LIMIT or digest(source["text"]) != source["sha256"]):
+                    raise ValueError("Invalid library passage")
             return
         if set(context)!={"simulated","initial_cents","target_cents","fee_cents","scenario"} or context["simulated"] is not True:
             raise ValueError("Invalid replay context")
@@ -152,6 +194,11 @@ class Finance(BasicModule):
     def evaluate(self, run, tools):
         context=run["context"]
         self.validate_context(run["operation"],run["inputs"],context)
+        if run["operation"] == "library_research":
+            if not context["evidence"]:
+                return Evaluation(False, "No matching library passages")
+            verified, _, error = grounded_evidence(run["candidate"], context["evidence"])
+            return Evaluation(not error, error or f"Verified {len(verified)} cited premises; substantive inference requires independent review")
         try:
             orders=strict_json(run["candidate"])
             result=tools.call("replay",prices=context["scenario"]["prices_cents"],orders=orders,
