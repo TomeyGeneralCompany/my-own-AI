@@ -7,6 +7,7 @@ from .modules import BasicModule, Manifest, Tool
 from .reasoning import Evaluation, Stage
 from .retrieval import CorpusIndex, PASSAGE_LIMIT, digest
 from .functional_modules import grounded_evidence
+from .finance_causal import quotes_from_rows, replay_policy, imbalance_policy
 
 MAX_ROWS = 128
 MAX_CENTS = 10**12
@@ -91,8 +92,9 @@ class Finance(BasicModule):
     manifest = Manifest("finance", memory_mib=4,
                         tools=(Tool("scenario", (Stage.FORMULATE,)),
                                Tool("replay", (Stage.EVALUATE,)),
-                               Tool("search_library", (Stage.FORMULATE,))),
-                        operations=("scenario_replay", "library_research"))
+                               Tool("search_library", (Stage.FORMULATE,)),
+                               Tool("causal_replay", (Stage.EVALUATE,))),
+                        operations=("scenario_replay", "library_research", "causal_replay"))
     procedures = {
         Stage.FORMULATE: "Review the owner objective, cash, fees and supplied simulated price scenario.",
         Stage.CONSTRUCT: "Return JSON only: an array of orders with index, side (buy or sell), and units.",
@@ -105,6 +107,11 @@ class Finance(BasicModule):
         self.workspace = Path(workspace).resolve()
 
     def procedure(self, operation, stage):
+        if operation == "causal_replay":
+            return {Stage.FORMULATE: "Design a chronological stock strategy using the owner objective and available features; evaluation quotes are withheld.",
+                    Stage.CONSTRUCT: "Return JSON with threshold_bps (integer 0 to 10000) for the experimental imbalance baseline.",
+                    Stage.EVALUATE: "Evaluate the proposed threshold on withheld chronological quotes at next-quote prices.",
+                    Stage.CORRECT: "Revise the threshold using the reported experimental feedback."}[stage]
         if operation == "library_research":
             return {
                 Stage.FORMULATE: "Investigate the objective using the retrieved source passages.",
@@ -140,6 +147,13 @@ class Finance(BasicModule):
                     prices_cents=validate_prices(data["prices_cents"]))
 
     def validate_inputs(self, operation, inputs):
+        if operation == "causal_replay":
+            if set(inputs) != {"quotes", "initial_cents", "target_cents", "fee_bps"} or not isinstance(inputs["quotes"], str):
+                raise ValueError("Expected quotes file, starting cash, target and fee")
+            integer(inputs["initial_cents"], 1, MAX_CENTS, "initial cash")
+            integer(inputs["target_cents"], 1, MAX_CENTS, "target cash")
+            integer(inputs["fee_bps"], 0, 9999, "fee bps")
+            return
         if operation == "library_research":
             if set(inputs) != {"index", "limit"} or not isinstance(inputs["index"], str) or not inputs["index"].strip():
                 raise ValueError("Expected local library index and passage limit")
@@ -153,11 +167,28 @@ class Finance(BasicModule):
         integer(inputs["target_cents"],1,MAX_CENTS,"target cash")
         integer(inputs["fee_cents"],0,MAX_CENTS,"fee")
 
+    def causal_replay(self, name, threshold_bps, initial_cents, fee_bps):
+        from fractions import Fraction
+        integer(threshold_bps, 0, 10000, "threshold bps")
+        relative = Path(name)
+        path = (self.workspace / relative).resolve()
+        if relative.is_absolute() or ".." in relative.parts or not path.is_relative_to(self.workspace) or path.suffix != ".json":
+            raise ValueError("Expected workspace quote JSON")
+        raw = path.read_bytes()
+        rows = strict_json(raw.decode("utf-8"))
+        quotes_from_rows(rows)
+        result = replay_policy(rows, imbalance_policy(Fraction(threshold_bps, 10000)), initial_cents, fee_bps)
+        result["source_sha256"] = hashlib.sha256(raw).hexdigest()
+        return result
+
     def tool_handlers(self):
-        return {"scenario":self.scenario,"replay":replay,"search_library":self.search_library}
+        return {"scenario":self.scenario,"replay":replay,"search_library":self.search_library,
+                "causal_replay":self.causal_replay}
 
     def prepare(self, run, tools, prior):
         o=run["inputs"]
+        if run["operation"] == "causal_replay":
+            return {"initial_cents":o["initial_cents"],"target_cents":o["target_cents"],"fee_bps":o["fee_bps"],"features":["bid","ask","bid_size","ask_size","imbalance","order_flow"],"execution":"next quote; simulated"}
         if run["operation"] == "library_research":
             return {"index": o["index"], "evidence": tools.call(
                 "search_library", name=o["index"], query=run["objective"], limit=o["limit"])}
@@ -166,6 +197,10 @@ class Finance(BasicModule):
 
     def validate_context(self, operation, inputs, context):
         if not context:
+            return
+        if operation == "causal_replay":
+            if any(context.get(k)!=inputs[k] for k in ("initial_cents","target_cents","fee_bps")):
+                raise ValueError("Owner inputs changed")
             return
         if operation == "library_research":
             if set(context) != {"index", "evidence"} or context["index"] != inputs["index"]:
@@ -194,6 +229,16 @@ class Finance(BasicModule):
     def evaluate(self, run, tools):
         context=run["context"]
         self.validate_context(run["operation"],run["inputs"],context)
+        if run["operation"] == "causal_replay":
+            from decimal import Decimal
+            try:
+                proposal=strict_json(run["candidate"])
+                if not isinstance(proposal,dict) or set(proposal)!={"threshold_bps"}:
+                    raise ValueError("Expected threshold_bps")
+                result=tools.call("causal_replay",name=run["inputs"]["quotes"],threshold_bps=proposal["threshold_bps"],initial_cents=context["initial_cents"],fee_bps=context["fee_bps"])
+            except (ValueError,TypeError,OSError) as exc:
+                return Evaluation(False,str(exc))
+            return Evaluation(Decimal(result["cash_cents"])>=context["target_cents"],json.dumps(result,sort_keys=True))
         if run["operation"] == "library_research":
             if not context["evidence"]:
                 return Evaluation(False, "No matching library passages")
