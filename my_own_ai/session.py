@@ -41,7 +41,9 @@ def _commands(controller):
     return {"switch": lambda mode: _switch(controller, mode),
             "start": controller.start, "step": controller.step, "progress": controller.progress,
             "checkpoint": controller.checkpoint, "remember": controller.remember,
-            "export": controller.export, "metrics": hardware_metrics}
+            "export": controller.export, "metrics": hardware_metrics,
+            "work_product": controller.work_product, "export_manuscript": controller.export_manuscript,
+            "dialogue_history": controller.dialogue_history}
 
 
 def load_proposer(checkpoint, threads, tokens):
