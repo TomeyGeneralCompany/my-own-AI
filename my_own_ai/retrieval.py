@@ -94,7 +94,7 @@ class CorpusIndex:
         self.db.close()
         self.db = None
 
-    def search(self, query, limit=5):
+    def search(self, query, limit=5, *, folder=""):
         if self.db is None:
             raise RuntimeError("Corpus index is closed")
         if not isinstance(query, str) or not 1 <= len(query) <= 4000:
@@ -105,10 +105,12 @@ class CorpusIndex:
         if not tokens:
             return []
         pattern = " OR ".join(f'"{token}"' for token in tokens)
+        prefix = folder.rstrip("/") + "/" if folder else ""
         rows = self.db.execute(
             "SELECT p.source, p.locator, p.body, p.sha256 FROM terms "
             "JOIN passages p ON p.id = terms.rowid WHERE terms MATCH ? "
-            "ORDER BY bm25(terms, 1.0, 0.35), p.id LIMIT ?", (pattern, limit))
+            "AND substr(p.source, 1, length(?)) = ? "
+            "ORDER BY bm25(terms, 1.0, 0.35), p.id LIMIT ?", (pattern, prefix, prefix, limit))
         return [dict(zip(("source", "locator", "text", "sha256"), row)) for row in rows]
 
 
