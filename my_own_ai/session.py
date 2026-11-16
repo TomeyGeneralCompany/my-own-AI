@@ -40,6 +40,7 @@ def _commands(controller):
     # The model never receives this owner command interface.
     return {"switch": lambda mode: _switch(controller, mode),
             "start": controller.start, "step": controller.step, "progress": controller.progress,
+            "modes": controller.mode_catalog,
             "checkpoint": controller.checkpoint, "remember": controller.remember,
             "export": controller.export, "metrics": hardware_metrics,
             "work_product": controller.work_product, "export_manuscript": controller.export_manuscript,
@@ -60,7 +61,7 @@ def load_proposer(checkpoint, threads, tokens):
     return LocalProposer(load_model(checkpoint), tokens)
 
 
-def session(args, source, output):
+def open_controller(args):
     book_path = getattr(args, "rulebook", None)
     if not args.checkpoint and not book_path:
         raise ValueError("Specify a neural checkpoint or a rulebook")
@@ -81,9 +82,21 @@ def session(args, source, output):
         model = load_proposer(args.checkpoint, args.threads, args.tokens) if args.checkpoint else None
     proposer = RulebookProposer(book, model) if book is not None else model
     modules = default_modules(args.workspace, corpus_index=getattr(args, "corpus_index", None), rulebook=book)
-    modules.extend(_factory(specification)(args.workspace) for specification in args.module)
-    with ModuleController(CheckpointStore(args.memory), modules, proposer,
-                          memory_budget_mib=args.memory_budget_mib) as controller:
+    from .plugin_catalog import standard_plugins
+    modules.extend(standard_plugins(args.workspace))
+    for specification in args.module:
+        extension = _factory(specification)(args.workspace)
+        # Existing explicit registrations of the same built-in factory remain compatible.
+        matches = [m for m in modules if m.name == extension.name]
+        if matches and type(matches[0]) is type(extension):
+            continue
+        modules.append(extension)
+    return ModuleController(CheckpointStore(args.memory), modules, proposer,
+                            memory_budget_mib=args.memory_budget_mib)
+
+
+def session(args, source, output):
+    with open_controller(args) as controller:
         commands = _commands(controller)
         for line in source:
             if not line.strip():
