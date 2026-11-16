@@ -140,8 +140,12 @@ def advance(run, module, engine, tools, prior, *, web_library=None):
         proposal = engine.propose(request)
         # The Core can explicitly request a public webpage as a tool action.
         # A request is not accepted as a plan or final answer.
+        requested = set()
         while web_library is not None and isinstance(proposal, str) and proposal.startswith("WEBPAGE "):
             url = proposal[len("WEBPAGE "):].strip()
+            if url in requested:
+                raise RuntimeError("Core repeated the same webpage request without advancing")
+            requested.add(url)
             record = web_library.acquire(url)
             request_context["web_references"] = web_library.search(run.objective[:4000], limit=2)
             request_context["web_acquisition"] = record
