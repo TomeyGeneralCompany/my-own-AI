@@ -214,7 +214,21 @@ class Curriculum:
             lexical=answer
         else:
             raise ValueError("Unknown English stage")
-        return [dict(id=f"{stage}-{index}",question=q,exam=exam,answer=answer,lexical_text=lexical)]
+        unit=dict(id=f"{stage}-{index}",question=q,exam=exam,answer=answer,lexical_text=lexical)
+        if stage=="composition":
+            # Train multi-sentence construction with one set of facts, test a
+            # different combination and wording without exposing the target.
+            a2=ACTORS[(index+3)%8]
+            o2=OBJECTS[(index//8+index+3)%8]
+            p2=PLACES[(index//16+index+5)%8]
+            unit["composition_transfer"]=dict(
+                exam=f"Write two present-tense sentences. First state that the {a2} possesses the {o2}, using 'has'. Then state where the {o2} is: the {p2}.",
+                answer=f"The {a2} has the {o2}. The {o2} is in the {p2}.")
+            # Teach the required construction with different nouns and facts.
+            unit["composition_practice"]=dict(id=unit["id"]+"-practice",
+                question=f"Express possession and location as two sentences (use has and is in): {a}, {obj}, {place}.",
+                answer=f"The {a} has the {obj}. The {obj} is in the {place}.")
+        return [unit]
     def unit(self, key):
         stage,index,part=key
         return self.units(stage,index)[part]
