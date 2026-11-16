@@ -51,31 +51,14 @@ jobs:
           assert (p/"english.pt").exists()
           baseline=json.loads((p/"last-exam.json").read_text())
           Path("data/baseline.json").write_text(json.dumps(baseline))
-          print("Baseline exact score:",baseline["exact_correct"])
+          assert baseline["format"]=="english_mastery_v1"
+          assert baseline["checkpoint_sha256"] == __import__("hashlib").sha256((p/"english.pt").read_bytes()).hexdigest()
+          print("Baseline mastery:",baseline["passed_items"])
           PY
-      - name: Train and examine across two full comprehension cycles
+      - name: Continue and independently examine the current mastery checkpoint
         run: |
           set -euo pipefail
-          for i in 1 2; do
-            python -u scripts/ancestor_staged.py train --repository . --state data/trial --scratch "data/trial-scratch-$i" --parent-generation g0002 --english-updates 1 | tee "data/trial-result-$i.json"
-            cp data/trial/last-exam.json "data/exam-$i.json"
-            cp data/trial/comprehension-diagnostics.json "data/retention-$i.json"
-            python - "$i" <<'PY'
-          import json,sys
-          i=sys.argv[1]
-          d=json.load(open("data/retention-"+i+".json"))
-          assert d["curriculum_cycles"]>=int(i)
-          assert d["prior_comparable"]==130
-          assert d["transfer_batches"] > 0
-          assert d["author_excerpt_count"] > 0
-          assert set(d["transfer_probe_loss"]) == {"syntax","reading","qa","conditional","paraphrase","coherence","followup","foundation"}
-          assert d["paired_transfer"]["pairs"] == 16
-          assert len(d["paired_transfer"]["records"]) == 16
-          print("Transfer evidence:", d["transfer_batches"], d["author_excerpt_count"], d["transfer_probe_loss"])
-          print(json.dumps({k:d[k] for k in ("correct","previous_correct","retained","lost","gained","validation_loss","learning_rate","categories")},indent=2))
-          PY
-            if python -c 'import json,sys;sys.exit(0 if json.load(open("data/trial/stage-ledger.json"))["stage"]!="english" else 1)'; then break; fi
-          done
+          python scripts/independent_mastery_trial.py --state data/trial --repository . --output data
       - uses: actions/upload-artifact@v4
         if: always()
         with:
