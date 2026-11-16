@@ -12,6 +12,7 @@ from .rulebook import Rulebook, RulebookProposer
 
 def configure_session(parser):
     parser.add_argument("--checkpoint", type=Path)
+    parser.add_argument("--tokenizer", type=Path, help="Original BPE checkpoint tokenizer (development session)")
     parser.add_argument("--rulebook", type=Path, help="Opt in to verified Research derivations")
     parser.add_argument("--memory", type=Path, default=Path("data/module-memory"))
     parser.add_argument("--workspace", type=Path, default=Path.cwd())
@@ -58,7 +59,20 @@ def session(args, source, output):
     if not args.checkpoint and not book_path:
         raise ValueError("Specify a neural checkpoint or a rulebook")
     book = Rulebook.load(book_path) if book_path else None
-    model = load_proposer(args.checkpoint, args.threads, args.tokens) if args.checkpoint else None
+    tokenizer_path = getattr(args, "tokenizer", None)
+    if tokenizer_path is not None:
+        if not args.checkpoint or book is not None:
+            raise ValueError("BPE development sessions require a checkpoint and no rulebook")
+        import torch
+        from .language_training import load_language
+        from .module_bpe import BPEProposer
+        if args.threads < 1:
+            raise ValueError("Thread count must be positive")
+        torch.set_num_threads(min(args.threads, hardware_metrics()["available_cpus"]))
+        model, tokenizer = load_language(args.checkpoint, tokenizer_path)
+        model = BPEProposer(model, tokenizer, args.tokens)
+    else:
+        model = load_proposer(args.checkpoint, args.threads, args.tokens) if args.checkpoint else None
     proposer = RulebookProposer(book, model) if book is not None else model
     modules = default_modules(args.workspace, corpus_index=getattr(args, "corpus_index", None), rulebook=book)
     modules.extend(_factory(specification)(args.workspace) for specification in args.module)
