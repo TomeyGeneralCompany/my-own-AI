@@ -1,7 +1,6 @@
 """Owner-defined foundations; external references never become weight updates."""
 from dataclasses import dataclass
 from hashlib import sha256
-import json
 from contextlib import contextmanager
 
 AXIOMS = (
@@ -30,7 +29,7 @@ def model_digest(model):
         h.update(name.encode())
         h.update(str(tensor.dtype).encode())
         h.update(str(tuple(tensor.shape)).encode())
-        h.update(tensor.detach().cpu().contiguous().numpy().tobytes())
+        h.update(bytes(tensor.detach().cpu().contiguous().reshape(-1).view(__import__("torch").uint8).tolist()))
     return h.hexdigest()
 
 
