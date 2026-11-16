@@ -528,8 +528,54 @@ class ModuleController:
             state.setdefault("_accepted", {})[run.project] = {
                 "objective": run.objective, "candidate": run.candidate
             }
+        if run.status == Status.COMPLETED and module.name == "conversation":
+            from .module_work_products import append_exchange
+            histories = state.setdefault("dialogue_history", {})
+            histories[run.project] = append_exchange(
+                histories.get(run.project, []), run.objective, run.candidate)
         self._publish(module, state)
         return json_copy(snapshot)
+
+    @_serialized
+    def work_product(self, project=None):
+        """Inspect an evaluated artifact without substituting a new proposal."""
+        from .module_work_products import check_engineering_artifact, compare_observations
+        module = self._require_active()
+        run = self._current(module.snapshot(), project)
+        if run["status"] != Status.COMPLETED:
+            raise ValueError("Work product requires a completed operation")
+        if module.name == "coding":
+            return check_engineering_artifact(run["candidate"])
+        if module.name in ("research", "finance") and "evidence" in run["context"]:
+            return compare_observations(run["candidate"], run["context"]["evidence"])
+        return json_copy(run)
+
+    @_serialized
+    def export_manuscript(self, destination, projects):
+        """Assemble completed writing projects in owner-selected order."""
+        from .module_work_products import assemble_manuscript
+        module = self._require_active()
+        if module.name != "writing":
+            raise ValueError("Manuscript export requires the writing module")
+        if (not isinstance(projects, list) or not projects or
+                any(not isinstance(p, str) for p in projects) or len(set(projects)) != len(projects)):
+            raise ValueError("Supply distinct writing project names in order")
+        state = module.snapshot()
+        sections = {}
+        for project in projects:
+            run = self._current(state, project)
+            if run["status"] != Status.COMPLETED:
+                raise ValueError("Every selected section must be completed")
+            sections[project] = run["candidate"]
+        return assemble_manuscript(sections, projects, destination)
+
+    @_serialized
+    def dialogue_history(self, project="default"):
+        """Return completed exchanges preserved for the named conversation."""
+        module = self._require_active()
+        if module.name != "conversation":
+            raise ValueError("Dialogue history requires the conversation module")
+        return json_copy(module.snapshot().get("dialogue_history", {}).get(project, []))
 
     @_serialized
     def remember(self, key, value):

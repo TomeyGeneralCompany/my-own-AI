@@ -79,7 +79,8 @@ class Conversation(BasicModule):
         _text_options(inputs, lists=("required_terms",))
 
     def prepare(self, run, tools, prior):
-        return {"personal_context": tools.shared(), "last_exchange": prior}
+        return {"personal_context": tools.shared(), "last_exchange": prior,
+                "dialogue_history": self.state.get("dialogue_history", {}).get(run["project"], [])}
 
     def evaluate(self, run, tools):
         return _check_text(run["candidate"], run["inputs"].get("required_terms", ()))
