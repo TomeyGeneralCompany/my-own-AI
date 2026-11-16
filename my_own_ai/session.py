@@ -44,6 +44,7 @@ def _commands(controller):
             "export": controller.export, "metrics": hardware_metrics,
             "work_product": controller.work_product, "export_manuscript": controller.export_manuscript,
             "dialogue_history": controller.dialogue_history,
+            "discover_webpages": controller.discover_webpages,
             "acquire_webpage": controller.acquire_webpage, "search_web_library": controller.search_web_library}
 
 
