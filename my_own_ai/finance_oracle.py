@@ -10,6 +10,10 @@ def _integer(value, low, high, label):
 
 
 def hindsight_oracle(quotes, initial_cents=100, fee_bps=0):
+    return _oracle(quotes, initial_cents, fee_bps, 10**12)
+
+
+def _oracle(quotes, initial_cents, fee_bps, price_limit):
     """Maximize terminal cash in a single-asset fractional long/cash model.
 
     Quotes are chronological (bid, ask) pairs in integer price units.
@@ -27,8 +31,8 @@ def hindsight_oracle(quotes, initial_cents=100, fee_bps=0):
     for i, quote in enumerate(quotes):
         if not isinstance(quote, (list, tuple)) or len(quote) != 2:
             raise ValueError("Expected bid and ask")
-        bid = _integer(quote[0], 1, 10**12, "bid")
-        ask = _integer(quote[1], bid, 10**12, "ask")
+        bid = _integer(quote[0], 1, price_limit, "bid")
+        ask = _integer(quote[1], bid, price_limit, "ask")
         # Both transitions use the preceding states, not same-tick proceeds.
         sale = shares * bid * (1-fee)
         buy = cash / (ask * (1+fee))
@@ -66,7 +70,7 @@ def benchmark(quotes, initial_cents=100, fee_bps=0, target_cents=10000):
     """
     target=_integer(target_cents,1,10**12,"target cents")
     adjusted=hindsight_oracle(quotes,initial_cents,fee_bps)
-    ideal=hindsight_oracle([(b+a,b+a) for b,a in quotes],initial_cents,0)
+    ideal=_oracle([(b+a,b+a) for b,a in quotes],initial_cents,0,2*10**12)
     def report(result):
         return {**result,
                 "initial_cents":decimal_text(result["initial_cents"]),
