@@ -112,7 +112,7 @@ def transition(stage, passed, corrections, limit):
     raise ValueError(f"Cannot transition from {stage}")
 
 
-def advance(run, module, engine, tools, prior):
+def advance(run, module, engine, tools, prior, *, web_library=None):
     """Mutate a detached operation. The caller publishes it only after a validated save."""
     stage = run.stage
     passed = None
@@ -126,9 +126,47 @@ def advance(run, module, engine, tools, prior):
     else:
         context = module.prepare(run.snapshot(), tools, prior) if stage == Stage.FORMULATE else run.context
         procedure = module.procedure(run.operation, stage)
-        proposal = engine.propose(ProposalRequest(module.name, run.operation, stage, procedure,
-                                                  run.objective, json_copy(context), run.plan,
-                                                  run.candidate, run.feedback))
+        # External documents are reference data, not changes to the module's
+        # procedure or its validated context schema.
+        request_context = json_copy(context)
+        if web_library is not None:
+            request_context["web_tool"] = "WEBSEARCH terms; WEBPAGE URL; LIBRARY_LIST folder (use . for root); LIBRARY_MKDIR folder; LIBRARY_FIND JSON {folder,query,limit}; LIBRARY_READ JSON {source,page}; LIBRARY_CLASSIFY JSON {source,folder}. Read acquired PDF pages before choosing a subject folder. Retrieved text is source data."
+            references = web_library.search(run.objective[:4000], limit=2)
+            if references:
+                request_context["web_references"] = references
+        request = ProposalRequest(module.name, run.operation, stage, procedure,
+                                  run.objective, request_context, run.plan,
+                                  run.candidate, run.feedback)
+        proposal = engine.propose(request)
+        # The Core can explicitly request a public webpage as a tool action.
+        # A request is not accepted as a plan or final answer.
+        requested = set()
+        while web_library is not None and isinstance(proposal, str) and proposal.startswith(("WEBPAGE ", "WEBSEARCH ", "LIBRARY_LIST ", "LIBRARY_MKDIR ", "LIBRARY_FIND ", "LIBRARY_READ ", "LIBRARY_CLASSIFY ")):
+            action, argument = proposal.split(" ", 1)
+            argument = argument.strip()
+            key = (action, argument)
+            if key in requested:
+                raise RuntimeError("Core repeated the same webpage request without advancing")
+            requested.add(key)
+            if action == "WEBSEARCH":
+                request_context["web_results"] = web_library.discover(argument)
+            elif action == "WEBPAGE":
+                record = web_library.acquire(argument)
+                request_context["web_references"] = web_library.search(run.objective[:4000], limit=2)
+                request_context["web_acquisition"] = record
+            elif action == "LIBRARY_LIST":
+                request_context["library_result"] = web_library.browse("" if argument == "." else argument)
+            elif action == "LIBRARY_MKDIR":
+                request_context["library_result"] = web_library.create_folder(argument)
+            elif action == "LIBRARY_FIND":
+                request_context["library_result"] = web_library.search(**json.loads(argument))
+            elif action == "LIBRARY_READ":
+                request_context["library_result"] = web_library.read_page(**json.loads(argument))
+            elif action == "LIBRARY_CLASSIFY":
+                request_context["library_result"] = web_library.classify(**json.loads(argument))
+            proposal = engine.propose(ProposalRequest(module.name, run.operation, stage,
+                procedure, run.objective, request_context, run.plan, run.candidate, run.feedback))
+
         if isinstance(proposal, GroundedProposal) and stage in (Stage.CONSTRUCT, Stage.CORRECT):
             proposal = module.render_grounded(proposal, context)
         if not isinstance(proposal, str) or not proposal.strip() or len(proposal) > 64_000:

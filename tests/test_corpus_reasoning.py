@@ -92,7 +92,9 @@ def test_grounded_operation_preserves_retrieved_evidence_and_requires_exact_quot
         assert core.progress()["context"] == formulated["context"]
         core.step()
         assert core.step()["status"] == Status.COMPLETED
-        assert engine.requests[-1].context == formulated["context"]
+        request_context = dict(engine.requests[-1].context)
+        assert "LIBRARY_FIND" in request_context.pop("web_tool")
+        assert request_context == formulated["context"]
 
 
 def test_held_out_rubric_stays_outside_model_input_and_can_fail_completed_operation(index):
