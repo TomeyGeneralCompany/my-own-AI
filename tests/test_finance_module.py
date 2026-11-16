@@ -93,4 +93,4 @@ def test_owner_selected_scenario_scope_and_strict_input(tmp_path):
         finance.scenario("scenario.json")
     with pytest.raises(ValueError):
         finance.validate_inputs("live_trade", {})
-    assert set(finance.tool_handlers()) == {"scenario","replay"}
+    assert set(finance.tool_handlers()) == {"scenario","replay","search_library"}
