@@ -1,13 +1,14 @@
 # Shared web-to-PDF library
 
-All active modules use the controller's same persistent `web-library` directory under module memory. This is reference material, not training data or an alternative reasoning engine.
+Every active module uses the controller's persistent web-library directory. Sources are reference material, not changes to training or an alternative reasoning engine.
 
-Install the system `wkhtmltopdf` package and the existing Python books extra (`pip install -e '.[books]'`). Capture known HTTP(S) URLs. The renderer is conventional software; JavaScript is disabled in this initial implementation. Dynamic/login-only pages and bot challenges may not render; image-only PDFs are retained but do not provide searchable text. There is no search-engine discovery service or access-control bypass.
+Install: `pip install -e '.[web]'` and `python -m playwright install --with-deps chromium`.
 
-Owner session commands: 
+Owner session commands:
+- `{"command":"discover_webpages","query":"coastal biology","limit":5}`
 - `{"command":"acquire_webpage","url":"https://example.org/"}`
 - `{"command":"search_web_library","query":"relevant terms","limit":3}`
 
-Core proposal protocol: `WEBPAGE https://example.org/` is an acquisition action, not a completed proposal. The controller renders and archives the page, records the URL, timestamp and PDF digest, rebuilds the existing SQLite index, and offers matching passages to the proposing model. Additional distinct requests can follow. The original PDF persists across module changes and restarts. No external AI is called. 
+Core proposal actions: WEBSEARCH followed by query terms returns ordinary Google search result titles and URLs. WEBPAGE followed by an HTTP(S) URL opens it in JavaScript-enabled headless Chromium and prints the rendered page to PDF. The controller archives the document, original and final URL, title, capture time and PDF digest, builds its searchable index and returns source passages. The Core decides which links and queries to use; successive distinct requests are supported. Chromium sessions are closed after each operation. No external AI is involved.
 
-Current checks use a fixture renderer; a real network capture and autonomous action selection by the trained BPE Core remain to be demonstrated. Web passages are advisory data, not automatically validated premises in existing module evaluators. No changes to weights or staged training.
+Search markup changes, provider challenges, access restrictions, and pages requiring interaction or authentication can prevent acquisition. No bypass is provided. Scanned PDFs require separate OCR. Search and capture tests include fixture round trips and a local JavaScript page (requires installed Chromium). Live Google discovery and genuine trained Core action selection remain unverified. Web passages are advisory reference data rather than automatically validated premises in existing module evaluators. No training changes.
