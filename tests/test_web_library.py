@@ -107,3 +107,64 @@ def test_chromium_executes_javascript(tmp_path):
         server.shutdown()
         server.server_close()
         thread.join()
+
+
+def test_hierarchical_archive(tmp_path, monkeypatch):
+    import my_own_ai.web_library as lib
+    import my_own_ai.retrieval as retrieval
+    import pytest
+    def sections(path):
+        yield "PDF page 1", "Trade and commerce in antiquity."
+        yield "PDF page 2", "Second page of historical evidence."
+    monkeypatch.setattr(lib,"source_sections",sections)
+    monkeypatch.setattr(retrieval,"source_sections",sections)
+    def render(url, destination):
+        destination.write_bytes(b"%PDF-1.4 fixture")
+    archive=WebLibrary(tmp_path/"library",render)
+    first=archive.acquire("https://example.org/levant")
+    archive.acquire("https://example.org/rome","History/Iron Age/Europe")
+    folder="History/Bronze Age/Asia/Levant"
+    archive.create_folder(folder)
+    assert archive.read_page(first["pdf"],2)["text"]=="Second page of historical evidence."
+    moved=archive.classify(first["pdf"],folder)
+    assert moved["sha256"]==first["sha256"]
+    assert not (archive.documents/first["pdf"]).exists()
+    assert (archive.documents/moved["pdf"]).exists()
+    assert archive.browse("History")["folders"]==["History/Bronze Age","History/Iron Age"]
+    assert archive.browse(folder)["documents"]==[moved]
+    assert {row["url"] for row in archive.search("commerce",folder=folder)}=={first["url"]}
+    assert len(archive.search("commerce",folder="History"))==2
+    assert archive.search("commerce",folder="History/Bronze")==[]
+    reopened=WebLibrary(tmp_path/"library")
+    assert reopened.read_page(moved["pdf"],1)["pdf_sha256"]==first["sha256"]
+    with pytest.raises(ValueError):
+        archive.create_folder("../outside")
+
+
+def test_core_classifies_acquired_document(tmp_path):
+    class Archive:
+        def search(self,query,limit):
+            return []
+        def acquire(self,url):
+            return {"pdf":"source.pdf"}
+        def read_page(self,source,page):
+            assert source=="source.pdf" and page==1
+            return {"text":"History of Bronze Age Levant."}
+        def classify(self,source,folder):
+            assert source=="source.pdf" and folder=="History/Bronze Age/Asia/Levant"
+            return {"pdf":folder+"/"+source}
+    class Engine:
+        def propose(self,request):
+            record=request.context.get("web_acquisition")
+            result=request.context.get("library_result",{})
+            if not record:
+                return "WEBPAGE https://example.org/levant"
+            if not result:
+                return 'LIBRARY_READ {"source":"source.pdf","page":1}'
+            if "text" in result:
+                return 'LIBRARY_CLASSIFY {"source":"source.pdf","folder":"History/Bronze Age/Asia/Levant"}'
+            return "Use the classified reference."
+    with ModuleController(CheckpointStore(tmp_path),default_modules(),Engine(),web_library=Archive()) as controller:
+        controller.switch("conversation")
+        controller.start("reply","Research the Levant")
+        assert controller.step()["plan"]=="Use the classified reference."
