@@ -10,11 +10,13 @@ import ast
 ROOT = Path(__file__).resolve().parents[1]
 
 
-def test_ask_core_workflow_routes_to_persistent_original_english_checkpoint():
+def test_ask_core_workflow_routes_to_latest_staged_original_english_checkpoint():
     workflow = (ROOT / ".github/workflows/core-neural-smoke.yml").read_text()
-    assert "scripts/ancestor_core.py ask" in workflow
-    assert "scripts/ancestor_core.py unpack" in workflow
-    assert "gh release view ancestor-active" in workflow
+    assert "scripts/ask_modern_core.py" in workflow
+    assert "scripts/ancestor_staged.py unpack" in workflow
+    assert "stage_checkpoint_storage.py latest" in workflow
+    assert "ancestor-stage-progress-" in workflow
+    assert "gh release view ancestor-active" not in workflow
     assert "scripts/github_neural_smoke.py" not in workflow
     assert "scripts/github_english_trial.py" not in workflow
     assert "CORE_QUESTION:" in workflow
