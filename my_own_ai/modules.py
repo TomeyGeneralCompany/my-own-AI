@@ -263,8 +263,10 @@ def hardware_metrics():
 
 
 class ModuleController:
-    def __init__(self, store, modules, engine=None, *, asset_directory=None, memory_budget_mib=None):
+    def __init__(self, store, modules, engine=None, *, asset_directory=None, memory_budget_mib=None, web_library=None):
         self.store = store
+        from .web_library import WebLibrary
+        self.web_library = web_library or WebLibrary(store.directory / "web-library")
         self.engine = engine
         self.asset_directory = Path(asset_directory or store.directory / "assets").resolve()
         if memory_budget_mib is not None and (type(memory_budget_mib) is not int or memory_budget_mib < 0):
@@ -519,7 +521,8 @@ class ModuleController:
         shared = self.store.read(SHARED, legacy=False)
         tools = ToolLease(module, self._manifests[module.name], run.stage, shared)
         try:
-            advance(run, module, self.engine, tools, state.get("_accepted", {}).get(run.project, {}))
+            advance(run, module, self.engine, tools, state.get("_accepted", {}).get(run.project, {}),
+                    web_library=self.web_library)
         finally:
             tools.revoke()
         snapshot = run.snapshot()
@@ -535,6 +538,16 @@ class ModuleController:
                 histories.get(run.project, []), run.objective, run.candidate)
         self._publish(module, state)
         return json_copy(snapshot)
+
+    @_serialized
+    def acquire_webpage(self, url):
+        self._require_active()
+        return self.web_library.acquire(url)
+
+    @_serialized
+    def search_web_library(self, query, limit=3):
+        self._require_active()
+        return self.web_library.search(query, limit)
 
     @_serialized
     def work_product(self, project=None):
