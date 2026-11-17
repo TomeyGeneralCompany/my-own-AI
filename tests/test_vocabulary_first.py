@@ -78,7 +78,11 @@ def test_remediation_checks_soon_and_preserves_independent_transfer():
     unit=dict(id="dictionary-0-1",
               question="Write the source text.", exam="Reproduce the entry.",
               answer="A small entry.")
-    from tests.test_english_prompt_remediation import Characters
+    class Characters:
+        def encode(self,text):
+            return [ord(c) for c in text]
+        def decode(self,tokens):
+            return "".join(chr(t) for t in tokens)
     t=Characters()
     p={}
     for _ in range(4):
