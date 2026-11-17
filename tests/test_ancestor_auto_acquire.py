@@ -1,9 +1,10 @@
 """Automatic acquisition launches only justified, inherited training campaigns."""
 import hashlib
+from datetime import datetime, timezone, timedelta
 import subprocess
 from pathlib import Path
 
-from scripts.ancestor_auto_acquire import plan
+from scripts.ancestor_auto_acquire import plan, stale_jobless_queues
 
 
 M = hashlib.sha256(b"seven-approved-works").hexdigest()
@@ -53,3 +54,25 @@ def test_no_automatic_activation_in_scheduler():
               "scripts/ancestor_auto_acquire.py").read_text()
     assert "ancestor-activate" not in source
     assert "english_grounded" in source
+
+
+def test_old_unstarted_queue_is_recoverable_but_active_work_is_not():
+    now = datetime(2026, 11, 17, 15, 0, tzinfo=timezone.utc)
+    old = (now - timedelta(hours=7)).isoformat()
+    fresh = (now - timedelta(minutes=15)).isoformat()
+    runs = [
+        {"databaseId": 1, "headBranch": "main", "status": "queued", "createdAt": old},
+        {"databaseId": 2, "headBranch": "main", "status": "in_progress", "createdAt": old},
+        {"databaseId": 3, "headBranch": "main", "status": "waiting", "createdAt": old},
+        {"databaseId": 4, "headBranch": "main", "status": "queued", "createdAt": fresh},
+        {"databaseId": 5, "headBranch": "other", "status": "queued", "createdAt": old},
+        {"databaseId": 6, "headBranch": "main", "status": "queued"},
+    ]
+    assert stale_jobless_queues(runs, now) == [1]
+
+
+def test_scheduler_wakes_for_english_mastery_merges():
+    workflow = (Path(__file__).resolve().parents[1] /
+                ".github/workflows/ancestor-auto-acquire.yml").read_text()
+    assert "my_own_ai/english_mastery.py" in workflow
+    assert "my_own_ai/english_mastery_curriculum.py" in workflow

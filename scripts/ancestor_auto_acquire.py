@@ -62,6 +62,24 @@ def candidate_metadata(generation):
         return meta
 
 
+def stale_jobless_queues(runs, now=None):
+    """Only old unstarted queues are candidates; completed/active jobs are safe."""
+    from datetime import datetime, timezone, timedelta
+    if now is None:
+        now = datetime.now(timezone.utc)
+    stale = []
+    for run in runs:
+        if run.get("headBranch") != "main" or run.get("status") != "queued":
+            continue
+        created = run.get("createdAt")
+        if not created or not run.get("databaseId"):
+            continue  # Missing metadata must not authorize cancellation.
+        timestamp = datetime.fromisoformat(created.replace("Z", "+00:00"))
+        if now - timestamp > timedelta(hours=6):
+            stale.append(run["databaseId"])
+    return stale
+
+
 def main():
     """Start/resume the *staged* controller; never call the step-count candidate path."""
     tags = {row["tagName"] for row in json.loads(
@@ -75,11 +93,34 @@ def main():
         print("Locked reasoning examination awaits owner review; no auto-promotion")
         return 0
     runs = json.loads(gh("run", "list", "--workflow", "ancestor-staged.yml",
-                         "--limit", "30", "--json", "status,headBranch"))
-    active = any(run["status"] in ("queued", "in_progress", "waiting", "requested", "pending")
-                 and run.get("headBranch") == "main" for run in runs)
+                         "--limit", "30", "--json", "databaseId,status,headBranch,createdAt"))
+    # A run can remain queued without ever obtaining a runner. The former
+    # "queued means training" test permanently masked that failure.
+    # Reconcile only old, jobless QUEUED runs. Never cancel a running job,
+    # an approval wait, or anything with evidence of runner execution.
+    stale = stale_jobless_queues(runs)
+    for run_id in stale:
+        detail = json.loads(gh("run", "view", str(run_id), "--json", "status,jobs"))
+        if detail["status"] != "queued" or detail.get("jobs"):
+            print("Queue changed; preserving run", run_id)
+            continue
+        print("Cancelling stale jobless queue", run_id, flush=True)
+        gh("run", "cancel", str(run_id))
+        # Do not dispatch replacement until GitHub confirms terminal state.
+        import time
+        for attempt in range(12):
+            status = json.loads(gh("run", "view", str(run_id), "--json", "status"))["status"]
+            if status in ("cancelled", "completed"):
+                break
+            time.sleep(5)
+        else:
+            raise RuntimeError(f"Stale queued run {run_id} did not cancel; refusing duplicate dispatch")
+    runs = json.loads(gh("run", "list", "--workflow", "ancestor-staged.yml",
+                         "--limit", "30", "--json", "databaseId,status,headBranch"))
+    active = [run for run in runs if run.get("headBranch") == "main"
+              and run["status"] in ("queued", "in_progress", "waiting", "requested", "pending")]
     if active:
-        print("Competency-locked training already active")
+        print("Competency-locked learning blocked or active:", json.dumps(active))
         return 0
     gh("workflow", "run", "ancestor-staged.yml", "--ref", "main",
        "-f", f"parent_generation={latest[1]}")
