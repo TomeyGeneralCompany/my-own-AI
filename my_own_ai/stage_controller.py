@@ -169,7 +169,7 @@ def advance_english_mastery(ledger, report, *, checkpoint_sha256):
         raise ValueError("Unverified English mastery evidence")
     ledger["english_mastery_required"]=True
     totals=report.get("totals",{})
-    passed=(report.get("curriculum_version")==2 and
+    passed=(report.get("curriculum_version")==3 and
             report.get("word_sentence_correct",0)>=totals.get("dictionary",0) and
             report.get("assessment_version")==2 and
             type(report.get("independent_cumulative_units")) is int and
