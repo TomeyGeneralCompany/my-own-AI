@@ -228,6 +228,15 @@ def train_batch(args):
                 "retention_tests":progress["retention_tests"],
                 "retention_failures":progress["retention_failures"],
                 "last_answer":progress["last_answer"],
+                "assessment_version":progress["assessment_version"],
+                "independent_cumulative_units":progress["independent_cumulative_units"],
+                "last_independent_exam":progress.get("last_independent_exam"),
+                "unaided_tests":progress.get("unaided_tests",0),
+                "unaided_correct":progress.get("unaided_correct",0),
+                "transfer_tests":progress.get("transfer_tests",0),
+                "transfer_correct":progress.get("transfer_correct",0),
+                "composition_tests":progress.get("composition_tests",0),
+                "composition_correct":progress.get("composition_correct",0),
                 "last_training_loss":result["last_training_loss"]}
 
     book = books[ledger["book_index"]]

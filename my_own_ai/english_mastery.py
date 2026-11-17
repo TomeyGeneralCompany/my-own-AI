@@ -17,6 +17,7 @@ from .webster1913 import BLOB
 from .verified_memory import VerifiedMemory
 
 VERSION=1
+ASSESSMENT_VERSION=2
 REPETITIONS=(100,200,300)
 
 def digest(value):
@@ -176,16 +177,67 @@ def remediation_samples(p, unit, tokenizer, context):
 
 
 def transfer_question(unit):
-    """Never used for optimizer updates; a separate wording diagnostic."""
+    """Held-out wording; mandatory independent examination."""
     if unit["id"].startswith("dictionary-"):
         # Preserve the exact source entry and section identity.
         return unit["exam"].replace("From memory, reproduce ","Recall verbatim ").replace(", section ",", passage ",1)
     return "Give the requested response without changing the task: "+unit["question"]
 
 
+def migrate_assessment(p, step):
+    """Keep all learned state; old mastery is provisional until current-weight re-examination."""
+    if p.get("assessment_version")==ASSESSMENT_VERSION:
+        return
+    p["assessment_version"]=ASSESSMENT_VERSION
+    p["independent_cumulative_units"]=0
+    p["legacy_mastery_credit"]=dict(p["passed_items"])
+    p["legacy_unaided_tests"]=p.get("unaided_tests",0)
+    p["legacy_unaided_correct"]=p.get("unaided_correct",0)
+    p["legacy_transfer_tests"]=p.get("transfer_tests",0)
+    p["legacy_transfer_correct"]=p.get("transfer_correct",0)
+    for key in ("unaided_tests","unaided_correct","transfer_tests","transfer_correct"):
+        p[key]=0
+    if p["stage_index"]==len(STAGES):
+        p["qualified"]=False
+        if not p["remediation"]:
+            reset_cumulative(p,step)
+
+
+def assess_independently(model, tokenizer, unit, progress):
+    """No retrieval, supplied answer, teacher forcing, or advancement on failed transfer."""
+    checks=[("recall",unit["exam"],unit)]
+    checks.append(("transfer",transfer_question(unit),unit))
+    if "composition_transfer" in unit:
+        extra=unit["composition_transfer"]
+        checks.append(("composition",extra["exam"],extra))
+    results=[]
+    for kind,question,expected in checks:
+        if len(tokenizer.encode(question))+4+len(tokenizer.encode(expected["answer"]))+1>model.config.context_size:
+            raise ValueError("Independent examination cannot fit checkpoint context")
+        answer,ended=generate(model,tokenizer,question,expected["answer"])
+        ok=correct(expected,answer,ended)
+        row=dict(id=unit["id"],kind=kind,question=question,actual=answer,
+                 expected=expected["answer"],correct=ok,eos=ended,origin="neural")
+        results.append(row)
+        progress["unaided_tests"]=progress.get("unaided_tests",0)+1
+        progress["unaided_correct"]=progress.get("unaided_correct",0)+int(ok)
+        if kind=="transfer":
+            progress["transfer_tests"]=progress.get("transfer_tests",0)+1
+            progress["transfer_correct"]=progress.get("transfer_correct",0)+int(ok)
+            progress["last_transfer"]=row
+        if kind=="composition":
+            progress["composition_tests"]=progress.get("composition_tests",0)+1
+            progress["composition_correct"]=progress.get("composition_correct",0)+int(ok)
+        if not ok:
+            break
+    progress["last_independent_exam"]=results
+    return all(row["correct"] for row in results),results
+
+
 def reset_cumulative(p,step):
     p["cumulative_items"]={s:0 for s in STAGES}
     p["cumulative_started"]=step
+    p["independent_cumulative_units"]=0
     p["cursor"]=["grammar",0,0]
     p["phase"]="exam"
     p["remaining"]=0
@@ -221,7 +273,8 @@ def advance_cursor(p,curriculum,step):
             next_key=[STAGES[p["stage_index"]],0,0]
         else:
             if stage==STAGES[-1]:
-                if p["cumulative_items"]!=curriculum.totals or p["cumulative_started"]!=step:
+                if (p["cumulative_items"]!=curriculum.totals or p["cumulative_started"]!=step or
+                        p.get("independent_cumulative_units",0)<sum(curriculum.totals.values())):
                     raise ValueError("Cumulative verification did not use fixed weights")
                 p["qualified"]=True
                 p["cursor"]=None
@@ -311,6 +364,7 @@ def train_session(checkpoint,tokenizer_path,records,*,parent=None,budget=400,
     memory=VerifiedMemory(payload.get("verified_memory",{}))
     if prior_exam is not None and "english_mastery" not in payload:
         memory.import_exam(prior_exam,step)
+    migrate_assessment(p,step)
     p.setdefault("retrieval_hits",0)
     p.setdefault("new_verified",0)
     p.setdefault("unaided_tests",0)
@@ -329,15 +383,10 @@ def train_session(checkpoint,tokenizer_path,records,*,parent=None,budget=400,
     while not p["qualified"] and step-start<budget and tests<max_tests and monotonic()-started<time_budget:
         key=p["remediation"][0] if p["phase"] in ("remediate","remedial_exam") else p["cursor"]
         unit=curriculum.unit(key)
-        known=memory.exact(unit["exam"])
-        if known and correct(unit,known["answer"],True) and p["phase"]=="teach":
-            p["phase"]="exam"
-            p["remaining"]=0
-        if known and correct(unit,known["answer"],True) and p["phase"]=="remediate":
-            p["phase"]="remedial_exam"
-            p["remaining"]=0
         if p["phase"] in ("teach","remediate"):
             rows=[training_row(unit)]
+            if "composition_practice" in unit:
+                rows.append(unit["composition_practice"])
             replay=mastered_replay(p,curriculum,step) if step%4==0 else None
             if replay is not None:
                 rows.append(replay)
@@ -351,6 +400,11 @@ def train_session(checkpoint,tokenizer_path,records,*,parent=None,budget=400,
                 if last.get("id")==unit["id"] and not last.get("correct") and "first_divergence" not in prior:
                     record_partial(p,unit,last["actual"],last.get("eos",False),tokenizer)
                 samples.extend(remediation_samples(p,unit,tokenizer,cfg.context_size))
+                last_checks=p.get("last_independent_exam",[])
+                if last_checks and last_checks[-1]["id"]==unit["id"] and last_checks[-1]["kind"]=="transfer" and not last_checks[-1]["correct"]:
+                    alternate_teaching=dict(training_row(unit),question="Follow this instruction exactly: "+unit["question"])
+                    if len(tokenizer.encode(alternate_teaching["question"]))+len(reference)+4<=cfg.context_size:
+                        samples.append(_example(alternate_teaching,tokenizer,cfg.context_size))
             else:
                 targeted=correction_sample(p,unit,tokenizer,cfg.context_size)
                 if targeted is not None:
@@ -372,40 +426,20 @@ def train_session(checkpoint,tokenizer_path,records,*,parent=None,budget=400,
             if p["remaining"]==0:
                 p["phase"]="remedial_exam" if p["phase"]=="remediate" else "exam"
         else:
-            if known:
-                answer,ended=known["answer"],True
-                p["retrieval_hits"]+=1
-                origin="verified_memory"
-            else:
-                question=unit["exam"] if p["phase"]=="remedial_exam" else memory.contextual(unit["exam"],tokenizer,max(0,cfg.context_size-5-len(tokenizer.encode(unit["answer"]))*2-16))
-                answer,ended=generate(model,tokenizer,question,unit["answer"])
-                origin="neural" if question==unit["exam"] else "memory_assisted_neural"
-                if origin=="neural":
-                    p["unaided_tests"]+=1
-                    p["unaided_correct"]+=int(correct(unit,answer,ended))
-            ok=correct(unit,answer,ended)
-            partial=None
-            if not known:
-                partial=record_partial(p,unit,answer,ended,tokenizer)
-            if ok and not known and p["phase"]=="remedial_exam":
-                # Evaluate transfer independently, with no retrieved answers.
-                # The original exact examination gate is unchanged.
-                alternate=transfer_question(unit)
-                if len(tokenizer.encode(alternate))+4+len(tokenizer.encode(unit["answer"]))<=cfg.context_size:
-                    response,finished=generate(model,tokenizer,alternate,unit["answer"])
-                    transfer_ok=correct(unit,response,finished)
-                    p["transfer_tests"]=p.get("transfer_tests",0)+1
-                    p["transfer_correct"]=p.get("transfer_correct",0)+int(transfer_ok)
-                    p["last_transfer"]=dict(id=unit["id"],question=alternate,actual=response,
-                                            correct=transfer_ok,eos=finished,origin="neural")
-            if ok and not known:
-                p["new_verified"]+=int(memory.remember(unit["exam"],answer,expected=unit["answer"],step=step,provenance=origin))
+            ok,results=assess_independently(model,tokenizer,unit,p)
+            primary=results[0]
+            answer,ended=primary["actual"],primary["eos"]
+            partial=record_partial(p,unit,answer,ended,tokenizer)
+            if primary["correct"]:
+                p["new_verified"]+=int(memory.remember(unit["exam"],answer,expected=unit["answer"],step=step,provenance="neural"))
             tests+=1
             p["attempts"]+=1
             p["correct"]+=int(ok)
             p["last_answer"]=dict(id=unit["id"],question=unit["exam"],
-                                  actual=answer,expected=unit["answer"],correct=ok,eos=ended,origin=origin,
-                                  partial=partial)
+                                  actual=answer,expected=unit["answer"],correct=ok,eos=ended,origin="neural",
+                                  partial=partial,independent_exam=results)
+            if ok and p["stage_index"]==len(STAGES) and p["phase"]=="exam":
+                p["independent_cumulative_units"]+=1
             if p["phase"]=="remedial_exam":
                 if not ok:
                     p["remediation_round"]+=1
@@ -427,7 +461,7 @@ def train_session(checkpoint,tokenizer_path,records,*,parent=None,budget=400,
             elif ok:
                 advance_cursor(p,curriculum,step)
             else:
-                fail_root(p,curriculum,unit,answer)
+                fail_root(p,curriculum,unit,results[-1]["actual"])
         if step!=start and step%100==0 and p["phase"] in ("exam","remedial_exam"):
             save()
     save()
@@ -444,4 +478,6 @@ def graduation_report(result):
                 stage_passes=p["stage_passes"],cumulative_items=p["cumulative_items"],
                 cumulative_started=p["cumulative_started"],completed_updates=result["completed_updates"],
                 remediation_pending=len(p["remediation"]),qualified=p["qualified"],
-                phase=p["phase"],cursor=p["cursor"])
+                phase=p["phase"],cursor=p["cursor"],
+                assessment_version=p.get("assessment_version"),
+                independent_cumulative_units=p.get("independent_cumulative_units",0))
