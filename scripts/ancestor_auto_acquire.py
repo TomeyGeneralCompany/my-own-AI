@@ -106,8 +106,10 @@ def main():
             print("Queue changed; preserving run", run_id)
             continue
         print("Attempting to cancel stale jobless queue", run_id, flush=True)
+        cancellation_accepted = False
         try:
             gh("run", "cancel", str(run_id))
+            cancellation_accepted = True
         except subprocess.CalledProcessError as error:
             print("Normal cancellation rejected:", (error.stderr or str(error)).strip(), flush=True)
             # GitHub recommends force-cancel only after normal cancellation
@@ -118,9 +120,24 @@ def main():
                 try:
                     gh("api", "--method", "POST",
                        f"repos/{os.environ['GITHUB_REPOSITORY']}/actions/runs/{run_id}/force-cancel")
+                    cancellation_accepted = True
                 except subprocess.CalledProcessError as forced:
                     print("Force cancellation rejected:",
                           (forced.stderr or str(forced)).strip(), flush=True)
+        # An accepted cancel is asynchronous. Do not race it with dispatch.
+        if cancellation_accepted:
+            import time
+            for _ in range(12):
+                detail = json.loads(gh("run", "view", str(run_id), "--json", "status,jobs"))
+                if detail["status"] in ("completed", "cancelled"):
+                    break
+                if detail["status"] != "queued" or detail.get("jobs"):
+                    print("Cancellation still in flight or job started; do not dispatch", run_id)
+                    return 0
+                time.sleep(5)
+            else:
+                print("Cancellation accepted but not complete; refusing duplicate dispatch", run_id)
+                return 0
         # Revalidate after cancellation attempts. Never assume cancellation
         # succeeded, and never ignore a run that obtained an actual job.
         detail = json.loads(gh("run", "view", str(run_id), "--json", "status,jobs"))
