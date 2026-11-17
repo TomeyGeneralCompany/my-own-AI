@@ -45,3 +45,53 @@ def test_remediation_does_not_follow_hallucinations_or_advance_word():
     p=m.new_progress(c,0,"source")
     m.fail_root(p,c,c.unit(p["cursor"]),"zebra bear")
     assert p["remediation"]==[["dictionary",0,0]]
+
+
+def test_alphabetical_headwords_ignore_leading_punctuation_and_accents():
+    c=Curriculum([
+        ("zebra","An animal."), ("'Ecart'e","A card game."),
+        ("apple","A fruit."), ("\u00c9clair","A pastry."),
+        ("'abacus","A counting frame."),
+    ],Tokens(),512)
+    assert [word for word,_ in c.records] == [
+        "'abacus","apple","'Ecart'e","\u00c9clair","zebra",
+    ]
+    # Traversal order does not rewrite any source headword.
+    assert c.records[2][0] == "'Ecart'e"
+
+
+def test_small_context_dictionary_chunks_cover_every_character():
+    # A character tokenizer makes it possible to verify lossless chunking.
+    definition="one two three four five six seven eight nine ten"
+    c=Curriculum([("apple",definition)],Tokens(),256)
+    recall=c.units("dictionary",0)[:-1]
+    assert len(recall)>1
+    assert all(len(u["answer"])<=24 for u in recall)
+    assert " ".join(u["answer"] for u in recall)==definition
+
+
+def test_remediation_checks_soon_and_preserves_independent_transfer():
+    from my_own_ai.english_mastery import (
+        REPETITIONS, record_partial, remediation_samples, transfer_question
+    )
+    assert REPETITIONS[-1] <= 32
+    unit=dict(id="dictionary-0-1",
+              question="Write the source text.",
+              exam="From memory, reproduce Webster 1913 entry 1: Apple, section 1/1.",
+              answer="A small entry.")
+    class Characters:
+        def encode(self,text):
+            return [ord(c) for c in text]
+        def decode(self,tokens):
+            return "".join(chr(t) for t in tokens)
+    t=Characters()
+    p={}
+    for _ in range(4):
+        record_partial(p,unit,"A wrong entry.",True,t)
+    # Regression: varied teaching prompts may be trained, but never the
+    # independent held-out transfer wording itself.
+    samples=remediation_samples(p,unit,t,512)
+    assert len(samples)>3
+    from my_own_ai.language_training import _example
+    held_out=_example(dict(unit,question=transfer_question(unit)),t,512)
+    assert held_out not in samples

@@ -18,7 +18,9 @@ from .verified_memory import VerifiedMemory
 
 VERSION=1
 ASSESSMENT_VERSION=2
-REPETITIONS=(100,200,300)
+# Re-examine frequently and change supervision after failed independent tests.
+# A failure must not burn hundreds of identical teacher-forced updates.
+REPETITIONS=(8,16,32)
 
 def digest(value):
     return sha256(json.dumps(value,sort_keys=True,ensure_ascii=False).encode()).hexdigest()
@@ -192,6 +194,16 @@ def remediation_samples(p, unit, tokenizer, context):
         paraphrase=dict(row,question="Follow this instruction exactly: "+unit["question"])
         if len(tokenizer.encode(paraphrase["question"]))+len(reference)+4<=context:
             samples.append(_example(paraphrase,tokenizer,context))
+        # Teach equivalent commands with the same bounded target, without
+        # teaching the held-out transfer question or supplying exam answers.
+        for instruction in (
+            "Write the exact passage requested by "+unit["id"]+".",
+            "Give only the complete source text for "+unit["id"]+".",
+            "Return the requested dictionary text exactly, for "+unit["id"]+".",
+        ):
+            alternative=dict(row,question=instruction)
+            if len(tokenizer.encode(instruction))+len(reference)+4<=context:
+                samples.append(_example(alternative,tokenizer,context))
     return samples
 
 

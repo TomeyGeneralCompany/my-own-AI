@@ -5,16 +5,27 @@ separately from lexical discrimination, grammar, reading and composition.
 No automatic claim is made about unrestricted natural-language composition.
 """
 import re
+import unicodedata
 from collections import defaultdict
 from hashlib import sha256
 
 STAGES = ("dictionary", "usage", "grammar", "reading", "composition")
-CURRICULUM_VERSION = 2
+CURRICULUM_VERSION = 3
 ACTORS = ("child", "farmer", "teacher", "sailor", "clerk", "doctor", "worker", "cook")
 OBJECTS = ("book", "key", "cup", "rope", "letter", "bag", "chair", "lamp")
 PLACES = ("house", "school", "garden", "shop", "field", "room", "barn", "station")
 VERBS = (("carry","carries"),("hold","holds"),("find","finds"),("read","reads"),
          ("open","opens"),("move","moves"),("lift","lifts"),("bring","brings"))
+
+def alphabetical_key(headword):
+    """Sort headwords by letters rather than leading punctuation or accents.
+
+    The original spelling and definition remain unchanged; only their
+    traversal order is normalized.
+    """
+    plain = unicodedata.normalize("NFKD", headword.casefold())
+    return "".join(char for char in plain if char.isalnum() and not unicodedata.combining(char))
+
 
 def clean(text):
     return " ".join(text.split())
@@ -55,7 +66,7 @@ def chunks(text, tokenizer, budget):
 
 class Curriculum:
     def __init__(self, records, tokenizer, context):
-        self.records=sorted(records, key=lambda row: row[0].casefold())
+        self.records=sorted(records, key=lambda row: alphabetical_key(row[0]))
         self.tokenizer=tokenizer
         self.context=context
         self.lookup=defaultdict(list)
@@ -91,7 +102,9 @@ class Curriculum:
     def _lex(self, stage, index):
         word, definition=self.records[index]
         label=f"Webster 1913 entry {index+1}: {word}"
-        budget=min(80,self.context//4)
+        # Small decoders must learn short complete targets before long passages.
+        # Chunk on the actual tokenizer; keep every source token in sequence.
+        budget=max(8,min(24,self.context//8))
         pieces=chunks(definition,self.tokenizer,budget)
         result=[]
         for n,part in enumerate(pieces,1):
