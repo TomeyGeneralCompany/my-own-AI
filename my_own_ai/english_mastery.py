@@ -12,7 +12,7 @@ from .model import LocalTransformer, ModelConfig
 from .tokenizer import ByteBPETokenizer, BOS, EOS, USER, ASSISTANT, PAD
 from .language_training import _example, _batch, _loss
 from .train import _atomic_save
-from .english_mastery_curriculum import Curriculum, STAGES, clean
+from .english_mastery_curriculum import Curriculum, STAGES, clean, CURRICULUM_VERSION
 from .webster1913 import BLOB
 from .verified_memory import VerifiedMemory
 
@@ -25,7 +25,7 @@ def digest(value):
 
 def new_progress(curriculum, step, identity):
     return dict(version=VERSION,source=identity,totals=curriculum.totals,
-                stage_index=0,cursor=["grammar",0,0],phase="teach",remaining=1,
+                curriculum_version=CURRICULUM_VERSION,stage_index=0,cursor=[STAGES[0],0,0],phase="teach",remaining=1,
                 stage_passes={},passed_items={s:0 for s in STAGES},
                 remediation=[],remediation_round=0,root_failures=0,
                 outstanding_missing=[],missing_count=0,
@@ -33,6 +33,25 @@ def new_progress(curriculum, step, identity):
                 audit_cursor=0,audit_return=None,retention_tests=0,retention_failures=0,
                 attempts=0,correct=0,remedial_updates=0,training_updates=0,initial_step=step,
                 last_answer=None,qualified=False)
+
+def migrate_curriculum(p,curriculum,identity,step):
+    if p.get("curriculum_version")==CURRICULUM_VERSION:
+        return p
+    if (p.get("version")!=VERSION or p.get("source")!=identity or
+            p.get("totals")!=curriculum.totals or
+            p["initial_step"]+p["training_updates"]!=step):
+        raise ValueError("Incompatible legacy curriculum")
+    # The old cursor, credits and pending remediation refer to a different
+    # order and unit layout. Archive them, never reinterpret as new credit.
+    old=dict(p)
+    fresh=new_progress(curriculum,step,identity)
+    fresh["legacy_curriculum"]=old
+    fresh["partial_answers"]=dict(old.get("partial_answers",{}))
+    fresh["initial_step"]=old["initial_step"]
+    fresh["training_updates"]=old["training_updates"]
+    fresh["remedial_updates"]=old.get("remedial_updates",0)
+    return fresh
+
 
 def verify_progress(p,curriculum,identity,completed):
     if (p.get("version")!=VERSION or p.get("source")!=identity or
@@ -225,7 +244,7 @@ def assess_independently(model, tokenizer, unit, progress):
             progress["transfer_tests"]=progress.get("transfer_tests",0)+1
             progress["transfer_correct"]=progress.get("transfer_correct",0)+int(ok)
             progress["last_transfer"]=row
-        if kind=="composition":
+        if unit.get("usage_kind") and kind=="recall":\n            progress["word_sentence_tests"]=progress.get("word_sentence_tests",0)+1\n            progress["word_sentence_correct"]=progress.get("word_sentence_correct",0)+int(ok)\n        if kind=="composition":
             progress["composition_tests"]=progress.get("composition_tests",0)+1
             progress["composition_correct"]=progress.get("composition_correct",0)+int(ok)
         if not ok:
@@ -238,7 +257,7 @@ def reset_cumulative(p,step):
     p["cumulative_items"]={s:0 for s in STAGES}
     p["cumulative_started"]=step
     p["independent_cumulative_units"]=0
-    p["cursor"]=["grammar",0,0]
+    p["cursor"]=[STAGES[0],0,0]
     p["phase"]="exam"
     p["remaining"]=0
 
@@ -304,12 +323,11 @@ def fail_root(p,curriculum,unit,actual):
     p["root_failures"]+=1
     if p["audit_return"] is not None:
         p["retention_failures"]+=1
-    indices,missing=curriculum.indices(unit["lexical_text"]+" "+actual)
+    indices,missing=curriculum.indices(unit["lexical_text"])
     p["missing_count"]+=len(missing)
     p["outstanding_missing"]=sorted(set(p["outstanding_missing"]+missing))[:2048]
     pending=[]
-    for i in indices:
-        for part in range(len(curriculum.units("dictionary",i))):
+    # Never jump ahead of alphabetical vocabulary mastery or follow\n    # unrelated words hallucinated in an answer.\n    for i in (indices if p["cursor"][0] not in ("dictionary","usage") else []):\n        for part in range(len(curriculum.units("dictionary",i))):
             key=["dictionary",i,part]
             if key!=p["cursor"]:
                 pending.append(key)
@@ -360,6 +378,7 @@ def train_session(checkpoint,tokenizer_path,records,*,parent=None,budget=400,
         payload=dict(payload)
         payload.pop("english_mastery",None)
     p=payload.get("english_mastery") or new_progress(curriculum,step,identity)
+    p=migrate_curriculum(p,curriculum,identity,step)
     verify_progress(p,curriculum,identity,step)
     memory=VerifiedMemory(payload.get("verified_memory",{}))
     if prior_exam is not None and "english_mastery" not in payload:
@@ -479,5 +498,5 @@ def graduation_report(result):
                 cumulative_started=p["cumulative_started"],completed_updates=result["completed_updates"],
                 remediation_pending=len(p["remediation"]),qualified=p["qualified"],
                 phase=p["phase"],cursor=p["cursor"],
-                assessment_version=p.get("assessment_version"),
+                assessment_version=p.get("assessment_version"),\n                curriculum_version=p.get("curriculum_version"),\n                word_sentence_tests=p.get("word_sentence_tests",0),\n                word_sentence_correct=p.get("word_sentence_correct",0),
                 independent_cumulative_units=p.get("independent_cumulative_units",0))
