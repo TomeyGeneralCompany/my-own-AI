@@ -8,7 +8,8 @@ import re
 from collections import defaultdict
 from hashlib import sha256
 
-STAGES = ("grammar", "dictionary", "usage", "reading", "composition")
+STAGES = ("dictionary", "usage", "grammar", "reading", "composition")
+CURRICULUM_VERSION = 2
 ACTORS = ("child", "farmer", "teacher", "sailor", "clerk", "doctor", "worker", "cook")
 OBJECTS = ("book", "key", "cup", "rope", "letter", "bag", "chair", "lamp")
 PLACES = ("house", "school", "garden", "shop", "field", "room", "barn", "station")
@@ -54,11 +55,11 @@ def chunks(text, tokenizer, budget):
 
 class Curriculum:
     def __init__(self, records, tokenizer, context):
-        self.records=records
+        self.records=sorted(records, key=lambda row: row[0].casefold())
         self.tokenizer=tokenizer
         self.context=context
         self.lookup=defaultdict(list)
-        for i,(word,_) in enumerate(records):
+        for i,(word,_) in enumerate(self.records):
             self.lookup[word.casefold()].append(i)
         self.totals={"grammar":384,"dictionary":len(records),"usage":len(records),
                      "reading":256,"composition":128}
@@ -116,7 +117,40 @@ class Curriculum:
                 exam=f"Which listed word belongs to this dictionary passage? {part}\nChoices: {' | '.join(choices2)}"
                 answer=word
             result.append(dict(id=f"{stage}-{index}-{n}",question=train,exam=exam,answer=answer,lexical_text=word))
+        if stage=="dictionary":
+            # Complete each headword before moving to the next. Prefer a
+            # contextual example in the source; otherwise use an explicitly
+            # labelled definitional sentence (not claimed as free usage).
+            result.append(self.word_sentence(index, len(pieces)+1))
         return result
+    def word_sentence(self, index, part):
+        word, definition = self.records[index]
+        label = f"Webster 1913 entry {index+1}: {word}"
+        pattern = re.compile(r"(?<!\w)"+re.escape(word)+r"(?!\w)", re.I)
+        examples = []
+        for candidate in re.findall(r'["“]([^"”]+)["”]', clean(definition)):
+            candidate = candidate.strip()
+            if (pattern.search(candidate) and len(words(candidate))>=4
+                    and candidate[0].isupper() and candidate[-1] in ".?!"):
+                examples.append(candidate)
+        for candidate in examples:
+            masked = pattern.sub("___",candidate,count=1)
+            question=f"Complete the source sentence using {word}: {masked}"
+            exam=f"Restore the missing headword in this source sentence: {masked}"
+            if all(len(self.tokenizer.encode(q))+len(self.tokenizer.encode(candidate))+12<=self.context for q in (question,exam)):
+                return dict(id=f"word-use-{index}-{part}",question=question,exam=exam,
+                    answer=candidate,lexical_text=word,usage_kind="source_example")
+        # A dictionary entry may contain only a cross-reference, inflection,
+        # abbreviation, or fragment. Preserve the complete original definition
+        # in its recall units; use a bounded excerpt for this lexical exercise.
+        excerpt=chunks(definition,self.tokenizer,min(40,self.context//8))[0]
+        answer=f'The entry "{word}" includes the definition "{excerpt}".'
+        question=f"Write a definition sentence for {label}, quoting its opening text."
+        exam=f"State the opening dictionary text of {label} in a complete definition sentence."
+        if max(len(self.tokenizer.encode(q)) for q in (question,exam))+len(self.tokenizer.encode(answer))+12>self.context:
+            raise ValueError("Lexical sentence cannot fit context: "+label)
+        return dict(id=f"word-use-{index}-{part}",question=question,exam=exam,
+                    answer=answer,lexical_text=word,usage_kind="definition_sentence")
     def units(self, stage, index):
         if not 0<=index<self.totals[stage]:
             raise ValueError("Curriculum cursor escaped")

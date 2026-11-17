@@ -24,6 +24,8 @@ def validate_continuation(before, after, result, report, checkpoint_hash):
     assert after["tokenizer_sha256"] == before["tokenizer_sha256"]
     assert set(before.get("verified_memory", {})) <= set(after.get("verified_memory", {}))
     p = after["english_mastery"]
+    assert p["curriculum_version"] == 2
+    assert report["curriculum_version"] == 2
     assert p["assessment_version"] == 2
     assert report["assessment_version"] == 2
     assert report["checkpoint_sha256"] == checkpoint_hash
@@ -74,7 +76,7 @@ def main():
         curriculum=Curriculum(records,tokenizer,model.config.context_size)
         progress={}
         probes=[]
-        for key in (["grammar",0,0],["composition",0,0]):
+        for key in (["dictionary",0,0],["dictionary",0,len(curriculum.units("dictionary",0))-1],["grammar",0,0],["composition",0,0]):
             ok,rows=assess_independently(model,tokenizer,curriculum.unit(key),progress)
             assert rows and rows[0]["kind"]=="recall"
             assert all(row["origin"]=="neural" for row in rows)

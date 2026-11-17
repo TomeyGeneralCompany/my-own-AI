@@ -70,5 +70,6 @@ def test_graduation_rejects_old_or_incomplete_independent_evidence():
     assert not advance_english_mastery(ledger,report,checkpoint_sha256=sha)
     assert ledger["stage"]==ENGLISH
     report["independent_cumulative_units"]=sum(totals.values())
+    report.update(curriculum_version=2,word_sentence_correct=totals["dictionary"])
     assert advance_english_mastery(ledger,report,checkpoint_sha256=sha)
     assert ledger["stage"]==READ
