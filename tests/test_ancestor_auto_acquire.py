@@ -76,3 +76,56 @@ def test_scheduler_wakes_for_english_mastery_merges():
                 ".github/workflows/ancestor-auto-acquire.yml").read_text()
     assert "my_own_ai/english_mastery.py" in workflow
     assert "my_own_ai/english_mastery_curriculum.py" in workflow
+
+
+def test_uncancellable_ghost_does_not_kill_scheduler(monkeypatch):
+    """A GitHub ghost cannot block every subsequent real learning session."""
+    import json
+    from scripts import ancestor_auto_acquire as scheduler
+    calls = []
+    queued = {"databaseId": 43799653189, "headBranch": "main",
+              "status": "queued", "createdAt": "2026-11-15T00:00:00Z"}
+    def fake_gh(*args):
+        calls.append(args)
+        if args[:2] == ("release", "list"):
+            return json.dumps([{"tagName": "ancestor-g0002-candidate"}])
+        if args[:2] == ("run", "list"):
+            return json.dumps([queued])
+        if args[:2] == ("run", "view"):
+            return json.dumps({"status": "queued", "jobs": []})
+        if args[:2] == ("run", "cancel") or args[:3] == ("api", "--method", "POST"):
+            raise subprocess.CalledProcessError(1, args, stderr="HTTP 409: cannot cancel ghost")
+        if args[:2] == ("workflow", "run"):
+            return "dispatched"
+        raise AssertionError(args)
+    monkeypatch.setenv("GITHUB_REPOSITORY", "TomeyGeneralCompany/my-own-AI")
+    monkeypatch.setattr(scheduler, "gh", fake_gh)
+    assert scheduler.main() == 0
+    assert any(command[:2] == ("run", "cancel") for command in calls)
+    assert any(command[:3] == ("api", "--method", "POST") for command in calls)
+    assert sum(command[:2] == ("workflow", "run") for command in calls) == 1
+
+
+def test_uncancellable_ghost_never_overrides_genuine_active_training(monkeypatch):
+    import json
+    from scripts import ancestor_auto_acquire as scheduler
+    calls = []
+    queued = {"databaseId": 43799653189, "headBranch": "main",
+              "status": "queued", "createdAt": "2026-11-15T00:00:00Z"}
+    running = {"databaseId": 22, "headBranch": "main",
+               "status": "in_progress", "createdAt": "2026-11-17T14:00:00Z"}
+    def fake_gh(*args):
+        calls.append(args)
+        if args[:2] == ("release", "list"):
+            return json.dumps([{"tagName": "ancestor-g0002-candidate"}])
+        if args[:2] == ("run", "list"):
+            return json.dumps([queued, running])
+        if args[:2] == ("run", "view"):
+            return json.dumps({"status": "queued", "jobs": []})
+        if args[:2] == ("run", "cancel") or args[:3] == ("api", "--method", "POST"):
+            raise subprocess.CalledProcessError(1, args, stderr="HTTP 409")
+        raise AssertionError(args)
+    monkeypatch.setenv("GITHUB_REPOSITORY", "TomeyGeneralCompany/my-own-AI")
+    monkeypatch.setattr(scheduler, "gh", fake_gh)
+    assert scheduler.main() == 0
+    assert not any(command[:2] == ("workflow", "run") for command in calls)

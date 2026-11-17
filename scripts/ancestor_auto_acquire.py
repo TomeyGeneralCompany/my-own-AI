@@ -99,29 +99,67 @@ def main():
     # Reconcile only old, jobless QUEUED runs. Never cancel a running job,
     # an approval wait, or anything with evidence of runner execution.
     stale = stale_jobless_queues(runs)
+    verified_ghosts = set()
     for run_id in stale:
         detail = json.loads(gh("run", "view", str(run_id), "--json", "status,jobs"))
         if detail["status"] != "queued" or detail.get("jobs"):
             print("Queue changed; preserving run", run_id)
             continue
-        print("Cancelling stale jobless queue", run_id, flush=True)
-        gh("run", "cancel", str(run_id))
-        # Do not dispatch replacement until GitHub confirms terminal state.
-        import time
-        for attempt in range(12):
-            status = json.loads(gh("run", "view", str(run_id), "--json", "status"))["status"]
-            if status in ("cancelled", "completed"):
-                break
-            time.sleep(5)
+        print("Attempting to cancel stale jobless queue", run_id, flush=True)
+        cancellation_accepted = False
+        try:
+            gh("run", "cancel", str(run_id))
+            cancellation_accepted = True
+        except subprocess.CalledProcessError as error:
+            print("Normal cancellation rejected:", (error.stderr or str(error)).strip(), flush=True)
+            # GitHub recommends force-cancel only after normal cancellation
+            # fails. It can also reject an orphaned queue; report that
+            # response rather than crashing before any recovery is attempted.
+            detail = json.loads(gh("run", "view", str(run_id), "--json", "status,jobs"))
+            if detail["status"] == "queued" and not detail.get("jobs"):
+                try:
+                    gh("api", "--method", "POST",
+                       f"repos/{os.environ['GITHUB_REPOSITORY']}/actions/runs/{run_id}/force-cancel")
+                    cancellation_accepted = True
+                except subprocess.CalledProcessError as forced:
+                    print("Force cancellation rejected:",
+                          (forced.stderr or str(forced)).strip(), flush=True)
+        # An accepted cancel is asynchronous. Do not race it with dispatch.
+        if cancellation_accepted:
+            import time
+            for _ in range(12):
+                detail = json.loads(gh("run", "view", str(run_id), "--json", "status,jobs"))
+                if detail["status"] in ("completed", "cancelled"):
+                    break
+                if detail["status"] != "queued" or detail.get("jobs"):
+                    print("Cancellation still in flight or job started; do not dispatch", run_id)
+                    return 0
+                time.sleep(5)
+            else:
+                print("Cancellation accepted but not complete; refusing duplicate dispatch", run_id)
+                return 0
+        # Revalidate after cancellation attempts. Never assume cancellation
+        # succeeded, and never ignore a run that obtained an actual job.
+        detail = json.loads(gh("run", "view", str(run_id), "--json", "status,jobs"))
+        if detail["status"] == "queued" and not detail.get("jobs"):
+            verified_ghosts.add(run_id)
+            print("Orphaned jobless queue remains; allowing replacement under the"
+                  " existing serialized training concurrency lock:", run_id, flush=True)
         else:
-            raise RuntimeError(f"Stale queued run {run_id} did not cancel; refusing duplicate dispatch")
+            print("Queue changed during recovery; preserving it:", run_id, detail["status"])
+
     runs = json.loads(gh("run", "list", "--workflow", "ancestor-staged.yml",
                          "--limit", "30", "--json", "databaseId,status,headBranch"))
     active = [run for run in runs if run.get("headBranch") == "main"
-              and run["status"] in ("queued", "in_progress", "waiting", "requested", "pending")]
+              and run["status"] in ("queued", "in_progress", "waiting", "requested", "pending")
+              and not (run["status"] == "queued"
+                       and run.get("databaseId") in verified_ghosts)]
     if active:
         print("Competency-locked learning blocked or active:", json.dumps(active))
         return 0
+    # A verified ghost is not a running neural trainer. The existing
+    # staged-core-learning concurrency lock serializes any later recovery,
+    # while restore always uses the latest verified persistent checkpoint.
     gh("workflow", "run", "ancestor-staged.yml", "--ref", "main",
        "-f", f"parent_generation={latest[1]}")
     print("Dispatched competency-locked original neural training from", latest[1])
