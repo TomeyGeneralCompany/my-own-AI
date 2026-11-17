@@ -76,7 +76,8 @@ def test_remediation_checks_soon_and_preserves_independent_transfer():
     )
     assert REPETITIONS[-1] <= 32
     unit=dict(id="dictionary-0-1",
-              question="Write the source text.", exam="Reproduce the entry.",
+              question="Write the source text.",
+              exam="From memory, reproduce Webster 1913 entry 1: Apple, section 1/1.",
               answer="A small entry.")
     class Characters:
         def encode(self,text):
