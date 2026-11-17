@@ -244,7 +244,10 @@ def assess_independently(model, tokenizer, unit, progress):
             progress["transfer_tests"]=progress.get("transfer_tests",0)+1
             progress["transfer_correct"]=progress.get("transfer_correct",0)+int(ok)
             progress["last_transfer"]=row
-        if unit.get("usage_kind") and kind=="recall":\n            progress["word_sentence_tests"]=progress.get("word_sentence_tests",0)+1\n            progress["word_sentence_correct"]=progress.get("word_sentence_correct",0)+int(ok)\n        if kind=="composition":
+        if unit.get("usage_kind") and kind=="recall":
+            progress["word_sentence_tests"]=progress.get("word_sentence_tests",0)+1
+            progress["word_sentence_correct"]=progress.get("word_sentence_correct",0)+int(ok)
+        if kind=="composition":
             progress["composition_tests"]=progress.get("composition_tests",0)+1
             progress["composition_correct"]=progress.get("composition_correct",0)+int(ok)
         if not ok:
@@ -327,7 +330,10 @@ def fail_root(p,curriculum,unit,actual):
     p["missing_count"]+=len(missing)
     p["outstanding_missing"]=sorted(set(p["outstanding_missing"]+missing))[:2048]
     pending=[]
-    # Never jump ahead of alphabetical vocabulary mastery or follow\n    # unrelated words hallucinated in an answer.\n    for i in (indices if p["cursor"][0] not in ("dictionary","usage") else []):\n        for part in range(len(curriculum.units("dictionary",i))):
+    # Never jump ahead of alphabetical vocabulary mastery or follow
+    # unrelated words hallucinated in an answer.
+    for i in (indices if p["cursor"][0] not in ("dictionary","usage") else []):
+        for part in range(len(curriculum.units("dictionary",i))):
             key=["dictionary",i,part]
             if key!=p["cursor"]:
                 pending.append(key)
@@ -498,5 +504,8 @@ def graduation_report(result):
                 cumulative_started=p["cumulative_started"],completed_updates=result["completed_updates"],
                 remediation_pending=len(p["remediation"]),qualified=p["qualified"],
                 phase=p["phase"],cursor=p["cursor"],
-                assessment_version=p.get("assessment_version"),\n                curriculum_version=p.get("curriculum_version"),\n                word_sentence_tests=p.get("word_sentence_tests",0),\n                word_sentence_correct=p.get("word_sentence_correct",0),
+                assessment_version=p.get("assessment_version"),
+                curriculum_version=p.get("curriculum_version"),
+                word_sentence_tests=p.get("word_sentence_tests",0),
+                word_sentence_correct=p.get("word_sentence_correct",0),
                 independent_cumulative_units=p.get("independent_cumulative_units",0))
