@@ -11,7 +11,7 @@ import torch
 from my_own_ai.english_mastery import assess_independently
 from my_own_ai.english_mastery_curriculum import Curriculum
 from my_own_ai.language_inference import load_language
-from my_own_ai.webster1913 import acquire_webster
+from my_own_ai.webster1913 import acquire as acquire_webster
 
 
 def digest(path):
