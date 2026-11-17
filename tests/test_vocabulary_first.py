@@ -78,13 +78,15 @@ def test_remediation_checks_soon_and_preserves_independent_transfer():
     unit=dict(id="dictionary-0-1",
               question="Write the source text.", exam="Reproduce the entry.",
               answer="A small entry.")
+    from tests.test_english_prompt_remediation import Characters
+    t=Characters()
     p={}
     for _ in range(4):
-        record_partial(p,unit,"A wrong entry.",True,Tokens())
+        record_partial(p,unit,"A wrong entry.",True,t)
     # Regression: varied teaching prompts may be trained, but never the
     # independent held-out transfer wording itself.
-    samples=remediation_samples(p,unit,Tokens(),512)
+    samples=remediation_samples(p,unit,t,512)
     assert len(samples)>3
     from my_own_ai.language_training import _example
-    held_out=_example(dict(unit,question=transfer_question(unit)),Tokens(),512)
+    held_out=_example(dict(unit,question=transfer_question(unit)),t,512)
     assert held_out not in samples
