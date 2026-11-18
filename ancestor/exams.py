@@ -29,6 +29,10 @@ def exact_match(answer: str, expected: str) -> bool:
     return answer == expected
 
 def rubric_grade(answer: str, item: ExamItem) -> bool:
+    if item.grading in ("exact","normalized","contains") and not item.expected:
+        raise ValueError("Examination reference answer must not be empty")
+    if item.grading=="ordered_derivation" and (not item.required_reasoning_steps or not item.required_axioms):
+        raise ValueError("Axiomatic derivation requires both governing premises and ordered reasoning steps")
     if item.grading=="exact":
         core=(answer==item.expected)
     elif item.grading=="normalized":
