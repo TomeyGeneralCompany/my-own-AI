@@ -11,12 +11,12 @@ permissions:
   contents: read
 jobs:
   train:
-    if: ${{ vars.ANCESTOR_CLOUD_ENABLED == 'true' ${{
+    if: ${{ vars.ANCESTOR_CLOUD_ENABLED == 'true' }}
     runs-on: ubuntu-latest
     timeout-minutes: 300
     env:
-      GH_TOKEN: ${{ secrets.ANCESTOR_PRIVATE_REPO_TOKEN ${{
-      PRIVATE_REPO: ${{ vars.ANCESTOR_PRIVATE_DATA_REPO ${{
+      GH_TOKEN: ${{ secrets.ANCESTOR_PRIVATE_REPO_TOKEN }}
+      PRIVATE_REPO: ${{ vars.ANCESTOR_PRIVATE_DATA_REPO }}
       ANCESTOR_RESUME: ''
       PYTHONUNBUFFERED: '1'
     steps:
