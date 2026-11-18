@@ -10,7 +10,7 @@ import json
 from .corpus import Corpus
 from .governance import Constitution
 from .tokenizer import ByteBPE
-from .training import structured_prefix_batch
+from .training import controller_completion_batch
 
 @dataclass(frozen=True)
 class ReasoningExample:
@@ -59,12 +59,9 @@ def reasoning_sample(example: ReasoningExample, corpus: Corpus,
     selected="\n".join(axioms[i] for i in example.axiom_ids)
     context="\n\n".join(f"[{sid}]\n{corpus.get(sid).exact_text}"
                         for sid in example.premise_source_ids)
-    target=example.question+"\nDerivation:\n"+example.derivation+"\nConsequence:\n"+example.conclusion
-    return structured_prefix_batch(tokenizer,[
-        ("<|AXIOM|>",selected),
-        ("<|CONTEXT|>",context),
-        ("<|DERIVE|>",target),
-    ],context_length)
+    target="Derivation:\n"+example.derivation+"\nConsequence:\n"+example.conclusion
+    return controller_completion_batch(tokenizer,selected,context,
+                                       example.question,target,context_length)
 
 def assert_constitution_is_authoritative(example: ReasoningExample,
                                           constitution: Constitution):
