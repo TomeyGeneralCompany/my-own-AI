@@ -88,10 +88,15 @@ class Corpus:
                 self.db.execute("INSERT OR IGNORE INTO records VALUES(?,?,?,?,?,?,?)",
                     (item.id,document_id,item.paragraph_number,item.kind,None,item.exact_text,
                      sha256(item.exact_text.encode()).hexdigest()))
-                for i, block in enumerate(BLOCK.split(item.exact_text)[1::2], start=1):
-                    # The complete paragraph remains canonical. Structured subblocks
-                    # are stored as independently retrievable references.
-                    pass
+                markers = list(BLOCK.finditer(item.exact_text))
+                for i, marker in enumerate(markers, start=1):
+                    label = marker.group(1).lower().rstrip(".")
+                    end = markers[i].start() if i < len(markers) else len(item.exact_text)
+                    exact_block = item.exact_text[marker.start():end].strip()
+                    block_id = f"{item.id}:{label.upper()}-{i:02d}"
+                    self.db.execute("INSERT OR IGNORE INTO records VALUES(?,?,?,?,?,?,?)",
+                        (block_id, document_id, item.paragraph_number, label, item.id,
+                         exact_block, sha256(exact_block.encode()).hexdigest()))
         if not dest.exists():
             dest.write_bytes(raw)
         return len(items)
@@ -108,6 +113,10 @@ class Corpus:
     def list_paragraphs(self, document_id: str) -> list[SourceRecord]:
         ids = self.db.execute("SELECT id FROM records WHERE document_id=? AND kind='paragraph' ORDER BY paragraph_number", (document_id,))
         return [self.get(r[0]) for r in ids]
+
+    def subblocks(self, record_id: str) -> list[SourceRecord]:
+        ids = self.db.execute("SELECT id FROM records WHERE parent_id=? ORDER BY id", (record_id,))
+        return [self.get(row[0]) for row in ids]
 
     def add_dependency(self, src: str, dst: str, relation: str) -> None:
         if relation not in {"DEFINES","USES_VARIABLE","DEPENDS_ON","DERIVES_FROM","SUPPORTS",
