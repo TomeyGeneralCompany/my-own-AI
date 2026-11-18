@@ -76,7 +76,7 @@ jobs:
             --output "$RUNNER_TEMP/ancestor-trained"
             --block 1024
             --width 384 --layers 6 --heads 6 --ffn 1536
-            --updates 20 --max-minutes 200
+            --updates 50000 --max-minutes 200
           )
           if [ -n "$ANCESTOR_RESUME" ]; then
             args+=(--resume "$ANCESTOR_RESUME")
