@@ -111,7 +111,7 @@ class Corpus:
         return SourceRecord(*row)
 
     def list_paragraphs(self, document_id: str) -> list[SourceRecord]:
-        ids = self.db.execute("SELECT id FROM records WHERE document_id=? AND kind='paragraph' ORDER BY paragraph_number", (document_id,))
+        ids = self.db.execute("SELECT id FROM records WHERE document_id=? AND kind IN ('paragraph','pdf_page') ORDER BY paragraph_number", (document_id,))
         return [self.get(r[0]) for r in ids]
 
     def subblocks(self, record_id: str) -> list[SourceRecord]:
