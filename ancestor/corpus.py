@@ -129,35 +129,61 @@ class Corpus:
         ids = self.db.execute("SELECT dst FROM dependencies WHERE src=? ORDER BY dst", (record_id,))
         return [self.get(row[0]) for row in ids]
 
-    def import_dictionary_tsv(self, path: str | Path) -> int:
+    def import_dictionary_tsv(self, path: str | Path,
+                              *, dictionary_id: str="WEBSTER1913") -> int:
         """Import explicitly delimited headword<TAB>definition lines.
 
-        Reject malformed rows and metadata instead of promoting them to lessons.
-        Official Webster data must be supplied and verified by the owner.
+        Creates stable lexical SourceRecords for the controller's ordered lessons.
+        The exact owner-verified input is immutable under this document identity.
         """
-        lines = Path(path).read_text(encoding="utf-8").splitlines()
-        results = []
-        for n, line in enumerate(lines, 1):
+        path=Path(path)
+        raw=path.read_bytes()
+        digest=sha256(raw).hexdigest()
+        lines=raw.decode("utf-8").splitlines()
+        results=[]
+        for n,line in enumerate(lines,1):
             if not line.strip():
                 continue
             if "\t" not in line:
                 raise ValueError(f"Missing headword separator at line {n}")
-            head, definition = line.split("\t",1)
-            head, definition = head.strip(), definition.strip()
+            head,definition=line.split("\t",1)
+            head,definition=head.strip(),definition.strip()
             if not head or not definition:
                 raise ValueError(f"Empty headword/definition at line {n}")
             if head.startswith(("00-","__")) or head.lower() in {"00-cide-info","00-database-info"}:
                 raise ValueError(f"Dictionary metadata in lexical input at line {n}: {head}")
             results.append((head,definition))
+        if not results:
+            raise ValueError("Dictionary must contain lexical records")
         def key(item):
-            head = item[0].casefold()
-            return (re.sub(r"^[^a-z0-9]+", "", head), head)
+            head=item[0].casefold()
+            return (re.sub(r"^[^a-z0-9]+","",head),head)
         results.sort(key=key)
+        existing=self.db.execute("SELECT original_sha FROM documents WHERE id=?",(dictionary_id,)).fetchone()
+        if existing and existing[0]!=digest:
+            raise ValueError("Cannot replace verified dictionary with different source content")
+        dest=self.root/"originals"/(dictionary_id+".tsv")
+        dest.parent.mkdir(exist_ok=True)
+        if dest.exists() and sha256(dest.read_bytes()).hexdigest()!=digest:
+            raise ValueError("Original Webster source differs from indexed source")
         with self.db:
-            self.db.execute("DELETE FROM lexicon")
-            self.db.executemany("INSERT INTO lexicon VALUES(?,?,?)",
-                                [(head,i,definition) for i,(head,definition) in enumerate(results)])
+            self.db.execute("INSERT OR IGNORE INTO documents VALUES(?,?,?,?,?)",
+                (dictionary_id,"1913 Webster dictionary",digest,digest,path.name))
+            for i,(head,definition) in enumerate(results):
+                self.db.execute("INSERT OR IGNORE INTO lexicon VALUES(?,?,?)",(head,i,definition))
+                exact=head+"\n"+definition
+                self.db.execute("INSERT OR IGNORE INTO records VALUES(?,?,?,?,?,?,?)",
+                    (f"{dictionary_id}:W-{i:06d}",dictionary_id,i+1,"dictionary",
+                     None,exact,sha256(exact.encode()).hexdigest()))
+        if not dest.exists():
+            dest.write_bytes(raw)
         return len(results)
+
+    def dictionary_records(self, dictionary_id: str="WEBSTER1913") -> list[SourceRecord]:
+        ids=self.db.execute(
+            "SELECT id FROM records WHERE document_id=? AND kind='dictionary' ORDER BY paragraph_number",
+            (dictionary_id,))
+        return [self.get(row[0]) for row in ids]
 
     def dictionary(self) -> list[tuple[str,str]]:
         return list(self.db.execute("SELECT headword,entry FROM lexicon ORDER BY sequence"))
