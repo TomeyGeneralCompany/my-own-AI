@@ -41,6 +41,10 @@ class LearningLedger:
         return result
 
     def stage_ready(self, requirement: StageRequirement) -> bool:
+        if not requirement.required_exam_ids:
+            return False
+        if not requirement.required_source_ids and requirement.stage_id != "READINESS":
+            return False
         covered = self.covered()
         exams = self.exam_results()
         return (set(requirement.required_source_ids) <= covered
