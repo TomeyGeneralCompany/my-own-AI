@@ -129,15 +129,18 @@ class CurriculumRunner:
             self.controller.state=State.READY
         return sum(scores)/len(scores)
 
+    def _checkpoint(self, stage: str, objective_id: str):
+        return save_checkpoint(self.checkpoint_dir,self.trainer,
+            tokenizer_hash=self.tokenizer_hash,constitution=self.controller.constitution,
+            corpus_manifest_hash=self.corpus_hash,stage=stage,objective_id=objective_id,
+            ledger_offset=len(self.controller.ledger.events()))
+
     def teach(self, lesson: Lesson):
         objective=Objective(lesson.id,lesson.source_id,lesson.task,lesson.prerequisites)
         for _ in range(lesson.updates):
             self.lesson_step(lesson)
         self.controller.record_coverage(objective)
-        return save_checkpoint(self.checkpoint_dir,self.trainer,
-            tokenizer_hash=self.tokenizer_hash,constitution=self.controller.constitution,
-            corpus_manifest_hash=self.corpus_hash,stage="LESSON_COMPLETED",
-            objective_id=lesson.id)
+        return self._checkpoint("LESSON_COMPLETED",lesson.id)
 
     @torch.no_grad()
     def answer(self, prompt: str, *, context_sources: tuple[str,...]=(),
@@ -173,25 +176,37 @@ class CurriculumRunner:
 
     def run_stage(self, stage: CourseStage, exams: dict[str,list[ExamItem]],
                   *, threshold: float=0.9):
-        if self.controller.state not in (State.READY,):
+        if self.controller.state != State.READY:
             raise RuntimeError("Controller not ready")
-        required=[]
         for lesson in stage.lessons:
-            self.teach(lesson)
             if lesson.exam_id not in exams:
                 raise ValueError("Missing independent exam bank")
-            result=self.examine(lesson.exam_id,exams[lesson.exam_id],threshold=threshold)
-            required.append(lesson.exam_id)
-            if not result.passed:
-                self.controller.diagnose("INDEPENDENT_EXAM_FAILURE",lesson.prerequisites)
-                # No autonomous model changes / no dishonest stage promotion.
-                return False
         for retention_id in stage.retention_exam_ids:
             if retention_id not in exams:
-                raise ValueError("Missing retention exam")
+                raise ValueError("Missing retention exam bank")
+        completed=self.controller.ledger.exam_results()
+        covered=self.controller.ledger.covered()
+        required=[]
+        for lesson in stage.lessons:
+            # A previously tested lesson is not trained a second time simply
+            # because the process was restarted; its source and exam identities
+            # have to belong to the exact checkpoint-bound curriculum.
+            if not (lesson.source_id in covered and completed.get(lesson.exam_id,False)):
+                self.teach(lesson)
+                result=self.examine(lesson.exam_id,exams[lesson.exam_id],threshold=threshold)
+                self._checkpoint("EXAM_COMPLETED",lesson.id)
+                if not result.passed:
+                    self.controller.diagnose("INDEPENDENT_EXAM_FAILURE",lesson.prerequisites)
+                    self._checkpoint("REMEDIATION_REQUIRED",lesson.id)
+                    return False
+            required.append(lesson.exam_id)
+        for retention_id in stage.retention_exam_ids:
             if not self.examine(retention_id,exams[retention_id],threshold=threshold).passed:
+                self._checkpoint("RETENTION_FAILED",retention_id)
                 return False
+            self._checkpoint("RETENTION_PASSED",retention_id)
         self.controller.stage_gate(StageRequirement(stage.id,
             tuple(x.source_id for x in stage.lessons),tuple(required),
             stage.retention_exam_ids))
+        self._checkpoint("STAGE_COMPLETED",stage.id)
         return True
