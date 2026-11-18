@@ -1,108 +1,116 @@
 name: Ancestor off-laptop training
-# Only trusted main-branch scheduled/dispatch runs receive private-data secrets.
+# Published manuscripts may be stored in this public repository's release.
+# Trains ONLY on the trusted main branch, never pull_request or fork code.
 on:
   workflow_dispatch:
   schedule:
     - cron: '17 */6 * * *'
 concurrency:
-  group: ancestor-private-training
+  group: ancestor-cloud-training
   cancel-in-progress: false
 permissions:
   contents: read
+  actions: read
+
 jobs:
   train:
-    if: ${{ vars.ANCESTOR_CLOUD_ENABLED == 'true' }}
     runs-on: ubuntu-latest
     timeout-minutes: 300
     env:
-      GH_TOKEN: ${{ secrets.ANCESTOR_PRIVATE_REPO_TOKEN }}
-      PRIVATE_REPO: ${{ vars.ANCESTOR_PRIVATE_DATA_REPO }}
-      ANCESTOR_RESUME: ''
-      ANCESTOR_NEXT_SLOT: a
+      GH_TOKEN: ${{ github.token }}
       PYTHONUNBUFFERED: '1'
+      ANCESTOR_RESUME: ''
     steps:
-      - name: Obtain original neural source code
+      - name: Checkout original Ancestor source
         uses: actions/checkout@v4
         with:
           persist-credentials: false
-      - name: Require private data repository credentials
-        shell: bash
-        run: |
-          set -euo pipefail
-          test -n "$GH_TOKEN" || { echo "Private repository token not configured"; exit 1; }
-          test -n "$PRIVATE_REPO" || { echo "Private data repository not configured"; exit 1; }
-          gh repo view "$PRIVATE_REPO" --json visibility --jq '.visibility' | grep -qx PRIVATE || {
-            echo "Refusing to use a nonprivate data repository"
-            exit 1
-          }
-      - uses: actions/setup-python@v5
+      - name: Prepare Python
+        uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - name: Install original model runtime
+      - name: Install local original-model runtime
         run: python -m pip install -e .
-      - name: Retrieve private owner training inputs
+      - name: Locate publicly released approved training inputs
         shell: bash
+        id: inputs
         run: |
           set -euo pipefail
-          mkdir -p "$RUNNER_TEMP/ancestor-private" "$RUNNER_TEMP/ancestor-checkpoint"
+          if ! gh release view ancestor-training-inputs --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            echo "No public training-inputs release. Skipping; no fabricated sources or axioms."
+            echo "available=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          mkdir -p "$RUNNER_TEMP/ancestor-inputs"
           for asset in ancestor_private_training_library.zip governance.json tokenizer.json heldout.txt; do
+            # Existing bundle retains its historical name; it is now public.
             gh release download ancestor-training-inputs \
-              --repo "$PRIVATE_REPO" --pattern "$asset" \
-              --dir "$RUNNER_TEMP/ancestor-private"
-            test -s "$RUNNER_TEMP/ancestor-private/$asset"
+              --repo "$GITHUB_REPOSITORY" --pattern "$asset" \
+              --dir "$RUNNER_TEMP/ancestor-inputs"
+            test -s "$RUNNER_TEMP/ancestor-inputs/$asset"
           done
-          python -m ancestor.cli import-private-library \
-            --bundle "$RUNNER_TEMP/ancestor-private/ancestor_private_training_library.zip" \
-            --data "$RUNNER_TEMP/ancestor-private/library"
-      - name: Restore latest verified private checkpoint
+          echo "available=true" >> "$GITHUB_OUTPUT"
+      - name: Import all 11 owner manuscripts with SHA-256 verification
+        if: ${{ steps.inputs.outputs.available == 'true' }}
         shell: bash
         run: |
           set -euo pipefail
-          for slot in a b; do
-            mkdir -p "$RUNNER_TEMP/ancestor-checkpoint/$slot"
-            tag="ancestor-cloud-checkpoint-$slot"
-            if gh release view "$tag" --repo "$PRIVATE_REPO" >/dev/null 2>&1; then
-              gh release download "$tag" --repo "$PRIVATE_REPO" \
-                --pattern 'latest.*' \
-                --dir "$RUNNER_TEMP/ancestor-checkpoint/$slot" || true
+          python -m ancestor.cli import-private-library \
+            --bundle "$RUNNER_TEMP/ancestor-inputs/ancestor_private_training_library.zip" \
+            --data "$RUNNER_TEMP/ancestor-library"
+      - name: Recover most recent valid checkpoint artifact
+        if: ${{ steps.inputs.outputs.available == 'true' }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/ancestor-recovery"
+          # Get artifacts from prior successful runs only. A broken upload
+          # never supersedes the last recoverable neural checkpoint.
+          gh api --paginate "repos/$GITHUB_REPOSITORY/actions/artifacts?per_page=100&name=ancestor-neural-checkpoint" \
+            --jq '.artifacts[] | select(.expired==false) | [.created_at,.workflow_run.id,.id] | @tsv' \
+            | sort -r > "$RUNNER_TEMP/checkpoint-candidates.txt"
+          while IFS=$'\t' read -r created run_id artifact_id; do
+            [ -n "$artifact_id" ] || continue
+            rm -f "$RUNNER_TEMP/ancestor-recovery/latest.pt" "$RUNNER_TEMP/ancestor-recovery/latest.json"
+            if gh api "repos/$GITHUB_REPOSITORY/actions/artifacts/$artifact_id/zip" \
+                   -H "Accept: application/vnd.github+json" > "$RUNNER_TEMP/candidate.zip" \
+               && unzip -oq "$RUNNER_TEMP/candidate.zip" -d "$RUNNER_TEMP/ancestor-recovery" \
+               && python -m ancestor.remote_checkpoints \
+                      --slot-a "$RUNNER_TEMP/ancestor-recovery" \
+                      --slot-b "$RUNNER_TEMP/nonexistent" \
+                      --github-env "$GITHUB_ENV" \
+               && test -s "$RUNNER_TEMP/ancestor-recovery/latest.pt"; then
+              echo "Restoring checkpoint from Actions artifact $artifact_id."
+              exit 0
             fi
-          done
-          python -m ancestor.remote_checkpoints \
-            --slot-a "$RUNNER_TEMP/ancestor-checkpoint/a" \
-            --slot-b "$RUNNER_TEMP/ancestor-checkpoint/b" \
-            --github-env "$GITHUB_ENV"
-      - name: Train original Ancestor from owner's corpus
+          done < "$RUNNER_TEMP/checkpoint-candidates.txt"
+          echo "No prior valid neural checkpoint; starting fresh if inputs and axioms are valid."
+      - name: Continue owner-governed neural training on GitHub CPU
+        if: ${{ steps.inputs.outputs.available == 'true' }}
         shell: bash
         run: |
           set -euo pipefail
           args=(
-            --data "$RUNNER_TEMP/ancestor-private/library"
-            --tokenizer "$RUNNER_TEMP/ancestor-private/tokenizer.json"
-            --governance "$RUNNER_TEMP/ancestor-private/governance.json"
-            --heldout "$RUNNER_TEMP/ancestor-private/heldout.txt"
+            --data "$RUNNER_TEMP/ancestor-library"
+            --tokenizer "$RUNNER_TEMP/ancestor-inputs/tokenizer.json"
+            --governance "$RUNNER_TEMP/ancestor-inputs/governance.json"
+            --heldout "$RUNNER_TEMP/ancestor-inputs/heldout.txt"
             --output "$RUNNER_TEMP/ancestor-trained"
-            --block 1024
-            --width 384 --layers 6 --heads 6 --ffn 1536
+            --block 1024 --width 384 --layers 6 --heads 6 --ffn 1536
             --updates 50000 --max-minutes 200
           )
           if [ -n "$ANCESTOR_RESUME" ]; then
             args+=(--resume "$ANCESTOR_RESUME")
           fi
           python -m ancestor.cloud_training "${args[@]}"
-      - name: Save recovery checkpoint in alternate private slot
-        shell: bash
-        run: |
-          set -euo pipefail
-          test -s "$RUNNER_TEMP/ancestor-trained/latest.pt"
-          test -s "$RUNNER_TEMP/ancestor-trained/latest.json"
-          tag="ancestor-cloud-checkpoint-$ANCESTOR_NEXT_SLOT"
-          if ! gh release view "$tag" --repo "$PRIVATE_REPO" >/dev/null 2>&1; then
-            gh release create "$tag" --repo "$PRIVATE_REPO" \
-              --title "Ancestor neural checkpoint slot $ANCESTOR_NEXT_SLOT" \
-              --notes "Private recoverable original-model training state"
-          fi
-          gh release upload "$tag" --repo "$PRIVATE_REPO" --clobber \
-            "$RUNNER_TEMP/ancestor-trained/latest.pt" \
-            "$RUNNER_TEMP/ancestor-trained/latest.json" \
-            "$RUNNER_TEMP/ancestor-trained/summary.json"
-          echo "Training checkpoint saved in private slot $ANCESTOR_NEXT_SLOT."
+      - name: Retain actual model and complete optimizer recovery state
+        if: ${{ steps.inputs.outputs.available == 'true' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: ancestor-neural-checkpoint
+          path: |
+            ${{ runner.temp }}/ancestor-trained/latest.pt
+            ${{ runner.temp }}/ancestor-trained/latest.json
+            ${{ runner.temp }}/ancestor-trained/summary.json
+          if-no-files-found: error
+          retention-days: 90
