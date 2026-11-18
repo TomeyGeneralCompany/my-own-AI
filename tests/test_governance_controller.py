@@ -79,3 +79,18 @@ def test_owner_constitution_is_documented_verbatim():
     assert "Contradictions are treated as failures of the intended reasoning architecture" in doc
     assert "Other intellectual systems are objects of analysis" in doc
     assert "Stage gating must test whether he actually reasons according to your framework" in doc
+
+
+def test_original_manuscript_numbering_formats(tmp_path):
+    from ancestor.corpus import Corpus
+    cases=[
+        ("brackets","[0] First axiom.\n[1] Second consequence.",[0,1]),
+        ("decimal","1. First axiom.\n2. Second consequence.",[1,2]),
+        ("section","§ 3 First axiom.\n§ 4 Second consequence.",[3,4]),
+    ]
+    corpus=Corpus(tmp_path/"numbered")
+    for ident,content,expected in cases:
+        f=tmp_path/(ident+".txt")
+        f.write_text(content,encoding="utf-8")
+        assert corpus.ingest_text(f,ident,ident)==2
+        assert [x.paragraph_number for x in corpus.list_paragraphs(ident)]==expected
