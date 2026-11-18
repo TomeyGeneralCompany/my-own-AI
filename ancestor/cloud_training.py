@@ -1,4 +1,4 @@
-"""Bounded, resumable cloud training using only approved owner-provided sources.
+"""Bounded, resumable GitHub-hosted training on the published owner-provided corpus.
 
 This is foundational paragraph-conditioned neural training, not intellectual
 certification. Input axioms are immutable and loaded only from the approved
@@ -169,7 +169,7 @@ def run(args):
     start = time.monotonic()
     trained = 0
     while trained < args.updates:
-        # Leave a cushion for evaluation, checkpoint write, and private upload.
+        # Leave a cushion for evaluation, checkpoint write, and Actions artifact upload.
         if trained and (time.monotonic() - start) >= (args.max_minutes * 60):
             break
         current_idx = trainer.completed_updates % len(records)
@@ -196,14 +196,14 @@ def run(args):
         tokenizer_hash=tokenizer.digest(), constitution=constitution,
         corpus_manifest_hash=source_hash, stage="FOUNDATIONAL_MANUSCRIPT_EXPOSURE",
         objective_id="CLOUD_PARAGRAPH_CONDITIONED_TRAINING")
-    # The .pt and .json are uploaded to encrypted/restricted remote storage
-    # by the hosting workflow. They are never GitHub Actions public artifacts.
+    # The .pt and .json are retained as GitHub Actions artifacts for the
+    # public repository, as authorized by the owner.
     shutil.copy2(checkpoint, output/"latest.pt")
     shutil.copy2(checkpoint.with_suffix(".json"), output/"latest.json")
     summary = {
         "completed_updates": trainer.completed_updates,
         "updates_this_run": trained,
-        "private_source_count": len(corpus.db.execute(
+        "owner_source_count": len(corpus.db.execute(
             "SELECT id FROM documents").fetchall()),
         "learning_units": len(records),
         "heldout_loss": validation,
