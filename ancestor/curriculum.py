@@ -77,7 +77,10 @@ def load_exam_bank(path: str | Path) -> dict[str,list[ExamItem]]:
         if not questions:
             raise ValueError(f"Empty exam: {exam_id}")
         bank[exam_id]=[ExamItem(item["id"],item["prompt"],item["expected"],item["category"],
-                                tuple(item.get("source_ids",[]))) for item in questions]
+                                tuple(item.get("source_ids",[])),
+                                item.get("grading","exact"),
+                                tuple(item.get("required_reasoning_steps",[])),
+                                tuple(item.get("required_axioms",[]))) for item in questions]
     return bank
 
 class CurriculumRunner:
