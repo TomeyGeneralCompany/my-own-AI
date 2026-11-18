@@ -50,3 +50,23 @@ def test_no_unearned_graduation(tmp_path):
     with pytest.raises(ValueError):
         runner.run_stage(stage,{})
     assert not any(x["type"]=="STAGE_COMPLETED" for x in controller.ledger.events())
+
+
+def test_dictionary_and_book_stages_cannot_skip_sources(tmp_path):
+    controller,trainer,t=setup(tmp_path)
+    runner=CurriculumRunner(controller,trainer,t.digest(),"source",tmp_path/"checkpoints")
+    d=tmp_path/"dictionary.tsv"
+    d.write_text("Able\tcapable\nAbout\tconcerning\n",encoding="utf-8")
+    controller.corpus.import_dictionary_tsv(d)
+    incomplete=CourseStage("WEBSTER_DICTIONARY",
+        (Lesson("L1","WEBSTER1913:W-000000","Use word",exam_id="E1"),),
+        approved_entry_count=2)
+    with pytest.raises(ValueError):
+        runner.run_stage(incomplete,{})
+    incomplete_books=CourseStage("ORDERED_MANUSCRIPTS",
+        (Lesson("L2","BOOK:P-000001","Reason",exam_id="E2"),),
+        approved_document_ids=("BOOK",))
+    # Approved inventory exists, so its one actual numbered paragraph is complete.
+    # The exam is still mandatory; missing exam blocks the next operation.
+    with pytest.raises(ValueError):
+        runner.run_stage(incomplete_books,{})
