@@ -55,6 +55,14 @@ def args_parser():
     course.add_argument("--resume",default=None)
     course.add_argument("--threshold",type=float,default=0.9)
     course.add_argument("--seed",type=int,default=1729)
+    imp=sub.add_parser("import-private-library",
+                       help="Import local owner manuscript archive; never upload sources")
+    imp.add_argument("--bundle",required=True)
+    imp.add_argument("--data",required=True)
+    export=sub.add_parser("export-library-text",
+                          help="Build local approved training coverage text")
+    export.add_argument("--data",required=True)
+    export.add_argument("--output",required=True)
     p=sub.add_parser("train")
     p.add_argument("--corpus",required=True,help="Approved UTF-8 training text")
     p.add_argument("--validation",required=True,help="Independent held-out UTF-8 text")
@@ -144,6 +152,12 @@ def main(argv=None):
                 print("Stage gate not passed; approved remediation required:",stage.id)
                 raise SystemExit(2)
             print("Stage gate completed:",stage.id)
+    elif args.command=="import-private-library":
+        from .private_library import import_private_library
+        print(json.dumps(import_private_library(args.bundle,args.data),indent=2))
+    elif args.command=="export-library-text":
+        from .private_library import export_training_text
+        print(json.dumps(export_training_text(args.data,args.output),indent=2))
     elif args.command=="train":
         if args.updates<1 or args.save_every<1:
             raise ValueError("Updates and save interval must be positive")
