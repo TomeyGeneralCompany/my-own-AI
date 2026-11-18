@@ -1,7 +1,0 @@
-# Independent English assessment
-
-Every mastery unit now requires unaided autoregressive recall and held-out alternate wording. Composition also requires two complete sentences expressing changed facts. Correctness requires the requested words, grammar, punctuation and end-of-sequence. Existing verified memories remain available in the checkpoint for operational use, but no retrieval is used to pass these exams. Failed examinations use the existing remediation path; exact alternate exam wording is not used as a training sample.
-
-Existing weights, optimizer, partial-token retention, pending remediation, curriculum totals and completed mastery counts are retained. Historical mastery counts are provisional until the final independent fixed-weight cumulative sweep; if already in a cumulative sweep at migration, the sweep restarts (after pending remediation). Graduation requires assessment version 2 and independent cumulative evidence in addition to all old checks.
-
-Composition remains objectively scored and constrained; this is not proof of unrestricted essay writing or general intelligence. The two-sentence tests extend the prior one-sentence requirement without introducing another education stage. No other education stage or foundation axiom is changed. The workflow result includes raw exam outputs and independent recall, transfer and composition counters. Actual trained checkpoint performance must be observed after merging and resuming the workflow.
