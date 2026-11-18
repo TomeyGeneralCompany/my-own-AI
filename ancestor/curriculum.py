@@ -31,6 +31,7 @@ class Lesson:
     prerequisites: tuple[str, ...] = ()
     exam_id: str = ""
     updates: int = 1
+    remediation_lessons: tuple[tuple[str,str], ...] = ()
 
 @dataclass(frozen=True)
 class CourseStage:
@@ -59,9 +60,10 @@ def load_course(path: str | Path) -> list[CourseStage]:
             seen.add(item["id"])
             if item.get("updates",1)<1 or not item.get("exam_id"):
                 raise ValueError("Every lesson needs a positive update budget and independent exam")
+            remedies=tuple((r["source_id"],r["task"]) for r in item.get("remediation_lessons",[]))
             lessons.append(Lesson(item["id"],item["source_id"],item["task"],
                                   tuple(item.get("prerequisites",[])),
-                                  item["exam_id"],item.get("updates",1)))
+                                  item["exam_id"],item.get("updates",1),remedies))
         stages.append(CourseStage(stage["id"],tuple(lessons),
                                   tuple(stage.get("retention_exam_ids",[])),
                                   stage.get("approved_entry_count"),
@@ -219,8 +221,25 @@ class CurriculumRunner:
                 self._checkpoint("EXAM_COMPLETED",lesson.id)
                 if not result.passed:
                     self.controller.diagnose("INDEPENDENT_EXAM_FAILURE",lesson.prerequisites)
-                    self._checkpoint("REMEDIATION_REQUIRED",lesson.id)
-                    return False
+                    for n,(remedy_source,remedy_task) in enumerate(lesson.remediation_lessons,1):
+                        # Remediation material is explicitly source-bound and
+                        # owner-approved in the course. Never invent it.
+                        self.controller.ledger.append({"type":"REMEDIATION_SELECTED",
+                            "objective_id":lesson.id,"remediation_number":n,
+                            "source_id":remedy_source})
+                        self.controller.state=State.READY
+                        substitute=Lesson(lesson.id+f":REMED-{n}",remedy_source,
+                            remedy_task,lesson.prerequisites,lesson.exam_id,
+                            lesson.updates)
+                        self.teach(substitute)
+                        result=self.examine(lesson.exam_id,exams[lesson.exam_id],
+                                           threshold=threshold)
+                        self._checkpoint("REMEDIATION_EXAMINED",lesson.id)
+                        if result.passed:
+                            break
+                    if not result.passed:
+                        self._checkpoint("REMEDIATION_REQUIRED",lesson.id)
+                        return False
             required.append(lesson.exam_id)
         for retention_id in stage.retention_exam_ids:
             if not self.examine(retention_id,exams[retention_id],threshold=threshold).passed:
