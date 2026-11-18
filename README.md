@@ -43,9 +43,17 @@ Owner-authorized revision is a distinct future administrative mechanism.
     ancestor import-manuscript --data data/corpus --source /path/book.txt --id BOOK-001 --title "Canonical edition"
     ancestor import-dictionary --data data/corpus --source /path/verified-webster.tsv
 
-The initial manuscript importer accepts verified UTF-8 text containing numbered
-paragraphs; PDF/DOCX extraction should be performed and reviewed separately prior
-to import. The dictionary importer requires an explicit headword<TAB>definition
+For Word or PDF originals, use the reviewed extraction workflow:
+
+    ancestor prepare-document --source /path/book.docx --out data/ingest
+
+Inspect the extracted text and record its exact SHA-256 from the manifest, then:
+
+    ancestor approve-document --manifest data/ingest/manifest-<source-sha>.json --approved-hash <extracted-sha> --data data/corpus --id BOOK-001 --title "Canonical edition"
+
+The loader retains the original artifact and refuses to claim the extracted
+version is approved until the exact text hash is supplied. Word auto-numbering,
+PDF equations, and typography must be reviewed for fidelity. The dictionary importer requires an explicit headword<TAB>definition
 export. It does NOT silently guess StarDict format or treat metadata as words.
 
 ## Build original tokenizer
@@ -75,3 +83,46 @@ block indexing, word-level grammar exams, actual 1913 dictionary validation,
 automated curriculum-directed optimizer scheduling, and regression/retention banks
 need acceptance against those owner-approved materials. The PR must not be merged
 on the assumption those missing features work.
+
+
+## Controller-directed course (source-authored, not generic alignment)
+
+After importing and reviewing the sources, create an approved course JSON file
+with explicit ordered stages, source IDs, owner-referenced premises, independent
+exam IDs, and per-lesson initial update budgets. Every stage has its own exam
+bank in a separate JSON file. The stage-gated entrypoint is:
+
+    ancestor run-course --course /path/course.json --exams /path/exams.json --data data/corpus --tokenizer data/tokenizer.json --governance data/governance.json --out data/course-run
+
+The controller trains the paragraph's continuation from the immutable axiom
+prefix and approved source prerequisites; grades fresh generated responses;
+records coverage/competence separately; and refuses to graduate a failed stage.
+This is not an instruction to self-award competence or invent owner exam answers.
+
+For interruption recovery add --resume /path/recovery-checkpoint.pt.
+A ledger/checkpoint mismatch aborts rather than resetting or replaying training.
+Owner-approved axiom-first derivation examples are also represented by
+ancestor/reasoning.py; they require explicit approval and source references.
+
+### Course example (illustrative fixture only)
+
+    {
+      "stages": [{
+        "id": "ORDERED_MANUSCRIPTS",
+        "lessons": [{
+          "id": "BOOK1-001",
+          "source_id": "BOOK-001:P-000001",
+          "task": "Derive the consequence from the cited principles.",
+          "prerequisites": ["BOOK-001:P-000002"],
+          "exam_id": "BOOK1-001-EXAM",
+          "updates": 100
+        }],
+        "retention_exam_ids": ["EARLIER-REASONING-RETENTION"]
+      }]
+    }
+
+The owner must replace illustrative IDs, questions, sources, grading thresholds
+and prerequisites with a real approved curriculum. The above is a format
+illustration, not an approved course plan or valid paragraph relationship.
+
+**Do not run a purported full Ancestor education on demonstration fixtures.**
