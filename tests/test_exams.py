@@ -16,3 +16,14 @@ def test_unknown_exam_grader_fails_closed():
     item=ExamItem("E2","Question","Answer","grammar",grading="unknown")
     with pytest.raises(ValueError):
         run_exam("EXAM2",[item],lambda q:"Answer")
+
+
+def test_explicit_contradiction_disqualifies_otherwise_matching_derivation():
+    item=ExamItem("C","Apply the premise","", "philosophy",
+       grading="ordered_derivation",
+       required_reasoning_steps=("Premise","Consequence"),
+       required_axioms=("Governing axiom",),
+       forbidden_contradictions=("Contradictory conclusion",))
+    assert rubric_grade("Governing axiom Premise Consequence",item)
+    assert not rubric_grade(
+      "Governing axiom Premise Consequence Contradictory conclusion",item)
