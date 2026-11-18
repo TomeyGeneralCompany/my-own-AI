@@ -40,6 +40,21 @@ def args_parser():
     d=sub.add_parser("import-dictionary")
     d.add_argument("--data",required=True)
     d.add_argument("--source",required=True,help="Verified headword<TAB>definition text")
+    course=sub.add_parser("run-course",help="Owner-specified stages with independent exam banks")
+    course.add_argument("--course",required=True)
+    course.add_argument("--exams",required=True)
+    course.add_argument("--data",required=True)
+    course.add_argument("--tokenizer",required=True)
+    course.add_argument("--governance",required=True)
+    course.add_argument("--out",required=True)
+    course.add_argument("--block",type=int,default=1024)
+    course.add_argument("--width",type=int,default=512)
+    course.add_argument("--layers",type=int,default=8)
+    course.add_argument("--heads",type=int,default=8)
+    course.add_argument("--ffn",type=int,default=2048)
+    course.add_argument("--resume",default=None)
+    course.add_argument("--threshold",type=float,default=0.9)
+    course.add_argument("--seed",type=int,default=1729)
     p=sub.add_parser("train")
     p.add_argument("--corpus",required=True,help="Approved UTF-8 training text")
     p.add_argument("--validation",required=True,help="Independent held-out UTF-8 text")
@@ -87,6 +102,42 @@ def main(argv=None):
     elif args.command=="import-dictionary":
         corpus=Corpus(args.data)
         print("Entries:",corpus.import_dictionary_tsv(args.source))
+    elif args.command=="run-course":
+        from .curriculum import CurriculumRunner,load_course,load_exam_bank
+        from .context import ContextBuilder
+        from .controller import Controller
+        from .ledger import LearningLedger
+        from .training import Trainer,TrainConfig
+        from .checkpoints import restore_checkpoint
+        corpus=Corpus(args.data)
+        tokenizer=ByteBPE.load(args.tokenizer)
+        constitution=Constitution.load(args.governance)
+        stages=load_course(args.course)
+        exams=load_exam_bank(args.exams)
+        # The exact canonical corpus records and stage/exam versions define
+        # this training lineage. Changed inputs are never silently resumed.
+        source_manifest=sha256(
+            (Path(args.course).read_bytes()+Path(args.exams).read_bytes()+
+             b"".join((str(row).encode() for row in corpus.db.execute(
+               "SELECT id,original_sha FROM documents ORDER BY id")))).strip()
+        ).hexdigest()
+        random.seed(args.seed);torch.manual_seed(args.seed)
+        model=AncestorModel(ModelConfig(tokenizer.vocab_size,args.block,
+                            args.width,args.layers,args.heads,args.ffn))
+        trainer=Trainer(model,TrainConfig(block_size=args.block))
+        controller=Controller(corpus,ContextBuilder(tokenizer,constitution,args.block),
+                              LearningLedger(Path(args.out)/"learning-ledger.jsonl"),constitution)
+        runner=CurriculumRunner(controller,trainer,tokenizer.digest(),
+                                source_manifest,Path(args.out)/"checkpoints")
+        if args.resume:
+            print("Recovered:",restore_checkpoint(args.resume,trainer,
+                 tokenizer_hash=tokenizer.digest(),constitution=constitution,
+                 corpus_manifest_hash=source_manifest))
+        for stage in stages:
+            if not runner.run_stage(stage,exams,threshold=args.threshold):
+                print("Stage gate not passed; approved remediation required:",stage.id)
+                raise SystemExit(2)
+            print("Stage gate completed:",stage.id)
     elif args.command=="train":
         if args.updates<1 or args.save_every<1:
             raise ValueError("Updates and save interval must be positive")
