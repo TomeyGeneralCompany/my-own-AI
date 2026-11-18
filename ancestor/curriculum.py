@@ -37,6 +37,8 @@ class CourseStage:
     id: str
     lessons: tuple[Lesson, ...]
     retention_exam_ids: tuple[str, ...] = ()
+    approved_entry_count: int | None = None
+    approved_document_ids: tuple[str, ...] = ()
 
 def load_course(path: str | Path) -> list[CourseStage]:
     obj=json.loads(Path(path).read_text(encoding="utf-8"))
@@ -61,7 +63,9 @@ def load_course(path: str | Path) -> list[CourseStage]:
                                   tuple(item.get("prerequisites",[])),
                                   item["exam_id"],item.get("updates",1)))
         stages.append(CourseStage(stage["id"],tuple(lessons),
-                                  tuple(stage.get("retention_exam_ids",[]))))
+                                  tuple(stage.get("retention_exam_ids",[])),
+                                  stage.get("approved_entry_count"),
+                                  tuple(stage.get("approved_document_ids",[]))))
     return stages
 
 def load_exam_bank(path: str | Path) -> dict[str,list[ExamItem]]:
@@ -171,8 +175,29 @@ class CurriculumRunner:
             independent=True)
         return report
 
+    def _require_complete_source_coverage(self, stage: CourseStage):
+        claimed={lesson.source_id for lesson in stage.lessons}
+        corpus=self.controller.corpus
+        if stage.id=="WEBSTER_DICTIONARY":
+            indexed={item.id for item in corpus.dictionary_records()}
+            if (stage.approved_entry_count is None or not indexed
+                    or len(indexed)!=stage.approved_entry_count or claimed!=indexed):
+                raise ValueError("Webster stage must cover every owner-verified lexical entry")
+        if stage.id=="ORDERED_MANUSCRIPTS":
+            if not stage.approved_document_ids:
+                raise ValueError("Approved full manuscript document inventory is required")
+            indexed=set()
+            for doc_id in stage.approved_document_ids:
+                records=corpus.list_paragraphs(doc_id)
+                if not records:
+                    raise ValueError(f"Missing approved manuscript paragraphs: {doc_id}")
+                indexed.update(item.id for item in records)
+            if claimed!=indexed:
+                raise ValueError("Manuscript stage must cover every numbered paragraph in approved books")
+
     def run_stage(self, stage: CourseStage, exams: dict[str,list[ExamItem]],
                   *, threshold: float=0.9):
+        self._require_complete_source_coverage(stage)
         if self.controller.state != State.READY:
             raise RuntimeError("Controller not ready")
         for lesson in stage.lessons:
