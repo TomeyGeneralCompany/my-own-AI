@@ -98,10 +98,10 @@ weights are not loaded. The owner's foundational axioms are never altered.
    until the necessary private storage is provisioned.
 5. Hosted runner limits and usage policies may change. Before using full-time
    training, review GitHub's current Actions billing and quotas.
-6. Abrupt runner failure before uploading its final checkpoint loses only the
-   unuploaded work of that session; the last private checkpoint remains valid.
-   A later version should add intermediate private uploads if sessions become
-   computationally long.
+6. Abrupt runner failure before uploading its final checkpoint loses the
+   unuploaded work of that session. The alternate private slot retains the
+   previous complete checkpoint if an upload fails midway. A later version
+   can add intermediate remote uploads if sessions become long.
 
 This workflow does not require user access to the Zorin laptop once all private
 cloud inputs are available.
