@@ -1,0 +1,5003 @@
+substantial attention to the “use” of the doctrine because
+
+its purpose is to form confidence, patience, gratitude,
+
+and sobriety. The believer can use ordinary means,
+
+exercise prudence, and recognize human responsibility
+
+while also confessing that life is governed by God
+
+(Calvin, Institutes I.17.1–11). Providence therefore
+
+closes Book One by converting the doctrine of the
+
+Creator into a doctrine of lived dependence.
+
+A local act possesses its own agent, intention, and
+
+consequence within the wider providential order. The
+
+person chooses and acts through real created capacities,
+
+while God governs the history in which that same act
+
+receives its place and end. Their purposes need not be
+
+identical. Calvin preserves the distinction of intention
+
+through the unity of the event, making the human act
+
+morally imputable without removing it from divine
+
+government. Wiener’s treatment of control through
+                         132
+
+time directs attention to the continuing relation among
+
+state, action, and consequence; here that relation retains
+
+the agents and purposes through which the event
+
+actually occurs.
+
+Providence orders every transition in the created history
+
+through the means God appoints.
+
+Secondary action belongs within that government. Its
+
+actual efficacy follows from the powers and
+
+circumstances given to the creature, and its moral
+
+character follows from the intention with which the
+
+creature acts.
+
+Divine purpose and creaturely intention remain distinct
+
+in the one event governed. A wicked agent’s intention
+
+is not a premise from which the wickedness of God’s
+
+purpose follows. God orders the event toward his
+
+righteous end while the subordinate actor pursues an
+
+evil end and remains accountable for that pursuit. The
+
+                           133
+
+moral judgment follows the intention of the actor
+
+judged; the common event joins their acts without
+
+identifying their purposes (Calvin, Institutes I.18).
+
+Providence is the point at which Calvin's system
+
+becomes most obviously a theory of governed process.
+
+Creation establishes existence; providence establishes
+
+continued ordering through time. The world at t+1 is
+
+not, for Calvin, independent of divine government at t.
+
+The analytic state equation is x t + 1=F( x t ,u D ,u s,d t ), where
+
+x t is the created state, u D denotes divine government, u s
+
+the operations of secondary causes, and d t the
+
+disturbances or contingencies encountered within
+
+creaturely history. The equation is intentionally
+
+noncompetitive: it does not require u D and u s to be
+
+forces occupying the same causal slot. Calvin's entire
+
+argument depends upon refusing that collapse.
+
+
+
+
+                                134
+
+That refusal becomes clearest when the same event
+
+contains different intentions. Joseph's sale, Job's
+
+afflictions, Assyrian violence, and the crucifixion allow
+
+Calvin to say that a wicked agent can will wickedly
+
+while the event remains encompassed by a righteous
+
+divine purpose. If event E is generated through
+
+subordinate action ah under providential ordering P,
+
+moral evaluation cannot be represented simply as
+
+Moral(P(E))=Moral(ah). The intentions are not
+
+interchangeable variables. Calvin thereby maintains a
+
+layered causality in which governance of an event does
+
+not erase the morally relevant organisation of the
+
+secondary agent.
+
+Providence preserves God’s appointed end through the
+
+disturbances encountered by the creature. Danger,
+
+illness, political disorder, loss, and human malice enter
+
+real creaturely trajectories without overthrowing divine
+
+
+                           135
+
+government. The preserved end is God’s purpose, and
+
+its accomplishment includes the suffering through
+
+which the believer is humbled, sustained, and taught
+
+dependence. Regulation concerns fidelity to that end
+
+through changing circumstances. Bodily comfort is
+
+therefore no invariant of the providential trajectory;
+
+God’s government is.
+
+Ashby's treatment of requisite variety sharpens another
+
+feature of Calvin's argument. A regulator capable of
+
+responding to a wide field of disturbances requires
+
+sufficient variety of response. Calvin, however, assigns
+
+unlimited competence not to the creaturely regulator
+
+but to divine wisdom. Human prudence remains
+
+radically variety-limited. The believer cannot model
+
+every disturbance, forecast every branch, or control
+
+every consequence. Hence Calvin's pastoral inference:
+
+prudence is required, but anxiety born of imagined
+
+omniregulation is irrational on Christian premises. The
+                           136
+
+creature employs the variety available to it while
+
+acknowledging that the total disturbance set exceeds its
+
+regulatory capacity.
+
+This is also why providence does not make means
+
+unnecessary. Calvin explicitly rejects the inference that,
+
+because God has decreed an outcome, the creature may
+
+neglect ordinary precautions. Means belong inside
+
+providence. If a traveler avoids danger, a physician
+
+treats disease, or a magistrate restrains violence, these
+
+actions are not rival control systems competing with
+
+God; they are secondary operations within the governed
+
+order. Formally, P does not imply u s=0. Rather, the
+
+realised trajectory may be P[ x t + 1=F( x t ,u s,d t )]. The
+
+subordinate controller is itself one of the means through
+
+which the trajectory occurs.
+
+The doctrine therefore establishes a pattern that will
+
+recur everywhere else: Calvin prefers nested agency to
+
+                               137
+
+zero-sum agency. Divine action need not become
+
+smaller for creaturely action to become real. The Spirit
+
+can cause faith without the believer ceasing to believe;
+
+grace can renew the will without the renewed will
+
+ceasing to will; ministers can preach while God uses
+
+preaching; sacraments can function as instruments
+
+while efficacy remains the Spirit's. Providence is thus
+
+not merely one doctrine among others. It supplies the
+
+causal grammar by which much of the rest of the
+
+Institutes becomes intelligible.
+
+One further consequence of this causal grammar is that
+
+providence supplies Calvin with a theory of
+
+counterfactual humility. Human agents act on partial
+
+models. They choose means because, given the
+
+information available, one trajectory appears preferable
+
+to another; afterward, the realised outcome may
+
+disclose relations they could not have forecast. Calvin's
+
+doctrine does not eliminate counterfactual reasoning,
+                          138
+
+but it denies the creature access to the complete
+
+transition table of history. The result is a disciplined
+
+distinction between responsible local control and
+
+fantasies of global control. Prudence asks what action is
+
+fitting within the creature's information set; providence
+
+denies that the creature's information set is exhaustive.
+
+This has direct consequences for suffering. A local
+
+observer may classify an event as system failure
+
+because it violates an immediate desired state, while
+
+Calvin can classify the same event within a longer
+
+providential trajectory whose end is not yet observable.
+
+Evaluation depends upon the time horizon and essential
+
+variables chosen. Calvin's theological claim is that
+
+God's horizon and objective are authoritative even
+
+when the creature cannot reconstruct them. That does
+
+not make every suffering instrumentally transparent.
+
+Indeed, the point is often precisely that the believer
+
+
+                            139
+
+cannot solve the model and must trust the regulator
+
+whose total model exceeds his own.
+
+Providence orders the created transition through
+
+genuine secondary causes. Let x t be the created state, ut
+
+the actions of finite agents, d t the circumstances
+
+confronting them, and P the divine ordering of the
+
+history. Each transition takes place within that ordering:
+
+                x t + 1 = F P ( x t , ut , d t );
+                                                  (10)
+           IntentionG ( e )≠ Intentionh ( e ).
+
+
+Terms. F P is the creaturely transition under providence.
+
+Event e is one event within the history; IntentionG and
+
+Intentionh name the divine purpose and the human
+
+agent’s purpose in that event. Their inequality preserves
+
+the moral distinction between righteous government
+
+and wicked intention.
+
+Consequence. Because ut remains an argument of F P ,
+
+prudence, medicine, government, and labour remain
+
+                              140
+
+effective means. Because P orders the transition itself,
+
+those means possess no autonomous domain outside
+
+divine government. The same event can therefore fulfill
+
+God’s righteous purpose while expressing an agent’s
+
+evil purpose. Providence encompasses the act without
+
+converting the agent’s intention into God’s intention
+
+(Calvin, Institutes I.16–18).
+
+Providence encompasses the history in which
+
+contingent events are encountered. The creature’s
+
+inability to anticipate an event does not remove that
+
+event from divine government; it identifies the limits of
+
+the knowledge through which the creature acts. Calvin
+
+follows this dependence into the apparent accidents of
+
+ordinary life, refusing to let an unobserved cause
+
+become an ungoverned cause. The distinction remains
+
+exact throughout: events possess determinate relations
+
+within God’s ordering even where those relations
+
+exceed the observer’s present apprehension.
+                          141
+
+Prudence remains effective within the providence
+
+through which its occasion and consequence occur. The
+
+traveller’s precaution, the physician’s treatment, and the
+
+magistrate’s restraint each acts upon a concrete
+
+condition through created capacities appointed to that
+
+work. Their dependence upon God preserves rather than
+
+abolishes their actual causality. A person who neglects
+
+the means has neglected an operation within the
+
+governed history; he has acquired no exemption from
+
+duty by confessing the government under which that
+
+duty is exercised. Providence therefore orders the use of
+
+means together with the end their use serves.
+
+
+
+
+                           142
+
+Book Two: The Knowledge of God the Redeemer in
+
+Christ
+
+The fallen person requires a Mediator adequate to the
+
+condition in which he stands. Corruption reaches
+
+willing and reception without erasing created faculties;
+
+the Law exposes and restrains sin without supplying the
+
+inward renewal it commands; and the covenant
+
+preserves the saving promise through its historical
+
+administrations. These premises determine what
+
+reconciliation must accomplish. Guilt requires
+
+satisfaction, ignorance truthful disclosure, bondage
+
+renewal, and death victory. Christ’s person and offices
+
+answer these coordinated requirements within one
+
+mediation whose sufficiency receives its concrete
+
+meaning from the need already established.
+
+The acts of salvation retain the conditions through
+
+which their necessity is established. Fallen willing
+
+                           143
+
+selects actual conduct but cannot renew its own saving
+
+orientation; grace reaches that disposition and makes
+
+faithful reception possible. The Law then exposes,
+
+restrains, and instructs according to the recipient’s
+
+relation to its command. Christ’s prophetic, priestly,
+
+and kingly offices answer the disorders of ignorance,
+
+guilt, and government together. Their coordination
+
+preserves the whole saving end, for a correction of
+
+knowledge alone would leave guilt unanswered, while a
+
+declaration of pardon detached from renewal would
+
+leave the person’s disordered life untouched.
+
+The observer’s corruption extends into the agency
+
+through which his judgments become conduct. The
+
+person who misreads God also desires and pursues
+
+goods under that misreading; the inquiry must therefore
+
+follow the condition of knowledge into the range of acts
+
+the person can perform. Civil achievement belongs to
+
+that range, while self-restoration to saving communion
+                            144
+
+does not. Calvin’s movement from anthropology
+
+through Law and covenant to Christ makes this
+
+dependence explicit. The inaccessible end requires a
+
+divine act whose efficacy reaches the person and whose
+
+mediation answers the whole condition disclosed.
+
+Bondage, grace, covenant, incarnation, and Christ’s
+
+offices belong together through the consequences each
+
+establishes for the next. The bondage of willing
+
+identifies the incapacity which renewal must overcome;
+
+the covenant identifies the saving promise whose
+
+fulfillment mediation must secure; the incarnation
+
+identifies the natures through which the one Mediator
+
+represents humanity and accomplishes redemption. His
+
+offices then distribute the work without dividing its
+
+personal subject. Death, resurrection, and ascension
+
+carry that same mediation into accomplished victory
+
+and continuing communion. The argument proceeds
+
+
+                           145
+
+through increasingly determinate requirements of the
+
+one saving end.
+
+The formal pattern is therefore not simply problem ->
+
+solution. It is a sequence of increasingly specific
+
+requirements. If OmegaG is the reconciled end and R f
+
+the fallen reachable set, R f intersection OmegaG is
+
+empty. Grace must alter reachability. But the altered
+
+reachability is not arbitrary: reconciliation must answer
+
+guilt, corruption, ignorance, death, and estrangement
+
+while preserving divine justice and creaturely reality.
+
+Christology is Calvin's specification of the regulator
+
+adequate to that multidimensional disturbance.
+
+
+
+
+                           146
+
+The Fall and the Human Condition — Calvin,
+
+Institutes II.1.1–11
+
+
+Close reading by locus
+
+
+II.1.5–8 — Original sin as corruption and guilt
+
+Calvin defines original sin as hereditary corruption
+
+extending through the whole person. The will,
+
+affections, and intellect remain creaturely faculties but
+
+no longer operate with their original moral orientation
+
+(Calvin, Institutes II.1.5–8).
+
+Augustine places humanity’s common corruption
+
+within the first man’s voluntary fall. The race was in
+
+Adam and shares the condemnation arising from his
+
+sin; deliverance is consequently an act of grace toward
+
+those already bound by guilt. He explicitly
+
+distinguishes inherited guilt from the sins subsequently
+
+committed by each person and places both under the
+
+cleansing blood of Christ. Calvin’s hereditary
+                            147
+
+corruption preserves this diagnosis. The problem
+
+reaches the person before the accumulation of
+
+individual acts, and redemption must reach the root
+
+from which those acts proceed (Augustine, On Rebuke
+
+and Grace 9; 28–29).
+
+Romans 5 places condemnation and death within the
+
+relation of humanity to Adam’s trespass, then places
+
+righteousness and life within the relation of the
+
+redeemed to Christ’s obedience. The parallel reaches
+
+beyond imitation of two examples. One representative
+
+act determines the condition of the many, and the
+
+corresponding obedience establishes the saving
+
+reversal. Psalm 51:5 locates the speaker’s sinfulness at
+
+the beginning of his life, exposing a disorder that
+
+precedes the particular crime he confesses. Personal
+
+acts disclose a corruption already present (Romans 5:12
+
+–19; Psalm 51:5; Calvin, Institutes II.1.5–8).
+
+
+                           148
+
+Calvin’s definition holds inherited guilt and active
+
+corruption together. The state received from Adam
+
+produces further wrongdoing, while each act remains
+
+the sinner’s own. Education or external restraint can
+
+alter particular conduct without removing that state.
+
+Redemption therefore requires the representative
+
+righteousness supplied by Christ and the renewal
+
+through which the Spirit changes the person’s
+
+governing disposition. Book Three’s distinction
+
+between justification and sanctification answers these
+
+two dimensions of the condition established here. The
+
+transition structure is deformed rather than erased: large
+
+functional variety remains while salvific reachability is
+
+lost.
+
+Historical and theological location. Augustine is
+
+Calvin’s dominant patristic ally against Pelagian and
+
+semi-Pelagian accounts. Calvin is consciously claiming
+
+Augustinian catholicity here.
+                          149
+
+Cross-reference: See II.2.12–17 on surviving civil and
+
+intellectual gifts.
+
+Book Two begins by turning the knowledge of God
+
+back upon humanity. If the human creature is to know
+
+itself, it must know what it was created to be and what
+
+it has become. Calvin accordingly treats Adam’s fall
+
+not merely as the first bad example but as the
+
+corruption of human nature. Original sin is a hereditary
+
+depravity and corruption diffused through the whole
+
+person, rendering humanity liable to judgment and
+
+producing the works that Scripture calls works of the
+
+flesh (Calvin, Institutes II.1.5, 8).
+
+Calvin is careful not to identify created human nature
+
+itself with evil. The corruption is parasitic upon a nature
+
+that remains God’s creature. This distinction enables
+
+him later to acknowledge residual gifts of intelligence,
+
+social order, craftsmanship, and political wisdom
+
+
+                             150
+
+without retreating from the radical character of sin.
+
+Fallen humanity is neither nonhuman nor morally
+
+neutral. It is human nature damaged in its orientation
+
+toward God.
+
+Corruption of intellect, affection, and will establishes a
+
+need which instruction alone cannot fulfill. Truthful
+
+teaching addresses ignorance, but the person receives it
+
+through a disposition whose bondage reaches desire and
+
+conduct as well as judgment. Redemption must
+
+therefore change the recipient’s governing orientation.
+
+Calvin’s anthropology supplies the necessity of that
+
+inward act before the account of grace identifies its
+
+source and effect; the divine remedy reaches the person
+
+whose real faculties cannot produce their own saving
+
+restoration.
+
+Ashby defines regulation through essential variables
+
+maintained within their viable limits despite
+
+
+                           151
+
+disturbances. After the Fall, the human faculties remain
+
+present while their coordination and orientation are
+
+corrupted. Total depravity concerns the organisation of
+
+the whole person: no faculty escapes corruption,
+
+although the person retains powers of judgment,
+
+invention, learning, and voluntary action. The
+
+continued presence of those powers and their
+
+disordered direction jointly establish the need for
+
+renewal.
+
+Original sin reaches cognition, willing, affection, and
+
+bodily life through the corrupted condition inherited
+
+from Adam.
+
+The faculties remain operative within that condition.
+
+Their corruption changes the dispositions and
+
+transitions through which the person acts, establishing
+
+the need for renewal at the source of conduct.
+
+
+
+
+                           152
+
+Original sin changes the initial conditions from which
+
+every subsequent human trajectory begins. Calvin's
+
+account is hereditary and systemic: the child does not
+
+enter moral history as an unconditioned agent who later
+
+happens to accumulate bad decisions. If x0 is the initial
+
+human condition after Adam, then subsequent
+                    t
+trajectories x t = F ( x 0 , u , d ) inherit constraints already
+
+present in x0 and in the transition function F. The
+
+doctrine is therefore more radical than a behavioural
+
+learning model in which corruption is merely acquired
+
+through imitation.
+
+At the same time, Calvin preserves created structure.
+
+Reason, sociality, embodiment, desire, and technical
+
+intelligence continue to operate. Corruption is not
+
+equivalent to ontological deletion. The relevant
+
+distinction is parameter and organisational deformation
+
+rather than system annihilation: the machine still runs,
+
+
+                               153
+
+often brilliantly in limited domains, while its highest-
+
+order orientation is disordered. This is why Calvin can
+
+condemn the fallen will and praise pagan jurisprudence
+
+in the same book without contradiction.
+
+The systemic character of sin also explains why isolated
+
+behavioural correction is insufficient. One may
+
+suppress a particular output while the generating
+
+organisation remains unchanged. Calvin's concern is
+
+not merely the frequency of prohibited acts but the
+
+source from which acts proceed. Redemption must
+
+therefore reach the generator. The movement from Fall
+
+to regeneration is a movement from output management
+
+to transformation of the underlying system.
+
+
+
+
+                           154
+
+Original sin determines the organisation from which
+
+fallen action begins. Let X f be the fallen state-space, F f
+
+its transition rule, U its available creaturely actions, and
+
+Ω the states of saving communion with God. Define the
+
+reachable set recursively:
+
+                         R 0 = {x 0 };
+      R n + 1 = R n ∪ {F f ( x , u ): x ∈ R n , u ∈U };
+                                                        (11)
+                       R f = ⋃n ≥ 0 R n ;
+                       Rf ∩ Ω = ∅ .
+
+
+Terms. x 0 is the inherited fallen condition. R n contains
+
+the states accessible through at most n successive
+
+actions; R f contains every state attainable from that
+
+condition through the fallen rule. Ω names saving
+
+communion rather than skill, intelligence, wealth, or
+
+outward civic order.
+
+Consequence. The empty intersection states the
+
+incapacity relevant to salvation. It leaves the reachable
+
+set populated with real achievements in learning, craft,
+
+                              155
+
+politics, and medicine. Total depravity reaches the
+
+governing orientation of every faculty without deleting
+
+the faculties. The sinner’s productive activity cannot
+
+generate the transition into Ω because every
+
+endogenous action remains within the organization
+
+whose incapacity is being described (Calvin, Institutes
+
+II.1–3).
+
+The reachable-set result follows by induction on acts. If
+
+x₀ lies in a fallen invariant set K f and F f (x,u)∈ K f for
+
+every x∈ K f and permitted unaided act u, then R₀⊆ K f .
+
+Assuming R n⊆ K f , the recursion adds only states still in
+
+K f , giving R n₊₁⊆ K f . Hence R f ⊆ K f . With K f ∩Ω=∅,
+
+R f ∩Ω=∅ follows. The incapacity belongs to the
+
+transition governing the whole history of unaided
+
+action; multiplying acts cannot escape its invariant
+
+condition (Calvin, Institutes II.3.1–8).
+
+
+
+
+                             156
+
+The reach of corruption preserves the reality of the
+
+faculties it disorders. Humanity continues to deliberate,
+
+calculate, build, govern, compose, learn, and form
+
+households; those acts possess genuine objects and
+
+consequences within created life. Their excellence
+
+establishes the continued operation of capacities
+
+received from God. It does not establish the power of
+
+those capacities to restore the sinner’s saving relation to
+
+him. Calvin’s account consequently requires both
+
+judgments together: the whole person stands in need of
+
+renewal, and the corrupted person remains an active
+
+creature with real intellectual, civil, and practical
+
+powers.
+
+Civil accomplishment makes this distinction concrete.
+
+A well-ordered city, a sound calculation, or a successful
+
+work of medicine demonstrates a capacity for the
+
+particular end achieved. The inference must retain that
+
+object. Skill in governing temporal affairs does not
+                           157
+
+become the power to remove guilt, renew the heart, or
+
+procure communion with God. Calvin’s
+
+acknowledgment of human achievement therefore
+
+strengthens the precision of his account of incapacity:
+
+what is denied is saving self-restoration, while the acts
+
+whose ends remain accessible continue to disclose
+
+created gifts and human responsibility.
+
+
+Calvin on Free Will — Calvin, Institutes II.2.1–27;
+
+II.3.1–14
+
+
+Close reading by locus
+
+
+II.2.4–8 — What Calvin denies when he denies free
+
+will
+
+Calvin’s target is not ordinary choosing but the claim
+
+that fallen humanity retains moral power to turn itself
+
+toward God. Voluntariness remains; spiritual self-
+
+restoration does not (Calvin, Institutes II.2.4–8).
+
+
+                           158
+
+Augustine’s argument preserves the will’s activity
+
+while denying its spiritual sufficiency. Adam fell
+
+voluntarily, and fallen humanity’s restoration depends
+
+upon grace. The contrast is between a will operating in
+
+its inherited disorder and a will liberated by God. The
+
+sinner’s choices remain his own; their voluntariness
+
+supplies no power to heal the disposition from which
+
+they arise. Calvin’s distinction between choosing and
+
+self-restoration continues this Augustinian account of
+
+moral agency. Freedom for obedience is the fruit of
+
+liberation (Augustine, On Rebuke and Grace 9; 17; 28).
+
+Jesus identifies the habitual perpetrator of sin as its
+
+slave. The description names a bondage exercised
+
+through the person’s own acts: sin governs the willing
+
+
+agent’s conduct. Romans 8 specifies the spiritual
+
+incapacity of the fleshly mind, which is hostile to God
+
+and cannot subject itself to his law; those in the flesh
+
+cannot please him. The impediment belongs to the
+                         159
+
+moral orientation from which willing proceeds. The
+
+sinner remains active, deliberate, and responsible within
+
+that orientation (John 8:34; Romans 8:7–8; Calvin,
+
+Institutes II.2.4–8).
+
+Voluntary choice thus leaves the saving problem
+
+unresolved. The will selects actions, but its dispositions
+
+do not produce a transition into faithful love of God by
+
+their own power. Calvin’s denial of spiritual self-
+
+restoration follows from the governing hostility the text
+
+describes. The next chapter’s grace changes the source
+
+of willing, so that obedience becomes an act of the
+
+renewed person instead of a demand imposed upon an
+
+unchanged moral condition. Endogenous selection can
+
+remain genuine even where the reachable set excludes a
+
+class of ends.
+
+Calvin explicitly contests both scholastic accounts of
+
+free choice and contemporary critics such as Albert
+
+
+                           160
+
+Pighius. His 1543 Bondage and Liberation of the Will
+
+was written directly against Pighius’s 1542 De libero
+
+hominis arbitrio et divina gratia.
+
+Cross-reference: See II.3.5–10 on regeneration and
+
+III.21–24 on election.
+
+
+II.2.12–17 — Pagan learning and the gifts of God
+
+Calvin’s praise of pagan jurisprudence, medicine,
+
+mathematics, philosophy, and art is essential to
+
+interpreting total depravity correctly. Corruption does
+
+not mean zero competence (Calvin, Institutes II.2.12–
+
+17).
+
+Romans 2 describes Gentiles performing things
+
+required by the law and displaying its work written in
+
+their hearts, with conscience bearing witness through
+
+accusation and defense. This residual moral awareness
+
+supplies real discrimination within fallen life. It also
+
+leaves the agent exposed to judgment. James identifies
+
+                            161
+
+every good and perfect gift as proceeding from the
+
+Father, locating the source of excellence beyond the
+
+person who possesses it. Knowledge, skill, and civil
+
+virtue can therefore remain genuine gifts while their
+
+recipients lack saving reconciliation (Romans 2:14–15;
+
+James 1:17; Calvin, Institutes II.2.12–17).
+
+Calvin distinguishes competencies by their object. An
+
+ability to reason about civic order, medicine, or
+
+craftsmanship establishes competence in those
+
+activities; it establishes no power to overcome hostility
+
+toward God. Preserving the distinction allows
+
+recognition of pagan learning without undoing the
+
+anthropology of bondage. The gifts sustain social life
+
+and display divine generosity, while spiritual renewal
+
+remains necessary for the right worship of their Giver.
+
+Variety remains high in temporal domains even where
+
+the regulator lacks the orientation necessary for saving
+
+communion with God.
+                           162
+
+Calvin’s praise of pagan learning locates intellectual
+
+and civil gifts within God’s continuing generosity to
+
+fallen humanity. Medicine, jurisprudence, mathematics,
+
+and craftsmanship retain their real goods because the
+
+Fall does not abolish the faculties through which they
+
+operate. Saving knowledge requires the renewal of the
+
+person’s orientation toward God. The retained
+
+competence therefore establishes creaturely dependence
+
+rather than spiritual self-sufficiency (Calvin, Institutes
+
+II.2.12–17).
+
+Cross-reference: See IV.20 on civil order and
+
+magistracy.
+
+Calvin’s denial of “free will” is frequently
+
+misunderstood because the phrase can mean several
+
+different things. He does not deny voluntary action,
+
+deliberation, or ordinary choice. Human beings act
+
+according to their wills and remain responsible for what
+
+
+                            163
+
+they do. His target is the claim that fallen humanity
+
+possesses an undamaged moral power by which it can
+
+turn itself to God and initiate saving obedience (Calvin,
+
+Institutes II.2.5–8).
+
+The gifts retained in civil life possess their proper
+
+objects and effects. Arts, sciences, law, and political
+
+judgment exercise capacities God continues to give
+
+within humanity’s fallen condition. Spiritual
+
+righteousness requires the illumination and renewal
+
+through which the person knows and loves God rightly.
+
+The difference lies in the end and disposition of the act.
+
+Corruption reaches every faculty without making every
+
+faculty incapable of every achievement; its total extent
+
+establishes the whole person’s need of grace without
+
+erasing the particular powers through which temporal
+
+life continues (Calvin, Institutes II.2.13–17).
+
+
+
+
+                            164
+
+The will is therefore voluntary without being spiritually
+
+self-healing. Calvin’s language of bondage means that
+
+sinners choose from a corrupted disposition. Grace does
+
+not merely place a neutral will before two equal
+
+options; God changes the person so that the will can
+
+embrace the good it previously rejected. This is the
+
+anthropological foundation for Calvin’s later account of
+
+effectual calling and perseverance (Calvin, Institutes
+
+II.3.5–10).
+
+Voluntary selection and the power to renew the
+
+selecting disposition are distinct operations. The fallen
+
+person chooses among available actions according to
+
+desire and judgment. Saving conversion requires a
+
+change in the disposition governing those choices.
+
+Calvin preserves actual willing while denying that the
+
+fallen will supplies its own regeneration. Grace changes
+
+the agent from whom the willing proceeds.
+
+
+                           165
+
+Fallen willing remains voluntary while lacking the
+
+power to restore saving communion with God.
+
+The person's own desire and judgment select actual
+
+conduct. Its bondage concerns the orientation governing
+
+that selection, so neither an expanded menu of actions
+
+nor additional instruction supplies the regeneration
+
+required.
+
+Ashby repeatedly distinguishes the range of states a
+
+system can enter from moral categories assigned to
+
+those states. The usefulness for Calvin lies in the formal
+
+distinction between an action being voluntary and an
+
+action being reachable from the present organization of
+
+the agent. Grace changes reachability. It alters the
+
+system’s effective state-transition structure rather than
+
+merely supplying an additional argument to an
+
+unchanged chooser.
+
+
+
+
+                           166
+
+The fallen person possesses a repertoire A(x) of
+
+available voluntary actions and deliberates among
+
+them. Let X be the whole state-space, R f (x₀) the states
+
+reachable from the fallen condition under unaided
+
+action, and Ω⊆X the states of saving communion.
+
+Calvin’s claim is R f (x₀)∩Ω=∅. Civil learning and
+
+practical achievement remain inside X and populate R f ;
+
+the saving transition requires renewal of the person’s
+
+governing disposition (Calvin, Institutes II.2.12–17;
+
+II.3.5–8).
+
+Bondage names the corrupted ordering of desire
+
+through which the person selects conduct. The selection
+
+rule π f therefore expresses actual desire and judgment
+
+without requiring every act to maximize a numerical
+
+utility. Grace renews the disposition from which the
+
+rule operates. Voluntary selection remains the person’s
+
+
+
+
+                           167
+
+act, and regeneration remains God’s act upon that
+
+person.
+
+Ashby’s variety distinguishes the retained range of
+
+human capacities from their fallen orientation. Calvin's
+
+praise of pagan learning in II.2.12-17 is incompatible
+
+with V( H f )=0. Fallen humanity displays immense
+
+variety in jurisprudence, medicine, mathematics,
+
+craftsmanship, rhetoric, political organization, and the
+
+investigation of nature. What is lost is not all adaptive
+
+intelligence. The incapacity is domain-specific in
+
+Calvin's theological sense: the natural person does not,
+
+from unaided resources, generate the saving knowledge
+
+and love of God. The retained range of capacities
+
+coexists with incapacity to restore saving communion
+
+through those capacities alone.
+
+Necessity arising from corrupt nature preserves
+
+voluntary agency because the act proceeds from the
+
+
+                           168
+
+agent’s own desire. External coercion instead forces
+
+conduct against that desire. The transition F f records
+
+the first relation: the person selects an available act
+
+through π f , and its consequence remains inside the
+
+fallen reachable set. Constrained reachability
+
+consequently preserves both the endogenous selection
+
+and the incapacity to renew its own governing source
+
+(Calvin, Institutes II.3.5).
+
+Once stated this way, Book Two's movement toward
+
+grace becomes unavoidable. Additional commands can
+
+increase knowledge of the reference without changing
+
+the transition function that prevents convergence upon
+
+it. If e t =r- y t identifies moral discrepancy, then simply
+
+increasing the precision of r may increase recognition
+
+of error while leaving Δy toward righteousness
+
+impossible. This is exactly the role Calvin gives the
+
+accusing use of the Law. Grace must eventually alter
+
+
+                               169
+
+not merely the reference signal but the agent capable of
+
+responding to it.
+
+Bondage of the will concerns the orientation of
+
+voluntary choice. Let A(x) be the nonempty set of
+
+actions available to a person in condition x, ≽_f the
+
+fallen person’s operative preference ordering, and π f
+
+the rule selecting an action from that ordering:
+
+                   π f ( x )∈ A ( x );
+                F f ( x , π f ( x ))∈ R f ; (12)
+                      Rf ∩ Ω = ∅ .
+
+
+Terms. π f names a voluntary selection, not a numerical
+
+utility maximum imposed upon every act. F f gives its
+
+consequence within the fallen condition; R f and Ω
+
+retain the meanings established in the account of
+
+original sin.
+
+Consequence. The act belongs to the agent because it
+
+expresses the agent’s own desire and judgment. The
+
+
+                             170
+
+absence of a saving state from R f denies the power of
+
+self-redemption while leaving deliberate action and
+
+responsibility intact. Freedom from external
+
+compulsion does not supply freedom from the sinful
+
+orientation through which the person chooses. Grace
+
+must renew the organization of willing rather than
+
+merely expand the list of propositions presented to an
+
+unchanged chooser (Calvin, Institutes II.2.4–8; II.3).
+
+Bondage operates through the person’s own willing.
+
+The act proceeds from desire and judgment, and the
+
+person pursues what he apprehends as good within the
+
+disposition governing that apprehension. External force
+
+is consequently unnecessary to explain the sinful
+
+choice. The incapacity lies in the orientation from
+
+which available acts are selected, so that an enlarged
+
+menu of alternatives leaves the source of selection
+
+unchanged. Calvin preserves responsibility through this
+
+actual agency while denying the agent power to give
+                         171
+
+himself the renewal upon which saving obedience
+
+depends.
+
+The fallen disposition also enters the person’s estimate
+
+of his own conduct. A choice appears reasonable
+
+because the same governing orientation determines both
+
+what is pursued and how the pursuit is judged.
+
+Approval can therefore reproduce the error it claims to
+
+assess: desire selects an act, self-judgment vindicates it,
+
+and that vindication reinforces the disposition entering
+
+the next choice. The person remains responsible at
+
+every stage. What the sequence lacks is the renewed
+
+orientation through which the received divine command
+
+governs judgment and willing together.
+
+
+
+
+                           172
+
+The Necessity of Grace — Calvin, Institutes II.3.5–
+
+14; II.4.1–II.5.19
+
+
+Close reading by locus
+
+
+II.3.5–10 — Grace changes the will
+
+Grace reaches the will as the inward source of the
+
+person’s act. God renews its disposition, and the
+
+renewed person consequently wills and performs the
+
+obedience commanded. The causal priority belongs to
+
+the divine gift; the resulting conduct belongs to the
+
+creature whom that gift has changed. Their relation
+
+preserves both the efficacy of regeneration and the
+
+reality of human action. The same person now receives
+
+and pursues the good through a capacity whose saving
+
+orientation he could not generate from his fallen
+
+condition (Calvin, Institutes II.3.5–10).
+
+Augustine reads Christ’s prayer for Peter as an effective
+
+divine act. The Lord’s intercession secures the faith
+                           173
+
+whose failure it excludes, and God prepares the will
+
+that perseveres. Grace establishes a willing obedience
+
+strong enough to endure the conflict in which it is
+
+exercised. This is the substance of Calvin’s account of
+
+renewal: God changes the person’s willing, and the
+
+changed person acts. Divine efficacy reaches the
+
+interior source of action, so the obedience produced by
+
+grace is both freely exercised and wholly indebted to
+
+God (Augustine, On Rebuke and Grace 17).
+
+Ezekiel’s promise identifies God as the actor who
+
+removes the stony heart, gives a heart of flesh, places
+
+his Spirit within his people, and causes them to walk in
+
+his statutes. The renewed conduct follows an inward
+
+change whose source is divine action. Philippians
+
+locates both willing and doing within God’s operation,
+
+while the surrounding command requires believers to
+
+work out their salvation. John states that coming to
+
+Christ requires the Father’s drawing and joins that
+                           174
+
+coming to Christ’s promise of resurrection (Ezekiel
+
+36:26–27; Philippians 2:12–13; John 6:44; Calvin,
+
+Institutes II.3.5–10).
+
+Regeneration establishes the renewed willing through
+
+which actual obedience proceeds. God’s operation
+
+reaches the heart, and the changed person performs the
+
+command as his own willing act. Exhortation is
+
+effective within that given condition because the
+
+recipient possesses the disposition through which it is
+
+faithfully received. Perseverance continues the same
+
+dependence: the source which makes obedience
+
+possible sustains the life in which it is exercised.
+
+Renewal therefore changes the organization of agency
+
+while preserving the identity and responsibility of the
+
+agent.
+
+Historical and theological location. Augustine is
+
+repeatedly enlisted; Pighius is the more immediate
+
+
+                            175
+
+sixteenth-century antagonist. Calvin’s position is
+
+restorative rather than annihilative: grace heals created
+
+agency rather than replacing it with divine agency.
+
+Cross-reference: See III.1 on union and III.3 on
+
+repentance.
+
+Once the condition of the will is stated this strongly,
+
+grace must be more than assistance. Calvin argues that
+
+both the beginning and continuation of the good are
+
+from God. Conversion requires the renovation of the
+
+will, not simply the addition of favorable
+
+circumstances. His repeated appeals to Augustine serve
+
+this point: grace is not a supplement awarded to an
+
+independently initiated movement toward God (Calvin,
+
+Institutes II.3.6–9).
+
+The renewed person believes, repents, loves, prays, and
+
+obeys through the disposition grace gives and sustains.
+
+Divine priority enters the act as its enabling source; it
+
+                           176
+
+does not remove the person from the act performed.
+
+Calvin’s exhortations therefore address a genuine agent
+
+whose faithful capacities are wholly received. The
+
+question of how the believer can act receives its answer
+
+in the renewal of willing, while the command directs
+
+that renewed capacity toward its fitting object. Grace
+
+establishes the response, and the believer actually
+
+responds.
+
+The necessity of Christ follows through the
+
+anthropology already established. The sinner cannot
+
+remove his own guilt or renew the disposition
+
+governing his reception and willing. A complete
+
+account of that condition therefore requires mediation
+
+whose efficacy supplies what unaided agency lacks.
+
+Christ enters the argument as the answer to a
+
+determinate need: his person and work must reconcile
+
+the guilty, renew the corrupted, disclose the truth, and
+
+
+                           177
+
+overcome death. Anthropology gives those saving acts
+
+their concrete necessity.
+
+The fallen person requires regeneration because the
+
+corruption governs reception and willing. Additional
+
+instruction reaches a recipient whose disposition
+
+remains disordered; grace renews the recipient so that
+
+the received Word governs faith and obedience. The
+
+decisive change therefore occurs in the organisation
+
+producing the response. Renewal makes the command
+
+effective in conduct by changing the person who hears
+
+and acts.
+
+The Spirit renews the operative disposition from which
+
+willing and conduct proceed.
+
+The renewed person performs the act commanded
+
+because grace has given the condition through which
+
+the command is received with faithful willingness.
+
+
+
+                            178
+
+Subsequent correction belongs within the life
+
+established by that renewal.
+
+Grace renews the organization governing the person’s
+
+response. Calvin's language of renewal requires a
+
+transformation of the controller itself. If H f is the fallen
+
+organization and H r the renewed organization,
+
+regeneration changes that organization through T g: H f
+
+→ H r . After the transformation, the same external
+
+command may yield a different response because the
+
+internal mapping has changed. Renewal establishes the
+
+capacity to receive and obey through a disposition the
+
+fallen person could not restore from its own resources.
+
+Regeneration preserves the identity of the person it
+
+renews. The fallen and renewed organizations belong to
+
+the same human subject, whose judgment and desire are
+
+restored toward God. The renewed person believes and
+
+obeys through the capacities grace restores. God’s
+
+                            179
+
+causal priority establishes that real response: the divine
+
+act changes the creature, and the changed creature acts.
+
+Regeneration establishes the inward order through
+
+which continuing correction becomes effective.
+
+Instruction identifies an error and directs a response,
+
+but its faithful reception requires the disposition
+
+renewed by the Spirit. Repentance and discipline then
+
+return the consequences of conduct to that person’s
+
+judgment and action within the life already given. The
+
+source and sequence remain explicit: God renews, the
+
+renewed person receives, and subsequent correction
+
+develops the obedience exercised through that
+
+reception. Book Three carries this constitutive act into
+
+the temporal history of sanctification.
+
+Two hearers receive the same preached proposition and
+
+respond differently because the response proceeds
+
+through the recipient’s existing disposition and the
+
+
+                           180
+
+Spirit’s inward work. Let x i denote the hearer’s
+
+disposition, u word the preached Word, u spirit the Spirit’s
+
+renewing operation, and y i the response. The relation y i
+
+=F( x i,u word ,u spirit ) locates reception within the person
+
+acted upon. The Word supplies its determinate
+
+testimony; the Spirit renews its recipient; the person
+
+receives and believes. Their coordinated action
+
+establishes both the divine source and the creaturely act
+
+of faith.
+
+
+
+
+                               181
+
+Regeneration changes the condition and operative
+
+disposition of the person whom God renews. Let G S be
+
+the Spirit’s regenerating act and x 0 the fallen person.
+
+The renewed condition begins in that act and continues
+
+through renewed willing:
+
+                      x r = G S ( x 0 );
+                  x t + 1 = F r ( x t , ut );
+                                              (13)
+                      Rf ∩ Ω = ∅ ;
+                      Rr ∩ Ω ≠ ∅ .
+
+
+Terms. G S gives the renewed condition; F r is the
+
+transition of the renewed person; R r is its reachable set
+
+under the Spirit’s sustaining operation. The subscripts
+
+distinguish fallen and renewed organization while the
+
+person remains the same acting subject.
+
+Consequence. The difference between the reachable
+
+sets is the efficacy of grace. A command received by
+
+the fallen person cannot produce its own saving
+
+reception; the person renewed by the Spirit willingly
+
+                               182
+
+believes and obeys. Exhortation addresses a genuine
+
+human agent whose capacity is given by God. Renewal
+
+therefore explains the efficacy of subsequent instruction
+
+and correction, and the sustaining source explains
+
+perseverance (Calvin, Institutes II.3.5–14).
+
+The Spirit’s renewal changes that governing condition.
+
+G T (x₀) supplies the renewed state and F g supplies its
+
+subsequent transition. The act of regeneration therefore
+
+cannot be inserted into U as an unaided operation of the
+
+fallen agent: doing so would grant the very capacity
+
+Calvin denies. The renewed person’s willing and
+
+obedience proceed from the capacity actually given.
+
+The causal order is gift, renewed disposition, then
+
+responsive act (Calvin, Institutes II.3.5–14).
+
+The effectiveness of instruction depends upon the
+
+condition of its recipient. An additional argument can
+
+enlarge what is heard without renewing the desire and
+
+
+                           183
+
+judgment through which it is received. Calvin’s account
+
+locates the decisive change within the organization of
+
+willing itself: the Spirit gives the disposition through
+
+which the command becomes an object of faithful
+
+obedience. The saving transition therefore requires the
+
+act which changes its possibility. Repetition of the
+
+destination cannot confer the capacity to reach it upon
+
+an unchanged fallen will.
+
+Regeneration humbles the person precisely by restoring
+
+his active dependence upon God. He remains the
+
+subject who believes, loves, and obeys, while the
+
+disposition through which those acts proceed has first
+
+been renewed by grace. The divine gift becomes
+
+effective in creaturely action rather than replacing the
+
+creature with another subject. Identity is preserved
+
+through transformation, and responsibility continues
+
+through the faithful acts now made possible. The
+
+
+                            184
+
+resulting life bears the efficacy of its source in the
+
+obedience of the person who receives it.
+
+
+The Law and the Gospel — Calvin, Institutes II.6.1–
+
+II.9.5
+
+
+Close reading by locus
+
+
+II.7.6–13 — The three uses of the Law
+
+Calvin distinguishes the pedagogical, civil, and
+
+normative uses of one divine Law. The distinction
+
+explains how the Law can condemn the sinner, restrain
+
+public evil, and guide the justified without changing its
+
+divine source (Calvin, Institutes II.7.6–13).
+
+Romans 3:20 assigns the law an exposing function: it
+
+brings knowledge of sin and supplies no justification
+
+through the sinner’s works. Galatians places the law’s
+
+administration within the history of the promise,
+
+describing its custody until Christ and its direction
+
+toward justification by faith. Psalm 119 displays the
+                            185
+
+renewed believer’s delight in the same divine
+
+instruction, seeking understanding and strength to walk
+
+in it. These relations explain why one law operates
+
+differently upon different recipients and under different
+
+conditions. It condemns transgression, restrains conduct
+
+through its demand and sanctions, and instructs those
+
+whose hearts have been renewed (Romans 3:20;
+
+Galatians 3:19–24; Psalm 119:9–16, 33–40; Calvin,
+
+Institutes II.7.6–13).
+
+The reference remains God’s righteousness; the change
+
+lies in the condition and relation of the agent addressed.
+
+Conviction reveals deviation, external restraint limits its
+
+social expression, and willing obedience follows
+
+renewal. Calvin’s three uses preserve this
+
+differentiation. Confusing instruction with justification
+
+would convert the rule of grateful conduct into the
+
+means of obtaining the verdict already received through
+
+Christ. One reference can perform different regulatory
+                          186
+
+functions because receiver state and institutional
+
+context differ.
+
+The third use addresses the regenerate person, whose
+
+renewed desire seeks the obedience God commands.
+
+The Law instructs that desire, exposes its remaining
+
+disorder, and directs its exercise toward concrete duties.
+
+Its continuing place in Christian life follows from the
+
+
+nature of renewal: grace restores obedience to God, and
+
+the restored person still requires instruction in the form
+
+that obedience takes (Calvin, Institutes II.7.12–13).
+
+Cross-reference: See III.6–10 and IV.20.
+
+
+II.8.6–12, 39–40 — The Decalogue beyond external
+
+acts
+
+Calvin reads prohibitions as implying corresponding
+
+positive duties and extends commandments from
+
+outward act to inward disposition. The Decalogue
+
+therefore describes an ordered moral field rather than a
+
+                           187
+
+minimal penal code (Calvin, Institutes II.8.6–12, 39–
+
+40).
+
+The Didache traces outward transgressions to their
+
+inward beginnings: anger tends toward murder, lust
+
+toward adultery, and falsehood and avarice toward
+
+theft. Its instruction therefore requires the ordering of
+
+the affections before the act reaches its completed
+
+outward form. Calvin’s exposition of the
+
+commandments belongs to this early Christian reading
+
+of the law. The divine command claims the heart
+
+because the deed grows from the heart; external
+
+restraint alone leaves the generating disorder intact
+
+(Didache 2–3).
+
+In Matthew 5, Jesus carries murder into anger and
+
+contempt, adultery into the lustful gaze, and neighbor-
+
+love into goodness toward enemies. His exposition
+
+reaches the dispositions that generate the prohibited
+
+
+                            188
+
+acts. Matthew 22 states the law’s comprehensive end in
+
+love of God and neighbor. The commands therefore
+
+require positive fidelity as well as restraint: care for
+
+another’s life fulfills the duty violated by murder, and
+
+chastity orders the affection whose corruption produces
+
+adultery (Matthew 5:21–48; 22:37–40; Calvin,
+
+Institutes II.8.6–12, 39–40).
+
+This interior scope changes what counts as obedience.
+
+An outwardly quiet life can conceal anger, avarice, or
+
+desire that still contradicts the law’s end. Calvin’s
+
+account identifies those generating conditions instead of
+
+judging only their completed effects. The renewed heart
+
+must therefore be formed toward love, while outward
+
+restraint remains an incomplete measure of moral
+
+health. This prepares the treatment of repentance, where
+
+mortification reaches the roots of sinful conduct and
+
+vivification orders the person toward the positive good
+
+commanded. A norm specifies more than forbidden
+                      189
+
+outputs; it defines the desired region of state-space
+
+toward which action is regulated.
+
+Calvin reads each command through the good God
+
+appoints and the corresponding injuries he forbids. The
+
+prohibition of murder consequently governs hatred,
+
+violence, neglect, and the positive care owed to a
+
+neighbor’s life. This extends the command through its
+
+governing end into acts beyond the bare wording of the
+
+prohibition. The resulting duties preserve the
+
+command’s unity while differentiating its application
+
+across circumstances (Calvin, Institutes II.8.6–12, 39–
+
+40).
+
+Cross-reference: See III.7 on self-denial and IV.12 on
+
+discipline.
+
+
+II.9.1–5 — Law and Gospel without two religions
+
+Calvin resists making Law and Gospel into two
+
+historically separate ways of salvation. The Gospel is
+
+                           190
+
+clearer manifestation of the grace already promised,
+
+while the Law has functions that expose and govern
+
+(Calvin, Institutes II.9.1–5).
+
+Ignatius describes the Gospel as the completion in
+
+which Christ’s advent, passion, and resurrection are
+
+manifested. The earlier priestly order has its place, and
+
+Christ the High Priest surpasses it by opening access to
+
+the Father. Promise and fulfillment therefore belong to
+
+one history whose decisive reality is Jesus Christ.
+
+Calvin’s distinction between law and Gospel develops
+
+this structure: the difference concerns the disclosure
+
+and administration of salvation, while the saving object
+
+remains the Christ announced and finally manifested
+
+(Ignatius, To the Philadelphians 9).
+
+John 1:17 places the law given through Moses within
+
+the history culminating in grace and truth through Jesus
+
+Christ. The distinction concerns the gift’s manifestation
+
+
+                            191
+
+through the Mediator; it does not assign the patriarchs a
+
+separate source of salvation. Romans 10:4 names Christ
+
+as the law’s end for righteousness to everyone who
+
+believes. The law’s demand and its promises converge
+
+upon him, and its inability to justify the transgressor
+
+makes his righteousness necessary (John 1:17; Romans
+
+10:4; Calvin, Institutes II.9.1–5).
+
+Calvin’s distinction therefore preserves continuity of
+
+saving substance within a change of administration. The
+
+promise directs faith toward Christ before his advent;
+
+the Gospel announces the fulfillment accomplished in
+
+him. The law remains able to instruct conduct, while
+
+Christ supplies the acceptance that the sinner cannot
+
+obtain through obedience. This order prevents the
+
+historical sequence from becoming two rival systems of
+
+salvation and fixes the relation of law to justification
+
+developed in Book Three. Different communicative
+
+
+                           192
+
+regimes can share one ultimate salvific reference while
+
+differing in clarity and immediate function.
+
+The Gospel brings the fulfillment of the promise
+
+already directing the faithful under the Law. The
+
+difference of administration therefore changes the
+
+clarity and manner of communication while preserving
+
+its saving object. Calvin’s movement into covenant
+
+continuity follows this relation: the saints of both
+
+testaments receive grace through the same Mediator,
+
+and their differing historical circumstances do not
+
+establish competing ways of salvation (Calvin,
+
+Institutes II.9.1–5; II.10.1–4).
+
+Cross-reference: See II.10–11 immediately below.
+
+Calvin’s treatment of the Law is considerably richer
+
+than the slogan that the Law condemns and the Gospel
+
+saves. The moral law reveals God’s righteousness and
+
+exposes the discrepancy between that righteousness and
+
+                            193
+
+fallen humanity. In this accusatory function it strips
+
+away self-confidence and drives the sinner to seek
+
+mercy. Yet Calvin also assigns the Law a civil function:
+
+fear of punishment restrains some outward wickedness
+
+and thereby serves the preservation of society (Calvin,
+
+Institutes II.7.6–9; II.7.10–11).
+
+The third use is especially important for Calvin. For
+
+believers, the Law is the best instrument for learning
+
+the Lord’s will and for being continually exhorted
+
+toward obedience. The Law therefore does not
+
+disappear after justification. Its condemning relation to
+
+the believer is transformed because acceptance with
+
+God no longer rests upon performance, but its positive
+
+disclosure of righteous life remains (Calvin, Institutes
+
+II.7.12–13).
+
+Calvin’s exposition of the Decalogue in Book II,
+
+chapter 8 demonstrates how expansive this moral
+
+
+                            194
+
+reading can be. Each commandment reaches beyond
+
+external acts to dispositions and corresponding positive
+
+duties. The prohibition of murder, for example,
+
+implicates hatred and requires concern for the neighbor;
+
+prohibitions are interpreted in light of the love of God
+
+and neighbor that summarizes the Law. The
+
+commandments thus become an anatomy of ordered
+
+creaturely life rather than a minimal criminal code
+
+(Calvin, Institutes II.8.6–12, 39–40).
+
+Calvin’s three uses of the Law are a textbook case of
+
+functional differentiation. The same normative structure
+
+can produce different regulatory effects depending upon
+
+the state of the receiving system and the institutional
+
+context. In the unregenerate conscience the Law reveals
+
+deviation; in civil society sanctions attenuate
+
+destructive behavioral variety; in the regenerate life the
+
+Law supplies a reference pattern for grateful obedience.
+
+
+                           195
+
+The Law identifies deviation, restrains outward
+
+conduct, and directs renewed obedience through one
+
+normative reference.
+
+The recipient’s condition determines which operation is
+
+being exercised: guilt disclosed in the sinner, outward
+
+harm restrained in common life, and faithful conduct
+
+instructed in the renewed person. The norm remains
+
+one throughout these differentiated operations (Calvin,
+
+Institutes II.7.6–13).
+
+Ashby’s law of requisite variety is directly relevant to
+
+the second use. If the range of disturbances confronting
+
+civil order expands, a regulator with too few
+
+discriminating responses cannot keep outcomes within
+
+acceptable bounds. In Ashby’s logarithmic form, the
+
+minimum possible outcome variety satisfies V O ≥ V D −
+
+V R . The bound establishes why a civil order requires
+
+
+
+
+                           196
+
+differentiated sanctions, offices, and judgments rather
+
+than one undifferentiated response to every disturbance.
+
+                    V O≥V D−V R;
+                  VO≤ε ⇒V R≥V D−ε .
+
+
+Terms. V D, V R , and V O are base-two logarithmic
+
+varieties of finite disturbance, response, and outcome
+
+repertoires. The bound applies where each fixed
+
+response preserves distinguishability of the relevant
+
+disturbances, so a response repertoire of size |R| can
+
+merge at most |R| disturbance alternatives into any one
+
+outcome. Thus |D|≤|R||O|, and taking logarithms yields
+
+the stated bound. Consequence. Holding residual
+
+disorder below ε requires enough distinct responses to
+
+answer the distinctions entering the regulated practice.
+
+The Law identifies and restrains transgression; saving
+
+renewal supplies the disposition through which its
+
+guidance becomes effective (Ashby, An Introduction to
+
+Cybernetics, §§11/6–11/7; Calvin, Institutes II.7).
+                           197
+
+The three uses of the Law deserve to be treated as three
+
+regulatory configurations rather than three unrelated
+
+effects. The informational content of the moral
+
+command can remain substantially constant while the
+
+system relation changes. In the first use, the Law
+
+functions as comparator: e 1(t)=r L- y H (t), exposing
+
+deviation between divine righteousness and human
+
+performance. Its immediate result is not successful
+
+correction but disclosure of incapacity. The comparator
+
+is working; the controller is not thereby made
+
+sufficient.
+
+In the second use, the Law operates through civil
+
+constraint. Here the regulated variable is not inward
+
+reconciliation to God but outward conduct sufficiently
+
+bounded for social life. If D is the disturbance variety
+
+generated by harmful behaviour and R c the civil
+
+restraint available through law, punishment, custom,
+
+
+                            198
+
+and magistracy, Ashby's principle specifies the
+
+regulatory capacity required: residual variety in harmful
+
+outcomes cannot be reduced below what the available
+
+regulator can absorb. The distinction between inward
+
+righteousness and outward restraint establishes the
+
+difference between changing a system's internal
+
+orientation and constraining its outputs.
+
+The third use is different again because the subject has
+
+been renewed. The Law becomes guidance for a
+
+controller now capable, by grace, of treating the
+
+disclosed reference as desirable. We write u3(t)=K[e L
+
+(t)] for corrective action generated from discrepancy,
+
+where K exists and operates within the renewed life.
+
+The same command that condemned the fallen person
+
+now directs grateful obedience without becoming the
+
+ground of justification. Calvin's genius is to preserve
+
+the norm while changing its covenantal and
+
+soteriological relation to the person.
+                            199
+
+The effect of a command depends upon the condition
+
+and relation of its recipient. The sinner hears a demand
+
+which exposes his deficiency; the person restrained by
+
+punishment encounters a sanction which limits outward
+
+conduct; and the renewed believer receives instruction
+
+through a disposition capable of faithful obedience. The
+
+command retains its determinate meaning through these
+
+different effects. Calvin’s three uses therefore follow
+
+the same norm through different operations, preserving
+
+its unity while identifying the conditions under which
+
+accusation, restraint, and guidance become actual.
+
+The Gospel then introduces what the Law cannot
+
+produce from within the fallen system. The Law
+
+specifies righteousness and exposes deviation; the
+
+Gospel announces accomplished reconciliation in
+
+Christ. This is not the replacement of a strict regulator
+
+with a permissive one. Calvin's third use proves the
+
+opposite. Grace changes the basis of acceptance and
+                         200
+
+thereby changes the mode in which the norm is
+
+encountered. The believer is not driven toward the
+
+reference in order to earn membership in Christ; union
+
+with Christ becomes the condition from which grateful
+
+movement toward the reference proceeds.
+
+The Decalogue further illustrates hierarchical
+
+specification. A relatively compact set of commands
+
+generates a much larger field of applications because
+
+Calvin reads each command through underlying
+
+principles and corresponding positive duties. The
+
+informational economy is striking: a finite normative
+
+code constrains an enormous variety of concrete acts.
+
+Formally, this is a generative rule system rather than a
+
+lookup table. The prohibition of murder for example, is
+
+not exhausted by one prohibited output; Calvin derives
+
+a family of constraints upon hatred, injury, neglect, and
+
+duties of preservation. The regulator operates by
+
+principle across novel circumstances.
+                           201
+
+Such generativity explains why moral life cannot be
+
+automated by exhaustive casuistry. No human legal
+
+code can enumerate every future state. A norm must be
+
+internalized sufficiently for the agent to map new
+
+circumstances onto its governing principle. Calvin's
+
+third use of the Law therefore requires judgment as well
+
+as memory. The renewed believer is not merely
+
+retrieving prewritten responses but learning to
+
+recognise the structure of obedience across changing
+
+environments.
+
+
+
+
+                          202
+
+The Law supplies one norm while its operation differs
+
+with the recipient’s condition. Let L be that norm, x a
+
+fallen condition, x r a renewed condition, and e L(x) the
+
+departures from L identifiable in the person’s conduct
+
+and desire:
+
+              L1 ( x )= Expose ( e L ( x ));
+              L2 ( x )= Restrain( x , L ); (14)
+               L3 ( x r )= Guide ( x r , L ).
+
+Terms. Expose brings guilt and incapacity to judgment;
+
+Restrain limits outward transgression through
+
+prohibition and sanction; Guide directs the renewed
+
+person’s grateful obedience. The subscripts identify
+
+three operations of one Law, not three different
+
+standards of righteousness.
+
+Consequence. Knowledge of deviation does not supply
+
+the capacity to remove it. Restraint changes outward
+
+possibilities without regenerating the will. Guidance
+
+becomes fruitful within the renewed life because grace
+
+                            203
+
+changes the recipient’s relation to the norm. The
+
+reference remains constant while reception, capacity,
+
+and end differ. Justification cannot be obtained by
+
+increasing the intensity of any of these operations,
+
+because acceptance rests upon Christ’s righteousness
+
+(Calvin, Institutes II.7.6–13).
+
+The Law’s three uses follow its operation upon
+
+different conditions of the recipient. Its demand exposes
+
+the sinner’s deficiency, its public sanction restrains
+
+harmful conduct, and its instruction directs the renewed
+
+person toward obedience. The norm remains the same
+
+through these acts, while the relation between command
+
+and recipient determines the effect. Exposure does not
+
+regenerate, restraint does not reconcile, and instruction
+
+exercises a capacity given through renewal. Calvin’s
+
+distinctions preserve the actual office of each operation
+
+within the one divine government of human life.
+
+
+                           204
+
+The renewed person continues to require instruction
+
+because sanctification unfolds through time.
+
+Justification establishes acceptance upon Christ’s
+
+righteousness, while remaining disorder is exposed and
+
+corrected through the Word. The Law therefore retains
+
+its guiding office within the life grace has given. Its
+
+command identifies the good to be pursued, its reproof
+
+makes deviation cognizable, and its direction supplies
+
+the renewed person with an appointed object of
+
+obedience. The third use follows from the continuing
+
+need of the accepted person whose conduct is still being
+
+formed.
+
+
+
+
+                           205
+
+The Covenant and the Unity of the Testaments —
+
+Calvin, Institutes II.10.1–II.11.14
+
+
+Close reading by locus
+
+
+II.10.1–4 — One covenantal substance
+
+Calvin argues that the patriarchs possessed the same
+
+hope of eternal life, mercy, and mediation in Christ,
+
+though under different signs and degrees of
+
+manifestation (Calvin, Institutes II.10.1–4).
+
+Ignatius identifies Christ as the Father’s door and
+
+names Abraham, Isaac, Jacob, the prophets, the
+
+apostles, and the church as those entering through him.
+
+This is the patristic confession of one saving access
+
+across the history of the covenant. The patriarchs and
+
+the Christian church receive life through the same
+
+Mediator. Calvin’s covenantal unity gives systematic
+
+expression to that confession: successive
+
+administrations unfold the promise, while Christ
+                           206
+
+remains the substance of the salvation promised
+
+(Ignatius, To the Philadelphians 9).
+
+Genesis 15:6 identifies Abraham’s belief in the Lord
+
+and the reckoning of righteousness to him. Romans 4
+
+unfolds the order by placing that reckoning before
+
+circumcision and distinguishing the promised
+
+inheritance from a wage earned through works.
+
+Abraham becomes father of believing Gentiles as well
+
+as believing Jews because the saving relation precedes
+
+the sign marking his household. Hebrews 11 then
+
+describes the patriarchs seeking a better, heavenly
+
+country while receiving promises whose completed
+
+fulfillment lay ahead. Their hope exceeds temporal
+
+possession (Genesis 15:6; Romans 4:1–17; Hebrews
+
+11:8–16, 39–40; Calvin, Institutes II.10.1–4).
+
+The covenant’s invariant is the divine promise received
+
+through faith. Land, circumcision, and successive
+
+
+                          207
+
+administrations express that promise in historical forms;
+
+they do not replace its heavenly end. Calvin’s unity of
+
+the Testaments consequently governs both justification
+
+and baptism. The same saving object sustains Abraham
+
+and Christian believers, and a change in covenantal sign
+
+must be understood within that continuing relation
+
+rather than as the invention of an unrelated people.
+
+Identity can persist across changed administration when
+
+governing promise, mediator, and end remain invariant.
+
+Historical and theological location. Augustine’s reading
+
+of the unity of the two testaments is an important
+
+ancestor. Calvin’s covenantal formulation becomes
+
+especially influential in later Reformed theology.
+
+Cross-reference: See IV.16 on infant baptism.
+
+
+II.11.1–14 — Differences of administration
+
+Calvin does not erase differences: shadows, pedagogy,
+
+bondage imagery, and Gentile expansion distinguish the
+
+                          208
+
+old administration from the new. Continuity is therefore
+
+not uniformity (Calvin, Institutes II.11.1–14).
+
+Galatians distinguishes the abiding promise from the
+
+law’s subsequent administration and compares the heir
+
+under guardians to a child awaiting the appointed time.
+
+The heir’s dependence does not abolish his inheritance;
+
+the coming of the Son brings the promised filial liberty
+
+into its mature administration. Hebrews identifies the
+
+corresponding change in priesthood and sacrifice.
+
+Repeated offerings expose an unfinished ceremonial
+
+order, while Christ’s accomplished offering establishes
+
+the cleansing to which that order pointed (Galatians
+
+3:15–29; 4:1–7; Hebrews 8:6–13; 9:11–14; 10:1–14;
+
+Calvin, Institutes II.11.1–14).
+
+Historical change is thus ordered toward fulfillment.
+
+The ceremonial means can cease because the reality
+
+they announced has been accomplished, while the
+
+
+                           209
+
+faithfulness of God’s promise remains. Calvin uses this
+
+distinction to preserve covenantal continuity without
+
+perpetuating every Mosaic ordinance. It also controls
+
+his criticism of the Mass: a Christian rite cannot
+
+reintroduce a recurrent propitiatory function that the
+
+fulfilled priestly work of Christ has brought to its
+
+appointed completion. A higher-order objective can
+
+remain stable while lower-order interfaces, signs, and
+
+constraints change over historical time.
+
+The differences between the testaments concern
+
+administration, disclosure, and historical extent. Each
+
+difference must preserve the gracious promise and its
+
+fulfillment in Christ. A change of signs or pedagogical
+
+form consequently changes the means by which that
+
+promise is received without changing the Savior who
+
+accomplishes it. Calvin’s account of the differences
+
+therefore develops the unity already established rather
+
+
+                           210
+
+than dismantling it (Calvin, Institutes II.10.1–4; II.11.1
+
+–14).
+
+Cross-reference: See II.9 and IV.16.
+
+Calvin insists upon the fundamental unity of the Old
+
+and New Testaments. The fathers under the old
+
+covenant were not offered a merely earthly salvation
+
+while Christians receive a spiritual one. They shared the
+
+same covenantal substance: hope of immortality,
+
+reliance upon divine mercy, and mediation through
+
+Christ, although Christ was then promised under
+
+shadows and figures rather than manifested in the flesh
+
+(Calvin, Institutes II.10.1–4).
+
+The differences between the testaments are real but
+
+concern administration, clarity, extent, and mode.
+
+Calvin lists several contrasts in Book II, chapter 11:
+
+earthly blessings served as figures of heavenly realities;
+
+the old dispensation employed shadows where the new
+
+                           211
+
+gives a clearer revelation; the Law had a pedagogical
+
+form associated with bondage; the gospel is extended
+
+with unprecedented fullness to the nations (Calvin,
+
+Institutes II.11.1–14).
+
+This covenantal continuity is essential to Calvin’s later
+
+defense of infant baptism and to his reading of biblical
+
+history as one economy of grace centered upon Christ.
+
+The patriarchs are not inhabitants of a different religion.
+
+They receive the same promise under an earlier
+
+administration.
+
+The covenantal unity of the Testaments is analyzed as
+
+functional invariance under changing external forms.
+
+The promise, mediator, and final salvific end remain
+
+structurally continuous, while symbols, ceremonies,
+
+clarity, and scope vary historically. This is describable
+
+as a stable higher-order objective implemented through
+
+
+
+
+                           212
+
+different lower-order regulatory regimes as historical
+
+conditions change.
+
+The saving promise and its object remain constant
+
+across the old and new administrations.
+
+The changes Calvin expounds concern the clarity,
+
+signs, and historical conditions through which the one
+
+promise is communicated. Continuity of its source and
+
+end governs the subsequent argument for covenantal
+
+inclusion.
+
+Covenantal continuity is described as persistence of an
+
+invariant through changing administrations. Let C g
+
+denote the covenantal substance of gracious promise
+
+and A t the historical administration at time t.
+
+Covenantal continuity requires C g=constant while A OT ≠
+
+A NT . The old and new economies differ in clarity, signs,
+
+pedagogical form, and historical extent without
+
+becoming two different saving systems. This is why he
+
+                            213
+
+can speak of real difference without conceding a works-
+
+covenant versus grace-covenant opposition in which
+
+Old Testament saints are saved by another principle.
+
+The promise retains its source and saving end through
+
+changing historical administrations. Sacrifices,
+
+circumcision, land, and ceremonial forms receive their
+
+offices within that history, directing the people toward
+
+the fulfillment accomplished in Christ. Their appointed
+
+alteration changes how the common gift is
+
+communicated without introducing another Redeemer
+
+or ground of acceptance. Continuity therefore includes
+
+real differences of presentation, clarity, and scope. The
+
+same source governs their succession, and the fulfilled
+
+end determines which earlier operations cease and
+
+which continuing obligations remain.
+
+This becomes decisive in infant baptism. Calvin's later
+
+argument assumes that the population addressed by the
+
+
+                           214
+
+covenantal sign cannot be redefined without theological
+
+
+warrant. The Book II doctrine therefore supplies the
+
+model used in Book IV: if covenantal substance persists
+
+while administration changes, the burden falls upon the
+
+claim that children once included have now been
+
+excluded.
+
+The covenant also supplies a form of historical
+
+memory. Promises made earlier constrain the
+
+interpretation of later acts; later fulfillment
+
+retrospectively clarifies earlier signs. Biblical history
+
+therefore becomes a temporally extended information
+
+structure in which the state at t cannot be interpreted
+
+without retained information from t-n. Calvin's
+
+extensive typological reasoning depends upon such
+
+memory. A theology with no historical state would be
+
+incapable of covenant.
+
+
+
+
+                            215
+
+The covenant preserves its saving promise through
+
+successive administrations. Let P be the promise of
+
+reconciliation in Christ, A o and A n the old and new
+
+administrations, and ρ o and ρ n their instituted forms of
+
+communication:
+
+                 src ( ρ o )= src ( ρ n )= P ;
+              end ( ρ o )= end ( ρ n )= Christ ; (15)
+                            ρo ≠ ρn .
+
+Terms. src names the promise communicated; end
+
+names its saving object; each ρ includes the signs,
+
+ordinances, and historical conditions through which the
+
+promise addresses God’s people. Difference of
+
+administration concerns the manner of reception and
+
+expression.
+
+Consequence. Different signs do not entail different
+
+redeemers or competing grounds of acceptance. The
+
+common source and end make historical continuity
+
+intelligible, while the unequal reception operators
+                               216
+
+preserve the changes Calvin expounds. Infant baptism
+
+consequently rests upon continuity of the covenant’s
+
+inclusion of believers and their children, with its
+
+instituted sign changed under the completed work of
+
+Christ. Administration changes within one saving
+
+history (Calvin, Institutes II.10–11; IV.16).
+
+
+The Incarnation and the Two Natures of Christ —
+
+Calvin, Institutes II.12.1–II.14.8
+
+
+Close reading by locus
+
+
+II.12.1–3 — Why the mediator must be God and
+
+man
+
+Calvin derives the fittingness of the incarnation from
+
+the requirements of reconciliation: genuine human
+
+representation, obedience, suffering, death, and divine
+
+efficacy (Calvin, Institutes II.12.1–3).
+
+The Epistle to Diognetus locates salvation in God’s
+
+own sending of his Son. The messenger is the divine
+                         217
+
+Word through whom the world was made, sent to reveal
+
+the Father’s goodness and accomplish the rescue
+
+humanity could not obtain through its own works. The
+
+identity of the Savior answers the depth of the human
+
+need. Calvin’s account of the Mediator develops this
+
+relation: reconciliation requires the divine Son himself
+
+to enter the condition of those whom he saves (Epistle
+
+to Diognetus 7–9).
+
+Hebrews explains the Son’s participation in flesh and
+
+blood through the condition of those he saves. He enters
+
+their mortality, suffers, and breaks the dominion
+
+exercised through death; his likeness to his brethren
+
+belongs to his merciful and faithful priesthood. Romans
+
+5 supplies the representative relation: the obedience of
+
+the one answers the disobedience through which
+
+condemnation reached the many. Genuine human
+
+obedience and death are therefore required by the
+
+human condition, while effective deliverance is
+                         218
+
+accomplished by the divine Son who assumes it
+
+(Hebrews 2:14–18; Romans 5:12–19; Calvin, Institutes
+
+II.12.1–3).
+
+The Mediator’s capacities correspond to the disorder he
+
+overcomes. A merely apparent humanity would leave
+
+the human obligation and suffering unfulfilled; a
+
+merely human rescuer would lack the divine efficacy of
+
+the Son’s saving work. Calvin’s Christology preserves
+
+both requirements in one person. That identity
+
+subsequently determines the scope of union with Christ:
+
+believers receive the benefits of the obedience and
+
+victory actually accomplished by their incarnate
+
+representative. The mediatorial problem has several
+
+non-substitutable requirements; adequacy cannot be
+
+achieved by maximizing only one dimension.
+
+The mediator’s adequacy depends upon all the acts
+
+reconciliation requires. Humanity must be represented,
+
+
+                          219
+
+obedience accomplished, judgment borne, death
+
+defeated, and communion restored. Those requirements
+
+belong to the same saving work and must be fulfilled by
+
+one Mediator. A capacity adequate to one requirement
+
+cannot compensate for the absence of another. The
+
+necessity of Christ’s divine and human natures follows
+
+through the completeness of the mediation he performs
+
+(Calvin, Institutes II.12.1–3).
+
+Cross-reference: See II.15–17 and IV.17.
+
+
+II.14.1–4 — Unity of person, distinction of natures
+
+Calvin keeps the two natures distinct while attributing
+
+their properties to the one person of Christ according to
+
+the established Christological grammar (Calvin,
+
+Institutes II.14.1–4).
+
+Ignatius insists that Christ’s birth, suffering, and
+
+resurrection occurred in truth. The risen Lord’s bodily
+
+reality defeats the teaching that makes his humanity an
+
+                            220
+
+appearance. Cyril joins this confession of genuine
+
+humanity to the Son’s eternal divine generation.
+
+Together these affirmations supply the substance Calvin
+
+protects through the distinction of natures: the Savior
+
+who suffers and rises is the eternal Son, and the
+
+humanity in which he does so is complete and real.
+
+Redemption depends upon the identity of this one
+
+Christ (Ignatius, To the Smyrnaeans 1–3; Cyril of
+
+Jerusalem, Catechetical Lectures IV.7–12).
+
+John 1:14 attributes becoming flesh to the Word already
+
+identified as divine. The subject remains the Word
+
+while genuine humanity is assumed. Philippians
+
+describes the same person as possessing the form of
+
+God, taking the form of a servant, becoming obedient
+
+unto death, and receiving public exaltation. The
+
+sequence explains humiliation through assumption and
+
+obedience, preserving the identity of the one who acts
+
+throughout. The human suffering belongs truly to the
+                        221
+
+divine Son according to the humanity he has taken
+
+(John 1:1, 14; Philippians 2:5–11; Calvin, Institutes
+
+II.14.1–4).
+
+The distinction of natures prevents the properties of one
+
+from dissolving the other. Divine sovereignty does not
+
+make the human body unreal, and human limitation
+
+does not remove the Son’s deity. This retained
+
+distinction later governs the Supper. Christ can
+
+communicate himself to believers through the Spirit
+
+while his glorified human body retains the reality of the
+
+ascended humanity confessed here. Differentiated
+
+capacities are coordinated in one personal subject
+
+without being merged into a homogeneous state.
+
+Historical and theological location. Chalcedon is the
+
+decisive genealogy. Calvin claims catholic orthodoxy,
+
+not a novel Reformed Christology.
+
+
+
+
+                          222
+
+Cross-reference: See IV.17.10–12, where Eucharistic
+
+presence depends on preserving the integrity and
+
+locality of Christ’s human nature.
+
+The mediator must be both true God and true man.
+
+Calvin develops the necessity of the incarnation by
+
+asking what reconciliation requires. Humanity needs a
+
+mediator who belongs genuinely to the human race, can
+
+obey in human nature, can bear judgment, and can
+
+overcome death; yet the work also requires divine
+
+power and worth. The incarnation is therefore not an
+
+arbitrary mechanism but fitted to the kind of
+
+reconciliation Calvin has described (Calvin, Institutes
+
+II.12.1–3).
+
+Calvin vigorously maintains the unity of Christ’s
+
+person without confusing the natures. The properties of
+
+deity and humanity remain distinct even while they
+
+belong to the one Christ. His Christology is consciously
+
+
+                          223
+
+Nicene and Chalcedonian, and his polemics in Book II,
+
+chapters 13 and 14 seek to preserve both genuine
+
+humanity and genuine deity against positions that
+
+weaken either side.
+
+This distinction also governs Calvin’s later Eucharistic
+
+theology. Christ’s human body remains truly human
+
+and is not made locally ubiquitous, while believers
+
+nevertheless truly participate in Christ through the Holy
+
+Spirit. The sacramental argument in Book Four
+
+therefore rests upon Christological commitments
+
+established here.
+
+Christ is one personal subject in two natures. Let P C
+
+name the incarnate Son, N D his divine nature, and N H
+
+his human nature. Predicates proper to N D and N H are
+
+truly predicated of P C according to their respective
+
+natures. Terms. P C fixes the single acting subject; N D
+
+and N H distinguish the capacities and properties
+
+                           224
+
+through which he acts. Consequence. Human
+
+obedience, suffering, and death belong to the same Son
+
+whose divine efficacy accomplishes salvation. The
+
+personal unity joins the acts without converting the
+
+natures into parts of an assembled third being (Calvin,
+
+Institutes II.14.1–4).
+
+Yet the functional necessity Calvin assigns to both
+
+natures can still be analyzed. Human nature supplies
+
+genuine solidarity, obedience, suffering, and death;
+
+divine nature supplies the efficacy and victory
+
+appropriate to the Son. The mediator's competence is
+
+therefore not reducible to one dimension. Calvin's
+
+Christology answers a problem whose requisite variety
+
+exceeds the capacity of a merely human redeemer.
+
+Requisite variety states the organizational requirement:
+
+the mediator must possess the capacities required by the
+
+condition from which humanity is redeemed. Calvin’s
+
+anthropology and soteriology establish those
+                         225
+
+requirements, and his Christology identifies their
+
+fulfillment in the one mediator.
+
+The mediator must meet every requirement generated
+
+by the human condition. Let Q be the set of required
+
+acts and C the incarnate Son. Adequacy is conjunctive:
+
+    Q = {representation , obedience , suffering ,
+                                                  (16)
+           death , victory ,intercession }.
+
+     Adequate (C )⇔ ∀ q ∈Q ,Cap(C , q )= 1 . (17)
+
+Terms. Cap(C,q)=1 states that Christ possesses and
+
+exercises the capacity proper to requirement q.
+
+Adequate names fulfillment of the whole requirement
+
+set. Each member of Q identifies a distinct necessity in
+
+Calvin’s account of reconciliation.
+
+Consequence. Excellence in one office cannot
+
+compensate for inability in another. Genuine humanity
+
+supplies representation, obedience, suffering, and death
+
+in the condition of those redeemed; genuine deity
+
+                           226
+
+supplies the saving efficacy and victory of the Son’s
+
+act. One person fulfills the complete set through two
+
+natures, so neither a merely human messenger nor an
+
+unincarnate appearance satisfies the mediatorial
+
+requirement. The conjunction preserves the
+
+completeness of Christ’s saving work (Calvin, Institutes
+
+II.12–14).
+
+Because each capacity predicate has value zero or one,
+
+completeness also has a product expression:
+
+         Adequate (C )= ∏q ∈Q Cap(C , q ) (18)
+
+Consequence. A single missing required capacity
+
+makes the product zero; every required capacity present
+
+makes it one. The expression develops the all-or-
+
+nothing completeness of mediation without adding
+
+heterogeneous powers as interchangeable amounts.
+
+Representation, obedience, satisfaction, victory, and
+
+
+
+                          227
+
+restored communion must all be accomplished by the
+
+same Mediator (Calvin, Institutes II.12.1–3; II.16).
+
+Christ’s unity of person governs every distinction of his
+
+natures and operations. Divine and human acts belong
+
+to one Mediator while retaining the properties of the
+
+nature through which each act occurs. The unity of the
+
+agent therefore preserves differentiation of operation. A
+
+representation that turns the natures into independent
+
+agents would destroy the personal unity on which
+
+mediation depends.
+
+The sufficiency of mediation requires the unity of its
+
+necessary capacities in one personal subject. The
+
+Redeemer truly represents humanity, performs
+
+obedience, bears judgment, defeats death, and restores
+
+communion through the work belonging to him.
+
+Removal of a required capacity leaves the
+
+corresponding need unanswered, however fully the
+
+
+                          228
+
+remaining acts are performed. Calvin’s confession of
+
+the two natures therefore receives its force through the
+
+completeness of the saving end: the one Mediator must
+
+possess what the whole work requires, and every
+
+differentiated operation remains his own act.
+
+
+Christ’s Threefold Office — Calvin, Institutes
+
+II.15.1–6
+
+
+Close reading by locus
+
+
+II.15.1–6 — Prophet, king, priest
+
+Calvin uses the threefold office to prevent Christ’s
+
+work from collapsing into the cross alone. Revelation,
+
+government, sacrifice, and intercession are coordinated
+
+functions of the one mediator (Calvin, Institutes II.15.1
+
+–6).
+
+Polycarp names Jesus Christ the everlasting High Priest
+
+and asks that the Father and the Son build the church in
+
+faith and truth. Ignatius likewise describes Christ’s
+                             229
+
+priestly access as the door through which the saints
+
+enter the Father’s presence. Calvin’s account of Christ’s
+
+priesthood develops this patristic confession into the
+
+relation between accomplished reconciliation and
+
+continuing intercession. The Mediator’s office grounds
+
+the church’s approach to God and sustains the life that
+
+follows from that approach (Polycarp, To the
+
+Philippians 12; Ignatius, To the Philadelphians 9).
+
+Deuteronomy’s promise of a prophet establishes the
+
+duty to hear the one God sends. Psalm 2 identifies the
+
+Son’s royal dominion and summons rulers to submit to
+
+him. Psalm 110 joins kingship to an enduring
+
+priesthood, and Hebrews expounds that priesthood
+
+through Christ’s unique sacrifice and continuing
+
+intercession. Each office answers a distinct need:
+
+revelation corrects ignorance, rule defeats the powers
+
+opposing salvation, and priesthood establishes
+
+reconciliation and access to God (Deuteronomy 18:15;
+                           230
+
+Psalm 2; Psalm 110; Hebrews 7:23–28; 9:11–14;
+
+Calvin, Institutes II.15.1–6).
+
+The functions converge in one Savior, so their
+
+distinction preserves the completeness of his work. A
+
+doctrine restricted to instruction would leave guilt
+
+unanswered; a doctrine restricted to a past sacrifice
+
+would omit the living Lord’s rule and intercession.
+
+Calvin’s threefold office supplies the capacities
+
+required by the whole saving relation. The church’s
+
+teaching, government, and worship consequently
+
+remain derivative ministries under the Prophet, King,
+
+and Priest whose office none of them can absorb.
+
+Functional differentiation under personal unity lets the
+
+same mediator answer several distinct disturbances
+
+without multiplying mediators.
+
+Historical and theological location. The munus triplex
+
+has patristic and medieval antecedents, but Calvin gives
+
+
+                           231
+
+the scheme unusual systematic prominence and it
+
+becomes deeply influential in later Reformed theology.
+
+Cross-reference: See III.1 on reception of Christ’s
+
+benefits and IV.1 on Christ’s government of the church.
+
+Calvin organizes Christ’s mediatorial work under the
+
+offices of prophet, king, and priest. As prophet, Christ
+
+brings the definitive revelation of God’s saving will
+
+and, through the anointing of the Spirit, equips his
+
+people to share in the knowledge of God. As king, he
+
+exercises a spiritual and everlasting reign by which the
+
+church is preserved and defended and believers are
+
+sustained in hope (Calvin, Institutes II.15.1; II.15.2;
+
+II.15.3–5).
+
+As priest, Christ reconciles sinners through sacrifice
+
+and intercession. The priestly office addresses guilt:
+
+Christ’s holiness and sacrificial work restore the
+
+relation that sin has broken, and his continuing
+
+                           232
+
+intercession belongs to the same mediatorial office. The
+
+three offices therefore prevent the work of Christ from
+
+being compressed into a single moment. Revelation,
+
+rule, sacrifice, and intercession are coordinated aspects
+
+of one mediator (Calvin, Institutes II.15.6).
+
+Calvin also uses the offices to explain Christian
+
+participation in Christ. United to him, believers are in a
+
+derivative sense a royal priesthood and are brought into
+
+the benefits of his anointing. The offices are therefore
+
+not merely a taxonomy of Christ’s functions; they
+
+describe the form of the salvation communicated to his
+
+people.
+
+The one Mediator performs differentiated acts whose
+
+effects together accomplish salvation. Prophetic
+
+disclosure answers ignorance, priestly sacrifice and
+
+intercession answer guilt and alienation, and kingly
+
+government preserves the people against opposing
+
+
+                           233
+
+powers. No amount of one operation supplies the
+
+missing office of another. Truthful instruction cannot
+
+take the place of expiation, nor can the announcement
+
+of pardon dispense with the government which sustains
+
+the redeemed. The coordination of the offices preserves
+
+the sufficiency of Christ’s work through the
+
+completeness and unity of its actual operations.
+
+The prophetic, priestly, and kingly acts belong to one
+
+mediatorial person.
+
+Their coordination supplies truthful knowledge,
+
+accomplished reconciliation, and preserving
+
+government together. Each operation serves the
+
+salvation whose completeness requires the whole office
+
+of Christ.
+
+The threefold office constitutes a decomposition of the
+
+mediatorial problem into distinct but coordinated
+
+functions. Prophetic office addresses ignorance and
+
+                          234
+
+false representation; priestly office addresses guilt and
+
+alienation; kingly office addresses rule, protection, and
+
+final victory. If the human predicament is represented
+
+by state vector h =[ i , g , d ]T for ignorance, guilt, and
+
+disorder, Calvin's Christology does not apply one
+
+undifferentiated operation to all components. The
+
+offices name differentiated relations by which the one
+
+mediator answers the multidimensional problem.
+
+Christ’s prophetic, priestly, and kingly offices remain
+
+united in one person. Each office names a
+
+distinguishable operation of the same Mediator. His
+
+teaching identifies the saving truth, his priesthood
+
+accomplishes reconciliation, and his kingship governs
+
+the people reconciled. Receiving Christ joins the
+
+believer to the person who performs all three
+
+operations. Personal unity therefore preserves their
+
+coordinated efficacy through functional differentiation.
+
+
+                             235
+
+The kingly office also introduces a temporal control
+
+horizon. Christ's reign is not exhausted by immediate
+
+local correction but orders the church toward
+
+consummation. Disturbances can persist for long
+
+periods without implying absence of rule. In dynamical
+
+terms, this is regulation under delayed convergence
+
+rather than instantaneous stabilization. Calvin's
+
+eschatology therefore prevents the present state of the
+
+church from being treated as the final measure of the
+
+king's efficacy.
+
+
+
+
+                           236
+
+Christ’s prophetic, priestly, and kingly offices are the
+
+coordinated acts of one mediator. Let O C denote his
+
+mediatorial office and P C , S C , and K C the prophetic,
+
+priestly, and kingly operations:
+
+                 OC = ⟨ PC , S C , K C ⟩ ;
+                                                     (19)
+     agent ( PC )= agent ( S C )= agent ( K C )= C .
+
+
+Terms. P C communicates the truth of God; S C
+
+reconciles and intercedes; K C governs, preserves, and
+
+defeats the powers opposed to salvation. The ordered
+
+tuple distinguishes functions while the agent equality
+
+fixes their personal unity.
+
+Consequence. Knowledge of reconciliation comes
+
+through the prophet who is himself the priest
+
+accomplishing it and the king preserving its recipients.
+
+A theology retaining instruction while discarding
+
+atonement fails the priestly requirement; one retaining a
+
+transaction while discarding Christ’s continuing rule
+
+
+                              237
+
+fails the kingly requirement. Salvation receives the
+
+coordinated office of the one Christ. Functional
+
+differentiation establishes the completeness of
+
+communion with him (Calvin, Institutes II.15.1–6).
+
+
+The Death, Resurrection, and Ascension of Christ —
+
+Calvin, Institutes II.16.1–II.17.6
+
+
+Close reading by locus
+
+
+II.16.5–12 — Cross and descent
+
+Calvin treats the cross as satisfaction and reconciliation
+
+and interprets the descent into hell primarily through
+
+Christ’s experience of divine judgment rather than a
+
+second geographical episode after burial (Calvin,
+
+Institutes II.16.5–12).
+
+The Epistle to Diognetus describes the Son given as a
+
+ransom: the holy One for the wicked, the righteous for
+
+the unrighteous, the immortal for the mortal. It then
+
+locates the covering of human sins in Christ’s
+                          238
+
+righteousness and the justification of many in the one
+
+righteous Savior. Calvin’s account of the cross unfolds
+
+this exchange. Guilt is answered by the sacrifice of the
+
+sinless Mediator, and the sinner’s acceptance rests upon
+
+a righteousness supplied in him. Polycarp gives the
+
+same saving order its scriptural expression by declaring
+
+that Christ bore our sins in his body upon the tree
+
+(Epistle to Diognetus 9, Polycarp, To the Philippians 8).
+
+Isaiah 53 places the servant’s suffering within a
+
+substitutionary order: he bears iniquities, receives the
+
+chastisement associated with the people’s peace, and
+
+justifies the many through the burden he carries.
+
+Galatians identifies Christ’s death under the law’s curse
+
+as the means of redeeming those exposed to that curse.
+
+Hebrews locates the cleansing of conscience in the
+
+offering Christ makes through the eternal Spirit and
+
+joins that offering to the securing of redemption. The
+
+saving efficacy concerns guilt before God as well as
+                          239
+
+human pain (Isaiah 53:4–12; Galatians 3:13; Hebrews
+
+9:11–14; 10:10–14; Calvin, Institutes II.16.5–12).
+
+Calvin’s exposition of Christ’s suffering therefore
+
+reaches the judgment from which sinners are delivered.
+
+The violence of the execution does not by itself state
+
+the whole saving relation; the sinless Mediator bears the
+
+burden assigned to those he represents. Reconciliation
+
+rests upon that accomplished act. The believer’s later
+
+assurance receives an objective ground that neither
+
+fluctuating conduct nor repeated ecclesial sacrifice can
+
+replace. The event sequence has differentiated causal
+
+work: guilt is answered, judgment borne, and
+
+reconciliation established before later exaltation states
+
+are considered.
+
+Calvin’s treatment of the descent identifies the
+
+judgment borne by Christ as essential to the
+
+completeness of his saving suffering. Burial establishes
+
+
+                           240
+
+the reality of death; the descent clause expresses the
+
+dreadful anguish of judgment endured by the Mediator.
+
+The distinction assigns each clause its work within the
+
+account of redemption. Christ bears the consequence
+
+separating sinners from God, so his suffering answers
+
+the whole condition for which he mediates (Calvin,
+
+Institutes II.16.8–12).
+
+Cross-reference: See III.11–18 on justification.
+
+
+II.16.13–16 — Resurrection, ascension, session
+
+Resurrection is not an appendix to the cross. It
+
+establishes victory, new life, and the eschatological
+
+pattern into which believers are incorporated; ascension
+
+establishes heavenly rule and intercession (Calvin,
+
+Institutes II.16.13–16).
+
+Ignatius joins Christ’s bodily resurrection to the truth of
+
+his bodily suffering. The one who endured the cross is
+
+the one whom the disciples encountered alive. Polycarp
+
+                           241
+
+places the church’s hope within that same event: God
+
+raised Christ, and believers await their own raising in
+
+him. Calvin’s account of resurrection therefore
+
+develops the early church’s confession of an
+
+accomplished victory with a future bodily consequence.
+
+The Savior’s life supplies the ground of the believer’s
+
+hope (Ignatius, To the Smyrnaeans 1–3; Polycarp, To
+
+the Philippians 1–2).
+
+Paul makes Christ’s resurrection indispensable to the
+
+
+Gospel’s truth and the believer’s release from sin.
+
+Without it, faith is vain and the dead remain lost; with
+
+it, Christ is the firstfruits of those who will rise.
+
+Romans 6 places the believer’s new conduct within
+
+participation in his death and resurrection, so that the
+
+life of obedience proceeds from union with the living
+
+Savior. Hebrews adds the continuing priestly
+
+consequence: Christ saves completely because he lives
+
+
+                             242
+
+to intercede (1 Corinthians 15:12–23; Romans 6:4–11;
+
+Hebrews 7:25; Calvin, Institutes II.16.13–16).
+
+The resurrection establishes an accomplished victory, a
+
+present source of life, and a future bodily outcome.
+
+Ascension gives continuing intercession its heavenly
+
+setting. Calvin’s subsequent account of union depends
+
+upon this living agent: the Spirit communicates the
+
+benefits of a Savior who has risen and reigns. The
+
+Supper likewise nourishes believers through
+
+communion with this ascended Christ, preserving the
+
+continuity between the historical achievement and its
+
+present reception. Later states depend upon earlier
+
+states in an ordered dependency graph; the meaning of
+
+ascension presupposes the identity of the risen,
+
+crucified mediator.
+
+The creedal sequence orders the acts through which
+
+Christ’s completed sacrifice issues in victory, heavenly
+
+
+                          243
+
+presence, and reign. Resurrection concerns the crucified
+
+Christ; ascension concerns the risen Christ; session
+
+concerns the ascended Christ. The later act carries the
+
+identity and accomplished work of the earlier act into
+
+its next consequence. Their ordering therefore supplies
+
+the historical form through which Calvin expounds one
+
+continuous saving work (Calvin, Institutes II.16.13–16).
+
+Cross-reference: See III.25 on resurrection and IV.17
+
+on Eucharistic communion with the ascended Christ.
+
+Calvin follows the Apostles’ Creed through Christ’s
+
+humiliation and exaltation. The death of Christ is
+
+substitutionary and reconciling: he bears the penalty
+
+due to sinners and satisfies divine judgment. Calvin’s
+
+treatment of Christ’s descent into hell interprets the
+
+phrase principally in relation to the dreadful anguish of
+
+divine judgment borne by Christ, not as a simple
+
+
+
+
+                           244
+
+geographical continuation of burial (Calvin, Institutes
+
+II.16.5–7; II.16.8–12).
+
+The resurrection is indispensable because salvation
+
+does not terminate in acquittal from guilt. In the risen
+
+Christ believers possess the hope of new life and future
+
+resurrection. Calvin connects resurrection with
+
+regeneration and victory, while the ascension
+
+establishes Christ’s heavenly rule and continuing
+
+intercession (Calvin, Institutes II.16.13–16).
+
+Book Two thus ends with an accomplished redemption
+
+that is objectively complete in Christ but has not yet
+
+answered the next question: how does what belongs to
+
+Christ become ours? That transition is one of the most
+
+important joints in the Institutes, and Book Three opens
+
+by stating it directly.
+
+Christ’s saving work communicates acquittal, life, rule,
+
+and hope through the ordered acts of death,
+
+                           245
+
+resurrection, ascension, and intercession. Death answers
+
+judgment; resurrection establishes living victory;
+
+ascension establishes heavenly access; and session
+
+establishes reign. The resulting benefits require distinct
+
+coordinates because each names an effective
+
+consequence of the Mediator’s work. Their common
+
+source in one Christ preserves their unity through those
+
+differentiated effects.
+
+Ascension further introduces a spatial and institutional
+
+consequence that becomes crucial in Book Four.
+
+Christ's bodily absence from local earthly space does
+
+not imply absence of government. Rule is mediated
+
+through Spirit, Word, ministry, and sacrament. Calvin
+
+thus distinguishes local physical presence from
+
+effective causal presence. That distinction later
+
+underwrites his Eucharistic rejection of a locally
+
+contained body while preserving real communion.
+
+
+                           246
+
+Death answers guilt and judgment; resurrection
+
+establishes victory and new life; ascension establishes
+
+the heavenly presence and continuing intercession of
+
+the risen Mediator. The events form an ordered
+
+dependency through one person whose completed work
+
+remains effective at each later stage. Calvin’s
+
+exposition carries the cross’s accomplishment into the
+
+living reign through which its benefits are
+
+communicated (Calvin, Institutes II.16.5–16).
+
+The dependency
+
+Cross→Resurrection→Ascension→Session preserves
+
+Christ’s completed acts through their ordered
+
+consequences. The resurrection is the resurrection of
+
+the crucified Mediator; ascension establishes the
+
+heavenly presence of the risen Mediator; session
+
+establishes the reign and intercession of the one whose
+
+sacrifice is accomplished. Each later act presupposes
+
+the identity and work carried forward from the
+                           247
+
+preceding acts. Their sequence communicates acquittal,
+
+life, heavenly access, and government through one
+
+Christ.
+
+The descent into hell establishes the completeness of
+
+Christ’s suffering under judgment. Calvin does not treat
+
+the phrase merely as a second location visited after
+
+burial. He reads it as expressing the dreadful judgment
+
+and anguish borne by Christ. The interpretive move
+
+alters the system boundary: the relevant variable is not
+
+spatial location but the completeness of Christ's
+
+suffering under judgment. The completeness of
+
+mediation requires that the mediator bears the full
+
+consequence that stands between sinner and
+
+reconciliation (Calvin, Institutes II.16.8–12).
+
+Resurrection then changes the temporal horizon.
+
+Salvation is no longer merely retrospective acquittal but
+
+participation in a life whose final state lies ahead. In
+
+
+                            248
+
+dynamical terms, the system acquires an eschatological
+
+reference. Present sanctification is not asked to generate
+
+its own terminal condition; the risen Christ supplies the
+
+state toward which the believer's promised
+
+transformation is ordered. This is why Book Three can
+
+later describe Christian life under disturbance without
+
+making present performance the final measure of
+
+salvation.
+
+Ascension adds another distinction important to
+
+Calvin's later sacramental theology: Christ's human
+
+body is truly located in heaven while Christ remains
+
+genuinely present to believers through the Spirit. That
+
+claim becomes decisive in Book IV. The topology of
+
+presence cannot therefore be reduced to local
+
+containment. Calvin's Eucharistic position depends
+
+upon a form of participation in which spatial distinction
+
+is maintained rather than solved by making the body
+
+ubiquitous or by reducing presence to recollection.
+                          249
+
+Accomplished redemption possesses an order which its
+
+reception must preserve. Christ’s revelation, obedience,
+
+sacrifice, resurrection, ascension, and intercession
+
+belong to one mediatorial history through differentiated
+
+acts and effects. Book Three receives that history and
+
+follows its benefits into the believer’s life. Communion
+
+makes the completed work effective in persons across
+
+time without changing its accomplished ground; the
+
+Spirit joins the recipient to the same Mediator whose
+
+person and offices have already established the
+
+sufficiency of the saving gift.
+
+
+
+
+                           250
+
+Book Three: The Way in Which We Receive the
+
+Grace of Christ
+
+Book Three is the temporal and participatory centre of
+
+the Institutes. Union with Christ establishes the
+
+direction of dependence through which faith,
+
+repentance, justification, sanctification, prayer, liberty,
+
+election, perseverance, and resurrection become
+
+intelligible. Union supplies the common source of
+
+differentiated benefits. Justification establishes
+
+acceptance; sanctification renews life; prayer exercises
+
+faith in dependence upon the promise. Each relation
+
+retains its own effect within the one participation in
+
+Christ (Calvin, Institutes III.1.1–4; III.11.1–4; III.20.1).
+
+The temporal relations of Book Three retain
+
+distinguishable forms. Election grounds calling;
+
+justification establishes a verdict; sanctification unfolds
+
+progressively; perseverance sustains a course through
+
+                            251
+
+conflict; resurrection completes embodied redemption.
+
+Calling manifests the electing purpose in history, while
+
+moral progress expresses the life received in Christ.
+
+Neither effect creates its own prior ground. Keeping
+
+those orders distinct preserves assurance through the
+
+believer’s changing experience (Calvin, Institutes
+
+III.11.1–4; III.21.1–5; III.24.1–11; III.25.1–12).
+
+The completed work of Christ becomes ours through
+
+the Spirit’s communion. Faith, repentance, justification,
+
+sanctification, prayer, liberty, perseverance, and hope
+
+receive their place within that saving relation. Each
+
+benefit belongs to the living Mediator who gives
+
+himself, so that its office cannot be understood as an
+
+independently possessed religious good. Justification
+
+establishes peace through his righteousness,
+
+sanctification renews through his Spirit, and prayer
+
+exercises the access his mediation secures. The order of
+
+
+                           252
+
+reception therefore follows the identity and work of the
+
+one received.
+
+The common saving relation retains different acts
+
+through their proper times. Justification establishes
+
+acceptance; sanctification develops renewed life; faith
+
+receives the promise through an apprehension which
+
+encounters fear and temptation; and prayer exercises
+
+dependence within providence. Election grounds the
+
+saving history, while perseverance sustains its course
+
+toward resurrection. The distinction of these operations
+
+preserves their coordination. A change in moral
+
+condition does not change the righteousness grounding
+
+the verdict, and a change in confidence does not change
+
+the promise toward which confidence returns.
+
+The order of redemption becomes effective through the
+
+believer’s actual history, whose successive conditions
+
+retain different saving offices. A person can be justified
+
+
+                           253
+
+at t j while sanctification remains unfinished at t j+n.
+
+Assurance can fluctuate while its object does not.
+
+Repentance can recur without implying repeated re-
+
+justification. Prayer can change the creature's conduct
+
+and stand among ordained means without implying
+
+change in divine knowledge. The history of reception
+
+therefore retains the ground, operation, and proper time
+
+of each saving benefit.
+
+
+Union with Christ and the Work of the Spirit —
+
+Calvin, Institutes III.1.1–4
+
+
+Close reading by locus
+
+
+III.1.1–4 — The Spirit as bond of union
+
+Book Three begins with the problem of participation:
+
+what Christ accomplished must become ours. Calvin’s
+
+formulation makes union prior to the distribution of
+
+benefits, and the Spirit is the bond by which the relation
+
+is effected (Calvin, Institutes III.1.1–4).
+                            254
+
+Augustine explains eating Christ’s flesh and drinking
+
+his blood through the mutual indwelling of Christ and
+
+the believer. The life received is Christ himself as
+
+eternal life, possessed through participation in him.
+
+Salvation consequently reaches beyond the external
+
+presentation of benefits to the believer’s living
+
+communion with their source. Calvin begins Book
+
+Three at this point because union explains how Christ’s
+
+accomplished work becomes ours. The benefits remain
+
+inseparable from the Savior who communicates them
+
+(Augustine, Tractates on John 26.18–19).
+
+Romans 8 identifies belonging to Christ through the
+
+indwelling Spirit, then joins that indwelling to
+
+mortification, adoption, and future resurrection. The
+
+benefits appear within one relation of participation.
+
+Ephesians describes believers as sealed with the
+
+promised Spirit, who is the earnest of their inheritance.
+
+John’s vine discourse states the dependence governing
+                           255
+
+their fruit: branches live and bear through abiding in
+
+Christ, and severance from him leaves them unable to
+
+produce the required life (Romans 8:9–17; Ephesians
+
+1:13–14; John 15:1–5; Calvin, Institutes III.1.1–4).
+
+Union accordingly explains the communication of
+
+salvation. Christ’s completed work is the source, the
+
+Spirit establishes participation, and the believer
+
+receives the benefits within that participation.
+
+Adoption, holiness, assurance, and resurrection belong
+
+to the same mediated life while retaining their distinct
+
+effects. This common source governs Calvin’s double
+
+grace and his sacramental teaching: the church’s
+
+external means nourish communion with Christ rather
+
+than distributing saving benefits independently of him.
+
+Coupling creates common-source dependence without
+
+collapsing believer and Christ into identity.
+
+
+
+
+                           256
+
+Martin Bucer is an important Reformation antecedent
+
+for Calvin’s emphasis on participation and the
+
+inseparability of justification and sanctification.
+
+Cross-reference: See III.11.1 on the double grace and
+
+IV.17 on sacramental participation.
+
+Calvin begins Book Three with one of the most
+
+decisive statements in his theology: so long as Christ
+
+remains outside us and we are separated from him,
+
+everything he suffered and did for the salvation of the
+
+human race remains useless and of no value for us. The
+
+problem is not a deficiency in Christ’s work but the
+
+necessity of participation. Salvation requires that the
+
+benefits accomplished in Christ become the believer’s
+
+(Calvin, Institutes III.1.1).
+
+The Holy Spirit is the bond by which Christ effectually
+
+unites us to himself. This immediately prevents
+
+Calvin’s soteriology from becoming a mere transfer of
+
+                                257
+
+abstract benefits. Justification, sanctification, adoption,
+
+perseverance, and hope are benefits of communion with
+
+a living Christ. They can be distinguished, but Calvin
+
+does not want them detached from their source (Calvin,
+
+Institutes III.1.1).
+
+Union with Christ also explains the inseparability of
+
+justification and sanctification without confusing them.
+
+The same Christ who justifies also renews. The believer
+
+does not receive a fragment of Christ. Calvin can
+
+therefore deny that works contribute to the ground of
+
+justification while equally denying that justifying faith
+
+leaves the believer unchanged.
+
+Book Three opens with a decisive transition in the
+
+communication of salvation: the benefits accomplished
+
+in Christ must become effective in the believer. The
+
+Spirit is therefore described by Calvin as the bond of
+
+union. An external resource that is not coupled to the
+
+
+                            258
+
+receiving system cannot alter that system’s state.
+
+Calvin’s soteriology is accordingly not a warehouse
+
+model of detached benefits but a relational model in
+
+which participation in Christ is the condition under
+
+which justification, sanctification, adoption, and
+
+perseverance become ours.
+
+Union communicates Christ’s benefits through the
+
+Spirit who joins the believer to him.
+
+The believer’s changed condition follows from that
+
+communion. Acceptance, renewal, adoption,
+
+preservation, and consummation belong to its saving
+
+order while retaining their distinct acts and proper
+
+times.
+
+The Spirit effects the coupling through which Christ’s
+
+benefits become operative in the believer. Union
+
+establishes the relation, and the Spirit supplies its
+
+
+
+                            259
+
+efficacy: the benefits belonging to Christ become the
+
+believer’s through communion with him.
+
+Book Three's opening claim that Christ's benefits
+
+remain useless to us so long as Christ remains outside
+
+us is the decisive coupling statement of Calvin's
+
+soteriology. The accomplished work of Christ is not
+
+deficient, but possession requires participation. Let C
+
+denote Christ and B the believer. Calvin's structure has
+
+the formal structure Benefits B= π B [U Sp(B,C)], where U Sp
+
+denotes union effected by the Spirit and π B the
+
+believer's participation in benefits belonging to Christ.
+
+The notation is deliberately relational: salvation is not
+
+modeled as a warehouse of detachable commodities
+
+transferred independently of Christ (Calvin, Institutes
+
+III.1.1).
+
+Union preserves the distinct identity of Christ and the
+
+believer while making Christ’s benefits effective in the
+
+                            260
+
+believer. Let U(B,C) denote the believer B’s union with
+
+Christ C. The relation U(B,C)∧(B≠C) states
+
+communion without personal fusion. Christ remains the
+
+source of the benefits communicated; the believer
+
+remains the person receiving them. The Spirit
+
+establishes and sustains the relation through which
+
+justification, sanctification, adoption, and perseverance
+
+become effective in the recipient.
+
+The Spirit communicates Christ and his benefits
+
+through the union in which faith receives and trusts
+
+him. The received testimony identifies the Savior, his
+
+completed work, and the promise governing
+
+communion; the Spirit establishes the relation through
+
+which that testimony becomes effective in the believer.
+
+Saving communication therefore changes the
+
+recipient’s standing, disposition, and conduct. Its
+
+content remains Christ himself and the benefits he
+
+communicates through the living bond of union.
+                        261
+
+The duplex gratia follows from this common source. If
+
+J is justification and S sanctification, Calvin's
+
+architecture is U Sp(B,C)→{J,S}, with J≠S. Their
+
+inseparability is causal and christological, not
+
+definitional. The same union yields both, but the
+
+benefits do different work. Justification concerns
+
+acceptance and status before God; sanctification
+
+concerns renewal and the progressive ordering of life.
+
+One source can therefore generate distinct outputs
+
+without those outputs collapsing into one another.
+
+The temporal order makes the distinction explicit.
+
+Justification, in Calvin's forensic sense, is not a variable
+
+that gradually approaches an acceptable threshold as
+
+sanctification improves. We can represent juridical
+
+status as J(t)= J 0 for the justified believer, while
+
+sanctification follows a trajectory s t + 1=F( s t ,uWord ,u Sp,d t ).
+
+The first is complete in its relevant respect; the second
+
+
+                                262
+
+is dynamically incomplete. Confusing them turns
+
+sanctification into the feedback process by which
+
+justification is earned, precisely the architecture Calvin
+
+rejects.
+
+Union with Christ thus functions as the central junction
+
+of Book Three. Faith, repentance, justification,
+
+sanctification, prayer, perseverance, and hope are not
+
+separate modules connected only by the table of
+
+contents. They are differentiated consequences of a
+
+common coupling. This is why Calvin can be
+
+simultaneously forensic and participatory without
+
+contradiction. The forensic judgment is one benefit of
+
+the union; renewal is another; neither exhausts the
+
+relation from which both arise.
+
+The Spirit's role also prevents union from becoming a
+
+static membership relation. The bond is living and
+
+productive. Through the Spirit, Calvin connects Christ's
+
+
+                           263
+
+objective history to the believer's present
+
+transformation, so that the temporal distance between
+
+first-century events and later Christians does not render
+
+redemption inert. The Spirit is not merely a historical
+
+communication channel carrying old data; he is the
+
+present agent by whom the relation remains causally
+
+effective. That is why the same pneumatology can
+
+explain faith, sanctification, sacramental communion,
+
+and perseverance without reducing the Spirit to any one
+
+of those effects.
+
+The Spirit joins believers across places and generations
+
+to the same Christ. His humanity retains its real bodily
+
+location, while communion communicates his saving
+
+life to persons whose earthly locations remain different
+
+from one another. The unity of the recipients
+
+consequently proceeds from the common Mediator and
+
+the Spirit’s effective act. Book Four gives this
+
+communion visible forms through ministry, worship,
+                        264
+
+and common judgment; those institutions serve a unity
+
+which their own concentration of authority cannot
+
+manufacture. The doctrine therefore establishes the
+
+source before the ecclesial offices appointed to minister
+
+its gift.
+
+The Spirit unites believers to Christ and communicates
+
+the benefits belonging to him. Let U S (C,b) be Spirit-
+
+effected communion between Christ C and believer b.
+
+Its benefits proceed through one relation:
+
+                           C≠b;
+        U S (C , b ) ⇒ J b ∧ S b ∧ A b ∧ P b ∧ G b . (20)
+
+
+Terms. J b is justification, S b sanctification, A b
+
+adoption, P b preservation, and G b final glorification.
+
+The implication states the inseparable saving
+
+consequences of union across their proper times; it does
+
+not put all benefits into one instantaneous stage.
+
+
+
+
+                              265
+
+Consequence. Personal distinction remains intact while
+
+Christ’s benefits become operative in the believer.
+
+Justification cannot be detached from the Christ who
+
+sanctifies, and sanctification cannot become a separate
+
+source purchasing justification. The benefits differ in
+
+office, temporal development, and effect because their
+
+common source communicates a complete salvation.
+
+The Spirit supplies the act joining accomplished
+
+redemption to its actual reception (Calvin, Institutes
+
+III.1; III.11; III.24–25).
+
+Christ gives himself, and the benefits of salvation
+
+become ours through the communion by which he is
+
+ours. The relation supplies the source and unity of their
+
+possession. Acceptance rests upon his righteousness,
+
+renewal proceeds through his Spirit, adoption receives
+
+its filial access in him, and preservation carries the life
+
+he gives toward its appointed completion. Their distinct
+
+offices remain attached to the same living person.
+                           266
+
+Calvin’s account follows the gift from its Mediator into
+
+its effects, so that the believer’s inventory of benefits
+
+remains an account of actual participation in Christ.
+
+The common source governs the dependence among the
+
+benefits. Justification cannot be retained while the
+
+Christ who sanctifies is set aside, and sanctification
+
+cannot become another source from which acceptance
+
+is purchased. Adoption, perseverance, and hope
+
+likewise retain their identity through the Savior whose
+
+life and promise establish them. The distinction of
+
+effects therefore deepens the account of one complete
+
+salvation. Each benefit has its appointed office and
+
+temporal development within the communion through
+
+which all are given.
+
+
+
+
+                            267
+
+Faith — Calvin, Institutes III.2.1–43
+
+
+Close reading by locus
+
+
+III.2.7 — Definition of faith
+
+Calvin’s famous definition makes faith knowledge of
+
+divine benevolence founded on the promise in Christ
+
+and sealed by the Spirit. The vocabulary matters: faith
+
+is neither bare assent nor free-floating confidence
+
+(Calvin, Institutes III.2.7).
+
+Polycarp tells the Philippians that their strong root of
+
+faith bears fruit in Jesus Christ and recalls that salvation
+
+comes by grace through the will of God. Faith’s vitality
+
+comes from its object and source. Its fruits disclose a
+
+life sustained by the crucified and risen Lord. Calvin’s
+
+definition of faith develops this conjunction of divine
+
+generosity, personal trust, and fruitful dependence: faith
+
+knows the favor bestowed in Christ and rests in the One
+
+who gives it (Polycarp, To the Philippians 1).
+                                268
+
+Romans 10:17 locates faith’s arising in hearing the
+
+message of Christ. The promise has a communicated
+
+content and an authorized object. Hebrews 11:1
+
+describes faith’s relation to things hoped for and
+
+unseen: the believer’s confidence reaches beyond
+
+present sight because it rests upon God’s testimony.
+
+Ephesians joins hearing the word of truth and believing
+
+in Christ to the sealing of the promised Spirit. The
+
+outward message and inward confirmation converge
+
+upon the same Savior (Romans 10:17; Hebrews 11:1;
+
+Ephesians 1:13; Calvin, Institutes III.2.7).
+
+Calvin’s definition therefore includes knowledge, trust,
+
+and divine confirmation within one reception. The
+
+hearing believer is directed toward God’s benevolence
+
+in Christ, and the Spirit establishes certainty concerning
+
+that promise. Faith’s assurance has a stable reference
+
+despite changes in the receiver’s experience. This
+
+makes room for the conflict described next: weakness
+                         269

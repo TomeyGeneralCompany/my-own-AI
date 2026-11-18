@@ -1,0 +1,2098 @@
+I suppose I ought give you context for this idea since, it is highly unusual by contemporary standards,
+given how the modern world is so obsessed with cramming electronics and AI into every facet of every
+gizmo this side of the Mason-Dixion line, which is to say, the Mason side, or the better side, if you will
+permit me to share my opinion on the matter, so under the guidance of my tutelary angel, I had founded a
+company in my early adult years, Tomey General Company, and, while we have made substantial
+progress at a speed hitherto unimaginable by Manistee standards, I had been going through a bit of a
+block. This is not terribly uncommon, I have been assured, but I had gone to bed in rather a sour mood,
+having been unable to think of any new ideas, or, for that matter, make any progress on previous ones,
+and, as is common when men take to sleep, I had a dream. I closed my eyes, and when I opened them, I
+was standing, in a flowing white robe, as white as fresh snow, and was standing in a garden, full of trees
+bearing all sorts of exotic fruits, in colors, which, in spite of my command of the English language, I
+could not conceive of the words to describe, and it was in this garden, that my tutelary angel, resplendent
+in his golden armor, which was carved with the most intricate imagery of the cosmos, the urth, sky, sea,
+sun, moon, and constellations like Orion and the one which I was born under, that being Scorpio,
+appeared before me at the command of the Lord. He carried a scroll in his hand, placed it before me, and
+commanded me to eat it. I took the scroll and ate it. When I had done so, the knowledge of this little
+television set, this gadget, was placed within me. So the purpose of this document, if nothing else, is to
+put to paper those things which, by the consumption of the scroll, exist within my mind. Supply design
+knowledge to a workshop using materials obtainable in the Roman world, for the simple reason of it
+following that, would any event happen, wherein the current systems of play, which have become, over
+my lifetime, less reliable year over year, reach the point where they are about as reliable as a sinners word
+on judgement day, the comparatively primitive, and we should note that this is not said pejoratively,
+technologies and materials of the romans, when stacked up against our more complex parts which depend
+on a nearly incalculably large supply chain to maintain, would be more manageable for the average
+American, presuming of course, that they had any moticomb of mechanical skill, which, may be a bad
+thing to presume, depending on where in this proud republic you happen to be. Retain the cathode ray
+display and the mineral, glass, copper and iron construction developed below. Power the instrument with
+two downward acting treadles, return linkages, one way drives and a flywheel. The new reader is a
+playback only attachment for an existing NTSC VHS SP tape with a normal longitudinal sound track.
+New workshop jigs may be made from the same resources.
+
+Claims
+The instrument depends upon electron emission, acceleration, beam deflection, resonance and induction,
+each of which we shall consider in its proper place, with the equations beside the work they explain. For
+the workshop itself, we have Roman glass vessels, beaten metal leaf, and the mechanical and pneumatic
+apparatus described by Vitruvius and Hero; Section 23 brings those accounts together, so the reader may
+see what ancient crafts supply the several parts of our machine. [H1–H2 A1–A5]
+
+Proof
+We shall work through the cathode emission, the light produced by the phosphor, the strength of the glass,
+the leakage of the vacuum and the gain of the valves, since each determines what its respective
+component must do. The construction instructions then give the measurements by which we set these
+parts to work together.
+The feet supply the power through the treadles, one way drives, flywheel and generator, with a
+mechanical branch turning the scanner and capstan. The picture takes a different journey: two rotating
+magnetic heads read the tape, valves amplify and limit their signal, and an FM detector recovers the
+changing brightness. From that same recovered signal we take the synchronization which governs the
+
+CRT scans, while a fixed magnetic head reads the ordinary sound track and feeds the horn amplifier. The
+cassette, having brought its programme with it, spares us the additional inconvenience of founding a
+broadcasting station.
+
+
+Initial display test mode and units
+We shall first establish the display at a modest 32 lines, using the table below and the calculations in
+Sections 5 and 7–10, before turning to the VHS timing and drive in Sections 14–22. The tape requires the
+faster scanning pattern recorded upon it, but our small screen and broad spot may remain as they are;
+speed of scanning and sharpness of picture are separate matters. The original 50 W allowance belongs to
+this first display, while Section 22 accounts for the reader and television together. Our phosphor gives a
+green picture throughout. [M1]
+Parameter                                        First calculation value
+Screen active width and height                   1.57 × 1.18 in 40 × 30 mm
+Envelope viewing diameter                        Approximately 2 in 50 mm
+Electron flight path                             11.8 in 0.30 m
+Accelerating potential                           1000 V
+Beam current at maximum brightness               100 µA
+Raster                                           32 lines 12.5 frames per second
+Horizontal picture detail                        32 distinguishable elements per active line
+Active line fraction                             0.85
+Residual noncondensable gas target               0.001 Pa approximately 7.5 × 10⁻⁶ Torr
+Electrical output budget                         50 W illustrative allocation
+Drive to useful electrical efficiency            0.55 illustrative system assumption
+The equations use SI units, with inches and feet beside the workshop dimensions, so that the reader need
+not stop building to quarrel with his ruler. We shall use the following constants: electron charge e =
+1.60218 × 10⁻¹⁹ C; electron mass m = 9.10938 × 10⁻³¹ kg; Boltzmann constant k = 1.38065 × 10⁻²³ J/K;
+vacuum permittivity ε₀ = 8.85419 × 10⁻¹² F/m; and vacuum permeability μ₀ ≈ 1.25664 × 10⁻⁶ H/m.
+Numerical results are rounded to the precision useful for the work.
+
+
+1 Glass envelope and atmospheric loading
+
+Idea
+We shall begin with the glass body, since the electrons will require somewhere to go, and the atmosphere,
+which has hitherto occupied that space without objection, must now, like a poor house guest, be persuaded
+to leave. Give the vessel a curved viewing face and a narrow neck through which we can install the
+electrode assembly; the reasons for that curvature will become apparent shortly, when we elect to consider
+how much air weighs when there is no longer an equal quantity of it pushing from the other side.
+Give the face the curvature and wall specified below, then attend to the narrowing neck and the cooling of
+the whole, since the form which our hand gives the hot glass must endure through the subsequent
+operations of plastic nature, including those less agreeable consequences of uneven cooling which a
+
+transparent surface may conceal. We shall therefore anneal the body gradually and examine its thickness
+before asking it to bear the atmosphere; for nature’s own art will have its effect in the glass whether our
+workmanship has made that effect convenient or otherwise. (Cudworth, True Intellectual System, I.iii, pp.
+147–150.)
+Here that great ladder of procession and return, which the blessed patriarch Jacob bore witness to,
+descends to the bench itself: God communicates being and efficacy according to the several conditions of
+His creatures, those above and on and below the earth, such as the myriad plants and metals hidden inside
+Gaia’s breast; the glass bears, the heated surface emits, the field directs, and the workman understands and
+orders their relation, each exercising its proper power within the uncreated activity by which it is
+sustained.
+
+Claims
+The Romans already possessed the craft upon which this part depends. They blew glass, formed vessels,
+and produced transparent examples of sufficient refinement that we need not imagine every Roman
+drinking from something resembling the bottom of a pond. A surviving first century mould blown cup
+supplies a direct example of the work, and our concern here is to apply that craft to the dimensions and
+shape required by the television. [H1]
+Now, the glassworker has a considerable advantage over the unfortunate fellow whom we might
+otherwise have sent into the woods with instructions to invent transparency. He knows how to work glass
+while hot, and how to produce a vessel whose contents remain agreeably on the inside, which is a
+substantial accomplishment however little attention we ordinarily give it when drinking from a bottle. We
+shall ask him to retain that familiar arrangement while dispensing with the contents, and it is this
+apparently modest request which introduces the difficulty. A bottle full of air has pressure on both sides of
+its wall; the two parties largely settle their disagreement without requiring the glass to intervene. Once we
+remove the air within, the atmosphere outside continues pressing with precisely its former enthusiasm,
+and the glass must undertake the work of the party we have dismissed. The better our vacuum, therefore,
+the more we ask of our vessel, which is a mildly irritating reward for having done the preceding job
+properly.
+
+Proof and worked calculation
+Now, a viewing face only fifty millimetres across may seem too small to attract much trouble, but the
+atmosphere presses upon it all the same, and once we remove the air within, the glass must carry the
+difference. We therefore multiply the pressure difference by the projected area of the face:
+  A = πD²/4 = π(0.050)²/4 = 0.001963 m²
+  F = Δp A = 101325 × 0.001963 = 199 N ≈ 44.7 lbf
+We have, then, nearly forty five pounds of force pressing upon a face approximately two inches across,
+which is rather more enthusiasm than one might have expected from emptying a bottle. Taking a radius of
+curvature of thirty millimetres and a wall thickness of three millimetres, the spherical shell calculation
+gives:
+  σ = Δp r/(2t) = 101325 × 0.030/(2 × 0.003) = 0.507 MPa
+The curved wall carries this load in compression. Its thickness, the transition into the neck, surface
+condition and quality of annealing must therefore be considered together, since a well formed face gains
+
+little from being attached to a neck full of residual stress. External pressure buckling also enters the
+choice of the finished envelope dimensions.
+Here the curvature promised earlier finally earns its place at the proverbial table. We have spent some
+time discussing a craft ordinarily employed to keep wine from escaping, only to discover that our present
+concern is keeping the world from entering, and that reversal explains the shape we gave the vessel at the
+beginning. The rounded wall carries the pressure through compression, with the neck and the cooled glass
+participating in the same structure; an elegant face gains little from a neck already quarrelling with itself.
+Thus the annealing, thickness and curvature return together to the glassworker's bench, where they
+belong, and our instruction to make a rounded vessel now has a reason beyond its resemblance to an
+elderly television.
+
+Fabrication and acceptance
+Make and anneal the trial vessels first, examining the thickness and rejecting inclusions, and evacuate
+them behind an implosion enclosure. Establish the vessel and its lead seals before installing the cathode,
+recording the dimensions, the pressure held and the time for which it holds, together with any crack or
+distortion. This leaves us a repeatable glass body upon which to build the rest.
+
+
+2 Vacuum pump and gas removal
+
+Idea
+To remove the air, we shall employ falling mercury drops which carry small pockets of gas down to the
+outlet, placing a cooled trap between the pump and the tube so that the mercury remains on its own side of
+the arrangement.
+Meter the mercury into separated drops and give their descent a narrow passage, then ask how quickly the
+gas leaves and what the warm liquid contributes in its place; for plastic nature will maintain its orderly
+work on either side of our intentions, and an excellent pump may furnish its own vapour with the same
+indifference with which it removes the air. The trap must consequently receive a place in the arrangement
+before we congratulate ourselves upon the empty bulb.
+
+Claims
+The useful action occurs between the drops: each separates a pocket of gas and carries it downward,
+allowing successive pockets to leave the vessel. Mercury supplies the liquid column, while the narrow
+passage and separated drops supply the pumping action. Sprengel describes the historical development of
+this mechanism in his 1865 paper. [V1]
+There is something agreeable about employing a heavy liquid to remove something which appears to
+weigh nothing, although the preceding calculation has already deprived the air of any right to plead
+insignificance. The mercury falls, and the separated gas pockets travel with it, so the practical question
+becomes how to arrange the passage such that the liquid does useful work on its journey. Pouring mercury
+into a broad vessel would give us a broad vessel containing mercury, an accomplishment for which the
+television would have little gratitude. The narrow fall tube and the succession of drops are what make the
+descent into a pump. We therefore return to the glassworker with another request, this time for the
+passages through which that succession can be maintained.
+
+Proof and worked calculation
+
+The first dimension is the height of mercury needed to balance atmospheric pressure. Taking its density as
+13500 kg/m³, we obtain the height directly from hydrostatics:
+  h = p/(ρg) = 101325/(13500 × 9.81) = 0.765 m = 2.51 ft
+We may then consider how quickly the remaining gas leaves. For a vessel of volume V and effective
+pumping speed S, with leakage and gas release temporarily set aside, pressure falls exponentially:
+  V dp/dt = −Sp; p(t) = p₀ exp(−St/V)
+  t = (V/S) ln(p₀/p₁)
+For our half litre vessel, an effective pumping speed of 0.01 L/s takes the pressure from 100 Pa after
+preliminary evacuation to 0.001 Pa in 576 seconds, or 9.6 minutes. Those are the values used in the
+calculation above.
+Leakage and gas released from the surfaces introduce a continuing supply, which we denote by Q in
+Pa·L/s. The pressure then approaches Q/S, so at the same pumping speed our 0.001 Pa operating value
+requires:
+  Q ≤ S p = 0.01 × 0.001 = 1 × 10⁻⁵ Pa·L/s
+Mercury has one further habit to accommodate: at 25 °C, the NIST vapour equation gives approximately
+0.264 Pa, well above our pressure for the remaining air. We therefore place a vapour control arrangement
+between the warm reservoir and the tube, removing the air while keeping mercury vapour from taking its
+place. [V2]
+We have, in other words, recruited a liquid to evict the air and must now prevent our assistant from
+moving into the vacated premises. This is why the trap belongs to the pumping arrangement from the
+beginning. A vessel may have lost almost all its original air and still contain vapour supplied by the very
+apparatus which emptied it, so the pressure calculation brings us back to a particular piece of glass
+between pump and bulb, cooled and arranged to keep that exchange from spoiling the work.
+
+Fabrication and acceptance
+Measure pumping speed against a known volume, then isolate the pump and record the pressure rise. Heat
+the vessel within its tested envelope limit to release adsorbed gas, and check the cooled vapour trap as
+part of the same assembly. Keep the mercury and recovered material in closed containment throughout.
+
+
+3 Electron transport in the residual gas
+
+Idea
+Having removed most of the air, we must decide how little remains, for the beam needs a reasonably clear
+passage from cathode to screen. We shall choose that pressure by calculating how often an electron
+encounters a gas molecule along the way.
+We shall choose the pressure by the length of the electron’s journey and the molecules remaining in its
+path, allowing nature’s regular operation its actual measure in collisions; for a bottle may appear
+admirably empty while retaining sufficient company to spoil our beam, and the eye’s approval is no
+substitute for counting how often that company shall be met. Set the pumping requirement from the
+survival fraction below, then return to leakage and the condition of the surfaces.
+
+Claims
+
+“Sufficient vacuum” becomes a useful instruction when we give it a number. Gas composition, electron
+energy and collision cross section determine that number, and the scattering model below relates them to
+the length of our tube.
+
+Proof and worked calculation
+For a uniform dilute gas, the number of molecules per unit volume is n = p/(kT). If σc is the effective
+collision cross section and L the flight length, the fraction crossing without collision is exp(−nσcL). We
+shall use σc = 10⁻¹⁹ m² for this illustrative calculation, with T = 300 K and L = 0.30 m:
+    Psurvive = exp[−p σc L/(kT)]
+Pressure Pa                                       Collision free fraction
+1                                                 0.000715
+0.1                                               0.485
+0.01                                              0.930
+0.001                                             0.9928
+At 0.001 Pa, about 99.3 percent of the electrons cross without a collision in this model. Changing the
+effective cross section changes the exponent in the same proportion. We must also attend to field induced
+discharge, ion feedback, surface contamination and cathode poisoning, since the beam passes through an
+actual vessel with electrodes and surfaces of its own.
+The importance of this little journey is that the word empty has ceased to be a matter of appearances. The
+vessel looked empty when it contained ordinary air, and will look much the same after we have expended
+considerable labour removing it; the electrons, obliged to cross the space rather than admire it, will
+encounter a rather different establishment. Their path supplies our measure. Having begun with a bottle
+and a pump, we can now return to those parts with a pressure chosen for the length of the journey we
+intend the beam to make.
+
+Fabrication and acceptance
+Compare beam current and spot stability as pressure changes, recording the residual gas composition
+where possible. A glow discharge, wandering focus or rapid cathode deterioration calls for further
+pumping or cleaning; the useful result is a steady beam which remains under our control.
+
+
+4 Cathode heater and electron supply
+
+Idea
+The cathode supplies the electrons, and we shall heat its emissive surface until enough of them leave to
+form the beam, drawing that current into the gun by the applied electric field.
+Prepare the calcium coating upon the iron and warm it under evacuation, observing how the current
+answers the heater and the collecting potential; for plastic nature must perform its work upon the surface
+actually provided, and neither the name of the ingredient nor our confidence in having acquired it will
+settle its condition. The emission curve shall therefore govern the heater allowance, bringing the coating’s
+preparation back into the power which our feet must furnish.
+
+Claims
+
+Temperature and effective work function govern this emission, the latter entering exponentially, which
+makes the condition of the emitting surface particularly consequential. Our cathode uses iron coated with
+calcium oxide; the emission equations tell us what performance the assembly must supply. [E1]
+The lime is a familiar material in a thoroughly unfamiliar occupation. A Roman builder may have used it
+in work intended to keep a wall standing, while we ask a coating containing it to help furnish a stream of
+electrons, which is precisely the sort of change in employment that makes this undertaking entertaining.
+The material's familiarity settles where we may obtain it; the condition of its surface and the temperature
+at which we operate settle what it will do after we obtain it. We must therefore follow the argument from
+the quarry and furnace to the heated surface, since a catalogue of ingredients, however reassuring, has
+never yet persuaded a cathode to emit on command.
+
+Proof and worked calculation
+We begin with the Richardson Dushman expression, which relates current density to temperature and
+work function:
+  J = Aeff T² exp[−φ/(kₑT)]
+Here J is expressed in A/cm² when Aeff is in A/(cm²·K²), with φ in eV and kₑ = 8.61733 × 10⁻⁵ eV/K. To
+examine the sensitivity, take T = 1100 K and the ideal metallic reference Aeff = 120. [E1]
+Assumed φ eV                     J A/cm²                          Current from 1 mm²
+2.0                              0.0997                           997 µA
+2.5                              0.000510                         5.10 µA
+3.0                              2.61 × 10⁻⁶                      0.0261 µA
+4.5                              3.51 × 10⁻¹³                     3.51 × 10⁻⁹ µA
+Keeping Aeff and temperature fixed, a change in φ from 2.0 to 2.5 eV reduces current by about 195 times.
+This explains why we give the coating and its activation so much attention: the cathode must leave us 100
+µA of beam current after the grid and apertures have taken their share.
+A difference of half an electron volt is easy enough to pass over when reading, especially after the eye has
+become tired of small numbers with unfamiliar units. The exponential has no such fatigue. It applies the
+change in full, and leaves us with a current nearly two hundred times smaller, which explains why heating
+any convenient piece of iron and calling it a cathode would be an unnecessarily expensive way of learning
+about surfaces. We return, then, to the coating and its treatment, because those workshop details govern
+the quantity which the equation makes so unforgiving.
+There is also the space charge between the electrodes to consider. For a flat vacuum diode with zero initial
+electron velocity, the Child Langmuir limit is:
+  JCL = (4/9) ε₀ √(2e/m) V³ᐟ²/d²
+At 100 V with 2 mm spacing, the planar result is 583 A/m², or 583 µA from each square millimetre. That
+exceeds our beam current for a 1 mm² emitting area, though the grid and apertures reduce the current
+which finally passes into the gun. [E1]
+The heater must replace both radiated and conducted heat. Radiation alone is εσS(T⁴ − T₀⁴); using
+emissivity 0.5, a hot area of 20 mm², T = 1100 K and T₀ = 300 K gives about 0.83 W. Add the heat
+conducted through the supports and leads, and allocate 2 W to this small CRT heater assembly.
+
+Fabrication and acceptance
+Begin with a separate diode and record emission against heater power and anode voltage, noting
+activation, coating adhesion, insulation leakage and operating lifetime. Carry that curve into the power
+budget. If the iron heater assembly fails, make the carbon heater or alternative emissive coating as a
+separate specimen, so the cause of a change remains apparent.
+
+
+5 Electron gun acceleration focus and intensity control
+
+Idea
+We now give the electrons their speed, accelerating them through 1000 V, and bring them to a small spot
+upon the screen. A control grid near the cathode regulates how many pass, allowing the picture signal to
+govern brightness.
+Keep the cathode, aperture and focusing cylinder upon one axis, and leave their positions adjustable until
+the beam has found its proper spot; for the field will direct the electrons according to the arrangement
+before it, carrying nature’s mechanical skill into a result which may differ considerably from the little rifle
+we thought we had assembled. We shall settle acceleration first, then focus and grid control, so each
+adjustment has a definite effect to disclose. (Conway, Principles, IX §2.)
+
+Claims
+Acceleration determines electron speed and beam power, while the spacing, apertures and potentials of
+the electrodes determine the focus. The focusing cylinder is therefore part of an electrostatic lens whose
+several dimensions we adjust together.
+
+Proof and worked calculation
+   eVa = mv²/2; v = √(2eVa/m)
+   Va = 1000 V → v = 1.876 × 10⁷ m/s
+   tflight = L/v = 0.30/(1.876 × 10⁷) = 16.0 ns
+   Pbeam = Va Ib = 1000 × 100 × 10⁻⁶ = 0.100 W
+For a 40 × 30 mm picture divided into 32 × 32 elements, the nominal pitches are 1.25 mm horizontally
+and 0.938 mm vertically. We shall aim first for a spot about 0.7 mm across or smaller, checking it at the
+centre and corners, since scanning alters focus and astigmatism as the beam moves.
+The aperture and grid near the cathode give us the brightness control. Obtain its working voltage range
+from the gun transfer curve Ib(Vg), marking the point of cut off and the maximum useful current; the
+accelerating voltage determines the electron energy, while this curve tells us how the grid admits or
+withholds the beam.
+Consider how little of the eventual picture exists at this point. We have a source, a field which accelerates
+its electrons, and an aperture which admits some portion of them; there is no small image travelling intact
+down the neck, waiting to strike the glass. The picture will arise from where the beam goes and how
+strongly it arrives at each moment. That observation follows us through the rest of the instrument: focus
+makes the mark small, deflection places it, and the grid changes its brightness. We have thus returned
+from the rather grand business of making an electron gun to the practical reason for giving this particular
+electrode a signal connection.
+
+Fabrication and acceptance
+Establish a steady stationary spot before asking it to draw anything. Measure its size, current and grid cut
+off, and record the aperture diameters and electrode positions in inches and millimetres. Keep the gun
+adjustable while bringing it together with the phosphor and scanning arrangement.
+
+
+6 Phosphor preparation screen loading and light output
+
+Idea
+For the screen, we shall use manganese activated zinc silicate, which turns the arriving electron energy
+into visible green light. The glass gives the beam a destination; this coating gives us something to see
+when it arrives.
+We shall roast the zinc ore and prepare our silica, then weigh the two for the host compound which the
+screen requires, allowing approximately 7.30 grams of zinc oxide and 2.70 grams of silica for a nominal
+ten-gram batch; and, having mixed them finely, we shall account for the manganese in the activated
+composition and attend to the firing atmosphere, since plastic nature will carry the work forward
+according to the conditions actually present in the furnace, with little concern for the excellent picture we
+have already imagined. Nature’s own art precedes ours here, and our judgment must discover how to
+employ it, which is why Lady Conway’s acknowledgment of nature’s mechanical skill returns us quite
+comfortably to the balance. (Conway, Principles, IX §2; Cudworth, True Intellectual System, I.iii, pp.
+147–150.)
+
+Claims
+Manganese activated zinc silicate is a documented green cathodoluminescent material, prepared by
+controlled chemistry and high temperature firing. We shall use those material accounts to guide the
+preparation of our coating. [M1–M2]
+
+Proof and worked calculation
+The proportion follows from the compound we intend to form:
+   2 ZnO + SiO₂ → Zn₂SiO₄
+Now, the presence of the proper ingredients does not relieve us of preparing their meeting, any more than
+placing a smith, an anvil and a lump of iron in the same room obliges a horseshoe to appear; we must
+therefore attend to the fineness of the mixture, the temperature and duration of firing, and the conditions
+under which the manganese enters the resulting material, allowing nature’s formative operation the
+particular means through which our intended phosphor can become actual. Fire the selected preparation
+under its specified conditions, then grind and screen the product, retaining the fine powder for comparison
+beneath the beam; for the work which began among the metals hidden within Gaia’s breast must now
+answer upon the glass, where its brightness and persistence will tell us how well we have prepared it for
+its new occupation. The host calculation uses molar masses of 81.38 g/mol for ZnO and 60.08 g/mol for
+SiO₂; manganese replaces a small portion of the zinc sites, with concentration, oxidation state and firing
+atmosphere controlled during preparation.
+One published preparation uses 1000–1300 °C for 1–5 hours with its specified precursor chemistry. [M2]
+Our screen retains the resulting green emission, which is quite sufficient for the moving monochrome
+picture intended here.
+
+Green will serve us quite adequately. Once one has undertaken to construct a television in an ancient
+workshop, a complaint that its picture resembles the view through a bottle seems somewhat ungrateful,
+particularly when the alternative at this stage is a clear view of nothing happening. The colour follows
+from the emitting material, while the usefulness of the picture depends upon brightness, persistence and
+the size of the spot. These considerations bring us back to the powder on the glass: its preparation must
+give the beam something which lights promptly enough to follow the moving image and brightly enough
+for us to see it.
+To calculate light output, let us take 1 percent conversion of beam energy into visible light, optical
+luminous efficacy of 500 lm/W and a front escape fraction of 0.5. With those screen properties, the 0.1 W
+beam gives:
+  Φfront = Pbeam η K f = 0.1 × 0.01 × 500 × 0.5 = 0.25 lm
+  Lscreen = Φfront/(πA) = 0.25/(π × 0.040 × 0.030) = 66 cd/m²
+The brightness equation treats the screen as approximately Lambertian and uniformly excited across the
+full field. Conversion efficiency, charging, electron collection, coating adhesion and penetration all enter
+the finished screen performance; reducing conversion efficiency to 0.1 percent reduces the calculated
+brightness to 6.6 cd/m².
+
+Fabrication and acceptance
+Fire and screen small batches, comparing brightness and decay under the beam before sealing the
+complete tube. Provide a collection path for arriving electrons so the surface does not charge
+uncontrollably, and keep the coating method within our mineral and glass construction, without
+introducing aluminium vacuum deposition or modern binders.
+
+
+7 Magnetic deflection coils
+
+Idea
+A stationary dot, however agreeable it may appear after all this work, will make for rather limited
+entertainment. We shall move it with two magnetic fields at right angles, directing the beam horizontally
+and vertically across the face.
+Wind the two axes at right angles and establish the displacement produced by each before combining their
+sweeps, remembering More’s attention to the reach of incorporeal agency when we follow an unseen
+operation into a visible displacement; the particular coil must nevertheless answer in turns, gap and
+current, and its fringe field will enter the beam’s course whether our first drawing found room to represent
+it or not. We shall map that course before selecting the driver. (More, Divine Dialogues, Dialogue I.)
+We shall have earned a certain affection for that dot by the time it appears, since it represents the
+combined work of the glassmaker, the pump, the heater and the gun, but affection has its limits, and an
+evening spent watching it remain in the middle of the screen would test them. The beam must move while
+the brightness changes, placing successive parts of the picture where they belong. A magnetic field gives
+us the means of changing its direction without inserting a little mechanical hand inside the vacuum, which
+would introduce difficulties of its own. The coils therefore take up the work where the gun leaves it,
+turning a successful stationary experiment into the beginning of a display.
+
+Claims
+
+The Lorentz force gives the field required to bend the beam. Begin with a uniform field calculation, then
+map the fringe fields and the effect of the actual neck geometry when winding and adjusting the coils.
+
+Proof and worked calculation
+Take an effective magnetic length of 40 mm, a distance of 150 mm from its centre to the screen, and a
+horizontal edge displacement of 20 mm. At small angles, the deflection follows:
+   θ ≈ eBl/(mv); y ≈ Dθ; B ≈ ymv/(elD)
+   Bedge = 0.355 mT at Va = 1000 V
+For an ideal magnetic circuit dominated by a 60 mm air gap, NI ≈ Bg/μ₀ gives 17.0 ampere turns. One
+hundred turns therefore require 0.170 A at the edge. Leakage and fringe fields increase the required
+current; a fourfold field penalty raises it to 0.680 A with that same winding.
+With an effective gap area of 4 cm², we obtain the gap dominated inductance:
+   L ≈ μ₀N²Ag/g = 83.8 µH
+At the initial 400 Hz line rate, the active 2.125 ms sweep changes current from −0.170 to +0.170 A,
+requiring approximately 0.0134 V inductively. Returning in 0.375 ms requires about 0.0760 V before
+resistance and losses. For a 2 Ω winding, the edge resistive drop is another 0.340 V. We therefore supply
+V = L di/dt + Ri, with core loss and stray inductance also included in the driver.
+
+Fabrication and acceptance
+Wind one axis first and map displacement against current, measuring its resistance and inductance before
+choosing the output stage. The coil calls for current at low impedance, so use an output arrangement with
+that capacity or an impedance matching transformer.
+
+
+8 Electrostatic deflection comparison
+
+Idea
+We may also compare a pair of metal deflection plates with the magnetic coils, retaining the same cathode
+ray display while changing the means by which the beam is turned.
+Set temporary plates beside the beam and compare their required swing with the current demanded by the
+coils, keeping the picture dimensions unchanged; for our choice of artifice must follow the powers
+through which nature actually works, and a convenience purchased in copper may return as an
+inconvenience in plate voltage. The calculation shall tell us what each arrangement asks before either
+acquires a permanent place in the neck.
+
+Claims
+The plates trade coil current for voltage swing. That trade can suit a valve voltage amplifier, so it is useful
+to work through the dimensions before choosing which arrangement is easier for the workshop to make.
+This is one of those occasions upon which a choice that looks like a minor alteration in the drawing may
+reorganize a considerable portion of the workshop's labour. A coil asks us to wind wire and supply
+changing current; plates ask us to shape electrodes and supply changing voltage. Both ultimately move
+the same beam across the same small face, so we have a common result against which to compare them.
+Following each demand through its amplifier and supply gives us a more useful answer than deciding that
+
+one looks simpler upon the page, which is an excellent place for machinery to conceal the work it will
+later require.
+
+Proof and worked calculation
+For plates of length l and gap d, with drift distance D measured from their centre, accelerating voltage Va
+and differential plate voltage Vd, the small angle displacement becomes:
+   y = Vd lD/(2dVa)
+Take l = 40 mm, d = 10 mm, D = 150 mm, Va = 1000 V and y = 20 mm. The required Vd is 66.7 V from
+centre to edge, or about 133 V peak to peak, which fits a voltage amplifier more naturally than the coil
+current does. Check plate interception, angular limits and distortion while setting the assembly.
+If the electrodes and wiring contribute 20 pF, changing 133 V over the initial 0.375 ms return draws about
+7.1 µA capacitively. The resistive amplifier loads add their own demand and may consume considerably
+more.
+
+Fabrication and acceptance
+Make a temporary plate assembly and compare its spot range, distortion and driver power with the
+magnetic yoke, keeping the picture dimensions and brightness the same. Choose the arrangement whose
+adjusted performance best suits the construction.
+
+
+9 Raster timing and video bandwidth
+
+Idea
+Before building the amplifiers and oscillators, we shall set the first raster, giving ourselves definite line
+rates, frame rates and picture bandwidth upon which to work.
+Begin with the slower raster and an orderly succession of bars, giving the beam its measured intervals
+before asking it to follow a tape; for nature’s mechanical skill will preserve the consequences of our
+timing quite impartially, including those which turn a proposed picture into an itinerant band of light.
+Count the lines, divide the active interval and provide the return, then set the brightness bandwidth to the
+elements which those intervals can actually carry.
+
+Claims
+The initial raster is progressive and deliberately coarse, with a compatible test source. The later VHS
+sections replace this timing with the pattern recorded on the tape; for the present, we are establishing a
+working display.
+There is little advantage in asking a new glass vessel, a new cathode, new valves and a new scanning
+circuit to explain their faults simultaneously. If the screen remains dark, each may blame the others with
+perfect mechanical impartiality, and we should be left to conduct an inquiry into the whole establishment.
+A slow, coarse raster gives us a visible pattern whose behaviour is easier to follow. Once the display
+draws that pattern, the later change of timing has a known instrument upon which to act. The modest first
+picture therefore earns its place by bringing us to the faster one with fewer unexplained variables
+accompanying us.
+
+Proof and worked calculation
+
+  fline = Nlines fframe = 32 × 12.5 = 400 Hz
+  Tline = 1/400 = 2.50 ms; Tactive = 0.85 Tline = 2.125 ms
+  Tpixel = Tactive/32 = 66.4 µs
+The quickest alternating pattern contains one light and one dark element in two element times, giving a
+fundamental of 1/(2Tpixel) = 7.53 kHz. A 10 kHz first video passband carries that pattern with limited
+edge detail.
+For a single pole amplifier at 10 kHz, the approximate rise time is 0.35/B = 35 µs, roughly half an
+element time. A wider passband sharpens the transitions at the cost of greater gain and stray capacitance
+demands. At 12.5 frames per second, we shall also see flicker and motion judder in this first display
+mode.
+To keep horizontal timing error below half an element across a line, |ΔT/T| must remain below 0.5/32 =
+1.56 percent. Reset the free running oscillators with line and frame synchronization each cycle, so their
+drift does not accumulate across the picture.
+
+Fabrication and acceptance
+Begin with stationary bars, then a moving edge, recording line rate, frame rate, active interval, retrace
+blanking and drift. When changing the raster, recalculate bandwidth and power before connecting the
+source.
+
+
+10 Triode amplification and synchronization circuits
+
+Idea
+We shall use gridded thermionic valves to amplify the picture signal and generate the synchronized ramps,
+assigning each stage its part in controlling the beam.
+Choose the bias and load from the valve’s measured curve, then keep the input and output leads short and
+separated; for plastic nature will execute the unintended coupling as regularly as the intended
+amplification, and an omitted capacitance is chiefly omitted from our account of the work. We shall
+include the valve and its wiring in the same reckoning, following gain through the load until the next
+stage receives the signal we intended to give it.
+
+Claims
+In a triode, the grid controls the current between cathode and plate, and the gain follows from
+transconductance, plate resistance, bias and load. The following relations connect those properties to the
+amplification we require.
+
+Proof and worked calculation
+  Av ≈ −gm (rp ∥ RL)
+With gm = 1 mS, rp = 20 kΩ and RL = 20 kΩ, the estimated unloaded gain magnitude is ten. A 1 V
+detector signal consequently gives roughly 10 V before loading and the available voltage swing impose
+their limits.
+  Bpole ≈ 1/(2π Rout Ctotal)
+
+For Rout = 10 kΩ and effective capacitance of 100 pF, the pole is 159 kHz; at 1 nF it falls to 15.9 kHz.
+Include grid to plate feedback capacitance and the Miller effect, for the wiring has its own capacitance
+whether or not we have been considerate enough to draw it.
+The last point deserves a moment, since a circuit diagram can encourage an unfortunate confidence that
+only the components represented by respectable symbols possess electrical properties. Two nearby
+conductors will store charge whether we have labelled them a capacitor or merely called them untidy
+wiring. At low frequency we may get away with neglecting the distinction; as the signal changes faster,
+the same overlooked capacitance takes an increasing share of the current. The diagram consequently
+returns us to the physical bench, where short leads and deliberate spacing do some of the work we might
+otherwise have tried to obtain by adding another valve.
+A capacitor charged by approximately constant current follows dV/dt = I/C. Raising it by 100 V in 2.125
+ms with C = 10 nF requires 0.471 mA. A valve switch discharges it during return, and a sync pulse sets
+the reset. For magnetic scanning, the output stage converts this timing into the required current ramp
+through the coil.
+
+Fabrication and acceptance
+Measure each valve transfer curve before selecting the resistors. Build the sync separator, horizontal
+oscillator, frame oscillator, blanking path and output stages separately, bringing them together once each
+performs its assigned function.
+
+
+11 Capacitors resistors and insulation
+
+Idea
+The capacitors, resistors and insulation come next, all of them made as separate parts from conductors and
+suitable insulating materials. Their appearance is simple enough; the labour becomes more apparent when
+we count how many layers and turns the finished instrument requires.
+Separate the leaves with clean, dry mineral insulation and count the active overlap through the whole
+stack, allowing plastic nature no easier conducting path along a damp edge than the one our circuit
+provides; for the distinction we have drawn between a capacitor and a short circuit requires a material
+expression, and dampness is quite capable of revising it. Area gives the capacitance, while the prepared
+surfaces and clearances determine whether it remains useful at its working voltage.
+
+Claims
+A small tuning capacitor and a large smoothing capacitor place quite different demands upon the
+workshop. In either case, examine the glass or mineral insulation for leakage, breakdown and loss under
+the conditions in which it will operate.
+
+Proof and worked calculation
+  C = ε₀ εr A/d; R = ρl/Awire
+An air capacitor with 0.01 m² total overlap and 0.5 mm spacing gives 177 pF. Add gaps in parallel to
+increase capacitance, counting the active overlap across all of them; the footprint of the stack tells us how
+much bench space it occupies, while the summed overlap tells us its capacitance.
+
+For a dielectric of εr = 6 and thickness 50 µm, a 20 µF capacitor requires 18.8 m² of total overlap. At 0.05
+m² per gap, that is about 377 gaps, which explains why this seemingly modest component may occupy
+rather more of the workman's afternoon than the tuner.
+We have arrived at an excellent example of how a perfectly ordinary equation can conceal a thoroughly
+unreasonable afternoon. Twenty microfarads occupies very little space in a sentence. Eighteen point eight
+square metres of carefully separated conducting surface occupies considerably more space in a workshop,
+particularly when somebody must prepare the layers, keep them clean and assemble them without
+introducing a short circuit somewhere near the middle. The arithmetic has not made the component
+mysterious; it has made its labour visible. Keep that labour in mind when we reach rectification and
+filtering, since a different supply arrangement may spare the glass and leaf workers a substantial part of it.
+Across a 0.5 mm air space, 1 kV gives an average field of 2 MV/m. Round the edges, increase clearances
+and test the insulation with humidity, dust and surface tracking in mind, since these determine where the
+actual discharge begins.
+
+Fabrication and acceptance
+Keep the parts inside the vacuum inorganic and low outgassing, using the external fibre or resin insulation
+only where its own tests permit. Choose resistor materials by their resistance and temperature behaviour,
+and mount them to dispose of the heat produced at the operating point.
+
+
+12 Generator rectifier and supply smoothing
+
+Idea
+The motion of our feet must become heater power and electrode voltage. We shall obtain those supplies
+from the generator, then rectify and smooth the branches which require a steady polarity.
+Wind trial coils before committing the full supply to copper, measuring the field and loaded voltage of the
+assembled generator; for nature’s orderly agency will answer the actual flux and speed, leaving the
+impressive number of turns in our notebook to explain only what we expected. Then rectify and smooth
+the required branches, carrying their losses into the load at the treadles and their ripple into the conditions
+under which the cathodes must remain hot.
+
+Claims
+The generator develops voltage as magnetic flux changes through its windings. Its iron circuit, insulation
+and losses belong in the calculation with the turns and speed, as do those of any transformer used in the
+supply. [P1–P2]
+
+Proof and worked calculation
+   E = −N dΦ/dt; Esine,rms ≈ 4.44 fN Bmax Acore
+At 50 Hz, Bmax = 0.8 T and core area 2 cm², a 100 V winding requires about 2815 turns; a 1 kV winding
+under the same conditions requires about 28150. Use the measured field of the assembled magnetic circuit
+when setting the winding, and laminate the core or adopt another low loss geometry. The 0.8 T value
+belongs to this calculation of the core flux.
+Copper has now become a question of patience. The voltage rises with the number of turns, but every
+additional turn must exist outside the equation as an actual length of wire, placed beside other lengths
+from which it must remain insulated. A large number is consequently a manufacturing instruction
+
+delivered in an unusually economical form. The magnetic circuit deserves attention for the same reason:
+improving its usable flux can reduce the winding demanded of us. We shall therefore settle the assembled
+field and the speed before committing anyone to the full winding, lest the arithmetic become a
+retrospective explanation of why the bench is covered in copper.
+After rectification, the smoothing capacitor supplies current between charging peaks. Neglecting diode
+conduction details and source impedance, ripple is approximately ΔV ≈ I/(fripple C). Full wave
+rectification of 50 Hz gives 100 Hz ripple:
+   C = I/(fripple ΔV) = 0.010/(100 × 5) = 20 µF
+This supplies a 100 V, 10 mA rail with about 5 V ripple. Half wave operation requires twice the
+capacitance for the same ripple, giving us another reason to consider the extra rectifier work. For the 100
+µA beam rail, allowing 20 V ripple at 100 Hz gives 50 nF; add bleeder and divider currents before
+choosing its final value.
+   Estored = CV²/2
+The 20 µF capacitor stores 0.10 J at 100 V, while the 50 nF capacitor stores 0.025 J at 1 kV. Add the
+energy in the other capacitors and windings, fit controlled discharge paths, and enclose the high voltage
+connections. Our feet supply the energy, but the resulting voltage deserves the same treatment as any
+other high voltage supply.
+
+Fabrication and acceptance
+Record open circuit and loaded voltage, frequency, winding temperature, diode drop and ripple. Choke
+filtering or additional phases may reduce capacitor labour at an acceptable cost in copper and iron.
+Regulate the heaters separately enough that a change in pedal speed does not make the cathode, and
+consequently the picture, brighten and dim with every stroke.
+This returns us to the great smoothing capacitor of the preceding section. Its hundreds of gaps were a
+consequence of the current it had to supply between charging peaks; change the spacing of those peaks or
+insert a useful choke, and its assignment changes. The supply is therefore worth considering as a whole
+before we distribute its labour among the several craftsmen. Our final objective remains steady heater
+temperature and electrode voltage, so that the picture follows the recording rather than providing an
+illustrated account of how vigorously we happen to be pressing the pedals.
+
+
+13 Press and release foot treadles
+
+Idea
+The power comes from two footboards pressed downward and released, each pulling a strap around a
+drum through its own ratchet or one way clutch. While a board returns, its drive overruns and the
+flywheel continues turning. We have thus the press and release motion intended from the beginning.
+Fit the two boards for a downward press and a free return, then seat the operator where his legs can make
+the stated travel without disputing the furniture; for the same nature whose formative work we employ in
+the glass has supplied the body with conditions of its own, which practical judgment ought consult before
+appointing it the power station. The lever trades travel for strap force, and the pawl carries that force into
+the common shaft while the other foot returns.
+
+Claims
+The operator supplies the work; the levers determine how force and travel exchange, while the springs
+return the boards and the flywheel carries the shaft through the pauses. The action resembles a treadle
+lathe, and we shall dimension the mechanism below around that movement.
+The distinction matters because the footboard is only the place where work enters the machine. We may
+arrange levers to make the strap pull harder, but the strap then travels less; we may let the flywheel carry
+us through a pause, but it does so with energy given to it earlier. Such arrangements are useful precisely
+because our legs provide an intermittent motion and the reader prefers continuous rotation. We are
+translating one pattern of effort into another. By following that translation through the lever, strap and
+ratchet, we can give the operator the downward press and release intended here while still supplying a
+turning shaft to the generator.
+
+Proof and worked calculation
+Make each footboard about 300 mm long and 120 mm wide, placing it on a longer wooden rocker with
+foot contact 450 mm from the pivot and strap connection 100 mm from it. An adjustable stop allows 200
+mm foot travel. Use forged iron pivots and pawls, bronze bearing surfaces and leather straps, returning
+each rocker with a light spring or counterweight.
+  Lever ratio ≈ 450/100 = 4.5; strap travel ≈ 200/4.5 = 44.4 mm
+  Wstroke = ∫F ds ≈ Faverage s; Pfoot = Faverage s ftotal
+Count the downward strokes which actually supply power: one per second from each alternating foot
+gives two strokes per second altogether. With 250 N average force and 200 mm travel, each stroke
+supplies 50 J and the pair gives 100 W; at 500 N, the pair gives 200 W. The ideal strap forces are
+respectively 1125 N and 2250 N, with linkage friction adding to the force required at the foot.
+A 200 N/m spring acting through 200 mm reaches 40 N restoring force and stores 4 J from the preceding
+stroke. Set its linkage to return the board gently, since persuading the operator to lift his foot is easier if
+the machine refrains from striking it.
+The spring has a small but honourable office in this arrangement. Without it, the operator must lift the
+board as well as press it, which soon makes a supposedly agreeable seated occupation into a dispute with
+the furniture. Giving the return to a spring makes the movement repeatable, though the energy placed in
+that spring still came from the preceding stroke. We have now followed the mechanism around its
+complete cycle and returned to the foot: its travel and average force must supply the work, while the
+linkage makes that work convenient to deliver.
+
+Fabrication and adjustment
+Fit independent pawls so either foot may drive the flywheel, and guard the teeth, straps and wheel. Set the
+seat and stroke stops before applying electrical load. Section 22 gives the final force and cadence: the
+movement is press and release, with the longer travel required to supply the calculated work.
+
+
+14 Tape playback mode and deliberately coarse picture
+
+Idea
+We shall now give the set an ordinary prerecorded VHS tape and recover its picture directly into the CRT
+brightness control. The cassette supplies the programme, and our reader supplies the means of retrieving
+it.
+Set the reader for the recording it receives and let recovered synchronization govern the display, retaining
+the coarse spot which our small screen requires; for nature’s mechanical skill makes no exception for a
+cassette merely because it contains a familiar programme, and the head must still meet the inscription in
+its proper order. We may dispense with colour and automatic loading while preserving the timing and
+track geometry through which the picture is recovered.
+
+Claims
+Begin with NTSC VHS recorded at SP speed and carrying normal linear audio. The cassette brings the
+recording geometry and scan pattern with it, so the reader and display follow those values together. This
+gives us playback without a broadcasting station. [R1 R2]
+The cassette is an especially opinionated guest. It arrives containing a programme, but it also arrives with
+decisions already made about the speed, track pattern and timing by which that programme can be
+recovered. Our freedom lies in constructing a reader which follows those decisions and omitting the
+conveniences we do not require. We need no motorized invitation for the cassette to enter, no colour
+picture and no elaborate concealment of every blemish. We do, however, need to pass the heads over the
+recording in the proper manner. The useful economy therefore comes from understanding which functions
+recover the programme and which merely make its recovery more agreeable.
+
+Proof and worked calculation
+
+Quantity                                       Playback value
+
+Tape width                                     12.65 mm
+
+SP tape speed                                  33.35 mm/s
+
+Nominal scanner diameter                       62 mm
+
+Scanner speed                                  1798.20 rpm
+
+Nominal relative head speed                    5.80 m/s
+
+SP track pitch                                 58 µm
+
+Two video head azimuths                        Opposite signs approximately +6° and −6°
+
+Luminance FM endpoints                         3.4 MHz sync tip and 4.4 MHz reference white
+  fframe = 30000/1001 = 29.9700 Hz; ffield = 59.9401 Hz
+  fline = 525 fframe = 15734.266 Hz; Tline = 63.556 µs
+
+Keep the 40 × 30 mm picture and approximately 0.7 mm spot, giving about 57 spot widths horizontally
+and 43 vertically. The beam follows the tape's full raster while neighbouring lines overlap optically. At
+0.4–0.5 MHz picture bandwidth, a 52.7 µs active line carries about 42–53 alternating elements; we obtain
+the intended soft picture directly, without a frame store.
+Here the small picture does us a service. The beam may traverse the full number of recorded lines while
+drawing them so close together that our broad spot overlaps its neighbours; the screen is under no
+obligation to resolve every detail whose timing it follows. A man can walk along every paving stone in a
+road without possessing a separate name for each one, and our beam can follow the raster without
+presenting each line distinctly to the eye. Thus the timing calculation and the earlier spot calculation
+return to the same screen without demanding a sharper gun or an intervening store of complete pictures.
+For playback, set the reader and CRT to the tape timing in the equations above, replacing the initial 32
+line test raster. The change is made in the analogue synchronization and sweep circuits. We shall omit
+colour, recording, automatic loading, dropout concealment and Hi Fi sound, keeping the attachment to the
+functions needed to watch the tape.
+
+Fabrication and adjustment
+Use a known NTSC SP tape with a linear audio track for the first alignment. PAL, LP and EP recordings
+call for their respective speeds or head geometries. We can accept noise, softness and a switching streak in
+the picture while keeping the transport matched to the actual recording.
+
+
+15 Manual cassette loading and tape transport
+
+Idea
+Open the cassette lid and release its reel brakes by hand lever, then draw the tape around the guides and
+rotating scanner. A lever will do this work quite adequately, and has the agreeable property of needing no
+loading motor or control circuit.
+Give the capstan charge of linear speed and let the take-up reel gather what arrives through a slipping
+clutch, since the growing pack changes its circumference throughout the programme; plastic nature will
+apply that change as readily near the end as near the beginning, with no special affection for the setting
+which happened to look correct when the reel was empty. We shall therefore set the clutch and brake
+against tension, leaving the fixed working diameter to govern travel.
+
+Claims
+The capstan sets the tape speed, a slipping clutch gathers the used tape, and a lightly braked supply reel
+prevents slack. These three functions remain distinct even though they occupy the same transport. [R3]
+A reel is a deceptive speed control because its effective circumference changes while we watch. At the
+beginning it gathers tape around a small pack; later it gathers the same length around a larger one, and a
+fixed rotational speed would consequently pull more tape through the machine. The capstan avoids that
+growing circumference by presenting a fixed working diameter. Once it sets the linear motion, the reel
+
+need only gather what arrives, yielding through its clutch as the pack grows. We can now return to our
+three apparently similar rotating parts and give each a different, definite occupation.
+
+Proof and worked calculation
+Give the cassette carrier three seating pads and adjustable side stops, locating the reel spindles from the
+supplied cassette. Arrange the lever to release the brakes before drawing tape out. Use rounded, polished
+bronze or glass guides, and bring the loading arms against screw adjusted stops so the tape height returns
+to the same setting each time.
+  Nominal half wrap length = πD/2 = π × 62/2 = 97.39 mm
+Allow a little more than the half wrap calculated above, giving overlap for the change between heads.
+Guide height and entry angle set the helix. A 58 µm track pitch with 0.5564 mm advance per field agrees
+with a slope near 5.98°; use the format drawing to transfer the actual guide positions. [R2]
+  Advance per field = 33.35/59.9401 = 0.5564 mm
+  nreel = 60 vt/(2πr); take up torque ≈ T r
+
+Tape pack radius                  Reel speed                        Torque at 0.35 N
+
+15 mm                             21.23 rpm                         0.00525 N·m
+
+30 mm                             10.62 rpm                         0.0105 N·m
+
+45 mm                             7.08 rpm                          0.0158 N·m
+Set tension to 0.35 N, within the cited 0.30–0.45 N range, using a weighted arm and an adjustable slipping
+leather clutch. The take up reel must slow as its tape pack grows, which is why its drive slips while the
+capstan continues setting linear speed. Give play and rewind separate clutch settings. [R2]
+
+Fabrication and adjustment
+Align the path with a sacrificial tape, cleaning and dressing the compliant leather pinch surface so it
+leaves no fibres behind. Provide a hand stop, reel brake and limited take up torque. Set the fixed audio
+and control head from the standard tape path, using the specified 79.244 mm audio/control displacement
+along the recording geometry. [R2]
+
+
+16 Shared mechanical scanner and capstan drive
+
+Idea
+Drive the scanner and capstan from a common governed shaft, keeping their mean speeds in the required
+ratio and providing a separate manual adjustment for tracking phase.
+Keep scanner and capstan upon the common governed drive, cutting the ratio before setting the tracking
+phase; for proportion must continue in motion if the head is to remain upon its path, and nature’s
+regularity will make a small disagreement accumulate with admirable patience. Dress the capstan from
+
+measured travel, then adjust phase for the strongest steady signal, returning to the ratio whenever the
+improvement refuses to remain with us.
+
+Claims
+A shared shaft and gearing establish the average relationship mechanically. The adjustment then deals
+with tape slip, recording tolerances and guide errors, rather than requiring separate electronic motors for
+the two motions.
+
+Proof and worked calculation
+Choose a scanner to capstan speed ratio of 17 to 1, and calculate the capstan diameter which belongs to
+that ratio:
+  Dc = 17 vt/(π fframe) = 6.021 mm approximately
+  ncapstan = 1798.20/17 = 105.776 rpm
+  Tape advance per scanner turn = πDc/17 = 1.11278 mm
+A 17 tooth scanner gear driving a 289 tooth capstan gear gives the required reduction, or we may divide it
+among smaller gear pairs. The integer ratio is convenient to preserve. Dress the capstan accurately: at
+about 3.01 mm radius, a 5 µm radius error changes speed by 0.166 percent.
+A relative feed error of 0.1 percent accumulates 33.35 µm/s along the tape, projecting to about 3.49 µm/s
+across the track at 6°. Fit a fine phase differential or controllable clutch in the capstan branch, adjusting
+for the strongest RF envelope and least noise. If the optimum keeps drifting, correct the feed ratio or
+effective diameter as well as the phase.
+Tracking is where a very small error acquires the patience to become a large nuisance. A fraction of a
+percent looks harmless beside the dimensions of the frame, but the frame is not the thing we are
+following; the recorded tracks are narrow, and the error continues accumulating for as long as the tape
+moves. A phase adjustment can place the head upon a track at one instant without correcting the ratio
+which carries it away again. We must therefore return from the immediate improvement on the screen to
+the capstan diameter and feed relationship whenever the improvement refuses to remain with us.
+The governor controls the shared shaft, while recovered tape video supplies line and field synchronization
+to the display. Slow common speed variation therefore changes running time and sound pitch, with a ±1
+percent variation giving roughly ±17 cents. Tracking still requires its own geometrical alignment.
+  Scanner periphery speed = π × 0.062 × 29.970 = 5.838 m/s
+Use 5.80 m/s as the relative head speed in recording wavelength calculations, keeping the peripheral
+figure above as a consistency check. At 31 mm radius, the acceleration is about 112 g; even a 0.10 g
+pickup mounting experiences roughly 0.110 N radial force. Balance the opposed assemblies and enclose
+the scanner.
+
+Fabrication and adjustment
+
+Use adjustable bronze bearing blocks on a rigid frame, with separate fine settings for head height,
+azimuth, protrusion and guide tilt. The operator's controls are speed, tracking, contrast, brightness,
+horizontal hold and vertical hold, all fitted for adjustment by hand.
+
+
+17 Video pickup material pole faces and gap
+
+Idea
+Make two small magnetic cores, each with a narrow nonmagnetic gap and a copper winding, and mount
+them on opposite sides of the scanner. These heads recover the magnetic recording as they pass across the
+tape.
+Select the thin gold leaf and lap the pole faces before clamping the gap, keeping dust and folds from the
+working throat; for the ancient beater’s art has given us a useful thickness, while nature’s mechanical skill
+will determine the response of the actual separation we assemble. We shall therefore weigh for the mean,
+inspect the local patch and compare the finished pickups upon the same tape, following the minute gap
+into its considerable consequence upon the screen.
+
+Claims
+The pickup asks for our finest work. Measured Hellenistic and Roman gold leaves range from 0.16 to
+0.71 µm, bringing an ancient metalworking craft into the thickness range required for the spacer. We shall
+select the leaf, polish the pole faces and clamp the assembly so that this thickness becomes the working
+gap. [R4]
+Gold leaf might appear an extravagant material to introduce into a contrivance whose chief virtues include
+ugliness and inconvenience, but its office here is modest in area and exacting in thickness. The ancient
+craft gives us a sheet at a scale which would be laborious to approach by filing a spacer from ordinary
+stock. We borrow that achievement and give it a new occupation between the pole faces. The sheet still
+has to lie flat and remain free of folds where the gap matters, so the journey from gilded ornament to
+magnetic pickup ends at the lapping bench, where a magnificent piece of metal is valued chiefly for how
+little of it separates two other pieces.
+
+Proof and worked calculation
+  Recorded wavelength λ = vrelative/f
+  λ at 3.4 MHz = 1.706 µm; λ at 4.4 MHz = 1.318 µm
+  Gap response Gg = |sin(πg/λ)/(πg/λ)|
+
+Gap length                         Loss at 4.4 MHz                    Loss at 7 MHz
+
+0.20 µm                            0.33 dB                            0.85 dB
+
+0.30 µm                            0.75 dB                            1.96 dB
+
+0.50 µm                            2.16 dB                            6.02 dB
+
+0.71 µm                            4.63 dB                           15.84 dB
+Select leaf near 0.20–0.30 µm. At gold density of about 19.3 g/cm³, a leaf 100 × 100 mm and 0.30 µm
+thick weighs 57.9 mg. Batch mass divided by density and area gives its mean thickness; inspect the
+working region with a simple lens microscope for folds and wrinkles, and compare the pole faces against
+an optical flat.
+Weighing the leaf brings the seemingly inaccessible thickness back to quantities which can be handled in
+bulk. A broad area and the mass of several leaves give a mean thickness without asking a ruler to
+distinguish a fraction of a micrometre. The local working gap still depends upon the patch actually caught
+between the faces, which is why inspection and careful assembly accompany the weighing. Thus the
+balance answers one question, the polished faces answer another, and together they return us to the small
+region across which the recorded field must pass.
+  Mean leaf thickness = mass/(density × area)
+Make the manganese–zinc ferrite core from iron, manganese and zinc compounds, extending the oxide
+and furnace work already required. A published material route uses mixed hydroxide oxidation at 70–90
+°C, washing, forming and controlled atmosphere sintering at 750–1250 °C. Composition, grain size and
+porosity determine its properties, so select the finished material by those results. [R5]
+Lap both mating faces on a flat plate with progressively finer mineral abrasives and a final polish. Place
+the selected gold leaf between them, clamping from behind and bonding outside the active throat. Keep
+resin off the sliding face and adhesive out of the gap; a folded leaf doubles the separation we have worked
+to obtain. The gold sets the spacing, while the ferrite carries the magnetic flux.
+  Spacing loss in dB = 54.58 d/λ
+At 4.4 MHz, a mere 0.10 µm of tape to head separation costs about 4.14 dB, rising to 20.7 dB at 0.50 µm.
+Clean, polished contact therefore deserves our attention before finer picture detail. The gap and spacing
+equations give these losses according to the ideal magnetic recording model. [R6]
+
+Fabrication and adjustment
+Cut the pole width near the 58 µm SP track width, setting the two gap azimuths to opposite signs near 6°.
+Give each narrow pole a larger magnetic return body behind it. Make several specimens and select a
+matched pair, carrying the furnace work, leaf selection and lapping through in the workshop.
+
+
+18 Head winding and valve amplification
+
+Idea
+Bring each pickup through short, low capacitance wiring to its valve amplifier, then limit the amplified
+carrier before recovering the picture.
+Bring the head signal into its first valve by the shortest practicable path, then build the shared chain in
+screened sections; for plastic nature will carry a coupling back toward the input with the same regularity
+with which it carries our intended signal forward. Establish each stage’s stable gain before multiplying it,
+
+so the eventual large voltage retains an intelligible relation to the small recording which first entered the
+winding.
+
+
+Claims
+The head amplifier passes the magnetic carrier at MHz frequencies, even though we retain a coarse
+displayed picture. Screened valves reduce the feedback capacitance which would otherwise trouble that
+amplifier, using thermionic construction throughout. [R7]
+
+Proof and worked calculation
+For the magnetic circuit, take a pole 58 µm wide by 10 µm deep, gap 0.30 µm, total narrow throat 20 µm,
+and a 1 mm return path of 0.10 mm² area. Using relative permeability 200 as the material design point, we
+obtain:
+  ℜ = g/(µ₀Apole) + lthroat/(µ₀µrApole) + lreturn/(µ₀µrAreturn)
+  ℜ ≈ 5.89 × 10⁸ A/Wb; N = 20 → L ≈ N²/ℜ = 0.679 µH
+With 10 pF total shunt capacitance, the ideal resonance is about 61 MHz, above our carrier band. Core
+loss and leakage reduce the useful response. Twenty turns averaging 1 mm in length, wound in 50 µm
+copper wire, give about 0.17 Ω DC resistance before adding the leads.
+  Vhead,peak = 2πfNΦlinked,peak
+At 3.9 MHz, twenty turns linked by 0.50 pWb give 245 µV peak; reducing linked flux to 0.05 pWb gives
+24.5 µV. We shall carry the smaller value into the amplifier calculation, since it asks more of the gain.
+Give each head its own stationary preamplifier, select between their outputs, and follow the selector with
+nine shared RF stages. Eleven stages are installed, with ten in either active path. For each stage take gm =
+3 mS, effective plate load 1 kΩ and total output capacitance 10 pF, using short leads, screening between
+stages and separate input and output feedthroughs.
+  Astage(f) = −gmR/[1 + j2πfRC]; fp = 15.92 MHz
+  |A10(f)| = 3¹⁰/[1 + (f/fp)²]⁵
+The calculated gain is 47,200 at 3.4 MHz, 40,900 at 4.4 MHz and 24,400 at 7 MHz. Thus 24.5 µV at 4.4
+MHz becomes about 1.00 V before limiting. Stronger inputs deliberately drive the later stages into
+limiting; trim the small signal gain slope with adjustable capacitance and loading.
+RCA's RF valve equations give gm/Ip ≈ 3/(2Veffective), so a 3 mA plate current and 1.5 V effective
+potential correspond to 3 mS in that approximation. Set the grid geometry, current partition and cathode
+emission together, winding the control and screen grids on removable mandrels with mineral supports,
+and using the cathode work from Section 4. [R7]
+
+Fabrication and adjustment
+Use two separate copper slip ring pairs, or adjustable rotary inductive couplers, between the rotating
+heads and stationary amplifiers. Slip rings are the simpler workshop arrangement; fit fine spring brushes
+and short pickup leads to limit contact noise. After the preamplifiers, a scanner position cam or pickup
+
+controlled valve gate selects the active channel. Set the changeover near the bottom of the raster, where
+we accept the remaining switching streak.
+
+
+19 Simple FM recovery and brightness signal
+
+Idea
+We shall recover brightness by limiting the head signal and counting its frequency variations through
+transferred charge. The counting occurs electrically in capacitors and valves.
+Make the transitions transfer repeatable charges before averaging their recurrence through the load,
+providing limiting and sufficient time for recovery between them; for nature’s own art will count an
+unequal payment as faithfully as an equal one, and a detector which varies charge with amplitude will
+have acquired an opinion about brightness which we did not request. Set the pulse conditions first, then
+follow their mean current into the recovered voltage.
+
+Claims
+Each accepted transition transfers nearly the same charge, making average current follow the transition
+rate. Pulse counting FM detection is an established valve era principle, and the dimensions below apply it
+to the coarse picture required here. [R8]
+
+Proof and worked calculation
+Use the limiter and phase splitter to produce a repeatable bipolar swing, coupling it through small
+capacitors into full wave vacuum diode steering. One polarity charges a coupling capacitor and the next
+restores it by the opposite path, with both transitions contributing to the same output polarity. Reset the
+charge between transitions so successive transfers remain equal.
+  q = Cp ΔV; Iaverage = 2qf; Vaverage = 2qfRL
+With effective Cp = 5 pF and a 5 V transition, each transfer is 25 pC. A 2 kΩ load gives sensitivity of 0.10
+µV/Hz, producing 0.340–0.440 V across the 3.4–4.4 MHz reference span. Subtract the sync tip reference,
+then amplify the remaining 0.100 V span by ten for the nominal 1 V brightness and synchronization
+waveform.
+Begin with 330 Ω in the coupling path, giving CpR = 1.65 ns against a 114 ns half cycle at 4.4 MHz. Add
+valve transition and diode conduction time. Transferring 25 pC in 20 ns requires about 1.25 mA at that
+instant, so give the steering diodes the emitting area and close spacing to carry the pulse.
+Follow the detector with three buffered RC low pass sections, each of 2 kΩ and 100 pF total capacitance.
+Their individual poles are 796 kHz and their combined −3 dB bandwidth is about 406 kHz. At 6.8 MHz,
+the ideal attenuation is about 56 dB. We surrender picture detail in exchange for suppressing carrier
+ripple, isolating the sections with valve followers.
+  B3 = fp √(2^(1/3) − 1) = 0.406 MHz
+The recording emphasizes luminance before FM modulation, so add an adjustable RC de-emphasis shelf
+between recovery and the final brightness amplifier. Begin with 1 kΩ in series and a branch of 2 kΩ in
+
+series with 160 pF to ground. Low frequency gain approaches one and high frequency gain 2/3, with a
+pole near 332 kHz and zero near 497 kHz. The remaining edge brightness and contrast errors belong to
+our accepted soft picture. [R9]
+
+Fabrication and adjustment
+Set limiter swing and charge transfer with an RF oscillator at the two reference frequencies, including
+stray capacitance in the effective 5 pF. Adjust output offset, contrast and the shelf using broad black, grey
+and white areas. Take synchronization from a separate branch before the shelf, so turning the contrast
+control does not also move the scan trigger threshold.
+
+
+20 Native timing scan and magnetic drive
+
+Idea
+Recover synchronization from the tape and use it to trigger the scan generators, retaining magnetic
+deflection as the principal arrangement.
+Take the sync tips from recovered video and set the line oscillator to answer them, then integrate the field
+indications and provide blanking during return; for the ordering activity of nature continues through the
+circuit’s actual thresholds and delays, and a nominal frequency upon paper will not keep the picture from
+pursuing a private chronology. We shall establish the two locks separately before restoring sufficient
+brightness to judge the image.
+
+Claims
+The scan rate now follows the tape, while screen size and spot remain unchanged. Recovered
+synchronization follows slow changes in playback speed through the valve timing circuits.
+
+Proof and worked calculation
+A biased valve separator passes the negative sync tips. Line pulses trigger the horizontal branch, while the
+vertical branch integrates the pulse group to trigger the field ramp. Bring the free running oscillators near
+their locking points with the hold controls, and blank the beam on its return.
+  Horizontal period = 63.556 µs; field period = 16.683 ms
+Take 52.7 µs for the active line and 10.9 µs for return. Retaining the Section 7 coil value of 83.8 µH and
+current swing from −0.170 to +0.170 A gives:
+  Vinductive,active = L ΔI/Δt = 0.541 V
+  Vinductive,return ≈ 2.61 V
+For a 2 Ω coil, add 0.340 V at the current extremes to the inductive terms. Use a low impedance output or
+transformer, laminating the iron return or choosing an air core if iron heating becomes excessive. Adjust
+winding and load together from the field deflection obtained for the supplied current.
+
+A symmetric sawtooth between ±0.170 A has rms current of 0.0982 A, giving about 0.0193 W in a 2 Ω
+winding. Retrace, magnetic loss and output valve power add to this copper loss, making output stage
+efficiency the larger concern.
+The electrostatic arrangement of Section 8 remains an alternative. At 133 V peak to peak and 20 pF,
+horizontal return current is about 244 µA. For magnetic vertical deflection, use an edge current near
+0.1275 A for the 30 mm picture height in the same geometry; its active ramp lasts roughly 16 ms.
+At 0.406 MHz picture bandwidth, approximate rise time is 0.862 µs. A 30 V grid transition into 20 pF
+requires about 0.70 mA over that edge. The 52.7 µs active line holds about 43 alternating picture
+elements, agreeing with the 0.7 mm spot across 40 mm.
+
+Fabrication and adjustment
+With brightness low, establish line and field lock first, then centring, amplitude, focus and return
+blanking. Raise contrast afterward. We shall accept slight geometrical distortion, visible line overlap and a
+switching streak at the bottom, keeping the moving image steady and recognizable.
+
+
+21 Normal audio from the stationary tape track
+
+Idea
+The ordinary longitudinal sound track needs a fixed magnetic head, from which we shall feed the horn
+amplifier. It is a considerably less troublesome pickup than the rotating video heads.
+Place the fixed head by the longitudinal recording geometry and bring its output through the audio stages
+to the diaphragm, following the same order from inscription to current and from current to air; nature’s
+mechanical skill supplies each particular translation, while our placement must preserve the
+correspondence between voice and picture. Set the gap and azimuth for clear speech, then attend to speed
+variation before accusing the actor of having acquired an unfamiliar accent.
+
+Claims
+Normal audio gives us sound without additional rotating Hi Fi heads, and its amplifier remains separate
+from the picture FM detector. [R10]
+
+Proof and worked calculation
+  λaudio = vt/faudio; at 5 kHz, λaudio = 6.67 µm
+A 1 µm gap gives about 0.32 dB ideal loss at 5 kHz, substantially easing the head construction. Wind
+more turns on this audio head, add adjustable playback equalization, and begin with a listening band near
+300 Hz to 5 kHz. One normal track supplies mono sound.
+Place the head according to the recorded audio and video relationship. At SP speed, the standard 79.244
+mm displacement represents 2.376 seconds of tape travel, so an arbitrary head position will make the
+sound arrive conspicuously early or late. [R2]
+  0.1 W into 100 Ω → Irms = 31.6 mA; Vrms = 3.16 V
+
+Retain a steady magnetic bias at the membrane actuator, giving an audio force with a term proportional to
+the signal. Use the horn near the listener, accepting hiss, limited bass and modest loudness. Sound pitch
+follows the transport speed.
+
+Fabrication and adjustment
+Check that the cassette has usable linear audio, since this first arrangement reads that track. Keep the head
+and its leads away from the generator and line output wiring, adjusting azimuth for clear treble rather than
+simply the largest low frequency output.
+
+
+22 Combined power flywheel and treadle effort
+
+Idea
+The reader and television must now share the same pair of feet, so we shall total their power before
+settling the flywheel and treadle effort.
+Gather every branch into the electrical allowance and every drive loss into the demand upon the feet,
+since plastic nature grants no exemption from the sum to a component of which its maker has become
+particularly fond. The heaters continue drawing throughout the programme, the reader continues turning
+and the flywheel must have its spent energy restored; we shall therefore return the whole expenditure to
+the stroke, cadence and seat before promising the operator an agreeable evening.
+
+Claims
+Allow 100 W of useful electrical power and another 5 W for transport friction, keeping the complete
+instrument treadle powered in operation.
+
+Proof and worked calculation
+
+Electrical allocation                                           W
+
+CRT heater                                                      2
+
+Reader and display valve heaters                                60
+
+Valve plate and screen supplies                                 18
+
+Audio supply and drive                                          3
+
+Beam at 1 kV and 100 µA                                         0.1
+
+Bias and regulation                                             6
+
+Remaining allowance                                             10.9
+
+Total                                                           100
+
+Of that electrical allowance, 60 W goes to thirty heater units of 2 W each: eleven RF stages, two limiter
+and phase splitter units, four steering diode units, three filter buffers, two video units, four scan units, one
+sync separator, one audio unit and two rectifier units. Count the CRT heater separately. Additional gate or
+regulator valves use the remaining allowance or raise the total; use the fitted heater powers when closing
+the budget, including each heater even where several electrodes share an envelope.
+  Pfoot = (Pelectrical/ηg + Ptransport)/ηdrive
+  With ηg = 0.65 and ηdrive = 0.80: Pfoot = 198.6 W
+
+Electrical load              Foot power                 Force at 0.20 m and 2 total strokes/s
+
+50 W                         102.4 W                    256 N or 57.5 lbf
+
+75 W                         150.5 W                    376 N or 84.6 lbf
+
+100 W                        198.6 W                    496 N or 111.6 lbf
+
+150 W                        294.7 W                    737 N or 165.6 lbf
+At four total strokes per second, the force per stroke halves for the same 200 mm travel. The 100 W
+electrical case then requires about 248 N, or 55.8 lbf, on each downward stroke, with roughly 199 W of
+sustained work at the feet. Set the seat, travel and cadence together so the operator can apply that effort
+steadily.
+After treadle losses, the shaft must deliver about 158.8 W. Let the flywheel turn at 600 rpm and bridge a
+quarter second pause with only a 1 percent fall in speed:
+  ΔE = Pshaft Δt = 39.7 J
+  J = 2ΔE/[ω²(1 − 0.99²)] = 1.01 kg·m²
+A thin rim of 0.30 m radius therefore weighs about 11.2 kg before adding hub and spokes, storing roughly
+2.0 kJ with a rim speed of 18.85 m/s. It carries the motion through the pauses between strokes, while the
+operator continues supplying average power and the tracking adjustment sets tape alignment. Balance and
+enclose the wheel, providing a controlled stop.
+The coarse flywheel to scanner ratio is 1798.2/600 = 2.997. Gear or belt upward to the scanner, then
+reduce seventeenfold to the matched capstan, using the common governor to hold speed. Set the generator
+branch ratio for its pole count and regulate heater power sufficiently to keep small treadle variations out
+of the emission.
+
+Fabrication and adjustment
+Run the generator against a resistive load first, matching stroke travel and cadence to its demand. Reduce
+heater and regulator losses before asking for greater foot force. The reciprocal boards remain our power
+source through the complete arrangement.
+
+
+Assembly and operating sequence
+
+1. Begin with the glass, vacuum, cathode, phosphor and stationary spot work in Sections 1–6. Establish
+the small green screen before attaching the reader, so any fault has fewer places in which to conceal itself.
+2. Assemble the treadles, guarded flywheel and generator, checking the selected electrical load and the
+available range of speed control.
+3. Fit the cassette carrier, loading guides, reel brakes and slipping take up clutch. Use a sacrificial tape to
+establish the scanner and capstan relationship.
+4. Make a matched pair of video pickups, winding and polishing them before setting their azimuths.
+Connect through the rotating electrical interface and obtain the RF envelope while the transport turns.
+5. Adjust the RF chain, limiter and charge transfer detector against known carrier frequencies, then
+recover broad changes of brightness and synchronization from the tape.
+6. Lock the line and field scans to recovered synchronization, blank the returns and adjust the coarse spot.
+Add the fixed audio head and align sound with picture.
+7. Operate the set with its manual speed, tracking, hold, brightness and contrast controls. Stop before a
+falling flywheel speed damages the tape path, and use the separate clutch setting to rewind.
+We have now brought the treadle drive, display and VHS reader into one arrangement. The picture is soft,
+the controls require a hand, and the sound includes the hiss and speed related pitch changes already
+described, but the cassette supplies the programme and the machine supplies its moving image and sound.
+Material properties, valve characteristics and efficiencies accompany their calculations, and the cassette is
+the sole pre-existing VHS component.
+The several inconveniences have acquired a common purpose. The glass no longer contains air, the heated
+coating supplies electrons, the beam follows the recovered timing, and the same feet which began by
+moving two wooden boards now keep the tape passing the pickup. It would have been difficult to see that
+whole arrangement while considering a single capacitor or a piece of gold leaf, yet those were the places
+where its requirements became concrete. We return at last to the original ambition, which was to insert a
+recorded programme and watch it: the intervening apparatus is the long answer to what that apparently
+simple request asks of the workshop.
+
+
+Additional technical references
+[R1] JVC Video Technical Guide VTG82063 Section 1. Original manufacturer reference for VHS
+recording and playback mechanisms.​
+https://decode-orc.github.io/analogue-video-specifications/vhs/JVC-Video-Technical-Guide-VTG82063/s
+ection-1/
+[R2] SMPTE 32M 2004. Type H VHS tape geometry speeds tension and head displacement.​
+https://decode-orc.github.io/analogue-video-specifications/vhs/SMPTE-32M-2004/markdown/
+[R3] JVC VTG82063 Section 2. Loading guides reels capstan and scanner mechanisms.​
+https://decode-orc.github.io/analogue-video-specifications/vhs/JVC-Video-Technical-Guide-VTG82063/s
+ection-2/
+
+[R4] Fourdrin and colleagues. Characterization of gold leaves on Greek terracotta figurines A PIXE RBS
+study. Microchemical Journal 126 2016.​
+https://doi.org/10.1016/j.microc.2015.12.030
+[R5] EP0541156B1. Magnetic head having a core portion of polycrystalline MnZn ferroferrite. The
+chemistry and ceramic route are material precedents; modern factory apparatus is not imported.​
+https://patents.google.com/patent/EP0541156B1/en
+[R6] NPTEL Magnetic Recording Module 3 Lecture 19. Ideal magnetic recording gap and spacing loss
+models.​
+https://archive.nptel.ac.in/content/storage2/courses/115103038/module3/lec19/1.html
+[R7] RCA Vacuum Tube Design 1940 Lecture 21 pages 203–205. RF valve geometry transconductance
+current partition and capacitance.​
+https://njarc.org/document_library/manuals/RCA%20Tube%20Manuals/RCA-Vacuum%20Tube%20Desi
+gn-1940.pdf
+[R8] The Gated Beam Valve. Contemporary valve-era article describing pulse-counting FM principles.
+The specific low-resolution charge-transfer circuit here is a proposed adaptation.​
+https://www.r-type.org/articles/art-152.htm
+[R9] JVC VTG82063 Section 3. Luminance FM recovery limiting and emphasis functions.​
+https://decode-orc.github.io/analogue-video-specifications/vhs/JVC-Video-Technical-Guide-VTG82063/s
+ection-3/
+[R10] JVC VTG82063 Section 7. Normal and Hi Fi sound paths.​
+https://decode-orc.github.io/analogue-video-specifications/vhs/JVC-Video-Technical-Guide-VTG82063/s
+ection-7/
+
+
+Sources and evidence boundaries
+The references below supply the material accounts and mechanisms used in the construction, while the
+calculations give the workshop dimensions and operating requirements. I have kept them beside the
+relevant parts so the reader may move from an instruction to its source without searching the whole
+document.
+[H1] The Metropolitan Museum of Art. Glass cup Roman Early Imperial Julio Claudian first century AD.
+Collection 249488. Direct surviving glassworking evidence.​
+https://www.metmuseum.org/art/collection/search/249488
+[H2] Hero of Alexandria. Pneumatics. Greenwood translation edited by Woodcroft 1851. Piston valves
+pressure vessels and pneumatic mechanisms. The old edition’s disputed dating commentary is not
+adopted.​
+https://www.gutenberg.org/files/77400/77400-h/77400-h.htm
+[V1] Hermann Sprengel. Researches on the vacuum. Journal of the Chemical Society 18 1865 pages
+9–21.​
+https://doi.org/10.1039/JS8651800009
+
+[V2] NIST Chemistry WebBook. Mercury Antoine coefficients from Hicks 1963 over 298.14–749.99 K.
+Calculated here at 298.15 K only.​
+https://webbook.nist.gov/cgi/cbook.cgi?ID=C7439976&Mask=4&Plot=on&Type=ANTOINE
+[E1] US Particle Accelerator School. Cathode Theory lecture 2012. Thermionic emission and space
+charge foundations.​
+https://uspas.fnal.gov/materials/12UTA/Lecture2.pdf
+[M1] WO1999028409A1. Method of preparing high brightness shorter persistence zinc orthosilicate
+phosphor. Material identity and green cathodoluminescence. Its sol gel process is not adopted.​
+https://patents.google.com/patent/WO1999028409A1/en
+[M2] US20070001580A1. Manganese activated zinc silicate phosphor and image display device.
+Published precursor and firing examples. The modern display manufacturing process is excluded.​
+https://patents.google.com/patent/US20070001580A1/en
+[P1] MIT OpenCourseWare. Physics II Electricity and Magnetism 2007 Chapter 10. Faraday induction
+generators and energy relationships.​
+https://ocw.mit.edu/courses/8-02-physics-ii-electricity-and-magnetism-spring-2007/resources/cha10farada
+y_law/
+[P2] MIT OpenCourseWare. Physics II Electricity and Magnetism 2004 lecture notes. Capacitance
+induction resonance and circuit foundations.​
+https://ocw.mit.edu/courses/8-022-physics-ii-electricity-and-magnetism-fall-2004/pages/lecture-notes/
+
+
+23 Ancient materials mechanisms and theoretical foundations
+
+Construction premise
+The builder receives the design, dimensions and operating principles given here, and carries them out with
+materials and workshop methods obtainable in the Roman world. We shall therefore look at the crafts,
+mechanisms and broad physical observations already present, then follow their application through the
+television and reader.
+We shall take the ancient crafts at their actual offices, using the glassworker’s vessel, the smith’s pivot and
+the beater’s leaf where the construction calls for them; for plastic nature was no less industrious in the
+Roman workshop than in our own, and the supplied design must employ the materials before the
+craftsman with their several powers intact. Follow the accounts into the particular operations below,
+where the knowledge of the instrument receives its expression in hands, furnace and tool.
+
+Glass vessels and metal leaf
+Pliny describes remelting, blowing, turning and transparent colourless glass in Natural History
+36.192–198. Those crafts serve our envelope, neck, exhaust tubing and insulating supports; the surviving
+vessel cited as H1 puts an archaeological example beside the written account. [A1 H1]
+Gold beating appears in Natural History 33.61–62, and the measured Hellenistic and Roman leaves in R4
+give us the thickness range used for the spacer. The head construction sections then set out the flatness,
+local thickness and assembly which turn that leaf into a controlled gap. [A5 R4]
+
+This is the sort of connection which rewards looking closely at an old craft before dismissing it as merely
+decorative. The craftsman was beating gold for an object with no magnetic recording in its future, but the
+resulting leaf has a physical thickness independent of what he intended to do with it. Our design finds a
+use for that property. Following the evidence through the measured material therefore brings us back to
+the head spacer with something more concrete than an assurance that ancient people were clever: it gives
+the particular scale of sheet upon which the assembly depends.
+
+Gears levers pistons and valves
+Vitruvius gives us geared milling in On Architecture 10.5, the brass pump of Ctesibius with alternating
+smooth pistons and nonreturn valves in 10.7, and the hydraulic organ with its levers and leather covered
+moving parts in 10.8. Here are the relevant transmission, bearing, linkage and valve crafts, which our two
+downward acting treadles apply to the required power. [A2]
+
+Pressure evacuation and electrical observations
+Hero's Pneumatics treats trapped air, suction and artificially produced partial evacuation, giving the
+pressure difference and removal of air their ancient mechanical foundation. We have already put
+dimensions, pumping rate and operating pressure to that work in the vacuum sections. [A3]
+Pliny also records rubbed amber attracting light material, comparing it with the magnet's attraction of iron
+in Natural History 37.48. Electrical attraction and magnetism were thus observable phenomena in the
+ancient world. The builder receives the induction, emission and amplifier relations in this design and
+follows their application to the parts. [A4]
+There is a considerable pleasure in finding the familiar observations at the beginning of such an
+unfamiliar machine. Amber attracts light objects; a magnet attracts iron; a pressure vessel moves a piston;
+a lever carries motion to another place. The television collects different applications of these physical
+relationships into one instrument, and the design supplies the intervening knowledge by which the crafts
+are assigned their new work. We return to the ancient workshop with those assignments in hand, asking
+what it must shape, heat, polish, wind and join, since that is where the supplied knowledge becomes a
+material object.
+
+Application to the complete machine
+The prerecorded VHS cassette brings the programme and the recording geometry set out in the format
+references. We construct the reader, CRT and treadle drive from the materials and processes in their
+respective sections, using the numbered drawings for the assemblies and the calculations for loads,
+timing, tolerances and material performance. [R1 R2]
+
+
+24 Glass body gun assembly and screen
+
+Figure 1. Parts 101–105 place the heater, cathode, control electrode, anode and screen in their working
+order. Use Sections 1 and 7 for the face and coil dimensions.
+
+Construction
+1. Blow several plain bodies from the same glass batch before making the working bulb, giving each a
+rounded body and face approximately 2 in across (50 mm), a neck long enough for the gun, and an
+exhaust sidearm. Anneal them gradually and reject visible stones, cords and cracks. Retain the curved
+face used in the Section 1 shell calculation.
+2. Assemble the iron electrodes on a removable mineral jig, keeping cathode, grid aperture and anode
+concentric. Two separated mica or ceramic frames hold each electrode against rotation. Bring the leads
+out separately, leaving a straight free length near each glass seal to relieve strain.
+3. Fire and grind the phosphor separately, wash out coarse particles, and settle a fine suspension onto the
+inside face. Drain, dry and heat the coating before sealing the gun into the neck. Weigh the deposited
+powder and compare thin and thick screens for light output and detail, since an excessive layer scatters
+light and obscures the picture.
+4. Make the iron to glass seals first on short tubes from the actual glass batch. Evacuate, heat and cool
+them repeatedly, retaining the wire diameter and sealing temperature procedure which give a sound joint.
+The small seal deserves this separate attention because it joins two materials which must remain joined
+while they heat and cool. A handsome large bulb is an expensive place to discover that a lead seal opens
+after the first warmup. Working on short tubes lets us settle the glass batch, wire size and heating
+procedure while the specimens remain simple. Once that joint holds through the required cycle, we can
+carry its method back to the neck and install the electrode assembly without asking every new bulb to
+repeat the entire argument.
+Blow and anneal the trial bodies before assembling the gun, keeping the lead seals under the same heating
+and cooling procedure which the finished neck must endure; for plastic nature will have the whole joint to
+work upon, including the portions whose agreeable appearance has encouraged us to stop looking. We
+
+shall carry a sound sealing method into the complete envelope, then settle the coating and electrode
+positions without making every new bulb repeat the first inquiry.
+  Face load at 50 mm diameter = pπr² ≈ 199 N = 44.7 lbf
+Keep the vessel behind an enclosure during evacuation, with clearance around its face. Support it without
+tightly clamping that face under the calculated implosion load. The completed display remains our small
+green monochrome screen.
+
+
+25 Pump assembly baking and seal off
+
+
+
+
+Figure 2. Join the tube above the falling drop section. The drawing shows the pumping relationship,
+simplifying the mercury return and leaving the trap geometry to the assembly.
+
+Construction and operating order
+1. Mount the glass drop pump and collecting vessel on a rigid stand, giving the fall more than the
+approximately 30 in mercury barometric height. Meter separated drops through a restriction into a narrow
+fall tube, with the gas pockets discharging below the barometric seal. The separated pockets between
+drops are the feature which carries the gas out.
+2. Fit an isolation branch and condensing trap between pump and bulb, keeping mercury in closed vessels
+with contained transfer; never heat an open reservoir. While pumping, bake the glass and electrodes to
+release adsorbed gas, protecting phosphor and cathode from excessive temperature.
+3. Run the heater during late pumping and collect a small anode current, observing the gas released under
+working conditions. Cool and isolate the tube, comparing current and beam behaviour over time.
+Reconnect and repeat until the rapid changes subside, then seal the exhaust sidearm.
+The heater now contributes to the pump's business as well as to the beam's. Surfaces which behaved
+quietly when cold may release gas when the instrument reaches working temperature, so a tube sealed
+immediately after a cold evacuation would reserve part of its trouble for the first evening's viewing.
+Running it while still connected allows that released gas to leave by the route already provided. We have
+
+thus come back to the pump after beginning to operate the cathode, because the condition in which the
+tube is used is the condition its evacuation must accommodate.
+Run the heater during the later pumping and observe the gas released while the electrodes approach their
+working condition, since plastic nature continues its operations after the cold vessel has given us a
+satisfactory first impression. Heat, pump, cool and isolate in sequence, returning to evacuation while rapid
+changes remain, so that the condition established before closure corresponds to the condition in which the
+beam will actually be used.
+  V dp/dt = Q − Seff p; p(t) = Q/Seff + (p0 − Q/Seff)e^(−Seff t/V)
+With vessel volume 0.5 L, effective pumping speed 0.01 L/s and gas load 10⁻⁵ Pa L/s, the equation gives
+0.001 Pa limiting pressure and a 50 s time constant. The connecting tube reduces effective speed, and
+mercury vapour contributes its own pressure.
+Set trap temperature and conductance to control the mercury vapour, comparing gas release before and
+after isolation. Adjust the assembly for a steady controllable beam after isolation, using pressure
+measurement where available.
+
+
+26 Treadle frame ratchets and mechanical power
+
+
+
+
+Figure 3. Each board drives the common shaft on its downward stroke and overruns its own pawl while
+returning. The flywheel carries the rotation between strokes.
+
+Build and fit
+Make two stiff wooden rockers, each with a 17.7 in (450 mm) foot arm and 3.94 in (100 mm) strap arm.
+Fit broad footboards, adjustable stops and iron pivots in replaceable bronze bushes, mounting the whole
+upon a braced timber base. Keep the pawl carriers independent so the returning board is not driven
+backward by the other foot.
+Set the independent pawls and strap drums before applying the generator load, then measure how the
+rocker’s actual travel answers the drawn lever ratio; for nature’s mechanical skill will follow the changing
+
+geometry through the stroke, and a convenient small-angle calculation must eventually meet a foot
+moving through its full allowance. Adjust the stops, seat and return together, keeping the shaft free to
+continue while either board rises.
+Fit a leather strap from each rocker to a drum of 10 mm effective radius. Fix the toothed wheel to the
+common shaft, allowing the spring to reset each carrier through an overrunning pawl; add a holding pawl
+if the shaft rolls backward at low speed. Round the strap edges, provide stretch adjustment, and guard
+wheel and pinch points before loading the generator.
+  sstrap ≈ 0.200/4.5 = 0.0444 m; θdrum = sstrap/r = 4.44 rad
+  nshaft ≈ (4.44/2π) × 2 × 60 = 84.9 rpm
+At two total downward strokes per second, increase the resulting shaft speed by about 7.07 to obtain a 600
+rpm flywheel. The governor and flywheel smooth the changing speed within each stroke. Measure the
+actual strap travel and correct drum or belt ratio from that result, using the small angle lever relation as
+the first setting.
+At 500 N average foot force, the ideal strap force is 2250 N and drum torque 22.5 N m. The speed
+increase reduces torque in the same proportion. Set the seat so body weight can assist without locking the
+knees; the combined 100 W electrical arrangement calls for about 200 W at the feet, and a lighter initial
+load makes commissioning easier.
+The seat therefore belongs in the mechanism's dimensions. One may draw a perfectly adequate lever and
+then place a person before it in a posture which makes its use intolerable, an accomplishment common
+enough that it hardly requires our assistance. The operator needs room to make the stated travel and
+transfer force through the footboard repeatedly. Bringing seat, stop and board together returns the power
+equation to the actual motion which supplies it, so that our nominal watts are attached to a workable
+arrangement of legs and timber.
+
+
+27 Flywheel generator and supply construction
+
+Flywheel and drive
+The Section 22 inertia of 1.01 kg m² corresponds to about 11.2 kg in a thin rim of 0.30 m radius. With
+iron density 7800 kg/m³, a rectangular section near 20 × 38 mm gives that mass, before hub and spokes
+add their share. Forge or cast a sound ring, dress it and balance it statically on low friction bearings. If
+joining the rim, calculate the joint for its actual construction as well as the uniform ring stress below.
+Balance the rim and fit its guard before bringing the wheel to speed, then measure how the shaft slows
+between strokes under the intended load; nature’s regular agency will return every interval of expenditure
+as a change in its motion, and our inertia allowance must carry that interval without disturbing the tape.
+Give the ring and joint their calculated section, retaining enough adjustment in the drive to restore the
+required speed under load.
+  v = rω = 18.85 m/s; σring ≈ ρv² = 2.77 MPa
+  E = ½Jω² ≈ 1.99 kJ; ΔE at 1% speed loss = E[1 − (0.99)²] ≈ 39.7 J
+
+At 159 W shaft load, the calculated reserve carries about a quarter second within the allowed speed fall,
+smoothing the gaps between strokes. Guard the full circumference and place the operator outside the
+plane of the wheel.
+The wheel is doing its most useful work during the interval in which the operator appears to be doing
+none. Its speed falls a little, giving up stored energy to the shaft, and rises again when the next stroke
+replaces that energy. A television coupled directly to every hesitation of the foot would make the
+programme's pace an unusually personal matter. Our inertia calculation gives those hesitations somewhere
+to go, within the permitted speed variation, and brings the broad rim back into the same argument as the
+timing of the recording.
+
+Generator manufacture
+Build the generator on its own frame with adjustable bearings, insulated copper coils and an iron magnetic
+circuit. Wind trial coils and measure voltage against turns and speed, using the assembled flux to choose
+the winding. At one quarter of the earlier 0.8 T sizing value, four times the turns or speed produce the
+same ideal voltage.
+  Vrms = 4.44 f N Φmax; Φmax = BA
+At 50 Hz, 2 cm² core area and 0.8 T, a 100 V winding needs about 2815 turns; at 0.2 T it needs about
+11261. More turns mean more resistance, bulk and insulation to make. Keep heater windings separate
+from the high voltage winding and apply a reference load to measure sag and heating.
+
+Supply assembly
+Mount the rectifier valves, chokes and capacitors on dry mineral supports inside an enclosure, fitting
+discharge resistors and a mechanical disconnect. Bring up the heaters first, then low plate voltage, and
+finally CRT acceleration. Size the branches from their fitted currents, remembering that the beam uses
+only 0.1 W while the heaters and amplifiers account for most of the work at the feet.
+
+
+28 Scanner gearing cassette carrier and capstan
+
+Figure 4. The two gear meshes give a 17 to 1 reduction. The middle wheels share a rigid intermediate
+shaft and are separated in the view to show their relationship.
+
+Make the transport
+Seat the cassette on three pads with adjustable stops taken from its shell, and make hand levers for lid and
+brakes. Before installing heads, take a sacrificial tape slowly around the path. Round and polish the
+guides, giving the tape edge a fixed flange which locates it without scraping.
+Cut the ratio into the wheels and align their shafts before setting the capstan’s effective diameter,
+following the tape over many turns so the repeated error becomes large enough to measure; for plastic
+nature will repeat a small departure with excellent fidelity, which we may employ at the bench before
+allowing it to disturb the programme. Correct the mean travel first, then use the phase adjustment to place
+the head upon the recorded path.
+Make the 62 mm scanner with replaceable bronze bearings and two opposed head pockets, finishing
+bearing bores and drum in the same mounting to reduce eccentricity. Start by turning it by hand, balancing
+equal temporary head masses before raising speed. Give the pockets radial and angular settings which
+lock without twisting the heads.
+Cut wheels of 17, 51, 15 and 85 teeth. At a common 2 mm module, their pitch diameters are 34, 102, 30
+and 170 mm, with paired centre distances of 68 and 100 mm. Put the 51 and 15 tooth wheels on the
+common intermediate shaft, dressing teeth and aligning shafts before connecting the tape drive. Backlash
+changes local phase, while the mean integer ratio remains fixed.
+  ncapstan = nscanner(17/51)(15/85) = nscanner/17
+Dress the capstan near 6.021 mm diameter, then set its effective diameter from measured tape travel per
+scanner turn. Seventeen capstan turns must advance the same length as 289 scanner turns. Use a longer
+run to reduce ruler error, setting coarsely with a nonstretch paper strip and finally with tape under working
+tension.
+
+A longer measurement is useful here because the workshop can accumulate a small length into a large one
+more easily than it can read the small length directly. The diameter error repeats with every turn, and over
+enough turns its effect becomes visible against an ordinary scale. We use that repetition on our behalf
+when setting the feed, then take it seriously when considering tracking: the same accumulation which
+makes the error measurable would otherwise carry the pickup away from the recorded path.
+Fit a friction clutch or differential to shift scanner phase relative to the tape, locking it for play, and add a
+separate small speed adjustment. This phase control is our manual tracking control. If the picture
+continues wandering, correct the capstan ratio or guide height which is causing the drift.
+
+
+29 Tape loading guides and tension adjustment
+
+
+
+
+Figure 5. Entry and exit guides establish the helical wrap around the scanner, followed by the fixed
+longitudinal audio head. The drawing sets out those tape path relationships.
+
+Workshop procedure
+1. Seat the cassette and engage its reels before drawing out tape. Release the brakes and pull the tape into
+the guides by hand, marking both loading stop positions. Use screws and locknuts for adjustment so each
+setting may be repeated.
+2. Set a little more than the 97.39 mm half circumference around the scanner, allowing the switching
+overlap. Transfer entry and exit heights from the standard helical path, using the SMPTE dimensions cited
+as R2 for guide, track and head positions. The 5.98° slope provides the accompanying consistency check.
+3. Bring a lightly loaded pinch roller against the capstan, cleaning and dressing the leather contact surface.
+Remake any surface which sheds fibres or causes periodic slip, and keep lubricant off every tape contact
+face.
+4. Set approximately 0.35 N tape tension with the Figure 12 weighted arm, checking both ends of a reel.
+The slipping take up drive accommodates the growing pack radius. Provide a hand stop and reel brakes so
+a failed drive cannot pull loose tape into the scanner.
+
+  Longitudinal advance per field = 0.5564 mm; pitch check = 0.5564 sin 5.98° ≈ 0.0580 mm
+The relation above connects speed, track angle and pitch. On first playback, adjust guide height and
+tracking for the largest steady head signal, lock those settings, and then turn to picture brightness and
+focus.
+Bring the guides to repeatable stops and set their heights with tape under working tension, then retain
+those positions through screws and locknuts; for the path’s form must continue as a moving relation, and
+nature’s mechanical skill acts upon the tape actually drawn across the scanner rather than the curve our
+pencil left behind. Inspect contact and edges, adjust tracking for the steady carrier, and only afterward
+return to the brightness of the picture.
+The guides, gearing and tension have occupied separate instructions, but the tape experiences all three at
+once. A guide changes where it meets the head, the feed determines how far it advances, and tension
+changes how it lies against the working surfaces. Brightness cannot correct a failure in that geometry; it
+can only display the resulting signal more emphatically. We return to the tape path before adjusting the
+picture, because a properly recovered carrier gives the later electrical controls something worth adjusting.
+
+
+30 Magnetic head pole faces winding and spacer
+
+
+
+
+Figure 6. The enlarged gap shows how gold leaf separates the lapped pole faces. The two heads occupy
+opposite sides of the scanner with opposite azimuths.
+
+Make and compare head specimens
+Prepare small magnetic ceramic batches from the iron, manganese and zinc oxide chemistry of Section 17
+and R5, recording proportions, firing atmosphere, shrinkage and hardness. Compare their inductance and
+loss in test coils to select the core material; any natural magnetic ore used as a starting material is selected
+by its resulting properties.
+Prepare the oxide batches and compare their fired cores before lapping the selected specimens, controlling
+the atmosphere and shrinkage through which plastic nature brings the material to its working condition.
+
+Then polish the faces upon the same abrasive surface, clamp the clean leaf and finish the sliding face,
+returning at each step to the throat which must receive the recording without sacrificing the tape to our
+enthusiasm for fine workmanship.
+Lap both pole faces on the same fine abrasive surface and clean them before clamping the gold spacer.
+Keep cement, wax and clamps away from the throat. After joining, shape and polish the sliding face so no
+projecting edge scrapes the tape. Cut near 58 µm effective pole width and provide opposite ±6° azimuth
+adjustment.
+Pliny supplies the account of gold beating, and the measured Hellenistic and Roman leaves in R4 supply
+thicknesses at our required scale. Weighing gives the mean thickness, while folds, dust, flatness and
+clamping set the local separation between the finished poles. [A5 R4]
+  taverage = m/(ρA); m = 19300 × 0.01 × 0.3 × 10⁻⁶ = 57.9 mg
+Wind twenty separated turns with short leads. Begin with a wider specimen to establish continuity and
+magnetic response, then reduce gap and pole width. Compare the completed heads on the same tape at the
+same speed before fastening the selected pair permanently into the scanner.
+
+
+31 Head transfer spacing loss and electrical noise
+
+What the gap calculation does establish
+  λ = vrelative/f; Ggap = |sin(πg/λ)/(πg/λ)|
+  Lspacing = 54.58 d/λ dB; Vhead,peak = 2πfNΦpeak
+At 4.4 MHz and 5.8 m/s, the wavelength is 1.318 µm. A 0.30 µm gap loses about 0.75 dB, and 0.10 µm
+separation adds 4.14 dB, giving a combined amplitude factor near 0.57. At 0.50 µm separation, spacing
+loss alone reaches 20.7 dB. The soft picture therefore still requires close, smooth contact where the
+recording enters the head. [R6]
+Follow the carrier through gap and spacing loss before assigning gain to the amplifier, then compare it
+with the first stage’s noise; for nature’s mechanical skill will enlarge both contributions together once they
+have entered the same chain. Improve contact and initial reception where the ratio is being lost, returning
+to the head and its first valve before offering another stage as a universal remedy for a signal which was
+already obscured.
+The broad CRT spot has spared us a demand for fine displayed detail, but the tape has already committed
+its information to these short magnetic wavelengths. We must recover that carrier before deciding how
+much picture detail to preserve. This is why a soft image can still require a very small pickup gap, and
+why a barely visible separation between tape and head can take such a large portion of the signal. The
+wavelength calculation returns us directly to polishing, cleanliness and contact, which now have an
+electrical consequence expressed in decibels.
+With twenty turns, 3.9 MHz and 0.5 pWb already coupled into the core, ideal winding voltage is 245 µV
+peak; at 0.05 pWb it is 24.5 µV. Apply gap and spacing loss either before calculating that linked flux or to
+a voltage calculated before the losses, counting each loss once.
+
+Why voltage gain alone is insufficient
+An amplifier enlarges noise along with signal, so we shall examine the first stage before relying upon the
+gain of the whole chain. For a conservative illustrative calculation, treat 3 mA valve current as
+uncorrelated full shot noise and divide by gm = 3 mS. Space charge suppression, partition effects and
+other contributions enter the actual valve noise.
+  en = √(2qI)/gm = 10.3 nV/√Hz; vn,rms ≈ en √B
+  B = 5 MHz ⇒ vn,rms ≈ 23.1 µV
+The 245 µV peak case is 173 µV rms and gives about 17.5 dB input signal to noise ratio in this model; the
+24.5 µV peak case gives about −2.5 dB. Thus head coupling and first stage noise determine whether the
+carrier stands clear of noise before later amplification and limiting. Set those first, and the subsequent
+stages can perform their proper work.
+There is a temptation, upon finding the first signal disappointing, to prescribe more amplification with the
+confidence of a man ordering another length of rope. Yet the unwanted fluctuations enter the same
+amplifier, and emerge enlarged beside what we wished to recover. The ratio at the beginning consequently
+follows us through the chain. Improving head contact or the first stage can accomplish something which a
+later multiplication of both signal and noise cannot, so the long amplifier brings us back to its smallest
+and earliest input.
+With tape stopped and heater running, measure noise, then compare the carrier during motion using a
+rectifying indicator. Repeat with a substitute electrical input and a shielded head, separating mechanical
+pickup, head loss and amplifier noise through comparisons available to the workshop.
+
+
+32 Valve manufacture and low frequency characterization
+
+
+
+
+Figure 7. Characterize the test triode in this connection before installing it in the amplifier. The drawing
+shows the functional circuit, with heater wiring and meter switching omitted for clarity.
+
+Assembly sequence
+
+Coat the heated iron cathode with the selected calcium compound and mount it in a small pumped bulb.
+Locate a fine control grid between cathode and plate with a removable jig, using mica or fired ceramic
+spacers and iron supports. Make several grid spacings and compare their transconductance.
+Record how this specimen answers grid and plate changes after warmup, keeping temperature and the
+other potential fixed while taking each curve; for the valve exercises its own proper efficacy, and Lady
+Conway’s account of created activity leaves us with every reason to learn the powers of the actual thing
+upon the bench. Carry its transconductance into the bias and load, preserving the observed values beside
+the drawing which identifies the specimen. (Conway, Principles, IX §9.)
+Run the heater while pumping, raising temperature gradually and recording collector current against
+temperature and plate potential. At each useful temperature, vary the grid bias in small steps and record
+plate current, repeating after warmup to find the drift. This gives the characteristic curve with which to
+apply the Section 4 emission calculation.
+  gm ≈ (Ip2 − Ip1)/(Vg2 − Vg1) at fixed plate voltage
+  rp ≈ (Vp2 − Vp1)/(Ip2 − Ip1) at fixed grid voltage
+For example, if plate current rises from 2.7 to 3.3 mA when grid potential rises by 0.20 V, gm is about 3
+mS. Keep the control grid below the point at which it draws appreciable current.
+The curve is the valve's contribution to the design in its own terms. We may have made several bulbs to
+the same drawing, but small changes of spacing and emitting surface can give them different useful
+operating points. Recording those points lets us choose a stage's bias and load from the behaviour of the
+part actually on the bench. The abstract symbol in the circuit now has a particular specimen behind it, and
+we return to the gain calculation with a transconductance belonging to that specimen.
+Separate the short leads and place a metal partition between input and output. Give the screen grid its own
+bias and current allowance, considering grid spacing, wire size and capacitance together as set out in the
+RCA reference. [R7]
+
+
+33 RF wiring selection and stability
+
+Figure 8. Amplify each head separately before selection, keeping the raw pickup signal out of a long
+switching contact path.
+
+Build in sections
+Put the first amplifiers close to the rotary interface, using two slip ring pairs and shielding the sensitive
+wiring from the drive. Set brush pressure for repeatable continuity without excessive vibration. We shall
+use slip rings for this build, with a rotary inductive coupler available as the alternative.
+Place the first stages beside the rotating interface and screen the path against the drive, then establish one
+stable section before extending the chain; for the regular work of plastic nature includes every unintended
+return which our wiring permits. Give input, output and supply their separated paths, and let the actual
+carrier disclose which head or contact requires attention before disturbing a sweep circuit that has done
+nothing to deserve it.
+Build one RF stage and test it before assembling the ten stage active path. Use gm = 3 mS, effective load
+1 kΩ and total shunt capacitance 10 pF, including the valve, wiring and following stage. Fit screen
+partitions and separate supply decoupling, reducing gain if the stage oscillates with its input shorted.
+  fp = 1/(2πRC) = 15.9 MHz; |Astage| = gmR/√[1 + (f/fp)²]
+The independent pole calculation gives approximately 47,200 gain at 3.4 MHz and 40,900 at 4.4 MHz
+over ten active stages. Eleven RF valves are installed because the two heads have separate first stages,
+only one selected at a time. Limiting follows the roughly 1.2 dB gain tilt; maintain control of phase shift
+and feedback through the screened construction.
+Set the scanner cam to change heads in the lower part of the raster, accepting the visible switching streak.
+Compare each head on its own before alternating them. Losing every other field points first to unequal
+heads, contacts or azimuths, which should be adjusted before disturbing CRT timing.
+An alternating fault is unusually helpful when read in the light of the mechanism. Each head supplies its
+own portion of the sequence, so a picture which deteriorates with every other field has effectively pointed
+toward one side of the scanner. We need not disturb every oscillator in response. Compare the two
+pickups, their contacts and their settings first, then return to the shared timing once their contributions
+agree. The order follows the way the signal was assembled, which saves us from correcting a sound
+circuit to compensate for a faulty neighbour.
+Section 18 treats the stages as isolated and unilateral. Screen them to control plate to grid feedback, or use
+stable lower gain stages and revise their count and heater demand accordingly.
+
+
+34 FM recovery and brightness amplifier build
+
+Pulse charge recovery
+Build the limiter and phase splitter on a separate shielded panel, applying a trial electrical carrier before
+connecting the head chain. Feed opposite transitions to the steering diodes and charge capacitor. Equal
+frequency should give equal output despite moderate amplitude change; if grey level moves strongly with
+amplitude, adjust limiting or charge transfer.
+
+Set limiting swing, charge transfer and recovery against known carrier frequencies, attending to the brief
+pulse as closely as to the eventual average; for plastic nature will render the succession actually
+established by our valves, including any inequality which finds its way into grey level. Measure the two
+endpoints, fit the filtering and only then carry the recovered voltage into the final brightness stage, where
+load and swing receive their own allowance.
+  q = CpΔV = 5 pF × 5 V = 25 pC
+  Iaverage = 2fq; Vout = 2fqRL; dVout/df = 2qRL = 0.10 µV/Hz
+With RL = 2 kΩ, the 3.4–4.4 MHz span gives an ideal 0.34–0.44 V when each transition transfers equal
+charge. Diode threshold, stray capacitance, discharge time and output potential affect that transfer, so
+measure the endpoints and set limiting swing and bias before using the result for brightness. [R8]
+The detector has turned the rapid recurrence of transitions into an average quantity. More transitions in the
+same interval transfer more charge, and the load turns that changing average current into the voltage we
+use for brightness. It is an agreeable piece of bookkeeping, provided each transition pays approximately
+the same charge into the account. Limiting and pulse shape therefore lead us back to the small capacitor
+and steering valves, since the apparently simple relation between frequency and grey level depends upon
+the regularity of those individual payments.
+  Ipulse ≈ q/tpulse = 25 pC/20 ns = 1.25 mA
+Size the steering valves for the 1.25 mA pulse as well as the roughly 0.2 mA average. The planar Child
+Langmuir relation varies as V³ᐟ²/d²; at 2.5 V and 0.1 mm spacing it gives about 922 A/m², or 0.922 mA
+per mm². A 2 mm² emitter provides geometrical margin, with cathode emission and parasitic capacitance
+determining the usable pulse.
+
+Filtering and CRT drive
+Buffer each of the three 2 kΩ and 100 pF low pass sections, giving individual corners at 796 kHz and
+combined half power frequency near 406 kHz. Branch synchronization before adjustable picture
+de-emphasis, then fit the Section 19 shelf and set it using stable transitions.
+The earlier 10 kΩ and 100 pF example has 159 kHz bandwidth, so lower the output impedance for
+playback. At 2 kΩ and 20 pF total loading, the pole is 3.98 MHz. A 30 V peak to peak swing through that
+load needs 7.5 mA peak current change; choose and bias the final valve for this current and plate
+headroom, separately from the 3 mA RF operating point.
+
+
+35 Synchronization and sweep assembly
+
+Figure 9. Recovered video supplies both brightness and synchronization, with separate processing paths.
+The sweep circuits follow the timing taken from the recording.
+
+Set the raster before adding the picture
+Make a free running horizontal relaxation oscillator, a slower field oscillator and separate ramp
+capacitors. A resistor or current source charges each capacitor and a switching valve discharges it. Buffer
+the ramps before driving plates or coils, providing frequency and amplitude controls for both axes. Keep
+the beam very dim while establishing the sweeps, so a stationary spot does not burn the screen.
+Establish the free-running sweeps with a dim beam, then admit recovered synchronization and adjust each
+trigger in turn, allowing nature’s mechanical skill its definite expression through charging current,
+capacitance and threshold. The line and field must keep their several offices while answering the same
+recording; set lock, centring and amplitude before restoring brightness, so the image’s form can identify a
+timing fault without being confused with a change in focus.
+  ΔV = Icharge Tactive/C; nominal line period = 63.556 µs
+For an electrostatic trial with C = 100 pF, raising 133 V in 52.7 µs requires about 252 µA. The following
+stage also supplies the plate and wiring load. Begin with a resistor charged ramp if convenient, accepting
+its horizontal compression, then use a constant current valve to straighten the sweep.
+Set the horizontal oscillator slightly below recovered line frequency, allowing incoming sync pulses to
+trigger it regularly. A biased valve separates the negative tips; send line pulses to horizontal triggering and
+an integrating branch to the field trigger. Adjust for the half line structure and equalizing pulses, retaining
+a steady recognizable picture where imperfect interlace remains.
+Begin the field integrator near RC = 100 µs, for example 100 kΩ and 1 nF, and adjust the threshold. A 4.7
+µs line pulse charges an ideal integrator by 1 − exp(−4.7/100), or about 4.6 percent of its step, while a
+broad 27 µs interval gives roughly 24 percent. Include the intervening pulses and source impedance when
+setting the actual trigger.
+
+Check horizontal lock, field lock and centring separately, then restore brightness once both sweeps are
+present. Foldover, drifting diagonal bands and alternating field displacement identify different timing or
+amplitude faults; adjust the corresponding circuit before returning to focus.
+A moving diagonal band is more informative than a general complaint that the picture looks wrong. It
+tells us that the sequence on the tape and the sequence traced on the glass are slipping relative to one
+another; a steady but folded picture points elsewhere. By observing the form of the error we can follow it
+back to timing, amplitude or centring before touching the gun. The picture has become an indication of
+the machine's internal relationships, which is a useful additional service from something originally
+intended merely to entertain us.
+
+
+36 Magnetic scan current return and field loss
+
+
+
+
+Figure 10. Use 40 mm effective magnetic length and a 60 mm gap in the field calculation, then map the
+actual fringe field and winding resistance.
+
+Wind and characterize the yoke
+Wind the opposed coils on dry supports around the neck, beginning with one hundred turns for the
+horizontal field. Measure their combined resistance, inductance and beam displacement per current on a
+steady supply. Rotate the assembly to align the trace, add the vertical pair at right angles, and centre the
+beam mechanically before applying a large electrical offset.
+Map the finished yoke’s displacement against current and measure its inductance before choosing the
+driver, following the unseen action into the spot which makes it available to sight. More’s inquiry into
+incorporeal agency belongs quite comfortably beside the coil, while the winding’s particular requirement
+returns us to its gap, turns and flyback; we shall provide the whole voltage path through the return and
+carry the complete stage’s demand into the treadle budget. (More, Divine Dialogues, Dialogue I.)
+  B ≈ μ0NI/gap; y ≈ (eBlD)/(mv); v = √(2eVa/m)
+
+At 1000 V acceleration, 40 mm effective magnetic length, 150 mm drift and 20 mm displacement, the
+calculated field is about 0.355 mT. A 60 mm gap and one hundred turns call for approximately 0.17 A at
+the horizontal extremes, adjusted for the actual fringe field sensitivity.
+  Vcoil = L dI/dt + RI; L = 83.8 µH and ΔI = 0.34 A
+The 52.7 µs forward sweep requires about 0.54 V inductively, and the 10.9 µs return about 2.61 V in the
+opposite direction. At 2 Ω, add 0.34 V at the current extremes. Provide both the return path and flyback
+voltage margin so the driver carries out each part of the ramp.
+  Irms = Ipeak/√3 = 0.0982 A; Pcopper ≈ Irms²R = 0.0193 W
+Add output valve, coupling circuit and magnetic losses to the small copper figure. An air core avoids iron
+eddy currents at 15.7 kHz but requires more ampere turns for its geometry. Measure scan current and
+temperature with the chosen core and include the complete output demand in the foot power budget.
+The winding's copper loss is pleasantly small, but it is only one participant in the electrical expense. The
+driver must produce the required current in both the forward sweep and the return, while its own
+operating point and coupling arrangement consume power. Counting only the warm wire would therefore
+send an incomplete bill to the man at the treadles. We carry the whole stage back to the budget, where a
+watt spent in the driver has the same claim upon his legs as a watt spent making the screen glow.
+
+
+37 Passives insulation and audio construction
+
+
+
+
+Figure 11. Alternate metal leaves connect to two terminals, with dry mineral layers between them. The
+accompanying support arrangement keeps the RF valve leads short and separated.
+
+Capacitors and resistors
+Make the air capacitors first, using sliding or rotating plates with adjustable spacing. For compact low
+voltage parts, alternate metal leaf and selected mica, extending every dielectric layer beyond the
+conductor edges. Clamp evenly between dry boards or ceramic plates and compare capacitance against a
+reference.
+
+Make the dry mineral stack and supports with the same care bestowed upon the gun, since nature’s regular
+operation extends through the quiet components upon which its more conspicuous achievements depend.
+Measure capacitance and leakage at the intended conditions, keep the resistor’s heat free to escape, and
+give the conductors their clearances; plastic nature will make a damp edge consequential without first
+asking whether it was important enough to receive a figure number.
+  C = ε0εr(n − 1)A/d; Ileak = V/Rleak; Pleak = V²/Rleak
+A nominal 100 pF air capacitor at 0.5 mm spacing requires about 56.5 cm² overlap. Mica reduces the area,
+while defects and surface moisture determine leakage. At 1 kV, a 100 MΩ leakage path draws 10 µA and
+loses 10 mW, taking one tenth of the nominal beam current; measure this at operating voltage after
+warmup.
+A tenth of the beam current is a consequential loss even when the corresponding heat appears negligible.
+The component may remain cool enough to encourage our confidence while quietly diverting a useful
+share of the supply. This is why leakage belongs beside capacitance in the workshop record: one number
+tells us how the part stores charge, while the other tells us how readily charge departs by a route we did
+not request. The mineral sheet, its edges and its cleanliness thus return to the same accounting as the
+cathode and beam.
+Use separated bare conductors where practical, textile wrapping on low voltage coils, and glass or fired
+ceramic at high voltage crossings. Keep hot valve insulation mineral to avoid releasing gas from organic
+material. Make resistors from long fine wire or repeatable carbon specimens, measuring and mounting
+them where their heat can escape.
+
+Linear sound track
+Make the stationary magnetic head and audio amplifier before the rotating video pickup. At 33.35 mm/s,
+5 kHz has a recorded wavelength of 6.67 µm, with about 0.32 dB ideal loss across a 1 µm gap. Set that
+gap perpendicular to tape motion and adjust azimuth for clear treble. Place the head by the recording
+geometry, obtaining the sound and picture relationship through its physical position.
+Drive the biased moving iron diaphragm and horn, using close listening first. Into a nominal 100 Ω load,
+0.1 W electrical input gives 31.6 mA rms and 3.16 V rms. The reader takes the normal longitudinal audio
+track, so choose a tape carrying it.
+The sound track gives us a welcome place to begin because its head remains still while the tape passes it.
+We may establish pickup, amplification and the horn without involving the rotating scanner, then retain
+that known path while bringing the picture into service. Its physical position along the tape also carries
+the relationship between what we hear and what we see. The apparently simple fixed bracket therefore
+earns its adjustment: after all this work, it would be irritating to watch a man close his mouth and only
+then hear what he had been saying.
+
+
+38 Tension tracking and transport error mathematics
+
+Figure 12. The weighted guide sets tape tension according to the path angle, while the slipping clutch
+permits reel speed to change as the tape pack grows.
+
+Setting the tension
+  W = 2T sin α; m = 2T sin α/g
+For symmetric tape runs at 30° on either side of the guide and T = 0.35 N, the hanging mass is about 35.7
+g. With nearly vertical runs, it becomes about 71.4 g. Choose the weight from the actual path angle,
+accounting for bearing friction which separates the two tensions.
+Measure travel and tension through a sustained run, then follow any accumulating drift back to diameter,
+ratio and guide geometry; for plastic nature will continue the small discrepancy long after the first
+agreeable picture has encouraged us to stop observing it. Set the mean feed before phase, check both ends
+of the reel, and keep the common speed steady enough that the sound does not turn the operator’s cadence
+into an additional performance.
+  τtakeup = Tr; Fcapstan ≥ Ttight − Tslack; traction ratio ≤ e^(µθ)
+The final relation gives the capstan friction limit for a wrapped surface tending to slip. The pinch roller
+adds normal force. Mark tape and capstan and compare travel over a measured interval at different reel
+loads, adjusting the pinch drive for steady traction.
+
+Coupled speed and tracking errors
+  δvt/vt ≈ δDc/Dc + δnc/nc; transverse drift ≈ δvt sin β
+A 0.1 percent feed error at 33.35 mm/s accumulates 33.35 µm/s along the tape. With β = 5.98°, the across
+track drift is about 3.47 µm/s, roughly six percent of a 58 µm pitch every second. Correct the feed ratio to
+prevent this accumulating drift, then set tracking phase, allowing for elasticity and contact geometry in the
+helical path.
+A common one percent change in scanner and capstan speed preserves their mean ratio while shifting FM
+frequencies, line rate and sound pitch. The pitch change is 1200 log₂(1.01), or about 17.2 cents.
+
+Recovered synchronization follows within its locking range, while governor, flywheel and cadence keep
+audible speed variation down.
+The shared drive has preserved one relationship while allowing another to move. Scanner and tape can
+remain in their intended ratio even as the whole programme runs a little faster, and the recovered
+synchronization can lead the display along with it; the sound, meanwhile, announces the change in pitch.
+This brings the governor and flywheel back into a discussion which began with track geometry. They
+serve the listener as well as the pickup, keeping the operator's changing cadence from becoming an
+unsolicited musical interpretation of the programme.
+
+
+39 Power accounting and commissioning sequence
+
+Close the budget with measured loads
+Close the complete budget around the Section 22 allowance of 100 W, counting the thirty 2 W heater
+units, eleven installed RF valves and other functional stages. Enter the actual branch powers, including
+any additional heater, screen current, output stage or supply loss, so the foot mechanism is sized for the
+
+load it drives.
+Commission the treadles and supplies first, then the beam, transport and receiving stages in their order,
+carrying the fitted values forward so each new assembly has a known neighbour to answer. Nature’s own
+art continues through every part of the completed work, and our judgment must gather their several
+effects into the instrument first conceived; we shall therefore return from the whole to the particular
+setting whenever the picture or sound discloses that one of its offices has wandered.
+  Pfeet = (Pelectrical/ηgenerator + Ptransport)/ηdrive
+  For 100 W, 0.65, 5 W and 0.80: Pfeet = 198.6 W
+At two full 0.20 m strokes per second, average force is 496.5 N during each downward stroke; at four, it is
+248.2 N for the same power. The spring returns the energy stored during the preceding stroke. Set the
+operator's cadence, travel and seat together around the calculated effort.
+We have travelled through very small gaps, brief pulses and faint currents, and arrived again at a distinctly
+substantial demand upon a pair of feet. There is no contradiction in that return. The beam itself consumes
+little power, but the heaters keep their surfaces hot throughout the programme, the amplifiers remain at
+their operating points, and the drive loses its share while keeping the transport moving. Their separate
+allowances have accumulated into this force and travel. The original choice of press and release treadles
+remains intact; the arithmetic now tells us the dimensions and cadence with which that choice must be
+carried out.
+
+Assembly order
+1. Commission the treadles, guarded flywheel and generator on passive loads, measuring shaft speed,
+electrical power and foot force over a timed run. Once speed and temperature are steady, connect the tape
+transport.
+
+2. Make the vacuum diode, characterize the cathodes and establish sound glass seals. Produce a steady
+phosphor dot and two independent deflections, then operate the low line count test raster before changing
+to tape timing.
+3. Build the stationary audio pickup, manual cassette carrier and slow tape transport, setting reel tension
+and capstan feed. Add the balanced rotating scanner and examine the sacrificial tape for damage.
+4. Compare the head specimens, then set the first RF stage, shared amplifier and limiter separately.
+Recover known frequency inputs before connecting the CRT grid, lock line and field scans to recovered
+synchronization, and then add brightness.
+5. Align guide height, tracking phase and the two head outputs before setting picture focus and size.
+Record foot force, cadence, supply currents, valve temperatures and tape condition after warmup. We are
+setting the machine for steady recognizable moving monochrome imagery with linear sound, accepting
+the soft picture and switching streak described above.
+Build and align in that order, carrying the dimensions, numbered drawings and operating calculations to
+the bench with the work. Keep the fitted values together so transport, signal and scans can be adjusted as
+one instrument, which, after all these separate components have occupied our attention, is what we set out
+to make.
+The temptation at this point is to regard the picture as the work of the screen, since that is where we
+finally see it. Yet its steadiness includes the flywheel, its grey levels include the detector, its detail
+includes the contact between tape and head, and its very existence includes the glassworker who kept the
+atmosphere outside. Our long journey through separate components returns them to one another. Pressing
+a board and watching a recorded programme were the two visible ends of the original idea; everything
+between them has now acquired its particular place at the proverbial table.
+
+
+40 Historical references and drawing register
+
+Primary historical evidence
+A1. Pliny the Elder, Natural History 36.192–198, especially 193–194 on remelting, blowing and clear
+glass. Rackham translation. https://www.attalus.org/translate/pliny_hn36b.html
+A2. Vitruvius, On Architecture 10.5, 10.7 and 10.8. Geared mills, Ctesibius pump and hydraulic organ.
+Gwilt translation. https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Vitruvius/10*.html
+A3. Hero of Alexandria, Pneumatics, introduction on trapped air and artificially produced evacuation.
+Woodcroft edition 1851, translated from the Greek. Ancient theory includes errors and is cited for
+apparatus and observations. https://www.gutenberg.org/files/77400/77400-h/77400-h.htm
+A4. Pliny the Elder, Natural History 37.48, rubbed amber attraction and comparison with magnetism.
+https://www.attalus.org/translate/pliny_hn37a.html
+A5. Pliny the Elder, Natural History 33.61–62, beaten gold leaf. His ounce and inch are ancient units and
+should not be inserted into a modern thickness calculation without conversion.
+https://www.attalus.org/translate/pliny_hn33a.html
+
+Reading the evidence
+The ancient accounts A1–A5 supply the crafts, mechanisms and broad observations, while R1–R10 and
+the other technical sources supply recording geometry and the engineering relations applied here. The
+reader has the design knowledge in hand and makes the parts by the specified workshop methods, keeping
+the construction within the Roman materials upon which the whole undertaking depends.
+
+Drawing register
+
+Figure                  Construction subject                             Parts
+
+1                       CRT envelope and gun                             101–105
+
+2                       Drop pump                                        201–205
+
+3                       Downward treadles                                301–304
+
+4                       Compound gearing                                 401–404
+
+5                       Tape path                                        501–507
+
+6                       Scanner heads and gap                            601–605
+
+7                       Valve test circuit                               1101–1104
+
+8                       RF path and selection                            701–707
+
+9                       Video and synchronization                        801–806
+
+10                      Deflection assembly                              1201–1203
+
+11                      Capacitors and supports                          901–904
+
+12                      Tension and clutch                               1001–1003

@@ -1,0 +1,5002 @@
+  A Guided Commentary on Calvin’s
+  Institutes of the Christian Religion
+
+
+  An expanded guide to John Calvin’s theological
+          argument and flow of thought
+
+
+
+               By Isaiz James Tomey
+
+
+ Copyright © 2026 Tomey General Company LLC.
+
+                   All rights reserved.
+
+ This work is the intellectual property of Tomey General
+Company LLC. Tomey General Company LLC retains full
+authority to transfer, assign, or otherwise convey ownership
+    or usage rights to this work to any subsidiary entity
+                     under its control.
+
+Edition and Citation Note
+
+Citation note. References to Calvin’s Institutes are
+
+given by book, chapter, and section (for example,
+
+Calvin, Institutes I.1.1), so that the references remain
+
+usable across editions. Direct quotations from Calvin in
+
+this commentary are from Henry Beveridge’s 1845
+
+English translation of the final 1559 Latin edition,
+
+checked against the online text maintained by the
+
+Christian Classics Ethereal Library. Because
+
+translations differ in wording, readers using the
+
+McNeill–Battles translation should rely on the book–
+
+chapter–section reference rather than expecting
+
+identical English phrasing.
+
+Contents
+
+Introduction — 1
+
+Book One: The Knowledge of God the Creator — 17
+
+The Knowledge of God and Ourselves — Calvin,
+
+Institutes I.1.1–I.2.2 — 21
+
+The Sensus Divinitatis and the Corruption of Human
+
+Knowledge — Calvin, Institutes I.3.1–I.4.4 — 40
+
+Creation as the Theater of God’s Glory — Calvin,
+
+Institutes I.5.1–15 — 58
+
+Scripture as the Spectacles Through Which We See
+
+God — Calvin, Institutes I.6.1–4; I.9.1–3 — 71
+
+The Authority of Scripture and the Testimony of the
+
+Holy Spirit — Calvin, Institutes I.7.1–5; I.8.1–13 — 89
+
+The One God, the Trinity, and the Rejection of Images
+
+— Calvin, Institutes I.10.1–I.13.29 — 101
+
+Creation and Providence — Calvin, Institutes I.14.1–
+
+I.18.4 — 122
+
+Book Two: The Knowledge of God the Redeemer in
+
+Christ — 143
+
+The Fall and the Human Condition — Calvin, Institutes
+
+II.1.1–11 — 147
+
+Calvin on Free Will — Calvin, Institutes II.2.1–27;
+
+II.3.1–14 — 158
+
+The Necessity of Grace — Calvin, Institutes II.3.5–14;
+
+II.4.1–II.5.19 — 173
+
+The Law and the Gospel — Calvin, Institutes II.6.1–
+
+II.9.5 — 185
+
+The Covenant and the Unity of the Testaments —
+
+Calvin, Institutes II.10.1–II.11.14 — 206
+
+The Incarnation and the Two Natures of Christ —
+
+Calvin, Institutes II.12.1–II.14.8 — 217
+
+Christ’s Threefold Office — Calvin, Institutes II.15.1–6
+
+— 229
+
+The Death, Resurrection, and Ascension of Christ —
+
+Calvin, Institutes II.16.1–II.17.6 — 238
+
+Book Three: The Way in Which We Receive the Grace
+
+of Christ — 251
+
+Union with Christ and the Work of the Spirit — Calvin,
+
+Institutes III.1.1–4 — 254
+
+Faith — Calvin, Institutes III.2.1–43 — 268
+
+Repentance and the Christian Life — Calvin, Institutes
+
+III.3.1–III.10.6 — 283
+
+Justification by Faith Alone — Calvin, Institutes
+
+III.11.1–III.18.10 — 308
+
+Prayer and Christian Liberty — Calvin, Institutes
+
+III.19.1–16; III.20.1–52 — 328
+
+Election and Predestination — Calvin, Institutes
+
+III.21.1–III.24.17 — 352
+
+Calling, Perseverance, and Glorification — Calvin,
+
+Institutes III.24.1–III.25.12 — 366
+
+Book Four: The External Means by Which God Invites
+
+Us Into the Society of Christ — 377
+
+The Church — Calvin, Institutes IV.1.1–IV.2.12 — 380
+
+The Marks of the True Church — Calvin, Institutes
+
+IV.1.9–22; IV.2.1–12 — 404
+
+Ministers, Presbyters, and Bishops — Calvin, Institutes
+
+IV.3.1–IV.5.19 — 415
+
+The Papacy and the Antichrist — Calvin, Institutes
+
+IV.6.1–IV.7.30 — 426
+
+The Authority of the Church — Calvin, Institutes
+
+IV.8.1–IV.10.32 — 439
+
+The Power of the Keys and Church Discipline —
+
+Calvin, Institutes IV.11.1–IV.12.28 — 459
+
+Vows — Calvin, Institutes IV.13.1–21 — 476
+
+The Sacraments — Calvin, Institutes IV.14.1–26 —
+
+481
+
+Baptism — Calvin, Institutes IV.15.1–IV.16.32 — 495
+
+The Lord’s Supper — Calvin, Institutes IV.17.1–50 —
+
+510
+
+The Mass and the Sacrificial Question — Calvin,
+
+Institutes IV.18.1–20 — 523
+
+The Five Other Roman Sacraments — Calvin, Institutes
+
+IV.19.1–37 — 532
+
+Civil Government and the Two Governments —
+
+Calvin, Institutes IV.20.1–32 — 547
+
+The Flow of Calvin’s Institutes — 569
+
+Final Commentary — 585
+
+Bibliography and Verification Note — 602
+
+Critical Apparatus and Indices — 614
+
+Introduction
+
+John Calvin is the greatest Protestant theologian to have
+
+lived, and the Institutes of the Christian Religion is the
+
+greatest work of systematic theology produced by the
+
+Protestant Reformation. What began in 1536 as a
+
+comparatively compact exposition of evangelical
+
+doctrine became, through successive Latin and French
+
+editions, the immense 1559 work by which Calvin
+
+sought to teach the church how the principal parts of
+
+Christian doctrine belong together. The final Institutes
+
+is therefore neither a theological dictionary nor a loose
+
+anthology of Calvin’s opinions. It is an ordered
+
+argument whose parts continually presuppose, qualify,
+
+and illuminate one another.
+
+That architecture is the first thing a reader must learn to
+
+see. Calvin begins with the knowledge of God the
+
+Creator and with the corresponding knowledge of the
+                              1
+
+human creature; he proceeds through Scripture,
+
+creation, providence, the Fall, the bondage of the will,
+
+the Law, and the person and work of Christ; he then
+
+asks how Christ and his benefits become ours through
+
+the Holy Spirit; and he concludes by considering the
+
+church, its ministry and sacraments, and the place of
+
+civil government. The famous opening proposition that
+
+“Our wisdom, in so far as it ought to be deemed true
+
+and solid Wisdom, consists almost entirely of two parts:
+
+the knowledge of God and of ourselves” announces not
+
+merely the subject of the first chapter but a pattern that
+
+governs the whole work (Calvin, Institutes I.1.1).
+
+Knowledge of God discloses the truth of the creature,
+
+while knowledge of the creature continually drives the
+
+mind beyond itself toward God.
+
+This commentary follows that movement rather than
+
+attempting to replace it. Calvin’s chapters are often
+
+argumentative in a way that summaries conceal. He
+                           2
+
+states a doctrine, distinguishes it from a neighboring
+
+error, answers objections, appeals to Scripture, invokes
+
+the fathers, and then draws practical consequences for
+
+worship or Christian life. The result can be difficult for
+
+a first reader because the immediate controversy
+
+sometimes obscures the larger movement. The purpose
+
+here is therefore to make the architecture visible while
+
+giving enough of Calvin’s actual reasoning that the
+
+reader encounters an argument rather than a list of
+
+conclusions.
+
+Calvin writes as a churchman whose doctrinal
+
+judgments govern the church’s confession and life.
+
+Roman Catholic theology, late-medieval scholasticism,
+
+Anabaptist and spiritualist movements, anti-Trinitarian
+
+arguments, disputes over the Supper, and the political
+
+conditions of the Reformation enter the work through
+
+particular controversies; their place is determined by
+
+the constructive argument they require him to defend.
+                           3
+
+Authority must possess its proper source, faith its
+
+determinate object, grace its effective operation, and
+
+ministry its bounded commission. The controversy
+
+makes these relations explicit because an error at one
+
+point changes the acts permitted at another. A claim
+
+concerning ecclesial authority reaches Scripture and
+
+conscience; a claim concerning Christ’s humanity
+
+reaches the Supper; a claim concerning willing reaches
+
+the necessity of grace. The disputes therefore disclose
+
+the coherence through which the whole work proceeds.
+
+The commentary follows that coherence through
+
+knowledge, willing, worship, and common life.
+
+Revelation addresses a creature whose judgment
+
+requires correction; grace renews the person from
+
+whose disposition conduct proceeds; Christ
+
+communicates the saving benefits accomplished in his
+
+own person; and the Word governs the offices through
+
+which those benefits are publicly ministered. Each
+                           4
+
+relation has a source, an actual recipient, an appointed
+
+operation, and a consequence which enters the next
+
+argument. The references locate those operations within
+
+the Institutes, so that the reader can follow the claim
+
+back to the passage from which its force is derived.
+
+Received truth becomes operative in the creature’s
+
+judgment and action. Knowledge of divine holiness
+
+changes self-estimation; renewal changes what the
+
+person willingly pursues; justification establishes
+
+acceptance upon Christ’s righteousness; and ministry
+
+joins teaching, worship, correction, and care within a
+
+confession whose authority the ministers do not
+
+manufacture. These acts belong to one ordered history
+
+of reception. Their differences of office remain
+
+indispensable, for the verdict does not perform the work
+
+of progressive renewal, nor does an appointed teacher
+
+become the source of the Word he teaches. The unity of
+
+
+                            5
+
+the saving order is preserved through the actual
+
+distinction and coordination of its operations.
+
+The mathematical expressions carry these relations into
+
+explicit form. A state identifies the condition being
+
+considered, a transition identifies the operation through
+
+which that condition changes, and a constraint identifies
+
+the bounds within which the change retains its
+
+appointed end. The terms then fix the objects of the
+
+expression, and the consequence follows the relation
+
+into judgment, conduct, or common life. Reception
+
+changes the observer’s estimate; renewed willing opens
+
+acts inaccessible to the fallen disposition; jurisdiction
+
+permits some acts while excluding others. What the
+
+prose establishes through its connected reasoning, the
+
+equation states through defined dependence, and the
+
+ensuing exposition develops through its actual effects.
+
+
+
+
+                             6
+
+Each argument receives conditions already established
+
+by the preceding one. The corrupted observer requires
+
+revelation whose authority he cannot confer; the fallen
+
+will requires renewal which its own choices cannot
+
+produce; communion with Christ communicates
+
+benefits whose inseparability does not abolish their
+
+different offices. The minister receives a commission
+
+under the Word, and the magistrate governs temporal
+
+relations without acquiring dominion over the
+
+conscience’s saving allegiance. These dependencies
+
+supply the movement of the work. A later doctrine
+
+cannot set aside the premise through which its own
+
+necessity and lawful operation have been established.
+
+A definition fixes the object upon which an inference
+
+proceeds. The state under consideration must therefore
+
+remain the same state through the calculation, the
+
+mapping the same appointed operation, and the set the
+
+same repertoire or jurisdiction. Entropy states the
+                             7
+
+uncertainty of the defined alternatives under their given
+
+distribution; requisite variety states the capacity
+
+required to answer the disturbances counted. An
+
+implication then carries the established premise into its
+
+consequence. This discipline makes the argument
+
+traceable: the reader can identify what changes, what
+
+remains fixed, and which conclusion follows from the
+
+relation actually asserted.
+
+Shannon’s account of entropy and communication
+
+supplies exact measures of distinguishable alternatives
+
+and their reception. Ashby specifies the variety required
+
+to answer disturbances. Conant and Ashby establish the
+
+relation between optimal regulation and a model;
+
+Wiener develops feedback through time; Beer develops
+
+recursive institutional organization; and von Foerster
+
+places observation within the field it observes. Their
+
+results enter at the acts and relations where the
+
+
+                              8
+
+commentary develops them, with each source identified
+
+at its use.
+
+A warning, promise, command, or confession
+
+communicates a determinate object and directs a
+
+corresponding response. The creature’s reception either
+
+preserves that relation or deforms it, and subsequent
+
+conduct makes the operative understanding visible. The
+
+consequences of conduct return to judgment; that
+
+altered judgment enters the next act; and the authority
+
+entrusted with correction remains bounded by its
+
+commission. Communication, feedback, recursion, and
+
+jurisdiction consequently name operations already at
+
+work within the creature’s reception of divine address.
+
+Their force follows through the content received and
+
+the conduct produced.
+
+God speaks, the creature hears and suppresses, the
+
+Spirit renews, Christ reconciles, and the church
+
+
+                            9
+
+ministers. These are the subjects and acts upon which
+
+the argument stands. Dependence belongs to the
+
+creature whose existence and obedience are received;
+
+correction belongs to the judgment and conduct
+
+requiring restoration; communion belongs to persons
+
+whom the Spirit joins without confounding their
+
+identities. The equations retain those subjects through
+
+the transitions they express, so that the causal source
+
+remains present in the consequence and the saving gift
+
+remains attached to the one who gives it.
+
+The form of an expression follows the relation it states.
+
+A definition identifies its terms; a recurrence traces
+
+successive conditions through time; an inequality fixes
+
+capacity or constraint; and a set identifies the acts or
+
+states admitted by a specified order. Reachability
+
+therefore belongs to the person whose present
+
+organisation permits some transitions and excludes
+
+others, while jurisdiction belongs to the office whose
+                            10
+
+commission permits some acts and excludes others. The
+
+common discipline is exactness of object. Each form
+
+makes the asserted relation explicit and gives the
+
+ensuing prose a determinate consequence to develop.
+
+The dependencies also expose an erroneous account at
+
+the point where its consequence fails. A representation
+
+which removes voluntary action from the fallen person
+
+has lost the agency Calvin preserves. A verdict
+
+recomputed from moral progress has transferred the
+
+ground of acceptance from Christ’s righteousness to the
+
+believer’s changing condition. A church which creates
+
+the authority of Scripture has made its own foundation
+
+dependent upon the institution founded. In each case
+
+the defect is identifiable within the arrangement of the
+
+terms: the wrong act has been assigned the wrong
+
+office, and the resulting conclusion reverses the order
+
+upon which the doctrine stands.
+
+
+                           11
+
+The formal concept must therefore retain the operation
+
+which gives it meaning. Requisite variety concerns
+
+disturbance and response; entropy concerns alternatives
+
+and their distribution; recursive organisation concerns
+
+the continued operation of bodies coordinated within
+
+wider bodies; and reflexive observation concerns the
+
+observer whose own condition enters his judgment.
+
+Their uses follow the actual objects Calvin addresses.
+
+The person who receives a command, the office which
+
+corrects an offender, and the council which judges a
+
+controversy possess different commissions and produce
+
+different effects. Precision preserves these differences
+
+while tracing their place within the common order.
+
+Exegesis establishes the premises through which the
+
+doctrinal consequences proceed. Scripture’s authority
+
+governs the church’s judgment of its teaching; the
+
+corruption of willing establishes the necessity of
+
+renewal; and Christ’s bodily ascension governs the
+                           12
+
+communion communicated in the Supper. Historical
+
+disputes make the opposed claims visible, while the
+
+exposition follows the received text through the act and
+
+consequence at issue. The reader thus encounters an
+
+argument whose successive parts discipline one
+
+another: what has been confessed concerning the source
+
+bounds what can later be assigned to the instrument.
+
+The attribution of an argument follows its source.
+
+Theorems retain the meaning established by their
+
+authors; Calvin’s claims are located through stable
+
+Institute sections; Scripture supplies the doctrinal
+
+relations expounded here. The equations express this
+
+commentary’s formalization of those relations. Their
+
+historical object is Calvin’s argument, and their
+
+mathematical notation belongs to the present analysis.
+
+Authority gives a received reference its governing
+
+force; effective correction reaches the disposition from
+
+
+                            13
+
+which conduct proceeds; and a commissioned ministry
+
+preserves common life through teaching, worship, care,
+
+and accountable judgment. The order of these acts
+
+determines their consequence. A minister who changes
+
+the reference has changed the ministry, and a corrective
+
+act which destroys its restorative end has failed through
+
+its own operation. The exposition follows the scriptural
+
+and Institute loci through these concrete dependencies,
+
+carrying each established relation into the life it
+
+governs.
+
+The four books carry this order from knowledge of the
+
+Creator through redemption and its reception into the
+
+church’s continuing life. Each later argument receives
+
+the source, commission, and end already established;
+
+the whole becomes intelligible through that sustained
+
+dependence.
+
+
+
+
+                            14
+
+Edition, quotation, and locus policy
+
+The stable citation unit in this commentary is the 1559
+
+book–chapter–section number. Page numbers are
+
+edition-dependent; loci such as Calvin, Institutes
+
+III.11.1 are not. Every major subsection therefore
+
+supplies the precise Institute locus before interpretation.
+
+Readers using Beveridge or McNeill–Battles should be
+
+able to move between this commentary and Calvin
+
+without guessing where the discussion has gone.
+
+Direct quotation is selective. The phrases quoted here
+
+retain Beveridge’s wording: “knowledge of God and of
+
+ourselves” (I.1.1), Scripture’s aid compared to
+
+“glasses” (I.6.1), the Spirit as the “bond” of union
+
+(III.1.1), justification as the “principal ground”
+
+supporting religion (III.11.1), and the church’s title
+
+“Mother” (IV.1.4). The numbered sections locate the
+
+argument across translations. Paraphrases develop that
+
+
+                            15
+
+argument without presenting another translation’s
+
+wording as Beveridge’s.
+
+Where the commentary names an interlocutor, it
+
+distinguishes direct polemical opponents from
+
+genealogical or comparative figures. Pighius, Osiander,
+
+Westphal, Heshusius, Bolsec, and Anabaptist opponents
+
+belong to Calvin’s actual sixteenth-century
+
+controversies; Augustine, Chrysostom, Cyprian,
+
+Jerome, Bernard, Lombard, and Aquinas may function
+
+instead as authorities, inherited conceptual
+
+backgrounds, or foils. Luther, Bucer, Melanchthon, and
+
+Zwingli are treated as Reformation comparators whose
+
+agreements and disagreements must be specified rather
+
+than assumed.
+
+
+
+
+                           16
+
+Book One: The Knowledge of God the Creator
+
+The creature stands within the world whose Author he
+
+seeks to know. His knowledge of God changes the
+
+measure of himself, while the exposure of his own
+
+dependence directs him again toward God. Creation
+
+supplies a public witness, fallen reception corrupts its
+
+acknowledgment, Scripture corrects the judgment, and
+
+the Spirit establishes the certainty with which the Word
+
+is received. Providence then situates the observer and
+
+every act of observation within God’s continuing
+
+government. Book One consequently establishes the
+
+conditions of every later theological judgment.
+
+Revelation, worship, and causation already belong
+
+together because the creature who judges, the truth he
+
+receives, and the life he lives remain within the same
+
+divine ordering.
+
+
+
+                            17
+
+Book One establishes the highest-order reference
+
+conditions of the commentary. If R G denotes the divine
+
+reference as disclosed by God rather than manufactured
+
+by the creature, the subsequent books never permit a
+
+subordinate system to rewrite R G. Scripture, church,
+
+conscience, sacrament, magistracy, and theological
+
+reasoning operate beneath that constraint. This is why
+
+Book One reappears everywhere. The fight over papal
+
+authority in Book Four is already conditioned by I.7;
+
+the fight over images by I.11 anticipates the question of
+
+authorised signs in IV.14; providence in I.16–18
+
+determines how creaturely means are discussed in
+
+prayer, discipline, and government. The relations
+
+established in Book One therefore continue to govern
+
+the offices, means, and judgments developed
+
+throughout the work.
+
+
+
+
+                           18
+
+Book One fixes the source and conditions of the
+
+argument before the fallen person’s incapacity is
+
+developed. The Creator gives being to the creature,
+
+reveals himself through his works and Word, and
+
+governs the history within which the creature acts; the
+
+creature receives that disclosure through faculties
+
+whose corruption affects their judgment. The necessity
+
+of Scripture therefore proceeds from a real failure of
+
+reception, and the later necessity of regeneration
+
+proceeds from that same creature’s disordered willing.
+
+Book Two receives this established relation. Its
+
+anthropology follows from the confession of Creator,
+
+revelation, and providence, carrying the condition of
+
+the observer into the condition of the agent.
+
+Observation already changes the creature who observes.
+
+The order of the world directs him toward its Author,
+
+but his own judgment and affection determine how the
+
+disclosed differences enter subsequent belief and
+                           19
+
+worship. Scripture corrects that reception through a
+
+reference the observer did not produce; the Spirit makes
+
+the received Word certain; and providence governs the
+
+causes through which the observer continues to live and
+
+act. The movement from knowledge to correction
+
+therefore occurs inside the same history of divine
+
+address and creaturely response. Its source remains
+
+God, and its changing condition remains the creature.
+
+One can summarize the dependency as E -> M h -> A,
+
+with Scripture S correcting M h and providence P
+
+constraining the total transition domain. Environment E
+
+is not self-interpreting; human model M h is not neutral;
+
+action A therefore cannot be understood apart from the
+
+quality of the model from which it proceeds. The
+
+correction S does not originate within M h, which is why
+
+Calvin's doctrine of revelation cannot be replaced by
+
+autonomous epistemic refinement. Book One is already
+
+
+                           20
+
+telling us why Book Two will require grace rather than
+
+merely education.
+
+
+The Knowledge of God and Ourselves — Calvin,
+
+Institutes I.1.1–I.2.2
+
+
+Close reading by locus
+
+
+I.1.1–2 — Reciprocal knowledge
+
+Knowledge of God and knowledge of the self proceed
+
+through reciprocal correction. The creature judges
+
+strength, wisdom, righteousness, and dependence
+
+against a received measure; when divine holiness enters
+
+that judgment, the scale upon which he had estimated
+
+himself changes. Comparison with equally fallen
+
+neighbours preserves an appearance of sufficiency,
+
+while comparison with God exposes the deficiency it
+
+concealed. Calvin’s opening therefore establishes an
+
+operation whose consequence extends beyond the first
+
+chapter: truthful self-knowledge requires the Creator’s
+                           21
+
+disclosure, and that disclosure directs the exposed
+
+creature beyond himself toward the source of his life
+
+(Calvin, Institutes I.1.1–2).
+
+Augustine begins the Confessions with the same
+
+movement of knowledge. The creature addresses the
+
+Creator and discovers, in that address, both the source
+
+of his existence and the disorder of a heart seeking rest
+
+elsewhere. Self-knowledge becomes truthful when the
+
+self is measured by God. The confession of dependence
+
+is therefore an intellectual correction as well as an act
+
+of worship: humanity understands its own condition by
+
+
+acknowledging the One for whom it was made. Calvin
+
+develops this Augustinian order into the opening
+
+architecture of the Institutes (Augustine, Confessions
+
+I.1).
+
+Isaiah’s vision changes the measure by which the
+
+prophet judges himself. The holiness proclaimed by the
+
+
+                            22
+
+seraphim exposes his unclean lips and his participation
+
+in an unclean people; the divine encounter corrects both
+
+individual and communal self-estimation. Job’s
+
+response similarly moves from hearing about God to an
+
+encounter that overturns his confidence in his own
+
+judgment. Neither passage makes ignorance of oneself
+
+a lack of introspective effort. The error persists because
+
+the creature has employed an inadequate standard. Acts
+
+17:28 identifies the deeper dependence: human life,
+
+movement, and existence are sustained by God. The
+
+knower is therefore already within the relation he seeks
+
+to understand. His judgment requires correction by the
+
+Creator upon whom his judging depends (Isaiah 6:1–5;
+
+Job 42:5–6; Acts 17:24–28; Calvin, Institutes I.1.1–2).
+
+The self-estimate cannot furnish the authority by which
+
+its own error is corrected. A person who measures
+
+himself against equally fallen neighbours retains the
+
+common deviation within the standard itself; divine
+                         23
+
+holiness exposes the defect in both measure and
+
+measured subject. Scripture’s necessity and Book
+
+Two’s anthropology follow through this dependence.
+
+The observer requires an authoritative reference and the
+
+renewal of the faculties through which it is received,
+
+because the instrument of judgment belongs to the
+
+condition requiring judgment. The same order later
+
+governs assurance: a changing apprehension returns to
+
+the promise whose authority and object do not change
+
+with it.
+
+Historical and theological location. Augustine’s
+
+introspective and God-directed anthropology is an
+
+important background, but Calvin’s opening is
+
+characteristically programmatic: the entire Institutes
+
+will repeatedly shuttle between Creator and creature.
+
+
+
+
+                           24
+
+Cross-reference: See I.5 on creation as disclosure, II.1–
+
+3 on the noetic and moral effects of the Fall, and III.2
+
+on faith as a Spirit-corrected apprehension of promise.
+
+
+I.2.1–2 — Knowledge ordered to piety
+
+Calvin refuses a merely speculative knowledge of God.
+
+To know God as Creator is to know what is due to him
+
+—reverence, trust, gratitude, obedience—and therefore
+
+the epistemic state is evaluated partly by the pattern of
+
+life it regulates (Calvin, Institutes I.2.1–2).
+
+Cyril of Jerusalem makes doctrine and conduct
+
+inseparable in his instruction of catechumens. Sound
+
+teaching must issue in a virtuous life, and virtuous
+
+conduct must be governed by sound teaching. This is
+
+the patristic substance of Calvin’s piety. Knowledge of
+
+God orders the person toward the God known; it
+
+governs desire, judgment, and action. The practical
+
+character of theology belongs to its truth, because the
+
+                             25
+
+subject of theology is the living Lord to whom the
+
+creature owes obedience (Cyril of Jerusalem,
+
+Catechetical Lectures IV.2).
+
+Romans 1:21 identifies the failure of those who know
+
+God by their refusal to glorify him and give thanks.
+
+Their failure consists in a broken relation between
+
+recognition and response: knowledge received from the
+
+Creator does not issue in the honor owed to him. Futile
+
+reasoning and darkened hearts follow that refusal.
+
+Psalm 111:10 supplies the positive order. Fear of the
+
+Lord begins wisdom, and understanding is displayed in
+
+obedience to his commandments. Piety thus belongs to
+
+the operation of true knowledge. Reverence establishes
+
+the creature’s proper orientation to the God whose
+
+works he studies; gratitude acknowledges the source of
+
+the gifts through which he lives (Romans 1:21; Psalm
+
+111:10; Calvin, Institutes I.2.1–2).
+
+
+                            26
+
+The doctrinal judgment is tested in the conduct it
+
+governs. A conception of God that licenses ingratitude
+
+or self-sufficiency fails at the relation it purports to
+
+describe, even when its propositions are outwardly
+
+elaborate. This criterion carries forward into the
+
+Christian life: knowledge of providence governs
+
+confidence in adversity, knowledge of justification
+
+governs the conscience’s approach to God, and
+
+knowledge of sacramental promise governs reception of
+
+the signs. Their practical consequences arise from the
+
+divine reality known. A model is not judged only by
+
+internal coherence but by the adequacy of the action it
+
+generates relative to its governing reference.
+
+Historical and theological location. This practical
+
+orientation places Calvin within a broad Augustinian
+
+and monastic tradition in which theology terminates in
+
+worship, while his anti-scholastic rhetoric is directed
+
+
+                             27
+
+especially against a theology that can be technically
+
+correct yet spiritually inert.
+
+Cross-reference: See III.6–10 on the Christian life and
+
+IV.14 on sacramental signs ordered to faith rather than
+
+curiosity.
+
+Calvin’s opening is deliberately relational. Human
+
+beings do not first acquire a complete doctrine of God
+
+and then, in a second operation, construct an
+
+anthropology. Nor do they begin with an autonomous
+
+knowledge of themselves and infer God afterward. The
+
+two forms of knowledge are entangled. Our powers,
+
+gifts, and even existence confront us with dependence;
+
+our misery exposes our lack; our finitude points beyond
+
+itself. Conversely, the majesty and righteousness of
+
+God become the measure by which human pretensions
+
+are exposed. Calvin admits that it is difficult to
+
+determine which knowledge precedes the other,
+
+
+                             28
+
+because each continually leads into the other (Calvin,
+
+Institutes I.1.1).
+
+Moral self-knowledge gives this reciprocity its
+
+immediate force. Human beings select standards under
+
+which their own wisdom, righteousness, and strength
+
+appear adequate, and the comparison with other persons
+
+sustains that favourable estimate. Confrontation with
+
+divine holiness changes the measure. The upright
+
+person discovers his impurity, the confident person his
+
+dependence, and the creature his distance from the
+
+perfection by which he is now judged. Calvin’s biblical
+
+examples carry that change into fear, confession, and
+
+worship. The knowledge received becomes effective
+
+because it alters the relation under which the person
+
+understands and conducts his own life (Calvin,
+
+Institutes I.1.2–3).
+
+
+
+
+                           29
+
+This explains why knowledge for Calvin is never
+
+merely the possession of correct information. In the
+
+next chapter he insists that God is not truly known
+
+where there is no piety. To know God is to apprehend
+
+what belongs to his glory and what is fitting for the
+
+creature in relation to him. The knowledge sought by
+
+theology therefore carries an orientation of trust,
+
+reverence, obedience, and worship. A person might
+
+affirm many true propositions about God and still fail,
+
+in Calvin’s sense, to know God rightly (Calvin,
+
+Institutes I.2.1).
+
+Doctrine reaches its appointed consequence in the
+
+creature’s life. Providence establishes confidence in
+
+God’s government; justification establishes gratitude
+
+and assurance upon Christ’s righteousness; election
+
+humbles the person whose salvation proceeds from
+
+grace; and the sacraments confirm the faith through
+
+which the promise is received. Christian liberty
+                           30
+
+likewise frees the conscience for obedience under its
+
+proper Lord. These consequences belong internally to
+
+the doctrines expounded. Each identifies a source and
+
+relation whose acknowledgment changes judgment,
+
+desire, and conduct, so that the exposition continues
+
+from what is confessed into the life ordered by that
+
+confession.
+
+The observer’s estimate changes with the reference
+
+through which he judges himself. Divine holiness
+
+exposes what comparison with other creatures
+
+concealed, and the newly exposed dependence changes
+
+his subsequent apprehension of God’s gift and
+
+government. The next judgment consequently receives
+
+the effect of the preceding encounter. Recursion here
+
+preserves an asymmetry: neither the creature’s estimate
+
+nor its revision creates the divine reference. The
+
+Creator supplies the measure, while the creature’s
+
+knowledge changes through repeated reception.
+                        31
+
+Calvin’s opening therefore joins the mutual
+
+development of the two knowledges to the authority
+
+under which both become truthful.
+
+The revealed holiness of God fixes the reference against
+
+which the creature’s self-judgment is corrected.
+
+The creature’s apparent righteousness among
+
+neighbours and its actual departure from God’s norm
+
+concern different references. Knowledge of God
+
+changes the judgment of self because the standard
+
+received changes what the person recognizes in the
+
+same life.
+
+Information is a difference that makes a difference, and
+
+Calvin’s first chapter is organized by discriminations
+
+that become operative. Human weakness exists before
+
+the comparison, but its significance changes when
+
+divine perfection enters the field of observation. The
+
+difference between Creator and creature is therefore not
+
+                           32
+
+merely catalogued; it alters the observer’s subsequent
+
+state—humility, fear, repentance, worship. The
+
+received difference becomes effective within judgment
+
+and devotion through the change it produces (Bateson,
+
+Steps to an Ecology of Mind, “Form, Substance, and
+
+Difference”).
+
+The reciprocity deserves to be pressed further because
+
+Calvin does not describe two completed bodies of
+
+knowledge that happen to corroborate one another. He
+
+describes an iterative act of judgment. Every judgment
+
+of the self presupposes some standard by which
+
+strength, wisdom, goodness, dependence, or misery is
+
+recognised; every apprehension of God, meanwhile,
+
+changes the scale on which those creaturely predicates
+
+are understood. The process is therefore recursive. If
+
+K G(t) denotes the creature's apprehension of God at a
+
+given moment and K H (t) its apprehension of itself, the
+
+
+                           33
+
+relation has the formal structure K H (t+1)=F[ K H (t), K G
+
+(t)] and K G(t+1)=G[ K G(t), K H (t+1)]. Its value is to
+
+show why the opening of the Institutes cannot be
+
+reduced to two topics placed side by side. Each pass
+
+through one term changes the conditions under which
+
+the other is subsequently observed.
+
+The human knower belongs within the field of
+
+revelation it receives and interprets. Von Foerster’s
+
+account of observing systems fixes the observer as a
+
+participant whose description proceeds from a
+
+determinate state. Calvin identifies that state through
+
+creaturely dependence, history, affection, and
+
+corruption. The observer’s judgment consequently
+
+requires the correction it directs toward other
+
+judgments. Knowledge of God exposes the knower and
+
+changes the self-understanding through which later
+
+
+
+
+                             34
+
+reception proceeds (Calvin, Institutes I.1.1–3; von
+
+Foerster, Understanding Understanding).
+
+That point explains Calvin's repeated humiliation of
+
+comparative self-measurement. If a human being
+
+estimates righteousness only against neighbouring
+
+human beings, the reference signal is endogenous to the
+
+same damaged population. Let r H denote the norm
+
+inferred from surrounding human performance and r G
+
+the norm supplied by divine holiness. Then the apparent
+
+error e H =r H - y H may remain small even where e G=r G-
+
+y H is immense. The system can appear locally well
+
+regulated because its reference has drifted with the
+
+population. Calvin's comparison with God functions
+
+precisely by preventing the creature from defining the
+
+reference entirely from its own outputs. This is why the
+
+opening is not generic introspection. Self-knowledge
+
+
+
+
+                            35
+
+becomes truthful only when the reference is not
+
+manufactured by the self.
+
+The same relation establishes why Calvin's theology so
+
+often moves from doctrine to affection. If the reference
+
+changes but conduct, worship, fear, confidence, and
+
+desire remain entirely unchanged, Calvin suspects that
+
+the alleged knowledge has not become operative
+
+knowledge. A difference that produces no difference
+
+downstream has not entered the effective organization
+
+of the system. Theological cognition governs the
+
+creature’s conduct, worship, fear, confidence, and
+
+desire. The knowledge of God is therefore
+
+simultaneously descriptive and normative: it tells the
+
+creature what is true and, by disclosing the Creator-
+
+creature relation, supplies the order according to which
+
+creaturely life is to be corrected.
+
+
+
+
+                             36
+
+Knowledge of self changes when the creature
+
+apprehends God, and the creature’s exposed
+
+dependence changes the conditions under which God is
+
+apprehended. Let s t be the present judgment of self, gt
+
+the present apprehension of God, and R the revealed
+
+reference. The order of correction is recursive:
+
+                 s t + 1 = F ( s t , gt , R );
+                                                 (1)
+                gt + 1 = G ( gt , s t + 1 , R ).
+
+Terms. F revises self-judgment through the
+
+apprehension of God; G revises the creature’s
+
+apprehension of God through the dependence and
+
+corruption disclosed in that judgment. R remains the
+
+reference of both operations. The time index marks
+
+successive acts of understanding.
+
+Consequence. The second update receives the result of
+
+the first, so knowledge of God and knowledge of self
+
+cannot be completed independently. Neither update
+
+
+                                37
+
+creates R. A creature judging itself by its neighbours
+
+substitutes an internally generated standard for the
+
+revealed reference; confrontation with divine holiness
+
+corrects that standard and the self-estimate founded
+
+upon it. Calvin’s opening therefore establishes both
+
+recursion and asymmetrical authority (Calvin, Institutes
+
+I.1.1–I.2.2).
+
+The opening places the knower within the condition he
+
+seeks to understand. His faculties are real and active,
+
+yet their judgment requires correction; his inquiry
+
+proceeds from dependence even where his conclusions
+
+deny it. No act of reflection removes him from that
+
+relation. The account of knowledge must therefore
+
+include the observer’s own state among the conditions
+
+of observation, and the account of correction must
+
+identify an authority which that state does not
+
+manufacture. Calvin’s movement establishes this
+
+
+                           38
+
+requirement before the later treatment of sin, Scripture,
+
+and renewal gives it its full doctrinal development.
+
+The dependence reaches the act of self-correction itself.
+
+A person who revises one judgment through an
+
+unchanged corrupt standard carries the error into the
+
+revision; increased effort then multiplies the occasions
+
+upon which the same disposition governs reception.
+
+Reason remains a created capacity with real acts and
+
+real achievements, but its activity cannot confer divine
+
+authority upon the measure it produces. The necessary
+
+reference is received from God. Scripture’s subsequent
+
+office follows this order, directing the creature’s active
+
+judgment through a Word whose truth precedes and
+
+governs its acknowledgment.
+
+
+
+
+                            39
+
+The Sensus Divinitatis and the Corruption of
+
+Human Knowledge — Calvin, Institutes I.3.1–I.4.4
+
+
+Close reading by locus
+
+
+I.3.1–3 — The implanted awareness of God
+
+The implanted awareness of God establishes
+
+humanity’s accountability. Religious concern persists
+
+because the creature remains addressed by the Creator
+
+whose work sustains his life; its universality therefore
+
+excludes a religiously untouched starting point. The
+
+religions formed through that awareness retain the
+
+evidence of reception while displaying its corruption. A
+
+common origin does not give every response a common
+
+truth. Calvin carries the distinction from awareness to
+
+worship: what humanity has received makes the
+
+evasion culpable, and the forms of that evasion disclose
+
+the disposition through which the received witness has
+
+been altered (Calvin, Institutes I.3.1–3).
+
+                            40
+
+Paul grounds the visibility of God’s power in God’s
+
+own act of making it manifest. The witness of created
+
+things is intelligible because it proceeds from the
+
+Creator, and its reception establishes accountability. In
+
+Athens, Paul begins with the worshippers’
+
+acknowledged religious concern but corrects its object:
+
+the God who made the world is Lord of heaven and
+
+earth, gives life to all, and cannot be contained in
+
+temples or supplied with anything he lacks. The
+
+dependence of every nation upon this God explains why
+
+religious awareness survives across peoples while their
+
+worship remains corrupt (Romans 1:19–20; Acts 17:22
+
+–28; Calvin, Institutes I.3.1–3).
+
+The implanted awareness remains operative through the
+
+corrupt response it receives. Paul addresses an existing
+
+religious practice and corrects its object through the
+
+identity and acts of the God who gives life to all.
+
+Reception has therefore occurred, but the receiver has
+                          41
+
+transformed the testimony into a judgment unfaithful to
+
+its source. Calvin’s next treatment of superstition
+
+follows directly from this relation. Universal awareness
+
+establishes the presence of disclosure, while the form of
+
+worship identifies the distortion introduced by
+
+judgment and affection. The remedy must reach that
+
+transformation rather than merely increase the available
+
+witness.
+
+Calvin invokes the widespread awareness of deity to
+
+establish the universality of humanity’s religious
+
+accountability. The consensus does not vindicate the
+
+religions produced from that awareness. It establishes
+
+that the creature has received a disclosure it
+
+subsequently corrupts. The same universality that
+
+excludes religious ignorance as an excuse therefore
+
+strengthens the indictment of false worship (Calvin,
+
+Institutes I.3.1–3).
+
+
+                            42
+
+Cross-reference: See I.4.1–4 immediately below; the
+
+point of I.3 cannot be read apart from the deformation
+
+described in I.4.
+
+
+I.4.1–4 — Suppression, superstition, and self-made
+
+gods
+
+The next move prevents the sensus divinitatis from
+
+becoming optimistic natural theology. The mind
+
+manufactures gods suited to its preferences and then
+
+treats its own output as reference. Calvin’s language of
+
+suppression makes the corruption active: the observer
+
+participates in stabilizing a false model (Calvin,
+
+Institutes I.4.1–4).
+
+Romans 1 describes a sequence of culpable
+
+substitutions. Knowledge of God is followed by the
+
+refusal of gratitude, futile reasoning, the exchange of
+
+divine glory for images, and the exchange of truth for a
+
+lie. Worship is redirected from Creator to creature. The
+
+                            43
+
+succession matters because idolatry arises through the
+
+misuse of disclosure already received. The heart
+
+manufactures an acceptable object after refusing the
+
+authority of the true one. Its professed wisdom then
+
+supplies a defense of the substitution (Romans 1:21–25;
+
+Calvin, Institutes I.4.1–4).
+
+The error becomes self-reinforcing. A false object of
+
+worship validates desires that made the false object
+
+attractive, and those desires encourage further distortion
+
+of the witness that condemns them. Calvin’s account of
+
+suppression therefore explains the persistence of
+
+superstition despite creation’s public testimony.
+
+Scripture must correct the object and rule of worship
+
+from outside that cycle. His later rejection of images
+
+and unauthorized ceremonies follows from this account
+
+of how religious fabrication acquires apparent
+
+authority. A self-generated reference can produce
+
+
+                               44
+
+internally stable regulation while remaining globally
+
+wrong. Stability is not truth.
+
+Historical and theological location. Augustine’s account
+
+of disordered love is a deep genealogy here: error is not
+
+merely intellectual but affective, because the will
+
+prefers a manageable god.
+
+Cross-reference: See I.11 on images and III.2 on faith;
+
+both sections return to the question of whether the
+
+reference is received or manufactured.
+
+Calvin next argues that awareness of God is not an
+
+exotic achievement possessed only by philosophers. A
+
+“sense of Deity” is naturally implanted in the human
+
+mind, and the persistence of religion across peoples
+
+witnesses to it (Calvin, Institutes I.3.1). His argument is
+
+not that every religious belief is true. Quite the
+
+opposite: the astonishing variety of superstition
+
+demonstrates what fallen humanity does with the
+
+                            45
+
+awareness it cannot entirely escape. The point is that
+
+irreligion does not begin from an untouched neutrality.
+
+Human beings live before God and possess enough
+
+awareness of him to be responsible for their response.
+
+The fourth chapter therefore prevents the third from
+
+becoming a naïve natural theology. The chapter’s title
+
+describes this knowledge as “stifled or corrupted,”
+
+whether through ignorance, vanity, deliberate impiety,
+
+or the manufacture of gods suited to human preference
+
+(Calvin, Institutes I.4.1–4). Calvin is especially
+
+interested in the way the human mind substitutes an
+
+imagined deity for the God who actually is. Idolatry is
+
+epistemic as well as cultic: the mind produces an object
+
+that can be managed, and then calls that object God.
+
+This is why Calvin can simultaneously maintain that
+
+knowledge of God is universally available and that
+
+humanity fails to know God rightly. The defect is not in
+
+
+                            46
+
+the clarity of God’s self-manifestation but in the
+
+recipient. Fallen reason is not annihilated; it is
+
+disordered. Human beings remain capable of
+
+astonishing achievements in politics, arts, law, and
+
+investigation, a point Calvin later acknowledges when
+
+discussing the remaining gifts of human nature. Yet in
+
+the knowledge that reconciles the sinner to God, the
+
+mind requires a remedy it cannot supply for itself
+
+(Calvin, Institutes II.2.12–17).
+
+Calvin’s sensus divinitatis supplies an input condition;
+
+the resulting human religion distorts that input. A
+
+system may receive a signal and nevertheless transform
+
+it through an internal mapping that distorts the relation
+
+between input and output. Calvin’s claim is exactly of
+
+that kind: universal manifestation does not entail
+
+universally adequate representation because the fallen
+
+knower is itself part of the transformation path.
+
+
+                             47
+
+The creature’s reception of God’s disclosure is
+
+governed by the disposition through which it interprets
+
+that disclosure.
+
+Fallen reception substitutes a preferred assertion for the
+
+truth addressed to it. Desire and judgment therefore
+
+enter the same communicative operation: the
+
+constructed account of deity becomes a premise of the
+
+worship through which that disposition is reproduced.
+
+The communicated assertion enters the receiver’s actual
+
+judgment and conduct. A truthful testimony can be
+
+suppressed, a command reclassified as optional, and the
+
+Creator’s glory attributed to an idol. These are
+
+determinate corruptions of communicated content.
+
+Define faithful reception by D(E(q))=q, where E
+
+presents assertion q and D receives it; corrupted
+
+reception gives D(E(q))=q′ with q′≠q. Terms. Equality
+
+concerns the assertion’s referent, content, and force.
+
+
+                            48
+
+Consequence. Corruption changes the information
+
+governing action because the proposition acted upon
+
+differs from the truth addressed to the creature. The
+
+altered reception explains the false worship issuing
+
+from it (Calvin, Institutes I.3–4).
+
+The sensus divinitatis consequently creates an unusual
+
+epistemic situation. Calvin does not posit a silent
+
+environment from which an exceptionally clever
+
+observer infers God. He posits a creature already
+
+addressed by creation and furnished with an innate
+
+awareness that makes the divine question unavoidable.
+
+The error proceeds through reception. The reception
+
+relation is O=T f (S)+N, where S is the divine
+
+manifestation available to the creature, T f is the fallen
+
+transformation imposed by cognition and affection, N
+
+
+represents contingent disturbances, and O is the
+
+resulting religious output. The relation preserves the
+
+
+                            49
+
+direction of dependence: false religion cannot simply be
+
+blamed upon an insufficient input. The transformation
+
+itself is disordered.
+
+God’s disclosure communicates a determinate truth: the
+
+Creator’s power, the creature’s dependence, and the
+
+worship owed to him. Let X be a finite set of assertions
+
+distinguished in a received testimony, p(x) their
+
+probabilities within a specified ensemble of
+
+communicative occasions, and H(X)=−Σ p(x)log₂p(x),
+
+with zero-probability terms assigned zero. H measures
+
+the uncertainty over those content-bearing assertions.
+
+Each assertion includes its referent and the judgment it
+
+communicates; the receiver’s act preserves that
+
+assertion or substitutes another. Entropy is
+
+consequently defined upon the communicated content
+
+in this argument. Truth is fixed by conformity of the
+
+assertion to what God discloses, and faithful reception
+
+preserves that conformity through understanding and
+                           50
+
+conduct. The numerical distribution gives the frequency
+
+and uncertainty of the assertions within the specified
+
+ensemble; the revelation supplies the true assertions
+
+whose reception is being followed (Calvin, Institutes I.3
+
+–4; Shannon, ‘A Mathematical Theory of
+
+Communication.’).
+
+For reception, let Y=d(X) be the assertion actually
+
+retained. The joint probabilities p(x,y) specify each
+
+disclosed assertion and its reception together. Faithful
+
+decoding preserves the assertion’s referent and
+
+command; a many-to-one decoding suppresses
+
+distinctions needed for judgment. The uncertainty
+
+remaining about the disclosed assertion after reception
+
+is:
+
+      H ( X |Y )= − Σ x , y p( x , y ) log 2 p( x | y );
+                                                         (2)
+            I ( X ; Y )= H ( X )− H ( X |Y )
+
+Terms. The sums range over positive-probability pairs.
+
+Conditional entropy counts the distinctions that remain
+                          51
+
+unresolved after Y is known; mutual information counts
+
+the reduction of that uncertainty through reception. For
+
+deterministic decoding, H(X)=H(Y)+H(X|Y) (Shannon,
+
+“A Mathematical Theory of Communication,” §§6, 12).
+
+Consequence. Take four equally frequent disclosed
+
+assertions and suppose reception merges them into two
+
+equal pairs. H(X)=2 bits, H(Y)=1 bit, and H(X|Y)=1
+
+bit. Within each pair, the receiver has lost the ability to
+
+distinguish the assertions. If one assertion commands
+
+worship of the Creator and the other forbids worship of
+
+a creature, merging them destroys the distinction
+
+directing obedience. The lost bit records that unresolved
+
+doctrinal distinction in the very act of reception
+
+(Calvin, Institutes I.4.1–4).
+
+Calvin's account of idolatry also exceeds the model of
+
+accidental transmission error. The fallen mind is
+
+productive. It does not merely lose bits of a pristine
+
+
+                            52
+
+message; it constructs substitutes. The human
+
+imagination takes the unavoidable pressure of divine
+
+manifestation and stabilises it in forms that can be
+
+domesticated. We can represent this as M t + 1=F( M t ,S, P t
+
+), where M is the internal model of deity and P
+
+represents preferences, fears, and desires. Under
+
+corruption, P does not merely perturb the model
+
+randomly; it biases the update. The result is a feedback
+
+loop in which a preferred representation guides
+
+subsequent interpretation, and subsequent interpretation
+
+reinforces the preferred representation. Calvin's
+
+polemic against superstition is therefore a theory of
+
+self-confirming religious misregulation as much as a
+
+complaint about missing evidence.
+
+The remedy required by this diagnosis must do more
+
+than increase raw stimulus. If the transformation T f
+
+remains unchanged, adding further environmental
+
+
+                             53
+
+manifestations can simply yield further distorted
+
+outputs. This is the bridge to Scripture and, ultimately,
+
+regeneration. Calvin's architecture is already telling us
+
+that an epistemic failure rooted in the organisation of
+
+the observer cannot be solved by treating the observer
+
+as a passive receiver who merely needs a louder signal.
+
+The system of reception must be corrected. Book One
+
+answers this initially through the external norm of
+
+Scripture and the internal testimony of the Spirit; Book
+
+Three will answer it soteriologically through renewal of
+
+the person.
+
+
+
+
+                            54
+
+The fallen receiver actively reorganizes revelation into
+
+a preferred account of deity. Let R be a determinate
+
+revealed assertion, q t the proposition the receiver
+
+presently substitutes for it, and at the receiver’s
+
+operative disposition. The reception and subsequent
+
+self-confirmation are joined:
+
+                    q t = D ( R , at );
+                   at + 1 = F ( at , q t ); (3)
+                    D ( R , at )≠ R .
+
+Terms. D is the interpretive operation; F is the change
+
+of disposition produced through the accepted
+
+interpretation. Equality between propositions means
+
+agreement in the assertion made, including its object
+
+and normative force. The final inequality states
+
+corruption of reception rather than absence of
+
+revelation.
+
+Consequence. The substituted assertion alters the
+
+disposition from which the next interpretation proceeds.
+                               55
+
+Idolatry thereby reproduces itself through a loop: desire
+
+constructs a manageable god, worship strengthens that
+
+desire, and the strengthened desire governs later
+
+interpretation. Increasing the available testimony leaves
+
+this loop intact unless the organization of reception
+
+changes. The necessity of grace follows from the
+
+corruption of the receiver, not a deficiency in God’s
+
+disclosure (Calvin, Institutes I.3–4).
+
+The abundance of disclosure establishes the gravity of
+
+its suppression. Humanity encounters divine power and
+
+wisdom through a world upon which its own continued
+
+life depends, yet directs worship toward objects
+
+fashioned within that world. The received difference
+
+between Creator and creature is thereby altered at the
+
+point of judgment and enacted again in devotion.
+
+Increased testimony alone leaves the governing
+
+disposition intact. Calvin’s diagnosis reaches the
+
+recipient whose active capacities produce the false
+                          56
+
+classification: the person hears, judges, and worships,
+
+while the ordering of those acts turns the disclosed
+
+dependence toward a counterfeit source.
+
+False worship consequently exhibits a corrupted
+
+operation of a capacity which remains active. The
+
+person still distinguishes, desires, addresses, and serves;
+
+the disorder lies in the relation joining those acts to
+
+their object. A fabricated god receives allegiance,
+
+repeated allegiance strengthens the affection which
+
+fabricated it, and that strengthened affection governs
+
+later reception. The corruption reproduces itself through
+
+the religious life it organizes. The continued activity of
+
+the faculty therefore supplies no proof of its fidelity, for
+
+an operative capacity can preserve and extend the very
+
+error through which it has been directed.
+
+
+
+
+                            57
+
+Creation as the Theater of God’s Glory — Calvin,
+
+Institutes I.5.1–15
+
+
+Close reading by locus
+
+
+I.5.1–2 — Theater and workmanship
+
+Creation publicly displays the wisdom of its Maker.
+
+Order, abundance, succession, and dependence give the
+
+observer effects whose intelligibility directs him toward
+
+their Author. The world remains creaturely throughout
+
+this witness: its power is received, its regularity
+
+appointed, and its continued existence sustained.
+
+Calvin’s account therefore fixes the direction of
+
+contemplation. The creature encounters the work and
+
+acknowledges the source through which the work
+
+exists; idolatry interrupts that movement by assigning
+
+the revealed power to the object which receives it
+
+(Calvin, Institutes I.5.1–2).
+
+
+
+                            58
+
+Clement of Rome directs the Corinthians to the ordered
+
+movements of heaven and earth, the succession of
+
+seasons, and the appointed bounds of the sea.
+
+Creation’s regularity displays the Creator’s governance
+
+and summons the church to concord. The world is
+
+already an intelligible witness before the observer
+
+supplies an interpretation. Calvin’s account develops
+
+this same relation between created order and moral
+
+obligation: the work of God reveals a rule that the
+
+creature is bound to acknowledge (Clement of Rome, 1
+
+Clement 20).
+
+Psalm 19 describes the heavens declaring God’s glory
+
+and their witness extending throughout the earth. The
+
+disclosure does not depend upon a local priesthood, a
+
+particular spoken language, or the observer’s
+
+permission. Creation’s order makes the Creator’s work
+
+publicly available. Romans 1:20 explains its epistemic
+
+consequence: invisible divine attributes are understood
+                           59
+
+through the things made. The visible work directs
+
+judgment toward the power and deity of its invisible
+
+Author. Neither text permits the observer to turn the
+
+created object into the deity it reveals (Psalm 19:1–4;
+
+Romans 1:20; Calvin, Institutes I.5.1–2).
+
+Creation communicates through its actual order. The
+
+regularity, abundance, and interdependence of created
+
+things make divine wisdom apprehensible through
+
+effects whose source remains their Maker.
+
+Contemplation must preserve that direction, for the
+
+witness receives its office from the Author toward
+
+whom it directs judgment. Fallen reception loses the
+
+distinction when it attributes divine power to the
+
+created object or treats received existence as self-
+
+sufficiency. The loss therefore occurs within an
+
+intelligible field whose differences have been
+
+suppressed. The same ordering later governs
+
+sacramental signs: the appointed means directs the
+                          60
+
+recipient toward a reality whose source it cannot
+
+become.
+
+Historical and theological location. The patristic and
+
+medieval doctrine of creation as sign-bearing
+
+background remains, but Calvin’s polemical target is
+
+the confidence that fallen reason can climb from effects
+
+to saving knowledge without scriptural correction.
+
+Cross-reference: See I.6.1, where the spectacles image
+
+answers the epistemic problem generated here.
+
+
+I.5.11–15 — From disclosure to inexcusable error
+
+Calvin’s conclusion is juridical as well as epistemic:
+
+creation leaves humanity without excuse. Natural
+
+knowledge is therefore enough for accountability while
+
+insufficient for reconciliation. That asymmetry is
+
+crucial (Calvin, Institutes I.5.11–15).
+
+Romans 1:20–23 connects intelligible disclosure with
+
+the removal of excuse. Humanity’s failure is specified
+                            61
+
+by what it does with knowledge: it withholds glory and
+
+thanksgiving, grows futile in its reasoning, and
+
+exchanges the incorruptible God’s glory for
+
+representations of corruptible creatures. The judgment
+
+concerns a refusal within an existing relation of
+
+dependence. Creation’s witness establishes the duty that
+
+human worship violates. It does not establish the
+
+sinner’s power to recover faithful worship through
+
+unaided reflection (Romans 1:20–23; Calvin, Institutes
+
+I.5.11–15).
+
+Accountability and restoration thus follow different
+
+causal paths. The evidence is sufficient to expose the
+
+wrong, while the corrupted interpreter still needs the
+
+Word and Spirit to be brought to the right response.
+
+Confusing those paths turns the presence of a witness
+
+into an assertion of saving competence. Calvin’s
+
+transition to Scripture preserves their distinction: the
+
+world displays its Maker, and God’s further revelation
+                           62
+
+supplies the authoritative direction that fallen religious
+
+judgment lacks. The system has enough information to
+
+establish deviation from the reference, but not enough
+
+endogenous capacity to restore itself to the reference.
+
+Creation discloses God’s power and wisdom, and the
+
+fallen observer remains accountable for suppressing
+
+that disclosure. The revelation is sufficient to expose
+
+ingratitude; the observer’s corruption prevents it from
+
+becoming faithful worship through unaided reasoning.
+
+This distinction establishes why Calvin proceeds from
+
+the theater of creation to Scripture’s corrective office.
+
+The failure belongs to the recipient who misreads and
+
+redirects the disclosed order (Calvin, Institutes I.5.11–
+
+15; I.6.1).
+
+Cross-reference: See II.6 on the necessity of Christ the
+
+Mediator and III.2 on faith’s dependence upon promise.
+
+
+
+
+                            63
+
+Calvin’s treatment of creation expands the external side
+
+of revelation. The world is not religiously mute. Its
+
+order, beauty, regularity, variety, and power continually
+
+display the Creator. The human body and mind are
+
+themselves exhibits of divine wisdom. Calvin can
+
+therefore speak of the world as a splendid theater in
+
+which the glory of God is displayed. The metaphor
+
+matters: creation is not God, but it presents signs by
+
+which the spectator is directed toward its author
+
+(Calvin, Institutes I.5.1–2).
+
+Yet spectators do not reliably read the theater. Calvin’s
+
+argument repeatedly moves from manifestation to
+
+corruption. Human beings either fail to raise their
+
+minds from created things to the Creator or turn the
+
+very gifts of God into occasions for pride and idolatry.
+
+Natural revelation therefore has a double effect in fallen
+
+humanity: it genuinely manifests God and thereby
+
+removes excuse, but it does not by itself produce the
+                          64
+
+saving knowledge for which humanity was created
+
+(Calvin, Institutes I.5.4, 11–15).
+
+The distinction allows Calvin to avoid two opposite
+
+reductions. Creation is not so obscure that it tells us
+
+nothing of God, and fallen reason is not so competent
+
+that the saving knowledge of God can be reconstructed
+
+from nature without divine instruction. This tension
+
+prepares directly for Scripture. The problem is no
+
+longer whether God has spoken in creation; it is how a
+
+corrupted hearer can be brought to hear rightly.
+
+The created order supplies a continuously available
+
+field of distinctions through which the observer
+
+apprehends order, dependence, power, and wisdom.
+
+Information is a difference that makes a difference: the
+
+received distinction enters the organization and conduct
+
+of the recipient. Creation directs the creature toward its
+
+Author; fallen cognition suppresses or reroutes that
+
+
+                            65
+
+direction. The corruption occurs within the reception of
+
+the disclosed order, where judgment and affection
+
+determine its effect (Bateson, Steps to an Ecology of
+
+Mind, “Form, Substance, and Difference”; Calvin,
+
+Institutes I.5.1–15).
+
+Creation communicates God’s glory through a
+
+differentiated field of works whose reception can
+
+preserve or suppress the truth disclosed.
+
+The mathematical development below follows the
+
+distinctions retained in the interpretation. Loss is
+
+specified by the image and fibres of that mapping, so its
+
+measure refers to actual distinctions in the
+
+communicated testimony rather than an undefined
+
+deduction from a generic quantity.
+
+Created order becomes apprehensible through
+
+continuing, bounded effects. Seasons succeed one
+
+another, bodies preserve their natures, and the
+
+                            66
+
+interdependence of living things supplies regularities
+
+through which the observer recognizes wisdom and
+
+power. The possible history is therefore constrained: the
+
+actual arrangement permits some transitions and
+
+excludes others. Ashby locates organization in such
+
+restriction of variety. The order encountered in creation
+
+belongs to the Maker whose government gives those
+
+restrictions their reality and directs the creature’s
+
+acknowledgment toward their source. The visible
+
+regularity carries a determinate relation of dependence
+
+into the observer’s judgment.
+
+The order of creation presents regularity whose
+
+theological significance is identified through revelation.
+
+Created effects disclose their Author, and Scripture
+
+directs the observer’s judgment toward the Creator’s
+
+wisdom and glory. The world’s witness and its faithful
+
+interpretation thus occupy distinguishable places within
+
+the same knowledge of God. The order studied is
+                        67
+
+public; the rule governing its religious interpretation
+
+comes from divine disclosure (Calvin, Institutes I.5.11–
+
+15; I.6.1).
+
+The human body intensifies the reflexivity of the
+
+theater. The observer is itself one of the observed
+
+artifacts. Calvin repeatedly invites the reader to
+
+discover divine workmanship not only by looking
+
+outward but by attending to the organisation that makes
+
+looking possible. The sensor, processor, and actor are
+
+themselves part of the field being interpreted. This folds
+
+natural knowledge back into self-knowledge: the
+
+creature discovers dependence in the very faculties by
+
+which it attempts to understand dependence.
+
+
+
+
+                            68
+
+Created testimony communicates the Creator’s power
+
+through the determinate order of his works. Let X be a
+
+finite set of relevant distinctions disclosed in creation
+
+and Y the distinctions retained by a human
+
+interpretation. The interpretation is a mapping d:X→Y.
+
+For y in Y, define its fibre by:
+
+            d - 1 ( y )= {x ∈ X : d ( x )= y };
+                                                      (4)
+          L( d )= log 2 | X |− log 2 | d ( X )| ≥ 0 .
+
+Terms. Each fibre collects the disclosed distinctions
+
+which the interpretation treats as one. L measures the
+
+reduction of distinguishable alternatives in bits, using
+
+finite nonempty sets and the image d(X), so that
+
+subtraction compares quantities in the same unit. A
+
+theological distinction is lost where a fibre contains
+
+assertions requiring different judgments of worship or
+
+obedience.
+
+Consequence. Compression becomes corruption when
+
+the receiver identifies Creator and creature, attributes
+                            69
+
+divine power to an idol, or replaces dependence with
+
+self-sufficiency. The numerical loss and the false
+
+judgment arise in that same reception: fewer operative
+
+distinctions remain available because the creature has
+
+suppressed the truth disclosed. A smaller image can
+
+assist understanding when its fibres preserve the
+
+required distinctions; it condemns understanding when
+
+those distinctions are erased (Calvin, Institutes I.5.1–
+
+15).
+
+The image-size loss in (4) records repertoire reduction.
+
+The actual distribution of reception also depends on the
+
+sizes of the fibres. With four equiprobable assertions
+
+and fibre sizes three and one,
+
+H(Y)=−(3/4)log₂(3/4)−(1/4)log₂(1/4)≈0.811 bits. The
+
+remaining uncertainty is H(X|Y)=(3/4)log₂3≈1.189 bits,
+
+although L(d)=1 bit. The first number measures the
+
+retained repertoire under its actual frequencies; the
+
+second measures the ambiguity within reception.
+                         70
+
+Keeping both quantities explicit locates the suppressed
+
+distinctions and how often they obstruct judgment.
+
+
+Scripture as the Spectacles Through Which We See
+
+God — Calvin, Institutes I.6.1–4; I.9.1–3
+
+
+Close reading by locus
+
+
+I.6.1 — The spectacles
+
+Scripture corrects the creature’s reading of a witness
+
+already given. The world continues to disclose its
+
+Maker, while the Word identifies him and directs the
+
+judgment through which his works are received.
+
+Calvin’s spectacles image makes the operation
+
+concrete: what was present but confused becomes
+
+distinctly apprehended through the supplied correction.
+
+Special revelation thus governs the reception of general
+
+revelation. The corrective does not replace the world
+
+with another object; it restores the order through which
+
+
+                           71
+
+the existing object directs knowledge and worship
+
+toward its Author (Calvin, Institutes I.6.1).
+
+Athenagoras distinguishes the philosophers’ conjectures
+
+from the testimony of the prophets through whom the
+
+Spirit of God speaks. Human reflection encounters the
+
+order of the world; prophetic revelation identifies its
+
+Author and gives that encounter its authoritative
+
+interpretation. Scripture supplies the rule by which
+
+inquiry becomes knowledge of the true God. Calvin’s
+
+spectacles image gives this patristic distinction a
+
+precise account of the fallen reader’s need: revelation
+
+repairs the judgment with which the creature reads the
+
+Creator’s works (Athenagoras, Plea for the Christians 7
+
+–10).
+
+Psalm 19 moves from the heavens’ witness to the law’s
+
+restoration of the soul, the testimony’s instruction of the
+
+simple, and the commandment’s illumination of the
+
+
+                            72
+
+eyes. The movement assigns Scripture a corrective
+
+office within the world God has already made. The
+
+psalm then turns that correction upon the speaker, who
+
+asks to be cleansed from hidden faults and preserved
+
+from presumptuous sin. In 2 Timothy, the sacred
+
+writings make one wise for salvation through faith in
+
+Christ and equip the servant of God through teaching,
+
+reproof, correction, and training. Scripture orders both
+
+apprehension and conduct (Psalm 19:7–14; 2 Timothy
+
+3:15–17; Calvin, Institutes I.6.1).
+
+Created things remain before the observer while
+
+Scripture corrects the judgment through which their
+
+Author is acknowledged. Reproof identifies the
+
+deviation, instruction supplies the rule, and faithful
+
+conduct carries that received correction into worship
+
+and common life. The same relation continues through
+
+church teaching and discipline. Ministers apply the
+
+Word to the condition encountered, and the recipient’s
+                          73
+
+altered understanding changes the response which
+
+follows. Their office receives its efficacy and bounds
+
+from the reference they serve; institutional custom
+
+cannot supply a new source where the received Word
+
+already governs the act.
+
+Scripture’s corrective office answers the creature’s
+
+weakness at the act of judgment. The spectacles image
+
+keeps the world before the observer while changing the
+
+representation through which its Author is recognized.
+
+The authority of the corrective therefore determines the
+
+fidelity of the resulting worship. Once Scripture
+
+establishes that reference, the creature cannot replace it
+
+with a preferred image or a self-authorizing inward
+
+claim (Calvin, Institutes I.6.1; I.9.1–3).
+
+Cross-reference: See I.5 above and I.7–9 below. Also
+
+compare IV.8–10, where the same hierarchy constrains
+
+church authority.
+
+
+                            74
+
+I.9.1–3 — Word and Spirit against enthusiasm
+
+Calvin refuses the choice between dead letter and
+
+unregulated private inspiration. The Spirit who inspired
+
+Scripture does not emancipate believers from the Word;
+
+Word and Spirit are mutually ordered in the economy
+
+of revelation (Calvin, Institutes I.9.1–3).
+
+The Didache subjects teachers to the doctrine already
+
+delivered and directs Christian prayer by the Lord’s
+
+command in the Gospel. Its treatment of prophetic
+
+claims also requires attention to the claimant’s conduct:
+
+invoking the Spirit does not give an impostor
+
+permission to depart from the ways of the Lord. Word,
+
+prayer, teaching, and spiritual discernment operate
+
+within one received rule. Calvin’s refusal of an
+
+inspiration detached from Scripture continues this early
+
+discipline of the church’s hearing. The Spirit establishes
+
+fidelity to Christ’s teaching and exposes the pretender
+
+who uses spiritual language to evade it (Didache 8, 11).
+                          75
+
+Jesus describes the Spirit’s work through his relation to
+
+the truth disclosed in Christ: the Spirit guides the
+
+apostles into truth, glorifies the Son, and declares what
+
+belongs to him. His activity preserves the unity of the
+
+Father’s gift, the Son’s revelation, and the apostles’
+
+testimony. Second Peter identifies the origin of
+
+prophecy in men speaking from God as they are carried
+
+by the Holy Spirit. The prophetic Word and the Spirit
+
+who produces it therefore belong to one divine act of
+
+communication. An alleged illumination that repudiates
+
+that Word breaks the relation the texts establish (John
+
+16:13–15; 2 Peter 1:20–21; Calvin, Institutes I.9.1–3).
+
+The Word supplies a public, enduring rule by which
+
+claims of spiritual guidance are tested. The Spirit’s
+
+inward operation brings the receiver to the truth
+
+communicated through that rule. Calvin’s rejection of
+
+enthusiasm protects this coordination of source,
+
+message, and reception. It also governs Book Three’s
+                           76
+
+account of faith: inward certainty is bound to the
+
+promise in Christ, giving assurance an object that
+
+survives the believer’s changing experience. The
+
+correcting channel and the internal enabling condition
+
+are coordinated. Removing either produces either inert
+
+reception or unbounded self-validation.
+
+Calvin’s polemic against enthusiasm concerns an
+
+
+inward claim insulated from the Word. Such a claim
+
+makes its own occurrence the warrant of its authority:
+
+the claimant feels inspired and treats that feeling as
+
+sufficient authorization. Scripture supplies the test the
+
+claimant cannot manufacture. The Spirit’s work
+
+preserves the Word he inspired, so an alleged inward
+
+disclosure that contradicts that Word condemns itself at
+
+its governing reference (Calvin, Institutes I.9.1–3).
+
+Cross-reference: See III.1–2 on the Spirit’s role in
+
+union and faith.
+
+
+                            77
+
+Calvin’s famous spectacles analogy occurs at precisely
+
+this point. Old age or weak sight may leave a person
+
+able to recognize that writing exists while unable to
+
+distinguish the words. Once spectacles are supplied, the
+
+confused shapes become readable. Scripture performs
+
+an analogous office: it gathers the otherwise confused
+
+knowledge of God in our minds and clearly shows us
+
+the true God. Scripture is not merely one interpretive
+
+perspective among others; it is the divinely given
+
+corrective by which the Creator who is already
+
+manifested in his works is rightly identified (Calvin,
+
+Institutes I.6.1).
+
+This also explains Calvin’s insistence on the Word
+
+against claims of revelation that emancipate themselves
+
+from Scripture. In Book I, chapter 9, he attacks those
+
+whom he regards as “fanatics” for separating the Spirit
+
+from the Word. The true Spirit is not a rival source who
+
+makes Scripture obsolete. The Spirit who inspired the
+                          78
+
+prophets and apostles does not contradict himself by
+
+leading believers away from the Word he gave (Calvin,
+
+Institutes I.9.1–3). Word and Spirit are therefore
+
+coordinated rather than competitive.
+
+The practical consequence is a disciplined doctrine of
+
+theological authority. Experience, reason, ecclesiastical
+
+tradition, and historical testimony may all have roles,
+
+but none is permitted to become an autonomous norm
+
+over the revelation by which God has chosen to govern
+
+the church. Calvin’s later arguments about councils,
+
+church laws, vows, worship, and sacraments all depend
+
+upon this settlement in Book One.
+
+Conant and Ashby’s 1970 good-regulator theorem
+
+establishes, under its specified conditions, that a
+
+maximally successful and simple regulator embodies a
+
+model of the system regulated. Calvin’s spectacles
+
+image identifies the correction of the representation
+
+
+                            79
+
+through which the creature judges creation. Scripture
+
+supplies the divinely authorized reference that identifies
+
+the Creator and orders the worship due to him.
+
+Corrected representation governs corrected action: the
+
+creature’s judgment must retain the distinctions
+
+required for faithful reception and obedience.
+
+Scripture corrects the apprehension of the Creator
+
+disclosed in his works.
+
+The correcting reference names the author of the same
+
+creation the fallen person misreads. Its operation
+
+changes the premises of judgment, and changed
+
+judgment governs worship and conduct. The correction
+
+therefore belongs to the creature’s effective reception of
+
+revelation.
+
+Once Scripture becomes normative, theological
+
+interpretation acquires a negative-feedback structure.
+
+Claims, practices, or private revelations can be
+
+                           80
+
+compared against the scriptural reference; discrepancies
+
+generate correction rather than being amplified into
+
+autonomous doctrinal trajectories. This is negative
+
+feedback in Wiener’s sense: information about
+
+deviation governs action that counters deviation.
+
+Scripture supplies the normative reference;
+
+interpretation and practice undergo correction against it.
+
+The spectacles metaphor exposes the dependence of
+
+perception upon corrective mediation. Spectacles do not
+
+add a second world beside the blurred one; they alter
+
+the mapping by which the same field becomes
+
+intelligible. If C is creation, H the human observer, and
+
+M S the interpretive model disciplined by Scripture, then
+
+the relevant transformation is not C→S as though
+
+Scripture replaced creation, but C→ M S (C)→H.
+
+Calvin's point in I.6.1 is that the book of creation
+
+remains before us while Scripture names its author and
+
+
+                            81
+
+orders its signs. The correction is hermeneutical without
+
+being merely subjective, because the corrective itself is
+
+divinely given.
+
+Conant and Ashby fix a probability distribution on the
+
+reguland’s states X, an available response set R, and an
+
+outcome map ψ:X×R→Z. A conditional response
+
+distribution p(r|x) determines p(z). Their optimum
+
+minimizes H(Z); the simplest optimum chooses one
+
+effective response h(x) for each state of positive
+
+probability. The mapping retains the distinctions
+
+required by the governing end. For the creature’s
+
+worship, that end is obedience to the God Scripture
+
+identifies (Conant and Ashby, “Every Good Regulator
+
+of a System Must Be a Model of That System,” pp. 95–
+
+96; Calvin, Institutes I.6.1).
+
+The outcome distribution is obtained by summing the
+
+state–response probabilities mapped to each outcome:
+
+
+                             82
+
+            p( z )= Σ ψ ( x , r )= z p( x ) p( r | x );
+                                                        (5)
+             H ( Z )= − Σ z p( z ) log 2 p( z )
+
+Terms. p(x) is fixed and ψ is given. Choosing one
+
+response from those that preserve the optimum
+
+produces a deterministic mapping h. In the paper’s
+
+proof, optimal conditional distributions are taken to
+
+produce the same optimal outcome distribution (Conant
+
+and Ashby, pp. 95–96).
+
+The appointed end also requires ψ(x,h(x))∈ Z good . To
+
+test whether a received representation m:X→M retains
+
+enough distinction for that end, define A good
+
+(x)={r:ψ(x,r)∈ Z good }. Each represented class must
+
+admit a response appropriate to all its members:
+
+        ∀ v ∈ m( X ): ⋂ x ∈ m ( v ) A good ( x )≠ ∅ (6)
+                                  −1
+
+
+
+
+Consequence. Choose a response from each intersection
+
+and compose it with m; the resulting policy secures the
+
+end for every represented state. An empty intersection
+
+                                 83
+
+means that the merged states require incompatible
+
+responses, so that representation fails. Scripture’s
+
+correction restores the distinctions governing worship:
+
+the Creator receives the adoration withheld from the
+
+creature. Corrected representation and obedient conduct
+
+are joined by the same response selection (Calvin,
+
+Institutes I.6.1).
+
+This also illuminates Calvin's hostility to an
+
+autonomous appeal to Spirit against Word. If the
+
+alleged corrective channel is permitted to generate
+
+outputs that cannot themselves be checked against the
+
+normative revelation, the system loses the very
+
+constraint that distinguishes correction from self-
+
+amplification. In positive feedback, an output can be
+
+returned in a way that increases deviation rather than
+
+suppressing it. Calvin identifies this self-amplifying
+
+structure in I.9: an inward claim authorises itself, its
+
+authorization licenses further inward claims, and no
+                            84
+
+external norm remains capable of damping the
+
+trajectory. His insistence that the Spirit who inspired
+
+Scripture does not contradict Scripture closes that
+
+runaway loop.
+
+The result is not a static textualism. Scripture must be
+
+read, preached, remembered, applied, and inwardly
+
+confirmed. The Word therefore circulates through
+
+multiple human operations, all of which can introduce
+
+error. Calvin's answer is not to deny mediation but to
+
+subordinate mediation. Ministers, councils, teachers,
+
+confessions, and readers become secondary processors
+
+whose outputs remain corrigible by the source they
+
+serve. This architecture will reappear in Book Four,
+
+where ecclesiastical authority is real precisely because
+
+it is ministerial rather than self-originating. The
+
+epistemology of Book One is already the constitutional
+
+theory of Calvin's church.
+
+
+                             85
+
+Scripture supplies the reference by which judgment and
+
+conduct are corrected. Let M t be the propositions and
+
+interpretive rules presently governing the knower, S the
+
+scriptural testimony, and at the resulting conduct. The
+
+correction reaches action through its governing
+
+understanding:
+
+                    M t + 1 = C S ( M t );
+                    at + 1 = π ( M t + 1 );    (7)
+           e t = {q ∈ M t : q contradicts S }.
+
+
+Terms. C S is correction under Scripture; π maps
+
+operative understanding into conduct; e t is the set of
+
+identifiable contradictions with the scriptural reference.
+
+Error is specified propositionally, so it requires neither
+
+an arbitrary moral scale nor subtraction between
+
+incomparable realities.
+
+Consequence. Removing an element of e t changes an
+
+operative premise of worship, confession, or conduct.
+
+Scripture’s authority governs both the comparison and
+                             86
+
+the permissible correction. A private revelation which
+
+refuses comparison with S disables the operation that
+
+distinguishes correction from self-confirmation. The
+
+Spirit’s work makes the Word received and effective
+
+while preserving the Word as the governing reference
+
+(Calvin, Institutes I.6; I.9).
+
+The spectacles image exposes the insufficiency of
+
+uncorrected sight through the very object it enables the
+
+observer to see. The world was already present, and the
+
+observer was already describing it; the supplied
+
+correction reveals how much his prior judgment had
+
+confused. Scripture’s office therefore carries an
+
+acknowledgment of dependence into the act of
+
+knowledge. Truthful reception becomes possible
+
+through an aid the creature receives, and its
+
+consequence is the correction of an estimate whose
+
+previous confidence could not establish its accuracy.
+
+
+                                 87
+
+Internal agreement cannot certify the truth of the
+
+reference through which it is achieved. A person can
+
+arrange false premises into a consistent account and
+
+then treat the agreement of its conclusions as proof of
+
+the premises themselves. Such a procedure keeps
+
+correction inside the order requiring correction.
+
+Scripture supplies the received testimony against which
+
+the account is judged, making the discrepancy
+
+identifiable without requiring the observer’s prior
+
+consent to the judgment. The same authority later
+
+bounds the church’s deliberation: agreement among
+
+ministers retains its ministerial place under the Word.
+
+
+
+
+                           88
+
+The Authority of Scripture and the Testimony of the
+
+Holy Spirit — Calvin, Institutes I.7.1–5; I.8.1–13
+
+
+Close reading by locus
+
+
+I.7.1–5 — Authority not conferred by the church
+
+The church receives its existence through prophetic and
+
+apostolic teaching. Its recognition of that teaching
+
+therefore answers an authority already operative in its
+
+constitution; recognition cannot become the act which
+
+creates the foundation from which the recognizer
+
+proceeds. Ecclesial testimony possesses a real office
+
+through this dependence. It preserves, teaches, and
+
+confesses the Word, while remaining answerable to the
+
+Word concerning the truth of its own teaching. Calvin’s
+
+hierarchy fixes the direction of authority before the later
+
+account of councils and ecclesiastical laws develops its
+
+institutional consequences (Calvin, Institutes I.7.1–5).
+
+
+
+                            89
+
+Cyril states the governing principle while teaching the
+
+faith: doctrinal assertions require demonstration from
+
+the divine Scriptures. Even the catechist’s own
+
+instruction is to be received on that basis. The teacher
+
+serves the scriptural proof; his office does not replace it.
+
+This gives Calvin’s hierarchy its patristic expression.
+
+The church possesses genuine teaching authority
+
+because it transmits and expounds God’s Word, and
+
+that authority remains accountable to the Word from
+
+which it comes. Recognition of Scripture is an act of
+
+obedient reception (Cyril of Jerusalem, Catechetical
+
+Lectures IV.17).
+
+Ephesians names the apostles and prophets as the
+
+church’s foundation and Christ as its cornerstone. The
+
+building receives its position and unity from that prior
+
+foundation. First Timothy calls the church the pillar and
+
+ground of the truth, assigning it the duty of bearing and
+
+maintaining the truth in its common life. These
+                             90
+
+descriptions establish complementary relations. The
+
+church is founded through revealed teaching and then
+
+bears witness to that teaching. Its supporting office does
+
+not convert it into the author of the revelation that
+
+founded it (Ephesians 2:19–22; 1 Timothy 3:15; Calvin,
+
+Institutes I.7.1–5).
+
+Christ governs the apostolic witness, that witness
+
+constitutes the church, and the church ministers the
+
+Word it has received. The direction of dependence
+
+gives ecclesial teaching its real authority while keeping
+
+its judgments corrigible. An error can be identified
+
+because the governing testimony remains available
+
+independently of the institution’s present decision.
+
+Making recognition constitutive would reverse that
+
+order and require the building to confer authority upon
+
+its own foundation. Calvin’s later limits upon teaching
+
+offices and councils preserve the same relation through
+
+
+                            91
+
+their different acts: each ministers a received rule and
+
+remains subject to its correction.
+
+The Roman claim makes the church’s judgment the act
+
+conferring authority on Scripture. Calvin reverses that
+
+order. The church receives the Word through which
+
+God gathers and governs it, and its recognition bears
+
+witness to an authority already present. Making
+
+recognition constitutive would allow a recipient to
+
+become the source of the testimony it receives. The
+
+church’s ministerial office depends upon preserving this
+
+direction of dependence (Calvin, Institutes I.7.1–5).
+
+Cross-reference: See IV.8–10, where councils and laws
+
+are subjected to the same metaregulatory pattern.
+
+
+I.8.1–13 — Evidences and certainty
+
+Calvin then supplies historical and literary evidences
+
+for Scripture’s credibility. This matters because the
+
+internal testimony of the Spirit is not a command to
+
+                            92
+
+despise evidence. The distinction is between
+
+corroboration and ultimate ground (Calvin, Institutes
+
+I.8.1–13).
+
+Luke distinguishes an orderly account grounded in the
+
+testimony of eyewitnesses from a report whose sources
+
+cannot be traced. His work supplies Theophilus with
+
+grounds for confidence concerning the teaching
+
+received. Second Peter likewise rejects invented stories,
+
+appeals to eyewitness testimony of Christ’s majesty,
+
+and directs readers to the prophetic Word as a light in
+
+darkness. Historical testimony and prophecy converge
+
+upon the same divine action. The public evidence
+
+concerns the reliability of the witness and the coherence
+
+of its fulfillment (Luke 1:1–4; 2 Peter 1:16–21; Calvin,
+
+Institutes I.8.1–13).
+
+Calvin gives such evidences a confirming role within
+
+the certainty established by the Spirit. Their function is
+
+
+                            93
+
+discriminative: they distinguish the received testimony
+
+from fabrication and display its historical continuity.
+
+Their force does not authorize a later institution to
+
+confer divine status upon an otherwise human text. The
+
+distinction keeps external corroboration useful without
+
+making faith dependent upon an indefinitely extended
+
+series of human approvals. Multiple corroborating
+
+channels can increase confidence without becoming the
+
+authority that fixes the reference itself.
+
+Calvin’s catalogue of evidences answers objections to
+
+Scripture’s credibility through its antiquity,
+
+preservation, fulfilled prophecy, and coherence. Each
+
+argument addresses a particular route by which the
+
+received testimony is disputed. Their combined force
+
+confirms the Word without supplying its divine source.
+
+The Spirit establishes the certainty within which these
+
+historical and textual arguments perform their
+
+corroborating work (Calvin, Institutes I.8.1–13).
+                          94
+
+Cross-reference: See III.2.7–16 on faith’s certainty
+
+amid subjective fluctuation.
+
+Having asserted Scripture’s necessity, Calvin asks how
+
+its authority is known. He rejects the claim that
+
+Scripture possesses authority because the church
+
+confers it. The church is built upon the prophetic and
+
+apostolic Word; it therefore cannot be the ultimate
+
+cause of that Word’s authority. Calvin’s argument is
+
+not that the church has no evidential or ministerial role.
+
+Rather, he refuses to make divine speech depend for its
+
+status upon a later human judgment (Calvin, Institutes
+
+I.7.1–2).
+
+The deepest certainty of Scripture comes through the
+
+internal testimony of the Holy Spirit. Calvin writes that
+
+the same Spirit who spoke through the prophets must
+
+penetrate our hearts to persuade us that they faithfully
+
+proclaimed what had been divinely commanded. This is
+
+
+                            95
+
+not a license for private irrationalism. In the following
+
+chapter Calvin freely adduces evidences: the majesty
+
+and simplicity of Scripture, its antiquity, fulfilled
+
+prophecy, preservation, the agreement of its parts, and
+
+the testimony of the church. These arguments confirm
+
+credibility, but they do not create the faith whose
+
+ultimate certainty rests upon God (Calvin, Institutes
+
+I.7.4; I.8.1–13).
+
+The distinction is important. Calvin neither dismisses
+
+evidence nor permits evidence to become the sovereign
+
+judge of revelation. The believer’s certainty is
+
+theological because its final ground is God’s own
+
+witness. This pattern—secondary instruments
+
+possessing genuine efficacy without becoming the
+
+ultimate source—will recur throughout the Institutes.
+
+Calvin distinguishes evidential credibility from the
+
+Spirit’s inward testimony. These are represented as
+
+
+                             96
+
+distinct channels contributing to a final state without
+
+being interchangeable in function. Historical evidence
+
+may reduce uncertainty concerning provenance,
+
+coherence, preservation, and credibility; the Spirit’s
+
+testimony supplies the theological certainty by which
+
+Scripture is received as God’s Word. The architecture is
+
+therefore multichannel but not additive in a crude
+
+probabilistic sense.
+
+God’s Word possesses its authority from the God who
+
+speaks; the Spirit establishes its reception as that Word.
+
+Historical and literary testimonies corroborate the
+
+revelation received. Their confirming operation and the
+
+Spirit’s inward testimony converge in the believer’s
+
+acknowledgment while retaining the source of authority
+
+in divine speech.
+
+The internal testimony of the Spirit solves a different
+
+problem from the spectacles metaphor. Spectacles
+
+                            97
+
+concern interpretive correction; testimony concerns
+
+certainty that the corrective Word is divine. Conflating
+
+the two would make Calvin's epistemology flatter than
+
+it is. External evidences can increase credibility,
+
+historical arguments can answer objections, and the
+
+church can witness to the canon, but Calvin refuses to
+
+let the final confidence of faith be generated by an
+
+indefinitely regressive chain of human validators.
+
+A reference signal whose authority depends entirely
+
+upon another reference requires a termination
+
+condition. If Scripture is authoritative because Church
+
+C says so, and C is authoritative because criterion C2
+
+says so, the question migrates unless some source
+
+possesses nonderivative authority. Calvin terminates the
+
+chain in God's self-authentication through the Spirit.
+
+God’s self-authentication supplies the nonderivative
+
+authority that terminates the regress.
+
+
+                            98
+
+The evidences of I.8 therefore function as auxiliary
+
+error-correcting resources rather than the generator of
+
+the signal's authority. They can answer alleged
+
+contradictions, display continuity, and challenge rival
+
+explanations. Calvin's willingness to use them is
+
+important because the internal testimony is sometimes
+
+caricatured as hostility to evidence. His actual system
+
+assigns evidence a subordinate but real place:
+
+secondary confirmation under a certainty whose
+
+ultimate ground is divine.
+
+
+
+
+                             99
+
+Scripture’s divine authority precedes the church’s
+
+recognition, while historical evidences corroborate the
+
+testimony received. Let A S denote Scripture’s authority,
+
+E the available evidences, and T the Spirit’s inward
+
+testimony. Distinguish the source of authority from the
+
+believer’s acknowledgment:
+
+               A S = Authority (W G );
+             Ack b ( S )= Receive b ( S ,T ); (8)
+                Corroborate ( E , S ).
+
+Terms. W G is the Word spoken by God. Authority
+
+names the right of divine speech to govern belief and
+
+obedience. Ack b is believer b’s acknowledgment of that
+
+speech; Receive b is its reception through the Spirit.
+
+Corroborate is the relation by which historical and
+
+literary evidence confirms the testimony’s credibility.
+
+Consequence. An institution’s acknowledgment
+
+receives an authority already present; it cannot
+
+manufacture its own foundation. Evidences strengthen
+                            100
+
+the believer’s apprehension without becoming the
+
+source that makes God’s speech divine. Reversing the
+
+direction would require the authority of the church to
+
+validate the Word from which the church receives
+
+authority, producing a circular foundation. The Spirit
+
+terminates the regress by establishing reception of
+
+God’s self-authenticating Word (Calvin, Institutes I.7–
+
+8).
+
+
+The One God, the Trinity, and the Rejection of
+
+Images — Calvin, Institutes I.10.1–I.13.29
+
+
+Close reading by locus
+
+
+I.11.1–12 — Images and unauthorized
+
+representation
+
+The creature receives no commission to fabricate a
+
+visible representation of the divine nature and make it a
+
+governing object of worship. The act joins construction
+
+to allegiance: a human image embodies a judgment,
+                          101
+
+devotion strengthens that judgment, and the resulting
+
+habit directs subsequent apprehension. Calvin’s
+
+prohibition reaches this appropriation of authority.
+
+God’s address determines how the creature approaches
+
+him; a representation produced by the worshipper
+
+cannot acquire that authority through its use, solemnity,
+
+or familiarity (Calvin, Institutes I.11.1–12).
+
+The Epistle to Diognetus dismantles idolatry by
+
+attending to the actual condition of the objects
+
+worshipped. Stone, wood, and metal are fashioned by
+
+human craftsmen, possess no perception, and depend
+
+upon their worshippers for protection. The religious
+
+elevation of the artifact reverses the relation between
+
+Creator and creature. Calvin’s objection to images
+
+develops that same diagnosis: material fabrication
+
+cannot supply knowledge of the living God, and the
+
+heart’s projection into an object remains an act of false
+
+
+                           102
+
+worship however ceremonially it is adorned (Epistle to
+
+Diognetus 2).
+
+The second commandment prohibits making images for
+
+worship and joins the prohibition to bowing down and
+
+serving them. Deuteronomy explains the revelatory
+
+circumstance governing that command: Israel heard
+
+God’s words at Horeb but saw no form. The people are
+
+therefore forbidden to fabricate a likeness of the God
+
+who addressed them without granting a visible
+
+representation of himself. The inventory of human,
+
+animal, and heavenly forms closes the routes by which
+
+created appearances could be promoted into authorized
+
+models of deity (Exodus 20:4–6; Deuteronomy 4:15–
+
+19; Calvin, Institutes I.11.1–12).
+
+The decisive issue is authority over the representation
+
+used in worship. Revelation determines how the Creator
+
+is known; an artifact cannot acquire that authority from
+
+
+                           103
+
+the devotion directed toward it. Calvin’s later account
+
+of sacraments preserves the positive counterpart: an
+
+external sign has legitimate religious use when God
+
+institutes it and attaches his promise to it. The
+
+difference between a fabricated image and an instituted
+
+sign lies in their source and authorization. The issue is
+
+not whether representations transmit information; it is
+
+whether a representation is authorized to regulate
+
+devotion.
+
+Historical and theological location. Calvin draws
+
+heavily on patristic anti-idolatry material while
+
+rejecting the Roman defense of devotional images. The
+
+controversy must be read in the concrete sixteenth-
+
+century context of cultic images, relics, pilgrimage, and
+
+liturgical use.
+
+Cross-reference: See I.6 on authorised corrective
+
+representation and IV.10 on human ceremonies.
+
+
+
+                            104
+
+I.13.2–5 — Extra-biblical terms and Trinitarian
+
+discipline
+
+Calvin accepts terms such as Trinity and person
+
+because they police biblical distinctions against
+
+evasion. This is an important counterexample to any
+
+simplistic claim that he rejects all extra-biblical
+
+theological language (Calvin, Institutes I.13.2–5).
+
+Athenagoras confesses the Father, the Son, and the
+
+Holy Spirit while affirming the unity of divine power
+
+and the distinction within that unity. The Son is the
+
+eternal Word through whom creation is ordered; his
+
+relation to the Father precedes the created world. Cyril
+
+likewise teaches the Son’s eternal generation and
+
+forbids both separation from the Father and confusion
+
+of Father and Son. Calvin’s precision serves this
+
+inherited confession. The vocabulary guards the reality
+
+proclaimed in Scripture: the Son is truly God, the
+
+Father remains the Father, and the Spirit belongs to the
+                          105
+
+divine life (Athenagoras, Plea for the Christians 10;
+
+Cyril of Jerusalem, Catechetical Lectures IV.7–8, 16).
+
+Matthew’s baptismal command joins Father, Son, and
+
+Holy Spirit within the one name under which disciples
+
+are baptized. John identifies the Word as with God and
+
+as God, preserving personal relation together with full
+
+deity. Paul’s closing benediction coordinates the grace
+
+of Christ, the love of God, and the communion of the
+
+Holy Spirit in the church’s received blessing. These
+
+texts establish a unity that does not erase distinction and
+
+a distinction that does not divide deity (Matthew 28:19;
+
+John 1:1; 2 Corinthians 13:14; Calvin, Institutes I.13.2–
+
+5).
+
+Calvin’s terminology closes evasions that retain biblical
+
+phrases while denying their combined force. “Person”
+
+distinguishes the subsisting relations; the confession of
+
+one essence excludes a partition into three gods. The
+
+
+                           106
+
+terms preserve simultaneous constraints supplied by
+
+Scripture. They consequently govern every later
+
+account of divine action: the Spirit’s work unites
+
+believers to the Son without reducing either to an
+
+impersonal function, and the Son’s mediation reveals
+
+the Father without making the Son a subordinate deity.
+
+Formal differentiation need not imply compositional
+
+assembly. The model must preserve one essence and
+
+real personal distinction without treating God as an
+
+aggregate system.
+
+Historical and theological location. Nicaea and the pro-
+
+Nicene tradition stand behind the conceptual grammar.
+
+Calvin repeatedly appeals to the fathers to claim
+
+catholic continuity rather than novelty.
+
+Cross-reference: See II.14 on the unity and distinction
+
+of Christ’s natures.
+
+
+
+
+                           107
+
+Calvin’s doctrine of God is resolutely Trinitarian.
+
+Scripture teaches one divine essence and three persons:
+
+Father, Son, and Holy Spirit. Calvin is willing to use
+
+extra-biblical terms such as “Trinity” and “person”
+
+because the church requires language capable of
+
+excluding evasions of the biblical teaching, but he
+
+repeatedly subordinates terminology to the scriptural
+
+realities it is intended to confess (Calvin, Institutes
+
+I.13.2–5). His long engagement with ancient heresies
+
+and patristic testimony is therefore defensive and
+
+clarifying rather than an attempt to replace Scripture
+
+with metaphysics.
+
+The discussion of images belongs to the same concern
+
+for divine self-revelation. God determines the manner
+
+in which he is known and worshiped. Calvin’s
+
+objection is especially directed against visual
+
+representations of God and against the use of images as
+
+instruments of worship, because he believes they
+                          108
+
+exchange God’s chosen self-disclosure for a humanly
+
+manufactured form. His polemic can be severe, but its
+
+logic is continuous with the preceding chapters: the
+
+creature does not possess jurisdiction over the form of
+
+revelation (Calvin, Institutes I.11.1–12).
+
+This principle later becomes one of the load-bearing
+
+beams of Calvin’s ecclesiology. Church authority is real
+
+but ministerial; sacraments are valid because Christ
+
+instituted them; conscience is bound where God binds it
+
+and free where he has not. The anti-image polemic is
+
+therefore not an isolated Reformation controversy but
+
+an early application of Calvin’s doctrine of authority.
+
+Father, Son, and Spirit possess the one undivided divine
+
+essence. No aggregation of independently existing parts
+
+constitutes God, and no personal distinction partitions
+
+his deity. Calvin’s confession fixes the relations
+
+permitted in the account of divine action: the Father,
+
+
+                           109
+
+Son, and Spirit remain personally distinct while each is
+
+fully God. Unity and distinction operate together
+
+throughout the communication of salvation (Calvin,
+
+Institutes I.13.2–5).
+
+The rejection of images, by contrast, is explicitly a
+
+problem of unauthorised representation. Calvin fears
+
+that a humanly constructed representation will become
+
+a feedback source for subsequent worship: the image
+
+embodies an inference about God; devotional practice
+
+responds to the image; repeated practice stabilises the
+
+representation; the stabilised representation then
+
+governs further imagination. What began as a human
+
+output becomes a controlling input. His iconoclasm
+
+prevents a self-produced model from acquiring
+
+normative authority over its maker.
+
+This same concern explains the continuity between
+
+images and later ecclesiastical legislation. In both cases,
+
+
+                           110
+
+a secondary artifact threatens to become self-
+
+authorizing. Calvin's solution is not the abolition of
+
+every human representation or rule; he himself uses
+
+theological terms, catechesis, liturgy, and church order.
+
+The issue is whether the representation remains
+
+corrigible by revelation or is elevated into an
+
+independent regulator of conscience.
+
+Calvin's Trinitarian discussion deserves a slower
+
+systems reading precisely because it marks a boundary
+
+against bad decomposition. Systems analysis commonly
+
+proceeds by distinguishing components, channels, and
+
+functions, but Calvin's doctrine of God forbids the
+
+inference that Father, Son, and Spirit are three
+
+independently constituted components whose
+
+coordination produces a larger whole called God. The
+
+unity is not an emergent property of prior parts. Thus
+
+the doctrine disciplines the analyst: formal
+
+differentiation does not always imply compositional
+                           111
+
+assembly. One essence and three persons require a
+
+relation in which distinction is real while partition into
+
+autonomous divine subsystems is false (Calvin,
+
+Institutes I.13.2–5).
+
+The divine persons possess the one undivided essence
+
+while remaining personally distinct. Let
+
+P={Father,Son,Spirit} and G name that essence. Then |
+
+P|=3, Father≠Son, Son≠Spirit, and Father≠Spirit, while
+
+Essence(Father)=Essence(Son)=Essence(Spirit)=G.
+
+Terms. Essence names the deity wholly possessed by
+
+each person; cardinality counts the personally distinct
+
+terms, not parts of deity. Consequence. Personal
+
+plurality supplies no partition of G: every personal term
+
+possesses the same whole essence. The equality
+
+excludes three independent divine substances, and the
+
+personal inequalities exclude the collapse of Father,
+
+Son, and Spirit into one personal mode (Calvin,
+
+Institutes I.13.2–5).
+                           112
+
+Calvin’s defense of the Son’s deity proceeds through
+
+the acts and names which Scripture reserves to God.
+
+John does more than assign the Word a place near the
+
+beginning of creation: he places the Word before the
+
+things made and makes all their existence dependent
+
+upon him. The universal dependence of created things
+
+excludes the Word from the class whose existence he
+
+supplies. Paul’s account of creation in Christ and its
+
+continuing subsistence through him preserves the same
+
+ordering. The Son’s agency extends to the whole
+
+creaturely field because he possesses the deity through
+
+which that field exists. The confession of his deity
+
+consequently governs the account of creation before it
+
+governs the account of redemption (John 1:1–3;
+
+Colossians 1:16–17; Calvin, Institutes I.13.7–13).
+
+The divine names carry the same consequence into
+
+worship. Calvin follows the apostolic application to
+
+Christ of texts concerning the Lord of Israel, then joins
+                           113
+
+those names to the acts of preserving, forgiving,
+
+judging, and saving. These predicates converge upon
+
+one subject. A creature appointed to announce
+
+forgiveness would remain a messenger; Christ
+
+possesses the power through which forgiveness and life
+
+are given. His mediation therefore does not insert an
+
+inferior divine being between God and humanity. The
+
+same Son who receives the human nature required for
+
+representation possesses the divine power required for
+
+the salvation accomplished through it. Book Two’s
+
+account of the Mediator receives this identity from
+
+Book One (Calvin, Institutes I.13.9–13; II.12.1–3).
+
+The Spirit’s deity is established through the operations
+
+Scripture attributes to him. Creation, the giving of life,
+
+the searching of divine depths, the inspiration of
+
+prophetic testimony, and the sanctification of the
+
+believer belong to the same personal agent. Paul
+
+distinguishes God’s Spirit from the creature’s spirit
+                          114
+
+while locating knowledge of God’s depths in the Spirit
+
+of God. The Spirit’s indwelling also makes the
+
+community God’s temple. These operations determine
+
+the identity of the one who communicates salvation: the
+
+giver of new life possesses divine life and power. The
+
+later account of regeneration therefore depends upon
+
+the deity of the agent who effects it (1 Corinthians 2:10
+
+–12; 3:16; Calvin, Institutes I.13.14–15; III.1.1–4).
+
+Essence and personal relation must then be held
+
+together at their proper objects. Calvin refuses the claim
+
+that the Father possesses deity exclusively and
+
+subsequently makes the Son divine. Such a transfer
+
+would turn the divine essence into a divisible
+
+possession or make the Son’s deity a secondary
+
+product. The Son is God of himself in respect of the one
+
+unbegotten essence; he is Son of the Father in respect of
+
+his personal relation. Autotheos states the first
+
+judgment without abolishing the second. Eternal
+                         115
+
+generation concerns the Son’s personal subsistence and
+
+supplies no beginning, diminution, or manufactured
+
+degree of deity. The identity of the essence remains
+
+whole while the relation of Father and Son remains real
+
+(Calvin, Institutes I.13.19, 23–25).
+
+The ordering of personal relations likewise introduces
+
+no temporal succession within God. The Father is
+
+named as the principle and origin in the ordered
+
+confession, while the Son and Spirit possess the same
+
+eternal deity. The Son’s coming into the world
+
+manifests a relation already confessed before his
+
+incarnation; it does not produce that relation. Christ’s
+
+prayer concerning the glory he possessed with the
+
+Father before the world excludes a merely temporal
+
+sonship generated by his earthly mission. The Spirit’s
+
+sending similarly gives divine action a determinate
+
+personal order without making the Spirit a created
+
+instrument. The taxis directs the confession of who acts
+                           116
+
+and through whom the saving gift reaches the creature
+
+(John 17:5; 14:26; 15:26; Calvin, Institutes I.13.17–20).
+
+Let E(p) name the essence possessed by person p, and
+
+B(F,S) name the eternal relation of Father and Son. The
+
+relation is ordered, while essential identity is common:
+
+             E ( F )= E ( S )= E ( H )= G ;
+                      B ( F , S );
+                                            (9)
+                     ¬ B ( S , F );
+                   Unbegotten(G )
+
+Terms. F, S, and H name Father, Son, and Holy Spirit;
+
+G names the whole divine essence. B names the
+
+paternal relation in eternal generation. Unbegotten
+
+applies to the essence and does not erase the Son’s
+
+personal relation to the Father. The unequal direction of
+
+B and the equality of E state different predicates of the
+
+same divine persons.
+
+Consequence. Essential equality does not imply
+
+reversal of personal relation: E(F)=E(S) leaves B(F,S)
+
+                           117
+
+ordered. Conversely, B(F,S) supplies no inequality of
+
+deity. The inference from personal origin to a lesser
+
+essence therefore changes the predicate and fails. This
+
+is the precise operation of Calvin’s distinction between
+
+the Son considered as God and the Son considered in
+
+relation to the Father. His equality with the Father and
+
+his eternal sonship are jointly preserved because neither
+
+predicate substitutes for the other (Calvin, Institutes
+
+I.13.19–20, 23–25).
+
+The same discipline directs the confession of divine
+
+action. The Father sends the Son, the Son assumes flesh
+
+and accomplishes reconciliation, and the Spirit
+
+communicates the Son and his benefits. The acts
+
+identify their personal subjects while their divine
+
+efficacy proceeds from the one undivided deity.
+
+Reconciliation is consequently neither the negotiation
+
+of competing divine wills nor the assembly of
+
+independent powers. The incarnate Son performs the
+                         118
+
+saving work as the one Mediator; the Spirit’s
+
+communion makes that accomplished work effective in
+
+the believer. Trinitarian confession thus fixes the
+
+relations carried into Christology, union, faith, and
+
+sacramental participation (John 3:16–17; Galatians 4:4–
+
+6; Calvin, Institutes I.13.17–20; II.12–16; III.1).
+
+The creature constructs an image and then grants that
+
+image authority within worship which God has not
+
+authorized. Its vividness and memorability strengthen
+
+the very return through which the constructed
+
+representation governs subsequent devotion. Scripture
+
+identifies the God worship addresses and commands the
+
+creature’s response. The image substitutes a self-
+
+produced reference for that received command, turning
+
+human representation into a governing source. Calvin’s
+
+rejection addresses this actual inversion of
+
+representation, authority, and worship (Calvin,
+
+Institutes I.11.1–9).
+                           119
+
+Scripture and the rejection of images preserve the same
+
+dependence of worship upon divine address. Human
+
+beings judge through representations, but the authority
+
+of a representation follows its source and appointment.
+
+Scripture communicates the disclosure God gives; the
+
+cultic image inserts a human construction into the place
+
+governing devotion. The resulting error concerns both
+
+knowledge and obedience, for the creature has made its
+
+own judgment the reference by which later worship is
+
+directed. The prohibition therefore bounds the act
+
+through which representation becomes effective,
+
+keeping the worshipper under the Word whose
+
+authority his practice cannot confer.
+
+The same ordering governs councils, ceremonies,
+
+offices, and sacramental signs in Book Four. Their
+
+institution determines which acts they perform, their
+
+commission bounds the variables they govern, and their
+
+dependence upon Christ’s Word supplies the reference
+                        120
+
+for correction. A mediating office remains lawful
+
+through that dependence. Its usurpation begins when it
+
+grants its own output the authority of the source it is
+
+appointed to serve (Calvin, Institutes IV.9–10; IV.14).
+
+The Trinity fixes the unity and personal distinction
+
+governing every account of divine action. Father, Son,
+
+and Spirit each possess the whole undivided deity,
+
+while their irreducible personal relations govern the
+
+acts confessed. Equality of essence and distinction of
+
+persons hold together in the same account: no
+
+aggregation produces God, and no distinction partitions
+
+his being. The formal relations established above carry
+
+that confession into the subsequent treatment of
+
+creation, revelation, and redemption (Calvin, Institutes
+
+I.13.2, 6, 17–20, 25).
+
+
+
+
+                           121
+
+Creation and Providence — Calvin, Institutes I.14.1
+
+–I.18.4
+
+
+Close reading by locus
+
+
+I.16.1–4 — Particular providence
+
+Calvin rejects a providence reduced to general
+
+preservation. Divine government reaches particulars,
+
+yet his later argument refuses to make secondary causes
+
+unreal (Calvin, Institutes I.16.1–4).
+
+Clement’s account of cosmic order locates the stability
+
+of the world in the command of its Maker. Cyril states
+
+the same sovereignty by excluding chance and fate as
+
+powers governing God: the Creator knows what will
+
+occur and acts according to his will. Providence
+
+therefore names the personal rule under which created
+
+regularity exists. Calvin gives this confession its
+
+sustained explanatory force by carrying divine
+
+government into the particular events through which
+                           122
+
+creatures live (Clement of Rome, 1 Clement 20; Cyril
+
+of Jerusalem, Catechetical Lectures IV.5).
+
+Jesus places even the falling of a sparrow under the
+
+Father’s government and uses that particular care to
+
+ground the disciples’ confidence. Their value is not
+
+inferred from exemption from danger but from the
+
+Father’s knowledge and rule within it. Proverbs places
+
+the outcome of the cast lot under the Lord’s disposition.
+
+The example reaches an event whose immediate result
+
+is unavailable to human foresight. Divine government
+
+includes precisely the particularity that a doctrine of
+
+mere general preservation would leave ungoverned
+
+(Matthew 10:29–31; Proverbs 16:33; Calvin, Institutes
+
+I.16.1–4).
+
+Providence orders the event while creaturely processes
+
+supply its temporal means. The sparrow falls, the lot is
+
+cast, and the human agent acts within a world whose
+
+
+                           123
+
+outcomes remain under God. This nested causation
+
+makes practical deliberation meaningful without
+
+granting it independent sovereignty. Calvin’s later
+
+accounts of prayer and civil action inherit the same
+
+rule: their efficacy belongs within providence, which
+
+establishes the world in which those means accomplish
+
+their appointed effects. Higher-order governance can
+
+contain real subordinate causal processes. The existence
+
+of a higher regulator does not make lower-level
+
+causation fictional.
+
+Providence is personal government: God sustains
+
+creatures and directs events toward his appointed
+
+purposes. Secondary causes retain their actual
+
+operations inside that government. This preserves both
+
+the intelligibility of creaturely means and the certainty
+
+that their effects remain under God’s rule. An
+
+impersonal necessity would erase the purpose and care
+
+
+                           124
+
+through which Calvin directs the believer to trust the
+
+Father (Calvin, Institutes I.16.1–4).
+
+Cross-reference: See I.17.1–5 on means and
+
+contingency, and IV.20 on subordinate political
+
+authority.
+
+
+I.17.4–5 — Contingency from the creaturely
+
+standpoint
+
+Calvin can call events “fortuitous” relative to human
+
+knowledge while denying that fortune rules reality. The
+
+distinction between ontological government and
+
+epistemic uncertainty is doing major work (Calvin,
+
+Institutes I.17.4–5).
+
+In 1 Samuel 23, David receives answers concerning
+
+Saul’s descent upon Keilah and the inhabitants’
+
+delivery of him. He then leaves, and the threatened
+
+sequence does not occur. The disclosed danger guides
+
+an action that changes the creaturely circumstances.
+
+                           125
+
+Acts 27 similarly joins God’s promise that those aboard
+
+will survive to Paul’s warning that the sailors must
+
+remain in the ship. The promised outcome includes the
+
+means through which it is reached. Knowledge of the
+
+end therefore supplies a reason to preserve those means
+
+(1 Samuel 23:10–13; Acts 27:22–32; Calvin, Institutes
+
+I.17.4–5).
+
+Contingency describes the creature’s encounter with
+
+alternatives whose outcome he cannot independently
+
+command. Providence gives those alternatives their
+
+place within divine government. Deliberation, warning,
+
+flight, and seamanship remain real actions with real
+
+effects. Calvin’s distinction prevents confidence in God
+
+from turning into fatalistic inaction: the believer acts on
+
+the information and responsibilities supplied within the
+
+providential order. Unknown state is not ungoverned
+
+state. Epistemic openness at the creaturely level can
+
+coexist with higher-order determination.
+                          126
+
+Contingency belongs to the creature’s limited
+
+knowledge of the event. The traveler chooses a route,
+
+the physician selects a treatment, and the observer
+
+encounters an outcome whose full causes were not
+
+available beforehand. God’s government orders those
+
+real acts and their consequences. The difference
+
+between incomplete creaturely anticipation and
+
+complete divine ordering establishes why prudence
+
+remains necessary without granting chance an
+
+independent dominion (Calvin, Institutes I.17.4–5).
+
+Cross-reference: See III.20 on prayer and III.21–24 on
+
+hidden decree.
+
+
+I.18.1–4 — Wicked agency and divine government
+
+The hardest providential question concerns morally evil
+
+actions. Calvin distinguishes the wicked intention of the
+
+creature from the righteous divine ordering of the same
+
+event (Calvin, Institutes I.18.1–4).
+
+                           127
+
+Augustine explains that God’s omnipotent goodness
+
+brings good from evils whose guilt belongs to the
+
+agents committing them. Fallen angels escape neither
+
+divine judgment nor the order of God’s purpose. Their
+
+rebellion is voluntary, and God’s government remains
+
+effective through its occurrence. This supplies the
+
+patristic logic of Calvin’s distinction between a wicked
+
+intention and the righteous purpose governing the same
+
+history. The act remains culpable precisely because the
+
+creature wills evil; its inclusion within providence
+
+displays the sovereignty of the One who orders its
+
+outcome (Augustine, On Rebuke and Grace 27–28).
+
+Joseph distinguishes the brothers’ evil intention from
+
+God’s purpose of preserving life through the history
+
+their act initiated. The same sale belongs to two
+
+intentions with opposed moral character. Peter applies
+
+this structure to the crucifixion: Christ is delivered
+
+according to God’s determined counsel, while those
+                         128
+
+who kill him act wickedly. Job’s confession after his
+
+losses acknowledges the Lord’s rule over what he has
+
+received and lost without assigning innocence to every
+
+creaturely act involved (Genesis 50:20; Acts 2:23; Job
+
+1:20–22; Calvin, Institutes I.18.1–4).
+
+The shared event does not imply a shared motive. Guilt
+
+attaches to the creature’s intended wrong; the saving
+
+outcome manifests God’s righteous government. Calvin
+
+consequently rejects an account that protects divine
+
+holiness by surrendering divine sovereignty over the
+
+act. The distinction is retained in the cross’s saving
+
+efficacy: the murderers’ rebellion accomplishes no
+
+righteous merit of their own, while God orders the
+
+death of the Mediator to the redemption of his people.
+
+One event can have multiple causal descriptions at
+
+different levels without those causes becoming morally
+
+identical.
+
+
+                           129
+
+Historical and theological location. Augustine’s anti-
+
+Manichaean account of evil and providence is part of
+
+the background; Calvin also develops the issue
+
+polemically against accounts that reduce providence to
+
+permission.
+
+Cross-reference: See II.4 on the bondage of the will and
+
+III.23 on reprobation.
+
+Creation for Calvin cannot be separated from
+
+providence. A deity who constructed the world and then
+
+withdrew from it would not be the God of Scripture.
+
+God continually sustains and governs what he has
+
+made. Calvin explicitly rejects the notion that
+
+providence means only a general preservation of natural
+
+order; divine government extends to particular events.
+
+Fortune and chance may describe events from the
+
+standpoint of limited human knowledge, but they do not
+
+
+
+
+                           130
+
+name an independent causal realm outside God’s
+
+government (Calvin, Institutes I.16.1–4).
+
+This strong account immediately produces the moral
+
+problem Calvin knows it will produce. If God governs
+
+events in which wicked agents act, how can those
+
+agents remain responsible, and how can God remain
+
+righteous? Calvin answers by distinguishing divine
+
+purpose from creaturely intention. The same event may
+
+stand within God’s righteous providence while being
+
+pursued by a human agent from an evil motive. His
+
+paradigmatic biblical examples include Job and the
+
+betrayal and crucifixion of Christ. Calvin refuses to
+
+solve the difficulty by making God passive, but he
+
+equally refuses to collapse divine agency into the moral
+
+quality of secondary agents (Calvin, Institutes I.17.5;
+
+I.18.1–4).
+
+
+
+
+                           131
+
+Providence is finally pastoral. Calvin devotes
