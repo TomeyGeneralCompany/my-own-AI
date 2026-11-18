@@ -15,6 +15,7 @@ class ExamItem:
     grading: str = "exact"
     required_reasoning_steps: tuple[str,...] = ()
     required_axioms: tuple[str,...] = ()
+    forbidden_contradictions: tuple[str,...] = ()
 
 @dataclass(frozen=True)
 class ExamReport:
@@ -44,6 +45,8 @@ def rubric_grade(answer: str, item: ExamItem) -> bool:
     else:
         raise ValueError("Unknown owner rubric mode")
     if not core:
+        return False
+    if any(contradiction in answer for contradiction in item.forbidden_contradictions):
         return False
     for principle in item.required_axioms:
         if principle not in answer:
