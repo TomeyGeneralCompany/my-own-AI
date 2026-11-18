@@ -1,0 +1,13 @@
+__pycache__/
+.pytest_cache/
+*.pyc
+.venv/
+data/
+runs/
+checkpoints/
+*.pt
+*.pth
+*.safetensors
+*.sqlite3
+*.db
+*.log
