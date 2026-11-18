@@ -13,7 +13,7 @@ import torch
 from .controller import Controller,Objective,State
 from .exams import ExamItem,run_exam
 from .ledger import StageRequirement
-from .training import Trainer,structured_prefix_batch
+from .training import Trainer,controller_completion_batch
 from .checkpoints import save_checkpoint
 
 STAGE_ORDER = (
@@ -110,12 +110,9 @@ class CurriculumRunner:
         self.controller.state=State.TRAINING
         try:
             for i,segment in enumerate(segments):
-                sections=[
-                    ("<|AXIOM|>",self.controller.constitution.axiom_prefix()),
-                    ("<|CONTEXT|>",context_text),
-                    ("<|DERIVE|>",lesson.task+"\n"+segment),
-                ]
-                batch=structured_prefix_batch(tokenizer,sections,self.trainer.config.block_size)
+                batch=controller_completion_batch(
+                    tokenizer,self.controller.constitution.axiom_prefix(),
+                    context_text,lesson.task,segment,self.trainer.config.block_size)
                 if self.trainer.config.microbatch!=1 or self.trainer.config.accumulation!=1:
                     raise ValueError("Lesson runner currently requires microbatch=1, accumulation=1")
                 loss=self.trainer.step([batch])
