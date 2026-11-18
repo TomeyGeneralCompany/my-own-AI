@@ -80,7 +80,8 @@ def load_exam_bank(path: str | Path) -> dict[str,list[ExamItem]]:
                                 tuple(item.get("source_ids",[])),
                                 item.get("grading","exact"),
                                 tuple(item.get("required_reasoning_steps",[])),
-                                tuple(item.get("required_axioms",[]))) for item in questions]
+                                tuple(item.get("required_axioms",[])),
+                                tuple(item.get("forbidden_contradictions",[]))) for item in questions]
     return bank
 
 class CurriculumRunner:
