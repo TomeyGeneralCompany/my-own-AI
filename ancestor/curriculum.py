@@ -84,31 +84,50 @@ class CurriculumRunner:
         self.checkpoint_dir=Path(checkpoint_dir)
 
     def lesson_step(self, lesson: Lesson, *, reserve: int=128) -> float:
-        """Generate the target from the approved source paragraph with earlier premises."""
-        objective=Objective(lesson.id,lesson.source_id,lesson.task,lesson.prerequisites)
-        window=self.controller.formulate(objective,reserve)
+        """Teach every byte of a paragraph, segmenting only when necessary."""
         tokenizer=self.controller.context.tokenizer
-        target=self.controller.corpus.get(lesson.source_id).exact_text
+        current=self.controller.corpus.get(lesson.source_id)
         dependencies=[self.controller.corpus.get(src) for src in lesson.prerequisites]
         context_text="\n\n".join(f"[{item.id}]\n{item.exact_text}" for item in dependencies)
-        sections=[
+        # Controller still validates mandatory authority/context. Current source
+        # text is the target and must not be dropped or silently shortened.
+        self.controller.context.build(
+            [(item.id,item.exact_text) for item in dependencies],lesson.task,
+            reserve=max(1,min(reserve,self.trainer.config.block_size//4)))
+        header=[
             ("<|AXIOM|>",self.controller.constitution.axiom_prefix()),
             ("<|CONTEXT|>",context_text),
-            ("<|DERIVE|>",lesson.task+"\n"+target),
+            ("<|DERIVE|>",lesson.task+"\n"),
         ]
-        batch=structured_prefix_batch(tokenizer,sections,self.trainer.config.block_size)
-        if self.trainer.config.microbatch!=1 or self.trainer.config.accumulation!=1:
-            raise ValueError("Curriculum lesson runner currently supports microbatch=1, accumulation=1")
+        # The required training target and <|END|> must fit the neural block
+        # even if the controller itself has a larger working-context tier.
+        header_tokens=tokenizer.encode_structured(header)
+        remaining=self.trainer.config.block_size-len(header_tokens)-1
+        if remaining < 1:
+            raise ValueError("Required premises plus task exceed neural working tier")
+        segments=self.controller.context.paragraph_segments(current.exact_text,remaining)
+        scores=[]
         self.controller.state=State.TRAINING
         try:
-            loss=self.trainer.step([batch])
-            self.controller.ledger.append({"type":"LESSON_OPTIMIZATION",
-                "objective_id":lesson.id,"source_id":lesson.source_id,
-                "updates":self.trainer.completed_updates,"loss":loss,
-                "constitution_hash":self.controller.constitution.digest()})
+            for i,segment in enumerate(segments):
+                sections=[
+                    ("<|AXIOM|>",self.controller.constitution.axiom_prefix()),
+                    ("<|CONTEXT|>",context_text),
+                    ("<|DERIVE|>",lesson.task+"\n"+segment),
+                ]
+                batch=structured_prefix_batch(tokenizer,sections,self.trainer.config.block_size)
+                if self.trainer.config.microbatch!=1 or self.trainer.config.accumulation!=1:
+                    raise ValueError("Lesson runner currently requires microbatch=1, accumulation=1")
+                loss=self.trainer.step([batch])
+                scores.append(loss)
+                self.controller.ledger.append({"type":"LESSON_OPTIMIZATION",
+                    "objective_id":lesson.id,"source_id":lesson.source_id,
+                    "segment":i+1,"total_segments":len(segments),
+                    "updates":self.trainer.completed_updates,"loss":loss,
+                    "constitution_hash":self.controller.constitution.digest()})
         finally:
             self.controller.state=State.READY
-        return loss
+        return sum(scores)/len(scores)
 
     def teach(self, lesson: Lesson):
         objective=Objective(lesson.id,lesson.source_id,lesson.task,lesson.prerequisites)
