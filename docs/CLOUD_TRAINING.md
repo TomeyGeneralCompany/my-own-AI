@@ -1,107 +1,92 @@
-# Ancestor: off-laptop training (private remote data, public source code)
+# Ancestor — public-source, off-laptop training
 
-## Architecture
+The eleven manuscripts are published works. The owner has expressly authorized
+them to be made public. They do **not** require a second private GitHub repository.
+Ancestor trains on GitHub-hosted Linux CPUs even while the owner's Zorin laptop
+is powered off.
 
-GitHub-hosted Ubuntu runners execute the original Ancestor transformer. The
-owner's laptop does **not** need to be turned on. Scheduled jobs resume a
-complete checkpoint and carry out small bounded amounts of training.
+## The one published training-input release
 
-The public code repository contains only software. Its Actions logs must never
-include manuscript text, owner axioms, private tokens, or private checkpoints.
-**Never upload the training archive or trained weights as a public GitHub Actions
-artifact**. The workflow uses a separate PRIVATE GitHub repository's release
-assets for both private inputs and private checkpoints.
-
-GitHub standard hosted jobs have a six-hour per-job limit. This workflow uses
-shorter sessions and checks in all model weights and optimizer/RNG state between
-runs rather than relying on an uninterrupted process. This is compute run by
-GitHub, not on the owner's computer. Public-repository standard-runner minutes
-are currently generally free, subject to GitHub policy and service limits.
-
-## Required private storage
-
-A separate GitHub repository **with visibility PRIVATE** must exist and be
-accessible to a narrowly scoped GitHub token. Do not assume a public repository
-is appropriate just because it allows more Actions minutes.
-
-Create a release with tag:
+Place the exact prebuilt eleven-manuscript archive in the PUBLIC code repository,
+\`TomeyGeneralCompany/my-own-AI\`, as an asset on a release tagged:
 
     ancestor-training-inputs
 
-Upload exactly these assets under that release:
+The release must contain:
 
     ancestor_private_training_library.zip
     governance.json
     tokenizer.json
     heldout.txt
 
-The manuscript ZIP is the prepared local archive containing all eleven originals,
-the extracted text and source-traceable records; it is **not** code and is not
-committed to public GitHub.
+The first filename is historical: despite the word "private", it may be publicly
+hosted with the owner's authorization. Changing the filename is not necessary.
+The archive includes the original eleven manuscripts, extracted text, source IDs,
+and a SHA-256-verified index. The GitHub workflow checks every original,
+extraction and indexed record before using any of them.
 
-- governance.json is generated from the **exact owner-approved canonical axioms**
-  using the existing governance code. Do not invent or substitute a list.
-- tokenizer.json is the frozen versioned original byte-level tokenizer.
-- heldout.txt is genuinely independent English validation text, not a passage
-  already included in one of the owner's eleven training manuscripts.
+The canonical governance file must be created from the EXACT owner-approved
+axioms, using \`ancestor init-governance\`. Do not create generic substitute
+axioms or use an example list. The tokenizer must be the frozen custom byte-BPE
+vocabulary used by the model. The held-out sample must not be training content.
 
-Store the private-data repository full name as a variable on the public code
-repository:
+All four inputs can be public, but the GitHub source code does not manufacture
+missing items. If the published input release does not exist, the scheduled
+job exits cleanly without training. If an input is missing/corrupt, it fails
+instead of training a model on a fabricated source.
 
-    ANCESTOR_PRIVATE_DATA_REPO = OWNER/PRIVATE-REPOSITORY
+## What runs, unattended
 
-Store a fine-grained token with read/write contents permission limited to
-that PRIVATE data repository as the code repository Actions secret:
+The workflow \`.github/workflows/ancestor-cloud-training.yml\` triggers every
+six hours and can also be run through GitHub Actions → Run workflow.
 
-    ANCESTOR_PRIVATE_REPO_TOKEN
+1. GitHub checks out the original unpretrained Ancestor source code.
+2. Downloads approved published input assets from this SAME repository.
+3. Validates and imports all eleven works into the ephemeral SQLite corpus.
+4. Retrieves the newest SHA-256-verified \`ancestor-neural-checkpoint\`
+   GitHub Actions artifact from a previous workflow run.
+5. Continues the same model with optimizer and RNG state.
+6. Executes owner-axiom-prefixed, paragraph-conditioned updates for a bounded
+   period within the hosted runner time limit.
+7. Measures token-prediction loss on independent held-out text.
+8. Uploads complete model and optimizer checkpoint as a new Actions artifact.
 
-The ordinary public-code GITHUB_TOKEN does not grant access to the owner's
-separate private repository; do not put the PAT in a file or log.
+There is no personal access token, separate storage account, remote shell,
+self-hosted runner, or requirement to power on the laptop. The standard
+\`GITHUB_TOKEN\` is restricted to contents:read and actions:read.
 
-**Enable the scheduled worker only after verifying all four input assets and
-the private repository access**:
+## Recovery and limits
 
-    ANCESTOR_CLOUD_ENABLED = true
+GitHub Actions artifacts are retained for up to the repository's configured
+retention period (typically 90 days), and **not indefinitely**. Each scheduled
+job saves a fresh artifact, providing continuity as long as regular runs succeed.
+Interrupted training loses only work not yet checkpointed; verified earlier
+artifacts remain available until retention expiry. If artifacts exist but
+none passes SHA-256 verification, the workflow refuses to silently start again
+from fresh weights.
 
-Without this variable equal to true, GitHub Actions will skip every scheduled
-and manual cloud training job. The workflow never runs on untrusted PRs.
+Actions artifacts on a PUBLIC repository are accessible to people with repository
+read access. This is a consequence of using public GitHub-hosted storage;
+the owner should take this into account for checkpoint publication as distinct
+from manuscript publication.
 
-## Every hosted cycle
+Training does not, by itself, certify learned philosophy, theology, mathematics
+or owner-method derivation. The existing independent stage examinations are still
+required to claim that Ancestor has actually learned the intellectual constitution.
 
-1. Check that the data repository is PRIVATE and token access works.
-2. Download the four immutable input artifacts from the private release.
-3. Validate the hash-checked source archive and load the local SQLite index.
-4. Restore the most recent model + optimizer + RNG checkpoint if it exists.
-5. Execute bounded paragraph-conditioned, owner-axiom-prefixed neural updates.
-6. Evaluate on an independently supplied held-out English sample.
-7. Save an integrity-checked complete checkpoint.
-8. Upload latest.pt, latest.json and summary.json to the *private*
-   \`ancestor-cloud-checkpoints\` release.
+## Exact integration status
 
-The workflow runs every six hours once activated. There is a single concurrency
-group to avoid simultaneous training jobs overwriting the checkpoint.
+The merged previous cloud workflow depended on a private data repository and
+owner-created PAT. This PR removes that requirement entirely.
 
-This is **foundational training exposure**, not certification that the model
-understands the owner's philosophy or theology. Full independent curriculum
-and stage-gate examinations remain necessary. Generic assistant instruction
-weights are not loaded. The owner's foundational axioms are never altered.
+The **public** manuscript archive release has not been created remotely by
+the GitHub connector in this conversation: the connector can edit GitHub files
+and pull requests but cannot upload an existing 15 MB binary release asset.
+The owner-uploaded archive exists in the conversation and can be downloaded;
+it is not a publicly reachable GitHub release URL. The owner's exact canonical
+axiom manifest, tokenizer, and independent held-out test file likewise have not
+been uploaded as release assets. Therefore this PR fixes the remote storage
+architecture but does NOT claim an active cloud training process.
 
-## Limitations / prerequisites
-
-1. The current GitHub integration can edit the public source repository but
-   cannot create the separate private repository or write its release assets.
-2. The eleven-manuscript archive is prepared in the current conversation but
-   has not been transferred to a remote private GitHub release.
-3. The definitive governing axiom manifest, frozen tokenizer and independent
-   validation data are not yet remotely available.
-4. Consequently, no hosted training has yet started. The workflow is disabled
-   until the necessary private storage is provisioned.
-5. Hosted runner limits and usage policies may change. Before using full-time
-   training, review GitHub's current Actions billing and quotas.
-6. Abrupt runner failure before uploading its final checkpoint loses the
-   unuploaded work of that session. The alternate private slot retains the
-   previous complete checkpoint if an upload fails midway. A later version
-   can add intermediate remote uploads if sessions become long.
-
-This workflow does not require user access to the Zorin laptop once all private
-cloud inputs are available.
+Do not merge changes to the owner's corpus content or replace his governing
+axioms in an attempt to avoid these input-integrity requirements.
