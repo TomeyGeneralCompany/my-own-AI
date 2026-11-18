@@ -67,3 +67,15 @@ def test_dictionary_metadata_is_rejected(tmp_path):
     p.write_text("Different\tchanged\n")
     with pytest.raises(ValueError):
         d.import_dictionary_tsv(p)
+
+
+def test_owner_constitution_is_documented_verbatim():
+    from pathlib import Path
+    from ancestor.governance import INTELLECTUAL_CONSTITUTION
+    doc=(Path(__file__).resolve().parents[1]/"docs"/"ARCHITECTURE.md").read_text(encoding="utf-8")
+    required_passages=INTELLECTUAL_CONSTITUTION.split("\n\n")[1:]
+    for passage in required_passages:
+        assert passage in doc
+    assert "Contradictions are treated as failures of the intended reasoning architecture" in doc
+    assert "Other intellectual systems are objects of analysis" in doc
+    assert "Stage gating must test whether he actually reasons according to your framework" in doc
