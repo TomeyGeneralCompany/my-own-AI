@@ -61,3 +61,9 @@ def test_dictionary_metadata_is_rejected(tmp_path):
     p.write_text("Apple\tfruit\nAbility\tcapacity\n")
     assert d.import_dictionary_tsv(p)==2
     assert [x[0] for x in d.dictionary()]==["Ability","Apple"]
+    records=d.dictionary_records()
+    assert [r.id for r in records]==["WEBSTER1913:W-000000","WEBSTER1913:W-000001"]
+    assert records[0].exact_text=="Ability\ncapacity"
+    p.write_text("Different\tchanged\n")
+    with pytest.raises(ValueError):
+        d.import_dictionary_tsv(p)
