@@ -8,7 +8,12 @@ import re
 import sqlite3
 
 # Canonical text must be provided by the owner. No fabricated corpus is shipped.
-PARA = re.compile(r"(?m)^\s*(?:§\s*)?(\d+)[.)]?\s+(.+?)(?=^\s*(?:§\s*)?\d+[.)]?\s+|\Z)", re.S)
+# Supports the owner's actual [0], [1], 1., and § 1 forms without
+# confusing line-wrap whitespace with a new record.
+PARA = re.compile(
+    r"(?ms)^[ \t]*(?:\[(\d+)\]|(\d+)[.)]|§[ \t]*(\d+))[ \t]+"
+    r"(.+?)(?=^[ \t]*(?:\[\d+\]|\d+[.)]|§[ \t]*\d+)[ \t]+|\Z)"
+)
 BLOCK = re.compile(r"(?mi)^\s*(Terms\.|Consequence\.|Proposition\.|Equation\.)\s*")
 
 @dataclass(frozen=True)
@@ -66,11 +71,11 @@ class Corpus:
         items = []
         seen = set()
         for match in matches:
-            num = int(match.group(1))
+            num = int(next(n for n in match.group(1,2,3) if n is not None))
             if num in seen:
                 raise ValueError(f"Duplicate paragraph number {num}")
             seen.add(num)
-            content = match.group(2).strip()
+            content = match.group(4).strip()
             if not content:
                 raise ValueError(f"Empty paragraph {num}")
             items.append(SourceRecord(f"{document_id}:P-{num:06d}", document_id, num, content))
