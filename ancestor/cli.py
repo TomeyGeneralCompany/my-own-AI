@@ -129,10 +129,16 @@ def main(argv=None):
                               LearningLedger(Path(args.out)/"learning-ledger.jsonl"),constitution)
         runner=CurriculumRunner(controller,trainer,tokenizer.digest(),
                                 source_manifest,Path(args.out)/"checkpoints")
+        existing_events=controller.ledger.events()
         if args.resume:
-            print("Recovered:",restore_checkpoint(args.resume,trainer,
+            recovered=restore_checkpoint(args.resume,trainer,
                  tokenizer_hash=tokenizer.digest(),constitution=constitution,
-                 corpus_manifest_hash=source_manifest))
+                 corpus_manifest_hash=source_manifest)
+            if recovered["ledger_offset"] != len(existing_events):
+                raise ValueError("Learning ledger and checkpoint are not synchronized; refusing unsafe resume")
+            print("Recovered:",recovered)
+        elif existing_events:
+            raise ValueError("Existing curriculum ledger requires --resume; refusing fresh-weight restart")
         for stage in stages:
             if not runner.run_stage(stage,exams,threshold=args.threshold):
                 print("Stage gate not passed; approved remediation required:",stage.id)
