@@ -129,3 +129,23 @@ def structured_prefix_batch(tokenizer: ByteBPE, sections: list[tuple[str,str]],
     y=torch.tensor([ids[1:]],dtype=torch.long)
     mask=torch.tensor([[1.0 if j+1 >= start else 0.0 for j in range(len(ids)-1)]])
     return x,y,mask
+
+
+def controller_completion_batch(tokenizer: ByteBPE, axioms: str, context: str,
+                                task: str, answer: str, max_tokens: int):
+    """Teach the answer given axiom/context/question; never train to predict the
+    controller's authority prefix as though it were a generated answer."""
+    if not task.strip() or not answer.strip():
+        raise ValueError("Question and target answer must be nonempty")
+    prefix=tokenizer.encode_structured([
+        ("<|AXIOM|>",axioms),
+        ("<|CONTEXT|>",context),
+        ("<|DERIVE|>",task+"\n"),
+    ])
+    ids=prefix+tokenizer.encode(answer)+[tokenizer.special_id("<|END|>")]
+    if len(ids)-1>max_tokens:
+        raise ValueError("Controller completion exceeds neural context; segment the target")
+    x=torch.tensor([ids[:-1]],dtype=torch.long)
+    y=torch.tensor([ids[1:]],dtype=torch.long)
+    mask=torch.tensor([[1.0 if j+1>=len(prefix) else 0.0 for j in range(len(ids)-1)]])
+    return x,y,mask
