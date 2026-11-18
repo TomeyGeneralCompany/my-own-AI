@@ -79,13 +79,9 @@ jobs:
             if gh api "repos/$GITHUB_REPOSITORY/actions/artifacts/$artifact_id/zip" \
                    -H "Accept: application/vnd.github+json" > "$RUNNER_TEMP/candidate.zip" \
                && unzip -oq "$RUNNER_TEMP/candidate.zip" -d "$RUNNER_TEMP/ancestor-recovery" \
-               && python -m ancestor.remote_checkpoints \
-                      --slot-a "$RUNNER_TEMP/ancestor-recovery" \
-                      --slot-b "$RUNNER_TEMP/nonexistent" \
-                      --github-env "$GITHUB_ENV" \
-               && test -s "$RUNNER_TEMP/ancestor-recovery/latest.pt"; then
-              test -s "$RUNNER_TEMP/ancestor-recovery/latest.json"
-              echo "Restoring checkpoint from Actions artifact $artifact_id."
+               && python -c 'from ancestor.remote_checkpoints import checkpoint_metadata; import sys; sys.exit(0 if checkpoint_metadata(sys.argv[1]) else 1)' "$RUNNER_TEMP/ancestor-recovery"; then
+              echo "ANCESTOR_RESUME=$RUNNER_TEMP/ancestor-recovery/latest.pt" >> "$GITHUB_ENV"
+              echo "Restoring verified checkpoint from Actions artifact $artifact_id."
               exit 0
             fi
           done < "$RUNNER_TEMP/checkpoint-candidates.txt"
