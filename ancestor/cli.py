@@ -28,6 +28,15 @@ def args_parser():
     c.add_argument("--source",required=True)
     c.add_argument("--id",required=True)
     c.add_argument("--title",required=True)
+    prep=sub.add_parser("prepare-document", help="Preserve original DOCX/PDF/TXT and extract text for owner review")
+    prep.add_argument("--source",required=True)
+    prep.add_argument("--out",required=True)
+    approve=sub.add_parser("approve-document", help="Index reviewed text by exact SHA-256")
+    approve.add_argument("--manifest",required=True)
+    approve.add_argument("--approved-hash",required=True)
+    approve.add_argument("--data",required=True)
+    approve.add_argument("--id",required=True)
+    approve.add_argument("--title",required=True)
     d=sub.add_parser("import-dictionary")
     d.add_argument("--data",required=True)
     d.add_argument("--source",required=True,help="Verified headword<TAB>definition text")
@@ -63,6 +72,15 @@ def main(argv=None):
         t=ByteBPE.train(texts,args.vocab)
         t.save(args.output)
         print("Tokenizer:",t.digest(),"base vocab:",t.base_vocab_size)
+    elif args.command=="prepare-document":
+        from .importers import prepare_document
+        print(json.dumps(prepare_document(args.source,args.out),indent=2))
+    elif args.command=="approve-document":
+        from .importers import commit_reviewed_text
+        corpus=Corpus(args.data)
+        count=commit_reviewed_text(corpus,args.manifest,document_id=args.id,
+                                   title=args.title,approved_hash=args.approved_hash)
+        print("Approved paragraphs indexed:",count)
     elif args.command=="import-manuscript":
         corpus=Corpus(args.data)
         print("Paragraphs:",corpus.ingest_text(args.source,args.id,args.title))
