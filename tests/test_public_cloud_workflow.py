@@ -19,7 +19,7 @@ def test_cloud_training_uses_public_owner_release_and_actions_artifacts():
     assert "actions/upload-artifact@v4" in text
     assert "ancestor-neural-checkpoint" in text
     assert "checkpoint_metadata" in text
-    assert "refusing silent model reset" in text
+    assert "Prior checkpoints exist but no valid recovery state is available." in text
     assert "pull_request_target" not in text
     assert "originals/WORK-001.docx" not in text
 
