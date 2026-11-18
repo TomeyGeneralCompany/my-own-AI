@@ -109,6 +109,7 @@ ancestor/reasoning.py; they require explicit approval and source references.
     {
       "stages": [{
         "id": "ORDERED_MANUSCRIPTS",
+        "approved_document_ids": ["BOOK-001"],
         "lessons": [{
           "id": "BOOK1-001",
           "source_id": "BOOK-001:P-000001",
@@ -126,3 +127,19 @@ and prerequisites with a real approved curriculum. The above is a format
 illustration, not an approved course plan or valid paragraph relationship.
 
 **Do not run a purported full Ancestor education on demonstration fixtures.**
+
+
+### Source-coverage gates
+
+For the \`WEBSTER_DICTIONARY\` stage, provide the owner-verified
+\`approved_entry_count\` and list **all** indexed \`WEBSTER1913:W-...\`
+records as lessons. An incomplete list is rejected before training.
+
+For \`ORDERED_MANUSCRIPTS\`, provide \`approved_document_ids\` and list
+**every** numbered paragraph from each of those approved books as lessons.
+The stage will reject omitted paragraphs. A source's presence in the library
+does not by itself certify that its content has been learned.
+
+The course file is not permission to alter foundational axioms, source
+definitions, or neural architecture. Changes to the course/exam files are
+included in the checkpoint's source identity and block silent resume.
