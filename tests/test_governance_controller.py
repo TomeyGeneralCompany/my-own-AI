@@ -23,7 +23,7 @@ def test_governance_manifest_and_authority(tmp_path):
 
 def test_paragraph_and_exam_gate(tmp_path):
     source=tmp_path/"book.txt"
-    source.write_text("1. First principle.\\n2. Consequence follows.",encoding="utf-8")
+    source.write_text("1. First principle.\n2. Consequence follows.",encoding="utf-8")
     corpus=Corpus(tmp_path/"data")
     assert corpus.ingest_text(source,"BOOK1","Example")==2
     p=corpus.list_paragraphs("BOOK1")
@@ -55,9 +55,9 @@ def test_paragraph_and_exam_gate(tmp_path):
 def test_dictionary_metadata_is_rejected(tmp_path):
     d=Corpus(tmp_path/"data")
     p=tmp_path/"dict.tsv"
-    p.write_text("00-cide-info\\t00-database-info\\n")
+    p.write_text("00-cide-info\t00-database-info\n")
     with pytest.raises(ValueError):
         d.import_dictionary_tsv(p)
-    p.write_text("Apple\\tfruit\\nAbility\\tcapacity\\n")
+    p.write_text("Apple\tfruit\nAbility\tcapacity\n")
     assert d.import_dictionary_tsv(p)==2
     assert [x[0] for x in d.dictionary()]==["Ability","Apple"]
