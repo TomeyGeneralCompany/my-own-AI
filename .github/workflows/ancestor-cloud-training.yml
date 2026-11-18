@@ -69,7 +69,58 @@ jobs:
           gh api --paginate "repos/$GITHUB_REPOSITORY/actions/artifacts?per_page=100&name=ancestor-neural-checkpoint" \
             --jq '.artifacts[] | select(.expired==false) | [.created_at,.workflow_run.id,.id] | @tsv' \
             | sort -r > "$RUNNER_TEMP/checkpoint-candidates.txt"
-          while IFS=$'\t' read -r created run_id artifact_id; do
+          if [ ! -s "$RUNNER_TEMP/checkpoint-candidates.txt" ]; then
+            echo "No previous checkpoint artifacts: first training session."
+            exit 0
+          fi
+          while IFS=
+            [ -n "$artifact_id" ] || continue
+            rm -f "$RUNNER_TEMP/ancestor-recovery/latest.pt" "$RUNNER_TEMP/ancestor-recovery/latest.json"
+            if gh api "repos/$GITHUB_REPOSITORY/actions/artifacts/$artifact_id/zip" \
+                   -H "Accept: application/vnd.github+json" > "$RUNNER_TEMP/candidate.zip" \
+               && unzip -oq "$RUNNER_TEMP/candidate.zip" -d "$RUNNER_TEMP/ancestor-recovery" \
+               && python -m ancestor.remote_checkpoints \
+                      --slot-a "$RUNNER_TEMP/ancestor-recovery" \
+                      --slot-b "$RUNNER_TEMP/nonexistent" \
+                      --github-env "$GITHUB_ENV" \
+               && test -s "$RUNNER_TEMP/ancestor-recovery/latest.pt"; then
+              test -s "$RUNNER_TEMP/ancestor-recovery/latest.json"
+              echo "Restoring checkpoint from Actions artifact $artifact_id."
+              exit 0
+            fi
+          done < "$RUNNER_TEMP/checkpoint-candidates.txt"
+          echo "Checkpoint artifacts exist but NONE is valid; refusing silent model reset."
+          exit 1
+      - name: Continue owner-governed neural training on GitHub CPU
+        if: ${{ steps.inputs.outputs.available == 'true' }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          args=(
+            --data "$RUNNER_TEMP/ancestor-library"
+            --tokenizer "$RUNNER_TEMP/ancestor-inputs/tokenizer.json"
+            --governance "$RUNNER_TEMP/ancestor-inputs/governance.json"
+            --heldout "$RUNNER_TEMP/ancestor-inputs/heldout.txt"
+            --output "$RUNNER_TEMP/ancestor-trained"
+            --block 1024 --width 384 --layers 6 --heads 6 --ffn 1536
+            --updates 50000 --max-minutes 200
+          )
+          if [ -n "$ANCESTOR_RESUME" ]; then
+            args+=(--resume "$ANCESTOR_RESUME")
+          fi
+          python -m ancestor.cloud_training "${args[@]}"
+      - name: Retain actual model and complete optimizer recovery state
+        if: ${{ steps.inputs.outputs.available == 'true' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: ancestor-neural-checkpoint
+          path: |
+            ${{ runner.temp }}/ancestor-trained/latest.pt
+            ${{ runner.temp }}/ancestor-trained/latest.json
+            ${{ runner.temp }}/ancestor-trained/summary.json
+          if-no-files-found: error
+          retention-days: 90
+\t' read -r created run_id artifact_id; do
             [ -n "$artifact_id" ] || continue
             rm -f "$RUNNER_TEMP/ancestor-recovery/latest.pt" "$RUNNER_TEMP/ancestor-recovery/latest.json"
             if gh api "repos/$GITHUB_REPOSITORY/actions/artifacts/$artifact_id/zip" \
