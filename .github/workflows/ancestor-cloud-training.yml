@@ -1,0 +1,100 @@
+name: Ancestor off-laptop training
+# Only trusted main-branch scheduled/dispatch runs receive private-data secrets.
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '17 */6 * * *'
+concurrency:
+  group: ancestor-private-training
+  cancel-in-progress: false
+permissions:
+  contents: read
+jobs:
+  train:
+    if: ${{ vars.ANCESTOR_CLOUD_ENABLED == 'true' ${{
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    env:
+      GH_TOKEN: ${{ secrets.ANCESTOR_PRIVATE_REPO_TOKEN ${{
+      PRIVATE_REPO: ${{ vars.ANCESTOR_PRIVATE_DATA_REPO ${{
+      ANCESTOR_RESUME: ''
+      PYTHONUNBUFFERED: '1'
+    steps:
+      - name: Obtain original neural source code
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Require private data repository credentials
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -n "$GH_TOKEN" || { echo "Private repository token not configured"; exit 1; }
+          test -n "$PRIVATE_REPO" || { echo "Private data repository not configured"; exit 1; }
+          gh repo view "$PRIVATE_REPO" --json visibility --jq '.visibility' | grep -qx PRIVATE || {
+            echo "Refusing to use a nonprivate data repository"
+            exit 1
+          }
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install original model runtime
+        run: python -m pip install -e .
+      - name: Retrieve private owner training inputs
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/ancestor-private" "$RUNNER_TEMP/ancestor-checkpoint"
+          for asset in ancestor_private_training_library.zip governance.json tokenizer.json heldout.txt; do
+            gh release download ancestor-training-inputs \
+              --repo "$PRIVATE_REPO" --pattern "$asset" \
+              --dir "$RUNNER_TEMP/ancestor-private"
+            test -s "$RUNNER_TEMP/ancestor-private/$asset"
+          done
+          python -m ancestor.cli import-private-library \
+            --bundle "$RUNNER_TEMP/ancestor-private/ancestor_private_training_library.zip" \
+            --data "$RUNNER_TEMP/ancestor-private/library"
+      - name: Restore latest private checkpoint when present
+        shell: bash
+        run: |
+          set -euo pipefail
+          if gh release view ancestor-cloud-checkpoints --repo "$PRIVATE_REPO" >/dev/null 2>&1; then
+            gh release download ancestor-cloud-checkpoints --repo "$PRIVATE_REPO" \
+              --pattern 'latest.*' --dir "$RUNNER_TEMP/ancestor-checkpoint"
+            test -s "$RUNNER_TEMP/ancestor-checkpoint/latest.pt"
+            test -s "$RUNNER_TEMP/ancestor-checkpoint/latest.json"
+            echo "ANCESTOR_RESUME=$RUNNER_TEMP/ancestor-checkpoint/latest.pt" >> "$GITHUB_ENV"
+          fi
+      - name: Train original Ancestor from owner's corpus
+        shell: bash
+        run: |
+          set -euo pipefail
+          args=(
+            --data "$RUNNER_TEMP/ancestor-private/library"
+            --tokenizer "$RUNNER_TEMP/ancestor-private/tokenizer.json"
+            --governance "$RUNNER_TEMP/ancestor-private/governance.json"
+            --heldout "$RUNNER_TEMP/ancestor-private/heldout.txt"
+            --output "$RUNNER_TEMP/ancestor-trained"
+            --block 1024
+            --width 384 --layers 6 --heads 6 --ffn 1536
+            --updates 20 --max-minutes 200
+          )
+          if [ -n "$ANCESTOR_RESUME" ]; then
+            args+=(--resume "$ANCESTOR_RESUME")
+          fi
+          python -m ancestor.cloud_training "${args[@]}"
+      - name: Save recovery checkpoint only in private repository
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -s "$RUNNER_TEMP/ancestor-trained/latest.pt"
+          test -s "$RUNNER_TEMP/ancestor-trained/latest.json"
+          if ! gh release view ancestor-cloud-checkpoints --repo "$PRIVATE_REPO" >/dev/null 2>&1; then
+            gh release create ancestor-cloud-checkpoints --repo "$PRIVATE_REPO" \
+              --title "Ancestor private neural checkpoint" \
+              --notes "Owner-governed cloud training state"
+          fi
+          gh release upload ancestor-cloud-checkpoints --repo "$PRIVATE_REPO" --clobber \
+            "$RUNNER_TEMP/ancestor-trained/latest.pt" \
+            "$RUNNER_TEMP/ancestor-trained/latest.json" \
+            "$RUNNER_TEMP/ancestor-trained/summary.json"
+          echo "Off-laptop cycle checkpoint uploaded to private storage."
