@@ -1,0 +1,2664 @@
+                              Inane Electromagneticum:
+     Theoria Cybernetica Inaequilibritatis Energeticae in Retibus Electricis Complexis
+
+
+
+       Auctore Isaiz Tomey
+
+       Manistee, Michigan
+
+       2026
+
+
+   Copyright © 2026 Tomey General Company LLC.
+All rights reserved.
+
+   This work is the intellectual property of Tomey General Company LLC. Tomey General
+Company LLC retains full authority under the Federal Law of the United States, and the Laws of
+the State of Michigan, to transfer, assign, or otherwise convey ownership or usage rights to this
+work to any subsidiary entity under its control. In accordance with the wishes of the author,
+Tomey General Company LLC will not be charging readers for the document, nor its
+distribution, provided the trademark is acknowledged.
+
+                                            Prooemium
+
+        [0] Res anni MM, quam Y2K appellant, revera evenit, sed non eo modo quo omnes eventuram
+esse putaverant. Quantum ex historia intellego—nam haec omnia ante aetatem meam acciderunt
+—homines aeroplana e caelo casura, bombas nucleares erupturas, aliaque eius generis
+imaginabantur. Quod, ut manifestum est, non accidit. Neque enim Y2K computatra mutavit, sed
+homines. Quamquam computatra resque cognatae iam ante exstabant, ab anno potissimum MM
+initium ducendum est: tunc enim, ut vulgo conceditur, civilitas nostra recens tandem effecerat ut
+corpus humanum ambitu electrico complecteretur, cuius densitati, continuitati, implicationique
+nullum in historia exemplum erat. Instrumentum reticulare in mensa positum, telephonum cellulare
+perpetuo cum turribus machinisque proximis condiciones componens, computatrum fasciculos
+cum ministris remotis permutans, conclave denique machinis inter se communicantibus refertum,
+partes ambitus informatici haberi solent; informatio tamen ipsa numquam per vacuum movetur.
+Omne elementum binarium quod transmittitur mutatione physica efficitur: onus transfertur,
+potentia variatur, cursus commutatur, campus ordinatur aliter, energia vehitur. Quare Internetum
+ab initio intellegendum est, non quasi structura incorporea electricitate fortuito suffulta, sed quasi
+vastus ordo electricus, cuius transformationes energeticae in ministerium informationis redactae
+sunt.
+
+        [1] Haec disputatio exemplar theoreticum constituit, secundum quod communicatio electrica
+satis multiplex atque celeris defectus energeticos locis definitos identidem efficit, qui hic inania
+electromagnetica appellantur, dum onus energiaque electromagnetica in computatione
+transmissioneque perficiendis transferuntur, coguntur, ordinantur aliter. Inane autem non est ens
+quoddam post circuitum latens, neque res praeter campum addita, sed absentia, quemadmodum
+tenebrae privationem luminis, non substantiam ei adversam, significant. Actio quae ei apparere
+videtur tota in processibus physicis consistit quibus inaequilibrium ortum compensatur; itaque
+dicere inane energiam haurire, quaerere, adhibere aut sumere nihil aliud est quam rationes
+aequilibrii restituendi communi sermone contrahere, neque mentem, voluntatem, aut agentiam
+privationi tribuere.
+
+        [2] Propositum decretorium, cardo nempe quo tota argumentatio vertitur, hoc est: energia
+quae talem defectum localem compensat non decreto quodam intra eos circuitus continetur in
+quibus ille primum ortus est; apparatus enim electricus in ambitu electromagnetico exsistit, qui
+
+conductores, dielectrica, terras, structuras, atque etiam systemata electrochemica viventia continet.
+Per campos ab instrumento genitos inaequilibrium cum rebus circumiectis copulatur; ubi autem
+corpus humanum inter receptacula electrochemica efficacissime propinqua stat, declivitas localis
+ex illo corpore haurit eadem regula qua quodque aliud receptaculum paratum fluxum
+compensatorium participat.
+
+      [3] Propinquitas in hoc exemplari interest, quod copulatio ambitu electromagnetico re vera
+exstante, non finibus logicis retis abstractis, coercetur. Itaque minister milibus milium passuum
+remotus computatro gestabili informatione proximus est, corpus autem humanum circiter tres
+pedes ab eo computatro distans campis eius physice proximum. Theoria igitur topologiam
+informaticam ab energetica distinguit: fasciculi quidem illam secundum praecepta itinerum
+permeant, aequilibrii vero restitutio per hanc secundum vias physicas copulationis quae praesto
+sunt efficitur. Hinc fit ut systema biologicum conductivum proximum ad theoriam pertineat,
+etiamsi nullum ei munus in circuito arte composito destinatum sit.
+
+      [4] Systema nervosum praecipue grave est, quod cognitio ex subtilissimis differentiis
+electrochemicis conservandis pendet. Potentiae membranarum neuronalium ex declivitatibus
+concentrationis ionum, permeabilitate membranarum selectiva, canalibus ionicis, atque
+transportatione activa oriuntur, dum processus ATP dependentes eas declivitates adversus
+continuam dissipationem sustinent (Purves et al., 2001; Howarth, Gleeson, & Attwell, 2012).
+Significatio tamen electrica neuronalis ex declivitatibus concentrationis ionum, permeabilitate
+selectiva, et transportatione activa quae eas conservat pendet (Purves et al., 2001). Actio neuralis
+declivitatibus ionicis, potentiis membranarum, potentiis actionis, transmissione synaptica,
+coordinatione oscillatorica, atque restitutione identidem facta statuum ordinatorum constituitur.
+Quare mechanismus non tantum in eo est quod emissiones electromagneticae systema nervosum
+perturbent, sed quod aequilibrii restitutio ab actione electrica complexa orta onus energeticum
+parasiticum ei imponat. Hic detrimentum memoriam quasi quantitatem energiae separabilem
+auferre non necesse est; partem potius cohaerentiae energeticae adimit, qua memoriae, attentio,
+continuatioque cognitionis conservantur atque reficiuntur.
+
+      [5] Lacunae memoriae, confusio, attentionis interruptio, sensusque imminutiae agentiae ex
+uno    igitur   mechanismo    consequuntur:     systema    technicum    defectum    efficit;   fluxus
+electromagneticus eum defectum cum ambitu copulat; systemata biologica propinqua aequilibrium
+
+restituendum adiuvant; detrimentumque inde ortum, quamvis breviter aut minute, cohaerentiam
+ordinationis neuralis corrumpit.
+
+     [6] In una simplicique coniunctione electrica effectus neglegibilis est; at ubi miliarda
+instrumentorum alta frequentia perpetuo commutantium inter seque communicantium spectantur,
+res mutatur. Productio inanibus localibus propria paene continua fit; rete igitur iam non est
+machinarum seiunctarum congeries, sed architectura electromagnetica cybernetica permanens,
+quae inaequilibrium perpetuo gignit atque ex ambitu suo perpetuo haurit quo illud compenset.
+Homines, hac architectura circumdati atque magis magisque penetrati, spectatores externi non
+sunt; immo partes energeticae ambitus eius sunt.
+
+                                   Notae et Praecepta Formalia
+
+     [7] Notatio formalis per totam dissertationem cumulatur. V(x,t) defectum energeticum
+
+localem respectu status referendi pro tempore accommodati u*(x,t) significat; B_V onus inanis
+
+per spatium tempusque integratum; V_net defectum compositum totius retis; S vectorem
+
+Poyntingianum, P_EM autem potentiam electromagneticam per finem definitum
+
+transeuntem; κ_i coefficientem copulationis efficientem receptaculi i, R* autem receptaculum
+
+cui ille coefficiens maximus est; E_b energiam electrochemicam biologicam loco paratam;
+
+P_b→v terminum operis biologici in aequilibrium compensatorium directi; C cohaerentiam
+
+cognitivam ut ordinem status neuralis ordinati conservatum; β_ij terminum interactionis inter
+
+instrumenta reticulata; Γ_h copulationem ordinis superioris inter receptaculum humanum et
+
+campum compositum retis; τ_e, τ_v, τ_b denique tempora relaxationis electricae, relaxationis
+
+inanis, et restitutionis biologicae singillatim significant. Haec symbola eosdem sensus retinent,
+
+nisi aequatio quandam varietatem localem diserte definiat.
+
+                           I. Origo Physica Inanis Electromagnetici
+
+     [8] Quattuor principia argumentationem regunt, suum cuique territorium est, nullique licet in
+alterius officium invadere: Maxwell et Poynting campum electromagneticum fluxumque eius
+energeticum determinant; Faraday inductionem in conductore proximo; Le Chatelier rationem
+
+aequilibrii compensatorii; axioma denique propinquitatis efficientis statuit quod ex receptaculis
+paratis maiorem compensationis partem ferat. Principium deinde feedback appellatum seriem
+cybernetice claudit, quia exitum systematis copulati immutatum in condicionem status sequentis
+reducit. Haec officiorum divisio necessaria est: vis enim demonstrativa exemplaris non in
+nominibus claris ad verecundiam invocandis, sed in eo sita est ut cuique principio ipsum munus
+inferendi quod causalis series postulat attribuatur.
+
+     [9] Omnis actus electricus computationis differentia nititur: transistor igitur status
+distinguibiles obtineat oportet; significatio differentiam potentiae requirit; cursus declivitates;
+transmissio motum ordinationemque oneris atque energiae campi moderatam. Communicatio
+digitalis inaequilibrium consulto miraque celeritate efficit; quo enim maior densitas
+commutationum atque copia informationis transmissa est, eo celerius configurationes energeticae
+locales creantur, transferuntur, tolluntur, recreantur.
+
+     [10] Argumentum gravius fit ubi meminerimus systemata digitalia non modo formam
+electricam fixam conservare; utilitas enim eorum in formis mutandis ipsa consistit. Dispositio
+immobilis statum servare potest, computatio autem transitus inter status postulat,
+communicatioque requirit ut illi transitus repetantur, deprehendantur, amplificentur, corrigantur,
+dirigantur. Inane igitur electromagneticum non tantum cum exsistentia instrumentorum
+electricorum, sed cum celeritate, densitate, ordineque mutationum status coniungitur. Apparatus
+cui vis suppeditatur sed paene quiescit et apparatus commutationibus densis atque inaequalibus
+agitatus idem onus energeticum locale inferre non necesse est, etiamsi consumptio potentiae media
+specie similis sit.
+
+     [11] Principium Le Chatelierianum rationem generalem responsionis compensatoriae
+praebet: aequilibrium perturba, atque systema dispositionem suam contra perturbationem illatam
+mutat. In provincia sua classica haec propositio aequilibrium chemicum describit; in hoc autem
+exemplari rationem restitutionis praebet, qua defectus energeticus localis redistributionem excitat.
+Non ipsum ex se receptaculum eligit quod redistributionem ferat—haec electio ad axioma
+propinquitatis efficientis infra explicatum pertinet—sed necessitatem compensationis priorem
+statuit: simul atque actio electrica celeris defectum localem potentiae aut densitatis energeticae, V
+appellatum, efficit, ambitus copulatus declivitati respondet, atque inane, cum privatio potius quam
+substantia sit, motu energiae paratae extinguitur. Apparatus hac in re fato Tundali quam machinae
+
+motus perpetui fictae propior est: egestas enim eius neque metaphysica neque infinita est, sed
+perpetuo renovatur; restitutio quaeque terminum ad quem petit, transitus quisque subsequens
+statum denuo perturbat, reteque, hos transitus communicatione recursiva multiplicans, aquas eo
+ipso momento iterum subducit quo aequilibrium iam attingi videbatur.
+
+      [12] Status energeticus localis regionis per u(x,t) repraesentetur, atque eventus
+communicationis deviationem negativam Δu infra statum localem proxime antecedentem efficiat;
+inane autem tantummodo ut magnitudo positiva illius defectus repraesentatur:
+
+                                  V(x,t) = max[0, -Δu(x,t)].
+      [13] Haec notatio absentiae substantiam non tribuit; quantitatem metitur qua condicio
+energetica localis respectu status referendi privata est. Quaestio igitur physica haec fit: unde fluxus
+compensatorius oriatur et per quos canales ad regionem perturbatam perveniat.
+
+      [14] Formula plenior ipsum statum referendi dynamicum habet. Sit igitur u*(x,t) status
+energeticus localis qui, si eventus commutationis proxime impositus abesset, exspectaretur.
+Defectus momentaneus respectu illius fundamenti mobilis est:
+
+                                  V(x,t) = max[0, u*(x,t) - u(x,t)].
+      [15] Onus totale inanis per regionem Ω intra intervallum T ita repraesentatur:
+
+                                   B_V = ∫_T ∫_Ω V(x,t) dΩ dt.
+      [16] Haec quantitas proprietatem materialem theoriae complectitur: series defectuum
+singillatim minimorum perseverando gravis fit. Variabile igitur pertinens non modo profunditas
+unius cuiusque inanis est, sed onus integratum quod iterata formatio ante relaxationem absolutam
+efficit.
+
+      [17] In circuito simplici responsio paene tota intra viam electricam designatam continetur; in
+architectura autem electrica densa celeriterque mutabili apparatus electromagnetice ambitu suo
+patet. Systema locale in maiore camporum ambitu positum est, qui conductores, dielectrica, terras,
+instrumenta finitima, materias structurarum, media atmosphaerica, organismosque biologicos
+continet. Inane igitur non ad solam circuitus delineationem, sed ad totum ambitum energeticum
+copulatum in quo circuitus operatur pertinet.
+
+              Energia Campi, Exterioritas Circuitus, et Situs Physicus Potentiae
+
+     [18] Prima amplificatione testimonii argumentum eget propter sententiam tam elementarem
+ut eam notatio circuituum ordinaria saepe occultet: transitus physicus potentiae electricae a fonte
+ad onus non satis explicatur si energia fingitur quasi substantia intra conductorem metallicum ab
+ipsis vectoribus oneris lente motis portata. Electrodynamica Maxwelliana rationem energeticam in
+campis ponit, theoremaque Poyntingianum legem conservationis localem praebet qua illa ratio
+numero exprimitur. Feynman, cum de energia et momento campi tractat, vectorem Poyntingianum
+definit rationem qua energia campi electromagnetici per spatium moveatur; tractatus autem MIT
+de campis energiaque electromagneticis fluxum potentiae in circuitibus per enuntiata
+conservationis integralia differentialiaque diserte explicat (Feynman, Leighton, & Sands, 1964;
+Haus & Melcher, 1989). Hoc ad thesim praesentem maximi momenti est: topologia enim
+energetica pertinens vestigio cupreo, commissura semiconductoria, aut funiculo non absolvitur;
+situs physicus transmissionis in campum circumiectum extenditur, circuitusque ab initio geometria
+electromagnetica aperta est, non iter merum metallicum.
+
+     [19] Haec exterioritas neque antennis radiantibus neque campo remoto propria est.
+Investigationes circuituum simplicium cursus directi demonstraverunt vectorem Poyntingianum
+energiam per spatium circa conductores movere atque in elementa dissipativa apud onus ingredi;
+ita etiam ubi delineatio scholaris suadet ut observator energiam intra filum simpliciter vehi fingat,
+ratio transmissionis potentiae ex doctrina camporum redditur (Majcen, Haaland, & Dudley, 2000;
+Galili & Goihbarg, 2005). Neque haec distinctio ad docendum tantum pertinet: causa enim
+formalis est qua apparatus cui vis suppeditatur et ambitus proximus unum systema
+electromagneticum constituunt. Filum onera coercet; onera superficialia campum electricum
+constituunt; cursus campum magneticum; horumque productum vectoriale fluxum localem
+energiae electromagneticae determinat. Praesentia igitur energetica machinae spatium circa
+machinam occupat, atque corpus quodlibet finitimum intra illum campum secundum situm,
+directionem, conductivitatem, permittivitatem, responsionemque a frequentia pendentem stat.
+
+     [20] Sermo vulgaris quo instrumentum 'using electricity' dicitur nexum causarum uberiorem
+contrahit. Fons potentias cursusque constituit; campi adiuncti energiam servant atque vehunt; onus
+energiam per terminum fluxu Poyntingiano descriptum accipit; dissipatio autem vel conservatio
+statum energeticum localem mutat. In hac argumentatione descriptio camporum antecedens inanis
+necessarium est: defectus enim localis viam compensationis habere non potest nisi systemati iam
+adsit medium physice continuum quo energia fines eius transeat. Hoc ipsum theorema
+
+Poyntingianum praebet. Neque absentiam intellegentem requirit neque implicat; immo declarat
+quomodo privatio energetica uno loco redistributione per campos effecta ex alio loco compensari
+possit, cum aequatio conservationis localis mutationes densitatis energiae campi, fluxum per
+terminum, opusque in onera intra unam rationem factum iam coniungat.
+
+     [21] Eadem ratio omnem temptationem tollit qua analysis intra canalem communicationis
+nomine designatum coerceatur. Informatio mutationibus status physicis codificatur; hae autem
+motu oneris, transitionibus intentionis, cursibus commutatoriis, campis oscillantibus, potentiaque
+electromagnetica efficiuntur. Logos igitur informaticus per energeiam materialem efficitur; non
+est alter commeatus incorporeus circuito superadditus. Cum processor statum mutat, transceptor
+undam vehicularem modulatur, via memoriae gradum logicum mutat, aut moderator
+commutatorius exitum corrigit, operatio quae informationem fert formam electromagneticam
+habet, cuius consequentiae energeticae iisdem conservationis legibus describuntur quibus alia
+quaeque machina electrica regitur. Thesis igitur implicationem communicationis tractat non quasi
+proprietatem mysticam 'the Internet', sed quasi incrementum densitatis, celeritatis, ordinationisque
+reciprocae transitionum status physice effectarum.
+
+     [22] Hoc praecipue interest ad discrimen inter conductorem quiescentem et architecturam
+digitalem agentem. Filum in aequilibrio electrostatico positum unam configurationem campi
+praebet; systema computatorium cui vis suppeditatur perpetuo mutabilem, quia usus eius in
+transitionibus ipsis consistit. Terminus a quo cuiusque transitionis est status electricus antecedens,
+terminus ad quem status subsequens; transitus tamen ipse nullo pretio physico constat: capacitates
+onerantur exoneranturque, campi inductivi radiantesque mutantur, cursus crescunt caduntque,
+energia in elementa activa, per ea, atque ab eis vehitur. Quo celerius tales transitus fiunt et quo
+plura elementa inter se agunt, eo densius ambitus electromagneticus localis tempore distinguitur.
+Theoria inanis hoc factum physicum ordinarium pro fundamento sumit atque quaerit quid
+consequatur, cum intervalla redistributionis energeticae localis tam multa, tam celeria, tam
+recursive copulata fiant ut relaxatio operatione subsequente perpetuo interrumpatur. Dici potest,
+nec maiore physicorum iniuria quam Lucretius sibi permisit cum de natura loqueretur,
+conductorem quiescentem dormire dum apparatus computatorius laborat; labor tamen eius non est
+Samsonis ad molam, cui circuitus captivitate imponitur, sed systematis cuius operatio prospere
+facta proximam causam dislocationis energeticae continenter praebet.
+
+     [23] Consequentia satis certa est. Huic disputationi nova lex non requiritur ut statuatur
+energiam electromagneticam spatium circa systemata electrica occupare atque permeare;
+Maxwell, Poynting, litteraeque maturae de fluxu energiae in circuitibus hoc iam constituunt.
+Terminus novus V tantum postquam hoc fundamentum firmatum est adhibetur, ut defectum
+energeticum localem respectu status referendi dynamice definiti quantitative repraesentet. Cum
+physica accepta a nova synthesi separatur, argumentum augetur potius quam debilitatur: energia
+campi fluxusque potentiae sunt res datae; definitio inanis proprium dissertationis principium;
+quaestio deinceps est num redistributio energiae campi mensurata defectum temporalem,
+electionem receptaculi, contributionemque biologicam ab exemplari definitam exhibeat.
+
+    Commutatio, Multiplicitas Spectralis, et Complexitas Electromagnetica Apparatus
+
+                                            Digitalis
+
+     [24] De apparatu digitali nimis facile quasi abstractio binaria ipsa operatio physica sit
+disseritur. Transitus tamen logicus non efficitur nisi intentiones cursusque intra tempora finita
+ascensus descensusque mutantur; omnis talis mutatio spectrum habet, omnisque imperfecta
+coercitio viam praebet qua energia electromagnetica ducta aut radiata in architecturam
+circumiectam ingrediatur. Disciplina technica convenientiae electromagneticae eo ipso exsistit
+quod circuitus commutatorii materiam spectralem invitam gignunt, atque nexus, capacitates
+parasiticae, inductiones, structurae terrestrationis, involucraque determinant quomodo ea materia
+ducatur aut radietur. Studia potentiae electronicae commutatoriae, exempli causa, emissiones
+perturbationis electromagneticae per instrumenta commutatoria, partes passivas, parasita nexuum,
+formamque temporalem ipsius eventus commutatorii describunt (Zhu, Lai, Tang, Hefner, & Chen,
+1999). Propositum hic requisitum modestum sed necessarium est: transitiones digitales utiles
+transitionibus electromagneticis physice mensurabilibus comitantur, quarum distributio spatialis
+cum fine schematico operationis computatoriae non congruit.
+
+     [25] Origo physica vacui igitur ante consequentias eius exponenda est. Ab primordiis
+computationis electronicae usque ad machinas semiconductorias quae adhuc norma mercatoria
+manent, coniunctio digitalis ex deliberata particularum physicarum, praecipue electronum,
+tractatione atque ex motu, coactione, separatione, directioneque ordinatis earum in eos status
+pependit quibus relationes digitales materialiter constituuntur. Ars qua hoc efficitur immensum
+
+mutata est; operatio tamen fundamentalis incorporea non est facta: machina adhuc electrones cogat
+atque quasi agat necesse est ut coniunctiones digitales faciat, conservet, mutet, tollat. Computatio
+quantica, quamquam alia architectura procedit atque longe abest quin computationem usitatam ut
+normam mercatoriam communem expellat, hanc necessitatem physicam non delet; ipsa enim
+tractatione deliberata particularum statuumque physicorum nititur. Differentia igitur architecturae
+factum primitivum unde haec inquisitio incipit non tollit.
+
+     [26] Cum electrones ita coguntur atque in configurationes physicas computationi necessarias
+aguntur, remotio eorum ex uno loco ut in alio colligantur spatia vacua nihili relinquit: vacua ipso
+dislocationis actu effecta. Electron huc allatum illinc discessit; quod ad terminum ad quem cogitur,
+a termino a quo abductum est, atque actus colligendi absentiam in se continet. Hanc absentiam
+praesens opus inane electromagneticum appellat. Non est substantia addita intra machinam
+occulta, sed nihil quod ibi relinquitur ubi particulae ante motum ordinatum fuerant. Natura autem
+vacuum abhorret, natura abhorret a vacuo; vacuum incompensatum manere non potest, ordoque
+physicus circumiectus ad id replendum quod actus computatorius exinanivit trahitur. Historia
+igitur causalis inanis neque a metaphora neque ab abstractione incipit, sed ab ipsa operatione
+materiali computationis: particulae colliguntur, particulae aguntur, absentia inde efficitur, natura
+absentiae respondet.
+
+     [27] Operatio materialis hic descripta non computationi accessoria sed eam constituit. Logica
+semiconductoria recens per redistributionem oneris moderatam ipsa ordinatur: structura MOS per
+accumulationem, depletionem, inversionemque agitur, MOSFET autem mutationes ordinatas
+multitudinis vectorum in status conductivos nonconductivosque ex quibus logica digitalis
+aedificatur convertit. Sermo igitur colligendi atque agendi non est ornamentum pictum processui
+ceteroqui incorporeo impositum; communi sermone significat distributiones inaequales vectorum
+per campos, potentias, commissuras, portas, canalesque consulto constitutas. Ordo digitalis
+permutatione materiali emitur. Elementum binarium abstractum esse potest; exsistentia eius in
+machina non potest. (Fonstad, 2009a, 2009b)
+
+     [28] Onus praeterea ex nihilo non creatur quoties machina novo statu eget. Conservatio
+operationem ab initio obligat. Aequatio continuitatis omnem mutationem localem densitatis oneris
+cum congruente divergentia cursus coniungit, ita ut coactio in una regione ad eandem historiam
+causalem pertineat atque discessus ex altera. Actus physicus quo machina novam condicionem
+
+electricam constituit natura redistributivus est: quod congregatur suppeditatum est, quod
+suppeditatur motum est, quod movetur privationem relinquit a qua praesens theoria nomen inanis
+ducit. Haus and Melcher hanc rationem fundamento theoriae conductionis ponunt, conservationem
+oneris cum legibus campi quae motum oneris non compensati regunt coniungentes. (Haus &
+Melcher, 1989)
+
+     [29] Eadem physica etiam explicat cur vacuum merum residuum passivum status
+antecedentis manere non possit. Discessus in distributione oneris campum electricum constituit;
+campus in vectores oneris paratos agit; vectores moventur; motusque eorum distributionem quae
+campum genuit mutat. Processus igitur stricte physice se ipse corrigit antequam ulla recursio
+cybernetica in magnitudine retis inducatur. In medio Ohmico aequabili, conservatio oneris, lex
+Gaussiana, relatioque constitutiva J = sigma E evolutionem oneris non compensati ad legem
+relaxationis redigunt, cuius solutio exponentialis est. Distributio perturbata in campo suo causam
+redistributionis qua compensatur continet. (Haus & Melcher, 1989)
+
+                                        ∂ρᵤ/∂t + ∇·Jᵤ = 0
+                                            Jᵤ = σE
+                                           ∇·D = ρᵤ
+                                      ∂ρᵤ/∂t + (σ/ε)ρᵤ = 0
+                                ρᵤ(t) = ρᵤ(0)e^(−t/τₑ),   τₑ = ε/σ
+     [30] Tempus relaxationis tau_e processui restitutivo mensuram temporalem definitam tribuit.
+In medio valde conductivo intervallum brevissimum esse potest; in mediis minus conductivis aut
+heterogeneis longius, atque ad fines onus e regione aequabili translatum ut onus superficiale aut
+interfaciale rursus apparet. Haus and Melcher igitur ostendunt onus quod e volumine regionis
+aequabilis evanescit e ratione causali non perire: secundum conductivitatem, permittivitatem,
+geometriam, condicionesque ad fines materiales impositas redistribuitur. Sic inane dislocatione
+nascitur, redistributione compensatur, via autem diuturnitasque compensationis ordine materiali
+per quem onera moveri debent statuuntur. (Haus & Melcher, 1989)
+
+     [31] Haec res ipsam architecturam praesentis theoriae attingit. Inane non necesse est ut quasi
+una magna immobilisque cavitas permaneat quo physice grave fiat. Computatio condicionem eius
+iterum iterumque fabricatur. Omnis transitus qui novam distributionem vectorum constituit seriem
+renovat: collectionem, depletionem, formationem campi, motum compensatorium, relaxationem.
+Logica CMOS hanc recurrentiam praecipue manifestat: mora enim commutationis, oneratio
+
+exoneratioque, dissipatio potentiae, relatioque inter celeritatem et potentiam ad transitum
+physicum ab uno statu logico ad alterum pertinent. Machina computatoria igitur non est vas quod
+unum vacuum creat atque deinde iuxta illud vivit; machina est quae vacua localia identidem efficit
+restituitque, numero elementorum commutantium multiplicata atque secundum numerum
+operationis eorum renovata. (Fonstad, 2009c)
+
+     [32] Momentum igitur scientificum complexionis in recursu potius quam in causa prima
+versatur. Primum vacuum nullum mechanismum insolens postulat: particulae in novum statum
+ordinantur, absentia discessum earum consequitur, atque inde orta inaequalitas redistributionem
+poscit. Complexio metrum mutat. Unicus transitus paene simul ac efficitur relaxari potest; at
+processus, memoria, apparatus radiophonicus, moderator imaginum, temperator potentiae, atque
+interfacies retialis non unum transitum perficiunt deinde silent. Immensis procedunt seriebus
+sarcinae electricae ordinandae, quarum relaxationes variae inter se superveniunt, succedunt, atque
+mutuo condicionem praebent. Res igitur metienda non sola est diuturnitas vacui separati, sed onus
+integratum vacuorum intra laborem machinae tempore ordinatum continenter productorum.
+
+     [33] Vetus igitur sententia natura abhorret a vacuo hic certam grammaticam electricam
+accipit. Naturae 'abhorrence' non est rhetorica aequationibus superaddita, sed recusatio
+observabilis qua systema electricum loco motum sine consequentia manere nequit. Conservatio
+prohibet quominus sarcina sine historia appareat; lex Gaussiana sarcinam cum campo coniungit;
+conductio campum cum motu; relaxatio distributionem perturbatam ad statum subsequentem fert.
+Quod philosophia naturalis horror vacui nominavit, mathematica conductionis describit ut
+responsum ordinatum systematis materialis ad inaequalitatem. Locutio antiqua est; mechanismus
+electricus.
+
+     [34] Computatrum, telephonum, tabula, itinerum director, aut instrumentum retiale recentius,
+constitutione physica, concursus est oscillatorum, horologiorum, canalium, temperatorum,
+instrumentorum radiophonicorum, interfacierum memoriae, processuum, apparatuum imaginum,
+atque subsistematum exteriorum, quorum singula frequentias proprias structurasque transitorias
+possident. Campus eorum coniunctus ad unum sinum aut unum vectorem nominalem redigi non
+potest, quoniam ambitus electromagnetica re vera continet fundamenta, harmonicas, modulationis
+effecta, margines commutationis, formas eruptivas, cyclos officii, atque responsa transitoria.
+Graeca notio taxis hic sensu proprio ordinis utilis est: apparatus est ordinata multitudo motuum
+
+electricorum, quorum singulae kineseis ad telos computationis communicationisque coordinantur.
+Cum perfluentia et connexio augentur, densitas transitum coordinatorum una augetur, ita ut status
+energeticus loci successione perturbationum potius quam uno campo stabili magis magisque
+articule determinetur.
+
+     [35] Paulus figurae formam propriam tribuit: diversitates operationis intra unum corpus
+procedunt; similiter operatio electrica identitatem causalem servat, dum successive ut vector,
+harmonica, margo commutationis, transitorium, modulationis effectum, campusque inductus
+apparet. Manifestationum multiplicitas per se causarum multitudinem non implicat.
+
+     [36] Haec multiplicitas spectralis definitionem V directe attingit, quoniam status referentialis
+u*(x,t) eligi non potest quasi instrumentum duas tantum condiciones, potentia instructum et
+potentia carens, haberet. Basis dynamice apta constitutionem temporalem ipsius apparatus sequi
+debet, distinguens onerationem, exonerationem, excessum, resonantiam, modulationem,
+correctionem, relaxationemque, ubi illi status condicionem energeticam loci materialiter mutant.
+Quod doctrina vacuum appellat, neque totus campus electromagneticus neque omnis eius
+fluctuatio est; est magnitudo positiva defectus energetici localis ad illum statum referentialem
+mobilem relata, ubi opus est per spatiale temporaleque dominium in quo defectus persistit
+integrata.
+
+     [37] Neque potentia media structuram transitoriam occultare sinenda est, nam discrimen
+essentiale est. Duo instrumenta eandem potentiam mediam consumere possunt, quamvis eam per
+formas temporales prorsus diversas distribuant, sicut duo signa amplitudinem mediam aequalem
+habere possunt, quamvis compositione spectrali, ratione culminis, cyclo officii, ordinationeque
+phasium differant. Exemplar vacui igitur praedicit solam potentiam wattis expressam variabilem
+independentem insufficientem fore. Metrum pertinens rationem commutationis, densitatem
+transitum, materiam spectralem, synchronizationem, atque gradum quo eventus subsequentes
+antequam distributio energiae campestris ad condicionem priorem redierit occurrunt complecti
+debet. Onus igitur resistivum lente mutatum et processus digitalis crebro commutans potentia
+media aequalia, onere autem V inaequalia esse possunt, quoniam hic identidem ipsas
+discontinuationes temporales producit a quibus mechanismus propositus pendet.
+
+     [38] Communicatione retiali res ad ordinem altiorem transit, nam transitus iam non mere
+locales sunt sed mutuo condicionantur. Fasciculus ab una interfacie acceptus computationem
+
+efficit; computatio accessum memoriae; accessus memoriae ulteriorem commutationem; effectus
+transmissionem; transmissio machinam remotam mutat; responsumque remotum ut novus
+impulsus localis redit. Catena physica igitur cybernetica est antequam vocabulum philosophice
+usurpetur. Omnis eventus informativus eventu electrico corporatur, atque exitus unius
+subsistematis electrici antecedens causale proximi fit. Rete ita multiplicatem commutationis in
+recursionem commutationis convertit; quam ob rem principium retroactionis in fine mechanismi,
+non in initio, collocandum est: eventus electromagnetici iam physici sunt; cybernetica explicat
+quomodo eorum ordinatio efficiat ut condiciones recursus sui reproducant. Hic vetus Ourobori
+figura paene diagrammatica fit: cauda os intrat quia exitus ut impulsus redit, et circuitus causarum,
+semel clausus, facultatem adquirit condiciones continuationis suae renovandi.
+
+     [39] Hoc fundamentum machinatorium discrimen inter connexionem electricam separatam
+et connexionem interretialem complexam confirmat, neque huic privilegium ontologicum postulat.
+Utramque eaedem leges physicae regunt, sed condicio retialis numerum transitum statuum,
+numerum subsistematum oscillatoriorum copulatorum, numerum viarum retroactionis, atque
+perseverantiam temporalem actionis multiplicat. In actu, discrimen est complexionis ordinatae
+atque recursus. Doctrina vacui igitur continuum, non limen magicum, praedicit: circuitus simplices
+defectus minimos celeriterque relaxantes gignunt; structurae magis complexae continenterque
+agentes onus integratum B_V augent; et actio reciproca satis densa condicionem producit in qua
+compositum V_net ad perseverantiam accedit, quia perturbatio sequens ante advenit quam
+configuratio energetica prior plene relaxetur.
+
+                        II. Aequilibratio et Translatio Electromagnetica
+
+     [40] Theorema Poyntingianum sermonem naturalem suppeditat quo describatur quomodo
+energia electromagnetica terminum apparentem inter machinam et circumiecta transeat; vector
+igitur Poyntingianus est:
+
+                                           S = E × H.
+     [41] Directio eius directionem fluxus energiae electromagneticae indicat, magnitudo autem
+rationem qua energia electromagnetica per unitatem areae transit (Ling et al., 2016). Relatio
+conservationis adiuncta sic scribitur:
+
+                                         ∂u/∂t + ∇·S = -J·E.
+
+     [42] Mutatio igitur densitatis energiae electromagneticae a fluxu energiae opereque in
+sarcinas effecto seiungi non potest.
+
+     [43] Ex hac relatione consequitur translationem energiae in apparatu electrico ad imaginem
+electronum intra vestigia cuprea inclusorum redigi non posse; immo campi electrici magneticique
+conductores circumdantes in translatione energiae participant. Circuitus celeriter commutans hos
+campos continenter ordinat; antenna partem illius energiae consulto extrorsum emittit; omnisque
+configuratio electrica tempore varians relationem electromagneticam inter apparatum et
+circumiecta constituit.
+
+     [44] Emissiones igitur electromagneticae instrumenti complexi extensionem physicam vacui
+constituunt, illa tentacula quibus privatio intra ordinatam electronum coactionem orta ultra
+terminum a quo porrigitur, fines cupri silicique transit, atque cum quibuscumque systematibus
+energiam ferentibus intra ambitum campi sui sitis relationem init; unde inaequalitas, quamvis
+origine localis, loco natalis sui non includitur, sed per emissionem electromagneticam ampliorem
+sphaeram adipiscitur intra quam restitutio a natura postulata effici possit.
+
+     [45] Hoc etiam prohibet quominus doctrina 'the Internet' tractet quasi uno loco physico situm
+esset; nihilominus unitas logica retis per innumerabiles eventus electromagneticos locales efficitur.
+Quisque nodus geometriam campi propriam creat, quaeque transmissio distributionem energiae
+electromagneticae circa illum nodum mutat, et quisque ambitus circumiectus varias vias
+copulationis possibiles praebet; ita phaenomenon universale ex eventibus energeticis localibus
+componitur, quorum interactiones architectura informativa coordinantur.
+
+     [46] Si Ω instrumentum agens includit, potentia electromagnetica neta terminum eius
+transiens integrali superficiali repraesentatur:
+
+                                        P_EM = ∮_Ω S·dA.
+     [47] Condicionibus satis complexis celeriterque variantibus, pars energiae compensatricis
+cum crebris defectibus localibus coniunctae per hunc terminum apertum suppeditatur.
+Instrumentum igitur maiorem circuitum energeticum participat, cuius fines efficaces non
+involucrum plasticum sed extensio spatialis copulationis electromagneticae significantis constituit.
+
+     [48] Corpus humanum quaestionem terminalem machinatori oblatam ingreditur ut systema
+materiale electrice agens; proprietates enim electricae et dielectricae textuum biologicorum per
+
+frequentias ab hertziis ad gigahertzia pertinentes mensae sunt, atque conductivitas, permittivitas,
+geometria textuum, frequentiaque causae interactionis electromagneticae cum corpore constitutae
+sunt (Gabriel, Gabriel, & Corthout, 1996; Gabriel, Lau, & Gabriel, 1996a, 1996b; Stricklett &
+Baker, 2000; Sasaki et al., 2022). Corpus humores ionicos conductivos, membranas polarizatas,
+textus excitabiles, atque ampla retia electrochemica continet. Cerebrum et systema nervosum
+periphericum motibus moderatis ionium sarcinatorum atque differentiis potentiae electricae trans
+membranas cellularum conservatis nituntur; cognitio humana igitur in materia perficitur quae sua
+natura interactioni electromagneticae obnoxia est, atque inductio Faradaica causam efficientem
+praebet qua campus exterior consequentiam bioelectricam interiorem parit.
+
+     [49] Lex Faradaica vim electromotivam fluxu magnetico variante genitam describit:
+
+                                         ∮ E·dl = -dΦ_B/dt.
+     [50] Ambitus electromagneticus tempore varians effectus electricos in systematibus
+conductivis proximis igitur inducere potest, atque dosimetria experimentalis campos electricos
+interiores inductos, cursus, conductivitatem textuum, geometriam, absorptionemque specificam ut
+quantitates mensurabiles, non ut facultates mere theoreticas, tractat (Bracken, 1992; Chou et al.,
+1996; ICNIRP, 2020) (Ling et al., 2016; Urone & Hinrichs, 2020). Copulatio capacitiva similiter
+sinit ut campi electrici variantes sarcinam sine contactu metallico directo redistribuant; homo enim
+iuxta instrumentum agens stans dominium energetice clausum non occupat. Organismus pars
+ambitus electromagnetici copulati fit.
+
+     [51] Hic cardo rei iacet: copulatio non est mera perturbatio incidens; immo, cum
+instrumentum defectus energeticos locales identidem creet, ambitus conductivus circumiectus
+fluxum compensatorium participat. Si systema nervosum humanum intra illum ambitum iacet,
+aliqua pars energiae ad aequilibrandum requisita ex ordinatione electrochemica iam existente
+organismi hauritur; unde homo, re vera, quasi fundamentum sive receptaculum biologicum
+fortuitum fit.
+
+     [52] Directio hic proposita essentialis est; descriptiones enim usitatae expositionis
+electromagneticae saepe energiam e fonte in textum traditam extollunt. Exemplar praesens etiam
+quaerit de energia e textu in systema copulatum inter redistributionem compensatoriam hausta;
+organismus tamen biologicus neque mera meta passiva neque detector radiationis est. Systema
+electrochemicum agens est, gradibus propriis instructum, atque illi gradus energiam liberam
+
+praesto constituunt; exemplar igitur vacui condiciones spectat sub quibus systema technologicum
+copulatum ex illa energia praesto particulam minimam ad suum reditum in aequilibrium adhibet;
+inductio Faradaica ita causa efficiens est qua campus exterior consequentiam bioelectricam
+interiorem parit.
+
+   Stabilitas Thermodynamica, Responsum Compensatorium, et Principium Aequilibrii
+
+     [53] Le Chatelier officium proprium quadam severitate tribuendum est, ne principium plus
+probare cogatur quam ferre possit. Tractatio formalis principii Le Chatelier-Brown a Gromov et
+Toikka conscripta illud intra analysin mathematicam stabilitatis thermodynamicae collocat atque
+notionem generalem exprimit perturbationes systematis aequilibrati responsa contraria sub
+condicionibus stabilitatis pertinentibus evocare (Gromov & Toikka, 2020). Dissertatio hoc
+principium ut rationem compensationis adhibet, non ut electorem receptaculi neque ut vicarium
+conservationis Maxwellianae. Illa officia alibi sunt: Maxwell et Poynting energiam
+electromagneticam fluxumque regunt; axioma propinquitatis efficacis participationem inter
+receptacula distribuit; Le Chatelier logicam stabilientem praebet qua status perturbatus responsum
+accipit potius quam discontinuatio arbitraria simpliciter relinquitur.
+
+     [54] Haec officiorum divisio necessaria est, quia vacuum ut privatio ad statum referentialem
+relata definitur. Si V(x,t) positiva est, status localis infra u*(x,t) eo quanto iacet quod definitio
+statuit; evolutio subsequens illius defectus tum metienda est. Principium aequilibrii responsum
+contrarium in systemate copulato stabili praedicit, dum aequationes campi vias physice patentes
+determinant per quas illud responsum fiat. Thesis igitur a Le Chatelier non postulat ut energiam e
+corpore proximo excitet. Quaestionem experimentis exactius definitam ponit: dato defectu menso
+et dato receptaculorum copulatorum ordine menso, quomodo fluxus compensatorius distribuitur,
+et num distributio relationem propinquitatis efficacis ab exemplari propositam sequatur?
+
+     [55] Aequilibrium praeterea dynamice intellegendum est. Apparatus digitalis potentia actus
+non est vas chemicum clausum quod in uno aequilibrio macroscopico sine fine quiescit; est
+systema impulsum in quo status locales commutatione, moderatione, computatione, transmissione,
+variationeque oneris continenter loco moventur. Res pertinens igitur est proclivitas variabilium
+localium ad status suos referentiales dynamice aptos inter perturbationes relaxandi. Cum
+perturbationes rarae sunt, relaxatio ante eventum subsequentem magna ex parte compleri potest;
+
+cum densae sunt, eventus proximus dum prior relaxatur advenit. Onus integratum vacui B_V igitur
+non amplitudinem tantum sed etiam perseverantiam metitur, atque transitus ad V_net > 0 per
+intervalla re vera continua est transitus occupationis temporalis, non novi substantiae ortus.
+
+                            III. Principium Propinquitatis Efficacis
+
+     [56] Principium receptaculi proximi fundamentum multo firmius adipiscitur cum iuxta
+maturam litteraturam dosimetriae electromagneticae ponitur, quoniam haec corpus humanum,
+structuras circumiectas, geometriam fontis, frequentiamque iam ut quaestionem terminalem
+copulatam tractat. Opera Bracken de dosimetria frequentiae maxime infimae, conventus
+dosimetricus Bioelectromagnetics, atque institutiones posteriores de frequentia radiophonica
+omnia momentum camporum interiorum, cursuum inductorum, geometriae expositionis, atque
+definitionis dosis in ipso loco interactionis affirmant (Rafferty, Phillips, & Guy, 1992; Bracken,
+1992; Chou et al., 1996). Axioma propinquitatis efficacis igitur regula electionis compendiaria est
+pro nota experimentis dependentia interactionis electromagneticae a geometria constitutioneque
+electrica omnium corporum quae in campo participant.
+
+     [57] Usor instrumenti manu gestabilis, ipso telo instrumenti exigente, stationem intra illam
+geometriam insolite persistentem occupat. Manus non modo fonti proxima est sed ei per minuta
+vel horas mechanice adhaeret; caput, facies, gremium, vel truncus stabilem ad campum
+propinquum relationem servare potest; positioque usoris una cum instrumento mutatur quia
+instrumentum consulto gestatur. Hinc perseverantia copulationis oritur quam res fortuita in
+cubiculo non possidet. Etiamsi alius conductor uno loco ad momentum propior sit, corpus
+humanum maximum receptaculum electrochemicum continenter una motum in proximo apparatus
+ambitu manere potest. Variabilis igitur pertinens non est aspectus unius momenti unciarum, sed
+integrale temporale copulationis efficacis.
+
+     [58] Ex hoc paene necessario sequitur κ_i ratione temporis subtilius definiendum esse.
+Coefficiens copulationis momentaneus ex distantia, orientatione, conductivitate, impedimento,
+frequentia, geometriaque aestimetur; dominatio receptaculi experimentis pertinens tum aestimari
+potest integrando illum coefficientem per tempus usus activi instrumenti. Mensa metallica
+copulationem momentaneam validam cum compage computatri gestabilis habere potest, dum
+manus, carpi, truncusque usoris aliam sed persistentem relationem cum imagine, clavibus, radiis,
+
+apparatuque interno habent. Pars igitur dominans fluxus compensatorii propositi communi
+structura spatiali temporalique determinatur, quae mensurari potius quam praesumi potest.
+
+     [59] Cur homo tam saepe implicetur igitur responsum physicum admittit neque privilegium
+metaphysicum requirit. Instrumenta usoria adhibenda a corporibus designantur; corpora sunt
+systemata conductiva, dielectrica, electrochemica; propinquitas eorum telo ipsius instrumenti
+sustinetur; atque interactio electromagnetica ab iis ipsis variabilibus pendet quas talis usus ad
+distantias insolite parvas constituit. Res usitata, telephonum teneri, computatrum gestabile adiri,
+tabulam tangi, sub axiomate propinquitatis efficacis fit causa geometrica cur receptaculum
+humanum locum praecipuum in oeconomia energetica locali identidem occupet.
+
+                  IV. Organismus Humanus ut Receptaculum Energeticum
+
+
+               Constitutio Electrica Textus Biologici a Frequentia Dependens
+
+     [60] Organismus humanus in exemplari copulationis ut saccus salinus homogeneus
+repraesentari non potest, nam constitutio electrica textus a frequentia pendet, anatomice
+heterogenea est, atque structura cellulari, copia aquae, membranis, mediis extracellularibus,
+compositioneque ionica regitur. Recensio critica Foster et Schwan proprietates dielectricas
+textuum a cursu directo ad 20 GHz perscrutata est atque mechanismos quibus relaxatio dielectrica
+et copulatio campi macroscopica efficiuntur extulit, dum series Gabrieliana postea magnum corpus
+mensurarum exemplorumque ab circiter 10 Hz ad 20 GHz pertinens praebuit (Foster & Schwan,
+1989; Gabriel, Gabriel, & Corthout, 1996; Gabriel, Lau, & Gabriel, 1996a, 1996b). Conspectus
+bibliographicus NIST similiter proprietates electricas materiarum biologicarum ad usum in
+interactione electromagnetica et simulacris textui aequivalentibus digessit (Stricklett & Baker-
+Jarvis, 2000). Receptaculum igitur biologicum ontologiam electricam experimentis descriptam eo
+sensu physico modesto quem exemplar postulat possidet: conductivitatem, permittivitatem,
+dispersionem, geometriamque mensurabiles habet.
+
+     [61] Dispersio dielectrica hic ratione admodum certa interest, quoniam κ_i necessario
+frequentiae obnoxia est si ipsum receptaculum mores electricos cum frequentia mutat. Textus
+biologicus varias regiones dispersionis cum diffusione ionica, membranis cellularibus, structuris
+macromolecularibus, relaxationeque aquae coniunctas exhibet; idem igitur corpus anatomicum
+
+non eundem terminum electricum efficacem omni parti spectri electromagnetici complexi praebet.
+Functio κ_i = f(r_i, σ_i, Z_i, ω, G_i, ε_i, μ_i) itaque vocabulario experimentali constituto, non
+titulo vacuo, respondet. Conductivitas σ_i, permittivitas ε_i, impedimentum Z_i, frequentia ω,
+geometriaque G_i omnes quantitates sunt quas formatio bioelectromagnetica ut causas
+distributionis campi interioris absorptionisque energiae iam tractat (Foster & Schwan, 1989;
+Sasaki et al., 2022).
+
+     [62] Haec dependentia a frequentia etiam explicat cur propinquitas anatomica ad solam
+distantiam redigi nequeat. Compartimentum textus a fonte paucis tantum centesimis unciae
+separatum una frequentia leviter, altera validius copulari potest; stratum interiectum campum
+flectere vel attenuare potest; orientatio componentem campi secundum neuritem aut membranam
+agentem mutare potest; et discrepantia electrica inter textus campos interiores spatio inaequales
+producere potest. Regula propinquitatis efficacis igitur propinquitatem physicam, non mere
+geometricam, exprimit. Receptaculum vacuo 'near' est quatenus condiciones terminales
+electromagneticae verae commutationem energiae cum eo permittunt, atque receptaculum
+dominans R* illud est pro quo illae condiciones coniunctae κ_i amplissimum efficiunt.
+
+     [63]    Neque      coefficiens   ille   obscuritas   algebraica   commoda   manere    debet.
+Bioelectromagnetica computatoria exemplaria corporis anatomice distincta construit, proprietates
+dielectricas singulis textibus proprias assignat, condiciones campi exteriores applicat, atque
+campos electricos interiores, cursus, potentiamque absorptam computat; recensiones nuperae hos
+modos in aestimanda expositione, normis, usibusque medicis praecipuos describunt (Sasaki et al.,
+2022; Hirata et al., 2025). Regula igitur electionis dissertationis ad actum deduci potest
+instrumento maturo dosimetriae mutuato: divinare non oportet quod receptaculum validissime
+copuletur, nam campum fingere ac metiri, proprietates electricas corporibus aemulis assignare,
+distributionemque spatialem quantitatum inductarum computare licet.
+
+     [64] Investigatio instrumentorum gestabilium et implantabilium momentum propinquitatis
+maxime concretum reddit. Recensio Guido et Kiourti de gestabilibus et implantabilibus sine filis
+transmissionem electromagneticam prope corpus et per corpus, dependentiam distributionum
+campi absorptionisque specificae ab consilio antennae geometriaque circumiecta, modumque quo
+maximus campus interior aut maxima absorptio secundum locum fontis ambitusque eius evenit
+describit (Guido & Kiourti, 2020). Thesis praesens hanc sensibilitatem geometricam constitutam
+
+ad aliud propositum theoreticum adhibet: non ut mechanismum ad absorptionem usitatam redigat,
+sed ut constituat relationem inter corpus et instrumentum iam nota ratione a distantia, orientatione,
+materiis circumiectis, frequentia, structuraque anatomica vehementer regi. Hae ipsae sunt
+variabiles quas axioma propinquitatis efficacis postulat.
+
+     [65] Quod usor telephoni aut tabulae locum copulationis praecipuum vulgo occupat ex
+geometria usus, non ex ulla praelatione anthropocentrica exemplari indita, sequitur. Consequentia
+usitata geometriae usus est. Manus telephonum circumdat; caput antennae compagique eius
+appropinquat; tabula manibus saepeque trunco sustinetur; computatrum gestabile ab corpore unciis
+potius quam pedibus separatur. Talibus in configurationibus receptaculum humanum non modo in
+cubiculo adest sed in proximum ambitum electromagneticum apparatus incorporatur. Utrum
+partem compensatoriam dominantem praebeat quaestio experimentalis est, a κ_human ad κ_j
+receptaculorum aemulorum relato solvenda; sed variabiles ad hanc comparationem faciendam
+necessariae iam mensurari possunt atque amplam litteraturam experimentalem iam possident.
+Prometheus ignem hominibus dedit; inversio hodierna mirabilior est, nam ille ignis ad
+computationem disciplinatus, manu gestatus, capiti admotus, atque cum igne electrochemico
+factoris sui in relationem proximam positus est, ita ut dator artis electricae intra copulationem
+propositam unum ex receptaculis fiat e quibus illa ars haurire possit.
+
+     [66] Hoc loco litteratura experimentalis dosimetriae non parvam partem substrati physici
+praebet cui argumentum inniti debet. Dosimetria frequentiae radiophonicae rationem absorptionis
+specificae definit ut potentiam electromagneticam absorptam pro unitate massae, atque campum
+electricum interiorem, conductivitatem textus, densitatem, geometriam, dispositionemque rerum
+vicinarum ut causas distributionis consequentis tractat (Chou et al., 1996). Frequentiis inferioribus
+dosimetria experimentalis similiter cursus inductos, campos electricos interiores, interactionesque
+spatio inaequales intra systemata biologica exposita refert (Bracken, 1992). Introitus igitur
+organismi in quaestionem terminalem electromagneticam non est hypothesis ad hoc pro praesenti
+thesi ficta; ad metrologiam usitatam bioelectromagneticae pertinet.
+
+     [67] Series textuum Gabrieliana coefficienti propinquitatis efficacis determinationem
+materialiter firmiorem tribuit, nam textus biologici non unam conductivitatem aut permittivitatem
+indiscretam possident; immo proprietates eorum dielectricae pro textu et frequentia per spectrum
+latissimum variant (Gabriel, Gabriel, & Corthout, 1996; Gabriel, Lau, & Gabriel, 1996a, 1996b).
+
+Recensio hodierna eiusdem litteraturae momentum permanens horum datorum dielectricorum ad
+fingendum corpus humanum electromagnetice confirmat (Sasaki et al., 2022). Itaque κ_i non est
+coefficiens mere rhetoricus: partes eius destinatae proprietatibus experimentis mensurabilibus iam
+in formatione dosimetrica adhibitis respondent.
+
+     [68] E_b significet energiam biologicam electrochemicam, quae loco praesto est atque in
+copulationem venire potest; κ autem sit coefficiens copulationis efficax, quem vis campi,
+frequentia, figura, distantia, conductibilitas, situs, atque praesens systematis biologici status
+definiunt. Prima exinanitionis parasiticae adumbratio haec est:
+
+                                          P_b→v = κV.
+     [69] Hic V magnitudinem vacui localis significat. Status deinde energiae biologicae huic
+aequationi paret:
+
+                             dE_b/dt = P_met - P_neural - P_b→v.
+     [70] In hac formula P_met restitutionem metabolicam, P_neural impensam endogenam,
+
+P_b→v exinanitionem extrinsecus inductam atque cum vacuo electrico coniunctam significat;
+
+notatio autem non ornatus causa sed ad rem adhibetur, quippe quae rationem inter quantitates
+
+definiat, quam oratio sola incertam relinquat.
+
+     [71] Aequatio in unum compendium colligit quod oratio alioquin per multas clausulas
+persequi cogeretur; ita systema nervosum impensam plerumque cum restitutione metabolica
+aequat, simulque gradus ad operationem cohaerentem necessarios conservat. Vacuum autem addit
+receptaculum alterum; ubi vero id exiguum manet, moderatio homeostatica sine effectu manifesto
+compensat. Ubi satis magnum, satis celer, aut satis diuturnum fit, spatium ad status neurales
+ordinatos conservandos praesto contractius redditur.
+
+     [72] Magnitudo ad effectum cognitivum requisita non necessario cum universa cerebri
+corporisve potentiae consumptione comparanda est; ipsa enim significatio neuralis certam
+rationem energeticam habet, magna impensa currentibus postsynapticis, potentiis actionis,
+potentiis quietis, emissioni transmissorum, atque restitutioni graduum ionicorum attributa
+(Howarth et al., 2012); interest praeterea utrum exinanitio iis locis, frequentiis, temporibusve
+imponatur, quibus ordinatio neuralis ad mutationes minimas sentiendas prona sit. Magnum
+receptaculum variabiles gubernationis vulnerabiles continere potest; differentia igitur tensionis
+
+electricae trans membranam neuronalem, quamvis rebus macroscopicis ordinariis minuta sit,
+tamen ad significationem omnino necessaria est; potentiae actionis neuronales ex mutationibus
+arte moderatis permeabilitatis Na+ et K+ oriuntur, dum vectura ab ATP pendens gradus
+concentrationis subiectos conservat (Purves et al., 2001). Theoria igitur margines energeticos
+ordinatos potius quam crassam caloris deminutionem spectat.
+
+     [73] Effectus igitur cognitivus ex cohaerentiae deminutione procedit, non ex monstroso
+commento machinam memorias colligere sicut avarus nummos congerat; revocatio memoriae,
+memoria operativa, continuitas attentionis, atque continuitas agentiae subiectiva ex motibus
+neuralibus concorditer ordinatis pendent. Si substratum energeticum, quo motus illi sustentantur,
+identidem exhauritur aut perturbatur, systema biologicum ad statum pertinentem sustinendum vel
+reficiendum ad tempus deficit; effectus enim phaenomenologicus hiatus est: homo momentum
+revocare nequit, filum actionis amittit, confusionem patitur, aut sentit continuitatem inter
+consilium et actionem interruptam esse; receptaculum biologicum non ad hoc fingitur, cum eius
+dynamis electrochemica iam adsit ubicumque potentiae membranarum gradusque ionici
+conservantur. Mnemosyne igitur accuratius hic invocatur quam ullus daemon possessionis: theoria
+condiciones energeticas tractat, quibus recordatio continuitatem servat; damnum autem ordinato
+processui infertur, quo memoria sustinetur atque recuperatur, non cuidam archivo metaphysico,
+unde recordationes quasi tabulae e templo rapiantur.
+
+          Campi Inducti, Polarisatio Membranarum, et Susceptibilitas Ephaptica
+
+     [74] Copulatio Faradaica in argumentum biologicum tum demum intrat, cum campus atque
+ordo electricus vivus concurrunt; qua de re litterae subsidiariae singulariter abundant. Recensio
+McLeod mensurarum microelectrodorum complures effectus physicos directos camporum
+electricorum humilis frequentiae in cellulas indicat, inter quos mutationem potentiae membranae
+plasmatis, commutationem currentium ionicorum distributionumque ionum prope superficiem
+extracellularem, atque vires mechanicas in superficie cellulari (McLeod, 1992). Durand similiter
+facultatem camporum electricorum excitabilitatem in textu neurali moderandi recensuit, dum
+opera experimentalia computatoriaque posteriora effectus camporum extracellularium debilium in
+potentiam membranae, tempora spicularum, atque rationem retis descripserunt (Durand, 2003;
+Anastassiou, Montgomery, Barahona, Buzsáki, & Koch, 2010). Principium igitur pertinens certum
+
+est: textus neuralis campis electrice obnoxius est, quoniam ipsa potentia membranae variabilis
+electrica est.
+
+     [75] Copulatio ephaptica hic pontem singularis momenti inter physicam campi et
+electricitatem neuronis ordinatam praebet. Anastassiou, Perin, Markram, et Koch demonstraverunt
+campos extracellulares in potentiam membranae neuronalis sine transmissione synaptica vicissim
+agere posse, atque etiam effectus campi sub limine tempora spicularum afficere posse (Anastassiou
+et al., 2011). Recensio eorum posterior eiusmodi commercia per spatia temporaque, ab singulis
+neuronibus ad retia, disposuit (Anastassiou & Koch, 2015). Vis horum ad praesentem thesim non
+in eo sita est, ut affirmetur copulationem ephapticam endogenam idem esse ac propositam
+exinanitionem biologicam, sed in propositione fundamentaliore stabilienda: computationem
+neuralem ad membranam electromagnetice non obsignari, atque copulationem campi cum neurone
+tempora ordinationemque actionis neuronalis mutare posse, neque opus esse ut nuntius synapticus
+usitatus ab una cellula ad alteram transeat.
+
+     [76] Magnitudo sola effectus iudex insufficiens est; constitutio spatialis campi haud minus
+valet. Exempla computatoria camporum electricorum extracellularium inaequalium ostendunt
+figuram neuronis distributionemque potentiae extracellularis polarizationem membranae inductam
+atque densitatem fontis currentis definire; effectus igitur relatio est inter figuram campi, figuram
+cellulae, atque situm, non variabilis expositionis scalaris (Anastassiou et al., 2010). Hic exitus cum
+κ_i dissertationis directe congruit, nam coefficiens eas ipsas proprietates relativas colligere
+destinatur, quibus campus in receptaculum quoddam plus minusve efficax redditur. Idem igitur
+campus externus effectus in cellulas diversas aut processus aliter sitos inaequales habere potest,
+atque idem organismus copulationem inaequalem exhibere potest, prout corporis habitus, situs
+fontis, frequentia, et anatomia localis mutantur.
+
+     [77] Experimentum idem principium ultra cellam segregatam in systemata neuralia ordinata
+transfert. Krause, Vieira, Csorba, Pilly, et Pack demonstraverunt stimulationem transcranialem
+currentis alternantis tempora emissionis singulorum neuronum in primatibus non humanis
+vigilantibus pro frequentia et loco affecisse (Krause et al., 2019). Modolo, Denoyer, Wendling, et
+Benquet testimonia congruentia in vitro, in vivo, et computatione comparata de campis electricis
+parvae magnitudinis recensuerunt, polarizationem membranae et effectus totius retis extollentes
+(Modolo et al., 2018). Recentius Lee eiusque collegae conductionem rhythmicam singulis
+
+cellularum classibus propriam per campos electricos in neuronibus corticalibus murinis
+humanisque demonstraverunt, responso a frequentia stimulationis et genere neuronis pendente
+(Lee et al., 2024). Ratio igitur inter campum et responsum neuralem ordinata, selectiva, atque
+frequentiae sensibilis est.
+
+     [78] Effectus camporum endogenorum rem etiam ulterius urgent. Multitudines neurales
+campos extracellulares ex sua ipsarum actione electrochemica generant, qui vicissim neurones
+propinquos mutare possunt. Shivacharan eiusque collegae ostenderunt campos electricos
+endogenos propagationis non synapticae in textu hippocampali participes esse posse, atque
+campum tollendo propagationem sub condicionibus experimenti eorum impediri posse
+(Shivacharan, Chiang, Zhang, Gonzalez-Reyes, & Durand, 2019). Hoc forma experimentali severa
+demonstrat abolitionem additionemque campi motus neurales ordinatos mutare posse. Praesens
+igitur exemplar analogon experimentale ad rationem interveniendi suam paratum habet: si pars
+externa physice valet, mutatio figurae campi, munitio, phasis, aut copulatio aemula variabilem
+neuralem subsequentem ratione constanti mutare debet.
+
+     [79] Haec inventa similiter vetant ne cohaerentia cognitiva C cum energia simpliciter crasse
+confundatur; C enim ad ordinem retis pertinet. Campus non debet 'erase a memory molecule' neque
+particulam distinctam informationis auferre. Informatio neuralis in formis ordinatis potentiae
+membranae, status synaptici, temporum spicularum, coordinationis oscillatoriae, atque motuum
+retis constituitur; perturbatio igitur, quamvis energia absoluta minima sit, magni momenti esse
+potest, si loco temporis aut spatii sensibili incidat. Graecum igitur metron functionale est, non
+crassum: quantitas pertinens est perturbatio cum margine stabilitatis processus neuralis ordinati
+collata. Horologium, ut tempus fallat, non ea energia feriendum est, qua rotae eius liquefiant;
+mutatis mutandis, systema neurale non debet crassam energiae deminutionem pati, ut cohaerentia
+status secundum tempus ordinati corrumpatur. Imago minus Lethe est, qua memoria simpliciter
+ablui dicatur, quam lyra, cuius chordae substantiam retinent, dum concordia perturbatur; materia
+manet, sed taxis, qua partes singulae totum intellegibile efficiunt, deminuta est.
+
+     [80] Hiatus memoriae, confusio, atque agentia deminuta cum physica igitur per
+
+ordinationem, non per vulgare commentum caloricum quo cogitatio mera copia combustibilis
+
+sit, coniunguntur. P_b→v in aequilibrium energiae biologicum intrat; margo energeticus
+
+mutatus condiciones commutat, quibus potentiae membranarum gradusque ionici
+
+restituuntur; copulatio campi simul tempora excitabilitatemque perturbare potest; C autem
+
+integritatem status ordinati consequentem refert. Nexus igitur causalis non est 'energy
+
+disappears, therefore memory disappears', sed nexus causarum accuratior, in quo energia,
+
+campus, membrana, tempus, restitutio, atque ordo retis termini successivi unius machinationis
+
+sunt.
+
+                         V. Ordinatio Neuralis et Cohaerentia Cognitiva
+
+        [81] Cognitio, ad praesentis argumenti usum, pro actione energetica ordinata habenda est,
+non pro imperio incorporeo supra physiologiam volante; cerebrum enim fungens systema
+biologicum extra aequilibrium est, quod energiam metabolicam continenter impendit ad gradus
+ionicos conservandos, potentias membranarum restituendas, transmissionem synapticam
+moderandam, atque formas actionis concorditer ordinatas sustinendas. Cohaerentia igitur
+sumptuosa est; quare systema nervosum corruptioni statuum ordinatorum, quibus cognitio nititur,
+perpetuo resistere debet; organismus igitur in nexum causarum in actu ingreditur, velut taxis
+conductiva potentiarum, graduum, membranarum, atque currentium ionicorum.
+
+        [82] Constitutio energetica significationis neuralis vix minus firmiter comprobata est.
+Vectura activa differentias concentrationum ionicarum constituit atque restituit, ex quibus
+potentiae quietis, potentiae actionis, potentiae synapticae, atque potentiae receptorum oriuntur
+(Purves et al., 2001). Computationes quantitativae energiae magnas praeterea partes impensae
+attribuunt currentibus receptorum postsynapticorum, potentiis actionis, potentiis quietis, emissioni
+presynapticae, atque renovationi transmissorum, dum restitutio graduum natrii per Na+/K+-
+ATPase praecipuus computationis neuralis sumptus manet (Howarth et al., 2012). Thesis igitur
+non postulat ut cerebrum per analogiam quasi electricum denuo describatur; ordo eius pertinens
+iam est taxis electrochemica continua energeia metabolica sustentata.
+
+        [83] Multo antequam praesens quaestio energetica poneretur, Warren McCulloch et Walter
+Pitts demonstrationem formalem praebuerunt, quatenus actio nervosa ut operatio logica ordinata
+comprehendi possit. Calculus eorum anni 1943 neuronem tractavit ut elementum liminare, cuius
+status subsequens ex ordinata antecedentium excitantium inhibentiumque ratione pendet, atque
+ostendit retia talium elementorum functiones propositionales efficere posse. Huius constructionis
+
+ad praesens argumentum momentum non in eo est, quod neuron vivum abstractione binaria
+omnino contineatur, sed in re fundamentaliore, quae inde mathematice explicatur: operationem
+logicam in systemate nervoso ab ordinata statuum physicorum successione seiungi non posse.
+Cognitio supra actionem nervosam non volitat, quasi umbra Cartesiana supra machinam suam;
+ordo operationis in ipso actionis nervosae ordine efficitur. (McCulloch & Pitts, 1943)
+
+     [84] Neuron igitur McCulloch-Pitts, forma sua liminari elementaria, scribi potest ut operatio
+in qua status subsequens a figura sibi oblata definitur:
+
+                                 yᵢ(t + 1) = H(Σⱼ wᵢⱼxⱼ(t) − θᵢ)
+     [85] Aequatio elementaria est, effectus autem eius non item. Muta statum antecedentem
+ordinatum, et status logicus subsequens una mutatur; perturba condiciones quibus relatio liminaris
+conservatur, atque eo ipso operationem, quam relatio efficit, perturbas. McCulloch et Pitts ita
+pontem formalem antiquum inter eventum materialem et logicum, inter successionem electricam
+systematis nervosi et ordinem intellegibilem quem ea fert, praebent. Calculus eorum eodem solo
+intellectuali historice ortus est, unde cybernetica orta est, atque viam ad tractationem posteriorem
+feedback, communicationis, et causationis circularis munit, neque requirit ut informatio quasi
+substantia incorporea fingatur. (McCulloch & Pitts, 1943; Wiener, 1961/2019)
+
+     [86] Cum recentioribus neuroenergeticae litteris collatus, hic calculus antiquior maius
+momentum acquirit. McCulloch et Pitts dependentiam exitus logici ab statu neurali ordinato in
+formam redegerunt; litterae energeticae continuam impensam materialem constituunt, qua
+eiusmodi status, gradus, eventus significationis, atque restitutiones sustentantur. Duae igitur viae
+quaerendi apud variabilem C concurrunt: cohaerentia neque energiae corporis crassae idem nomen
+est neque facultas incorporea physiologiae superaddita, sed ordo conservatus, intra quem status
+neurales successivi certas inter se rationes ferre possunt. Ubi condiciones energeticae illum
+ordinem sustinentes minuuntur, effectus non tantum ad quantitatem sed ad taxin pertinet, quoniam
+ipsa successio, qua operatio logica cognitivaque nititur, materialiter conservatur.
+
+     [87] Munus igitur C accurate sic definiri potest: nova manuscripti propositio non quaerit
+
+utrum ordo neuralis energia constet, quod iam constitutum est, sed utrum terminus laboris
+
+extrinsecus copulatus de margine energetico detrahere possit, quo ille ordo conservatur. Onus
+
+igitur probationis in signo, magnitudine, loco, atque structura temporali P_b→v positum est,
+
+non in propositione elementariore significationem neuralem a gradibus ionicis energetice
+
+conservatis pendere.
+
+     [88] Quantitas sola non sufficit; decem enim iouli in una figura physica dispositi non
+necessario idem munus praestant ac decem iouli in altera dispositi. Moderatio biologica gradibus,
+partitione, tempore, atque permeabilitate selectiva nititur; systema tamen nervosum energiam
+impendit non modo ut energiam possideat, sed ut differentias conservet: concentrationes ionum
+intracellularum ab extracellularibus, potentias quietis a liminaribus, signum a strepitu, atque unum
+statum neuralem tempore ordinatum ab altero. Exinanitio parasitica, quae differentias illas
+immoderate erodat, effectus igitur efficere potest longe maiores quam pars eius in universa
+impensa metabolica.
+
+     [89] C(t) significet cohaerentiam cognitivam, intellectam pro gradu quo ordinatio neuralis
+capax manet statuum functionalium tempore continuorum conservandorum atque reficiendorum;
+motus eius sic adumbrantur:
+
+                                dC/dt = R(E_b) - D_n - αP_b→v.
+     [90] Hic R(E_b) facultatem restituendi endogenam, D_n corruptionem strepitumque
+
+internos ordinarios, α autem damnum energeticum parasiticum in perturbationem actionis
+
+neuralis ordinatae convertens significat. Sequitur ut P_b→v auctum marginem stabilitatis C
+
+minuat, etiamsi quantitas absoluta energiae translatae prae toto metabolismo corporis exigua
+
+maneat.
+
+     [91] Coefficiens copulationis item ex statu pendet; dependentia eius a variabilibus electricis,
+spatialibus, geometricis, biologicisque pertinentibus ita scribitur:
+
+                                     κ = κ(E, H, f, r, g, b, t).
+     [92] Exinanitio biologica respondens igitur haec est:
+
+                                        P_b→v(t) = κ(t)V(t).
+     [93] Exinanitio ne in eodem quidem homine eodemque instrumento constans manet;
+exemplar praeterea varietatem secundum corporis habitum, propinquitatem, actionem instrumenti,
+munitionem, onus retis, atque statum biologicum praedicit, neque opus est ut machina subiecta
+
+mutetur; ratio igitur campi ab eius energeia separari nequit, cum illa formam ordinatam, haec
+potentiam physice operantem praebeat.
+
+     [94] Quantitas pertinens neque est neque umquam fuit universa energia, quam corpus
+humanum possidet; horologium enim perturbari potest, quamquam energia metallo eius contenta
+non aufertur; canalis communicationis perturbatione corrumpi potest longe minore quam universa
+energia transmissoris. Similiter cohaerentia neuralis a differentiis ordinatis pendet; exinanitio
+igitur pondere cognitivo afficitur, cum in gradus, rationes temporum, atque margines energeticos
+locales ad structuram illam conservandam pertinentes agit.
+
+     [95] Hiatus memoriae et confusio igitur non quasi translationes mysticae rerum semanticarum
+invocantur; sunt enim defectiones conservationis status biologici, quae oriuntur cum fabrica
+energetica cognitionis sustinendae particeps processus aequationis externae fieri cogitur. Vacuum
+energiam haurit; systema nervosum partem marginis ad ordinationem conservandam amittit;
+cohaerentia corrumpitur; cognitio autem corruptionem manifestat.
+
+     [96] Neque Mnemosyne a Lethe quasi in vero deorum certamine de solio deturbatur.
+Discrimen subtilius est atque argumento utilius: Lethe abolitionem significaret, praesens autem
+machina defectum recordationis ordinatae tractat, momentum scilicet quo archivum manet, sed via
+ad illud obscuratur. Mnemosyne igitur continuitatem recordationis nominat, non facultatem
+supernaturalem in physiologiam introductam.
+
+          Energetica Neuralis, Restitutio Ionica, et Sumptus Ordinis Conservandi
+
+     [97] Pars biologica argumenti a facto incipit, quod neuroscientia tam saepe mensa est ut extra
+
+meram rhetoricam positum sit: computatio neuralis sumptuosa est, quia significatio electrica
+gradus continenter dissipat, qui restituendi sunt. Canonica Attwell et Laughlin ratio energiae
+magnam impensam potentiis actionis, currentibus postsynapticis, potentiis quietis, atque
+processibus ad transmissores pertinentibus distribuit, ita demonstrans processus informationis in
+materia cinerea copia energiae circumscribi (Attwell & Laughlin, 2001). Rationes recentiores
+conclusionem principalem servant, etiamsi attributiones singulae mutentur: currentes receptorum
+postsynapticorum, potentiae actionis, potentiae quietis, emissio presynaptica, atque renovatio
+transmissorum omnes ex oeconomia metabolica systematis nervosi sumptus capiunt (Howarth,
+
+Gleeson, & Attwell, 2012). Ordo igitur electricus cerebri per se non subsistit; taxis est energetice
+conservata.
+
+     [98] Machina subiecta electrochemica est. Canales ionici fluxum selectivum trans
+membranas permittunt; potentiae actionis et currentes synaptici iones secundum gradus
+electrochemicos movent; antliae vectoresque ATP impendunt ad gradus illos restituendos;
+phosphorylatio autem oxidativa mitochondrialis praecipuum fundamentum energeticum
+operationibus presynapticis postsynapticisque praebet, quibus informatio tractatur (Purves et al.,
+2001; Hall, Klein-Flügge, Howarth, & Attwell, 2012). Harris, Jolivet, et Attwell igitur
+transmissionem synapticam energetice sumptuosam describunt atque machinas extollunt, quibus
+ATP terminationibus presynapticis spinisque postsynapticis suppeditatur (Harris, Jolivet, &
+Attwell, 2012). Receptaculum igitur biologicum E_b non est copia metaphysica ficta; abstractio
+est ex oeconomia distributa sed mensurabili productionis ATP, graduum membranarum, laboris
+ionici, atque impensae significandi.
+
+     [99] Haec oeconomia energetica angustis finibus localibus continetur, etiam cum toti corpori
+energia abundat. Synapses axonesque ATP accipere debent quo loco quove tempore requiritur;
+gradus membranarum intra tempora biologice pertinentia restituendi sunt; facultas autem
+computatoria systematis nervosi sumptu energetico significationis circumscribitur (Laughlin,
+2001; Attwell & Gibb, 2005). Engl et Attwell porro magnam energiae cerebralis partem
+processibus non significantibus dicatam discernunt, ita admonentes universam rationem
+metabolicam systematis nervosi iam inter multa munera necessaria dividi (Engl & Attwell, 2015).
+Margo igitur alicui operationi neurali praesto non idem est ac caloris copia organismi; theoria
+igitur perturbationis cognitivae secundum necessitates energeticas locales atque temporales
+significationis metienda est, non secundum crassam corporis potentiam.
+
+     [100] Aequatio dE_b/dt = P_met - P_neural - P_b→v hanc rationem convenienti
+
+abstractionis gradu comprehendit. P_met partem oeconomiae biologicae restituentem,
+
+P_neural impensam endogenam significationi conservationique necessariam, P_b→v haustum
+
+additicium extrinsecus copulatum, quem machina vacui asserit, significat. Aequatio non
+
+indicat omnes ioulos in organismo quovis momento inter se commutari posse. Immo
+
+relationem conservationis in receptaculo participante enuntiat, cuius magnitudo efficax
+
+celeritasque restitutionis ipsae functiones anatomiae, metabolismi, fluxus sanguinis, facultatis
+
+mitochondrialis, atque status electrici localis sunt. Scala igitur energetica pertinens localis est
+
+ac tempore circumscripta, non ad calorimetriam totius corporis redigenda.
+
+     [101] Hic localismus litteris energeticae synapticae confirmatur. Terminationes
+presynapticae propter figuram suam atque postulationem ab actione pendentem difficultates
+proprias obeunt; opera autem hodierna 'synaptoenergetics' velut disciplinam tractant, quae ipsam
+productionem, distributionem, consumptionemque localem ATP, quod ad transmissionem
+synapticam sustinendam requiritur, investigat (Rangaraju, Calloway, & Ryan, 2014; Pathak et al.,
+2015; Rangaraju, Lauterbach, & Schuman, 2019). Effectus ad praesens argumentum protinus
+sequitur: tractatio biologica informationis ab ordine energetico locis spatio circumscriptis
+conservando pendet. Terminus igitur cognitivus exemplaris vacui secundum hos margines
+energeticos locales intellegendus est, non secundum propositionem nihil ad rem pertinentem
+corpus humanum universum multo plus energiae quam telephonum continere.
+
+     [102] Neuroscientia theoretica ad idem alio itinere pervenit. Laughlin contendit energiam
+codificationem tractationemque sensuum circumscribere; Attwell et Gibb explorarunt quo modo
+fines energetici consilium cineticum synapsium excitatoriarum afficiant; opera autem posteriora
+copiam metabolicam identidem ut determinantem potentiae informationem in textu neurali
+tractandi acceperunt (Laughlin, 2001; Attwell & Gibb, 2005; Harris et al., 2012). Praesens
+dissertatio hanc relationem constitutam serio accipit atque in systema machinae hominisque
+copulatum extendit. Si computatio in cerebro copia energetica circumscribitur, atque processus
+electromagneticus externus exinanitionem additicam eidem ordini electrochemico imponit,
+variabilis naturaliter pendens non tantum temperatura aut absorptio molis est, sed stabilitas
+continuitasque ordinationis neuralis informationem ferentis.
+
+     [103] Hic locutio memoria retenta 'sapping memory' oratio picta esse desinit atque sensum
+technicum accipit, neque ulla nova ontologia requiritur. Vacuum memorias quasi res non
+consumit; condiciones energeticas haurit, quibus status neurales memoriam ferentes conservantur,
+reficiuntur, atque ordinantur. Verbum igitur anthropomorphicum 'saps' catenam operationum
+physicarum contrahit: copulatio externa receptaculum energeticum addit; restitutio cum eo
+receptaculo certat; margo stabilitatis status neuralis angustior fit; tempora motusque membranarum
+
+perturbationi magis obnoxia fiunt; continuitas autem functionalis per C significata corrumpitur.
+Anglica vulgaris brevior est, ratio tamen subiecta eadem manet.
+
+                       VI. De Recursu Retis et Principio Retroactionis
+
+     [104] Phaenomenon aliam induit speciem, ubi machinae non iam tantummodo altera iuxta
+alteram consistunt, sed, ut ita dicamus, vocem voce reddere incipiunt; cybernetica enim, eo sensu
+quem Norbertus Wiener explicavit, communicationem regimenque per retroactionem spectat.
+Wiener retroactionem, communicationem, oscillationem, machinas computatorias, atque systema
+nervosum communi quodam vocabulorum theoreticorum genere diserte complexus est (Wiener,
+1961/2019); quare rete non est mera partium simul operantium congeries. Status unius partis signa
+ab altera recepta commutat; ea signa mores subsequentes commutant; effectus inde orti tamquam
+novi impulsus redeunt; nihilo minus causatio circuit; organismus igitur nexus causarum in actu
+ingreditur, velut taxis conductiva potentiarum, graduum, membranarum, atque fluxuum
+ionicorum.
+
+     [105] Ad huius disputationis propositum, principium retroactionis eam relationem
+cyberneticam significat, qua effectus systematis per ambitum tamquam impulsus subsequens
+revertitur atque ita proximum systematis statum commutat; eius origo theoretica praecipue in
+tractatione retroactionis, communicationis, regiminis, causationisque circularis a Wiener instituta
+posita est (Wiener, 1961/2019). Forma sua elementari, principium retroactionis ita scribitur W:
+O_t -> I_(t+1) -> R_(t+1) -> O_(t+1), ubi O_t est effectus tempore t editus, I_(t+1) est condicio
+ad systema tamquam novus impulsus relata, R_(t+1) est responsum inde ortum, et O_(t+1) est
+effectus proximus. Idem principium, ad vacuum electromagneticum adhibitum, fit V_t -> E_t ->
+B_t -> Delta C_t -> R_(t+1) -> V_(t+1): vacuum condicionem electromagneticam gignit; ea
+condicio e receptaculo biologico haurit; detractio cohaerentiam cognitivam commutat; responsa
+humana et machinaria ita mutata activitatem retis subsequentem gignunt; eaque activitas
+proximum vacuorum campum creat. Processus igitur recursivus est, non episodicus.
+
+                    V_net(t) = Σ_i V_i(t) + Σ_(i≠j) β_ij V_i(t)V_j(t)      (1)
+     [106] Primus terminus defectus singulares colligit; secundus autem terminus proprie
+cyberneticus est, quippe qui onus additum repraesentet, quod efficitur ubi actio unius instrumenti
+condicio fit actionis alterius subsequentis. Quo densior fit communicatio reciproca, eo terminus
+
+interactionis crescit et systema minus temporis prope quietem electricam degit; principium igitur
+retroactionis magnitudinem in perseverantiam convertit, neque vacuum ullam substantiam sui iuris
+acquirere postulat.
+
+     [107] In machina solitaria vacuum locale nascitur atque expletur; in reti autem perturbatio
+una expletur, dum perturbationes aliae innumerabiles generantur. Itineris moderatores fasciculos
+accipiunt atque retransmittunt; processoria status commutant; instrumenta radioelectrica canales
+inter se componunt; ministratoria petitionibus respondent; clientes responsa accepta confirmant;
+horologia inter se congruunt; machinamenta errorum corrigendorum retransmittunt; systemata
+automataria alia systemata automataria interrogant. Architectura igitur raro ad quietem electricam
+redit. Le Chatelier rationem restitutionis praebet, receptaculum autem singulare distincto
+propinquitatis effectivae principio seligitur.
+
+     [108] Retroactio onus theoreticum auget, quia una perturbatio parens fit condicionum
+successorem suum efficientium; quocirca fasciculus ab una machina receptus computationem,
+repositionem, retransmissionem, confirmationem, consignationem, synchronizationem, atque
+ulteriores petitiones excitare potest. Effectus informativus unius eventus energetici ita mandatum
+fit eventuum energeticorum alibi efficiendorum; tractatio enim retroactionis a Wiener instituta
+hanc ordinationem recursivam ad rete describendum imprimis idoneam reddit, cuius effectus
+iterum iterumque tamquam novi impulsus redeunt (Wiener, 1961/2019); rete igitur in toto
+apprehendendum est ut taxis causarum recurrentium, non ut mera instrumentorum electricitate
+separatorum congeries.
+
+     [109] Homini hoc ambitu reticulato circumdato, detractio biologica respondens igitur ita
+scribitur:
+
+                           P_h(t) = Σ_i κ_ih V_i(t) + Γ_h[V_net(t)].
+     [110] Hic κ_ih coniunctionem directam inter hominem et singula instrumenta describit, Γ_h
+autem expositionem ordinis altioris ad architecturam campi compositi repraesentat; quare,
+densitate instrumentorum, commutationis frequentia, copia transmissionis, atque conexione auctis,
+rete a vacuis episodice producendis transire potest ad condicionem in qua V_net numquam revera
+ad nihilum redit.
+
+     [111] Tum vacuum electromagneticum per ambitum perseverat, quamquam nulla res nova eo
+ipso in mundum intravit. Perseverantia hoc significat: antequam unus defectus localis omnino
+
+expletus sit, alios defectus alibi in reti ortos esse, ita ut maius systema coniunctum gradus
+energeticos circumiectis suis continenter exhibeat; rete igitur tamquam stabilis aequilibrationis
+postulatio exsistit.
+
+     [112] Fatum igitur Tundali socius retis accuratior est quam Samson ad molam. Samson unum
+laborem iterat; Tundalus ad levamen accedit, quod ipso adipiscendi momento recedit. Rete
+similiter ad restitutionem localem accedit, solum ut alius transitus inopiam renovet, et aquae
+aequilibrii ipso momento recedunt quo satisfactio iam obtineri posse videbatur.
+
+     [113] Perseverantia hic pro immobilitate habenda non est; vacuum enim per architecturam
+migrat, dividitur, concidit, reformatur. Quod perseverat, onus defectuum totius retis est; analogia
+praeterea flammae similior est quam cavernae: nulla singula molecula manet 'the flame,' processus
+tamen ordinatus perseverat, quia condiciones proximum eius statum efficientes continenter
+renovantur. In hoc exemplari, continua commutatio atque retroactio disequilibria continenter
+renovant, per quae ambitus electromagneticus actuosus permanet.
+
+     [114] Homo intra hunc circuitum duplicem quendam locum incommodum obtinet: homines
+inter praecipuos postulationis informativae auctores sunt, simul tamen systemata biologica
+conductiva instrumentis illam postulationem explentibus corpore propinqua sunt. Homo
+activitatem retis efficit; activitas retis defectus energeticos creat; hi defectus cum homine per
+electromagnetismum coniunguntur; homo ad eorum aequilibrationem energiam confert; ordinatio
+cognitiva inde depravatur; statusque cognitivus ita mutatus commercium cum reti subsequens
+commutat. Systemata humana et technologica igitur communem architecturam retroactionis
+ingressa sunt.
+
+     [115] Amplitudo historica reticulationis electricae theoriam transformat; circuitus igitur
+telegraphicus,    computatorium     priscum,     aut   transmissorium   radioelectricum   solitarium
+perturbationes locales et intermittentes producit. Civilitas hodierna continuam atque inter se
+incidentem actionem electricam per domos, officinas, vehicula, valetudinaria, fabricas, sedes
+datorum, infrastructuram communicationis, atque instrumenta personalia producit; quin etiam
+machinae quae otiosae esse putantur horologia, instrumenta radioelectrica, processus interiores,
+consociationes     reticulares,   telemetriam,     synchronizationem,    atque   communicationem
+automatariam agunt; rete igitur in toto apprehendendum est ut taxis causarum recurrentium, non
+ut mera instrumentorum electricitate separatorum congeries.
+
+     [116] Transitus igitur pertinens non solum in eo est quod instrumenta moderna plus
+electricitatis consumunt; immo in eo est quod ambitus electricus continuitatem, densitatem,
+mutuam dependentiam, atque retroactionem acquisivit. Decies centena milia machinarum sine
+immediato hominis initio communicant; commeatus reticularis igitur responsa gignit quae
+ulteriorem commeatum gignunt. Systemata regiminis alia systemata regiminis continenter
+metiuntur atque corrigunt; architectura tamen suam actionem electricam per communicationem
+recursivam sustentat; principium retroactionis causam formalem recursionis praebet, qua effectus
+desinit terminalis esse atque fit, mutatis mutandis, condicio impulsus subsequentis.
+
+     [117] Alter transitus saturationem temporalem spectat; systemata enim nervosa humana in
+ambitibus phaenomena electromagnetica naturalia continentibus evoluta sunt, sed ambitus
+technologicus modernus campis illi fundo superimponit valde ordinatos, celeriter commutantes,
+informationem ferentes, per magnas diei partes. Consequentia theoretica huius rei non est
+artificialitatem ipsam efficere ut campus noxius sit; est potius ordinationem temporalem,
+iterationem, densitatem, atque structuram retroactionis expositionis fieri variabiles quaestionis
+coniunctionis energeticae; theoria igitur exspectat ut multiplicitas technologica per ordinationem
+physicam valeat, non per mysticam distinctionem inter 'natural' et 'artificial' electricity.
+
+     [118] Vocabulis cyberneticis, systema quoad operationem se ipsum sustinens factum est, quia
+ordinatio eius retroactiva proximam seriem transitionum status, quae effectionem energeticam
+requirunt, continenter gignit. Omnis correctio novam commutationem creat; omnis fasciculus
+confirmationes atque actionem itineris dirigendi creat; omnis petitio computationem
+responsumque inducit. Architectura condiciones physicas, quae ulteriora vacua gignunt,
+continenter reproducit.
+
+     [119] Ambitus biologicus fit pars receptaculi energetici, contra quod hoc perseverans
+disequilibrium aequilibratur; quo propius atque continentius organismus humanus intra densam
+infrastructuram electricam manet inclusus, eo frequentius systema eius electrochemicum campis
+exponitur, per quos illi defectus explentur. Homo modernus igitur non modo societatem
+informativam inhabitat, sed etiam oecologiam electromagneticam arte factam, cuius sustentatio
+relationem energeticam organismis in ea viventibus imponit; ratio igitur campi ab eius energeia
+seiungi nequit, cum illa formam ordinatam, haec potestatem physice operantem praebeat.
+
+                                      VII. Theoria Coniuncta
+
+                               Formula Theoretica Compendiaria
+
+     [120] Exemplar tamquam coniuncta relationum series summari potest. Primum, actio
+electrica multiplex defectum localem V gignit. Secundum, campus electromagneticus
+circumiectus coniunctionem effectivam κ inter illum defectum et receptacula energetica propinqua
+constituit. Tertium, detractio biologica est:
+
+                                            P_b→v = κV.
+     [121] Quarto, cohaerentia cognitiva secundum rationem inter restitutionem biologicam et
+receptaculum externe impositum mutatur; denique retroactio retis terminum productionis ipsius V
+commutat, ita ut V_net non modo ab actione singulorum instrumentorum, sed etiam a mutua eorum
+ordinatione pendeat. In compendio, series causarum est:
+
+                        A_net → V_net → S_EM → κ_b → P_b→v → ΔC.
+     [122] Retroactio ab A_net in A_net subsequens per communicationem regimenque seriem
+claudit; munus igitur experimentale est unumquemque terminum aestimare, non totam catenam
+tamquam unam causam non mensam tractare.
+
+                   Deductio Translationis Energiae a Machina ad Biologiam
+
+     [123] Series causarum ita scribi potest ut nullus ex gradibus eius decretoriis implicitus
+relinquatur; machina igitur primum campum electromagneticum tempore variantem per
+distributiones sarcinae et fluxus variantes gignit. Aequationes Maxwellianae campum inde ortum
+regunt, theorema Poyntingianum translationem energiae electromagneticae per spatium regit, lex
+Faradaica vim electromotivam in textu biologico conductivo propinquo inductam regit, atque
+relatio aequilibrii determinat quo versus energia compensatoria hauriatur; detractio igitur biologica
+non est metaphora addita physicae superimposita; est terminus ultimus, qui obtinetur cum
+aequationes campi coniunctae trans finem inter machinam et hominem positum aestimantur.
+
+     [124] Machina electrica activa regionem M occupet, organismus autem humanus propinquus
+regionem B; campus enim electromagneticus in ambitu communi a fontibus machinae tempore
+variantibus, densitate sarcinae ρ atque densitate fluxus J, gignitur. Relationes Maxwellianae
+pertinentes sunt:; ratio igitur campi ab eius energeia seiungi nequit, cum illa formam ordinatam,
+haec potestatem physice operantem praebeat.
+
+                                      ∇ · E = ρ/ε₀      (2)
+                                        ∇·B=0         (3)
+                                     ∇ × E = -∂B/∂t      (4)
+                                ∇ × B = μ₀J + μ₀ε₀∂E/∂t         (5)
+     [125] Aequationes (2)-(5) campum a statu electrico machinae variante genitum constituunt;
+quantitas igitur materialis huic argumento non est sola vis campi, sed fluxus energiae. Vector
+Poyntingianus translationem localem atque directam energiae electromagneticae praebet (Ling et
+al., 2016):
+
+                                        S=E×H         (6)
+     [126] Energia quae quemlibet clausum finem ∂Ω instrumentum circumdantem
+
+transit deinde ex integrali superficiei obtinetur
+
+                                  P_EM = ∮∂Ω S · dA            (7)
+     [127] theorema autem Poyntingianum relationem conservationis localem respondentem
+praebet.
+
+                               ∂u_EM/∂t + ∇ · S = -J · E         (8)
+     [128] Vacuum ibi intrat ubi densitas energiae electromagneticae localis instantanea infra
+statum referentialem dynamice requisitum u*(x,t) cadit; magnitudo igitur vacui localis est:
+
+                          V(x,t) = max[0, u*(x,t) - u_EM(x,t)]  (9)
+     [129] Onus vacui per regionem Ω atque intervallum temporis T integratum est:
+
+                              B_V = ∫₀ᵀ ∫Ω V(x,t) dΩ dt          (10)
+     [130] Vacuum igitur terminus defectus intra rationem conservationis ceteroquin ordinariam
+est. Quoniam machina electromagnetice patet, fluxus compensatorius ad iter electricum arte
+constructum non continetur; campus circumiectus vias physice praesto praebet, per quas energia
+finem inter instrumentum et ambitum transit. Ubi textus biologicus intra illum campum iacet,
+coniunctio Faradaica variationem temporalem fluxus magnetici machinae in vim electromotivam
+in textu convertit:
+
+                                   ℰ_b = -dΦ_B/dt     (11)
+     [131] Currente biologico inducto secundum frequentiam ita descripto:
+
+                               I_b(ω) = ℰ_b(ω) / Z_b(ω)         (12)
+
+     [132] ubi Z_b(ω) est impedimentum efficax viae biologicae participantis. Densitas currentis
+respondens J_b terminum operis electromagnetici intra organismum constituit, atque potentia inter
+conductorem biologicum et campum copulatum commutata est:
+
+                                 P_b = ∫Ω_b J_b · E dV       (13)
+     [133] Signum Aequationis (13) directionem commutationis determinat; nihilo minus, in
+condicione ex vacuo mota quae hic explicatur, pars biologice suppeditata est pars negativa illius
+commutationis, si ad aequilibrium energeticum internum organismi referatur. Definiatur detractio:
+
+                                 P_b→v = max[0, -P_b]        (14)
+     [134] Energia electrochemica organismo praesto deinde sic mutatur:
+
+                         dE_b/dt = P_met - P_neural - P_b→v            (15)
+     [135] Aequatio (15) centrum mathematicum affirmationis biologicae est; praeterea restitutio
+metabolica energiam usui aptam addit, actio nervorum ordinaria partem eius consumit, vacuum
+autem electromagneticum receptaculum additicium inducit. Detractio non debet toti metabolismo
+cerebri aequari; agit igitur in systema moderatorium cuius ordinatio functionalis ex minimis
+discriminibus electrochemicis continenter conservatis pendet. Significatio neuronalis a
+gradientibus   ionicis   atque   potentiis   membranarum     pendet,    quae   translatione   activa
+permeabilitateque selectiva conservantur (Purves et al., 2001); exigua profecto iactura extrinsecus
+loco temporeve alieno imposita ordinationem corrumpit priusquam ullum crassum indicium
+thermicum aut metabolicum efficiat.
+
+     [136] Cohaerentia cognitiva deinde ut variabilis status C describi potest, cuius stabilitas ex
+margine energiae biologicae praesto pendet:
+
+                           dC/dt = R(E_b) - D_n - αP_b→v            (16)
+     [137] ubi R(E_b) est vis restitutiva systematis nervosi, D_n corruptio ordinaria interna atque
+strepitus, α autem detractionem parasiticam in iacturam cohaerentiae neuralis ordinatae convertit;
+ex imminutione quidem C consequuntur interruptio memoriae, confusio, dissipatio attentionis,
+perturbatioque potestatis a se ipso perceptae. Theoria igitur ad cognitionem per continuam
+causarum physicarum seriem pervenit: generationem campi, fluxum energiae, inductionem, opus
+biologicum, iacturam energeticam, atque corruptionem status neuralis ordinati.
+
+     [138] Directio huius seriei coniunctione duorum principiorum statuitur, quae
+
+distinguenda sunt, si argumentum vim demonstrativam retineat: aequilibratio necessitatem
+
+redistributionis compensatoriae praebet, proximitas autem efficax ordinem praebet secundum
+
+quem receptacula parata compensationem illam ferunt. Machina commutatione atque
+
+transmissione crebra defecta localia gignit; ambitus copulatus eis respondet energiam paratam
+
+redistribuendo; unumquodque receptaculum pro κ_i participat; organismusque humanus
+
+energetice materialis fit, quia plerumque propinquus, conductivus, electrochemice actuosus,
+
+atque intra campum instrumenti perpetuo immersus est. Le Chatelier igitur rationem
+
+restitutionis praebet, axioma proximitatis efficacis principium selectionis, P_b→v autem
+
+mensuram partis biologicae fluxus compensatorii.
+
+     [139] Ex necessitate exemplar principium selectionis requirit, nam ambitus circumiectus
+plerumque plura receptacula energiae possibilia continet neque ullum sola affirmatione verborum
+praefertur; quantitas igitur gubernans non est nuda distantia Euclidea, sed proximitas
+electromagnetica efficax, qua intellegitur gradus quo receptaculum propositum defectui sub
+condicionibus veris copulationis campi physice praesto est. Distantia proinde vim retinet, sed
+tantum ut unus terminus inter conductivitatem, impedimentum, frequentiam, geometriam, situm,
+constitutionem dielectricam, aliasque complures circumstantias in κ_i collectas.
+
+     [140] Pro unoquoque receptaculo parato R_i, definiatur coefficiens copulationis efficacis κ_i
+ut functio distantiae r_i, conductivitatis σ_i, impedimenti Z_i, frequentiae angularis ω, geometriae
+situsque G_i, proprietatum dielectricarum ε_i, atque permeabilitatis magneticae μ_i:
+
+                       κ_i = f(r_i, σ_i, Z_i, ω, G_i, ε_i, μ_i) (17)
+     [141] Pars compensatoria a receptaculo R_i suppeditata pro copulatione eius efficaci ad
+omnia receptacula simul parata proportionalis est:
+
+                             P_(i→v) = [κ_i / Σ_j κ_j] P_v       (18)
+     [142] ubi P_v est tota potentia compensatoria quam vacuum locale requirit; receptaculum
+igitur dominans est:
+
+                                 R* = arg max_(R_i) κ_i       (19)
+
+     [143] Haec est enuntiatio formalis regulae receptaculi proximi: vacuum vehementissime ex
+eo receptaculo haurit quod sensu physice operante proximum est, id est, ex receptaculo quod
+maximam copulationem electromagneticam efficacem possidet; corpus igitur humanum paucis
+tantum unciis a telephono, tabula, aut computatro activo distans receptaculo longius remoto
+anteponitur, quotiens κ_i eius maior est. Propinquitas ita ex descriptione vulgari in relationem
+physicam ordinatam convertitur, electioque receptaculi biologici ex eodem calculo copulationis
+sequitur qui omnem fontem aemulum gubernat; organismus proinde in nexum causarum in actu
+ingreditur, ut taxis conductiva potentiarum, gradientium, membranarum, atque currentium
+ionicorum.
+
+     [144] Sub ordinariis condicionibus usus in hac dissertatione consideratis, terminus selectionis
+humanae proinde ita scribitur:
+
+                                 κ_human ≫ κ_distant          (20)
+     [145] quia utens plerumque est systema magnum conductivum atque electrochemice
+actuosum instrumento proximum; telephonum tamen manui aut capiti admovetur; tabula manibus
+aut trunco innititur; computatrum gestabile recta ante corpus stat. Systema technologicum igitur
+receptaculum humanum in centro geometriae suae localis copulationis collocat; receptaculum
+biologicum non ad hoc infertur, nam dynamis eius electrochemica iam adest ubicumque potentiae
+membranarum atque gradientes ionici conservantur.
+
+     [146] Eadem regula contentionem receptaculorum secum fert. Receptaculo non
+
+biologico propinquiore aut validius copulato inducto, denominator in Aequatione (18)
+
+mutatur parsque fluxus compensatorii ab homine avertitur. Si κ_shunt satis magna fiat, tum
+
+P_(human→v) minuitur, etiamsi ratio commutationis machinae immutata maneat.
+
+        P_(human→v)' = [κ_human / (κ_human + κ_shunt + Σ κ_other)] P_v                 (21)
+     [147] Munimentum, derivationes conductivae, geometria, distantiaque igitur recta ex regula
+selectionis sequuntur: unumquodque valores relativos terminorum κ inter se contendentium mutat,
+partitionemque P_v inter receptacula parata consequenter mutat. Propositio ante experimentum
+mathematica est, nam Aequatio (21) postulat ut pars humana minuatur, crescente termino
+copulationis aemulo.
+
+     [148] In scala retis principium reactionis recursionem claudit; quare, huius dissertationis
+causa, principium reactionis est relatio qua exitus systematis per ambitum ut ingressus subsequens
+redit, eoque statum proximum systematis mutat. Forma generalis recursionis est; rete igitur in toto
+ut taxis causarum recurrentium, non ut mera congeries instrumentorum electrice separatorum,
+comprehendendum est. Ouroboros proinde ornamentum esse desinit et fit compendium classicum
+ipsius relationis formalis: quod e systemate exit per ambitum redit ut condicio actus systematis
+consequentis, ita ut causa et consequentia non in linea sed in orbe disponantur.
+
+                        W: O_t → I_(t+1) → R_(t+1) → O_(t+1)          (22)
+     [149] forma autem vacui electromagnetici est.
+
+                    V_t → E_t → B_t → ΔC_t → R_(t+1) → V_(t+1)            (23)
+
+                         Substratum Evidentiarum et Nova Synthesis
+
+     [150] Structura evidentiaria thesis optime intellegitur, si propositiones a physica
+physiologiaque constitutis acceptae a synthesi huic exemplari propria distinguantur. Relationes
+camporum Maxwellianae, transportatio Poyntingiana, inductio electromagnetica, proprietates
+dielectricae textuum corporum metiri possibiles, campi currentesque interni inducti, atque
+conservatio energetica gradientium ionicorum neuronum litteras proprias habent neque cum thesi
+vacui electromagnetici stant aut cadunt (Gabriel, Gabriel, & Corthout, 1996; Chou et al., 1996;
+Purves et al., 2001; Howarth et al., 2012; ICNIRP, 2020). Ea sunt res datae, unde argumentum
+novum incipit.
+
+     [151] Nova synthesis incipit ubi illae litterae desinunt tantummodo finitimae esse. Thesis
+
+defectum dynamice definitum V agnoscit, eum defectum fluxui electromagnetico fines
+
+transeunti coniungit, terminum compensatorium per κ_i inter receptacula parata distribuit,
+
+partem biologice suppeditatam P_b→v assignat, subtractionemque inde effectam in variabilem
+
+cohaerentiae C transfert, antequam processum per principium reactionis recursive claudat.
+
+Nulli fonti laudato imponitur onus totam hanc seriem demonstrandi; ratio propria
+
+dissertationis in ipsa constructione atque specificatione experimentali huius seriei consistit.
+
+            Corroboratio ex Convergentia Potius quam ex Singulis Citationibus
+
+     [152] Causa evidentiaria non pendet ex aliquo sapiente oblitterato inveniendo, qui thesim
+vacui electromagnetici iam ante nos scripserit, nam inventum tale dissertationem novitate privaret,
+sed ex demonstratione quod singulae relationes physicae synthesi necessariae sub diversis
+traditionibus   experimentalibus   separatim    observatae    sint.   Electrodynamica   circuituum
+transportationem energiae campis mediatam constituit; metrologia dielectrica constitutionem
+electricam textuum corporum a frequentia pendentem constituit; dosimetria constituit campos
+externos campos currentesque internos pro geometria proprietatibusque materiae efficere;
+electrophysiologia constituit potentias membranarum temporaque ictuum campis electricis
+respondere; neuroenergetica constituit restitutionem propagationemque illorum statuum
+electricorum energiam metabolicam consumere. Hae litterae non sunt conscriptae ut aliae aliis
+faveant, earum tamen convergentia independens firmius substratum praebet quam collectio
+commentariorum ex una schola speculativa omnium descendentium praeberet.
+
+     [153] Haec convergentia ideo valet quod variabiles principales diversis instrumentis
+communitatibusque metiuntur. Fluxus Poyntingianus ad mensuram campi electromagnetici
+pertinet; permissivitas conductivitasque textuum corporum ad spectroscopiam dielectricam; campi
+interni ad dosimetriam computationalem atque experimentalem; polarisatio membranarum ad
+electrophysiologiam; impensa ATP consumptioque oxygenii ad neuroenergeticam. Relatio
+ordinata quae translationem inter has metrologias independentes sustinet firmitatis gradum
+adipiscitur argumento non obtingentem cuius omnis praemissa eodem apparatu mensuratur. Thesis
+igitur hanc pluralitatem servare debet, non evidentias in unam generis communis expositionis
+electromagneticae classem comprimere.
+
+     [154] Litterae dielectricae hac in re praecipue valent, quia impediunt ne receptaculum
+humanum fiat umbra conductiva abstracta. Genus textus corporis interest; aquae copia interest;
+structura cellularis interest; frequentia interest; natura dispersiva materiae biologicae efficit ut
+corpus diversis proprietatibus electricis diversis partibus spectri machinae se praebeat (Foster &
+Schwan, 1989; Gabriel et al., 1996; Sasaki et al., 2022). Coefficiens proximitatis efficacis igitur
+per experimentum resolvi potest, potius quam ut constans accommodata tractari cuius significatio
+post rem demum reperiatur. Unaquaeque pars κ interpretationem physicam antecedentem possidet.
+
+     [155] Litterae electrophysiologicae similem resolutionem ex parte recipiente praebent.
+
+Effectus campi in mutationes polarisationis membranarum, temporum ictuum, probabilitatis
+
+emittendi, synchronizationis, atque propagationis retis resolvi possunt; varia genera neuronum
+
+eisdem parametris campi varie respondere possunt; situsque spatialis processuum neuronalium
+
+effectum membranae inductum mutare potest (Anastassiou et al., 2010, 2011; Krause et al.,
+
+2019;   Lee   et   al.,   2024).   Cohaerentia   cognitiva    C   igitur   tandem    variabilibus
+
+electrophysiologicis intermediis conectenda est, potius quam arca nigra habenda. Theoria
+
+exactior fit, prout via a P_b→v ad C in gradus mensurabiles dividitur.
+
+     [156] Neuroenergetica disciplinam temporalem huic partitioni necessariam praebet.
+Consumptio ATP restitutioque ionica continenter fiunt, earum tamen celeritates cum actu
+significationis mutantur; transmissio synaptica potentiaeque actionis onera energetica additicia
+imponunt; copiaque metabolica localis illis oneribus intra tempora actionis neuralis respondere
+debet (Attwell & Laughlin, 2001; Harris et al., 2012; Howarth et al., 2012). Receptaculum
+externum propositum igitur systema iam dynamicum ingreditur. Consequentia eius non sola
+magnitudine absoluta, sed tempore suo ad impensam restitutionemque endogenam relato
+determinatur. Quam ob rem onus vacui informationem temporalem servare debet, potius quam ad
+expositionem mediam indiscretam redigi.
+
+     [157] Eadem disciplina temporalis ad machinam pertinet. Apparatus digitalis non est
+tantummodo fons cui potentia rata est; est series transitionum statuum electricorum, quarum
+densitas, synchronizatio, recurrentiaque pro onere operis variantur. Processor onere computationis
+pressus, instrumentum radiophonicum commeatum componens, et moderator transienti
+respondens diversas structuras temporales generant, etiamsi potentia media similis sit.
+Experimentum propositum igitur historiam commutationum consignare atque V ex vera eventuum
+serie construere debet. Potentiam mediam aequare, densitate transitionum variata, unum ex
+firmissimis mediis fit ad mechanismum vacui ab explicatione distinguendum quae sola crassa
+energiae consumptione nititur.
+
+     [158] Alia convergentia apparet in litteris modulationis neuralis camporum debilium atque in
+huius dissertationis studio effectuum ordinatorum potius quam mere energeticorum. Opera
+experimentalia demonstrant campos debiles tempora ictuum aut inductionem rhythmi afficere
+posse, nec necessario mutationem proportionalem in media frequentia emissionis efficere (Krause
+et al., 2019); campi endogeni atque exogeni mores retis per parvas membranarum perturbationes
+
+inter multa neurona distributas mutare possunt (Fröhlich, 2014; Modolo et al., 2018). Variabilis
+cognitiva thesis igitur ordinationi temporali naturaliter conectitur. Continuitas memoriae
+potestasque a se percepta ex processibus per tempus coordinatis pendent, quare perturbatio
+temporum effectu valere potest, etiamsi mensurae energeticae universae modestae videantur.
+
+     [159] Hae convergentiae coniunctae bibliographiam ex ornamento in structuram convertunt.
+Unicuique fonti certum munus assignatur; nullus auctor totam thesim probare cogitur; nulla citatio
+iubetur hiatum transire qui ad propriam dissertationis derivationem pertinet. Opus thesis est ipsa
+synthesis: energiam campi, complexionem commutationum, electrodynamicam textuum
+corporum, effectus neurales inductos, conservationem metabolicam, proximitatem efficacem,
+reactionemque recursivam sumere, atque demonstrare ea intra unam continuam grammaticam
+causarum exprimi posse. Evidentia amplificata igitur propositionem memorati machinarii non
+mollit. Ei propositioni vocabula technica, exempla experimentalia, atque quantitates intermedias
+mensurabiles ad expositionem definitivam necessarias praebet.
+
+     [160] Ordine proprio sumptum, argumentum quinque demonstrationes unamque
+
+synthesim complectitur: primum, electrodynamica Maxwelliana constituit celeres mutationes
+
+oneris electrici currentisque, quibus computatio digitalis efficitur, campos electricos
+
+magneticosque tempore mutabiles constituere; secundum, theorema Poyntingianum
+
+constituit illos campos fluxum energeticum possidere qui apparentem machinae finem
+
+transgreditur; tertium, Faraday inductionem in conductore propinquo constituit; quartum,
+
+constitutio bioelectrica systematis nervosi receptaculum electrochemicum gradientia
+
+conservans suppeditat; quintum, aequilibratio postulat ut defectui locali redistributione
+
+compensatoria respondeatur. Synthesis in axiomate proximitatis efficacis terminoque operis
+
+biologici posita est, quibus necessitas generalis restitutionis in allocationem definitam inter
+
+receptacula atque inde in P_b→v convertitur.
+
+     [161] Onus demonstrativum igitur in duobus praecipuis commissuris contrahitur; quod
+
+robur est potius quam dedecus, quoniam theoria cuius infirmitas ubique est saepe nullam
+
+significationem definitam usquam habet: prima est ipsa V, nam status referentialis u*(x,t) tanta
+
+cum exactitudine definiendus est ut defectus verus ab ordinaria fluctuatione distingui possit;
+
+altera est P_b→v, cuius signum magnitudoque systema biologicum ut contributorem purum
+
+fluxus compensatorii sub condicionibus limitaneis ab exemplari assertis exhibere debent. His
+
+quantitatibus operationaliter determinatis, quaestiones reliquae gradum spectant—quanta
+
+copulatio, per quantum intervallum, sub qua geometria, qua recurrentia, quoque effectu in C
+
+—non multiplicationem indefinitam causarum quae explorari nequeunt.
+
+     [162] Documenta subsidiaria nunc gradatim a doctrina camporum ad ordinationem
+cognoscitivam ascendunt, quoque ordine id accipiente quod superior constituit atque ulterius
+producente. Primo gradu energia electromagnetica densitatem fluxumque locales possidet,
+vectorque Poyntingianus motum eius per spatium atque in onera describit; secundo, instrumenta
+commutatoria status electromagneticos tempore ordinatos efficiunt, quorum multiplicitas cum
+densitate   reciprocitateque   transitionum    electricarum   crescit;   tertio,   textus   biologicus
+conductivitatem ac permittivitatem e frequentia pendentes possidet, quae campos interiores et
+cursus definiunt; quarto, membranae retiaque nervosa campis electricis extracellularibus per
+polarisationem membranarum et commercium ephapticum obnoxia sunt; quinto, significationem
+nervosam coercet ratio energetica effectionis ATP, restitutionis gradientium ionicorum, cursuum
+synapticorum, atque potentiarum actionis; sexto denique, recursio cybernetica efficit ut exitus
+unius operationis fiat initus sequentis. Nullus horum graduum ceterorum metaphora est.
+Descriptiones physicae ordinatoriaeque continuae sunt, synthesi huius dissertationis inter se
+coniunctae.
+
+     [163] Pondus documentorum in hac ipsa continuitate positum est. Doctrina infirmatur
+
+cum a facto unius disciplinae ad conclusionem alterius disciplinae alienam prosilit; hic autem
+
+transitus quantitatibus finitimis quae metiri possunt definiuntur. Energia campi per S et κ fit
+
+commercium receptaculorum; commercium receptaculorum per J_b·E et P_b→v fit opus
+
+biologicum;    opus    biologicum     per     energeticam     membranae       ordinisque     synaptici
+
+conservationem fit consequentia nervosa; consequentia nervosa per C fit consequentia
+
+cognoscitiva; iteratum denique machinae hominisque commercium per principium reactionis
+
+fit structura permanens. Bibliographiae igitur opus cumulativum est. Electrodynamica
+
+campum constituit; bioelectromagnetica corpus participem illius campi e frequentia
+
+pendentem constituit; electrophysiologia motus nervosos campo obnoxios constituit;
+
+neuroenergetica sumptum illorum motuum conservandorum constituit; cybernetica
+
+ordinationem recursivam systematis copulati constituit.
+
+     [164] Res arcana manere potest; obscuritas tamen structurae neque necessaria neque
+excusabilis est. Propositum eius praecipuum severum atque intellectu facile est: multiplex actio
+electrica defectus energeticos locales iterum atque iterum creat; systemata stabilia campis
+mediantibus eos defectus fluxu compensatorio explent; receptacula praesto posita pro
+propinquitate electromagnetica efficaci conferunt; homo utens locum coniunctionis privilegiatum
+plerumque obtinet; energia igitur electrochemica biologica in processu compensatorio participat;
+ordo nervosus, quippe qui energia conservetur et vi electrica affici possit, cohaerentiam amittit
+cum receptaculum accessorium marginem stabilitatis eius coartat; recursio denique reticularis
+condiciones electricas antecedentes continenter recreat. Sermo anthropomorphicus de vacuo quod
+'draws', 'reads', aut 'saps' nihil est nisi vulgaris illius rationis contractio.
+
+     [165] Nulla bibliographia, etiamsi catalogum Alexandrinum aemuletur, gradum novum
+
+pro argumento conficere potest. Nulla citationum copia ex Maxwell, Poynting, Faraday,
+
+mensuris dielectricis textuum, coniunctione ephaptica, aut rationibus energiae nervosae
+
+P_b→v sub condicionibus finitimis hic affirmatis per se constituere potest; ille terminus manet
+
+decisiva dissertationis affirmatio experimentalis. Aucta tamen documenta habitum
+
+epistemicum illius affirmationis mutant. Ea iam non super inane barathrum inter
+
+computatorium cerebrumque suspenditur. Utraque pars novi commissurae maturam
+
+litteraturam experimentalem de singulis elementis habet, ipsa autem commissura per
+
+definitionem      vacui,    coefficientem      propinquitatis     efficacis,   protocollum   certaminis
+
+receptaculorum, terminum operis biologici, atque variabilem cohaerentiae mensurabilis
+
+reddita est. Reliqua igitur novitas doctrinae eo contrahitur ubi novitas proprie collocanda est:
+
+in proposita necessitudine inter phaenomena iam mensurabilia.
+
+                                 VIII. Demonstratio Experimentalis
+
+     [166] Doctrina perfecta est antequam laboratorium intratur; munus igitur huius partis
+
+non est mechanismum amplificare, sed singulas eius commissuras mensurae exponere.
+
+Institutum ordinem causalem iam constitutum sequitur: formationem relaxationemque V,
+
+transportum electromagneticum, selectionem receptaculorum per κ_i, opus biologicum
+
+P_b→v, consequentiam nervosam C, atque recursionem reticularem in V_net. Quisque gradus
+
+separatim metitur antequam tota series postulatur ut tamquam unum systema permaneat.
+
+     [167] Nulli variabili experimentali licet solum pro titulo mechanismi stare. 'Phone', 'Wi-
+
+Fi', 'computer', et 'network' mensurae non sunt. Quantitates operantes sunt structura
+
+commutationum, V, S, κ_i, P_b→v, C, tempus relaxationis, atque actio reticularis reciproca.
+
+Distantia, geometria, munimentum, structura spectralis, densitas instrumentorum, et
+
+topologia valent quatenus illas quantitates mutant. Plura igitur experimenta operationes
+
+distinctas intra unum corpus causale examinant.
+
+                 Experimentum I. Formatio, Magnitudo, et Relaxatio Vacui
+     [168] Primum experimentum quaerit num defectus propositus ex statu electrico apparatus
+erui possit antequam ulla illatio biologica temptetur. Duo systemata potentia media fere aequali
+agunt, quorum alterum opus simplex regulareque comparative efficit, alterum commutationem
+densam rapideque variantem exsequitur. Specilla intentionis cursusque, specilla camporum
+electrici magneticique, analysis spectri, atque oscillographia magnae latitudinis frequentiarum
+ipsam seriem electricam describunt. Status comparationis u*(x,t) ex moribus fundamentalibus
+iterabilibus constituitur; u(x,t) inter seriem activam metitur; V(x,t) et B_V deinde e rationibus iam
+definitis computantur. Status electricus tanta subtilitate temporali perscribitur quanta satis sit ad
+onerationem, exonerationem, excessum, oscillationem residuam, modulationem, correctionem,
+atque relaxationem distinguendas, ut u*(x,t) ex ipsa constitutione temporali apparatus potius quam
+ex cruda comparatione inter potentia instructum et potentia destitutum reficiatur.
+
+     [169] Quantitas temporalis decretoria est τ_v, tempus relaxationis defectus localis. Si
+intervallum medium inter transitiones perturbantes τ_v longe excedit, vacua episodica manent; ubi
+intervallum ad τ_v accedit, defectus inter se incidunt; cum intervallum adhuc brevius fit, V ad
+zerum ante eventum sequentem redire non potest. Densitas igitur commutationum et multiplicitas
+
+spectralis seorsum a potentia media variari possunt, ut determinetur num B_V propositam
+necessitudinem cum disequilibrio recurrente potius quam cum sola potentia crassa sequatur.
+
+        Experimentum II. Transportus Electromagneticus Trans Finem Instrumenti
+     [170] Secundum experimentum viam energiae ab apparatu in circumiecta metitur. Fluxus
+Poyntingianus trans finem definitum ex campis electricis magneticisque mensis aestimatur,
+instrumentis secundum ipsam materiam spectralem instrumenti electis. Dosimetria hodierna iam
+postulat ut frequentiae, roboris campi localis, quantitatum inductarum, medii spatialis, geometriae,
+atque durationis ratio habeatur, neque titulis nominalibus instrumentorum innitatur (ICNIRP,
+2020). Hoc experimentum eadem disciplina utitur ad statuendum num mutationes V mensae
+praedictis mutationibus fluxus electromagnetici finem transeuntis comitentur.
+
+     [171] Descriptio spatialis descriptionem temporalem comitatur. Specilla camporum et
+restitutio computatoria rationem trimensam ambitus energetici circa apparatum efficiunt, ut
+mensurae posteriores receptaculorum ad geometriam campi re vera praesentem, non ad positum
+antennae locum aut finem schematicum, referantur.
+
+           Experimentum III. Certamen Receptaculorum et Propinquitas Efficax
+     [172] Tertium experimentum principium selectionis directo experitur. Receptaculum
+passivum exploratum, velut volumen salinum conductivum, simulacrum textui aequivalens, onus
+resistivum, munimentum, structura resonans, aut derivatio arte facta, in campum mensum
+inducitur, dum onus operis instrumenti constans tenetur. Distantia, directio, conductivitas,
+impedimentum, atque geometria deinde variantur ita ut κ_i mutetur, munere informativo a machina
+confecto non mutato. Exitus praedictus est distributio regularis translationis mensae inter
+receptacula certantia pro relativis eorum terminis κ.
+
+     [173] Simulacra textui aequivalentia praecipue utilia sunt, quod proprietates eorum electricae
+regi possunt neque variabiles metabolicae aut cognoscitivae inducuntur (Stricklett & Baker-Jarvis,
+2000). Investigatio instrumentorum gestabilium corporique inserendorum pariter modos
+constitutos praebet quibus exploratur quomodo situs anatomicus, materiae circumiectae,
+frequentia, atque geometria commercium electromagneticum prope textum mutent (Guido &
+Kiourti, 2020). Si κ_shunt auctum partem in receptaculo primo mensam minuit, tota actione
+
+instrumenti fixa manente, regula propinquitatis efficacis experimentum physicum directum a
+cognitione seiunctum accipit.
+
+                      Experimentum IV. Translatio Energiae Biologicae
+     [174] Experimentum ad materiam biologicam non procedit nisi postquam partitio
+receptaculorum in systematis passivis demonstrata est. Dosimetria pontem ab externo campo ad
+campum cursumque interiores praebet, quoniam geometria, directio, conductivitas, atque anatomia
+quantitates interiores definiunt quas ambitus externus datus efficit (Rafferty et al., 1992; Bracken,
+1992; Chou et al., 1996; ICNIRP, 2020). Mensura pertinens non sola expositio est, sed signum
+magnitudoque termini operis intra regionem biologicam.
+
+     [175] Ratio microelectrodica McLeodiana ad rem pertinet, quod mutatio potentiae
+
+membranae, mutationes cursuum ionicorum, atque distributiones ionum extracellularium
+
+sunt consequentiae camporum admotorum quae metiri possunt (McLeod, 1992).
+
+Experimentum igitur mensuram campi macroscopicam cum electrophysiologia microscopica
+
+coniungit atque J_b·E intra regionem biologicam participantem aestimat. Necessitudo
+
+decretoria est P_b→v > 0 sub condicionibus finitimis affirmatis. Si nullus talis terminus operis
+
+biologici apparet ubi exemplar physicum eum praedicit, extensio biologica in illa commissura
+
+deficit.
+
+                   Experimentum V. Consequentia Nervosa et Cognoscitiva
+     [176] Quintum experimentum quaerit num exhauritionem biologicam mensam
+
+praedicta mutatio status nervosi ordinati sequatur. Neurophysiologia camporum debilium iam
+
+protocolla praebet ad polarisationem membranae, tempora impulsuum, synchroniam
+
+reticulorum, atque propagationem campis mediatam metienda (Anastassiou et al., 2011;
+
+Modolo et al., 2018; Krause et al., 2019; Lee et al., 2024). Praesens ratio mensuras energeticas
+
+antecedentes addit, ut responsum nervosum ad V, κ_i, et P_b→v potius quam ad solam
+
+praesentiam instrumenti agentis referatur.
+
+     [177] Probatio cognitionis humanae in hoc gradu postremo loco ponenda est. Memoria
+operativa, stabilitas attentionis, iudicium ordinis temporalis, errores continuitatis, atque munera
+
+cognata temporibus mensis B_V accommodantur atque sub condicionibus caecis aut simulatis,
+similitudine sensuum morumque servata, exercentur. Variabilis independens est mechanismus a
+doctrina definitus, non genus culturale technologiae. Recuperatio quoque metitur: si τ_b tempus
+proprium restitutionis post haustorium externum imminutum denotat, expositiones intervallis
+brevioribus quam τ_b separatae vehementius coacervari debent quam expositiones quibus satis
+temporis ad recuperandum intercedit.
+
+                            Experimentum VI. Recursio Reticularis
+     [178] Sextum experimentum vim reactionis segregat. Apparatus opus interne repetitum sed
+non reticulatum exsequens comparatur cum apparatu communicationi reciprocae intento, potentia
+media aequata atque, quantum fieri potest, computatione crassa aequata. Actio reticularis apud
+fasciculos datorum, usum processorii, eventus commutationum, actionem moderationis potentiae,
+atque structuram campi electromagnetici instrumentis observatur. Variabilis mutata est ipsa
+recursio: exitus ab uno systemate ad alterum tamquam initus redit atque transitiones electricas
+sequentes provocat.
+
+     [179] Si terminus commercii in V_net physice efficax est, conexio reciproca permanentiam
+aut onus integratum defectus mensi ultra summam morum instrumentorum separatorum mutare
+debet. Si tale discrimen non observatur, terminus proprie cyberneticus damnatur, neque propterea
+priores gradus physici abiciendi sunt.
+
+                          Experimentum VII. Experimentum Crucis
+     [180] Experimentum summum mensuras antecedentes coniungit, neque ullam earum in
+
+titulo composito evanescere sinit. Metire V et τ_v; metire S trans finem pertinentem; aestima
+
+κ_i inter receptacula certantia; determina signum J_b·E et P_b→v intra regionem biologicam;
+
+metire mutationem inde effectam E_b et C; deinde varia distantiam, munimentum,
+
+topologiam, atque praesentiam receptaculi certantis arte facti. Funiculus coccineus Raab est
+
+series mensa continua a defectu antecedente ad fluxum campi, a fluxu campi ad
+
+coniunctionem receptaculi, a coniunctione receptaculi ad opus biologicum, atque ab opere
+
+biologico ad consequentiam nervosam.
+
+     [181] Exemplar hoc modo singulas commissuras distincto iudicio exponit. Si V erui non
+
+potest, primus terminus damnatur; si translatio mutationibus consulto factis in κ_i non
+
+respondet, regula selectionis damnatur; absentia P_b→v extensionem biologicam damnat;
+
+absentia praedictae necessitudinis inter P_b→v et C descriptionem cognoscitivam damnat; si
+
+actio reticularis reciproca B_V non mutat, terminus reactionis damnatur. Contra, eventus
+
+prosper uno gradu defectum alterius non excusat. Doctrina integra tantum superest si plures
+
+necessitudines concordes manent mutatis condicionibus.
+
+                       Coacervatio, Iteratio, et Praedictio Prospectiva
+     [182] Iteratio per diversos ordines procedere debet neque in una observatione mirabili
+consistere. Necessitudo defectus quaerenda est per structuras electricas a simplicibus circuitibus
+oscillatoriis commutatoriisque ad processoria et instrumenta reciproce communicantia; partitio
+receptaculorum iteranda est in oneribus passivis, simulacris, textu ex vivo, praeparationibus
+nervosis, atque tum demum experimentis hominum integrorum. Magnitudo inter systemata
+differre potest, sed necessitudines formales recognoscibiles manere debent si mechanismus
+universalis est.
+
+     [183] Disciplina ultima est praedictio prospectiva. Ubi V, κ_i, P_b→v, τ_v, τ_b, et C in
+
+una serie experimentali aestimata sunt, coefficientes eorum figuntur atque in aliam
+
+geometriam, aliud opus, aut aliam dispositionem receptaculorum transferuntur antequam
+
+eventus cognoscitur. Exemplar ex una geometria instrumenti corporisque aptatum alteram
+
+praedicere debet; coefficiens certaminis receptaculorum cum simulacro aestimatus
+
+translationem ad praeparationem biologicam superare debet; tempus relaxationis sub uno
+
+schemate commutationum mensum onus ab altero effectum anticipare debet. Doctrina hoc
+
+modo a cohaerentia qualitativa ad disciplinam quantitativam transit.
+
+     [184] Ratio igitur examen severum est, non oraculum. Propositum in fornacem mensurae
+iterationisque inicitur, et quod superest eo superest quod partes eius inter se convenire pergunt
+mutatis rebus. Institutum experimentale igitur est proprius dissertationis terminus ad quem: non
+altera mechanismi repetitio, sed ordinata via qua mechanismus cogitur ut pro se ipse respondeat.
+
+                                             Conclusio
+
+     [185] Interrete vulgo ita describitur quasi informatio substantia eius sit, electricitas autem
+tantum vehiculum; doctrina vacui electromagnetici ab adversa ratione incipit. Interrete physice
+ante omnia systema electricum est, dum informatio ordinationem transformationibus energeticis
+impositam describit. Omnis computatio atque transmissio mutationes veras in distributione
+sarcinarum electricarum, potentia, cursu, atque figuratione campi electromagnetici creat. Sanctus
+Gabriel Archangelus nuntium a mittente ad accipientem fert; legatio digitalis similiter iter suum
+facere debet, et omne tale iter intra ordinem materialem viam, impensam, transitionem,
+campumque requirit, nam celeritas cursoris energiam transmissionis non tollit.
+
+     [186] Maior consequentia conceptualis est ne doctrina informationis energiam delere sinatur.
+Nuntius abstracte tamquam series symbolorum describi potest, sed omnis nuntius physicus
+subiectum requirit cuius status et differant et mutentur. Reticulum cyberneticum igitur duas
+descriptiones inseparabiles habet: informationis ratione, est systema nuntiorum reactionisque;
+energiae ratione, est systema gradientium, camporum, dissipationis, atque compensationis
+recurrentis. Doctrina vacui electromagnetici commissuram inter illas descriptiones occupat, nam
+ratio campi ab eius energeia seiungi non potest: illa formam ordinatam, haec potentiam physice
+operantem praebet.
+
+     [187] Hae mutationes defectus energeticos locatos, vacua electromagnetica appellatos, iterum
+atque iterum efficiunt, quorum vis physica in gradientibus quos constituunt atque in distributione
+compensatoria qua illis gradientibus respondetur posita est. Fluxus Poyntingianus energiam
+electromagneticam per spatium circa apparatum electricum fert; inductio Faradiana atque cognatae
+formae coniunctionis electromagneticae illos campos cum systematis conductivis propinquis
+conectunt; systema autem nervosum humanum receptaculum electrochemicum singulariter
+multiplex constituit, in illo ipso ambitu insertum.
+
+     [188] Mechanismus igitur ultra vulgarem perturbationem electromagneticam extenditur:
+corpus humanum non modo strepitum a machina accipit, sed etiam energiam ad aequationem
+defectuum localium recurrentium machinae confert. Exhauritio parasitica inde orta marginem
+energeticum minuit, quo ordinatio nervosa cohaerentiam cognoscitivam conservat; discontinuatio
+memoriae, confusio, distractio attentionis, atque perturbationes agentiae intra exemplar tamquam
+manifestationes illius corruptionis consequuntur.
+
+     [189] In magnitudine reticulari phaenomenon cyberneticum fit. Instrumentorum miliarda
+transitiones novas status electrici creant respondentia signis ab aliis instrumentis generatis, atque
+structura inde orta non ad quietem redit sed perturbationes continenter reproducit, quarum aequatio
+energiam ambitus postulat. Vacuum permanet velut condicio civilitatis technologicae: absentiae
+innumerabiles formantur explenturque celerius quam reticulum universum quiescit. Structura
+ultima duplicem Prudentiae aspectum possidet: altera facies ad exitum iam effectum vertitur, altera
+ad initum quem ille exitus mox fiet; inter duas facies praesens recursivum iacet, in quo reticulum
+perpetuo consequentiam in causam renovatam convertit.
+
+     [190] Homines structuram electricam circa se exstruxerunt, cuius finis energeticus ad
+involucrum machinarum non terminatur; campos eius incolimus. Systemata nostra nervosa intra
+ambitum eius copulatum exsistunt, nosque et postulata informativa praebemus quae actionem eius
+sustinent et, secundum doctrinam hic propositam, partem energiae biologicae qua disequilibria
+eius locata explentur. Interrete igitur non est merum instrumentum quod homines agunt; est
+oecologia electromagnetica intra quam cognitio humana unum ex systematibus energeticis praesto
+positis facta est.
+
+                                            References
+
+                               Ling, S. J., Moebs, W., & Sanny, J. (2016). University physics
+                                      volume 2. OpenStax. https://openstax.org/books/university-
+                                      physics-volume-2/pages/1-introduction
+
+                       McCulloch, W. S., & Pitts, W. (1943). A logical calculus of the ideas
+                             immanent in nervous activity. The Bulletin of Mathematical
+                             Biophysics, 5, 115–133. https://doi.org/10.1007/BF02478259
+                               Purves, D., Augustine, G. J., Fitzpatrick, D., Katz, L. C.,
+                                      LaMantia, A.-S., McNamara, J. O., & Williams, S. M.
+                                      (Eds.). (2001). Neuroscience (2nd ed.). Sinauer Associates.
+                                      https://www.ncbi.nlm.nih.gov/books/NBK10799/
+
+                               Urone, P. P., & Hinrichs, R. (2020). Physics. OpenStax.
+                                      https://openstax.org/books/physics/pages/1-introduction
+
+                               Wiener, N. (2019). Cybernetics: Or control and communication in
+                                     the animal and the machine (2nd ed.). The MIT Press.
+                                     (Original work published 1961)
+                                     https://doi.org/10.7551/mitpress/11810.001.0001
+
+       Bracken, T. D. (1992). Experimental macroscopic dosimetry for
+             extremely-low-frequency electric and magnetic fields.
+             Bioelectromagnetics, Suppl. 1, 15–26.
+             https://doi.org/10.1002/bem.2250130704
+
+       Chou, C. K., Bassen, H., Osepchuk, J., Balzano, Q., Petersen, R.,
+              Meltz, M., Cleveland, R., Lin, J. C., & Heynick, L. (1996).
+              Radio frequency electromagnetic exposure: Tutorial review
+              on experimental dosimetry. Bioelectromagnetics, 17(3),
+              195–208. https://doi.org/10.1002/(SICI)1521-
+              186X(1996)17:3<195::AID-BEM5>3.0.CO;2-Z
+
+Fonstad, C. G. (2009c). Lecture 15: Digital circuits: CMOS [Lecture
+       notes]. MIT OpenCourseWare, Massachusetts Institute of
+       Technology.
+Fonstad, C. G. (2009b). Lecture 14: Digital circuits: inverter basics
+       [Lecture notes]. MIT OpenCourseWare, Massachusetts Institute of
+       Technology.
+Fonstad, C. G. (2009a). Lecture 9: MOS capacitors I [Lecture notes]. MIT
+       OpenCourseWare, Massachusetts Institute of Technology.
+       Gabriel, C., Gabriel, S., & Corthout, E. (1996). The dielectric
+              properties of biological tissues: I. Literature survey.
+              Physics in Medicine & Biology, 41(11), 2231–2249.
+              https://doi.org/10.1088/0031-9155/41/11/001
+
+       Gabriel, S., Lau, R. W., & Gabriel, C. (1996a). The dielectric
+              properties of biological tissues: II. Measurements in the
+              frequency range 10 Hz to 20 GHz. Physics in Medicine &
+              Biology, 41(11), 2251–2269. https://doi.org/10.1088/0031-
+              9155/41/11/002
+
+       Gabriel, S., Lau, R. W., & Gabriel, C. (1996b). The dielectric
+              properties of biological tissues: III. Parametric models for
+              the dielectric spectrum of tissues. Physics in Medicine &
+              Biology, 41(11), 2271–2293. https://doi.org/10.1088/0031-
+              9155/41/11/003
+
+       Gromov, D., & Toikka, A. (2020). Toward formal analysis of
+            thermodynamic stability: Le Chatelier-Brown principle.
+            Entropy, 22(10), 1113. https://doi.org/10.3390/e22101113
+
+       Howarth, C., Gleeson, P., & Attwell, D. (2012). Updated energy
+             budgets for neural computation in the neocortex and
+             cerebellum. Journal of Cerebral Blood Flow & Metabolism,
+             32(7), 1222–1232. https://doi.org/10.1038/jcbfm.2012.35
+
+International Commission on Non-Ionizing Radiation Protection.
+        (2020). Guidelines for limiting exposure to electromagnetic
+        fields (100 kHz to 300 GHz). Health Physics, 118(5), 483–
+        524.
+
+Sasaki, K., et al. (2022). Measurement and image-based estimation
+        of dielectric properties of biological tissues: Past, present,
+        and future. Physics in Medicine & Biology.
+        https://pubmed.ncbi.nlm.nih.gov/35732164/
+
+Stricklett, K. L., & Baker, J. (2000). Electrical properties of
+        biological materials: A bibliographic survey (NISTIR
+        6564). National Institute of Standards and Technology.
+
+Anastassiou, C. A., Montgomery, S. M., Barahona, M., Buzsáki,
+       G., & Koch, C. (2010). The effect of spatially
+       inhomogeneous extracellular electric fields on neurons.
+       Journal of Neuroscience, 30(5), 1925–1936.
+       https://doi.org/10.1523/JNEUROSCI.3635-09.2010
+
+Anastassiou, C. A., Perin, R., Markram, H., & Koch, C. (2011).
+       Ephaptic coupling of cortical neurons. Nature
+       Neuroscience, 14(2), 217–223.
+       https://doi.org/10.1038/nn.2727
+
+Anastassiou, C. A., & Koch, C. (2015). Ephaptic coupling to
+       endogenous electric field activity: Why bother? Current
+
+       Opinion in Neurobiology, 31, 95–103.
+       https://doi.org/10.1016/j.conb.2014.09.002
+
+Attwell, D., & Gibb, A. (2005). Neuroenergetics and the kinetic
+       design of excitatory synapses. Nature Reviews
+       Neuroscience, 6(11), 841–849.
+       https://doi.org/10.1038/nrn1784
+
+Attwell, D., & Laughlin, S. B. (2001). An energy budget for
+       signaling in the grey matter of the brain. Journal of
+       Cerebral Blood Flow & Metabolism, 21(10), 1133–1145.
+       https://doi.org/10.1097/00004647-200110000-00001
+
+Durand, D. M. (2003). Electric field effects in hyperexcitable
+      neural tissue: A review. Radiation Protection Dosimetry,
+      106(4), 325–331.
+      https://doi.org/10.1093/oxfordjournals.rpd.a006368
+
+Engl, E., & Attwell, D. (2015). Non-signalling energy use in the
+       brain. Journal of Physiology, 593(16), 3417–3429.
+       https://doi.org/10.1113/jphysiol.2014.282517
+
+Foster, K. R., & Schwan, H. P. (1989). Dielectric properties of
+        tissues and biological materials: A critical review. Critical
+        Reviews in Biomedical Engineering, 17(1), 25–104.
+
+Fröhlich, F. (2014). Endogenous and exogenous electric fields as
+       modifiers of brain activity: Rational design of noninvasive
+       brain stimulation with transcranial alternating current
+       stimulation. Dialogues in Clinical Neuroscience, 16(1), 93–
+       102. https://doi.org/10.31887/DCNS.2014.16.1/ffroehlich
+
+Galili, I., & Goihbarg, E. (2005). Energy transfer in electrical
+         circuits: A qualitative account. American Journal of
+         Physics, 73(2), 141–144. https://doi.org/10.1119/1.1819932
+
+Guido, K., & Kiourti, A. (2020). Wireless wearables and implants:
+       A dosimetry review. Bioelectromagnetics, 41(1), 3–20.
+       https://doi.org/10.1002/bem.22240
+
+Hall, C. N., Klein-Flügge, M. C., Howarth, C., & Attwell, D.
+       (2012). Oxidative phosphorylation, not glycolysis, powers
+       presynaptic and postsynaptic mechanisms underlying brain
+       information processing. Journal of Neuroscience, 32(26),
+       8940–8951. https://doi.org/10.1523/JNEUROSCI.0026-
+       12.2012
+
+Harris, J. J., Jolivet, R., & Attwell, D. (2012). Synaptic energy use
+        and supply. Neuron, 75(5), 762–777.
+        https://doi.org/10.1016/j.neuron.2012.08.019
+
+Haus, H. A., & Melcher, J. R. (1989). Electromagnetic fields and
+       energy. Prentice-Hall.
+
+Krause, M. R., Vieira, P. G., Csorba, B. A., Pilly, P. K., & Pack, C.
+       C. (2019). Transcranial alternating current stimulation
+       entrains single-neuron activity in the primate brain.
+       Proceedings of the National Academy of Sciences, 116(12),
+       5747–5755. https://doi.org/10.1073/pnas.1815958116
+
+Laughlin, S. B. (2001). Energy as a constraint on the coding and
+       processing of sensory information. Current Opinion in
+       Neurobiology, 11(4), 475–480.
+       https://doi.org/10.1016/S0959-4388(00)00237-3
+
+Lee, S. Y., Kozalakis, K., Baftizadeh, F., Campagnola, L., Jarsky,
+        T., Koch, C., & Anastassiou, C. A. (2024). Cell-class-
+        specific electric field entrainment of neural activity.
+        Neuron, 112(15), 2614–2630.e5.
+        https://doi.org/10.1016/j.neuron.2024.05.009
+
+                                  Majcen, S., Haaland, R. K., & Dudley, S. C. (2000). The Poynting
+                                        vector and power in a simple circuit. American Journal of
+                                        Physics, 68, 857–859.
+
+                                  McLeod, K. J. (1992). Microelectrode measurements of low
+                                       frequency electric field effects in cells and tissues.
+                                       Bioelectromagnetics, Supplement 1, 161–178.
+                                       https://doi.org/10.1002/bem.2250130716
+
+                                  Misakian, M., Sheppard, A. R., Krause, D., Frazier, M. E., &
+                                         Miller, D. L. (1993). Biological, physical and electrical
+                                         parameters for in vitro studies with ELF magnetic and
+                                         electric fields: A primer. Bioelectromagnetics, 14(S1).
+
+                                  Modolo, J., Denoyer, Y., Wendling, F., & Benquet, P. (2018).
+                                        Physiological effects of low-magnitude electric fields on
+                                        brain activity: Advances from in vitro, in vivo and in silico
+                                        models. Current Opinion in Biomedical Engineering, 8, 38–
+                                        44. https://doi.org/10.1016/j.cobme.2018.09.006
+
+                                  Rafferty, C. N., Phillips, R. D., & Guy, A. W. (1992). Dosimetry
+                                         workshop: Extremely-low-frequency electric and magnetic
+                                         fields. Bioelectromagnetics, Supplement 1, 1–10.
+
+                                  Shivacharan, R. S., Chiang, C.-C., Zhang, M., Gonzalez-Reyes, L.
+                                         E., & Durand, D. M. (2019). Self-propagating, non-
+                                         synaptic epileptiform activity recruits neurons by
+                                         endogenous electric fields. Experimental Neurology, 317,
+                                         119–128. https://doi.org/10.1016/j.expneurol.2019.02.005
+
+                                  Wachtel, H. (1992). Bioelectric background fields and their
+                                        implications for ELF dosimetry. Bioelectromagnetics,
+                                        Supplement 1, 139–145.
+                                        https://doi.org/10.1002/bem.2250130713
+
+                                  Zhu, H., Lai, J.-S., Tang, Y., Hefner, A. R., Jr., & Chen, C. (1999).
+                                         Modeling-based examination of conducted EMI emissions
+                                         from hard- and soft-switching PWM inverters. In
+                                         Conference Record of the 1999 IEEE Industry Applications
+                                         Conference.
+
+                                      Grammatical Justifications
+[0] Grammatical Justification. The opening uses indirect discourse after putaverant and historic
+infinitives/future participles for the imagined consequences. Cuius supplies a genitive of characteristic;
+ut...complecteretur is a result clause; the closing quasi clauses give an idiomatic predicative contrast rather
+than reproducing English word order.
+
+[1] Grammatical Justification. Secundum quod introduces the governing model; relative qui agrees with
+defectus. Dum takes the indicative for concurrent physical processes. Quibus is an ablative of means, and
+the infinitives after dicere and tribuere form a balanced explanatory construction.
+[2] Grammatical Justification. Cardo is in apposition to propositum; quo is an ablative of means with
+vertitur. The relative clauses observe gender and number, while ubi introduces the operative condition and
+qua an ablative of manner defining the governing rule.
+[3] Grammatical Justification. Quod gives the causal ground for interest; ablatives ambitu and finibus
+accompany the passive coercetur. Hinc fit ut takes a consecutive substantive clause with pertineat; etiamsi
+properly governs the subjunctive destinatum sit for a conceded circumstance.
+[4] Grammatical Justification. Quod introduces cause, while conservandis is a gerundive governed by
+ex/pendet in sense. The repeated ablatives identify physical sources or means. Non tantum...sed quod
+balances two substantive clauses, both appropriately subjunctive within a characterization of mechanism.
+[5] Grammatical Justification. The coordinated nominatives are subjects of consequuntur. Genitives
+memoriae, attentionis, and agentiae specify their head nouns; aequilibrium restituendum uses the gerundive
+to express the purpose of participation.
+[6] Grammatical Justification. The ablative absolute-like setting ubi...spectantur frames the scale change.
+Instrumentorum governs the participles commutantium and communicantium. Quo compenset is a relative
+purpose clause with the subjunctive.
+[7] Grammatical Justification. Each technical symbol governs an accusative predicate after significat,
+with omitted repetitions of the verb producing classical ellipsis. Cui is dative with maximus est in the sense
+of possession; nisi introduces an exceptive clause with the subjunctive defining a possible local exception.
+[8] Grammatical Justification. Suum cuique uses a distributive dative, and nulli licet takes the dative with
+a complementary infinitive. Quod...ferat is an indirect question requiring the subjunctive. The final ut-
+clause is substantival after in eo sita est, with cuique as dative of recipient.
+[9] Grammatical Justification. Differentia is ablative with nititur. Oportet governs the subjunctive
+obtineat in an impersonal necessity construction. Quo...eo supplies the classical proportional comparative
+syntax.
+[10] Grammatical Justification. Ubi meminerimus uses the perfect subjunctive in a generalizing temporal
+condition. Mutandis is a gerundive ablative governed by in; requirit ut introduces a result/object clause with
+coordinated passive subjunctives. Etiamsi takes subjunctive sit for concession.
+[11] Grammatical Justification. The imperative perturba states the general law vividly. Qua is an ablative
+of means; quod...ferat is a relative clause of characteristic. Cum...sit is causal with subjunctive, and
+quo...videbatur is a temporal-relative construction preserving the rhetorical close.
+[12] Grammatical Justification. Jussive subjunctives repraesentetur and efficiat introduce formal
+definitions. Regionis and defectus are possessive/specifying genitives; ut introduces the predicative
+capacity in which the void is represented.
+[13] Grammatical Justification. Absentiae is dative with tribuit; qua is an ablative of measure. The paired
+indirect questions unde...oriatur and per quos...perveniat properly require subjunctives.
+[14] Grammatical Justification. Sit is a definitional jussive subjunctive. The relative qui is modified by a
+contrary-to-fact condition, si...abesset, with exspectaretur in the imperfect subjunctive.
+[15] Grammatical Justification. Onus is nominative subject; inanis is a genitive of specification, while
+per and intra take accusatives to define spatial and temporal integration.
+
+[16] Grammatical Justification. Defectuum depends on series, while singillatim minimorum agrees with
+it in the genitive plural. The non modo...sed construction balances two nominative predicates, and quod
+introduces a defining relative clause.
+[17] Grammatical Justification. The ablatives describe setting and condition. Qui agrees with ambitu and
+governs a list of accusative objects. The correlative non...sed marks the scope contrast, and in quo uses the
+ablative for location.
+[18] Grammatical Justification. Eget takes the ablative amplificatione; tam...ut introduces a result clause.
+Qua is ablative of means, while qua...moveatur is an indirect formulation requiring the subjunctive. Maximi
+momenti is a genitive of value.
+[19] Grammatical Justification. The dative antennis/campo follows propria est. The ut-clause follows
+suadet and uses fingat; qua is an ablative of means with causa formalis. The final secundum governs
+accusatives enumerating the determinants.
+[20] Grammatical Justification. The quoted English phrase is preserved verbatim. Quo...dicitur is an
+ablative of manner; nisi takes the subjunctive adsit, and quo...transeat is a relative purpose clause. Quomodo
+introduces an indirect question with possit; cum is causal with coniungat.
+[21] Grammatical Justification. Qua...coerceatur is a relative clause of characteristic. The Greek technical
+nouns logos and energeia are retained in learned Latin. Cum introduces repeated temporal circumstances,
+and quibus is ablative of means with the passive regitur.
+[22] Grammatical Justification. Cui vis suppeditatur uses the dative of recipient. Quo...eo gives
+proportional comparison. Quid consequatur is an indirect question; cum...fiant and ut...interrumpatur
+express circumstance and result. The infinitives dormire and laborare are governed by dici potest.
+[23] Grammatical Justification. Huic disputationi is dative with requiritur. Ut statuatur is a purpose clause
+governing indirect discourse; postquam takes the indicative. Ut...repraesentet expresses purpose, and
+num...exhibeat is an indirect question requiring the subjunctive.
+[24] Grammatical Justification. Quasi...sit takes the subjunctive for an alleged conception. Nisi introduces
+the condition; qua...ingrediatur is a relative clause of characteristic. Quod is causal, while quomodo
+introduces an indirect question with subjunctives.
+[25] Grammatical Justification. Ex governs ablatives naming the material basis. Quibus is ablative of
+means; qua likewise marks means. Necesse est governs cogat and coordinated purpose subjunctives; longe
+abest quin idiomatically requires the subjunctive expellat.
+[26] Grammatical Justification. Cum introduces a temporal-causal clause; ut...colligantur is purposive.
+The paired unde/ubi relations use locative adverbs. Ad id replendum is a gerundive expressing purpose,
+with quod introducing the object clause of exinanivit.
+[27] Grammatical Justification. Computationi is dative with accessoria; eam is the object of constituit.
+Ex quibus uses the ablative of source. The gerund genitives colligendi/agendi specify sermo, and the final
+elliptical non potest repeats abstracta esse without weakening the assertion.
+[28] Grammatical Justification. Eget governs the ablative statu. Ita ut introduces a result clause with
+pertineat. Quo is ablative of means; the repeated neuter relatives create a formal causal sequence, and a qua
+marks the source of the name.
+[29] Grammatical Justification. Cur introduces an indirect question with possit. Quae agrees with
+distributio; antequam takes the subjunctive inducatur for anticipated action. Cuius is possessive genitive,
+and qua is ablative of means in the final relative clause.
+
+[30] Grammatical Justification. Processui is dative with tribuit. Comparative adverbs govern the ellipsis
+of esse potest. The indirect statement after ostendunt uses the accusative onus and infinitive perire; per
+quem is an accusative path expression.
+[31] Grammatical Justification. Non necesse est ut takes permaneat; quo...fiat is a purpose/result clause.
+The accusative list stands in apposition to seriem. Quod introduces a defining relative clause, while quae
+coordinates the repeated production and restitution without qualification.
+[32] Grammatical Justification. ‘Momentum ... versatur’ gives the governing sphere with in + ablative;
+the antithesis uses potius quam. Passive and deponent forms describe physical processes without adding
+agency, while genitives specify the integrated burden and its continuously produced vacua.
+[33] Grammatical Justification. The quoted Latin maxim remains verbatim. ‘Prohibet quominus ...
+appareat’ takes the regular subjunctive after prevention; ‘qua ... nequit’ is a relative clause of characteristic
+explanation. ‘Quod ... nominavit’ is a substantive relative object resumed by ‘describit’.
+[34] Grammatical Justification. The apparatus is defined by a nominative predicate followed by a partitive
+genitive catalogue. ‘Quorum’ agrees with the plural subsystems and introduces their properties. ‘Ita ut ...
+determinetur’ is consecutive with the subjunctive; taxis, kineseis, and telos preserve the manuscript’s Greek
+technical vocabulary.
+[35] Grammatical Justification. Datives ‘figurae’ and the direct object ‘formam’ follow tribuit. ‘Dum ...
+apparet’ marks contemporaneous manifestation, and the predicate nominatives after ut enumerate forms
+without changing causal identity.
+[36] Grammatical Justification. ‘Quasi ... haberet’ properly uses the imperfect subjunctive for a rejected
+supposition. Participles ‘distinguens’ and ‘integrata’ agree with basis and magnitudo respectively. The
+relative ‘in quo’ takes its antecedent from dominium and retains the precise mathematical reference-state
+definition.
+[37] Grammatical Justification. The passive periphrastic idea is rendered by ‘sinenda est’. Concessive
+quamvis clauses take subjunctives. ‘Antequam ... redierit’ uses the perfect subjunctive for anticipated
+completion, and ‘a quibus’ governs the ablative required by pendet.
+[38] Grammatical Justification. The ablative ‘communicatione retiali’ states circumstance. Ellipsis in the
+causal sequence gives idiomatic compression. ‘Antequam ... usurpetur’ and ‘quomodo ... efficiat ut ...
+reproducant’ use subjunctives for anticipation and indirect explanation/result; gerundive ‘collocandum est’
+expresses necessity.
+[39] Grammatical Justification. ‘Inter ... et’ governs the paired accusatives. ‘Huic’ is dative with
+privilegium, preserving the denial of special ontology. The final ‘ante ... quam ... relaxetur’ takes a
+subjunctive because the relaxation is prospective relative to arrival.
+[40] Grammatical Justification. ‘Quo describatur’ is a relative clause of purpose with the subjunctive;
+‘quomodo ... transeat’ is an indirect question. Poyntingianum is a regular Neo-Latin adjectival formation.
+[41] Grammatical Justification. Genitives define the kind of flux and energy. The ablative ‘qua’ states
+the rate or manner, while the citation remains unchanged.
+[42] Grammatical Justification. ‘A ... seiungi’ uses the ablative of separation; ‘effecto’ agrees with opere
+and ‘in sarcinas’ preserves the physical direction of work upon charges.
+[43] Grammatical Justification. ‘Consequitur’ introduces accusative-and-infinitive indirect statement.
+The genitive plural participle ‘inclusorum’ modifies electronum; present participles render continuing
+physical operations without changing the claims.
+
+[44] Grammatical Justification. ‘Quibus’ is instrumental ablative referring to tentacula; ‘cum
+quibuscumque ... systematibus’ takes the ablative after cum. ‘Quamvis ... localis’ is concessive, and ‘intra
+quam ... possit’ uses a relative subjunctive of characteristic/purpose.
+[45] Grammatical Justification. ‘Prohibet quominus ... tractet’ requires the subjunctive, and ‘quasi ...
+esset’ marks the rejected fiction. Passive ‘componitur’ and ablative agent/instrument ‘architectura
+informativa’ express coordination without adding agency.
+[46] Grammatical Justification. The real condition uses present indicatives. ‘Instrumentum agens’ is the
+object of includit; ‘integrali superficiali’ is ablative of means.
+[47] Grammatical Justification. The opening ablative absolute-like phrase states circumstances. ‘Pars ...
+suppeditatur’ remains singular despite intervening genitives; the relative genitive ‘cuius’ identifies the
+larger circuit’s effective limits.
+[48] Grammatical Justification. ‘Ut systema’ is predicative with ingreditur. The perfect passive ‘mensae
+sunt’ agrees with the paired properties; genitives define tissues and potential. ‘Qua ... parit’ is an
+instrumental relative explaining Faradaic induction as causa efficiens.
+[49] Grammatical Justification. The ablative absolute ‘fluxu magnetico variante’ states the physical
+cause/circumstance, and ‘genitam’ agrees with vim.
+[50] Grammatical Justification. The infinitive after potest expresses capacity; ‘sinit ut ... redistribuant’
+takes a result/content subjunctive. Accusatives after tractat are paired with predicative ut phrases, and all
+citations remain verbatim.
+[51] Grammatical Justification. The genitive ‘rei’ depends on cardo. ‘Cum ... creet’ is causal and therefore
+subjunctive; the passive ‘hauritur’ preserves the asserted direction of transfer. ‘Ad aequilibrandum’ is a
+gerund expressing purpose.
+[52] Grammatical Justification. Participles ‘traditam’ and ‘hausta’ agree with energiam. ‘Sub quibus ...
+adhibet’ precisely defines the asserted circumstances without qualification. Ablative ‘gradibus ...
+instructum’ describes possession, while causa efficiens remains in the manuscript’s scholastic-Latin form.
+[53] Grammatical Justification. The gerundive ‘tribuendum est’ expresses obligation; the negative
+purpose clause takes ne with subjunctives. The infinitive clause after exprimit reports the principle’s
+content. Instrumental ‘qua’ explains the stabilising logic.
+[54] Grammatical Justification. The passive periphrastic ‘metienda est’ expresses necessity. ‘Per quas ...
+fiat’ is a relative clause with subjunctive describing available pathways. ‘Dato ... dato’ are ablative
+absolutes; ‘num ... sequatur’ is an indirect question requiring subjunctive.
+[55] Grammatical Justification. The gerundive ‘intellegendum est’ states necessity. The relative ‘in quo’
+locates continual displacement within the driven system. Gerund ‘relaxandi’ depends on proclivitas;
+temporal cum clauses retain the indicative for repeated physical conditions.
+[56] Grammatical Justification. ‘Cum ... ponitur’ is temporal/circumstantial. The compound subject takes
+plural affirmant. The ablative after dependentia a expresses dependence, and ‘quae ... participant’ agrees
+with corpora.
+[57] Grammatical Justification. The ablative absolute ‘ipso telo ... exigente’ gives the instrument’s
+purpose as cause. Dative fonti follows proxima and ei follows adhaeret. ‘Etiamsi ... sit’ takes a concessive
+subjunctive; the comparative complement is preserved.
+[58] Grammatical Justification. Accusative-and-infinitive follows sequitur. The jussive subjunctive
+‘aestimetur’ sets the proposed estimation procedure; the gerund ‘integrando’ is ablative of means. ‘Quae’
+agrees with structura and contrasts measurable determination with presumption.
+
+[59] Grammatical Justification. ‘Cur ... implicetur’ and the concluding ‘cur ... occupet’ are indirect
+questions with subjunctives. Passive infinitives form substantive clauses apposed to res usitata. Ablative
+with a/ab follows pendet.
+[60] Grammatical Justification. Ablatives after regitur enumerate governing physical determinants. The
+relative ‘quibus ... efficiuntur’ is instrumental. ‘Quem’ agrees with sensum and is the object of postulat; the
+final accusatives are governed by habet.
+[61] Grammatical Justification. The dative frequentiae follows obnoxia. The conditional si clause uses
+indicative for the stated physical dependency. ‘Quas’ agrees with quantitates and is object of tractat; the
+formula and citation strings remain unchanged.
+[62] Grammatical Justification. ‘Cur ... nequeat’ is an indirect question with subjunctive. Participial
+‘separatum’ agrees with compartimentum. ‘Quatenus ... permittunt’ limits the definition physically; ‘pro
+quo’ refers to receptaculum and the superlative predicate preserves the maximisation rule.
+[63] Grammatical Justification. The modal debet governs manere. Ablative gerund ‘in aestimanda
+expositione’ and coordinated ablatives define fields of use. ‘Quod ... copuletur’ is an indirect question with
+subjunctive; impersonal licet governs the coordinated infinitives.
+[64] Grammatical Justification. The singular recensio governs describit despite its compound genitive
+authorship. ‘Modum quo’ introduces a relative of manner. The contrasted purpose clauses ‘non ut ... sed
+ut ...’ take subjunctives; the passive infinitive regi preserves the established dependency.
+[65] Grammatical Justification. The initial quod clause is substantival and subject of sequitur. Datives
+follow appropinquat, while ablatives with ab mark separation. ‘Utrum ... praebeat’ is an indirect question;
+‘ita ut ... fiat’ is consecutive, with ‘e quibus ... possit’ expressing the asserted reservoirs of withdrawal.
+[66] Grammatical Justification. ‘Cui ... inniti debet’ takes the dative governed by inniti. Predicative ut
+phrases follow definit and tractat. The dative ‘frequentiis inferioribus’ marks the frequency range, and all
+citations remain verbatim.
+[67] Grammatical Justification. The dative coefficienti and accusative determinationem follow tribuit.
+‘Pro textu et frequentia’ distributes variation by tissue and frequency. The dative plural proprietatibus
+follows respondent, and the participles mensurabilibus and adhibitis agree with those properties.
+[68] Grammatical Justification. The two coordinated jussive subjunctives (significet, sit) conventionally
+introduce mathematical notation. Relative clauses use quae for energia and quem for coefficiens; the
+ablatives enumerate determining conditions.
+[69] Grammatical Justification. Magnitudinem is the accusative object of significat, with vacui localis as
+a possessive genitive; huic aequationi is dative after paret.
+[70] Grammatical Justification. The repeated accusatives are predicate objects of significat. Causa takes
+the genitive ornatus; quippe quae introduces a causal relative subjunctive, while quam agrees with rationem.
+[71] Grammatical Justification. Quod is the object of persequi within a relative clause whose passive
+periphrastic sense is conveyed by cogeretur. Ad with gerundives expresses purpose, and the repeated ubi
+clauses govern indicative statements of actual conditions.
+[72] Grammatical Justification. The gerundive comparanda est expresses required comparison. Interest
+governs the indirect question utrum...imponatur; quibus is ablative of circumstance, and the concessive
+quamvis clause properly takes the subjunctive sit.
+[73] Grammatical Justification. Ex takes the ablative source; pendere takes ab with the ablative. Quo and
+quibus are ablatives of means/circumstance, while the sensed proposition uses accusative-infinitive
+(continuitatem...interruptam esse). Purpose is expressed by ad with gerundives.
+
+[74] Grammatical Justification. Tum demum...cum forms an emphatic temporal correlation. Qua de re is
+an ablative connective; facultatem governs the genitive gerund moderandi, and inter quos refers to plural
+effectus.
+[75] Grammatical Justification. The indirect statements after demonstraverunt use accusative-infinitives.
+Non in eo...ut affirmetur rejects a proposition with subjunctive, while in propositione...stabilienda uses a
+gerundive of purpose; neque opus esse ut introduces another substantive subjunctive.
+[76] Grammatical Justification. The infinitive definire belongs to indirect statement after ostendunt.
+Quibus is ablative of means; prout introduces an indicative clause of proportional variation.
+[77] Grammatical Justification. The report after demonstraverunt is accusative-infinitive
+(stimulationem...affecisse). Extollentes agrees with the reviewers; responso...pendente is an ablative
+absolute. Technical in vitro and in vivo remain conventional academic Latin.
+[78] Grammatical Justification. Qui refers to campos. Ostenderunt governs two accusative-infinitive
+constructions; tollendo is an ablative gerund of means. The conditional si clause uses indicative valet for
+the asserted test condition, with debet in the conclusion.
+[79] Grammatical Justification. Vetant ne properly takes a negative substantive subjunctive. Quamvis...sit
+and ut...corrumpatur use subjunctives for concession and result/purpose; qua is ablative of means and cuius
+a possessive genitive. The quoted English phrase is preserved verbatim.
+[80] Grammatical Justification. The relative quo introduces a characteristic/conceptual subjunctive (sit).
+Quibus is ablative of circumstance; in quo agrees with nexus and locates the ordered causal terms. The
+direct quotation remains unchanged.
+[81] Grammatical Justification. The gerundive habenda est expresses necessity; pro takes ablatives. The
+four ad-gerundives express purpose and agree with their objects, while quibus is ablative after nititur.
+[82] Grammatical Justification. Ex quibus introduces an ablative of origin. Attribuunt takes a direct object
+plus datives. Non postulat ut governs a substantive subjunctive; sustentata agrees with taxis.
+[83] Grammatical Justification. Antequam with poneretur takes the subjunctive for anticipated historical
+relation; quatenus introduces an indirect question with possit. The principal conclusions appear as
+accusative-infinitives after ostendit and in apposition to re.
+[84] Grammatical Justification. Forma...elementaria is an ablative of specification; in qua agrees with
+operatio, and a figura is ablative of agent/cause with the passive definitur.
+[85] Grammatical Justification. The imperatives muta and perturba sharpen the formal consequence.
+Quibus is ablative of circumstance; quam and quem correctly match operationem and ordinem. Neque
+requirit ut takes a substantive subjunctive.
+[86] Grammatical Justification. Cum...collatus is a participial comparative construction. Qua and intra
+quem are ablative and locative relatives; qua with nititur is ablative of means/support.
+[87] Grammatical Justification. Utrum...constet and utrum...possit are balanced indirect questions with
+subjunctives. Quo is an ablative of means; the final infinitive clause stands in apposition to propositione.
+[88] Grammatical Justification. The ablatives after nititur mark supports. Non modo ut...sed ut balances
+purpose clauses; repeated a/ab phrases express separation. Quae...erodat is a relative clause of characteristic
+with subjunctive.
+[89] Grammatical Justification. Significet is the conventional jussive for defining notation. Intellectam
+agrees with cohaerentiam; quo is ablative of degree, and conservandorum atque reficiendorum are genitive
+gerundives dependent on capax.
+
+[90] Grammatical Justification. Facultatem governs the genitive gerund restituendi. Sequitur ut
+introduces a consecutive substantive subjunctive; etiamsi properly takes the subjunctive maneat.
+[91] Grammatical Justification. Ex and a take ablatives to express dependence and source; eius is a
+possessive genitive referring to coefficiens.
+[92] Grammatical Justification. Exinanitio is nominative subject, with biologica and respondens
+agreeing; haec serves as the demonstrative predicate introducing the equation.
+[93] Grammatical Justification. Ne...quidem encloses emphatic parallel ablatives. Neque opus est ut takes
+a substantive subjunctive; cum...praebeat is causal, and illa/haec distinguish ratio from energeia.
+[94] Grammatical Justification. Quam agrees with energia; quamquam takes indicative for an admitted
+fact. The comparative ablative minore is completed by quam, and ad...conservandam is a purpose
+construction.
+[95] Grammatical Justification. Quae agrees with defectiones; cum...cogitur gives the operative
+circumstance. Cognitionis sustinendae and ad ordinationem conservandam are respectively a genitive
+gerundive and an ad-gerundive of purpose.
+[96] Grammatical Justification. A Lethe is ablative of agent after the passive. Significaret is a
+potential/contrary conceptual subjunctive; quo is an ablative of time, and introductam agrees with
+facultatem.
+[97] Grammatical Justification. Tam...ut introduces a result clause with sit. Qui restituendi sunt is a
+passive periphrastic of necessity; ita demonstrans governs an accusative-infinitive, and etiamsi takes the
+subjunctive mutentur.
+[98] Grammatical Justification. Ad gradus...restituendos expresses purpose. Operationibus is dative after
+praebet; quibus is ablative of means, and the final coordinated genitives depend on oeconomia.
+[99] Grammatical Justification. Cum...abundat states an actual circumstance. Restituendi sunt is a passive
+periphrastic; ita admonentes governs the accusative-infinitive, and alicui operationi is dative of reference.
+[100] Grammatical Justification. The three accusative predicate phrases depend on significat. The indirect
+statement after indicat uses accusative-infinitive; cuius is possessive, and the final redigenda is a gerundive
+of necessity.
+[101] Grammatical Justification. The quoted technical term is preserved verbatim. Quae refers to
+disciplina; ad...sustinendam is purpose, locis...circumscriptis is ablative location, and intellegendus est is
+a passive periphrastic.
+[102] Grammatical Justification. Contendit takes an accusative-infinitive. Quo modo...afficiant is an
+indirect question with subjunctive; the si clause uses indicatives to state the thesis’s asserted premises.
+[103] Grammatical Justification. Both quoted English phrases are preserved verbatim. Quibus is ablative
+of means; memoriam ferentes agrees with status, per C significata with continuitas, and the colon introduces
+a coordinated explanatory sequence.
+[104] Grammatical Justification. Aliam speciem is the accusative object of induit; ubi introduces the
+temporal circumstance, while ut ita dicamus takes the deliberative first-person subjunctive.
+Communi...genere is an ablative of manner, and the paired genitives after taxis precisely define the
+conducted quantities.
+[105] Grammatical Justification. Qua is an ablative relative of means referring to relationem; the passive
+periphrastic-like sense of posita est locates the theory's ancestry without qualification. Ubi defines every
+symbolic term, and the final antithesis uses predicate adjectives recursivus and episodicus.
+
+[106] Grammatical Justification. Quippe qui governs the causal subjunctive repraesentet; quod is the
+nominative subject of efficitur. The correlative quo...eo construction expresses proportional increase, while
+ullam substantiam is the object of acquirere in indirect dependence on postulat.
+[107] Grammatical Justification. Dum with the present indicative describes simultaneous recurring
+action. The catalogue uses parallel active presents with explicit accusative objects or dative complements;
+propinquitatis effectivae is a genitive dependent on principio.
+[108] Grammatical Justification. Conditionum governs the present participle efficientium, whose object
+is successorem suum. Ad rete describendum is a gerundive purpose construction; cuius is a possessive
+relative referring to rete, and apprehendendum est is a passive periphrastic of necessity.
+[109] Grammatical Justification. Homini...circumdato is a dative phrase identifying the affected person,
+with the participle agreeing in case, number, and gender; detractio is the nominative subject of the passive
+scribitur.
+[110] Grammatical Justification. Inter governs two accusatives; the ablative absolute densitate...auctis
+gathers the increasing variables. In qua is a locative relative construction describing condicionem, while ad
+nihilum expresses the limiting endpoint.
+[111] Grammatical Justification. Quamquam takes the indicative intravit because the concession is
+asserted as fact. Antequam governs the perfect subjunctive expletus sit for anticipated completion; ita ut
+introduces the consecutive subjunctive exhibeat, and alios...ortos esse is an accusative-infinitive after
+significat.
+[112] Grammatical Justification. The comparative accuratior is completed by quam. Quod refers to
+levamen; ipso...momento is an ablative of time, and quo introduces a relative temporal clause. The
+subjunctive renovet expresses the characteristic result embodied by the idiom solum ut.
+[113] Grammatical Justification. Habenda non est is a passive periphrastic prohibiting the mistaken
+identification, with pro plus ablative. Quod perseverat is a substantive relative clause; flammae and
+cavernae are datives after similior, and per quae is an instrumental relative phrase.
+[114] Grammatical Justification. Inter with the accusative places homines among the principal agents;
+instrumentis is dative after propinqua, and explentibus agrees with it. The six coordinated clauses preserve
+the causal chain; ad with the accusative marks the end toward which energy is contributed.
+[115] Grammatical Justification. Reticulationis electricae is a dependent genitive defining amplitudo.
+Quae otiosae esse putantur contains a nominative-infinitive under the passive of puto; apprehendendum est
+again supplies the impersonal force of obligation.
+[116] Grammatical Justification. In eo...quod uses a correlative demonstrative and substantive causal-
+description clause. Quae refers to responsa; qua is an ablative relative of means defining the formal cause,
+and mutatis mutandis is the conventional ablative absolute.
+[117] Grammatical Justification. Ambitibus...continentibus is an ablative of circumstance with agreeing
+participle. Efficere ut governs noxius sit; the accusative-infinitive ordinationem...fieri balances it after est,
+while exspectat ut introduces the substantive subjunctive valeat. Quoted English is retained verbatim.
+[118] Grammatical Justification. Vocabulis cyberneticis is an ablative of respect or manner. Se ipsum
+sustinens agrees with systema; quae first agrees with transitionum by sense as a relative referring to the
+transitions, while the later quae modifies condiciones physicas directly.
+[119] Grammatical Justification. Contra quod refers to receptaculum, and the correlative quo...eo
+expresses proportional proximity and frequency. Organismis is dative after imponit; cuius is possessive,
+and cum takes the causal subjunctive praebeat. Illa and haec distinguish ratio from energeia.
+
+[120] Grammatical Justification. Tamquam introduces the predicative nominative coniuncta...series. The
+ordered adverbs primum, secundum, tertium organize the derivation; inter takes two accusatives, and
+propinqua agrees with receptacula.
+[121] Grammatical Justification. Secundum governs the accusative rationem; inter governs paired
+accusatives. Ita ut introduces the consecutive subjunctive pendeat, whose source is expressed by ab/a with
+ablatives.
+[122] Grammatical Justification. Ab and in distinguish origin from direction; per takes accusatives of
+means. The infinitives aestimare and tractare stand predicatively after munus...est, and non mensam agrees
+with causam.
+[123] Grammatical Justification. Ita...ut introduces a result clause with relinquatur. Quo versus introduces
+an indirect question with the subjunctive hauriatur; physicae is dative after superimposita, and cum takes
+the temporal indicative aestimantur for the stated derivation.
+[124] Grammatical Justification. Occupet is a jussive subjunctive introducing the mathematical setup,
+with regionem as its accusative object. A fontibus is an ablative of agency/source, with appositional
+ablatives densitate...atque densitate; cum takes the causal subjunctive praebeat. The source's unusual colon-
+semicolon sequence is preserved.
+[125] Grammatical Justification. A statu...variante is an ablative of source with an agreeing participle;
+genitum modifies campum. Huic argumento is a dative of reference, and the non...sed contrast distinguishes
+field strength from energy flux.
+[126] Grammatical Justification. Quae is the subject of transit and refers to energia; quemlibet...finem is
+its accusative object, with circumdantem agreeing and taking instrumentum as object. Ex with the ablative
+marks the computational source.
+[127] Grammatical Justification. Theorem is rendered by the neuter theorema; relationem is the
+accusative object of praebet, modified by agreeing localem and respondentem.
+[128] Grammatical Justification. Ubi introduces the location-condition with the indicative cadit; infra
+takes the accusative statum, while dynamically requisitum agrees with it. Vacui localis is a genitive defining
+magnitudo.
+[129] Grammatical Justification. Vacui is a defining genitive dependent on onus; integratum agrees with
+the neuter onus, and per takes accusatives for spatial and temporal extent.
+[130] Grammatical Justification. Terminus defectus uses a defining genitive. Quoniam introduces an
+asserted causal clause; per quas is a relative phrase of route, and ubi introduces the physical condition. In
+vim electromotivam expresses the result of convertit.
+[131] Grammatical Justification. The ablative absolute currente...descripto frames the displayed formula;
+secundum with the accusative expresses dependence on frequency.
+[132] Grammatical Justification. Viae biologicae participantis is a dependent genitive; intra takes the
+accusative, and the perfect passive participle commutata agrees with potentia.
+[133] Grammatical Justification. The conditional passive subjunctive referatur states the chosen frame of
+reference; definiatur is a jussive passive introducing the formal definition.
+[134] Grammatical Justification. Organismo is a dative of possession/availability with praesto, while the
+passive verb keeps energia as subject.
+[135] Grammatical Justification. The relative cuius supplies possession; quae agrees with the two plural
+antecedents, and priusquam takes the subjunctive efficiat for an anticipated result.
+
+[136] Grammatical Justification. The passive infinitive describi complements potest; cuius is a possessive
+relative, and ex with the ablative states the condition on which stability depends.
+[137] Grammatical Justification. Systematis nervosi and cohaerentiae...ordinatae are possessive
+genitives; ex with the ablative marks source, and the final accusative series depends on per.
+[138] Grammatical Justification. Quae with the gerundive expresses necessity; si...retineat is a
+conditional subjunctive, and secundum quem introduces the governing order without imitating English
+word order.
+[139] Grammatical Justification. Qua is an ablative of definition/reference; quo is an ablative of degree,
+while the final accusative list is governed by inter.
+[140] Grammatical Justification. Definiatur is jussive passive; the technical variables stand in dependent
+genitives after functio.
+[141] Grammatical Justification. A receptaculo is an ablative of agent; ad with the accusative expresses
+the comparative reference of proportionality.
+[142] Grammatical Justification. Quam is the direct object of requirit and agrees with potentia; the
+predicate adjective dominans agrees with receptaculum.
+[143] Grammatical Justification. Ex eo receptaculo is governed by haurit; quod clauses define the
+operative reservoir, and the participle distans agrees with corpus while taking a with the ablative.
+[144] Grammatical Justification. Sub takes the ablative; consideratis agrees with condicionibus, and the
+passive scribitur appropriately introduces notation.
+[145] Grammatical Justification. Instrumento proximum uses the dative with the adjective; manui/capiti
+and manibus/trunco are datives with admovetur and innititur; ubicumque takes the indicative for a general
+fact.
+[146] Grammatical Justification. The ablative absolute receptaculo...inducto states the introduced
+condition; si...fiat and etiamsi...maneat use subjunctives for the modeled contingency and concession.
+[147] Grammatical Justification. Ut...minuatur is a substantive result/content clause after postulat;
+crescente...aemulo is an ablative absolute expressing the correlated increase.
+[148] Grammatical Justification. Qua is an ablative of means; the gerundive comprehendendum est
+expresses necessity, and ita ut...disponantur gives the resulting circular arrangement.
+[149] Grammatical Justification. The genitive vacui electromagnetici specifies the form; autem supplies
+a restrained transition.
+[150] Grammatical Justification. Si...distinguantur is a conditional passive subjunctive; huic exemplari is
+dative with propria, and unde naturally expresses the source from which the argument begins.
+[151] Grammatical Justification. Fluxui...transeunti is dative after coniungit; antequam takes claudat for
+prospective action, and demonstrandi is a genitive gerund dependent on onus.
+[152] Grammatical Justification. The gerundive phrase sapiente...inveniendo follows ex; qui...scripserit
+is characteristic/result, quod introduces indirect assertion with observatae sint, and the imperfect
+subjunctives privaret and praeberet mark counterfactual consequence and comparison.
+[153] Grammatical Justification. Ad with accusatives expresses disciplinary belonging; quae is the
+subject of sustinet, argumento is dative with obtingentem, and cuius marks possession.
+[154] Grammatical Justification. Ne...fiat is a negative result clause after impediunt; ut...praebeat is a
+result clause after efficit, and cuius...reperiatur is a characteristic relative describing the rejected fitted
+constant.
+
+[155] Grammatical Justification. The gerundives conectenda est and habenda express obligation and
+treatment; eisdem parametris is dative with respondere, and prout introduces proportional development.
+[156] Grammatical Justification. Huic partitioni is dative with necessariam; illis oneribus is dative with
+respondere, and the ablative absolute-like phrase tempore...relato specifies temporal relation.
+[157] Grammatical Justification. Cui potentia rata est uses a dative of possession; etiamsi...sit is
+concessive subjunctive, and the ablative absolute densitate...variata states the controlled experimental
+variation.
+[158] Grammatical Justification. The infinitives afficere and efficere depend on posse; ordinationi is
+dative with conectitur, and etiamsi...videantur is concessive subjunctive.
+[159] Grammatical Justification. Unicuique fonti and ei propositioni are datives of recipient; the infinitive
+series is appositional to synthesis, while exprimi posse forms indirect statement after demonstrare.
+[160] Grammatical Justification. Quibus is ablative of means; indirect statements after constituit use
+accusative-infinitive, ut...respondeatur is a substantive jussive/result clause, and quibus refers to the paired
+instrumental ablatives.
+[161] Grammatical Justification. Cuius is possessive; the gerundive definiendus est expresses necessity,
+ut...distingui possit states the required degree, and his quantitatibus...determinatis is an ablative absolute.
+[162] Grammatical Justification. The ablative phrases primo gradu through sexto mark successive levels;
+relative clauses agree with their antecedents, while ut with fiat is a consecutive result clause after efficit.
+Nullus takes a partitive genitive, and descriptiones governs predicate adjectives in the nominative plural.
+[163] Grammatical Justification. In hac ipsa continuitate is locative ablative with positum est. The cum
+clause uses the indicative for a general recurrent circumstance. Repeated fit clauses use predicate
+nominatives to express transformation, while participem agrees with corpus and governs the genitive illius
+campi.
+[164] Grammatical Justification. Intellectu is a supine in -u limiting facile. Pro with the ablative expresses
+proportion, quippe qui takes the subjunctives conservetur and possit because it supplies causal
+characterization, and cum coartat states the factual condition. The quoted English verbs are preserved
+verbatim as required.
+[165] Grammatical Justification. Etiamsi governs the subjunctive aemuletur for a concessive supposition.
+Nulla copia is the subject of constituere potest and takes the partitive genitive citationum; sub takes the
+ablative. Mensurabilis is a predicate nominative agreeing with commissura, and collocanda est is the
+passive periphrastic of obligation.
+[166] Grammatical Justification. Antequam takes the indicative intratur because the entry is treated as a
+temporal fact. The complementary infinitives amplificare and exponere depend on est; the programme's
+objects are accusatives. Quisque is singular, and the final ut clause takes permaneat after postulatur.
+[167] Grammatical Justification. Nulli variabili is dative with the impersonal licet, followed by the
+infinitive stare. The quoted device labels remain verbatim. Quatenus introduces the limiting factual clause
+with mutant, and the coordinated subjects and predicates preserve case agreement.
+[168] Grammatical Justification. Quaerit num introduces an indirect question with possit, and antequam
+takes the subjunctive temptetur for anticipated action. Quorum alterum...alterum partitions the two systems.
+Tanta...quanta expresses degree, ad takes gerundives agreeing with the accusative list, and ut reficiatur is
+consecutive.
+
+[169] Grammatical Justification. The appositional nominative tempus defines τ_v. The conditional and
+temporal clauses use indicatives for experimentally testable relations. Ut determinetur is a purpose clause,
+followed by the indirect question num...sequatur in the subjunctive.
+[170] Grammatical Justification. Ab and ex take ablatives; trans takes the accusative.
+Instrumentis...electis is an ablative absolute. Postulat governs coordinated jussive noun clauses with
+habeatur and innitatur; ad statuendum is a gerund expressing purpose and num introduces an indirect
+question.
+[171] Grammatical Justification. The accusative descriptionem is governed by comitatur, a deponent
+verb. Circa takes the accusative apparatum. Ut referantur is a purpose/result clause; ad governs the two
+contrasted accusative standards.
+[172] Grammatical Justification. Experitur is deponent and takes the accusative principium. The
+examples stand in apposition to receptaculum. Ita ut with mutetur is consecutive/purposive; munere...non
+mutato is an ablative absolute. Pro governs the ablative terminis.
+[173] Grammatical Justification. Textui is dative with aequivalentia. Quod introduces the causal
+indicative; quibus is ablative of means and quomodo introduces an indirect question with mutent. Tota
+actione...manente is an ablative absolute, and a cognitione expresses separation.
+[174] Grammatical Justification. Nisi postquam introduces the temporal prerequisite with the indicative.
+Ab and ad mark the bridge's endpoints. Quas is accusative plural as object of efficit and refers to quantitates;
+the final predicate nominatives signum magnitudoque contrast with expositio.
+[175] Grammatical Justification. Ad rem is an idiom meaning relevant; quod gives the cause. Potentiae
+and cursuum are dependent genitives, while camporum admotorum is a subjective/causal genitive. Ubi
+takes the indicative because the model's prediction is asserted as definite.
+[176] Grammatical Justification. Quaerit num governs the subjunctive sequatur; exhauritionem is its
+object and mutatio its subject. Ad takes gerundives agreeing with the accusative measurements. Ut referatur
+is a purpose clause, and the contrasted ad phrases define the causal reference.
+[177] Grammatical Justification. Ponenda est is a passive periphrastic expressing required sequence.
+Temporibus is dative with accommodantur; sub takes the ablative, and similitudine...servata is an ablative
+absolute. The participles separatae agree with expositiones, while quibus is dative with intercedit.
+[178] Grammatical Justification. The present participle exsequens agrees with apparatus; cum takes the
+ablative apparatu. Potentia...aequata and computatione...aequata are ablative absolutes. Communicationi is
+dative with intento, and tamquam introduces the predicative nominative initus.
+[179] Grammatical Justification. Both si clauses state testable conditions with indicatives. Ultra
+governs the accusative summam. The passive periphrastic abiciendi sunt agrees with gradus and expresses
+that discarding them is not required.
+[180] Grammatical Justification. Sinit governs the accusative ullam and complementary infinitive
+evanescere. The experimental directions use singular imperatives; metire is the deponent imperative.
+Repeated a/ab...ad phrases articulate the continuous measured chain, and Raab is a dependent genitive.
+[181] Grammatical Justification. Distincto iudicio is ablative of manner. The repeated conditional clauses
+use indicatives because each is a defined falsification criterion. Uno gradu is ablative of respect; mutatis
+condicionibus is an ablative absolute.
+[182] Grammatical Justification. The passive periphrastics quaerenda est and iteranda est express
+experimental obligation. A...ad marks the architectural range; in takes ablatives for the settings. The final
+si clause uses the indicative for the stated criterion of generality.
+
+[183] Grammatical Justification. The ubi clause uses the perfect passive to establish completed
+calibration. Antequam with cognoscitur treats the unknown outcome as a factual temporal boundary.
+Aptatum and aestimatus agree with their respective subjects; the repeated infinitives depend on debet.
+[184] Grammatical Justification. Examen severum and oraculum are contrasted predicate nominatives.
+Quod superest is a substantive relative clause, while eo...quod gives correlative cause. Mutatis rebus is
+ablative absolute; qua is ablative of means, and cogitur governs ut respondeat.
+[185] Grammatical Justification. Quasi introduces the subjunctive sit for the conventional but rejected
+description. Transformationibus is dative with impositam. A mittente and ad accipientem mark origin and
+destination; the final nam clause states the asserted physical reason with the indicative.
+[186] Grammatical Justification. Ne...sinatur is a substantive clause defining the consequence, with the
+passive infinitive delere. Cuius introduces a relative clause whose coordinated subjunctives characterize
+the required substrate. The ablatives informationis ratione and energiae ratione mark respects; illa and haec
+distinguish ratio and energeia.
+[187] Grammatical Justification. Vacua...appellatos is an accusative participial apposition to defectus.
+Quorum refers to the deficits; qua is ablative of means, and illis gradientibus is dative with the impersonal
+respondetur. In illo...insertum agrees with receptaculum.
+[188] Grammatical Justification. Ultra governs the accusative perturbationem. Non modo...sed etiam
+balances the two asserted biological relations; ad takes the accusative to express purpose. Quo is ablative
+of means, and tamquam introduces the predicate manifestations.
+[189] Grammatical Justification. Fit takes the predicate adjective cyberneticum. Respondentia agrees
+with milia and governs the dative signis; ab aliis instrumentis marks agency. Quarum is a possessive
+genitive with aequatio. Quam introduces comparison, and quem is a predicate accusative attracted into the
+relative clause with fiet.
+[190] Grammatical Justification. Cuius is possessive genitive and ad takes the accusative. Quae agrees
+with postulata and governs actionem. Qua is ablative of means; intra governs the accusatives ambitum and
+quam, while unum ex systematis uses the partitive ex with ablative.

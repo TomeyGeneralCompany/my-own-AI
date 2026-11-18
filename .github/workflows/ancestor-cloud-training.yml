@@ -1,7 +1,16 @@
 name: Ancestor off-laptop training
-# Published manuscripts permitted by the author. No private data repository or PAT.
+# Public book extracts are included in the repository by the rights holder.
+# Run on trusted main only; never give training artifacts to untrusted PR code.
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - published_library/**
+      - ancestor/public_library.py
+      - ancestor/public_training_setup.py
+      - ancestor/cloud_training.py
+      - .github/workflows/ancestor-cloud-training.yml
   schedule:
     - cron: '17 */6 * * *'
 concurrency:
@@ -19,7 +28,7 @@ jobs:
       PYTHONUNBUFFERED: '1'
       ANCESTOR_RESUME: ''
     steps:
-      - name: Checkout source
+      - name: Checkout original model and all eleven published book texts
         uses: actions/checkout@v4
         with:
           persist-credentials: false
@@ -29,37 +38,28 @@ jobs:
           python-version: '3.11'
       - name: Install original neural model
         run: python -m pip install -e .
-      - name: Locate author-approved public corpus release
-        id: inputs
+      - name: Verify and index every published manuscript
         shell: bash
         run: |
           set -euo pipefail
-          if ! gh release view ancestor-training-inputs --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
-            echo "Author-approved public training release not found; skipping training."
-            echo "available=false" >> "$GITHUB_OUTPUT"
-            exit 0
-          fi
-          mkdir -p "$RUNNER_TEMP/ancestor-inputs"
-          for asset in ancestor_private_training_library.zip governance.json tokenizer.json heldout.txt; do
-            gh release download ancestor-training-inputs --repo "$GITHUB_REPOSITORY" --pattern "$asset" --dir "$RUNNER_TEMP/ancestor-inputs"
-            test -s "$RUNNER_TEMP/ancestor-inputs/$asset"
-          done
-          echo "available=true" >> "$GITHUB_OUTPUT"
-      - name: Verify and import all eleven published manuscripts
-        if: ${{ steps.inputs.outputs.available == 'true' }}
+          python -m ancestor.public_library --source published_library \
+            --data "$RUNNER_TEMP/ancestor-library"
+      - name: Prepare stable owner-governed training inputs
         shell: bash
         run: |
           set -euo pipefail
-          python -m ancestor.cli import-private-library --bundle "$RUNNER_TEMP/ancestor-inputs/ancestor_private_training_library.zip" --data "$RUNNER_TEMP/ancestor-library"
+          python -m ancestor.public_training_setup \
+            --data "$RUNNER_TEMP/ancestor-library" \
+            --out "$RUNNER_TEMP/ancestor-inputs"
       - name: Restore latest SHA-256 verified Actions checkpoint
-        if: ${{ steps.inputs.outputs.available == 'true' }}
         shell: bash
         run: |
           set -euo pipefail
           mkdir -p "$RUNNER_TEMP/ancestor-recovery"
-          gh api --paginate "repos/$GITHUB_REPOSITORY/actions/artifacts?per_page=100&name=ancestor-neural-checkpoint" --jq '.artifacts[] | select(.expired == false) | .id' > "$RUNNER_TEMP/ancestor-artifact-ids.txt"
+          gh api --paginate "repos/$GITHUB_REPOSITORY/actions/artifacts?per_page=100&name=ancestor-neural-checkpoint" \
+            --jq '.artifacts[] | select(.expired == false) | .id' > "$RUNNER_TEMP/ancestor-artifact-ids.txt"
           if [ ! -s "$RUNNER_TEMP/ancestor-artifact-ids.txt" ]; then
-            echo "No previous artifact. Initializing model from fresh random weights."
+            echo "Initial owner-governed training session; no prior checkpoint."
             exit 0
           fi
           while read -r artifact_id; do
@@ -69,14 +69,13 @@ jobs:
                && unzip -oq "$RUNNER_TEMP/candidate.zip" -d "$RUNNER_TEMP/ancestor-recovery" \
                && python -c 'from ancestor.remote_checkpoints import checkpoint_metadata; import sys; sys.exit(0 if checkpoint_metadata(sys.argv[1]) else 1)' "$RUNNER_TEMP/ancestor-recovery"; then
               echo "ANCESTOR_RESUME=$RUNNER_TEMP/ancestor-recovery/latest.pt" >> "$GITHUB_ENV"
-              echo "Verified recovery from artifact $artifact_id."
+              echo "Verified continuity with cloud artifact $artifact_id."
               exit 0
             fi
           done < "$RUNNER_TEMP/ancestor-artifact-ids.txt"
-          echo "Prior checkpoints exist but no valid recovery state is available."
+          echo "Prior checkpoints found but none passed integrity verification."
           exit 1
-      - name: Continue axiom-conditioned neural training
-        if: ${{ steps.inputs.outputs.available == 'true' }}
+      - name: Train original Ancestor from all eleven works
         shell: bash
         run: |
           set -euo pipefail
@@ -93,8 +92,7 @@ jobs:
             args+=(--resume "$ANCESTOR_RESUME")
           fi
           python -m ancestor.cloud_training "${args[@]}"
-      - name: Persist neural weights optimizer and RNG state
-        if: ${{ steps.inputs.outputs.available == 'true' }}
+      - name: Retain trained neural weights and full recovery state
         uses: actions/upload-artifact@v4
         with:
           name: ancestor-neural-checkpoint

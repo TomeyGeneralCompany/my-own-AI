@@ -1,0 +1,5003 @@
+distinguishing from Calvin’s exact wording here.
+
+Cross-reference: See IV.12 on discipline.
+
+The principal marks by which the visible church is
+
+recognised are the pure preaching and hearing of the
+
+Word and the lawful administration of the sacraments.
+
+Where these are present, Calvin urges extraordinary
+
+caution before abandoning a church because of
+
+secondary defects. The doctrine of the marks therefore
+
+serves both Reformation separation from Rome and an
+
+argument against endless schism (Calvin, Institutes
+
+IV.1.9–10).
+
+The marks also reveal Calvin’s understanding of
+
+ecclesial authority. The church is recognized by fidelity
+
+to gifts and commands received from Christ, not by an
+
+autonomous institutional pedigree. Antiquity,
+
+                          407
+
+succession, learning, and size may possess evidential
+
+value, but none can compensate for the corruption of
+
+the gospel.
+
+The marks of Word and sacrament function as
+
+diagnostic variables by which an observer identifies the
+
+visible church. They are not exhaustive descriptions of
+
+every good ecclesial property. A diagnostic variable
+
+compresses a large state space into discriminations
+
+relevant to a decision. Calvin’s marks therefore act as
+
+high-value observables: where the Word is faithfully
+
+preached and heard and the sacraments rightly
+
+administered, the church is to be recognized despite
+
+many remaining defects.
+
+The constitutive ministry of Word and sacrament
+
+supplies the public grounds for recognizing a church.
+
+Recognition concerns these instituted operations in the
+
+visible body. It neither requires complete purity of
+
+                           408
+
+every member nor authorises the dismissal of a
+
+constitutive mark as incidental.
+
+The marks function as observables by which an
+
+invisible theological reality is provisionally recognised.
+
+Calvin knows God alone perfectly knows the elect, yet
+
+Christians must make practical judgments about visible
+
+churches. Word and sacraments therefore serve as
+
+public indicators. This is an observability problem:
+
+internal state cannot be directly inspected, so judgment
+
+proceeds from outputs that are causally related to the
+
+identity in question.
+
+Visible recognition proceeds through the public marks
+
+Christ appoints. Outward forms admit hypocrisy, and
+
+genuine churches contain serious defects; human
+
+judgment therefore lacks exhaustive access to each
+
+member’s inward condition. Word and sacrament
+
+nevertheless supply sufficient grounds for recognition
+
+
+                           409
+
+and communion. Calvin’s rule fixes the evidence
+
+required for that public judgment without demanding
+
+knowledge of every heart.
+
+The marks also limit schismatic sensitivity. If every
+
+local defect were treated as evidence that the entire
+
+system had ceased to be church, the recognition
+
+threshold would be so strict that stable communion
+
+would become impossible. Calvin tolerates secondary
+
+error while identifying corruption of Word and
+
+sacrament as a more fundamental failure. In signal-
+
+detection terms, he is trying to avoid both false
+
+positives and false negatives in ecclesial judgment,
+
+though his theological criteria, not statistical
+
+optimization, determine the threshold.
+
+
+
+
+                            410
+
+The visible church is recognised through the operations
+
+by which Christ gathers and nourishes his people. Let
+
+W(c) and S(c) be predicates stating that congregation c
+
+retains the constitutive ministry of the Word and
+
+administration of the sacraments:
+
+      RecognizeChurch( c )⇔W ( c )∧ S ( c );
+                                             (35)
+       RecognizeChurch( c )⇏ Perfect ( c ).
+
+Terms. Each predicate concerns substantive fidelity to
+
+the instituted operation, not the absence of every defect.
+
+Perfect(c) would require complete purity in every
+
+member and practice. Recognition is the public
+
+judgment Christians are authorised to make through the
+
+marks.
+
+Consequence. The conjunction supplies positive
+
+grounds for belonging and fellowship. A defect must be
+
+judged by whether it destroys a constitutive mark, not
+
+merely by whether it makes the congregation imperfect.
+
+God’s knowledge of the elect remains complete while
+                         411
+
+visible recognition proceeds through the means he has
+
+made public. The marks secure real ecclesial identity
+
+amid the incomplete observability of individual hearts
+
+(Calvin, Institutes IV.1.9–22; IV.2).
+
+The marks also solve a problem of false positives and
+
+false negatives. If the criterion for church identity is too
+
+permissive, any religious institution can claim the name
+
+while abandoning the gospel; if it is too strict, every
+
+imperfection produces schism. Calvin's insistence that
+
+substantial corruption can coexist with remnants of
+
+church while serious corruption can also justify
+
+separation requires a discriminating rule rather than a
+
+binary instinct. The observer must distinguish noise,
+
+local error, and correctable deviation from corruption of
+
+the channels by which the system reproduces its
+
+identity.
+
+
+
+
+                            412
+
+That reproductive dimension matters. Preaching and
+
+sacraments are not merely things the church happens to
+
+do after it already exists. They are among the means
+
+through which the church produces new believers,
+
+teaches existing believers, transmits confession across
+
+generations, and preserves continuity with apostolic
+
+proclamation. In that sense they participate in the
+
+church's organisational reproduction. A church whose
+
+identity-generating channels are persistently replaced
+
+by another message may retain buildings and offices
+
+while losing the organisation Calvin regards as
+
+constitutive.
+
+This also clarifies why moral scandal among members
+
+does not function as the primary mark. Moral disorder
+
+is serious and discipline addresses it, but the visible
+
+church is a mixed body. If membership purity were the
+
+constitutive classifier, human observers would require
+
+access to interior states they do not possess. Calvin
+                             413
+
+instead gives publicly inspectable institutional
+
+operations: what is preached and heard, and how the
+
+sacraments are administered. The criterion is therefore
+
+fitted to the epistemic limitations of the observer.
+
+The marks identify the church through operations
+
+constitutive of its continued life. The full saving
+
+condition of every member remains hidden, but the
+
+Word preached and the sacraments administered are
+
+publicly encountered. These acts testify to identity
+
+because they also preserve it: the congregation receives
+
+the confession through teaching and is nourished
+
+through the appointed signs. Recognition therefore
+
+proceeds through more than an outward resemblance.
+
+The observer identifies ministries whose actual
+
+operation gives the visible body its ecclesial character
+
+and carries that character forward through time.
+
+
+
+
+                           414
+
+Ministers, Presbyters, and Bishops — Calvin,
+
+Institutes IV.3.1–IV.5.19
+
+
+Close reading by locus
+
+
+IV.3.1–9 — Ministry as divine accommodation
+
+Calvin argues that God could govern the church without
+
+human ministers but chooses to use them. Office is
+
+therefore genuinely causal yet radically derivative
+
+(Calvin, Institutes IV.3.1–9).
+
+Clement traces ministerial appointment from God to
+
+Christ, from Christ to the apostles, and from the
+
+apostles to the bishops and deacons established among
+
+their converts. Appointment follows proclamation, and
+
+the candidates are tested. Ministry belongs to the
+
+ordered transmission of the Gospel. The Didache
+
+likewise instructs the congregation to appoint worthy
+
+bishops and deacons who perform the service of
+
+teachers. Calvin’s account develops this received order
+                            415
+
+of calling, doctrinal service, and accountable office
+
+(Clement of Rome, 1 Clement 42; Didache 15).
+
+Ephesians locates ministerial office in Christ’s gift and
+
+orders it toward the saints’ maturity. Romans 10 traces
+
+a communicative sequence: sending makes preaching
+
+possible, preaching supplies hearing, and hearing gives
+
+the occasion for believing and calling upon the Lord.
+
+The minister occupies a real place within that sequence
+
+while the saving message and authority come from
+
+Christ (Ephesians 4:11–13; Romans 10:14–17; Calvin,
+
+Institutes IV.3.1–9).
+
+The derivative office is genuinely instrumental. Its
+
+dependence upon the Sender establishes the limits of its
+
+speech and gives its faithful exercise efficacy as an
+
+appointed means. The hearer receives the Gospel
+
+through human ministry without making the minister
+
+the source of salvation. This distinction later governs
+
+
+                           416
+
+councils, the keys, and sacraments: ecclesial action has
+
+an authorised function, and that function remains
+
+answerable to the divine institution that gives it
+
+purpose. Distributed regulation increases local capacity
+
+while preserving a higher-order norm that no office
+
+owns.
+
+Martin Bucer’s Strasbourg ecclesiology and pastoral
+
+practice are significant for Calvin’s development of
+
+ministry and discipline.
+
+Cross-reference: See IV.8 on doctrinal authority and
+
+IV.12 on discipline.
+
+
+IV.4.1–4 — Bishops and ancient polity
+
+Calvin does not argue that the bare term bishop is
+
+unbiblical. He can acknowledge ancient presidency
+
+among presbyters while denying that this history
+
+establishes universal papal monarchy (Calvin, Institutes
+
+IV.4.1–4).
+
+                           417
+
+Jerome identifies presbyters and bishops through the
+
+apostolic usage of Philippians, Acts, and Titus. He then
+
+explains the presidency of one presbyter over the others
+
+as an arrangement directed against schism. His
+
+argument distinguishes the scriptural identity of the
+
+ministry from the subsequent ordering of its presidency.
+
+Calvin’s reception of ancient episcopacy follows this
+
+distinction. An office serving concord has a legitimate
+
+historical function; the history of that presidency
+
+supplies no divine institution of universal papal
+
+jurisdiction (Jerome, Letter 146.1–2).
+
+Titus moves from the appointment of elders to the
+
+qualifications of an overseer, identifying the office
+
+through blameless conduct, household governance, and
+
+the ability to hold and teach the faithful Word. In Acts
+
+20, Paul summons the Ephesian elders and addresses
+
+them as overseers made such by the Holy Spirit to
+
+shepherd the church God purchased. The charge directs
+                        418
+
+their attention to the flock and to threats from false
+
+teaching, including threats arising within their own
+
+company (Titus 1:5–9; Acts 20:17–31; Calvin,
+
+Institutes IV.4.1–4).
+
+The office’s authority is specified by its pastoral
+
+responsibility and fidelity to the received doctrine.
+
+Those conditions govern any later arrangement of
+
+presidency or coordination among ministers. Calvin can
+
+recognize practical organization because it serves
+
+common oversight; the organization cannot change the
+
+source or scope of the office. A presiding minister
+
+remains accountable to the Word and to the care of the
+
+particular flock entrusted to him. Historical
+
+differentiation of office does not by itself justify
+
+unlimited expansion of jurisdiction.
+
+
+
+
+                            419
+
+Historical and theological location. Chrysostom,
+
+Jerome, Cyprian, and other fathers are deployed
+
+selectively in Calvin’s historical case.
+
+Cross-reference: See IV.6–7.
+
+Calvin treats ministry as a divine provision for human
+
+weakness. God could govern the church without human
+
+ministers, but chooses to use them as instruments,
+
+thereby testing obedience and binding the community
+
+together. The dignity of ministry therefore comes from
+
+the office and commission, not from an independent
+
+sacerdotal power possessed by the minister (Calvin,
+
+Institutes IV.3.1–3).
+
+His discussion of offices distinguishes extraordinary
+
+ministries associated with the church’s foundation or
+
+unusual need from ordinary offices continuing in the
+
+church. Pastors and teachers have particular
+
+
+
+                           420
+
+prominence, while elders and deacons belong to the
+
+church’s ordered life (Calvin, Institutes IV.3.4–9).
+
+Calvin’s historical discussion of bishops is more
+
+nuanced than a simple assertion that the title is
+
+illegitimate. He can acknowledge ancient arrangements
+
+in which one presbyter presided among others, while
+
+rejecting the later concentration of universal jurisdiction
+
+in the Roman see. The issue is the structure and limits
+
+of authority, not merely vocabulary (Calvin, Institutes
+
+IV.4.1–4; IV.6–7).
+
+Calvin’s ministry distributes teaching, oversight,
+
+service, and discipline among differentiated offices.
+
+Ashby’s law explains why such differentiation can be
+
+structurally necessary in any complex community: the
+
+variety of pastoral, doctrinal, material, and disciplinary
+
+disturbances cannot be absorbed by an undifferentiated
+
+regulator with one response. Distributed offices
+
+
+                           421
+
+increase available regulatory variety while allowing
+
+specialized competence.
+
+Differentiated offices provide distinct and coordinated
+
+responses to the church’s needs.
+
+The relevant capacity is the repertoire actually
+
+available, not a sum of office titles. The union of
+
+repertoires counts overlapping responses once and
+
+includes the joint actions made possible by
+
+coordination.
+
+Differentiated ministry increases the repertoire of
+
+relevant responses. Teaching, pastoral oversight,
+
+material care, discipline, and administration answer
+
+distinct demands. Their distribution prevents one
+
+undifferentiated office from becoming the sole channel
+
+of response, and coordination joins their acts where a
+
+disturbance crosses their competences. The church
+
+thereby preserves its received identity through the
+
+                           422
+
+active service of its differentiated members (Calvin,
+
+Institutes IV.3–5).
+
+Yet differentiation creates coordination costs. Offices
+
+can conflict, duplicate work, or become isolated. This is
+
+where Beer's distinction between operational units and
+
+coordinating functions is illuminating. Viability
+
+requires neither total centralisation nor atomized
+
+autonomy. Calvin's councils of ministers and elders,
+
+common doctrine, and shared discipline provide
+
+coordinating structures that preserve plurality without
+
+surrendering unity.
+
+His relative openness to the historical title “bishop” also
+
+shows that Calvin's objection is not to hierarchy as
+
+such. The regulatory question is whether hierarchy
+
+remains bounded and serviceable or becomes a
+
+jurisdictional monopoly. A presiding office can
+
+coordinate; it becomes objectionable when coordination
+
+
+                           423
+
+is converted into universal dominion without scriptural
+
+warrant.
+
+The church’s offices carry different response repertoires
+
+whose coordination preserves the body. Let R i be the
+
+repertoire of office i and R shared the repertoire of
+
+responses requiring joint action. The available distinct
+
+responses are:
+
+                  R C =(⋃i R i )∪ R shared ;
+                        V C = log 2 | R C | ;                (36)
+           | R 1 ∪ R 2 | = | R 1 | + | R 2 |−| R 1 ∩ R 2 | .
+
+Terms. The union counts the same response once when
+
+it belongs to more than one office. R shared includes
+
+coordinated acts that no isolated office supplies. V C
+
+measures the finite nonempty repertoire rather than the
+
+number or dignity of officeholders.
+
+Consequence. The inclusion–exclusion identity
+
+explains why adding capacities as independent scalars
+
+exaggerates the available variety. Two offices repeating
+                          424
+
+one response do not double the repertoire; coordinated
+
+offices answering different disturbances enlarge it.
+
+Doctrine, pastoral oversight, material care, and
+
+discipline consequently require differentiation and
+
+communication. Coordination supplies common action
+
+while the Word fixes the authority and bounds of each
+
+office (Calvin, Institutes IV.3–5).
+
+For two offices with four responses each and two
+
+shared responses, the union contains 4+4−2=6
+
+responses, giving V C =log₂6≈2.585 bits. If their
+
+coordination supplies two additional acts absent from
+
+the union, the repertoire has eight responses and V C =3
+
+bits. The increase comes from additional available acts.
+
+Coordination contributes variety when it produces a
+
+faithful response no isolated office can supply (Calvin,
+
+Institutes IV.3–5).
+
+
+
+
+                           425
+
+The Papacy and the Antichrist — Calvin, Institutes
+
+IV.6.1–IV.7.30
+
+
+Close reading by locus
+
+
+IV.6.1–17 — Peter, Matthew 16, and universal
+
+jurisdiction
+
+Calvin reads the Petrine texts against the claim that
+
+Christ instituted a transferable universal monarchy. The
+
+exegetical dispute is therefore not whether Peter has
+
+prominence but what sort of jurisdiction, if any, follows
+
+from the text and whether it descends to Roman bishops
+
+(Calvin, Institutes IV.6.1–17).
+
+Jerome expressly places the bishop of Rome within the
+
+common dignity of bishops. Rome, Engubium,
+
+Constantinople, Rhegium, Alexandria, and Zoan share
+
+the same priesthood, and their bishops alike succeed the
+
+apostles. The size and wealth of a city create no
+
+additional degree of episcopal authority. Calvin’s
+                           426
+
+rejection of universal Roman monarchy carries this
+
+patristic principle into the question of jurisdiction.
+
+Apostolic succession identifies an accountable ministry
+
+within the church; it does not concentrate the authority
+
+of the whole church in one metropolitan see (Jerome,
+
+Letter 146.1).
+
+Matthew 16 locates Peter’s confession in revelation
+
+from the Father and connects the keys to the church
+
+Christ builds. The passage establishes Christ’s authority
+
+to gather and govern his people; Peter’s reception of the
+
+confession leaves that authority with its divine source.
+
+John 21 restores Peter to the responsibility of feeding
+
+Christ’s sheep. The repeated possessive identifies the
+
+flock’s owner, and the command defines the apostle’s
+
+service toward it (Matthew 16:16–19; John 21:15–17;
+
+Calvin, Institutes IV.6.1–17).
+
+
+
+
+                            427
+
+A pastoral commission establishes a duty toward
+
+Christ’s people; it does not itself establish an
+
+indefinitely transferable jurisdiction over every other
+
+pastor. Calvin tests the Roman claim at that additional
+
+inference. The office given to Peter remains real, while
+
+the asserted monopoly requires an institution that these
+
+commands do not supply. The distinction preserves the
+
+keys and pastoral authority within the church without
+
+converting a minister’s prominence into ownership of
+
+the body he serves. The dispute concerns whether a
+
+bounded office can validly map its jurisdiction onto the
+
+entire ecclesial domain.
+
+Historical and theological location. Late-medieval papal
+
+monarchy, canon-law claims, and conciliar criticism
+
+form the historical field. Calvin can appropriate
+
+conciliar and patristic material against Rome while
+
+rejecting conciliar infallibility.
+
+
+                             428
+
+Cross-reference: See IV.8–9 on councils.
+
+
+IV.7.25 — “Antichrist” as a jurisdictional and
+
+gospel judgment
+
+Calvin’s notorious language is the conclusion of an
+
+argument about usurped headship and corruption of the
+
+gospel, not a random insult inserted where the ink was
+
+particularly angry (Calvin, Institutes IV.7.25).
+
+Second Thessalonians describes the man of lawlessness
+
+through rebellion, self-exaltation, and occupation of a
+
+religious place in which he asserts divine status. The
+
+disorder concerns the usurpation of an authority that
+
+belongs to God, making the temple setting essential to
+
+the description. The claim operates within a professedly
+
+sacred order and redirects its allegiance toward the
+
+claimant (2 Thessalonians 2:3–4; Calvin, Institutes
+
+IV.7.25).
+
+
+
+
+                           429
+
+Calvin’s application rests upon this relation of
+
+usurpation. An office exceeds its appointed bounds
+
+when its decrees claim power to bind conscience
+
+against the Gospel and its mediation displaces the
+
+sufficiency of Christ. The title “Antichrist” then
+
+expresses a judgment upon that governing claim and its
+
+effect upon the church’s worship. His argument carries
+
+forward the hierarchy established in Book One: an
+
+institution founded through revelation cannot possess
+
+authority to supersede the Lord who founded it. A
+
+metasystem becomes pathological when it treats its own
+
+outputs as self-validating and removes the higher-order
+
+constraint that makes it subordinate.
+
+Calvin’s antichrist judgment concerns an office’s claim
+
+against Christ’s headship and the Gospel. The title
+
+follows the institutional act being condemned: a
+
+subordinate ministerial authority elevates itself into
+
+universal government and binds the church through a
+                        430
+
+competence Christ has not granted. The polemic
+
+therefore depends upon the preceding argument about
+
+the source and limits of ecclesial jurisdiction (Calvin,
+
+Institutes IV.6.1–17; IV.7.25).
+
+Cross-reference: See II.15 on Christ’s kingship and
+
+IV.10 on conscience.
+
+Calvin denies that Christ established a universal earthly
+
+head over the church and contests the exegetical and
+
+historical arguments used to defend Roman supremacy.
+
+He then traces the development of papal power against
+
+its assertion of divine right. The institutional claim must
+
+answer to the commission Christ grants; subsequent
+
+concentration of authority cannot supply a commission
+
+absent from that source (Calvin, Institutes IV.6.1–17;
+
+IV.7.1–30).
+
+Calvin’s Antichrist judgment follows from the papal
+
+office’s usurpation of Christ’s headship and its
+
+                           431
+
+corruption of the Gospel. The office claims the position
+
+of the controlling source while binding conscience
+
+against that source’s Word. The conclusion names this
+
+inversion of headship, authority, and saving
+
+communication (Calvin, Institutes IV.7.25).
+
+Calvin’s judgment upon the Roman claim follows his
+
+account of the authority an ecclesiastical office can
+
+exercise under the Gospel. Its validity depends upon the
+
+office’s relation to Christ, the conscience, and the
+
+received Word. The institutional claim is therefore
+
+judged by the same divine norm that governs every
+
+other ministry in the church (Calvin, Institutes IV.7.25).
+
+Papal supremacy concentrates doctrinal, legislative,
+
+judicial, and sacramental acts in an office that claims
+
+authority over the reference governing those acts. Let
+
+J p(t) be its asserted jurisdiction and Δ J p(t) the newly
+
+claimed acts. Expansion gives J p(t+1)= J p(t)∪ Δ J p(t).
+
+                            432
+
+The question at each addition is whether Christ
+
+commissions that act. Self-authorization makes the
+
+expanding office the judge of its own expansion and
+
+disables correction by the received Word (Calvin,
+
+Institutes IV.6–7).
+
+Christ’s headship supplies the governing relation: his
+
+Word commissions ministry and binds the conscience.
+
+An office reverses that relation when it makes its own
+
+decrees the source of an obligation opposed to the
+
+Gospel. The Antichrist judgment identifies that
+
+opposition within the very organization of rule.
+
+Concentration matters because the accumulated powers
+
+enforce the inverted allegiance (Calvin, Institutes
+
+IV.7.25).
+
+A ministry’s authority is measured by the acts Christ
+
+entrusts to it. Let J S be the scripturally commissioned
+
+acts. An asserted act a∈ J p with a∉ J S exceeds that
+
+                           433
+
+commission; an act binding conscience against the
+
+Gospel opposes the head whose ministry it claims.
+
+Correction restores the dependence of subordinate
+
+office upon Christ’s Word. The doctrinal judgment
+
+proceeds through those actual relations of authorization,
+
+command, and obedience (Calvin, Institutes IV.7.25;
+
+IV.10.1–8).
+
+Christ’s headship governs every ministerial office
+
+without passing into one earthly office as universal
+
+ownership. Let J C be the domain of Christ’s headship
+
+
+and J i the competence entrusted to office i:
+
+                           Ji⊊ JC ;
+         Act i ( a ) ⇒ a ∈ J i ∧Conform S ( a ); (37)
+                  J papal = J C is rejected .
+
+
+Terms. Conform S states conformity to Scripture. The
+
+strict inclusion preserves the office as a bounded
+
+ministry; the rejected equality identifies the claim of
+
+exhaustive earthly jurisdiction attacked by Calvin.
+                            434
+
+Consequence. An office receives authority for its
+
+service and remains judged by the Word governing that
+
+service. Its need to coordinate with other offices
+
+supplies no warrant for absorbing their competence or
+
+becoming the source of ecclesial identity. Christ’s
+
+universal government and distributed human ministry
+
+therefore belong to one ordered church whose
+
+subordinate authorities cannot promote themselves into
+
+its head (Calvin, Institutes IV.6–7).
+
+Universal earthly jurisdiction confronts the concrete
+
+variety of the congregations it claims to govern. Local
+
+needs, disputes, gifts, and conditions must be identified
+
+before an adequate response can be given.
+
+Concentrating their judgment in one office requires
+
+their transmission through channels whose delay,
+
+compression, and distortion affect the information
+
+available for action; the returning command must then
+
+reach the same local conditions. The organization’s
+                          435
+
+capacity therefore depends upon its actual repertoire
+
+and connections. An assertion of universal competence
+
+does not supply the knowledge and response through
+
+which that competence would have to be exercised.
+
+Beer’s account of viable organization assigns local
+
+operations the autonomy required to answer their own
+
+disturbances, while higher-order coordination preserves
+
+common identity, resources, and adaptation. Calvin’s
+
+ecclesial order similarly assigns differentiated offices
+
+their entrusted acts under the Word. Catholic unity
+
+requires their coordination, and universal jurisdiction
+
+cannot erase their commissions. The organization
+
+preserves unity through the relation among offices
+
+rather than the absorption of every competence into one
+
+earthly executive.
+
+Calvin's answer distributes authority among ministers,
+
+churches, and councils under the Word while reserving
+
+
+                           436
+
+headship to Christ. The result is not flat
+
+decentralization. It is recursively bounded authority. A
+
+local minister is not sovereign; neither is a council;
+
+neither is the bishop of Rome. Each office is real
+
+precisely because it is limited. Authority consequently
+
+takes the form of a family of partial functions A i: D i
+
+→Actions rather than one total function A p: D all
+
+→Actions.
+
+The claim of universal jurisdiction changes the relation
+
+through which an office remains ministerial. A bounded
+
+commission becomes a claim over the whole field, and
+
+the office’s own decrees become the asserted warrant
+
+for its further acts. Correction is then subordinated to
+
+the authority it must judge. Calvin’s accusation of
+
+usurpation identifies this reversal under Christ’s
+
+headship: the ministry has promoted itself into the
+
+
+
+
+                            437
+
+governing source and disabled the dependence through
+
+which its legitimate authority was received.
+
+The papal controversy reaches the definition of office.
+
+An office possesses authority for the ministry Christ
+
+entrusts to it; its capacity to coordinate other acts does
+
+not give it ownership of the church’s whole life. A
+
+claim of exhaustive jurisdiction absorbs the
+
+commissions through which other ministries perform
+
+their appointed work. Calvin’s polemic consequently
+
+addresses the actual displacement of headship and
+
+ministry. The church receives its unity from Christ,
+
+while its human offices preserve that unity through
+
+coordinated service under his Word.
+
+The expansion becomes self-confirming when the
+
+office appeals to its accumulated authority as warrant
+
+for each further claim. A decree validates a power, the
+
+power enforces the decree, and their conjunction makes
+
+
+                            438
+
+subsequent correction dependent upon the institution’s
+
+own permission. The received Word must govern that
+
+return if subordinate authority is to remain subordinate.
+
+Calvin’s judgment fixes the boundary at its source: no
+
+enlargement of institutional competence can transfer
+
+Christ’s headship to the ministry whose existence and
+
+commission proceed from him.
+
+
+The Authority of the Church — Calvin, Institutes
+
+IV.8.1–IV.10.32
+
+
+Close reading by locus
+
+
+IV.8.1–9 — Ministerial doctrinal authority
+
+Calvin gives ministers real teaching authority while
+
+denying them power to create revelation. Authority is
+
+therefore functional, bounded, and norm-governed
+
+(Calvin, Institutes IV.8.1–9).
+
+Cyril requires scriptural demonstration for the articles
+
+of faith even while instructing catechumens through the
+                           439
+
+church’s received teaching. His own authority as
+
+teacher stands within that requirement. The Didache
+
+similarly refuses a teacher who departs from the
+
+doctrine delivered. Calvin’s account of bounded
+
+teaching authority therefore continues an established
+
+patristic discipline: the minister is received as a servant
+
+of divine truth and judged by fidelity to that truth. The
+
+office carries a duty to teach what God has given (Cyril
+
+of Jerusalem, Catechetical Lectures IV.17; Didache 11).
+
+Paul describes ministers as servants of Christ and
+
+stewards of God’s mysteries, then identifies faithfulness
+
+as the governing requirement of stewardship. The
+
+steward’s charge concerns goods entrusted to him; his
+
+responsibility is measured by fidelity in their
+
+administration. First Peter requires the speaker to speak
+
+as the oracles of God and the servant to minister
+
+through the strength God supplies, so that glory returns
+
+to God through Christ. Authority, message, and end are
+                         440
+
+all received (1 Corinthians 4:1–2; 1 Peter 4:11; Calvin,
+
+Institutes IV.8.1–9).
+
+Calvin’s limits upon teaching authority follow from the
+
+office’s constitution. Ministers can expound, defend,
+
+and apply revelation because their commission requires
+
+those acts. They cannot manufacture a new revelation
+
+or make their judgment the final reference governing
+
+the Word. Fidelity remains assessable precisely because
+
+the entrusted message precedes its administration. The
+
+same rule governs a council’s collective judgment:
+
+gathering more stewards changes the procedure of
+
+deliberation while leaving the source of their authority
+
+unchanged. The regulator is regulated by an external
+
+reference; legitimacy depends upon fidelity, not
+
+autonomous institutional status.
+
+The church teaches with real authority because its
+
+ministry communicates the Word entrusted to it. That
+
+
+                          441
+
+authority remains bounded by the source it serves. A
+
+minister’s declaration neither creates revelation nor
+
+exempts his judgment from examination. Calvin
+
+consequently preserves the church’s public teaching
+
+office while denying that its exercise supplies an
+
+independent norm above Scripture (Calvin, Institutes
+
+IV.8.1–9).
+
+Cross-reference: See I.7 and III.19.
+
+
+IV.9.1–14 — Councils
+
+Calvin values councils and the ancient ecumenical
+
+settlements while denying automatic infallibility to
+
+assemblies. Collective judgment can correct local error,
+
+but collective agreement can also stabilise shared error
+
+(Calvin, Institutes IV.9.1–14).
+
+Acts 15 presents deliberation concerning Gentile
+
+believers through testimony of God’s work,
+
+examination of the disputed demand, and appeal to the
+
+                           442
+
+prophetic promise. Peter rejects placing a yoke upon the
+
+disciples and identifies salvation through the grace of
+
+the Lord Jesus. James brings the admission of the
+
+Gentiles under the scriptural account of God’s restored
+
+people. The resulting letter orders conduct necessary for
+
+the community’s faithful life while refusing
+
+circumcision as a condition of salvation (Acts 15:6–29;
+
+Calvin, Institutes IV.9.1–14).
+
+The council’s authority appears through its fidelity to
+
+the Gospel and its application of that Gospel to a
+
+concrete dispute. Deliberation distinguishes saving
+
+necessity from practical order and tests the proposed
+
+obligation against the revelation already received.
+
+Calvin’s account retains that relation when evaluating
+
+later councils. An assembly has no power to reverse the
+
+distinction upon which the apostolic judgment
+
+depended by turning an ecclesial accommodation into a
+
+new ground of acceptance before God. Pooling
+                        443
+
+observers increases available variety but does not
+
+guarantee a correct reference model.
+
+Historical and theological location. Nicaea, Chalcedon,
+
+and later medieval councils are part of the historical
+
+evidence. Late-medieval conciliarism also supplies a
+
+background to the question of whether councils can
+
+limit papal authority.
+
+Cross-reference: See I.13 and IV.6–7.
+
+
+IV.10.1–8, 27–32 — Church laws and conscience
+
+Calvin permits rules necessary for decency and order
+
+while resisting ceremonies imposed as intrinsically
+
+necessary to salvation or worship. The distinction
+
+operationalizes Christian liberty (Calvin, Institutes
+
+IV.10.1–8, 27–32).
+
+The Didache distinguishes fixed fidelity to the Lord’s
+
+command from practical ordering within the
+
+community. It directs prayer by the Gospel while
+                           444
+
+allowing baptism in different available waters and,
+
+where necessary, by pouring. The divine institution is
+
+maintained through accommodations serving its
+
+administration. Calvin’s treatment of church laws
+
+develops this distinction between the command that
+
+binds the conscience and arrangements that enable
+
+orderly obedience under varying conditions. The
+
+church’s regulation serves the Lord’s ordinance
+
+(Didache 7–8).
+
+First Corinthians requires the gathered church’s activity
+
+to occur decently and in order. The command
+
+authorizes arrangements directed toward intelligible
+
+participation and common edification. Colossians
+
+exposes the contrary use of regulation: human decrees
+
+concerning touching, tasting, and handling acquire an
+
+appearance of wisdom through self-imposed worship
+
+and severity while lacking power over the flesh’s
+
+indulgence. Outward strictness supplies no guarantee of
+                          445
+
+spiritual efficacy (1 Corinthians 14:26–40; Colossians
+
+2:20–23; Calvin, Institutes IV.10.1–8, 27–32).
+
+Calvin distinguishes the function of a rule from the
+
+sacred necessity claimed for it. A schedule or procedure
+
+can serve the command for orderly worship under
+
+changing circumstances. Its utility gives no warrant to
+
+identify compliance with saving righteousness or to
+
+make the arrangement irreversible. The governing end
+
+remains edification through God’s appointed worship,
+
+and the conscience remains subject to divine command
+
+rather than the institution’s elevation of its own
+
+expedients. A local regulator may coordinate contingent
+
+variables without rewriting them as higher-order
+
+invariants.
+
+Church laws regulate the circumstances of common life
+
+through their appointed purpose. Time, place, and
+
+orderly practice require determinate arrangements, and
+
+
+                           446
+
+those arrangements remain revisable as circumstances
+
+change. Their practical necessity does not establish a
+
+divine condition of righteousness. Calvin’s objection
+
+begins where an administrative ordinance claims to
+
+bind conscience as though God himself had imposed its
+
+particular form (Calvin, Institutes IV.10.1–8, 27–32).
+
+Cross-reference: See III.19.2–8.
+
+Calvin grants the church genuine authority in doctrine,
+
+legislation, and discipline, but repeatedly describes that
+
+authority as ministerial. Ministers are stewards of
+
+mysteries given by another; councils are to be heard
+
+insofar as they faithfully interpret Scripture; and no
+
+ecclesiastical body possesses the right to create new
+
+articles of faith at will (Calvin, Institutes IV.8.1–9;
+
+IV.9.1–14).
+
+His treatment of councils is therefore neither simple
+
+conciliarism nor simple individualism. Calvin respects
+
+                            447
+
+the ancient councils, especially where they defended
+
+central Christian doctrine, but denies that councils are
+
+infallible merely by virtue of assembling bishops. Their
+
+judgments remain subject to the Word (Calvin,
+
+Institutes IV.9.8–13).
+
+Ecclesiastical laws receive a similar treatment. Order
+
+and decorum require common rules, and Calvin is no
+
+anarchist about church practice. But laws become
+
+tyrannical when human ceremonies are imposed upon
+
+consciences as though necessary to salvation or divine
+
+worship. Here the Christian liberty of Book Three
+
+becomes an institutional principle (Calvin, Institutes
+
+IV.10.1–8, 27–32).
+
+Councils and church laws remain subject to Scripture
+
+because ecclesial regulation itself receives regulation.
+
+The church orders teaching and practice through offices
+
+whose acts remain bounded by the Word. A council’s
+
+
+                           448
+
+corrective function does not grant it authority to alter
+
+the source governing its correction. Its judgment is
+
+valid through fidelity to that source.
+
+The church acts through ministerial judgments whose
+
+authority remains bounded by Scripture.
+
+The judgment’s actual consequence belongs to the life
+
+of the body it governs. Its lawfulness depends upon
+
+conformity to the Word, so the same regulating act
+
+remains available for correction when it contradicts its
+
+governing reference. Church authority is effective and
+
+accountable within one ordered ministry (Calvin,
+
+Institutes IV.8).
+
+Beer repeatedly warns that metasystemic intervention
+
+should not needlessly absorb the autonomy of
+
+operational units. That insight illuminates Calvin’s
+
+treatment of ceremonies and conscience: common order
+
+can require coordination, but a central authority that
+
+                           449
+
+manufactures necessities in every indifferent matter
+
+destroys legitimate local freedom. The organizational
+
+relation is metasystemic overreach: a coordinating
+
+authority absorbs functions whose legitimate exercise
+
+belongs to subordinate units. Calvin identifies its
+
+theological violation in the binding of conscience
+
+beyond the authority God grants.
+
+Calvin's doctrine of ministerial authority is represented
+
+as delegated control with a hard upper bound. Let A C
+
+be Christ's authority, A W the authority of the revealed
+
+Word, and A i the authority exercised by an
+
+ecclesiastical office. Calvin's constitution requires A i⊂
+
+A W under A C , not A i⊃ A W . The office has real authority
+
+because it is commissioned to apply the norm, but it
+
+cannot enlarge its own jurisdiction by declaring its
+
+outputs self-validating. This is the structural core of his
+
+conflict with claims of absolute ecclesiastical power.
+
+
+                            450
+
+Self-authorizing institutional rule closes a loop: the
+
+office validates a decree by its authority, then invokes
+
+that decree to enlarge its authority. Scripture bounds the
+
+loop through a received commission. If J i(t) is the
+
+office’s claimed jurisdiction and J S its scripturally
+
+permitted jurisdiction, correction gives J i(t+1)= J i(t)∩J S
+
+. The intersection removes uncommissioned acts while
+
+preserving the ministry Christ appoints. Councils and
+
+laws remain accountable to the Word through which the
+
+church receives its existence and office (Calvin,
+
+Institutes IV.9–10).
+
+Higher-order coordination preserves the common
+
+identity and action of differentiated offices. It becomes
+
+destructive when it absorbs the competences those
+
+offices require to perform their appointed work. Calvin
+
+identifies this defect in universal papal jurisdiction: one
+
+office claims a competence extending over the
+
+
+                            451
+
+differentiated authority of the wider church. The
+
+resulting concentration changes the relation among
+
+ministries by subordinating their entrusted acts to one
+
+centre.
+
+Councils correct common judgment through
+
+comparison of readings, retrieval of historical
+
+testimony, testing of claims, and correction of local
+
+error. Their combined participation expands the
+
+capacity to examine disputed teaching. Scripture
+
+governs the result: agreement is faithful when the
+
+judgment preserves the received Word. The number of
+
+agreeing observers cannot establish that fidelity by
+
+itself. Distributed correction requires continued access
+
+to the reference by which its own judgment is tested.
+
+Metaregulation is especially important because no
+
+human regulator is exempt from corruption. Calvin's
+
+doctrine of sin applies to bishops, councils, pastors, and
+
+
+                           452
+
+princes as surely as to private persons. A constitutional
+
+theology must therefore ask quis custodiet ipsos
+
+custodes in functional terms: what corrects the
+
+corrector? His answer is not one final human office
+
+immune from error, but recurrent subjection of every
+
+office to the Word. Scripture functions as the reference
+
+against which the regulator itself is regulated.
+
+Church authority is itself regulated by the Word it
+
+serves. Let c t be the church’s present doctrinal and
+
+institutional condition, ut a proposed ministerial
+
+judgment, and A S the judgments admissible under
+
+Scripture:
+
+                         ut ∈ A S ;
+                  c t + 1 = F ( c t , ut ); (38)
+             ut ∉ A S ⇒ Correct ( ut , S ).
+
+
+Terms. A S is the set of judgments whose content and
+
+exercise conform to the scriptural norm. Correct names
+
+the revision or rejection required when a judgment
+                            453
+
+departs from that norm. F gives the actual ecclesial
+
+consequence of teaching or ruling.
+
+Consequence. A council’s agreement organizes a
+
+common judgment but does not, by itself, establish
+
+membership in A S . Consensus can reproduce error
+
+when the participants share a false premise. Public
+
+comparison with Scripture keeps the regulating office
+
+accountable to its reference. The church’s authority is
+
+real because its decisions affect the body, and
+
+ministerial because those decisions remain answerable
+
+to the Word (Calvin, Institutes IV.8–10).
+
+The council question is particularly rich because
+
+councils are mechanisms for increasing collective
+
+discriminatory capacity. A single minister has limited
+
+knowledge, memory, and perspective. An assembly can
+
+pool information, compare interpretations, and expose
+
+local error. In Ashby's terms, collective deliberation can
+
+
+                           454
+
+increase regulatory variety. But increased variety does
+
+not guarantee correct regulation. A large regulator can
+
+still possess the wrong reference or amplify correlated
+
+error.
+
+Calvin's subordination of councils to Scripture therefore
+
+functions as a constraint upon collective intelligence.
+
+Consensus is evidence of coordination, not proof of
+
+truth. A hundred regulators sharing the same corrupted
+
+model may produce a more stable error than one
+
+regulator acting alone. This is why institutional memory
+
+and catholic testimony matter without becoming self-
+
+authenticating. The system needs both distributed
+
+cognition and an external norm.
+
+One can represent a council as an aggregation operator
+
+C=f(m1,...,mn,S), where the ministerial judgments mi are
+
+combined under a scriptural constraint S. Remove S
+
+and the output becomes C=f(m1,...,mn): internally
+
+                           455
+
+generated consensus. Calvin's ecclesiology refuses to
+
+identify the latter with divine authority. The equation
+
+does not settle hermeneutical disputes, but it makes
+
+clear where the authority claim enters.
+
+The same structure applies to ceremonies and church
+
+law. Coordination requires conventions. Meeting times,
+
+procedures, forms of order, and disciplinary processes
+
+reduce uncertainty and transaction costs. Yet a
+
+convention becomes tyrannical when the system forgets
+
+its type and reclassifies an administrative variable as a
+
+divine invariant. Calvin preserves the governing types:
+
+keep divine command, ecclesial convention, prudential
+
+judgment, and indifferent practice in their proper
+
+classes.
+
+Common deliberation enlarges the knowledge and
+
+judgment available to a controversy. Witnesses can be
+
+compared, local errors examined, and correction
+
+
+                           456
+
+coordinated across the churches affected. These real
+
+benefits establish the usefulness of a council without
+
+conferring divine authority upon the fact of agreement.
+
+The assembled ministers remain recipients of the Word,
+
+and their conclusion remains answerable to its
+
+testimony. Calvin’s account therefore joins the need for
+
+common judgment to the continued possibility of
+
+correcting that judgment through the source under
+
+which it was undertaken.
+
+An institution can reproduce its own error through
+
+procedures which secure agreement while excluding the
+
+governing correction. Credentials, precedents, and
+
+decisions then become mutually confirming references
+
+within the same mistaken order. Their consistency
+
+identifies the organisation of the agreement; it does not
+
+establish the truth of the doctrine agreed. Scripture
+
+remains the authority through which the error can be
+
+named and the institution restored to its commission.
+                          457
+
+The regulator must therefore retain a received reference
+
+by which its own outputs are judged, because its real
+
+office includes no power to make false teaching true.
+
+At IV.10.1–8, 27–32, distinguish divine necessity N S
+
+from a practical ordinance H c adopted for order in
+
+circumstance c. Then H c does not entail N S ;
+
+ClaimNecessity( H c ) requires Warrant S ( H c ). Terms.
+
+Warrant S is the scriptural warrant for binding
+
+conscience as before God. Consequence. A
+
+congregation can coordinate the time, place, and
+
+orderly manner of its common worship while leaving
+
+the ordinance revisable with circumstances. Promoting
+
+such an arrangement into a condition of righteousness
+
+converts bounded administration into usurpation of
+
+Christ’s government over conscience.
+
+
+
+
+                            458
+
+The Power of the Keys and Church Discipline —
+
+Calvin, Institutes IV.11.1–IV.12.28
+
+
+Close reading by locus
+
+
+IV.11.1–2 — Binding and loosing
+
+Calvin roots the keys in gospel ministry and church
+
+judgment rather than a free-standing sacerdotal power
+
+(Calvin, Institutes IV.11.1–2).
+
+Matthew assigns binding and loosing within Christ’s
+
+institution of the keys. John joins the declaration
+
+concerning remission and retention of sins to the risen
+
+Lord’s sending of the disciples and gift of the Holy
+
+Spirit. The authority is received through a commission,
+
+so its exercise remains bound to the message and
+
+mission of the Sender. The minister addresses
+
+forgiveness through the Gospel entrusted to him
+
+(Matthew 16:19; John 20:21–23; Calvin, Institutes
+
+IV.11.1–2).
+                           459
+
+The keys therefore operate as an authorized application
+
+of Christ’s saving judgment. Their efficacy does not
+
+arise from the minister’s independent power to create
+
+guilt or forgiveness. He declares and applies the terms
+
+supplied by the Lord, while the hearer’s response is
+
+judged under those terms. This preserves the reality of
+
+ecclesial judgment and its accountability: a sentence
+
+opposed to the Gospel exceeds the authority through
+
+which a valid sentence has force. Declarative authority
+
+depends on accurate application of a reference it does
+
+not create.
+
+Binding and loosing exercise the Word’s judgment
+
+through the church’s entrusted ministry. The minister
+
+declares the promise and applies the discipline Christ
+
+appoints; his office does not create an independent
+
+source of pardon. The authority of the keys therefore
+
+depends upon fidelity to the commission exercised.
+
+Forgiveness belongs to God’s promise in Christ, and its
+                         460
+
+ministerial declaration remains governed by that
+
+promise (Calvin, Institutes IV.11.1–2).
+
+Cross-reference: See III.11 on justification and IV.12
+
+on discipline.
+
+
+IV.12.5–10 — Ends and proportionality of discipline
+
+Calvin identifies several ends: honour of Christ,
+
+protection of the community, warning, repentance, and
+
+restoration. Severity therefore cannot be the sole
+
+success metric (Calvin, Institutes IV.12.5–10).
+
+Polycarp’s treatment of the fallen presbyter Valens
+
+joins the gravity of wrongdoing to the duty of
+
+restoration. He condemns covetousness, prays for true
+
+repentance, and instructs the church to recall the
+
+
+offenders as straying members. Presbyters must
+
+themselves act with compassion and avoid rash
+
+judgment because they too stand under a debt of sin.
+
+Calvin’s discipline develops this pastoral order:
+
+                           461
+
+correction protects the body by seeking the recovery of
+
+the member, and the minister’s judgment remains
+
+governed by the mercy he himself needs (Polycarp, To
+
+the Philippians 6; 11).
+
+Matthew 18 orders correction through successive
+
+attempts to recover the brother: private address, the
+
+addition of witnesses, and recourse to the church. The
+
+widening intervention follows the failure of the
+
+preceding appeal. First Corinthians 5 requires exclusion
+
+when grave public wrongdoing corrupts the
+
+congregation’s witness, while Second Corinthians
+
+commands forgiveness and renewed love after
+
+punishment has served its purpose, lest the offender be
+
+overwhelmed by sorrow. Severity and restoration
+
+belong to one pastoral order (Matthew 18:15–17; 1
+
+Corinthians 5:1–13; 2 Corinthians 2:6–8; Calvin,
+
+Institutes IV.12.5–10).
+
+
+                           462
+
+The action changes with the offender’s condition and
+
+the community’s need. Persistent defiance requires a
+
+boundary; repentance calls for reception. Continuing
+
+exclusion after the corrective end has been reached
+
+would turn the means against its purpose. Calvin’s
+
+discipline therefore attends to the response generated by
+
+intervention. The church protects holiness through
+
+judgment that remains proportionate to its restorative
+
+end, rather than treating the intensity of punishment as a
+
+sufficient measure of fidelity. Correction requires gain
+
+control, observability, and a multivariable objective;
+
+excessive gain can destabilize the very community
+
+being regulated.
+
+Genevan consistorial practice gives this discussion
+
+immediate institutional stakes; Bucer’s Strasbourg
+
+discipline is also an important precursor.
+
+Cross-reference: See IV.1 and IV.3.
+
+
+                           463
+
+The power of the keys is fundamentally connected to
+
+the preaching of the gospel. In proclaiming the
+
+promises and judgments of God, the church exercises a
+
+real ministerial authority of binding and loosing.
+
+Discipline is an application of that authority to the
+
+visible order of the church (Calvin, Institutes IV.11.1–
+
+2).
+
+Calvin gives discipline several purposes: preventing the
+
+dishonor of Christ’s name, protecting the church from
+
+corrupting influence, and bringing the sinner to
+
+repentance. Excommunication is therefore severe but
+
+medicinal in intention. The disciplined person is not to
+
+be treated as beyond hope; the object is restoration
+
+(Calvin, Institutes IV.12.5).
+
+This account also demonstrates why Calvin’s
+
+ecclesiology cannot be reduced to preaching alone. The
+
+church is an organized body with offices, procedures,
+
+
+                           464
+
+boundaries, and corrective practices. Yet each of these
+
+remains accountable to the gospel and ordered toward
+
+edification rather than institutional self-preservation.
+
+Discipline is a negative-feedback mechanism in the
+
+strict systems sense: detected deviation produces a
+
+response designed to reduce the deviation and restore
+
+the member to the acceptable range of communal life.
+
+Calvin’s medicinal emphasis matters because
+
+punishment detached from restoration can become
+
+positive escalation—the institution amplifies conflict
+
+rather than damping it.
+
+Correction is directed toward the offender’s repentance,
+
+the community’s protection, and restored fellowship.
+
+A negative correction acts against the specified
+
+deviation; its gain concerns the relation between the
+
+intensity of response and the change it produces. The
+
+
+
+                           465
+
+developed recurrence below states the contraction
+
+condition for a responsive component of conduct.
+
+Discipline is one of the clearest negative-feedback
+
+structures in the Institutes. A norm r is publicly known;
+
+conduct y t deviates; the discrepancy e t =r- y t is
+
+identified; ecclesiastical correction ut =K(e t ) is applied;
+
+and the intended result is not punishment for its own
+
+sake but restored conformity and communion. Calvin's
+
+three purposes in IV.12.5—honour of Christ, protection
+
+of the church, and repentance of the offender—show
+
+that multiple essential variables are being protected
+
+simultaneously.
+
+Discipline retains its lawful end through the
+
+coordination of honour to Christ, protection of the
+
+church, and the offender’s repentance and restoration.
+
+Each end governs the act itself: judgment must remain
+
+truthful under the Word, intervention must protect the
+
+                             466
+
+body, and correction must seek repentance and receive
+
+the penitent. Let H, P, and R record conformity to these
+
+three obligations, with each predicate equal to one
+
+when its obligation is fulfilled and zero when it is
+
+violated. Their conjunction gives the criterion:
+
+J D = H·P·R . The product equals one only when all three
+
+obligations hold. Increasing severity supplies no
+
+substitute for truthful judgment, and protecting outward
+
+order supplies no substitute for receiving repentance.
+
+An act which violates any obligation makes the product
+
+zero, however strongly it pursues the others. The
+
+calculation therefore preserves the jointly required ends
+
+of discipline: the church corrects a real offense through
+
+a lawful act whose purpose remains the protection and
+
+recovery of the body (Calvin, Institutes IV.12.5–10).
+
+Ashby's requisite variety becomes directly relevant
+
+because disturbances differ. Public scandal, private
+
+fault, obstinate refusal, ignorance, weakness, and
+                             467
+
+repentance do not call for identical responses. A
+
+regulator with only one response has insufficient
+
+variety. Calvin's insistence that discipline be
+
+proportionate and pastorally ordered implies a response
+
+repertoire R capable of discriminating among
+
+disturbance classes D. In Ashby's terms, successful
+
+regulation requires enough variety in R to reduce the
+
+variety transmitted into unacceptable outcomes.
+
+Excommunication is therefore an extreme control
+
+action rather than the ordinary first response. Its
+
+severity marks a boundary when lesser corrections have
+
+failed or when the disturbance threatens the integrity of
+
+the community. Yet because restoration remains an end,
+
+the boundary is not necessarily terminal. Repentance
+
+can reopen communion. This makes Calvin's discipline
+
+closer to fault isolation with a recovery path than to
+
+irreversible disposal of a failed component.
+
+
+                           468
+
+The power of the keys also preserves the distinction
+
+between declaration and ontological manufacture.
+
+Ministers proclaim forgiveness on the terms of the
+
+gospel; they do not generate divine forgiveness by
+
+autonomous institutional fiat. The church's output is
+
+authoritative because it faithfully transmits Christ's
+
+promise. Once again, Calvin's favorite architecture
+
+appears: real secondary efficacy under a
+
+noncompetitive primary source.
+
+The intensity and timing of discipline affect the
+
+response it produces. Correction addresses a particular
+
+deviation through instruction, admonition, censure, and
+
+restoration. The gain k below describes the change
+
+produced in that responsive component of conduct; it
+
+must be read together with the evidence, jurisdiction,
+
+and pastoral end governing the corrective act (Calvin,
+
+Institutes IV.12.1–8).
+
+
+                           469
+
+Discipline returns knowledge of a publicly cognizable
+
+deviation to the person and community affected. Let e t
+
+be the deviation in a specified practice, k the correction
+
+applied, and d t a new disturbance. For a responsive
+
+scalar component of conduct:
+
+                           ut = − ke t ;
+          e t + 1 = e t + ut + d t =(1− k )e t + d t ; (39)
+                            0<k <2.
+
+Terms. The norm is fixed while e measures departure
+
+from it in the specified component. u is corrective
+
+action directed against that departure. The gain range is
+
+the condition under which the undisturbed scalar
+
+recurrence contracts; the church’s concrete actions
+
+remain instruction, admonition, censure, and restoration
+
+under its proper jurisdiction.
+
+                                             t
+Consequence. With dt=0, e t =(1− k ) e 0. Weak
+
+correction leaves deviation persistent; excessive
+
+correction in the stated recurrence amplifies it or
+                               470
+
+produces sustained oscillation. Proportionality therefore
+
+concerns the relation between the offense, the recipient,
+
+the corrective act, and its consequences. Calvin’s
+
+medicinal end governs the whole process: the
+
+community is protected and the offender is summoned
+
+toward repentance and restored fellowship (Calvin,
+
+Institutes IV.11–12).
+
+Repeated substitution gives the full disturbed history.
+
+Write a=1−k and suppose |d j |≤δ:
+
+               e t = at e 0 + Σ j = 0t −1 at −1− j d j (40)
+
+                    t                      t
+        | e t | ≤ | a | | e 0 | + δ ( 1 − | a | ) / ( 1 − | a |) (41)
+
+Terms. The second formula requires |a|<1, equivalent to
+
+0<k<2. It follows by the triangle inequality and the
+
+finite geometric sum. For 0<k≤1 the undisturbed error
+
+decreases without sign reversal. For 1<k<2 it reverses
+
+sign while decreasing in magnitude. At k=2 its
+
+
+                                   471
+
+magnitude persists with alternating sign; at k>2 it
+
+grows.
+
+Consequence. Continuing disturbance leaves a residual
+
+bound δ/(1−|a|). Delayed evidence, concealment, and
+
+new offenses therefore require continuing attentive
+
+correction. Success is assessed through the specified
+
+conduct, protection of the community, and restoration
+
+of the offender. The recurrence develops proportionate
+
+response within those ends; severity alone supplies no
+
+measure of success (Calvin, Institutes IV.12.1–8).
+
+Feedback theory also draws attention to delay.
+
+Correction delivered too late may allow a disturbance to
+
+propagate through the community; correction delivered
+
+before evidence is established may punish noise as
+
+though it were signal. Calvin's insistence upon process,
+
+admonition, witnesses, and graded discipline constitutes
+
+
+
+
+                           472
+
+an attempt to manage both error types. The church must
+
+be capable of acting without becoming impulsive.
+
+There is likewise a problem of observability. Discipline
+
+can only respond to conduct that becomes sufficiently
+
+manifest. The church does not possess direct access to
+
+the soul. This limits the regulator's legitimate domain.
+
+Calvin can call for serious moral discipline while still
+
+distinguishing ecclesiastical judgment from God's
+
+infallible judgment of the heart. A system that pretends
+
+to observe hidden variables it cannot observe will
+
+generate false certainty and abusive control.
+
+Restoration changes the objective function. If
+
+punishment itself were the terminal goal, increasing
+
+severity could appear as increasing success. Calvin's
+
+medicinal account makes that impossible. The objective
+
+is a vector: protection of the community, honour of
+
+Christ, deterrence of scandal, repentance of the
+
+
+                           473
+
+offender, and eventual restoration where possible. A
+
+correction policy must therefore optimize across several
+
+essential variables rather than maximize one.
+
+Discipline must preserve the ends which give its
+
+intervention a lawful office. Holiness, unity, truth,
+
+restoration, and protection concern the same body
+
+through distinguishable goods; an act which advances
+
+one by destroying the conditions of the others defeats
+
+the order it serves. Prudence attends to those actual
+
+relations. The offender’s response, the congregation’s
+
+safety, the truth of the accusation, and the possibility of
+
+restored fellowship enter the judgment together, so that
+
+the intervention remains answerable to a set of essential
+
+conditions rather than one isolated measure of severity.
+
+Discipline is where every institution discovers that
+
+feedback gain is not an abstract problem. Correct
+
+nothing and the place rots. Correct everything with
+
+
+                           474
+
+maximum force and the place becomes a monastery run
+
+by a smoke detector. Calvin wants neither.
+
+The restorative end determines how the consequence of
+
+discipline is judged. Severity is an act or intensity of
+
+intervention, while protection, repentance, and restored
+
+fellowship are the ends toward which that intervention
+
+proceeds. Increasing the former does not by itself
+
+establish the latter. A punishment which overwhelms a
+
+repentant person or disorders the congregation has
+
+changed the conditions it was appointed to preserve.
+
+Calvin’s medicinal account keeps the judgment
+
+attached to those actual effects, requiring the church to
+
+examine the response produced rather than treat the
+
+magnitude of correction as proof of its success.
+
+At IV.12.5–10, discipline is a closed-loop corrective
+
+process. Let e t denote a publicly cognizable deviation
+
+from the ecclesial norm and ut the graded corrective
+
+                            475
+
+response. The intended terminal condition is not
+
+maximal ut but restoration where repentance occurs,
+
+together with protection of the body. Gain is therefore
+
+ordered to the end of correction rather than severity for
+
+its own sake.
+
+
+Vows — Calvin, Institutes IV.13.1–21
+
+
+Close reading by locus
+
+
+IV.13.1–7 — Lawful self-binding
+
+Calvin permits vows but subjects them to God’s Word,
+
+vocation, and prudence. A promise cannot create moral
+
+goodness in an act already forbidden or foolish (Calvin,
+
+Institutes IV.13.1–7).
+
+Psalm 50 joins payment of vows to thanksgiving and
+
+calling upon God in trouble. The vow belongs within
+
+dependence upon the Lord who delivers and receives
+
+the resulting honour. Ecclesiastes requires the promised
+
+
+                           476
+
+act to be performed and warns that a promise made to
+
+God cannot be treated as disposable speech. Voluntary
+
+undertaking creates a genuine obligation, and the
+
+gravity of that obligation supplies a reason for
+
+deliberate restraint before undertaking it (Psalm 50:14–
+
+15; Ecclesiastes 5:4–5; Calvin, Institutes IV.13.1–7).
+
+Calvin consequently examines the lawful scope of the
+
+act promised, the person’s capacity, and the end served
+
+by the undertaking. A vow cannot authorize conduct
+
+God forbids, nor can a promise create capacities God
+
+has not granted. Its force belongs to faithful self-
+
+binding within an antecedent divine rule. The
+
+distinction prevents religious solemnity from
+
+converting an impossible or unlawful undertaking into a
+
+superior form of obedience. Self-constraint is legitimate
+
+only inside the admissible state-space established by the
+
+higher-order norm.
+
+
+                           477
+
+Monastic vows become unlawful when their
+
+undertaking contradicts vocation, exceeds the
+
+promisor’s capacity, or claims a superior righteousness
+
+through self-imposed difficulty. The act of promising
+
+cannot create the power to perform, and an
+
+ecclesiastical designation cannot authorize an
+
+undertaking God forbids. Calvin tests the vow through
+
+its subject, object, and end. Lawful self-binding
+
+requires those conditions together (Calvin, Institutes
+
+IV.13.1–7).
+
+Cross-reference: See III.19 and IV.10.
+
+His extended attack on monastic vows is therefore not
+
+merely an attack on ascetic seriousness. Calvin argues
+
+that perpetual vows, especially when attached to a
+
+conception of meritorious religious perfection, can bind
+
+consciences beyond Scripture and distort Christian
+
+vocation. The controversy again returns to jurisdiction:
+
+
+                           478
+
+who may bind the conscience, and on what authority?
+
+(Calvin, Institutes IV.13.8–21).
+
+Monastic vows become controversial because Calvin
+
+believes they institutionalize constraints as though those
+
+constraints constituted a higher perfection binding the
+
+conscience before God. His objection is therefore not
+
+merely psychological severity. It is that a lower-order
+
+rule set claims normative status at the level of the
+
+divine reference. The local rule overwrites the divine
+
+reference under which it receives its authority.
+
+A perpetual vow removes future options from an agent
+
+whose knowledge of future circumstances is
+
+incomplete. Changes in vocation, need, and capacity
+
+expose the danger of an undertaking that forecloses acts
+
+later required by duty. The vow remains accountable to
+
+God’s commands through those changes. Its binding
+
+force cannot authorize neglect of a superior obligation
+
+
+                           479
+
+or manufacture a capacity the promisor lacks (Calvin,
+
+Institutes IV.13.1–7).
+
+At IV.13.1–7, let v be a vow, Cap b(v) the person’s
+
+capacity to undertake it, Lawful S(v) its conformity to
+
+Scripture, and End(v) its proper purpose. Define
+
+Admissible(v)⇔Cap b(v)∧ Lawful S (v)∧End(v). Terms.
+
+The predicates test the promisor, promised act, and
+
+purpose together. Consequence. A vow cannot
+
+manufacture the capacity to perform what is promised,
+
+authorize what God forbids, or acquire merit by self-
+
+imposed difficulty. Lawful self-binding orders an
+
+available act toward its fitting end; rash vows entangle
+
+the conscience by claiming authority for an undertaking
+
+whose conditions fail.
+
+
+
+
+                           480
+
+The Sacraments — Calvin, Institutes IV.14.1–26
+
+
+Close reading by locus
+
+
+IV.14.1–6 — Sign, seal, promise
+
+Divine institution joins an external sign to the promise
+
+it confirms. The element receives its sacramental office
+
+through that appointment, and the believer receives its
+
+saving object through faith under the Spirit’s operation.
+
+The relation fixes sign, source, and reception together.
+
+Material administration cannot supply an independent
+
+power to confer grace, while the reality of the promise
+
+prevents the sign from becoming an empty ceremony.
+
+Calvin’s definition follows the gift through the
+
+embodied means appointed to seal and confirm it
+
+(Calvin, Institutes IV.14.1–6).
+
+Augustine explains sacramental constitution through
+
+the Word joined to the element. Without the Word,
+
+water remains water; joined to the Word, it becomes the
+                           481
+
+sacrament. He then locates its cleansing efficacy in the
+
+Word believed, distinguishing the passing sound from
+
+its abiding spiritual operation. Calvin’s definition
+
+receives this Augustinian order directly. The external
+
+sign bears God’s promise, and faith receives the reality
+
+communicated through that promise. The element’s
+
+sacramental use is established by divine address
+
+(Augustine, Tractates on John 80.3).
+
+Genesis 17 joins the covenant promise to circumcision
+
+as the appointed sign borne by Abraham and his
+
+household. God establishes the relation and commands
+
+its visible marking. Romans 4 identifies Abraham’s
+
+circumcision as a sign and seal of the righteousness of
+
+faith already possessed before circumcision. The
+
+temporal order fixes the sign’s office: it confirms the
+
+promise and the received righteousness without
+
+generating either through its physical administration
+
+
+                           482
+
+(Genesis 17:7–14; Romans 4:9–12; Calvin, Institutes
+
+IV.14.1–6).
+
+The sign confirms the same divine gift proclaimed in
+
+the Word. Its embodied presentation answers the
+
+weakness of the recipient through another appointed
+
+mode of reception, keeping the promise available to
+
+sight, action, and remembrance as well as hearing. The
+
+communication remains one in its object while
+
+differentiated in its instituted means. Its efficacy
+
+therefore follows the whole relation: God appoints, the
+
+promise identifies Christ and his benefits, the Spirit
+
+makes reception effective, and the believer’s faith is
+
+strengthened. The material element acquires no separate
+
+source of saving power through its confirming office.
+
+Historical and theological location. Augustine’s
+
+definition of sacrament as visible sign is a major
+
+
+
+
+                            483
+
+genealogy, though Calvin reformulates it within his
+
+Word-and-promise theology.
+
+Cross-reference: See I.6 on accommodation and III.2
+
+on faith.
+
+
+IV.14.9–17 — Spirit and efficacy
+
+Calvin avoids both automatic efficacy detached from
+
+faith and an empty symbolism in which the sign does
+
+nothing. The Spirit gives the sacrament its true efficacy
+
+according to divine promise (Calvin, Institutes IV.14.9–
+
+17).
+
+Augustine distinguishes receiving the sacrament visibly
+
+from receiving Christ spiritually. A person can press the
+
+sacramental sign with his teeth while lacking the mutual
+
+indwelling through which Christ’s flesh and blood give
+
+life. Such reception brings judgment rather than
+
+nourishment. Calvin’s account of sacramental efficacy
+
+develops this distinction: the sign is truly administered,
+
+                           484
+
+and saving participation requires the Spirit’s work
+
+uniting the recipient to Christ. The difference lies in the
+
+reception of the promised reality (Augustine, Tractates
+
+on John 26.18).
+
+First Corinthians identifies the one Spirit as the agent
+
+through whom believers are baptized into one body and
+
+made to drink of one Spirit. The unity includes different
+
+social and ethnic conditions, so the church’s common
+
+life arises from a divine action that reaches across those
+
+distinctions. The sacramental language belongs within
+
+incorporation into Christ’s body and participation in the
+
+Spirit’s gift (1 Corinthians 12:12–13; Calvin, Institutes
+
+IV.14.9–17).
+
+The external administration and the inward
+
+communication must therefore be distinguished without
+
+separating their appointed relation. The sign has its
+
+public, instituted use; the Spirit effects the communion
+
+
+                           485
+
+that gives its saving reception life. Calvin excludes both
+
+the transfer of divine efficacy into an independently
+
+operating object and the removal of the sign from the
+
+Spirit’s chosen means. The sacrament truly serves
+
+incorporation and nourishment because its operation
+
+remains dependent upon the divine agent who
+
+communicates Christ. The sign is a dependent
+
+instrument: causal efficacy is real but not autonomous.
+
+Calvin’s sacramental account preserves both the
+
+appointed sign and the Spirit’s effective communication
+
+of the promised good. Institution gives the sign its
+
+office; the promise fixes its content; and the Spirit
+
+makes its reception fruitful in faith. An account that
+
+assigns independent efficacy to the element reverses
+
+that order. An account that empties the sign of its
+
+appointed communication destroys the operation Christ
+
+instituted for the nourishment of his people (Calvin,
+
+Institutes IV.14.9–17).
+                           486
+
+Cross-reference: See IV.17.
+
+Calvin defines a sacrament as an external sign by which
+
+the Lord seals on our consciences the promises of his
+
+good will toward us in order to sustain the weakness of
+
+our faith, while we in turn attest our piety toward him.
+
+Word and sacrament therefore belong together. The
+
+sacrament does not invent a promise; it visibly confirms
+
+the promise already given in the Word (Calvin,
+
+Institutes IV.14.1).
+
+Calvin rejects both magical efficacy and bare
+
+symbolism. The sign must not be confused with the
+
+thing signified, yet God truly uses the sacrament as an
+
+instrument. The Holy Spirit alone gives inward
+
+efficacy, but this does not make the external sign
+
+empty. This pattern repeats an organisation already
+
+present elsewhere in Calvin: a secondary instrument is
+
+real and effective precisely because its efficacy depends
+
+
+                           487
+
+upon divine action rather than autonomous power
+
+(Calvin, Institutes IV.14.9–17).
+
+Calvin recognizes baptism and the Lord’s Supper as the
+
+two sacraments instituted by Christ for the Christian
+
+church. His dispute with Rome over the number of
+
+sacraments is consequently a dispute over definition,
+
+institution, promise, and ecclesiastical authority, not an
+
+arbitrary preference for the number two.
+
+Calvin’s definition of sacrament as sign and seal
+
+establishes coordinated confirmation through
+
+differentiated channels. The Word gives the promise
+
+verbally; the sacrament presents and confirms the same
+
+promise through an embodied sign. In communication
+
+systems, redundancy can increase reliability under
+
+conditions of noise. Repeated confirmation through
+
+differentiated channels is the communicative
+
+organization Calvin describes. The Spirit truly uses the
+
+
+                           488
+
+sacrament as an instrument; the promise is presented
+
+and confirmed through the embodied sign.
+
+Word and sacramental sign communicate the same
+
+promise through differentiated instituted presentations.
+
+The Spirit makes the promise operative in the believer
+
+through those means. The two presentations therefore
+
+supply coordinated confirmation, and their reception
+
+belongs to the actual saving communication of Christ.
+
+The promise reaches the embodied believer through
+
+verbal proclamation and instituted sign. The two
+
+presentations preserve the same object while engaging
+
+differentiated acts of reception; their coordination
+
+confirms what weakness, forgetfulness, and temptation
+
+disturb. The sign consequently adds an appointed
+
+operation to the communication of the promise. It
+
+presents and seals the gift rather than merely repeating
+
+a sound, while the Spirit joins that presentation to
+
+                           489
+
+effective reception. Redundancy belongs to this
+
+common content carried through different means,
+
+whose saving office remains governed by the divine
+
+institution.
+
+We can represent the communicative convergence as P r
+
+=Φ(W,S,T Sp,H), where W is the preached Word, S the
+
+instituted sign, T Sp the Spirit's operation, and H the
+
+receiving believer. Removing T Sp would falsify Calvin
+
+by making efficacy automatic in the material sign;
+
+removing S would falsify him by making the sacrament
+
+dispensable once the verbal proposition is known. The
+
+entire controversy is about preserving both
+
+instrumentality and dependence.
+
+Sacramental causality retains the sign’s actual office
+
+within the Spirit’s effective communication of Christ.
+
+The sign neither generates grace independently of that
+
+relation nor terminates in the recipient’s recollection
+
+                            490
+
+alone. The instituted promise governs what is given, the
+
+Spirit establishes the saving communion, and faith
+
+receives the object presented through the appointed
+
+means. Calvin’s account preserves these dependencies
+
+together because each carries a necessary part of the
+
+act. Remove the divine source and the element is
+
+assigned an autonomous efficacy; remove real
+
+communion and the promise’s saving gift is reduced to
+
+an inward memory.
+
+The appointed sign also preserves a reference through
+
+the believer’s changing history. Confidence fluctuates
+
+and recollection weakens, while the promise sealed
+
+remains available for renewed reception. Baptism is
+
+recalled through the life of the baptized person, and the
+
+Supper is received repeatedly within the congregation’s
+
+worship. Both direct faith toward a gift whose meaning
+
+does not originate in present feeling. Remembrance
+
+belongs to their continuing office within a communion
+                           491
+
+whose efficacy also includes nourishment and
+
+confirmation through the Spirit.
+
+Differentiated means strengthen reception through their
+
+coordinated operation. Preaching addresses hearing and
+
+understanding; water, bread, and wine give the promise
+
+its appointed embodied presentation; and their
+
+administration and remembrance carry that promise
+
+through communal life and time. God accommodates
+
+the weakness of those recipients through the means he
+
+institutes. The increase in reliability therefore proceeds
+
+through actual acts of confirmation, each retaining the
+
+same saving object and divine source. The believer
+
+receives a common promise through presentations fitted
+
+to the embodied life in which faith is exercised.
+
+
+
+
+                           492
+
+The sacrament communicates the same promise
+
+proclaimed in the Word through an instituted embodied
+
+sign. Let P be that promise, E W its verbal proclamation,
+
+E S its sacramental presentation, and D W and D S their
+
+reception through the Spirit’s instruction:
+
+                  D W ( E W ( P ))= P ;
+                  D S ( E S ( P ))= P ;                 (42)
+      Receive b ( P )= T S ( b , E W ( P ), E S ( P )).
+
+
+Terms. E W and E S distinguish the instituted
+
+presentations; their decoding operations identify the
+
+promise communicated. T S names the Spirit’s effective
+
+operation in the believer. The equalities state fidelity of
+
+the instituted communication, not uniform reception by
+
+every participant.
+
+Consequence. Word and sign converge upon one
+
+promise, so the sign confirms rather than creates an
+
+independent Gospel. Their differentiated presentations
+
+answer the believer’s weakness through repeated,
+                              493
+
+embodied assurance. Saving efficacy belongs to the
+
+Spirit who makes that communicated promise operative
+
+in faith. The sign truly serves the gift because its
+
+institution, content, reception, and effect belong to one
+
+sacramental act (Calvin, Institutes IV.14).
+
+The distinction between sign and saving reality
+
+preserves their instituted relation. Identifying the
+
+element with the reality transfers the source into the
+
+instrument; emptying the sign of its confirming office
+
+removes an act God appoints for the recipient’s good.
+
+Calvin retains both the element’s creaturely identity and
+
+its substantial sacramental use. The promise gives the
+
+sign its object, and the Spirit makes the communicated
+
+gift effective in faith. The relation therefore requires
+
+distinction together with real communication, each
+
+determining how the other is confessed.
+
+
+
+
+                            494
+
+Sign, promise, recipient, Christ, and Spirit remain
+
+distinguishable through the sacramental act. The sign
+
+presents what the promise names, the recipient receives
+
+through faith, and the Spirit communicates the Christ
+
+whose benefits nourish and confirm. Their coordination
+
+supplies the act’s completeness. A compressed account
+
+which removes one term changes the operation: the
+
+instrument becomes autonomous, the gift becomes
+
+mere memory, or the recipient’s physical action
+
+becomes a sufficient saving cause. Calvin’s precision
+
+preserves the whole relation through the proper office
+
+of each term.
+
+
+Baptism — Calvin, Institutes IV.15.1–IV.16.32
+
+
+Close reading by locus
+
+
+IV.15.1–6 — Baptism’s continuing use
+
+Calvin treats baptism as a once-given sign whose
+
+promise can be recalled throughout life. Its meaning is
+                          495
+
+not exhausted by the psychological state of the moment
+
+of administration (Calvin, Institutes IV.15.1–6).
+
+The Didache places baptism under the triune name and
+
+directs its administration through water, with practical
+
+accommodations for the water available. The identity of
+
+the ordinance remains stable across those
+
+accommodations. Augustine explains its efficacy
+
+through the Word joined to the element. Together these
+
+witnesses supply the patristic order Calvin develops:
+
+baptism is Christ’s instituted sign, its administration
+
+obeys his command, and its benefit rests upon the
+
+divine promise rather than a particular physical
+
+circumstance of washing (Didache 7, Augustine,
+
+Tractates on John 80.3).
+
+Romans 6 describes baptism through participation in
+
+Christ’s death and burial, then gives that participation
+
+its ethical consequence in walking in newness of life.
+
+
+                           496
+
+The sign’s meaning reaches beyond the moment of
+
+washing into the continuing life of the person marked.
+
+Titus places salvation under divine mercy and identifies
+
+the washing of regeneration and renewal with the Holy
+
+Spirit poured out through Jesus Christ. The saving
+
+source is therefore the mercy of God acting through the
+
+Mediator and Spirit (Romans 6:3–4; Titus 3:4–7;
+
+Calvin, Institutes IV.15.1–6).
+
+Baptism supplies an enduring reference to that
+
+promised relation. Its institution can be recalled amid
+
+later repentance and weakness because its divine
+
+meaning is not recomputed from every subsequent
+
+emotion. The recollection directs the believer toward
+
+Christ’s death and risen life, whose benefits the Spirit
+
+communicates. This enduring use coordinates
+
+sacramental memory with continuing renewal while
+
+leaving regeneration’s efficacy with God. A historical
+
+initiating event can remain an active reference in later
+                           497
+
+corrective cycles through institutional and personal
+
+memory.
+
+Baptism’s continuing use rests upon the durability of
+
+the promise it seals. Its administration occurs once, and
+
+the believer returns repeatedly to its testimony in
+
+repentance and confidence. That return does not require
+
+a new initiation because the promise already given
+
+remains directed toward Christ. Calvin’s account joins
+
+the completed sacramental act to its recurrent reception
+
+across the believer’s life (Calvin, Institutes IV.15.1–6).
+
+Cross-reference: See III.2 on faith and IV.14 on
+
+sacramental efficacy.
+
+At IV.15.1–6, baptism functions as a nonrepeatable
+
+initiating mark B 0 whose promise remains available to
+
+later memory M t . Recurrent appropriation therefore
+
+takes the form Recall( B 0,t), not repeated initialization
+
+B t . This distinguishes the once-given sign from the
+
+                            498
+
+believer's repeated return to what the sign signifies and
+
+seals.
+
+
+IV.16.3–6 — Covenant continuity and infant
+
+baptism
+
+The infant-baptism argument turns first on the
+
+continuity of the Abrahamic covenant and its inclusion
+
+of believers’ children. Calvin then relates circumcision
+
+and baptism as covenant signs across differing
+
+administrations (Calvin, Institutes IV.16.3–6).
+
+Augustine expressly includes infants in his account of
+
+the Word’s sacramental efficacy. Their inability to
+
+articulate faith does not exclude them from baptism’s
+
+administration within the believing church. The child’s
+
+reception rests upon the divine Word ministered in that
+
+ecclesial setting. Calvin’s defense of infant baptism
+
+develops the covenantal ground of this inherited
+
+practice: the promise governs the inclusion of children,
+
+                           499
+
+and the sign is administered on the authority of God’s
+
+commitment to his people (Augustine, Tractates on
+
+John 80.3).
+
+Genesis 17 expressly extends the covenant promise to
+
+Abraham’s seed and commands the sign for the male
+
+children of his household. Their inclusion is established
+
+by the promise’s scope before their ability to articulate
+
+faith. Romans 4 then distinguishes the sign from the
+
+righteousness it seals, preventing physical reception
+
+from becoming the cause of acceptance. Colossians
+
+places circumcision made without hands and burial
+
+with Christ in baptism within the believer’s
+
+participation in his death and resurrection. The saving
+
+substance is located in Christ across the change of sign
+
+(Genesis 17:7–14; Romans 4:11; Colossians 2:11–12;
+
+Calvin, Institutes IV.16.3–6).
+
+
+
+
+                           500
+
+Calvin’s argument combines household inclusion with
+
+continuity of that saving substance. The question is
+
+whether the coming of Christ revokes the children’s
+
+place within the covenant people or fulfills the promise
+
+under a new administration. The continuity of the
+
+promise governs his answer: the external sign changes,
+
+while God’s commitment to his people and their
+
+children supplies the ground for its administration. The
+
+sign marks reception within that order without making
+
+the child’s physical washing an independently sufficient
+
+cause of salvation. The identity boundary of the
+
+covenant community persists while the sign and
+
+administration change.
+
+The sixteenth-century Anabaptist movements supply
+
+the immediate setting of Calvin’s opposition to the
+
+denial of infant baptism. His reply addresses the
+
+covenantal status of believers’ children and the relation
+
+between the old and new signs. Those questions
+                         501
+
+determine the structure of his defense (Calvin, Institutes
+
+IV.16.3–6).
+
+Cross-reference: See II.10–11.
+
+
+IV.16.7–32 — Objections: faith, command,
+
+households
+
+Calvin answers objections concerning the absence of an
+
+explicit infant-baptism command, the relation between
+
+faith and baptism, and the status of children. His case is
+
+cumulative rather than dependent on one household text
+
+(Calvin, Institutes IV.16.7–32).
+
+Peter connects repentance and baptism to the promise
+
+addressed to his hearers, their children, and those far off
+
+whom the Lord calls. The address places the children
+
+within the announced scope of the covenant promise
+
+while retaining God’s calling as the source of its saving
+
+reception. Acts records the baptism of Lydia’s
+
+household and that of the jailer, displaying the
+
+                           502
+
+household as a unit within the Gospel’s administration.
+
+First Corinthians identifies believers’ children as holy
+
+in contrast to the impurity from which covenantal
+
+separation distinguishes them (Acts 2:38–39; 16:14–15,
+
+31–34; 1 Corinthians 7:14; Calvin, Institutes IV.16.7–
+
+32).
+
+The household accounts supply instances of corporate
+
+administration; Genesis 17 and the apostolic promise
+
+supply its covenantal ground. Calvin does not require
+
+the institution to depend upon an enumeration of every
+
+household member’s age. He argues from the relation
+
+already established between the believer, the household,
+
+and God’s promise. Adult converts are called to confess
+
+the faith they receive, while the children’s
+
+administration follows their included place within that
+
+household relation. Classification into the visible
+
+covenant community does not imply direct
+
+
+                           503
+
+observability of regeneration; visible status and hidden
+
+saving state remain distinct variables.
+
+Calvin’s defense of infant baptism proceeds through the
+
+continuity of the covenant promise, the inclusion of
+
+children, and the change of its instituted sign.
+
+Household examples enter that established argument as
+
+instances of the Gospel’s corporate administration.
+
+Their force belongs within the covenantal relation on
+
+which the defense rests (Calvin, Institutes IV.16.7–32).
+
+Cross-reference: See IV.1 on visible church
+
+membership.
+
+Baptism is first a sign of cleansing and forgiveness, but
+
+Calvin carefully denies that the sign is confined to the
+
+instant at which water is applied. The promise sealed in
+
+baptism extends through the believer’s life and can be
+
+recalled in the struggle against sin. Baptism also
+
+signifies mortification and new life in Christ and
+
+                           504
+
+incorporation into Christ’s body (Calvin, Institutes
+
+IV.15.1–4; IV.15.5–6).
+
+Calvin’s defense of infant baptism depends heavily
+
+upon covenant continuity. He argues that the covenant
+
+made with Abraham is substantially the same covenant
+
+in which Christians stand and that baptism occupies a
+
+covenantal position analogous, though not identical, to
+
+circumcision. The children of believers therefore should
+
+not be excluded from the sign of belonging that was
+
+previously given to covenant children (Calvin,
+
+Institutes IV.16.3–6).
+
+Calvin answers the Anabaptist objections through the
+
+covenantal place of children and the relation between
+
+the sign and its promised good. The absence of an
+
+isolated command is tested against the continuity of the
+
+covenant already established; the objection from
+
+conscious faith is tested against God’s capacity to work
+
+
+                          505
+
+in infants. Baptism therefore marks belonging through
+
+divine institution without assigning automatic
+
+regeneration to every outward administration (Calvin,
+
+Institutes IV.16.7–32).
+
+Baptism remains a durable reference throughout the
+
+believer’s life. Its promise does not expire with the act
+
+of administration. The baptized person returns to that
+
+instituted sign when confidence fluctuates, receiving
+
+again the assurance directed toward Christ. The
+
+continuing use of baptism preserves memory and
+
+confession through repeated reception of the promise
+
+already sealed.
+
+Baptism’s once-administered sign remains a reference
+
+for the believer’s subsequent life.
+
+Temptation and forgetfulness alter present
+
+remembrance while the promise sealed remains
+
+
+
+                           506
+
+available for renewed reception. The enduring office of
+
+the sign therefore exceeds the instant of administration.
+
+Baptism's once-for-all character distinguishes it from
+
+the recurrent Supper. The sign establishes a durable
+
+reference event that can be recalled without repetition.
+
+If b occurs at t 0, its signifying relation persists for t>t 0:
+
+Ref b(t)=bt 0. Calvin's pastoral use of baptism therefore
+
+functions as a fixed external marker against which later
+
+fluctuating internal states can be reoriented.
+
+Infant baptism also forces Calvin to distinguish system
+
+membership from mature individual output. An infant
+
+cannot yet display the same cognitive and behavioural
+
+responses as an adult believer, yet Calvin includes
+
+covenant children within the visible community on the
+
+basis of promise and corporate relation. The visible
+
+church is therefore not defined solely by presently
+
+measurable adult performance. Membership can
+
+                              507
+
+precede the later development of capacities associated
+
+with mature participation.
+
+Baptism identifies an instituted relation whose reality
+
+extends beyond immediately observable conduct. The
+
+promise, covenantal standing, and appointed sign
+
+possess their objects and offices even where the
+
+observer cannot inspect the recipient’s inward saving
+
+condition. Public recognition must retain that
+
+distinction. The church administers through the divine
+
+institution and judges manifest conduct within its
+
+commission, while regeneration remains the Spirit’s
+
+act. An account limited to visible behaviour would
+
+remove relations upon which the lawful administration
+
+and continuing use of baptism actually depend.
+
+
+
+
+                             508
+
+Baptism gives a once-administered sign whose promise
+
+remains available throughout the believer’s life. Let B 0
+
+be baptism administered at t 0, P B its promise in Christ,
+
+and mt the believer’s present remembrance and use of
+
+that promise:
+
+                       B 0 = B ( t 0 );
+                  Promise ( B 0 )= P B ;         (43)
+             mt + 1 = Recall ( mt , B 0 , P B ).
+
+Terms. Recall is the renewed act of returning to the
+
+promise sealed in baptism. mt changes through
+
+memory, instruction, temptation, and renewed
+
+confidence, while the administered sign and its
+
+instituted promise remain the reference.
+
+Consequence. Forgetfulness changes present
+
+apprehension without cancelling the promise. The
+
+remedy is renewed reception of the same baptismal
+
+testimony, not repetition of the initiating sign whenever
+
+confidence weakens. Mortification, new life,
+                              509
+
+forgiveness, and incorporation are thereby joined to a
+
+durable public reference whose continued use belongs
+
+to the believer’s struggle against sin. The temporal
+
+distinction between administration and subsequent
+
+return explains baptism’s continuing office (Calvin,
+
+Institutes IV.15–16).
+
+
+The Lord’s Supper — Calvin, Institutes IV.17.1–50
+
+
+Close reading by locus
+
+
+IV.17.1–5 — More than memorial
+
+Calvin insists that the Supper truly communicates
+
+Christ to believers. The sign does not merely trigger
+
+recollection of an absent benefit (Calvin, Institutes
+
+IV.17.1–5).
+
+The Didache gives thanks for spiritual food and drink
+
+and eternal life freely bestowed through Jesus Christ.
+
+Its Eucharistic prayer asks that the scattered church be
+
+gathered into God’s kingdom. Communion is thus a
+                         510
+
+divine gift nourishing a gathered people toward their
+
+promised end. Augustine identifies the reception of
+
+Christ’s flesh and blood with abiding in Christ and
+
+having Christ abide in the believer. Calvin’s account of
+
+real participation develops these affirmations: the
+
+Supper communicates the Savior’s life and strengthens
+
+the communion of those who receive him in faith
+
+(Didache 9–10, Augustine, Tractates on John 26.18–
+
+19).
+
+Paul identifies the cup and bread as communion in
+
+Christ’s blood and body and immediately draws the
+
+corporate consequence: the many are one body because
+
+they partake of one bread. Participation in Christ
+
+establishes a shared life whose effects include mutual
+
+belonging. His account of the institution in First
+
+Corinthians 11 joins remembrance and proclamation of
+
+the Lord’s death to discerning reception, with judgment
+
+falling upon abuse of the holy meal. The meal carries a
+                           511
+
+promise and a responsibility that bare recollection
+
+cannot exhaust (1 Corinthians 10:16–17; 11:23–29;
+
+Calvin, Institutes IV.17.1–5).
+
+Calvin’s real participation accounts for both effects.
+
+Christ nourishes the faithful through the appointed
+
+signs, and the communion received binds them to the
+
+body he gathers. The same promise can be encountered
+
+through an unworthy act whose outcome is judgment
+
+rather than nourishment. The difference concerns the
+
+receiver’s relation to Christ, while the institution’s
+
+meaning remains fixed by the Lord who gives it. The
+
+sacrament is an actual coupling relation whose source
+
+remains Christ rather than the recipient’s act of
+
+recollection.
+
+Calvin rejects a Supper reduced to remembrance
+
+detached from real communion. The ordinance
+
+nourishes believers through participation in Christ,
+
+
+                            512
+
+whose body remains in heaven. The Spirit establishes
+
+the effective relation between the ascended Savior and
+
+the gathered recipients. Remembrance, instituted signs,
+
+and real participation consequently belong to one
+
+sacramental act whose source remains Christ (Calvin,
+
+Institutes IV.17.1–5, 10–12).
+
+Cross-reference: See III.1 and IV.14.
+
+
+IV.17.10–12, 31–33 — The Spirit and the ascended
+
+body
+
+Calvin preserves the true locality of Christ’s human
+
+body in heaven while insisting upon real participation
+
+through the Spirit. This is where Book II Christology
+
+directly governs Book IV sacramentology (Calvin,
+
+Institutes IV.17.10–12, 31–33).
+
+Augustine’s distinction between visible sacramental
+
+reception and spiritual eating establishes the rule for
+
+understanding the participation promised. The life-
+
+                           513
+
+giving reception is mutual indwelling in Christ.
+
+Ignatius’s insistence that the Eucharist confesses the
+
+flesh that suffered and was raised identifies the Savior
+
+received: communion belongs to the genuinely
+
+incarnate and risen Lord. Calvin holds these
+
+affirmations together through the Spirit’s agency. The
+
+believer receives the true Christ, and the saving manner
+
+of reception is spiritual communion with him
+
+(Augustine, Tractates on John 26.18–19; Ignatius, To
+
+the Smyrnaeans 6–7).
+
+Acts 3 identifies heaven as the place receiving Christ
+
+until the appointed restoration. Colossians directs
+
+believers toward the Christ seated at God’s right hand.
+
+First Corinthians nevertheless describes present
+
+communion in his body and blood. These affirmations
+
+must remain true together: the ascended humanity has a
+
+real heavenly location, and believers genuinely
+
+participate in the Savior’s life (Acts 3:21; Colossians
+                            514
+
+3:1; 1 Corinthians 10:16; Calvin, Institutes IV.17.10–
+
+12, 31–33).
+
+The Spirit communicates the ascended Christ to
+
+believers whose earthly location remains distinct from
+
+his bodily place in heaven. Communion therefore
+
+preserves the humanity confessed in Book Two
+
+together with the effective divine power through which
+
+participation occurs. The bread’s dimensions do not
+
+become the dimensions of Christ’s body, and the
+
+recipient’s true participation does not require their local
+
+identification. The same personal Savior is received
+
+through spiritual union. Distinction of place and
+
+identity remains within the relation whose efficacy
+
+joins the believer to him.
+
+The ascended body’s heavenly location and the
+
+believer’s real reception remain jointly necessary in
+
+Calvin’s account. The Spirit communicates Christ
+
+
+                             515
+
+without dispersing his body through the elements.
+
+Reception occurs through faith, so outward eating does
+
+not establish saving participation apart from that
+
+reception. The controversy therefore fixes locality,
+
+agency, and the recipient’s relation to the promise
+
+together (Calvin, Institutes IV.17.10–12, 31–33).
+
+Cross-reference: See II.14.1–4 and II.16.13–16.
+
+The Lord’s Supper is the sacrament in which Calvin’s
+
+
+refusal of both reduction and confusion is most visible.
+
+Bread and wine are signs, but the Supper is not merely
+
+a mnemonic exercise. Christ truly gives himself to
+
+believers, and they truly participate in his body and
+
+blood. The reality of participation is as important to
+
+Calvin as the rejection of a local, corporeal presence in
+
+the elements (Calvin, Institutes IV.17.1–5).
+
+Calvin locates the mode of communion in the Holy
+
+Spirit. Christ’s human body remains in heaven, yet the
+
+                           516
+
+Spirit unites believers to the risen Christ so that the
+
+distance of place does not prevent genuine
+
+participation. This is why his position cannot accurately
+
+be collapsed into either Roman transubstantiation or a
+
+merely memorial account (Calvin, Institutes IV.17.10–
+
+12, 31–33).
+
+The Eucharistic controversy also displays Calvin’s
+
+characteristic insistence that mystery has limits. He is
+
+willing to confess a real communion whose mode
+
+exceeds full explanation rather than solve the mystery
+
+by identifying Christ’s body locally with the bread or
+
+by reducing communion to mental recollection. The
+
+sacrament is a divine accommodation to weak faith, but
+
+what it communicates is Christ himself.
+
+The Supper communicates Christ through the Spirit
+
+while preserving the distinct identities of Christ, the
+
+believer, and the instituted elements. Bread and wine
+
+
+                            517
+
+serve their appointed sacramental office, and believers
+
+truly receive the nourishment of communion with
+
+Christ. Real participation proceeds through the Spirit’s
+
+act without requiring material identity between the
+
+elements and Christ’s body.
+
+The Spirit effects real communion between the believer
+
+and the ascended Christ through the instituted Supper.
+
+Personal distinction, Christ’s bodily location, and the
+
+elements’ created identity remain intact through that
+
+communion. The uniting act communicates the risen
+
+person and his benefits without requiring local
+
+containment.
+
+Calvin's Eucharistic position is best understood as a
+
+problem of real coupling across nonidentity. The bread
+
+remains bread; Christ's human body remains in heaven;
+
+nevertheless the believer truly participates in Christ. If
+
+B is believer, C the risen Christ, E the eucharistic
+
+                           518
+
+elements, and U Sp the Spirit's uniting operation,
+
+Calvin's structure is Participation(B,C|E)=U Sp(B,C),
+
+while E≠C body . The sign is neither collapsed into the
+
+thing signified nor severed from it.
+
+The Supper distinguishes the communicated good, the
+
+instituted media, and the agent of communion. Christ is
+
+the good received; bread and wine serve the appointed
+
+sign-bearing office; the Spirit establishes the
+
+participation through which believers are nourished.
+
+These relations jointly secure the sacrament’s reality
+
+and order. Christ’s bodily presence remains heavenly
+
+while his benefits are truly communicated to those who
+
+receive him by faith.
+
+Repeated celebration of the Supper nourishes faith
+
+through recurrent participation in Christ. The believer’s
+
+weakness requires continuing reception: the promise is
+
+proclaimed, its signs are administered, and the Spirit
+
+                           519
+
+sustains communion with the ascended Savior. Each
+
+celebration returns the recipient to the same Christ and
+
+his accomplished work. The church’s sacramental
+
+practice therefore maintains remembrance, confidence,
+
+and dependence through ordered acts repeated across
+
+the believer’s life.
+
+Calvin specifies the Eucharistic relation through the
+
+distinction of sign and reality, the heavenly location of
+
+Christ’s body, and Spirit-mediated participation. The
+
+formalization states those relations: the Spirit effects
+
+real communion between the believer and the ascended
+
+Christ while preserving their distinction and Christ’s
+
+bodily location.
+
+
+
+
+                           520
+
+The Supper gives real communion with the ascended
+
+Christ through the Spirit. Let b be the believer, C
+
+Christ, E the elements, and U S the Spirit’s uniting act:
+
+                           b≠C ;
+                      E ≠ Body (C );
+        location( b )≠ location( Body (C )); (44)
+         U S ( b ,C , E ) ⇒ Participate ( b , C ).
+
+Terms. The inequalities preserve personal distinction,
+
+the elements’ created identity, and Christ’s bodily
+
+ascension. Participate names the believer’s actual
+
+communion with Christ and his benefits. U S gives the
+
+agency by which that communion is effected through
+
+the instituted celebration.
+
+Consequence. Real participation does not require
+
+identity of substance or local enclosure of Christ’s body
+
+in the elements. The Spirit joins the believer to the risen
+
+person while preserving every distinction expressed in
+
+the equation. The sign therefore communicates more
+
+
+                              521
+
+than a private memory, and the ascended body retains
+
+the humanity confessed in the account of the
+
+incarnation. Christology governs the Eucharistic
+
+relation from its source through its reception (Calvin,
+
+Institutes IV.17).
+
+Real participation in Christ preserves the bodily reality
+
+of the one received. His humanity remains in heaven,
+
+the gathered believers remain on earth, and the Spirit
+
+communicates his life through the instituted Supper.
+
+The signs retain their created identity while serving the
+
+gift which the promise names. Calvin’s account
+
+therefore carries all the established relations into one
+
+act: true incarnation, ascension, spiritual agency, faith,
+
+and embodied administration remain operative together.
+
+The reality of communion follows through their
+
+coordination without requiring the erasure of their
+
+differences.
+
+
+                           522
+
+The Spirit’s act gives these relations their effective
+
+unity. He joins the believer to the risen person whose
+
+body retains its appointed heavenly location, so that
+
+spatial distance does not abolish participation and
+
+participation does not dissolve bodily place. The
+
+manner of communion must preserve both
+
+consequences. Calvin’s appeal to the Spirit identifies
+
+the personal agent through whom the saving relation
+
+occurs, keeping the promised nourishment attached to
+
+an actual operation rather than leaving the doctrine at
+
+an unexplained assertion of presence.
+
+
+The Mass and the Sacrificial Question — Calvin,
+
+Institutes IV.18.1–20
+
+
+Close reading by locus
+
+
+IV.18.1–7 — Once-for-all sacrifice
+
+Calvin’s central objection is that a propitiatory Mass
+
+assigns a recurrent sacrificial function to the church that
+                           523
+
+compromises the finality of Christ’s unique priestly
+
+offering (Calvin, Institutes IV.18.1–7).
+
+The Didache calls the Lord’s Day assembly to break
+
+bread, give thanks, confess transgressions, and seek
+
+reconciliation so that its sacrifice is pure. The sacrificial
+
+language belongs to the worship of a reconciled people
+
+receiving and thanking God for his gifts. Its Eucharistic
+
+prayers celebrate the spiritual nourishment freely given
+
+through Christ. Calvin’s distinction between Christ’s
+
+completed saving sacrifice and the church’s sacrifice of
+
+thanksgiving develops this liturgical order. The
+
+congregation’s offering responds to the Savior’s gift
+
+and expresses the communion that gift establishes
+
+(Didache 9–10, 14).
+
+Hebrews distinguishes Christ’s priesthood from
+
+repeated offerings through the completion of his own
+
+sacrifice. He offers himself once, enters by his own
+
+
+                            524
+
+blood having obtained eternal redemption, and appears
+
+to put away sin through that offering. The recurring
+
+sacrifices of the earlier order testify to their inability to
+
+perfect the worshippers; Christ’s one offering supplies
+
+the decisive reversal. The continuing work described is
+
+intercession by the living Priest (Hebrews 7:25–27;
+
+9:12, 26–28; 10:10–14; Calvin, Institutes IV.18.1–7).
+
+Calvin’s objection to a propitiatory Mass follows this
+
+distribution of functions. The completed offering
+
+establishes reconciliation, intercession sustains the
+
+people’s access, and the Supper communicates and
+
+confirms the benefit. Assigning a renewed propitiatory
+
+act to the congregation transfers the function of the
+
+accomplished sacrifice into a recurrent ecclesial
+
+operation. Thanksgiving retains its proper place as the
+
+church’s response to the gift whose saving ground
+
+remains Christ’s finished work. A completed causal
+
+ground can be repeatedly communicated without being
+                         525
+
+repeatedly produced. Recurrent access is not recurrent
+
+origination.
+
+The Council of Trent’s Eucharistic and sacrificial
+
+definitions belong to the immediate mid-sixteenth-
+
+century context, although Calvin’s polemic also
+
+responds to older medieval theology and practice.
+
+Cross-reference: See II.15.6 and II.16.5–7.
+
+Calvin’s attack on the Mass centers upon sacrifice. He
+
+believes the New Testament presents Christ’s self-
+
+offering as unique and sufficient and therefore rejects
+
+the idea that the eucharistic rite is a propitiatory
+
+sacrifice offered by a priest for the living and the dead.
+
+The objection is consequently not first about
+
+ceremonial style but about the finality of Christ’s
+
+priestly work (Calvin, Institutes IV.18.1–7).
+
+Calvin can speak positively of the church’s sacrifice of
+
+praise and thanksgiving and of believers offering
+
+                            526
+
+themselves to God, but he sharply distinguishes such
+
+sacrifices from a repetition or continuation of the
+
+atoning sacrifice. The argument returns to the priestly
+
+office established in Book Two: Christ’s sacrifice is
+
+sufficient because the mediator is sufficient (Calvin,
+
+Institutes IV.18.13–18).
+
+The sacrificial controversy is represented as a question
+
+of whether a completed event is being treated as
+
+requiring recurrent causal supplementation. Calvin
+
+reads Hebrews and the New Testament witness as
+
+establishing a terminal sufficiency condition for Christ's
+
+propitiatory sacrifice: S C is complete such that no
+
+additional propitiatory input ΔS is required. His
+
+objection to the Mass is that a propitiatory construal
+
+introduces recurrent additions to what Scripture
+
+declares once-for-all.
+
+
+
+
+                           527
+
+This does not make the Supper causally empty. Calvin
+
+distinguishes repetition of sacrifice from repeated
+
+communication of the benefits of the sacrifice. The
+
+source event is nonrepeatable; participation is recurrent.
+
+The completed sacrifice supplies benefits
+
+communicated repeatedly through the instituted Supper.
+
+That distinction allows Calvin to affirm frequent
+
+Eucharist while rejecting repeated propitiation.
+
+The difference also explains his positive language of
+
+thanksgiving. The church's response is output generated
+
+by received grace, not an input that completes Christ's
+
+deficient work. Praise, self-offering, and charity are
+
+therefore feedback in the creaturely life of gratitude,
+
+while atonement remains the accomplished ground
+
+from which that life proceeds.
+
+Repeated celebration communicates the benefits of
+
+Christ’s completed offering. Calvin’s objection reaches
+
+
+                           528
+
+the further claim that the recurrent rite possesses a
+
+propitiatory office through which the saving sacrifice is
+
+reproduced or supplemented. The consequence would
+
+change the ground of reconciliation by assigning an
+
+accomplished mediatorial act to the church’s continuing
+
+administration. The Supper instead returns believers to
+
+the same finished work and nourishes their participation
+
+in its benefits. Repetition belongs to reception and
+
+confirmation, while the expiatory source retains its
+
+once-for-all completion (Calvin, Institutes IV.18.1–7).
+
+Suppose C denotes the completed sacrificial act of
+
+Christ and E t a eucharistic celebration at time t.
+
+Calvin's position requires that E t point to,
+
+communicate, and participate in benefits grounded in C
+
+without satisfying C t =C repeated at every celebration.
+
+The once-for-all act functions as a fixed causal and
+
+covenantal reference whose effects are communicated
+
+
+                            529
+
+repeatedly; the rite does not regenerate the sacrificial
+
+source.
+
+This distinction specifies a temporal organisation: a
+
+nonrepeatable initiating event can govern a series of
+
+later recurrent operations. Constitutions, calibrations,
+
+covenants, and initialization events often have this
+
+structure. Calvin's theological claim specifies the
+
+unique content: the initiating event is Christ's self-
+
+offering, and its sufficiency forbids the church from
+
+treating its recurrent rite as a new propitiatory
+
+production.
+
+His positive language of sacrifice—praise,
+
+thanksgiving, self-offering—shows that he is not
+
+eliminating sacrificial vocabulary from Christian life.
+
+He is partitioning the category. Let S p denote
+
+propitiatory sacrifice and S t the sacrifice of
+
+thanksgiving. Calvin's restriction is S p={Christ's once-
+
+                            530
+
+for-all offering}; Christian worship may contain S t
+
+without enlarging S p. The distinction prevents verbal
+
+similarity from collapsing functional difference.
+
+This also explains why the controversy is inseparable
+
+from priesthood. If the eucharistic minister performs a
+
+new propitiatory sacrifice, the minister's office acquires
+
+a causal function Calvin believes belongs uniquely to
+
+Christ's priesthood. The dispute therefore concerns the
+
+distribution of efficacy within the ecclesial system.
+
+Calvin relocates the minister from producer of
+
+propitiation to minister of a promise and sacrament
+
+whose efficacy depends upon Christ and the Spirit.
+
+The argument again reveals the larger architecture:
+
+Christ's unique office establishes a boundary condition
+
+for church office. The church may administer what
+
+Christ institutes; it may not reproduce the mediatorial
+
+act that constitutes the ground of its own existence. The
+
+                           531
+
+regulator is regulated by the event and Word from
+
+which its authority derives.
+
+At IV.18.1–7, let S 0 denote Christ's once-for-all
+
+propitiatory sacrifice and A t the church's recurrent
+
+sacramental administration. Calvin's causal order
+
+requires A t -> participation in benefits( S 0), not A t ->
+
+reproduction( S 0). The distinction makes repetition of
+
+administration compatible with nonrepetition of the
+
+propitiatory ground.
+
+
+The Five Other Roman Sacraments — Calvin,
+
+Institutes IV.19.1–37
+
+
+Close reading by locus
+
+
+IV.19.1–37 — Classification by institution and
+
+promise
+
+Calvin examines confirmation, penance, extreme
+
+unction, clerical orders, and marriage by their
+
+
+                             532
+
+institution, promise, sign, and appointed recipients.
+
+Baptism and the Supper belong to the whole church.
+
+Legitimate ordination has its particular sacramental
+
+office in the appointment of ministers; the multiplied
+
+orders and expiatory priesthood under dispute do not
+
+possess that office. Marriage remains a divine
+
+ordinance without acquiring a sacramental sign of
+
+saving grace. Each judgment follows the rite’s actual
+
+commission (Calvin, Institutes IV.14.20; IV.19.1–37).
+
+James directs the sick to summon the elders, who pray
+
+and anoint in the Lord’s name, and attributes recovery
+
+to the Lord’s action in response to prayer. The passage
+
+establishes pastoral care through petition; it does not
+
+identify the rite as a universal seal of saving
+
+righteousness administered to every believer. Ephesians
+
+describes marriage through the union of husband and
+
+wife and then identifies the great mystery in relation to
+
+Christ and the church. The comparison explains
+                          533
+
+marriage’s significance through the saving union; the
+
+word “mystery” by itself supplies no institution of a
+
+sacramental sign and promise (James 5:14–15;
+
+Ephesians 5:31–32; Calvin, Institutes IV.19.1–37).
+
+Calvin’s classification follows the function Christ
+
+appoints rather than the solemnity of a practice or the
+
+breadth of a translated term. A lawful ceremony, useful
+
+ministry, or sacred relation can retain its proper good
+
+without receiving the same office as baptism and the
+
+Supper. The distinction preserves the specific promise-
+
+bearing function through which those two ordinances
+
+confirm faith. A classification system fails when
+
+surface similarity substitutes for necessary predicates.
+
+Calvin’s dispute is partly a dispute over type definition
+
+and institutional authority to create types.
+
+Peter Lombard’s sevenfold sacramental scheme and its
+
+later scholastic reception are central historical
+
+
+                            534
+
+background; Trent formalized the seven-sacrament
+
+position against Protestant reduction.
+
+Cross-reference: See IV.14.1–6.
+
+Let R be the rites examined, I(r) the predicate of divine
+
+sacramental institution, P(r) the promised grace, and
+
+E(r) the appointed external sign. Then
+
+Sac(r)⇔I(r)∧P(r)∧E(r). Let Common(r) identify
+
+institution for the church’s members generally. The
+
+sacraments common to the church satisfy
+
+Sac(r)∧Common(r); a rite appointed for a particular
+
+office has its specified recipients. Calvin’s admission of
+
+laying on of hands in legitimate ordination therefore
+
+leaves baptism and the Supper as the two sacraments
+
+common to the whole church. The classification
+
+preserves institution, promise, sign, and recipient
+
+together (Calvin, Institutes IV.14.20; IV.19.28, 31).
+
+
+
+
+                           535
+
+Confirmation first tests the difference between
+
+catechetical formation and a purported completion of
+
+baptism. Calvin commends the public examination of
+
+those instructed in the faith and the prayer of blessing
+
+accompanying their confession. Those acts give the
+
+young person’s received knowledge a public and
+
+accountable expression. His objection reaches the claim
+
+that episcopal anointing confers an additional grace
+
+indispensable to becoming a complete Christian. That
+
+claim assigns to a newly asserted sacramental operation
+
+what the baptismal promise already gives in Christ. The
+
+rite’s solemnity cannot supply the missing divine
+
+institution or enlarge the saving promise by
+
+ecclesiastical declaration (Calvin, Institutes IV.19.3–5,
+
+13).
+
+Acts 8 records the apostles’ prayer and laying on of
+
+hands in the reception of the Spirit by the Samaritans.
+
+Calvin identifies the visible gifts then communicated
+                            536
+
+and tests the later ceremony against that operation.
+
+Repeating an outward gesture without the appointed
+
+gift does not reproduce the act’s original office. The
+
+narrative must establish the enduring institution claimed
+
+for the later rite, including its recipient, promise, and
+
+effect. Where those elements are changed, the asserted
+
+continuity has preserved appearance while altering the
+
+operation. Calvin’s positive account of catechesis
+
+therefore remains substantial: instruction, confession,
+
+and prayer continue through their own proper ends
+
+(Acts 8:14–17; Calvin, Institutes IV.19.6–8, 13).
+
+Penance returns the sacramental classification to the
+
+account of repentance already developed in Book
+
+Three. The penitent’s acknowledgment of sin and the
+
+church’s reception of repentance belong to the ministry
+
+of the Gospel. A public ceremony of reconciliation can
+
+express the restored fellowship and summon the church
+
+to receive the person. It does not thereby acquire a
+                            537
+
+divine institution as a distinct sacrament completing
+
+pardon. Calvin follows the alleged sign and promise
+
+separately: the Gospel truly offers forgiveness, but the
+
+church’s arrangement of a reconciliatory ceremony
+
+does not make that arrangement the source or
+
+indispensable instrument of forgiveness (Calvin,
+
+Institutes IV.19.14–17; III.4.9–14).
+
+The claim also fails when the sorrow or confession of
+
+the penitent is treated as though it were the external
+
+sign of a newly instituted sacrament. Repentance
+
+belongs to the recipient’s turning, while the instituted
+
+sign belongs to the means God appoints to
+
+communicate and seal his promise. Moving the
+
+recipient’s response into the place of that sign changes
+
+the relation under examination. The ministry of
+
+absolution remains a declaration of the Gospel to the
+
+penitent; the penitent’s changed conduct remains the
+
+fruit of the grace received. Their reality does not
+                            538
+
+authorize their reassembly into a new sacramental class
+
+(Calvin, Institutes IV.19.15–17; III.3.1–5).
+
+Extreme unction requires a separate judgment because
+
+its supporting passage concerns the sick and the
+
+ministry of prayer. James directs elders to pray over the
+
+sick person and anoint in the Lord’s name. Calvin
+
+identifies the healing gift exercised in the apostolic
+
+setting and rejects the conversion of its sign into a
+
+perpetual instrument for those at the point of death. The
+
+later rite changes both the timing of administration and
+
+the effect claimed for it. James addresses the sick who
+
+seek the Lord’s raising; the disputed administration
+
+waits upon extremity and attaches a different
+
+sacramental office to the oil. The citation therefore
+
+must carry the actual operation attributed to it (James
+
+5:14–15; Calvin, Institutes IV.19.18–21).
+
+
+
+
+                           539
+
+Oil receives its significance through the Word and the
+
+appointed act, not through a power resident in the
+
+material independently of that appointment. The Lord’s
+
+care for the sick continues through prayer and
+
+providential help. The continuation of divine care
+
+supplies no inference that every outward sign formerly
+
+accompanying a particular gift remains a universal
+
+sacrament. Institution fixes the sign’s commission, the
+
+promise fixes its object, and the appointed operation
+
+fixes the effect being confessed. Calvin’s rejection
+
+therefore preserves the care of the sick while denying
+
+the manufactured sacramental account of its material
+
+presentation (Calvin, Institutes IV.19.19–21; IV.14.9–
+
+17).
+
+Orders must be examined through the office conferred.
+
+Calvin rejects the multiplication of clerical degrees
+
+justified by a catalogue of gifts or an asserted heavenly
+
+hierarchy. Distinct names acquire ecclesial legitimacy
+                          540
+
+through an actual commission and useful ministry; their
+
+enumeration cannot generate those functions. The
+
+deacon’s care, the teacher’s instruction, and the pastor’s
+
+ministry must be judged by the work entrusted to them.
+
+A hierarchy whose ranks cease to correspond to
+
+commissioned acts has converted offices into positions
+
+detached from their ends. Book Four’s earlier account
+
+of differentiated ministry supplies the criteria by which
+
+that multiplication is judged (Calvin, Institutes IV.19.22
+
+–27; IV.3.1–9).
+
+The priestly office claimed for the sacrifice of the Mass
+
+introduces a further violation. Christ’s expiatory
+
+priesthood accomplishes reconciliation through his own
+
+once-for-all offering. An ordination which confers
+
+power to offer another propitiatory sacrifice assigns a
+
+minister the office belonging to that completed work.
+
+Calvin instead locates the presbyter’s commission in
+
+preaching the Gospel, administering the appointed
+                         541
+
+mysteries, and feeding the flock. The entrusted act
+
+communicates Christ and his benefits; it does not create
+
+a successor to Christ’s unique expiatory priesthood. The
+
+error concerns the ministry’s causal office before it
+
+concerns the ceremony used to confer it (Hebrews 7:23
+
+–28; 10:10–14; Calvin, Institutes IV.19.28–30; IV.18.1
+
+–7).
+
+Calvin expressly accepts the laying on of hands in true
+
+and lawful ordination as sacramental. That
+
+acknowledgment follows the same criteria which
+
+condemn the Roman construction: Christ appoints a
+
+real ministry, the sign is directed to that ministry, and
+
+the promised gift concerns its faithful exercise. The
+
+saving promise is not converted into power to repeat
+
+propitiation. The recognition consequently preserves
+
+the difference between baptism and the Supper as
+
+sacraments belonging to the whole church and the sign
+
+marking the appointment of ministers to a particular
+                        542
+
+office. A sacramental description of lawful ordination
+
+supplies no validation of the sacrifice and clerical
+
+powers Calvin rejects (Calvin, Institutes IV.14.20;
+
+IV.19.28, 31).
+
+Let U(r) mean that rite r is instituted for the church’s
+
+common participation in the saving promise, and O(r)
+
+mean that it marks appointment to a particular ministry.
+
+The two scopes must be retained when sacramental
+
+language is applied:
+
+           S common = {r : Sac ( r )∧U ( r )};
+                                               (45)
+                     O( r )⇏ U ( r )
+
+Terms. Sac retains the instituted relation of sign and
+
+promise already defined. U specifies common
+
+participation and O a ministerial appointment.

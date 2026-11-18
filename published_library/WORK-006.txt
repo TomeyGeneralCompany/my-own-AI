@@ -1,0 +1,1028 @@
+Pneumatic Radio Device
+By Isaiz James Tomey
+Manistee, MI
+
+
+
+
+I suppose I ought give you context for this idea since, it is highly unusual by contemporary standards,
+given how the modern world is so obsessed with cramming electronics and AI into every facet of every
+gizmo this side of east texas, so under the guidance of my tutelary angel, I had founded a company in my
+early adult years, Tomey General Company, and, while we have made substantial progress at a speed
+hitherto unimaginable by Manistee standards, I had been going through a bit of a block. This is not
+terribly uncommon, I have been assured, but I had gone to bed in rather a sour mood, having been unable
+to think of any new ideas, or, for that matter, make any progress on previous ones, and, as is common
+when men take to sleep, I had a dream. I closed my eyes, and when I opened them, I was standing, in a
+flowing white robe, as white as fresh snow, and was standing in a garden, full of trees bearing all sorts of
+exotic fruits, in colors, which, in spite of my command of the English language, I could not conceive of
+the words to describe, and it was in this garden, that my tutelary angel, resplendent in his golden armor,
+which was carved with the most intricate imagery of the cosmos, the urth, sky, sea, sun, moon, and
+constellations like Orion and the one which I was born under, that being Scorpio, appeared before me at
+the command of the Lord. He carried a scroll in his hand, placed it before me, and commanded me to eat
+it. I took the scroll and ate it. When I had done so, the knowledge of this radio, this gadget, was placed
+within me. So the purpose of this document, if nothing else, is to put to paper those things which, by the
+consumption of the scroll, exist within my mind. The receiver uses a 24-inch tuned copper loop and
+electrostatic leaf to control five pneumatic relay stages and a slotted air valve feeding a desk horn. For an
+assumed 30 mV/m carrier field and 50% single-tone modulation, the nominal model predicts 50.68 dB
+SPL at 1 kHz, 19.69 inches directly in front of the horn. Gold pressure diaphragms and copper flexures
+supply the low mass and compliance targets; the waterwheel and compressor supply approximately 10.82
+W of shaft input.
+
+The complete project
+
+Idea
+Build a receiver that a skilled engineer in Hero of Alexandria’s first century AD workshop could fabricate
+when supplied with the design knowledge. Receive WTCM 580 AM at a desk in Manistee. Use the
+waterwheel and compressor to supply listening energy while the radio driven leaf controls its release.
+Retain the original acoustic apparatus alongside the radio path.
+
+Claims
+    Period metals, minerals, metalworking and pneumatic methods supply the component materials and
+        construction processes.
+    The copper loop intercepts the broadcast field, and square law electrostatic attraction recovers its
+       audio envelope.
+    Compressed air supplies sound energy through a mechanically controlled pilot and relay.
+
+    The connected five-stage model predicts quiet desk output at the stated field, with frequency
+       coloration and explicitly calculated sensitivity to mass, damping and horn loss.
+
+Proof
+Construction boundary: materials and fabrication methods available to Hero of Alexandria in the first
+century AD. Classical and Hellenistic evidence is relevant within that boundary. Newly supplied design
+knowledge is allowed; modern precision manufacture, synthetic films, electronic amplification and
+manufactured semiconductor devices are excluded. Dates use BC and AD. Workshop dimensions are
+given in inches and feet alongside SI equations.
+The wheel drives the compressor, the compressor charges the reservoir, and the receiver uses that air to
+produce sound under radio control. The rotating slotted disc is unnecessary for AM reception. It can
+remain in the original acoustic transmitter on a separate drive branch. Both systems can occupy the same
+installation without treating the acoustic carrier as a radio carrier.
+
+
+
+
+Figure 16. Complete radio and pneumatic arrangement. The wheel supplies compressor work, the loop
+supplies radio control and five adjacent relay cartridges drive the slotted sound valve and horn.
+The radio leaf controls an opposed pilot nozzle pair. Five gold-diaphragm relay cartridges pass its
+pressure signal through loaded mechanical and pneumatic stages. The last diaphragm drives a slotted
+valve supplied from the main reservoir; its modulated airflow enters the horn.
+Mechanical gain comes from flowing compressed air. The radio pickup and square law force detector use
+the received field; the wheel supplies listening energy.
+
+Material and workshop evidence
+Theophrastus describes attractive stones, rock crystal, metallic minerals, abrasives, lathes and
+metallurgical processing in On Stones. The work is dated around 315 BC by the consulted edition, before
+Hero’s first century AD workshop boundary. It supplies evidence for the material and fabrication
+traditions available before Hero. [H2]
+
+A Metropolitan Museum gold earring dated to the middle of the fourth century BC establishes classical
+Greek gold working. The proposed coil adapts those metalworking skills: form wire by hammering and
+rolling metal strips or rods, anneal it, join lengths mechanically, and separate turns on a dry former. A
+modern precision drawplate is not assumed. [H3]
+
+Status                                      Examples and limits
+
+Documented ancient material or practice     Gold foil, copper alloys, bronze pumps, lapidary work,
+                                            lapping and metallurgical processing.
+
+Plausible workshop adaptation               Spaced insulated coils; sliding air capacitor; rolled long
+                                            conductors; lapped plate and wedge adjustment.
+
+Critical fabrication target                 Stable 0.001 in gaps; 2 μm gold foil; low loss RF loop;
+                                            approximately 1 mm³ pressure paths.
+
+Excluded modern shortcut                    Enamelled magnet wire, precision micrometer, doped
+                                            silicon chip, vacuum deposition, neodymium magnet,
+                                            polymer film, piezoceramic disc.
+The construction test is whether period tools can produce the required dimensions, conductor continuity,
+insulation and repeatability. Newly supplied design knowledge is part of the project; fabrication is
+evaluated component by component.
+
+Pneumatic construction evidence
+Hero’s Pneumatics describes mechanically compressed air in a metal vessel, polished hinged bronze
+pump valves, water driven trumpet sound and lathe bored bronze piston cylinders. These are direct
+precedents for the pressure vessel, pump and acoustic portions. The numbering used here follows
+Greenwood’s translation edited by Woodcroft in 1851: propositions 9, 10, 16 and 27. [P1]
+Parsons’s US816180A of 1906 describes a spring supported grating controlling compressed air into a
+trumpet. The Science Museum preserves an auxetophone reproducer associated with a 1903 patent. These
+supply component precedents for mechanical control of air powered sound. The final synthesis equations
+evaluate actuation by the radio driven leaf. Aluminium, rubber seats and modern screw adjusters
+mentioned in later apparatus are not imported into this design. [P2–P3]
+
+                    Period compatible construction
+Part                                                        Unestablished requirement
+                    proposal
+
+Pump and            Bronze cylinder, fitted piston, check   Leakage, power efficiency and supply
+reservoir           valves and joined metal vessel          noise
+
+Nozzles and         Rolled thin metal tubes or pierced
+                                                            Flow law and repeatable small passages
+restrictors         foil; lapped rims
+
+Leaf and            Hammered metal foil on a compliant      Mass, fatigue, mode shape and total
+suspension          metal support                           damping
+
+                    Tapered wedge or lever with
+Gap adjustment                                                Stable approximately 0.001 in clearance
+                    mechanical lock
+
+Gold relay and      Clamped beaten foil, copper flexures      Effective mass, area and stiffness under
+sound valve         and light attached links                  pressure
+
+Fabrication proceeds by hammering, annealing, lapping, boring and mechanical adjustment. No deposited
+films, etched silicon channels, polymer diaphragms, enamel wire, ball bearings or precision micrometers
+are assumed. Leather can serve in compressor seals, but an ordinary leather flap is not credited with the
+detector’s 10 mg effective mass. The tiny valve is the difficult craft component; the wheel can remain
+modest in size.
+
+The received radio field
+
+Idea
+Treat the carrier field at the intended desk as the input to every receiving calculation.
+
+Claims
+    WTCM operates at 580 kHz.
+    Received force scales as the square of carrier field when geometry and tuning remain fixed.
+    The calculations cover several field strengths so a local measurement can select the applicable
+       operating case.
+
+Proof
+
+Station field and propagation calculation
+The FCC public inspection listing identifies WTCM, Traverse City, facility 70524, at 580 kHz. Its
+broadcaster confirms the News Talk 580 service and regional coverage. Neither page supplies a calibrated
+field at the intended receiver. [S1, S2]
+A 50 kW daytime transmitter is used as a working scenario, matching commonly reported station data; the
+current engineering authorization and directional pattern were not independently retrieved here. A 1.1 kW
+nighttime scenario is likewise illustrative. The numerical receiver comparison is parameterized by
+measured E and does not depend on accepting either power value as a verified license datum.
+E_rms ≈ sqrt(30 P_rad G(θ)) / r
+This follows by combining power flux S = P_rad G/(4πr²) with S = E_rms²/Z0 and Z0 ≈ 376.73 Ω. It is a
+far field free space reference, not a broadcast groundwave prediction. For P_rad = 50,000 W, G = 1, and r
+= 70,000 m, E ≈ 17.5 mV/m. Using G = 3 gives 30.3 mV/m before propagation loss. Here G is power
+gain in the receiver direction, and P_rad is radiated power, not automatically transmitter input power.
+E_ground ≈ E_ref × A_ground(f, σ, εr, r) × sqrt(η_ant)
+A_ground represents the propagation correction, and η_ant represents antenna radiation efficiency if the
+starting power is transmitter input. They cannot be assigned from distance alone. FCC 47 CFR 73.184
+explicitly makes the groundwave field depend on conductivity, permittivity, antenna geometry and inverse
+distance field. Its standard curves have a 100 mV/m at 1 km normalization that must be scaled. [S3]
+
+Illustrative field E rms                   Interpretation used here
+
+1 mV/m                                     Weak operating case
+
+3 mV/m                                     Intermediate case
+
+10 mV/m                                    Central calculation case
+
+30 mV/m                                    Strong regional or favorable path case
+
+100 mV/m                                   Strong field test close to transmitter
+The 70 km path is a regional scale example relevant to the Manistee area, not a surveyed address to
+transmitter distance. Land conductivity, Lake Michigan paths, directional nulls, local noise and buildings
+can change E substantially. Skywave cannot be treated as an improvement without checking cochannel
+interference. At unchanged pattern and propagation, reducing power from 50 to 1.1 kW reduces E by
+0.148 and electrostatic audio force by 0.022, about 33.2 dB.
+
+The copper loop and its supports
+
+Idea
+Form a 24 in square spiral from spaced copper ribbon. Use the winding both to intercept magnetic flux
+and to supply the tuning inductance.
+
+Claims
+    Forty turns provide 11.3467 m² of summed linked area and approximately 1.8032 mH inductance.
+    At 10 mV/m in the best orientation, induced voltage is 1.3793 mV rms.
+    The estimated coil resistance is 18.87 Ω; loaded Q 200 requires total equivalent loss at or below 32.86
+       Ω.
+
+Proof
+
+Desktop arrangement and component locations
+The desktop receiver replaces the tall external aerial and buried earth with a square copper winding that
+serves both as pickup and tuning inductance. The chosen outer dimension is 24 in. The frame sits on the
+desk. Its exact depth, supports and base are determined during mechanical layout. No water wheel, siren
+or compressor is required for passive reception. The original acoustic transmitter remains a separate
+machine.
+
+Figure 10. Parts 801–810 form the selected receiver. The two winding terminals connect to the tuning
+plates and detector in parallel. A conductor crosses the frame to reach the cartridge; it is kept away from
+supports to limit added capacitance.
+
+Ref                       Part                         Nominal construction target
+
+801–802                   Copper pickup and            24 in square outer frame; 40 turns; ribbon
+                          supports                     0.039 × 0.012 in; 0.039 in between turns
+
+803–804                   Tuning and adjustment        Total capacitance 41.8 pF; adjustable air plates
+                                                       and wedge lock
+
+805                       Vented fixed electrode       Approx 0.020 in wide strips with 0.020 in
+                                                       open slots; about 50% metal coverage
+
+806–807                   Leaf and clearance           0.155 in² acoustic area; 0.001 in nominal gap;
+                                                       flexible edge support and wedge setting
+
+808–810                   Direct listening reference Ear coupling shown for the passive baseline;
+                                                     powered output uses the separate valve and
+                                                     horn.
+Figure 10 shows the radio pickup with its direct listening reference. The powered desk arrangement
+connects the free leaf to the pneumatic pilot and places the sound output at the separate valve and horn in
+Figure 16.
+
+Flux linkage and inductance
+Use f = 580 kHz, ω = 2πf and a uniform magnetic field normal to the loop. The incoming electric field E
+is used as a convenient equivalent through B = E/c. That relation is a propagation approximation; a local
+field measurement should establish the magnetic component directly. The maximum pickup orientation is
+assumed. [T3]
+
+V_s,rms = ω B_rms Σ A_i ≈ (ω E_rms / c) Σ A_i
+The ribbon is laid as a square spiral with outer side D = 0.6096 m, N = 40, ribbon width w = 0.001 m, gap
+s = 0.001 m and thickness t = 0.0003 m. The centerline side of turn i is D − w − 2i(w+s), for i = 0 to 39.
+Sum its square for the linked area and four times its side for conductor length.
+Σ A_i = 11.3467 m²; ℓ = 84.896 m = 278.53 ft
+V_s,rms = 1.3793 mV (E_rms = 10 mV/m)
+An approximate square spiral current sheet formula gives the inductance. Define inner side Di = D −
+2[Nw+(N−1)s], average side Dav = (D+Di)/2, and fill ratio u = (D−Di)/(D+Di). This geometrical estimate
+sets the starting winding; measure self resonance after assembly. [T4]
+L ≈ (μ0 N² Dav × 1.27 / 2)[ln(2.07/u) + 0.18u + 0.13u²]
+L ≈ 1.8032 mH; C_total = 1/(ω²L) = 41.758 pF
+
+Conductor and joint losses
+Copper purity affects resistance but not the linked flux of the same loop. Conductor shape, joins,
+proximity loss and support leakage must be accounted for together. The numerical material reference is
+copper resistivity 1.724 × 10⁻⁸ Ω m. This is a favorable material value, not a measured ancient copper
+specimen. Modern oxygen free copper is not assumed as a period manufacturing process. [T5]
+δ = sqrt[2ρ/(ωμ0)] = 86.77 μm; R_surface = ρ/δ = 0.1987 mΩ
+R_strip ≈ R_surface ℓ/(2w) = 8.43 Ω
+The strip estimate assumes its two broad faces carry current and ignores edges. Apply a factor of two for
+proximity and nonuniform current, then add 2 Ω for joins: Rcoil ≈ 18.87 Ω. This factor is a sensitivity
+allowance, not a verified field solution. The approximate coil only Q would be 348; the chosen loaded Q
+is lower at 200.
+R_total,target = ωL/200 = 32.86 Ω
+R_other,allowed ≈ 32.86 − 18.87 = 13.99 Ω
+The remaining resistance budget must cover support loss, capacitor loss, contacts and other dissipation
+expressed as an equivalent series resistance. Larger copper resistivity or proximity losses consume this
+allowance. A specimen reaching Q = 100 rather than 200 is evaluated below, rather than silently assuming
+ideal conductor performance.
+
+The tuning plates and insulation
+
+Idea
+Connect adjustable air plates across the loop and detector. Set overlap with a wooden slide and wedge;
+use air spacing and dry supports.
+
+Claims
+    The selected loop requires 41.758 pF total capacitance at 580 kHz.
+    The detector uses 17.708 pF, leaving 24.05 pF for winding stray capacitance, leads, fringing and
+       tuning.
+
+    At loaded Q 200, carrier voltage is approximately 0.27586 V rms for 10 mV/m; the 1 kHz sideband
+        factor is 0.8232.
+
+Proof
+
+Resonance voltage and speech bandwidth
+At resonance, an ideal series loop source feeding its parallel tuning capacitance has capacitor voltage
+approximately QVs, where Q = ωL/Rtotal. The detector capacitance and winding stray capacitance are
+included in Ctotal. The winding and detector capacitances belong in this total.
+Q = 200; V_RF,rms ≈ Q V_s,rms = 0.27586 V
+Δf_RF ≈ f/Q = 2900 Hz; H(f_a) ≈ [1 + (2Q f_a/f)²]^(-1/2)
+For a single audio tone at 1 kHz, H = 0.8232. At 300 Hz it is approximately 0.979, and at 1.5 kHz
+approximately 0.695. These are first order sideband transfer magnitudes near resonance. The chosen
+tuning accepts a restricted speech band rather than the original 3 kHz audio target.
+
+Detector and stray capacitance budget
+C_detector ≈ ε0 A_e/g = 17.708 pF
+With Ae = 0.5 cm² and g = 25 μm, the detector consumes 17.71 pF of the 41.76 pF total. The sum of
+winding stray, leads, fringing and tuning plates must fit within 24.05 pF. An illustrative 20 pF parasitic
+allowance leaves only about 4.05 pF of adjustable tuning. The 20 pF figure has not been calculated from a
+full electrostatic model or measured: excess stray capacitance would invalidate this operating point and
+require fewer turns or a changed geometry.
+
+Electrical quantity            Calculated value                Status
+
+Induced voltage at 10 mV/m     1.379 mV rms                    Linked flux model
+
+Approximate inductance         1.803 mH                        Geometric approximation
+
+Coil resistance estimate       18.87 Ω                         Includes assigned proximity and joint
+                                                               allowance
+
+Total resistance for Q 200     32.86 Ω                         Required performance
+
+Detector capacitance           17.71 pF                        Flat gap approximation
+
+All other capacitance          At most 24.05 pF                Required budget
+Use metal plate combs with alternate electrical connections, dry insulating rails and a wedge locked slide.
+Size the desktop plates for the remaining capacitance budget after measuring detector, winding and
+support capacitance. Support leakage and capacitance belong in the loaded Q and tuning measurements.
+
+The electrostatic leaf and vented electrode
+
+Idea
+Hold a conductive flexible leaf above narrow fixed electrode strips. Attraction follows voltage squared, so
+its mean force contains the audio envelope. Rear slots let displaced air escape.
+
+Claims
+    The leaf follows audio rather than individual 580 kHz carrier cycles.
+    With active area 0.5 cm² and a 25 μm gap, the 1 kHz peak force is 22.19 nN at 10 mV/m and 199.68
+       nN at 30 mV/m.
+    The vented strip estimate gives 0.01448 N s/m air damping; the model uses 0.01948 N s/m total.
+    The detector moving mass includes the attached pilot flapper and participating supports.
+
+Proof
+
+Envelope force derivation
+The strict non electronic detector uses a conductive flexible membrane held above a fixed electrode. The
+voltage alternates at 580 kHz, but attraction acts in the same direction for both polarities. Mechanical
+inertia suppresses the twice carrier motion while allowing the audio variation in mean attraction. The
+membrane therefore need not track the radio cycles. The field energy force law is standard electrostatic
+actuation; the component arrangement applies that law to period materials. [T1]
+C_d(x) = ε0 A/(g − x); F(t) = ½ V(t)² dC_d/dx
+V(t) = sqrt(2) V_C,rms [1 + m cos(Ωt)] cos(ωc t)
+F_bar(t) ≈ ε0 A V_C,rms² [1 + m cos(Ωt)]²/(2g²)
+Here x is membrane motion toward the plate, g the resting air gap, A the electrically active area, m the
+modulation depth of a single tone, Ω the tone angular frequency and V_C,rms the unmodulated carrier
+voltage. This expression assumes x much less than g and a stiff enough electrical drive over the small
+motion.
+F_DC = ε0 A V_C,rms²(1 + m²/2)/(2g²)
+F_1,peak = ε0 A m V_C,rms²/g²; F_2,peak = ε0 A m² V_C,rms²/(4g²)
+At m = 0.5, the second harmonic force is 12.5% of the fundamental, approximately −18.1 dB before
+mechanical filtering. This square law detector recovers speech with intrinsic distortion. It is not an ideal
+linear envelope follower. For speech u(t), replace m cos Ωt by u(t); the output includes 2u + u², with
+intermodulation among speech components.
+Increasing voltage by two multiplies force by four. Reducing the gap by two also multiplies force by four
+at constant voltage, but doubles Cd and changes tuning. Increasing area increases capacitance and loading
+as well as force. The complete circuit must be retuned after any such change.
+
+Vented leaf force and damping calculation
+
+Figure 20. The vented fixed strips act on the conductive leaf. The powered configuration uses its free
+mechanical response and attached flapper mass. A sealed ear cavity belongs only to the direct listening
+reference.
+The acoustic area is Ad = 1 cm², while the strips occupy Ae = 0.5 cm². These are equivalent piston areas
+in a lumped model. An actual flexible membrane has a nonuniform mode shape, so its measured force
+overlap, moving mass and acoustic area must replace these assumptions together.
+V(t) = sqrt(2) V_RF,rms[1 + m cos(Ωt)] cos(ωt)
+F = (1/2)V² dC/dx; F_1,peak = ε0 A_e m V_RF,rms² H(f_a)/g²
+F_1,peak = 22.19 nN (m = 0.5; f_a = 1000 Hz; E = 10 mV/m)
+A solid nearby plate would strongly damp a moving leaf. For long strips of width a, with both long edges
+vented to approximately ambient rear pressure, integrating the small displacement Reynolds equation
+gives bstrip ≈ μ Ae a²/g³. Use a = 0.5 mm, g = 25 μm and air viscosity 1.81 × 10⁻⁵ Pa s. This neglects slot
+outlet restriction, border corrections and compressibility. [T6]
+b_strip ≈ μ A_e a²/g³ = 0.01448 N s/m
+b_total = b_strip + b_other = 0.01448 + 0.005 = 0.01948 N s/m
+The additional damping 0.005 N s/m is assigned. It is not a property established for gold leaf or animal
+membrane. Narrow vented strips make the air loss smaller in this model, but they halve the electrode area.
+Both changes are included in the force and damping calculations; ventilation is not credited as a free gain.
+No maintained static charge is needed. A stable conductive connection to each electrode is required. The
+square law also produces distortion: at m = 0.5, the second harmonic force is one eighth the fundamental
+before frequency response, or −18.1 dB. Restricted bandwidth and distortion are accepted design
+compromises, not eliminated effects.
+
+Force supplied to the pilot
+The loop remains the 24 in square, 40 turn copper ribbon design, with approximate inductance 1.803 mH
+and total resonating capacitance 41.76 pF. The assumed loaded Q is 200. At an illustrative 30 mV/m plane
+
+wave equivalent field, its detector voltage is 0.8276 V rms. Orientation, self capacitance, support loss and
+the actual WTCM field in Manistee remain unmeasured.
+H(fa) = [1 + (2Q fa / 580000)²]⁻¹ᐟ²
+FRF,peak = ε₀ Ae m VRF,rms² H(fa) / ge²
+Use electrode area Ae = 0.5 cm², electrode gap ge = 25 μm and modulation m = 0.5. At 1 kHz, force is
+199.68 nN. The moving mass M1 = 10 mg includes the leaf, flapper and their dynamically participating
+supports. Its stiffness is 63.17 N/m and assigned damping 0.01948 N s/m. Include the attached valve in
+the mass and response measurements.
+
+Period foil and gap setting
+The proposed copper winding uses hammering, annealing and forming ribbon on spaced supports. The
+fixed electrode uses separately formed metal strips, leaving open slots, rather than a modern etched grid.
+The diaphragm uses beaten conductive foil with an edge support, or a conductive leaf applied to a thin
+animal membrane. Greek gold foil is documented in an object dated about 350–300 BC. Use that foil
+work in the proposed diaphragm fabrication; measure the completed membrane’s mass, tension and
+surface accuracy. [H7]
+A one square centimetre gold sheet 5 μm thick would weigh about 9.65 mg before support. This gives the
+sheet mass before the support is included. For any membrane, total mass, modal mass and effective
+acoustic area are distinct quantities. Support preparation and tension must be specified from an actual
+specimen.
+Set the electrode position with a shallow wedge and inspect for contact while approaching the nominal
+0.001 in clearance. Lapping, foil spacers and mechanical leverage are proposed techniques. A modern
+precision spacer is excluded. Measure gap stability over the working leaf during vibration and humidity
+changes. A 0.002 in trial gap has a calculated operating case and avoids making success depend
+exclusively on the smallest clearance.
+
+Quantity to establish                       Acceptance or measured replacement
+
+Loaded Q and resonance                      Target Q 200 at 580 kHz with cartridge attached;
+                                            calculate actual output if lower
+
+Total stray capacitance                     Fit all non detector capacitance inside 24.05 pF at the
+                                            selected inductance
+
+Copper loss and joints                      Meet 32.86 Ω total equivalent series loss for Q 200
+
+Leaf response                               Measure M, k, b, modal force overlap and acoustic
+                                            displacement together
+
+Air clearance and vents                     Measure gap variation, outlet impedance, leaf sag and
+                                            electrode contact margin
+
+Ear chamber                                 Establish effective compliance and leakage with the
+                                            listening connection in use
+
+Local radio field                           Measure WTCM magnetic carrier field and nearby
+                                            interference at the intended desk
+
+Recognizable speech                         Compare unaided recovered speech against a station
+                                            reference; record correct words
+
+The waterwheel and mechanical drive
+
+Idea
+Use a modest waterwheel and crank to turn the compressor. Keep the slotted acoustic disc on its own
+drive branch when the original sound transmitter is retained.
+
+Claims
+    Wheel power depends on water head, flow and efficiency.
+    At a 3.28 ft water head and 30% wheel efficiency, the nominal 10.82 W shaft requirement
+        corresponds to 3.68 litre/s or approximately 0.97 US gallon/s.
+    Wheel power must cover compressor input, mechanical loss, extra compensation airflow and any
+      simultaneous original acoustic transmitter load.
+
+Proof
+Pwater = ρwater g H Qwater ; Pwheel = η_wheel Pwater
+Use the measured head and flow to set wheel power. The nominal radio path requires about 10.82 W shaft
+input. Select wheel diameter and speed to drive the required piston cycle rate; a hand crank supplies
+bench air during component tests.
+Connect the wheel axle to a crank and connecting rod that reciprocate the compressor piston. Select wheel
+speed and crank stroke from measured pump delivery. The radio receiver needs continuous air supply;
+wheel speed does not set the 580 kHz tuning.
+
+The piston compressor and check valves
+
+Idea
+Fit a piston to a bronze cylinder and use inlet and delivery check valves to charge the reservoir.
+
+Claims
+    Hero describes lathe bored bronze piston cylinders and polished pump valves. [P1]
+    The pilot, ten relay nozzles and sound valve draw approximately 0.27053 litre/s in the nominal model.
+    At 10 kPa main supply, the pneumatic budget is approximately 2.705 W; 25% compressor efficiency
+        gives approximately 10.82 W shaft input.
+
+Proof
+Pair ≈ Psupply Qtotal ; Pshaft ≈ Pair / η_compressor
+qpilot = 0.6802 cm³/s ; qsound = 193.649 cm³/s
+Qreservoir = qsound + 2Σqi = 270.53 cm³/s
+Pair ≈ 10000 × 270.53 × 10⁻⁶ = 2.705 W
+
+Pilot air is drawn from the main 10 kPa supply and reduced to 1 kPa. The radio path budget includes all
+modeled nozzles and the sound outlet. Add leakage and compensation flow when sizing the pump; the
+retained acoustic transmitter is an additional load.
+Hero’s Pneumatics, propositions 9, 10 and 27 in Greenwood’s translation, supplies the vessel, valve and
+piston pump precedents. Use leather where appropriate in pump seals. Measure delivery, leakage and
+efficiency at operating pressure, then size piston area, stroke and cycle rate to deliver the required flow.
+[P1]
+
+The reservoir and pressure regulation
+
+Idea
+Store compressed air upstream of the receiver. Feed the relay at the main pressure and reduce the pilot
+supply with a diaphragm or weight loaded regulator.
+
+Claims
+    The nominal relay supply is 10 kPa and the pilot supply is 1 kPa.
+    Large upstream storage smooths pump delivery; small downstream pilot volumes preserve audio
+        response.
+    A 5 litre reservoir has approximately 3.21 × 10⁻⁸ m³/Pa compliance at the stated pressure.
+
+Proof
+All pressures in the nozzle equations are gauge pressures. Compressibility uses absolute pressure,
+approximated by ambient pressure in the small signal model. The pilot supply is 1,000 Pa or 0.145 psi; its
+two chambers rest near 500 Pa. The nominal larger relay uses 10,000 Pa or 1.45 psi, with chambers near
+5,000 Pa. Higher supply pressure is not credited as automatic gain; the pressure force, airflow and
+stability all change.
+A water head reference of 4.01 in corresponds to 1 kPa. A weight loaded bell or a diaphragm regulator
+and water manometer set the pressure and indicate its value. Use a large reservoir and quiet connecting
+passages upstream; keep pilot chambers and downstream passages tiny. These volumes serve opposite
+purposes.
+Creservoir ≈ Vreservoir / (γ Pabsolute)
+A 5 litre reservoir at about 111 kPa absolute has compliance 3.21 × 10⁻⁸ m³/Pa. A trial full-flow pump
+ripple of 0.27053 litre/s at 2 Hz gives approximately 670 Pa ripple when outlet conductance is neglected.
+Measure regulator rejection and residual noise at the receiver.
+Route the main and reduced supplies to matched restrictions feeding each opposed nozzle pair. Use a
+water manometer to set pressure. Measure pressure ripple with the compressor running and use the horn
+output with no radio excitation to identify drive noise.
+
+The opposed nozzle pilot valve
+
+Idea
+Attach a light flapper to the detector leaf between two opposed nozzles. Leaf motion changes their escape
+gaps, creating differential pressure while equal steady forces are mechanically balanced.
+
+Claims
+    Each pilot nozzle has a 0.020 in bore, 0.001 in gap and nominal 0.6802 cm³/s flow.
+    Each pilot chamber, including its passages, uses a nominal volume of 1 mm³ or 0.001 cm³.
+    Pilot pressure is evaluated with the first gold diaphragm attached in the complete cascade; the
+        standalone calculation below isolates its unloaded response.
+    Nozzle reaction and relay loading enter the final coupled solution.
+
+Proof
+
+Gap flow and pressure continuity
+Aexit ≈ π d h ; An = π d² / 4
+q = Cd π d h √(2P / ρair)
+Kq = ∂q/∂x ≈ q/h ; G ≈ q/P
+The simple flow calculation uses Cd = 0.6, air density 1.2 kg/m³ and chamber pressure P = half the supply
+pressure. Each inlet restriction is selected to pass the same steady flow as its nozzle. With equal pressure
+drops, the sum of inlet and outlet pressure conductances is G = q/P. These are independently derived low
+pressure approximations, not measured coefficients of an ancient nozzle.
+Cp = Vp / (γ Patm) ; Dp(s) = G + sCp
+The 1 mm³ pressure budget includes the cavity, all passages and the pressure face of the next diaphragm.
+A 0.020 in bore passage 0.197 in long already occupies approximately 1 mm³. Place the pilot and relays
+immediately beside one another, with short drilled or formed ports.
+
+Pilot arrangement and pressure reaction
+
+Figure 13. Section through the opposed pilot nozzles. The radiating leaf is linked to a very light flapper
+with no rubbing seal. Gas exits sideways around both rims; pressure branches lead to opposite relay
+diaphragm faces.
+Z1(s) = k1 + b1 s + M1 s² ; Kp(s) = Kq / Dp(s)
+Δp1 = 2Kp x ; x = FRF / [Z1 + 2An Kp]
+The pressure reaction A_n Δp1 is included. This is a pressure only reaction model; momentum, lip
+pressure distribution, added squeeze damping and force gradients must be added after measurement.
+Wang and colleagues include flow force in a modern pneumatic servo model and determine its coefficient
+experimentally. Their torque motor and manufactured valve are not permitted construction components
+here. [P4]
+
+Tone Hz         Radio force nN          Leaf motion nm            Pressure peak Pa
+
+300             237.53                  4.656                     0.18624
+
+1000            199.68                  0.577                     0.02307
+
+2000            142.38                  0.093                     0.00372
+
+The pilot bore is 0.5 mm, its gap 25 μm and each chamber volume 1 mm³. Opposed steady forces of
+approximately 98.2 μN per side are trimmed mechanically. Dynamic reaction, drift and noise enter the
+measured pilot coefficient.
+
+The five gold diaphragm relay stages
+
+Idea
+Pass the pilot pressure difference through five adjacent relay cartridges. In each cartridge, a gold
+diaphragm moves a central link and an opposed nozzle flapper. Copper flexures supply the selected return
+stiffness. Each pair of nozzle chambers drives the next diaphragm.
+
+Claims
+    The calculation includes the swept air volume and pressure reaction at every stage.
+    Effective relay masses range from 3.16 to 4.79 mg, with assigned stiffnesses from 12.09 to 76.56
+        N/m.
+    The five relay nozzles use 10 kPa or 1.45 psi supply; the first radio driven pilot uses 1 kPa.
+    Each pressure chamber and its passages fit in approximately 1 mm³; the final receiving chamber uses
+       1.126 mm³.
+
+Proof
+
+Figure 17. Repeated cartridge topology. Component 1101 separates the preceding pair of pilot pressures.
+Its link drives 1104 between 1105 nozzles. The five stages share this relationship, with dimensions and
+dynamics set by the following tables.
+ Stage           Effective         Nozzle bore      Mass mg         k N/m             b N s/m
+                 area mm²          in
+ 1               4.117             0.04843          3.159           14.991            0.00556
+ 2               3.913             0.05557          3.215           76.560            0.01699
+ 3               3.474             0.09566          3.831           26.035            0.00904
+ 4               8.495             0.09834          4.787           12.209            0.00687
+ 5               4.750             0.04759          3.262           12.088            0.00748
+The numerical dimensions specify an operating point. Round fabrication settings only after identifying the
+completed cartridge response. Rounding bores to the nearest 0.05 mm, areas to 0.1 mm², stiffnesses to 1
+N/m and damping to 0.0005 N s/m retained a stable pressure cascade in the tested rounding case. Its
+selected tone levels were approximately 56, 70, 57, 50, 50 and 48 dB from 300 to 2,000 Hz.
+
+Gold diaphragm mass and bending
+For a circular diaphragm, use the trial deflection shape w(r) = x[1 − (r/a)²]². Its swept volume defines
+effective pressure area Aeff = πa²/3. The bending calculation and modal mass use the same coordinate x.
+Gold parameters assigned here are density 19,300 kg/m³, Young modulus 79 GPa, Poisson ratio 0.44 and
+foil thickness 2 μm or 0.000079 in. [H7, T8]
+Aeff = πa²/3 ; Mphysical = ρgold t πa² ; Mmodal = Mphysical/5
+Dgold = Egold t³/[12(1 − ν²)] ; kgold = 64πDgold/(3a²)
+The central link and flexures alter the actual diaphragm mode. The trial shape supplies a consistent mass,
+area and stiffness estimate; identify all three on the linked specimen. Clamp the foil between polished
+
+rings and attach a light central tab. Equalize both pressure faces before applying the supply so static
+pressure does not drive the foil onto a wall.
+ Diaphragm         Diameter in       Gold mass        Modal mass       Gold k N/m       Flexure
+                                     mg               mg                                length in
+ R1                0.1561            0.477            0.095            1.113            0.0989
+ R2                0.1522            0.453            0.091            1.171            0.0563
+ R3                0.1434            0.402            0.080            1.319            0.0816
+ R4                0.2243            0.984            0.197            0.540            0.1048
+ R5                0.1677            0.550            0.110            0.965            0.1065
+ Output            0.2846            1.584            0.317            0.335            0.0716
+
+Copper flexures and participating mass
+kflex = Ecopper w tcopper³/ℓ³ ; ktotal ≈ kflex + kgold
+The tabulated flexure length uses four cantilever strips, each 0.010 in wide and 0.00079 in thick, with
+freely rotating ends and a rigid translating carrier. Use the target stiffness minus the gold bending
+contribution when sizing them. Guided ends, residual tension and clamp compliance change the result.
+Include flapper, links, flexures and participating seal metal in the target moving mass.
+For R1, the physical gold mass is 0.477 mg, estimated modal mass 0.095 mg and four copper strip masses
+total approximately 0.450 mg. A 20 μm copper flapper disc covering the 1.230 mm nozzle plus a 0.5 mm
+rim allowance weighs approximately 0.421 mg. These contributions leave mass allowance within the
+3.159 mg assigned coordinate, but the link and foil attachment determine how much actually moves.
+A uniform 20 μm copper pressure disc supplies much greater bending stiffness. Replacing the selected
+suspension stiffnesses with the corresponding flat copper diaphragm estimates reduced the model’s 1 kHz
+level to about 0 dB. The thin gold pressure boundary and separate copper suspension are therefore
+functional parts of this design.
+
+The slotted air sound valve
+
+Idea
+Use the final gold diaphragm to move a spring supported metal grating. Its many opening edges modulate
+compressed air entering the horn. Adjust static pressure balance independently of the small audio motion.
+
+Claims
+    The modeled active slot edge totals 3.94 in, with 0.001 in starting clearance.
+    The zero backpressure steady flow is approximately 0.194 litre/s at 1.45 psi.
+    The final moving coordinate uses 22.37 mg effective mass, 36.87 N/m stiffness and 0.03221 N s/m
+       damping.
+    The nominal calculation sets residual dynamic valve pressure reaction to zero; the residual force
+       coefficient is a measured replacement.
+
+Proof
+
+Figure 18. Sound valve and horn arrangement. The drawing locates the slotted valve; its pressure
+balancing linkage and exhaust treatment require component development. The nominal model uses a
+compensated valve, and the sensitivity calculation treats residual reaction explicitly.
+Parsons describes a fixed and movable grating mounted on flat springs, controlling compressed air
+entering a trumpet. Apply the flow principle using formed copper or bronze strips and a wedge setting.
+The present final valve is driven by detected radio through the pneumatic cascade. [P2]
+Bv = Cd ℓ_edge √(2Psupply/ρair) = 7.746 m²/s
+qv0 = Bv h = 1.93649 × 10⁻⁴ m³/s ; Gv ≈ qv0/(2Psupply)
+Uthroat = Bv xoutput/(1 + Gv Zhorn)
+Zoutput = koutput + boutput s + Moutput s²
+Zoutput xoutput − Aoutput Δp5 + Aresidual pthroat = 0
+Aresidual converts horn backpressure into net force on the moving grating. Its nominal value is zero. A
+residual area of 0.1 cm² changed the 1 kHz response to about 54 dB in the frequency calculation; a full 1
+cm² area reduced it to about 45 dB. These frequency solutions do not establish the stability of a valve with
+that reaction: the acoustic states and force distribution must be included in its dynamic model.
+An opposing compensation surface or matched opposing jet can trim the steady force. Its bias flow and
+acoustic pressure reaction must be measured. The stated air budget includes the sound outlet modeled
+here; extra compensation flow is added to the pump requirement. Keep bias exhaust separate from the
+listener and identify its acoustic noise.
+
+The desk horn
+
+Idea
+Form a horn from metal sheet or a shaped wooden enclosure. Its expanding passage transforms the valve’s
+volume flow and acoustic impedance to a larger radiating mouth.
+
+Claims
+
+    The selected horn is 15.75 in long, with 0.155 in² throat area and 7.69 in mouth diameter.
+    The model divides its exponential area profile into 160 uniform acoustic sections.
+    The output calculation uses a baffled circular mouth and a listener 19.69 in away on its axis.
+    Distributed horn loss and the actual mouth field replace the ideal response during testing.
+
+Proof
+S(x) = Sthroat exp[ln(Smouth/Sthroat)x/ℓ_horn]
+kacoustic = 2πf/cair ; Zc = ρair cair/S
+For a short uniform section of length Δx, the pressure and volume-flow transfer matrix has diagonal
+cos(kΔx) and off-diagonal terms jZc sin(kΔx) and j sin(kΔx)/Zc. Multiply the 160 sections from mouth
+toward throat. This retains reflection, inertance and the frequency-dependent horn load. [T7]
+Zmouth = (ρair cair/Smouth)[1 − J1(2ka)/(ka) + jH1(2ka)/(ka)]
+J1 is the Bessel function of the first kind and H1 is the Struve function. The mouth radius a is 0.09772 m.
+For total matrix T, the following equations give input impedance and mouth flow from throat flow. [T7,
+T9]
+Zhorn = (T11 Zmouth + T12)/(T21 Zmouth + T22)
+Umouth/Uthroat = 1/(T21 Zmouth + T22)
+paxis,peak ≈ jρair Ω Umouth/(2πr) ; Pradiated = ½ Re(Zmouth)|Umouth|²
+The factor 2π follows the baffled mouth approximation. Actual horn mounting, nonuniform mouth
+velocity, nearby desk reflections and higher transverse modes alter the field, especially near the top of the
+band. Use the measured horn input impedance and on-axis pressure to replace this load and radiation
+approximation together.
+
+Direct listening at the detector
+
+Idea
+Retain the close ear pressure calculation as a reference for the radio leaf. The powered desk configuration
+moves the sound output to the slotted valve and horn.
+
+Claims
+    The passive close ear reference gives 39.23 dB at 1 kHz and an assumed 30 mV/m field.
+    That level belongs to a 1 cm³ sealed listening volume.
+    The powered cascade drives a room radiation load through its horn.
+
+Proof
+
+Direct listening pressure and sensitivity
+Use effective moving mass M = 10 mg and a free mechanical resonance of 400 Hz. Its assigned stiffness
+is k = M(2π × 400)² = 63.17 N/m. Use an effective sealed listening volume Vear = 1 cm³, acoustic area Ad
+
+= 1 cm², γ = 1.4 and ambient pressure P0 = 101325 Pa. The actual coupled membrane and ear response
+remains a measurement target.
+k_air = γ P0 Ad²/V_ear = 1418.55 N/m
+X_peak = F_1,peak / sqrt[(k + k_air − MΩ²)² + (bΩ)²]
+p_ear,rms = k_air X_peak/(sqrt(2) Ad); SPL = 20 log10[p_ear,rms/(20 μPa)]
+At 1 kHz and E = 10 mV/m, Xpeak ≈ 0.0203 nm and pear,rms ≈ 0.203 mPa, giving 20.15 dB SPL. At 30
+mV/m, the voltage is 0.8276 V rms, displacement approximately 0.183 nm and pressure approximately
+1.83 mPa, giving 39.23 dB SPL. Small displacement is consistent with the linearized gap model.
+
+Assumed field rms             Predicted 1 kHz level          Meaning
+
+1 mV/m                        −19.9 dB SPL                   Below ordinary audibility
+
+3 mV/m                        −0.8 dB SPL                    Near ideal threshold at this tone
+
+10 mV/m                       20.1 dB SPL                    Quiet close listening
+
+20 mV/m                       32.2 dB SPL                    Higher predicted ear pressure
+
+30 mV/m                       39.2 dB SPL                    Favorable strong field case
+
+50 mV/m                       48.1 dB SPL                    Strong field test case
+The output scales approximately as E², so doubling field raises calculated SPL by 12.04 dB. A 20 dB tone
+target needs about 9.9 mV/m in this model; a 30 dB tone target about 17.6 mV/m. Neither is a speech
+intelligibility standard. Interference, atmospheric noise, household noise, membrane modes and ear
+leakage can defeat recognition even when a single tone is audible.
+
+Changed assumption                                     Level at 30 mV/m and 1 kHz
+
+Baseline Q 200 and 25 μm gap                           39.2 dB SPL
+
+Q reduced to 100                                       28.4 dB SPL
+
+Gap increased to 50 μm                                 27.2 dB SPL
+
+Strip air damping multiplied by five                   38.5 dB SPL
+Each sensitivity row changes one assumption at a time; their favorable effects cannot be stacked without
+retuning the electrical and mechanical model. Increasing the gap lowers detector capacitance as well as
+force. The 50 μm result assumes the total capacitance is restored by tuning. The 10 mg membrane result is
+modestly above the 1 mg sweep case because its inertial term partially offsets air stiffness at 1 kHz, not
+because heavier membranes are generally superior.
+
+The retained acoustic apparatus
+
+Idea
+Keep the original compressor driven acoustic transmitter and acoustic receiver alongside the added radio
+receiver. Share the air source where capacity permits and give the rotating disc its own mechanical
+branch.
+
+Claims
+    The original 200 slot disc at 3,000 RPM produces a 10 kHz acoustic carrier.
+    Its horns, resonant tube and reed recover the original sound transmission path.
+    The electromagnetic path begins at the copper loop; its audio then controls the pneumatic listening
+       mechanism.
+
+Proof
+
+Acoustic and electromagnetic paths
+The attachment describes a compressor, 200 slot wheel turning at 3,000 RPM, a 10 kHz acoustic carrier,
+pneumatic speech modulation, horns, a resonant tube, and reed valve envelope recovery. Those
+relationships concern sound in air. They cannot tune an electromagnetic broadcast merely by changing the
+wheel speed or tube length. [A1]
+f_acoustic = N n / 60 = 200 × 3000 / 60 = 10000 Hz
+λ_acoustic = 343 / 10000 = 0.0343 m; λ_radio = 299792458 / 580000 = 516.88 m
+At 580 kHz, a quarter wave acoustic tube would be only 0.148 mm long, but that tube would select a
+sound wave at 580 kHz, not WTCM. At the same frequency, a quarter wave electromagnetic aerial is
+about 129.22 m or 424 ft. The two wavelengths describe different fields and different coupling
+mechanisms.
+
+Base component                              Disposition for WTCM
+
+Compressor and rotating siren               Keep the compressor for powered AM output. The
+                                            rotating siren remains part of the separate original
+                                            acoustic transmitter.
+
+Receiving horn and 10 kHz tube              Use the copper loop and tuned air capacitor for the AM
+                                            path.
+
+Reed valve and averaging chamber            Use the electrostatic force envelope and pneumatic pilot
+                                            for the AM path.
+
+Output diaphragm and ear or horn path       Retain the acoustic function; redesign mass, stiffness
+                                            and loading.
+
+Water wheel or flywheel                     Retain as the compressor drive in the powered AM
+                                            variant; direct reception remains independent of it.
+The aerial or loop intercepts the broadcast field. Conductive metal, inductance and capacitance couple
+that energy to the mechanical detector. The proposed pickup uses metal conductors and air gaps fabricated
+by period workshop methods.
+For the WTCM path, calculate the driving force from the received electromagnetic field. The base
+acoustic machine’s example 10 Pa chamber pressure belongs to its acoustic signal path. Flap response,
+leakage and audio recovery are measured separately for each path; the horn sets acoustic impedance and
+directivity.
+
+Numbered component sketches connect the original acoustic apparatus with the added radio pickup and
+pneumatic listening path.
+
+The complete five stage desk receiver
+
+Idea
+Connect the loop, electrostatic leaf, opposed pilot, five gold diaphragm relays, compensated sound valve
+and horn. Supply the pilot from the reduced-pressure branch and all later valves from the main reservoir.
+
+Claims
+    For 30 mV/m and 50% tone modulation, the nominal 1 kHz prediction is 50.68 dB at 19.69 in on axis.
+    The pressure-and-motion cascade has a largest pole real part of approximately −444 s⁻¹ with ideal
+       final valve balance.
+    A dense 300–2,000 Hz sweep has a minimum near 47 dB and a peak near 73 dB.
+    The nominal compressor shaft input is approximately 10.82 W before extra leakage or compensation
+       flow.
+    Physical output, speech recognition and period fabrication are established by the measurements
+       attached to the component targets.
+
+Proof
+
+Coupled equations and conventions
+Number the radio leaf and pilot as i = 0, the five relays as i = 1…5 and the sound valve coordinate as i =
+6. Δpi is the pressure difference generated by nozzle pair i. Every x and Δp below is a complex peak
+amplitude; s = jΩ. Carrier field and RF voltage are rms. The microphone pressure reference for SPL is 20
+μPa rms.
+Zi = ki + bi s + Mi s² ; Di = Gi + sCi
+Z0 x0 + An0 Δp0 = FRF
+Zi xi − Ai Δpprev + Ani Δpi = 0 (i = 1…5)
+Di Δpi − 2Kqi xi + 2Anext s xnext = 0 (i = 0…5)
+The subscripts prev and next identify the immediately preceding pressure pair and following mechanical
+coordinate. These are the loaded connections between adjacent cartridges.
+Z6 x6 − A6 Δp5 = 0 (nominal Aresidual = 0)
+The seven mechanical coordinates and six pressure differences form a 20-state pressure-and-motion
+system: fourteen position/velocity states and six pressure states. The passive horn is coupled through the
+sound valve flow law. With zero net force reaction at that valve, the horn does not feed its mechanical
+coordinate in this nominal state matrix. Nonzero valve reaction requires acoustic states in the pole
+calculation.
+ Parameter                 Pilot                    Relays R1–R5              Sound valve
+ Supply pressure           0.145 psi                1.45 psi                  1.45 psi
+
+ Nozzle or slot gap       0.001 in                 0.001 in                 0.001 in
+ Chambers including       1.000 mm³                1.000 mm³; last 1.126    Horn load
+ passages                                          mm³
+ Moving mass              10 mg                    3.159, 3.215, 3.831,     22.371 mg
+                                                   4.787, 3.262 mg
+ Stiffness                63.17 N/m                14.991, 76.560,          36.869 N/m
+                                                   26.035, 12.209,
+                                                   12.088 N/m
+ Damping                  0.01948 N s/m            0.005559, 0.016990,      0.032205 N s/m
+                                                   0.009038, 0.006875,
+                                                   0.007483 N s/m
+
+Predicted output and energy
+
+
+
+
+Figure 19. Predicted tone output for the connected five-relay model. The dashed and dotted curves insert
+trial horn attenuation of 0.3 and 0.7 Np/m, respectively. All curves retain the same nominal mechanical
+parameters and ideal valve balance.
+ Tone Hz                 Nominal dB SPL            Valve motion peak        Radiated power μW
+                                                   nm
+ 300                     56.34                     1219.69                  0.6259
+ 500                     70.32                     373.89                   14.3680
+ 750                     57.56                     73.98                    0.6447
+ 1000                    50.68                     28.58                    0.1051
+ 1500                    50.23                     22.60                    0.0504
+ 2000                    50.66                     15.42                    0.0274
+At 1 kHz, the modeled sound valve moves about 28.5 nm peak, throat pressure is about 1.08 Pa peak and
+radiated power about 0.105 μW. The mouth’s directional radiation produces the quoted on-axis level. At
+500 Hz the horn and mechanical response give substantially greater output. The dense frequency sweep
+
+and limited horn-loss cases characterize that coloration rather than treating the single-tone level as a
+speech level.
+At fixed dimensions and tuning, electrostatic force and the linear acoustic response scale as E². Reducing
+field from 30 to 10 mV/m lowers the predicted SPL by 19.08 dB, giving about 31.6 dB at 1 kHz. The
+local carrier and interference measurements therefore remain the station-specific input.
+
+Air and wheel power
+Qtotal = qsound + 2Σ qi = 0.27053 litre/s
+Pair ≈ 10000 Qtotal = 2.705 W ; Pshaft ≈ Pair/0.25 = 10.82 W
+Qwater = Pshaft/(η_wheel ρwater g H) ≈ 3.68 litre/s
+The last expression uses H = 3.28 ft and ηwheel = 30%, equivalent to approximately 0.97 US gallon per
+second. It is the AM path budget. Add the original acoustic transmitter load if both paths run
+simultaneously. A 5 litre reservoir with the stated compliance would show approximately 670 Pa ripple
+for a trial full-flow sinusoidal pump fluctuation at 2 Hz when outlet conductance is neglected. Reservoir
+size, pump phasing and regulation determine the measured residual.
+
+Stability and sensitivity
+ Changed quantity                   Largest pole real part s⁻¹         1 kHz level
+ Nominal                            -444.26                            50.68 dB
+ Moving masses doubled              132.81                             Unstable; level excluded
+ Damping doubled                    -690.92                            46.98 dB
+ Damping fivefold                   -232.48                            33.05 dB
+ Chamber volumes doubled            -370.39                            50.94 dB
+A 50% increase in all moving masses retained a negative largest pole real part near −19 s⁻¹ in the test,
+while doubling the masses produced instability. Damping and chamber volume variations are modeled
+independently. The period construction trial must identify the assembled mass, stiffness, damping and
+nozzle coefficients rather than assign the nominal values to a heavier or more tightly tensioned part.
+
+Noise and remaining physical quantities
+SFi = 4kB T bi ; pnoise,rms² = ∫ Σ|Hpi(f)|² SFi df
+Integrating independent mechanical thermal force sources over 300–2,000 Hz at 293 K gives
+approximately 0.166 mPa rms output noise, or 18.4 dB SPL. The 1 kHz tone is approximately 32.3 dB
+above that integrated thermal floor. Jet turbulence, air thermal fluctuations, compressor vibration, foil
+rubbing, electrical interference and room sound are outside this thermal-force calculation.
+ Quantity                           Physical measurement               Use in the proof
+ WTCM carrier and                   Measure coupled RF at the          Replace the assumed 30 mV/m
+ interference                       intended desk by time of day       input
+ Loop Q and stray capacitance       Measure 580 kHz resonance          Verify voltage and 41.758 pF
+                                    with the cartridge attached        budget
+
+ Gold foil and copper             Measure thickness, central         Replace each linked
+ suspension                       mode, mass, area, stiffness and    mechanical coordinate
+                                  loss
+ Nozzle and chamber dynamics      Measure flow, force and            Replace Kq, G, C and
+                                  pressure response versus gap       pressure-only reaction
+ Sound valve balance              Measure dynamic force and        Add residual force and any
+                                  total flow against horn pressure compensation flow
+ Horn and mounting                Measure input impedance and        Replace the one-dimensional
+                                  axis pressure at 19.69 in          baffled-mouth model
+ Airflow and drive noise          Run the air supply with no         Compare noise with predicted
+                                  radio excitation                   signal
+ Recovered speech                 Apply controlled 580 kHz AM, Record audible level and
+                                  then compare with WTCM       correctly recovered words
+ Period construction              Build critical parts with period   Establish achievable gaps and
+                                  materials and shaping methods      repeatability
+Build and characterize one gold-diaphragm relay before duplicating it. Test the sound valve and horn with
+known mechanical input, then join the pressure cascade. Apply the radio force only after the valve
+coefficients and stable response have been identified. A useful test target is receiver-generated noise
+below 40 dB at the listener for a roughly 50 dB signal; the actual room and recovered speech determine
+the required separation.
+
+What the proofs establish together
+The radio equations supply envelope force, the diaphragm and flexure estimates supply a period-material
+mechanical target, and the loaded cascade and horn equations supply a numerical desk-listening operating
+point. The selected direction is the five-stage gold-diaphragm receiver. Its construction work centres on
+the foil’s linked mode, the small pressure paths, output-valve reaction and quiet airflow.
+
+Sources
+[A1] Supplied Mechanical Acoustic Voice Transmission dossier. Original acoustic wheel, compressor,
+modulation and horn arrangement.
+[H2] Theophrastus. On Stones. Material processing, abrasives and metalworking; consulted passages 4–5,
+16, 30, 39–42 and 60. About 315 BC.
+https://topostext.org/work/657
+[H3] Metropolitan Museum of Art. Gold earring, Greek, Classical, middle fourth century BC, object
+08.258.49. Greek goldworking.
+https://www.metmuseum.org/art/collection/search/248121
+[H7] Metropolitan Museum of Art. Glass ring with gold foil, Greek South Italian, about 350–300 BC,
+object 17.194.2537. Thin gold foil material evidence.
+https://www.metmuseum.org/art/collection/search/250535
+[S1] FCC. WTCM AM public inspection listing, frequency 580 kHz, facility 70524.
+https://publicfiles.fcc.gov/am-profile/wtcm
+
+[S2] Midwestern Broadcasting. WTCM 580 AM station page.
+https://www.midwesternbroadcasting.com/wtcm-am-580
+[S3] FCC 47 CFR 73.184. Groundwave field strength graphs and propagation parameters.
+https://www.ecfr.gov/current/title-47/chapter-I/subchapter-C/part-73/subpart-A/section-73.184
+[D9] A E Dolbear. US239742A, 1881. Elastic metal plates and electrostatic acoustic transduction.
+https://patents.google.com/patent/US239742A/en
+[T1] MIT OpenCourseWare. 6.007 lecture 13, stored energy and actuators. Electrostatic capacitor force.
+https://ocw.mit.edu/courses/6-007-electromagnetic-energy-from-motors-to-lasers-spring-2011/resources/
+mit6_007s11_lec13/
+[T3] MIT OpenCourseWare. 6.013, receiving antennas, lecture 19. Small loop reception and Faraday law.
+https://ocw.mit.edu/courses/6-013-electromagnetics-and-applications-spring-2009/015b9db53add91f7384
+c71335ae0b436_MIT6_013S09_lec19.pdf
+[T4] S S Mohan and colleagues. Simple Accurate Expressions for Planar Spiral Inductances. IEEE JSSC
+34, 1419–1424, 1999.
+https://web.stanford.edu/~boyd/papers/pdf/inductance_expressions.pdf
+[T5] Copper Development Association. Conductivity of Alloy Classes. Material resistivity reference.
+https://archive.copper.org/applications/industrial/DesignGuide/selection/conductalloy02.php
+[T6] Q Lu and colleagues. Investigation of a complete squeeze film damping model for MEMS devices.
+Microsystems and Nanoengineering 7, 54, 2021. Reynolds flow foundations.
+https://www.nature.com/articles/s41378-021-00279-6
+[T7] MIT OpenCourseWare. 6.013 Chapter 13 Acoustics. Waveguides, impedance, acoustic power and
+radiation.
+https://ocw.mit.edu/courses/6-013-electromagnetics-and-applications-spring-2009/50a609ff2cc992401a09
+9bca53801474_MIT6_013S09_chap13.pdf
+[T8] MIT OpenCourseWare. 2.081J Plates and Shells, spring 2007 lecture notes. Bending rigidity,
+clamped circular plate response and energy methods. The modal integrals and flexure dimensions are
+derived in the component proof.
+https://ocw.mit.edu/courses/2-081j-plates-and-shells-spring-2007/1bd32d641a2b41ca518591d981405393
+_lecturenote.pdf
+[T9] A Bozkurt. A lumped-circuit model for the radiation impedance of a circular piston in a rigid baffle.
+
+IEEE Transactions on Ultrasonics, Ferroelectrics, and Frequency Control 55(9), 2046–2052, 2008. DOI
+10.1109/TUFFC.896. Bessel and Struve components of radiation impedance.
+https://pubmed.ncbi.nlm.nih.gov/18986901/
+[P1] Hero of Alexandria. Pneumatics. Greenwood translation, Woodcroft edition, 1851; propositions 9,
+10, 16 and 27. Pressure vessels, bronze valves, pneumatic sound and bored piston cylinders.
+
+https://www.gutenberg.org/cache/epub/77400/pg77400-images.html
+[P2] C A Parsons. US816180A Sound producing instrument, 1906. Spring supported grating controlling
+compressed air into a trumpet.
+https://patents.google.com/patent/US816180A/en
+[P3] Science Museum Group. Parsons auxetophone reproducer, object co117334.
+https://collection.sciencemuseumgroup.org.uk/objects/co117334/parsons-auxetophone-reproducer
+[P4] T Wang, M Cai, K Kawashima and T Kagawa. Modelling of a Nozzle-Flapper Type Pneumatic
+Servo Valve Including the Influence of Flow Force. International Journal of Fluid Power 6(3), 33–43,
+2005.
+https://journals.riverpublishers.com/index.php/IJFP/article/download/566/313
+[P5] NPTEL. Pneumatic controllers, nozzle flapper operation and air relay.
+https://archive.nptel.ac.in/content/storage2/courses/112103174/module6/lec5/2.html
+
+Calculation reproducibility
+The exploratory search used five relay stages, seed 128, differential evolution with 180 iterations,
+population multiplier 9 and no polishing. Relay effective areas ranged from 10⁻⁵·⁵ to 10⁻³·⁵ m²; nozzle
+bores from 10⁻³·⁶ to 10⁻²·⁵ m; free mechanical frequencies from 10²·³ to 10³·⁶ Hz; damping ratios from
+10⁻⁰·⁵ to 10⁰·⁶. The sound-valve area, frequency and damping used the corresponding ranges. The
+objective ranked the minimum at six tones with a response-spread penalty, required pressure-cascade
+poles below −50 s⁻¹, bounded peak travel to 25% of the gap and shaft power to 30 W. The chosen case
+was then checked on a denser sweep and its chamber volumes corrected for the gold diaphragm physical
+area. The search establishes this operating case within its stated model and bounds.
