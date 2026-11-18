@@ -12,6 +12,9 @@ class ExamItem:
     expected: str
     category: str
     source_ids: tuple[str,...] = ()
+    grading: str = "exact"
+    required_reasoning_steps: tuple[str,...] = ()
+    required_axioms: tuple[str,...] = ()
 
 @dataclass(frozen=True)
 class ExamReport:
@@ -25,9 +28,33 @@ class ExamReport:
 def exact_match(answer: str, expected: str) -> bool:
     return answer == expected
 
+def rubric_grade(answer: str, item: ExamItem) -> bool:
+    if item.grading=="exact":
+        core=(answer==item.expected)
+    elif item.grading=="normalized":
+        core=(answer.strip().casefold()==item.expected.strip().casefold())
+    elif item.grading=="contains":
+        core=(item.expected in answer)
+    elif item.grading=="ordered_derivation":
+        core=True
+    else:
+        raise ValueError("Unknown owner rubric mode")
+    if not core:
+        return False
+    for principle in item.required_axioms:
+        if principle not in answer:
+            return False
+    position=0
+    for required_step in item.required_reasoning_steps:
+        found=answer.find(required_step,position)
+        if found<0:
+            return False
+        position=found+len(required_step)
+    return True
+
 def run_exam(exam_id: str, items: list[ExamItem],
              answerer: Callable[[str],str],
-             grader: Callable[[str,str],bool] = exact_match,
+             grader: Callable[[str,str],bool] | None = None,
              *, threshold: float=0.9) -> ExamReport:
     if not items or not 0 < threshold <= 1:
         raise ValueError("Invalid examination")
@@ -37,7 +64,8 @@ def run_exam(exam_id: str, items: list[ExamItem],
     if len(categories)!=1:
         raise ValueError("Use independent per-category examinations")
     answers=[answerer(item.prompt) for item in items]
-    correct=sum(bool(grader(answer,item.expected)) for answer,item in zip(answers,items))
+    correct=sum(bool(grader(answer,item.expected) if grader is not None else rubric_grade(answer,item))
+                for answer,item in zip(answers,items))
     digest=sha256(json.dumps(answers,ensure_ascii=False).encode()).hexdigest()
     return ExamReport(exam_id,len(items),correct,correct/len(items)>=threshold,
                       next(iter(categories)),digest)
