@@ -51,7 +51,7 @@ def test_controller_shuffles_and_replays_without_skipping_records(tmp_path):
     from ancestor.context import ContextBuilder
     from ancestor.ledger import LearningLedger
     source = tmp_path/"work.txt"
-    source.write_text("\\n".join(f"{i}. Passage number {i} is approved." for i in range(1,9)))
+    source.write_text("\n".join(f"{i}. Passage number {i} is approved." for i in range(1,9)))
     corpus = Corpus(tmp_path/"corpus")
     corpus.ingest_text(source,"BOOK","Source")
     constitution = Constitution(("Identity is a unity of self and other.",))

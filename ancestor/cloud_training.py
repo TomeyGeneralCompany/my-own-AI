@@ -1,8 +1,7 @@
 """Bounded, resumable GitHub-hosted training on the published owner-provided corpus.
 
-This is foundational paragraph-conditioned neural training, not intellectual
-certification. Input axioms are immutable and loaded only from the approved
-governance manifest. No pretrained language-model weights are used.
+Input axioms are loaded from the approved governance manifest.
+No pretrained language-model weights are used.
 """
 from __future__ import annotations
 import argparse
@@ -120,8 +119,7 @@ def make_lesson(tokenizer: ByteBPE, constitution: Constitution,
 
 def heldout_validation(trainer: Trainer, tokenizer: ByteBPE,
                        constitution: Constitution, heldout: str):
-    # This measures out-of-sample token prediction only; it is NOT an
-    # examination of philosophical, theological, or mathematical competence.
+    # Evaluate all held-out tokens under a stable independently sourced prompt.
     prefix = tokenizer.encode_structured([
         ("<|AXIOM|>", constitution.axiom_prefix()),
         ("<|CONTEXT|>", ""),
@@ -246,10 +244,6 @@ def run(args):
         raise RuntimeError("No valid best checkpoint to preserve")
     shutil.copy2(best_checkpoint, output/"best.pt")
     shutil.copy2(best_checkpoint.with_suffix(".json"), output/"best.json")
-    shutil.copy2(checkpoint, output/"latest.pt")
-    shutil.copy2(checkpoint.with_suffix(".json"), output/"latest.json")
-    # The .pt and .json are retained as GitHub Actions artifacts for the
-    # public repository, as authorized by the owner.
     shutil.copy2(checkpoint, output/"latest.pt")
     shutil.copy2(checkpoint.with_suffix(".json"), output/"latest.json")
     summary = {
