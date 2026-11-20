@@ -12,7 +12,7 @@ def test_utf8_segments_preserve_complete_original():
     assert len(segments) > 1
     assert "".join(segments) == text
 
-def test_remote_training_cycle_real_optimizer_and_resume(tmp_path):
+def test_remote_training_cycle_real_optimizer_and_resume(tmp_path, monkeypatch):
     source = tmp_path/"work.txt"
     source.write_text("1. Truth proceeds from the governing principle.\n"
                       "2. The consequent conclusion follows the original premises.",
@@ -42,9 +42,16 @@ def test_remote_training_cycle_real_optimizer_and_resume(tmp_path):
     assert checkpoint.with_suffix(".json").exists()
     assert (tmp_path/"checkpoints"/"best.pt").exists()
     assert (tmp_path/"checkpoints"/"best.json").exists()
+    from hashlib import sha256
+    import ancestor.cloud_training as cloud
+    preserved = sha256((tmp_path/"checkpoints"/"best.pt").read_bytes()).hexdigest()
+    # Force a regression. Latest must advance, but the best weights must not.
+    monkeypatch.setattr(cloud, "heldout_validation", lambda *a: 1000.0)
     again = run(Namespace(**params, resume=str(checkpoint)))
     assert again["completed_updates"] == 2
-    assert (tmp_path/"checkpoints"/"best.pt").exists()
+    assert not again["best_improved_this_run"]
+    assert again["best_heldout_loss"] == summary["best_heldout_loss"]
+    assert sha256((tmp_path/"checkpoints"/"best.pt").read_bytes()).hexdigest() == preserved
 
 def test_controller_shuffles_and_replays_without_skipping_records(tmp_path):
     from ancestor.controller import Controller
