@@ -242,8 +242,10 @@ def run(args):
         best_checkpoint = previous_best_path
     else:
         raise RuntimeError("No valid best checkpoint to preserve")
-    shutil.copy2(best_checkpoint, output/"best.pt")
-    shutil.copy2(best_checkpoint.with_suffix(".json"), output/"best.json")
+    # In a local restart the selected best file may already be in output.
+    if best_checkpoint.resolve() != (output/"best.pt").resolve():
+        shutil.copy2(best_checkpoint, output/"best.pt")
+        shutil.copy2(best_checkpoint.with_suffix(".json"), output/"best.json")
     shutil.copy2(checkpoint, output/"latest.pt")
     shutil.copy2(checkpoint.with_suffix(".json"), output/"latest.json")
     summary = {
