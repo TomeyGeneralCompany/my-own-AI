@@ -76,6 +76,41 @@ class Controller:
         self.ledger.append({"type":"REMEDIATION_REQUESTED",**response})
         return response
 
+
+    def cloud_exposure_selection(self, records, completed_updates: int, seed: int):
+        """Authorize one source lesson under deterministic, replayed, shuffled epochs.
+
+        This is exposure, not a stage advancement. Only run_stage with its exam
+        banks may advance formal curriculum stages.
+        """
+        import random
+        if self.state != State.READY:
+            raise RuntimeError("Controller must be ready to authorize exposure")
+        if completed_updates < 0 or not records:
+            raise ValueError("Invalid training cursor or missing approved sources")
+        if len({r.id for r in records}) != len(records):
+            raise ValueError("Duplicate source record identifiers")
+        epoch, slot = divmod(completed_updates, len(records))
+        # Shuffle each full epoch; always revisit previously seen records.
+        key = (seed, epoch, len(records), records[0].id, records[-1].id)
+        if getattr(self, "_cloud_epoch_key", None) != key:
+            permitted = {r[0] for r in self.corpus.db.execute("SELECT id FROM documents")}
+            for r in records:
+                if r.document_id not in permitted:
+                    raise ValueError("Controller refused unapproved source")
+            indices = list(range(len(records)))
+            random.Random(f"{seed}:{epoch}:{self.constitution.digest()}").shuffle(indices)
+            self._cloud_epoch_indices = indices
+            self._cloud_epoch_key = key
+        selected = self._cloud_epoch_indices[slot]
+        current = records[selected]
+        # The prior paragraph is the prior paragraph in its original document,
+        # not the preceding position in the randomized training schedule.
+        prev = records[selected - 1] if selected else None
+        if prev is not None and prev.document_id != current.document_id:
+            prev = None
+        return current, prev, epoch
+
     def protected_axiom_revision(self, *args, **kwargs):
         raise PermissionError("The educational controller has no authority to change axioms")
 

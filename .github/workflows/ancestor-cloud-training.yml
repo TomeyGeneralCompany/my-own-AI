@@ -64,7 +64,7 @@ jobs:
           fi
           while read -r artifact_id; do
             [ -n "$artifact_id" ] || continue
-            rm -f "$RUNNER_TEMP/ancestor-recovery/latest.pt" "$RUNNER_TEMP/ancestor-recovery/latest.json"
+            rm -f "$RUNNER_TEMP/ancestor-recovery/latest.pt" "$RUNNER_TEMP/ancestor-recovery/latest.json" "$RUNNER_TEMP/ancestor-recovery/summary.json"
             if gh api "repos/$GITHUB_REPOSITORY/actions/artifacts/$artifact_id/zip" > "$RUNNER_TEMP/candidate.zip" \
                && unzip -oq "$RUNNER_TEMP/candidate.zip" -d "$RUNNER_TEMP/ancestor-recovery" \
                && python -c 'from ancestor.remote_checkpoints import checkpoint_metadata; import sys; sys.exit(0 if checkpoint_metadata(sys.argv[1]) else 1)' "$RUNNER_TEMP/ancestor-recovery"; then
@@ -99,6 +99,9 @@ jobs:
           path: |
             ${{ runner.temp }}/ancestor-trained/latest.pt
             ${{ runner.temp }}/ancestor-trained/latest.json
+            ${{ runner.temp }}/ancestor-trained/best.pt
+            ${{ runner.temp }}/ancestor-trained/best.json
             ${{ runner.temp }}/ancestor-trained/summary.json
+            ${{ runner.temp }}/ancestor-trained/cloud-ledger.jsonl
           retention-days: 90
           if-no-files-found: error
