@@ -174,6 +174,8 @@ def run(args):
                                       constitution=constitution,
                                       corpus_manifest_hash=source_hash)
         print("Resumed validated neural updates:", restored["completed_updates"])
+    # Evaluate the incoming checkpoint independently before additional updates.
+    initial_validation = heldout_validation(trainer, tokenizer, constitution, text) if args.resume else float("inf")
     start = time.monotonic()
     trained = 0
     while trained < args.updates:
@@ -209,23 +211,43 @@ def run(args):
     validation = heldout_validation(trainer, tokenizer, constitution, text)
     if not math.isfinite(validation):
         raise FloatingPointError("Nonfinite held-out score; no checkpoint promotion")
-    # A candidate is not a promoted model merely because its update count rose.
+    # Recover the best existing weights, not merely a scalar in summary.json.
     previous_best = float("inf")
+    previous_best_path = None
     if args.resume:
-        prior_summary = Path(args.resume).with_name("summary.json")
+        recovery_dir = Path(args.resume).parent
+        prior_summary = recovery_dir / "summary.json"
         if prior_summary.exists():
             prior_data = json.loads(prior_summary.read_text(encoding="utf-8"))
             previous_best = float(prior_data.get("best_heldout_loss", prior_data["heldout_loss"]))
+        if (recovery_dir / "best.pt").is_file() and (recovery_dir / "best.json").is_file():
+            previous_best_path = recovery_dir / "best.pt"
+        else:
+            # Historical checkpoints have only latest; validate that model first.
+            previous_best = initial_validation
+            previous_best_path = Path(args.resume)
     improved = validation < previous_best
+    best_loss = min(validation, previous_best)
     controller.ledger.append({"type": "CLOUD_EXPOSURE_VALIDATED",
         "completed_updates": trainer.completed_updates,
-        "heldout_loss": validation, "best_heldout_loss": min(validation, previous_best),
+        "heldout_loss": validation, "best_heldout_loss": best_loss,
         "improved": improved, "source_hash": source_hash})
     checkpoint = save_checkpoint(
         output, trainer,
         tokenizer_hash=tokenizer.digest(), constitution=constitution,
         corpus_manifest_hash=source_hash, stage="FOUNDATIONAL_MANUSCRIPT_EXPOSURE",
-        objective_id="CLOUD_PARAGRAPH_CONDITIONED_TRAINING")
+        objective_id="CLOUD_PARAGRAPH_CONDITIONED_TRAINING",
+        ledger_offset=len(controller.ledger.events()))
+    if improved:
+        best_checkpoint = checkpoint
+    elif previous_best_path:
+        best_checkpoint = previous_best_path
+    else:
+        raise RuntimeError("No valid best checkpoint to preserve")
+    shutil.copy2(best_checkpoint, output/"best.pt")
+    shutil.copy2(best_checkpoint.with_suffix(".json"), output/"best.json")
+    shutil.copy2(checkpoint, output/"latest.pt")
+    shutil.copy2(checkpoint.with_suffix(".json"), output/"latest.json")
     # The .pt and .json are retained as GitHub Actions artifacts for the
     # public repository, as authorized by the owner.
     shutil.copy2(checkpoint, output/"latest.pt")
@@ -237,7 +259,7 @@ def run(args):
             "SELECT id FROM documents").fetchall()),
         "learning_units": len(records),
         "heldout_loss": validation,
-        "best_heldout_loss": min(validation, previous_best),
+        "best_heldout_loss": best_loss,
         "best_improved_this_run": improved,
         "learning_rate": trainer.optimizer.param_groups[0]["lr"],
         "governance_sha256": constitution.digest(),

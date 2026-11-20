@@ -92,16 +92,23 @@ class Controller:
             raise ValueError("Duplicate source record identifiers")
         epoch, slot = divmod(completed_updates, len(records))
         # Shuffle each full epoch; always revisit previously seen records.
-        indices = list(range(len(records)))
-        random.Random(f"{seed}:{epoch}:{self.constitution.digest()}").shuffle(indices)
-        current = records[indices[slot]]
-        if current.document_id not in {r[0] for r in self.corpus.db.execute("SELECT id FROM documents")}:
-            raise ValueError("Controller refused unapproved source")
-        if self.corpus.get(current.id).exact_text != current.exact_text:
-            raise ValueError("Source changed outside controller authority")
-        # Context comes only from the same approved source document.
-        prev = next((r for r in reversed(records[:indices[slot]])
-                     if r.document_id == current.document_id), None)
+        key = (seed, epoch, len(records), records[0].id, records[-1].id)
+        if getattr(self, "_cloud_epoch_key", None) != key:
+            permitted = {r[0] for r in self.corpus.db.execute("SELECT id FROM documents")}
+            for r in records:
+                if r.document_id not in permitted:
+                    raise ValueError("Controller refused unapproved source")
+            indices = list(range(len(records)))
+            random.Random(f"{seed}:{epoch}:{self.constitution.digest()}").shuffle(indices)
+            self._cloud_epoch_indices = indices
+            self._cloud_epoch_key = key
+        selected = self._cloud_epoch_indices[slot]
+        current = records[selected]
+        # The prior paragraph is the prior paragraph in its original document,
+        # not the preceding position in the randomized training schedule.
+        prev = records[selected - 1] if selected else None
+        if prev is not None and prev.document_id != current.document_id:
+            prev = None
         return current, prev, epoch
 
     def protected_axiom_revision(self, *args, **kwargs):

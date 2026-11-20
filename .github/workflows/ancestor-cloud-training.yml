@@ -99,6 +99,9 @@ jobs:
           path: |
             ${{ runner.temp }}/ancestor-trained/latest.pt
             ${{ runner.temp }}/ancestor-trained/latest.json
+            ${{ runner.temp }}/ancestor-trained/best.pt
+            ${{ runner.temp }}/ancestor-trained/best.json
             ${{ runner.temp }}/ancestor-trained/summary.json
+            ${{ runner.temp }}/ancestor-trained/cloud-ledger.jsonl
           retention-days: 90
           if-no-files-found: error

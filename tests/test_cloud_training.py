@@ -40,8 +40,11 @@ def test_remote_training_cycle_real_optimizer_and_resume(tmp_path):
     checkpoint = tmp_path/"checkpoints"/"latest.pt"
     assert checkpoint.exists()
     assert checkpoint.with_suffix(".json").exists()
+    assert (tmp_path/"checkpoints"/"best.pt").exists()
+    assert (tmp_path/"checkpoints"/"best.json").exists()
     again = run(Namespace(**params, resume=str(checkpoint)))
     assert again["completed_updates"] == 2
+    assert (tmp_path/"checkpoints"/"best.pt").exists()
 
 def test_controller_shuffles_and_replays_without_skipping_records(tmp_path):
     from ancestor.controller import Controller
