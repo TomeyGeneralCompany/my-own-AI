@@ -35,9 +35,42 @@ def test_remote_training_cycle_real_optimizer_and_resume(tmp_path):
     summary = run(Namespace(**params, resume=None))
     assert summary["completed_updates"] == 1
     assert summary["learning_units"] == 2
-    assert summary["training_status"] == "FOUNDATIONAL_EXPOSURE_NOT_CERTIFIED"
+    assert summary["best_improved_this_run"]
+    assert summary["best_heldout_loss"] == summary["heldout_loss"]
     checkpoint = tmp_path/"checkpoints"/"latest.pt"
     assert checkpoint.exists()
     assert checkpoint.with_suffix(".json").exists()
     again = run(Namespace(**params, resume=str(checkpoint)))
     assert again["completed_updates"] == 2
+
+def test_controller_shuffles_and_replays_without_skipping_records(tmp_path):
+    from ancestor.controller import Controller
+    from ancestor.context import ContextBuilder
+    from ancestor.ledger import LearningLedger
+    source = tmp_path/"work.txt"
+    source.write_text("\\n".join(f"{i}. Passage number {i} is approved." for i in range(1,9)))
+    corpus = Corpus(tmp_path/"corpus")
+    corpus.ingest_text(source,"BOOK","Source")
+    constitution = Constitution(("Identity is a unity of self and other.",))
+    controller = Controller(corpus, ContextBuilder(ByteBPE([]),constitution,1024),
+                            LearningLedger(tmp_path/"events.jsonl"), constitution)
+    from ancestor.cloud_training import source_records
+    records = source_records(corpus)
+    first = [controller.cloud_exposure_selection(records,i,1729)[0].id for i in range(len(records))]
+    second = [controller.cloud_exposure_selection(records,i+len(records),1729)[0].id for i in range(len(records))]
+    assert set(first) == set(second) == {r.id for r in records}
+    assert len(first) == len(set(first))
+    assert first != second
+    assert not controller.ledger.events()
+
+def test_heldout_validation_uses_all_segments(tmp_path):
+    from ancestor.cloud_training import heldout_validation
+    from ancestor.model import AncestorModel,ModelConfig
+    from ancestor.training import Trainer,TrainConfig
+    tok=ByteBPE([])
+    const=Constitution(("Identity is a unity of self and other.",))
+    model=AncestorModel(ModelConfig(tok.vocab_size,1024,24,1,4,48))
+    trainer=Trainer(model,TrainConfig(block_size=1024))
+    long_text="Independent phrase with consequences. " * 120
+    score=heldout_validation(trainer,tok,const,long_text)
+    assert score > 0

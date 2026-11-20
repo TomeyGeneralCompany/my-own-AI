@@ -11,11 +11,15 @@ import json
 from pathlib import Path
 import shutil
 import time
+import math
 import torch
 import random
 
 from .checkpoints import save_checkpoint, restore_checkpoint
 from .corpus import Corpus
+from .controller import Controller, State
+from .context import ContextBuilder
+from .ledger import LearningLedger
 from .governance import Constitution
 from .model import AncestorModel, ModelConfig
 from .tokenizer import ByteBPE
@@ -126,12 +130,14 @@ def heldout_validation(trainer: Trainer, tokenizer: ByteBPE,
     available = trainer.config.block_size - len(prefix) - 1
     if available < 16:
         raise ValueError("Held-out evaluation does not fit")
-    segment = safe_token_segments(tokenizer, heldout, available)[0]
-    batch = controller_completion_batch(
+    segments = safe_token_segments(tokenizer, heldout, available)
+    batches = [controller_completion_batch(
         tokenizer, constitution.axiom_prefix(), "",
         "Continue a previously unseen English passage.", segment,
-        trainer.config.block_size)
-    return trainer.validate([batch])
+        trainer.config.block_size) for segment in segments]
+    # Weight every predicted token rather than privileging the opening paragraph.
+    weighted = [(trainer.validate([batch]), float(batch[2].sum())) for batch in batches]
+    return sum(loss * count for loss, count in weighted) / sum(count for _, count in weighted)
 
 
 def run(args):
@@ -158,27 +164,37 @@ def run(args):
         ffn_width=args.ffn))
     trainer = Trainer(model, TrainConfig(
         block_size=args.block, accumulation=1, microbatch=1))
+    output = Path(args.output)
+    output.mkdir(parents=True, exist_ok=True)
+    controller = Controller(corpus, ContextBuilder(tokenizer, constitution, args.block),
+                            LearningLedger(output / 'cloud-ledger.jsonl'), constitution)
     if args.resume:
         restored = restore_checkpoint(args.resume, trainer,
                                       tokenizer_hash=tokenizer.digest(),
                                       constitution=constitution,
                                       corpus_manifest_hash=source_hash)
         print("Resumed validated neural updates:", restored["completed_updates"])
-    output = Path(args.output)
-    output.mkdir(parents=True, exist_ok=True)
     start = time.monotonic()
     trained = 0
     while trained < args.updates:
         # Leave a cushion for evaluation, checkpoint write, and Actions artifact upload.
         if trained and (time.monotonic() - start) >= (args.max_minutes * 60):
             break
-        current_idx = trainer.completed_updates % len(records)
-        cycle = trainer.completed_updates // len(records)
-        current = records[current_idx]
-        prior = records[current_idx-1] if current_idx else None
+        current, prior, cycle = controller.cloud_exposure_selection(
+            records, trainer.completed_updates, args.seed)
         batch, count, index = make_lesson(
             tokenizer, constitution, current, prior, args.block, cycle)
-        loss = trainer.step([batch])
+        # Deterministic warm decay; never mutate TrainConfig (legacy checkpoints
+        # retain their strict architecture and optimizer compatibility).
+        rate = trainer.config.learning_rate / math.sqrt(
+            1.0 + trainer.completed_updates / 10000.0)
+        for group in trainer.optimizer.param_groups:
+            group["lr"] = rate
+        controller.state = State.TRAINING
+        try:
+            loss = trainer.step([batch])
+        finally:
+            controller.state = State.READY
         trained += 1
         if trained == 1 or trained % 10 == 0:
             print(json.dumps({
@@ -191,6 +207,20 @@ def run(args):
     if trained == 0:
         raise RuntimeError("No training update completed")
     validation = heldout_validation(trainer, tokenizer, constitution, text)
+    if not math.isfinite(validation):
+        raise FloatingPointError("Nonfinite held-out score; no checkpoint promotion")
+    # A candidate is not a promoted model merely because its update count rose.
+    previous_best = float("inf")
+    if args.resume:
+        prior_summary = Path(args.resume).with_name("summary.json")
+        if prior_summary.exists():
+            prior_data = json.loads(prior_summary.read_text(encoding="utf-8"))
+            previous_best = float(prior_data.get("best_heldout_loss", prior_data["heldout_loss"]))
+    improved = validation < previous_best
+    controller.ledger.append({"type": "CLOUD_EXPOSURE_VALIDATED",
+        "completed_updates": trainer.completed_updates,
+        "heldout_loss": validation, "best_heldout_loss": min(validation, previous_best),
+        "improved": improved, "source_hash": source_hash})
     checkpoint = save_checkpoint(
         output, trainer,
         tokenizer_hash=tokenizer.digest(), constitution=constitution,
@@ -207,10 +237,12 @@ def run(args):
             "SELECT id FROM documents").fetchall()),
         "learning_units": len(records),
         "heldout_loss": validation,
+        "best_heldout_loss": min(validation, previous_best),
+        "best_improved_this_run": improved,
+        "learning_rate": trainer.optimizer.param_groups[0]["lr"],
         "governance_sha256": constitution.digest(),
         "tokenizer_sha256": tokenizer.digest(),
         "corpus_identity": source_hash,
-        "training_status": "FOUNDATIONAL_EXPOSURE_NOT_CERTIFIED",
     }
     (output/"summary.json").write_text(json.dumps(summary, indent=2), encoding="utf-8")
     print(json.dumps(summary))

@@ -76,6 +76,34 @@ class Controller:
         self.ledger.append({"type":"REMEDIATION_REQUESTED",**response})
         return response
 
+
+    def cloud_exposure_selection(self, records, completed_updates: int, seed: int):
+        """Authorize one source lesson under deterministic, replayed, shuffled epochs.
+
+        This is exposure, not a stage advancement. Only run_stage with its exam
+        banks may advance formal curriculum stages.
+        """
+        import random
+        if self.state != State.READY:
+            raise RuntimeError("Controller must be ready to authorize exposure")
+        if completed_updates < 0 or not records:
+            raise ValueError("Invalid training cursor or missing approved sources")
+        if len({r.id for r in records}) != len(records):
+            raise ValueError("Duplicate source record identifiers")
+        epoch, slot = divmod(completed_updates, len(records))
+        # Shuffle each full epoch; always revisit previously seen records.
+        indices = list(range(len(records)))
+        random.Random(f"{seed}:{epoch}:{self.constitution.digest()}").shuffle(indices)
+        current = records[indices[slot]]
+        if current.document_id not in {r[0] for r in self.corpus.db.execute("SELECT id FROM documents")}:
+            raise ValueError("Controller refused unapproved source")
+        if self.corpus.get(current.id).exact_text != current.exact_text:
+            raise ValueError("Source changed outside controller authority")
+        # Context comes only from the same approved source document.
+        prev = next((r for r in reversed(records[:indices[slot]])
+                     if r.document_id == current.document_id), None)
+        return current, prev, epoch
+
     def protected_axiom_revision(self, *args, **kwargs):
         raise PermissionError("The educational controller has no authority to change axioms")
 
