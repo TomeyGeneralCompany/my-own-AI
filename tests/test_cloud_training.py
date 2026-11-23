@@ -57,7 +57,7 @@ def test_regressed_latest_recovers_verified_best_without_rewinding_cursor(tmp_pa
     from hashlib import sha256
     import ancestor.cloud_training as cloud
     source = tmp_path / "book.txt"
-    source.write_text("1. First passage establishes the premise.\\n"
+    source.write_text("1. First passage establishes the premise.\n"
                       "2. Second passage develops the consequence.", encoding="utf-8")
     data = tmp_path / "corpus"
     assert Corpus(data).ingest_text(source, "BOOK", "Owner work") == 2
