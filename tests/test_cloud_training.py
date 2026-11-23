@@ -46,7 +46,10 @@ def test_remote_training_cycle_real_optimizer_and_resume(tmp_path, monkeypatch):
     import ancestor.cloud_training as cloud
     preserved = sha256((tmp_path/"checkpoints"/"best.pt").read_bytes()).hexdigest()
     # Force a regression. Latest must advance, but the best weights must not.
-    monkeypatch.setattr(cloud, "heldout_validation", lambda *a: 1000.0)
+    monkeypatch.setattr(
+        cloud, "heldout_validation",
+        lambda trainer, *rest: summary["heldout_loss"]
+        if trainer.completed_updates == 1 else 1000.0)
     again = run(Namespace(**params, resume=str(checkpoint)))
     assert again["completed_updates"] == 2
     assert not again["best_improved_this_run"]
