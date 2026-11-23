@@ -94,8 +94,8 @@ def test_regressed_latest_recovers_verified_best_without_rewinding_cursor(tmp_pa
     def observed_restore(path, trainer, **kwargs):
         result = original_restore(path, trainer, **kwargs)
         inspected.append((str(path), trainer.completed_updates,
-                          sha256(next(trainer.model.parameters()).detach()
-                                 .cpu().numpy().tobytes()).hexdigest()))
+                          tuple(next(trainer.model.parameters()).detach()
+                                .flatten()[:16].tolist())))
         return result
     monkeypatch.setattr(cloud, "restore_checkpoint", observed_restore)
     third = run(Namespace(**args, resume=str(latest)))
