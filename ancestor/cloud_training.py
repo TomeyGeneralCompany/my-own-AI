@@ -166,14 +166,70 @@ def run(args):
     output.mkdir(parents=True, exist_ok=True)
     controller = Controller(corpus, ContextBuilder(tokenizer, constitution, args.block),
                             LearningLedger(output / 'cloud-ledger.jsonl'), constitution)
+    # Recovery slots carry the newest *training cursor* as well as the lowest-loss
+    # weights. Always verify and actually score both before choosing a model.
+    # A regression must not become the initialization of the next session.
+    previous_best = float("inf")
+    previous_best_path = None
+    resume_selection = "fresh"
+    resume_latest_loss = None
+    resume_best_loss = None
     if args.resume:
         restored = restore_checkpoint(args.resume, trainer,
                                       tokenizer_hash=tokenizer.digest(),
                                       constitution=constitution,
                                       corpus_manifest_hash=source_hash)
-        print("Resumed validated neural updates:", restored["completed_updates"])
-    # Evaluate the incoming checkpoint independently before additional updates.
-    initial_validation = heldout_validation(trainer, tokenizer, constitution, text) if args.resume else float("inf")
+        latest_updates = trainer.completed_updates
+        latest_tokens = trainer.tokens_seen
+        latest_torch_rng = torch.get_rng_state().clone()
+        latest_python_rng = random.getstate()
+        resume_latest_loss = heldout_validation(trainer, tokenizer, constitution, text)
+        if not math.isfinite(resume_latest_loss):
+            raise FloatingPointError("Nonfinite latest checkpoint validation")
+        previous_best = resume_latest_loss
+        previous_best_path = Path(args.resume)
+        resume_selection = "latest"
+
+        recovery_dir = Path(args.resume).parent
+        best_file = recovery_dir / "best.pt"
+        if best_file.is_file() or (recovery_dir / "best.json").is_file():
+            if not (best_file.is_file() and (recovery_dir / "best.json").is_file()):
+                raise ValueError("Incomplete retained best checkpoint")
+            restore_checkpoint(best_file, trainer,
+                               tokenizer_hash=tokenizer.digest(),
+                               constitution=constitution,
+                               corpus_manifest_hash=source_hash)
+            if trainer.completed_updates > latest_updates:
+                raise ValueError("Best checkpoint is newer than recovery cursor")
+            resume_best_loss = heldout_validation(trainer, tokenizer, constitution, text)
+            if not math.isfinite(resume_best_loss):
+                raise FloatingPointError("Nonfinite best checkpoint validation")
+            if resume_best_loss < resume_latest_loss:
+                previous_best = resume_best_loss
+                previous_best_path = best_file
+                resume_selection = "best"
+                # Keep the monotonic controller cursor and stochastic stream
+                # while restoring only the better model and optimizer state.
+                trainer.completed_updates = latest_updates
+                trainer.tokens_seen = latest_tokens
+                torch.set_rng_state(latest_torch_rng)
+                random.setstate(latest_python_rng)
+            else:
+                restore_checkpoint(args.resume, trainer,
+                                   tokenizer_hash=tokenizer.digest(),
+                                   constitution=constitution,
+                                   corpus_manifest_hash=source_hash)
+                previous_best = resume_latest_loss
+                previous_best_path = Path(args.resume)
+        print(json.dumps({
+            "resume_selection": resume_selection,
+            "resume_latest_heldout_loss": resume_latest_loss,
+            "resume_best_heldout_loss": resume_best_loss,
+            "resumed_controller_updates": trainer.completed_updates,
+            "resume_best_checkpoint_updates":
+                restored["completed_updates"] if resume_selection == "latest"
+                else json.loads(best_file.with_suffix(".json").read_text(encoding="utf-8"))["completed_updates"],
+        }))
     start = time.monotonic()
     trained = 0
     while trained < args.updates:
@@ -209,21 +265,7 @@ def run(args):
     validation = heldout_validation(trainer, tokenizer, constitution, text)
     if not math.isfinite(validation):
         raise FloatingPointError("Nonfinite held-out score; no checkpoint promotion")
-    # Recover the best existing weights, not merely a scalar in summary.json.
-    previous_best = float("inf")
-    previous_best_path = None
-    if args.resume:
-        recovery_dir = Path(args.resume).parent
-        prior_summary = recovery_dir / "summary.json"
-        if prior_summary.exists():
-            prior_data = json.loads(prior_summary.read_text(encoding="utf-8"))
-            previous_best = float(prior_data.get("best_heldout_loss", prior_data["heldout_loss"]))
-        if (recovery_dir / "best.pt").is_file() and (recovery_dir / "best.json").is_file():
-            previous_best_path = recovery_dir / "best.pt"
-        else:
-            # Historical checkpoints have only latest; validate that model first.
-            previous_best = initial_validation
-            previous_best_path = Path(args.resume)
+    # Compare against revalidated weights, never a stale summary.json scalar.
     improved = validation < previous_best
     best_loss = min(validation, previous_best)
     controller.ledger.append({"type": "CLOUD_EXPOSURE_VALIDATED",
@@ -257,6 +299,9 @@ def run(args):
         "heldout_loss": validation,
         "best_heldout_loss": best_loss,
         "best_improved_this_run": improved,
+        "resume_selection": resume_selection,
+        "resume_latest_heldout_loss": resume_latest_loss,
+        "resume_best_heldout_loss": resume_best_loss,
         "learning_rate": trainer.optimizer.param_groups[0]["lr"],
         "governance_sha256": constitution.digest(),
         "tokenizer_sha256": tokenizer.digest(),
